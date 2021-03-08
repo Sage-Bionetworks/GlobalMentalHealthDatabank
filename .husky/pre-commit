@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn run test && yarn run prettier
+yarn run prettier
+CI=true yarn run test --forceExit
