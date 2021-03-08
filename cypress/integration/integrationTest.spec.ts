@@ -1,5 +1,5 @@
-const getEndpoint = (url: string, isV4=false) => `${Cypress.env('bridge_api')}${isV4? 'v4': 'v3'}/${url}`
-
+const getEndpoint = (url: string, isV4 = false) =>
+  `${Cypress.env('bridge_api')}${isV4 ? 'v4' : 'v3'}/${url}`
 
 function loginAsAdmin(): Cypress.Chainable {
   /* admin_email and admin_password should be stored in cypress.env.json and belong to real admin account*/
@@ -102,55 +102,58 @@ describe('Existing User Before Testing', function () {
 describe('Completed surveys thank you screens', function () {
   const data = [
     {
-      expected: 'thank you page for \'no test \'',
+      expected: "thank you page for 'no test '",
       testLocation: 'noTest',
       element: 'h2',
-      text: 'Thank you for your contribution to the COVID Recovery Corps Study!',
+      text:
+        'Thank you for your contribution to the COVID Recovery Corps Study!',
     },
     {
-      expected: 'thank you page for \'home test \'',
+      expected: "thank you page for 'home test '",
       testLocation: 'home',
       element: 'span',
       text: 'to this address',
     },
     {
-      expected: 'thank you page for \'test not asked \'',
+      expected: "thank you page for 'test not asked '",
       testLocation: 'N/A',
       element: 'button',
-      text: 'Invite'
+      text: 'Invite',
     },
   ]
   data.forEach(element => {
     it(`should go to  ${element.expected}`, function () {
       cy.server()
       cy.fixture('surveys.json')
-      .then(surveys => {
-    
-       const updatedSurveys =  surveys.items[0].data.surveys.map(survey => {
-         if (survey.type === "MORE") {
-          survey.data.test_location.test_location = element.testLocation
-         }
-         return survey
-       })
-       surveys.items[0].data.surveys = updatedSurveys
- 
-        return surveys
-      })
-      .as('userSurveysResponse')
+        .then(surveys => {
+          const updatedSurveys = surveys.items[0].data.surveys.map(survey => {
+            if (survey.type === 'MORE') {
+              survey.data.test_location.test_location = element.testLocation
+            }
+            return survey
+          })
+          surveys.items[0].data.surveys = updatedSurveys
 
-    cy.route({
-      method: 'GET',
-      url: '*ny-strong*',
-      response: '@userSurveysResponse',
-    }).as('surveys')
+          return surveys
+        })
+        .as('userSurveysResponse')
 
-    cy.login(Cypress.env('login_surveys_completed'), Cypress.env('test_password'))
-    cy.wait(100)
-  
-    cy.get(element.element).should('contain.text', element.text)
-    cy.logout()
+      cy.route({
+        method: 'GET',
+        url: '*ny-strong*',
+        response: '@userSurveysResponse',
+      }).as('surveys')
+
+      cy.login(
+        Cypress.env('login_surveys_completed'),
+        Cypress.env('test_password'),
+      )
+      cy.wait(100)
+
+      cy.get(element.element).should('contain.text', element.text)
+      cy.logout()
+    })
   })
-})
 })
 
 describe("Landing page routing for user's datagroup", function () {

@@ -53,13 +53,15 @@ export const SURVEYS: SurveyConfigObject = {
     uiSchema: () => {},
     navSchema: () => {},
   },
-  RESULT_UPLOAD: { formSchema: () => {},
-  uiSchema: () => {},
-  navSchema: () => {},},
+  RESULT_UPLOAD: {
+    formSchema: () => {},
+    uiSchema: () => {},
+    navSchema: () => {},
+  },
 
   POST_LAB: {
     formSchema: async () => await import(`./postLab_formSchema${postfix}.json`),
     uiSchema: async () => await import(`./postLab_uiSchema${postfix}.json`),
     navSchema: async () => await import(`./postLab_navSchema${postfix}.json`),
-  }
+  },
 }

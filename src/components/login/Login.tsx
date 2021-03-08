@@ -122,11 +122,11 @@ export const Login: React.FunctionComponent<LoginProps> = ({
       if (searchParams?.email) {
         const email = decodeURIComponent(searchParams.email)
         const token = decodeURIComponent(searchParams.token)
-       
+
         let postData: LoginPostData = {
           appId: APP_ID,
           email,
-          token
+          token,
         }
         signIn(postData)
       }

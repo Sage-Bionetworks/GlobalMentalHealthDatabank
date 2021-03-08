@@ -127,25 +127,19 @@ export const Consent: React.FunctionComponent<ConsentProps> = ({
       <div>
         <h2>{t('consent.hipaaText1')}</h2>
         <p>
-          <Trans i18nKey = "consent.hipaaText2">
-          [translate]
-          <strong>[translate]</strong>.
+          <Trans i18nKey="consent.hipaaText2">
+            [translate]
+            <strong>[translate]</strong>.
           </Trans>
         </p>
 
-        <LearnMore learnMoreText={t("consent.hipaaReview")}>
+        <LearnMore learnMoreText={t('consent.hipaaReview')}>
           <div>
-          <Trans i18nKey = "consent.hipaaText3">
-            <p>
-            [translate]
-            </p>
-            <p>
-            [translate]
-            </p>
-            <p>
-            [translate]</p>
-            <p>
-            [translate]</p>
+            <Trans i18nKey="consent.hipaaText3">
+              <p>[translate]</p>
+              <p>[translate]</p>
+              <p>[translate]</p>
+              <p>[translate]</p>
             </Trans>
           </div>
         </LearnMore>
@@ -182,7 +176,7 @@ export const Consent: React.FunctionComponent<ConsentProps> = ({
           color="primary"
           onClick={() => setIsConsentDone(true)}
         >
-          {t("common.submit")}
+          {t('common.submit')}
         </Button>
       </div>
     )
@@ -218,9 +212,9 @@ export const Consent: React.FunctionComponent<ConsentProps> = ({
                   <FloatingToolbar
                     closeLinkDestination="/home?alert=CANCELLED_CONSENT"
                     closeLinkText=""
-                    closeConfirmationText={t("closeConfirmationText")}
+                    closeConfirmationText={t('closeConfirmationText')}
                   >
-                    {t("consent.consentSignature")}
+                    {t('consent.consentSignature')}
                   </FloatingToolbar>
                 </div>
 
@@ -246,7 +240,7 @@ export const Consent: React.FunctionComponent<ConsentProps> = ({
                     screen={SCREENS_ENUM.CONSENT_SHARING}
                   ></ConsentCopy>
                 </div>
-                <LearnMore learnMoreText={t("common.learnMore")}>
+                <LearnMore learnMoreText={t('common.learnMore')}>
                   <div>
                     <p>{i18next.t('consentinfo.learnMoreScreen15.text1')}</p>
                     <p>{i18next.t('consentinfo.learnMoreScreen15.text2')}</p>
@@ -356,9 +350,9 @@ export const Consent: React.FunctionComponent<ConsentProps> = ({
                   <FloatingToolbar
                     closeLinkDestination="/home?alert=CANCELLED_CONSENT"
                     closeLinkText=""
-                    closeConfirmationText= {t("closeConfirmationText")}
+                    closeConfirmationText={t('closeConfirmationText')}
                   >
-                       {t("consent.consentSignature")}
+                    {t('consent.consentSignature')}
                   </FloatingToolbar>
                 </div>
 

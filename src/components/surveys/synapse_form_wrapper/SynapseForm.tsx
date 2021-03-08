@@ -1068,15 +1068,17 @@ export default class SynapseForm extends React.Component<
   render() {
     return (
       <div className={`outter-wrap ${this.props.cardClass}`}>
-        {! this.props.extraUIProps?.isNoBackBar &&<div>
-          <FloatingToolbar
-            closeLinkDestination="/dashboard"
-            closeIcon={faAngleLeft}
-            closeLinkText={i18next.t('footer.dashboard')}
-            closeConfirmationText={i18next.t('surveys.exitSurvey')}
-            closeConfirmationText2={i18next.t('surveys.dataNotSaved')}
-          />
-        </div>}
+        {!this.props.extraUIProps?.isNoBackBar && (
+          <div>
+            <FloatingToolbar
+              closeLinkDestination="/dashboard"
+              closeIcon={faAngleLeft}
+              closeLinkText={i18next.t('footer.dashboard')}
+              closeConfirmationText={i18next.t('surveys.exitSurvey')}
+              closeConfirmationText2={i18next.t('surveys.dataNotSaved')}
+            />
+          </div>
+        )}
         <Prompt
           when={this.state.hasUnsavedChanges}
           message={this.unsavedDataWarning}

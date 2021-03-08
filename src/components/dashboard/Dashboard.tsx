@@ -26,8 +26,6 @@ import i18next from 'i18next'
 import { Trans, useTranslation } from 'react-i18next'
 import ThankYou from './ThankYou'
 
-
-
 type DashboardProps = {
   token: string
 }
@@ -285,8 +283,6 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
       }
     }
 
-  
-
     // see if we need uploadResults Survey
     if (!hasTakenTest()) {
       surveys.splice(3, 1)
@@ -336,7 +332,6 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
 
     return (
       <div className="Dashboard" data-cy="page-dashboard">
-     
         {getCompletionStatus() === SurveysCompletionStatusEnum.NOT_DONE && (
           <div className="dashboard-intro">
             <Trans i18nKey="dashboard.intro1">
@@ -349,15 +344,17 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
         )}
 
         <Card className={classes.root}>
-        {getCompletionStatus() !== SurveysCompletionStatusEnum.NOT_DONE &&  (<ThankYou
-            testLocation={
-              testLocationSurveySubmitted || getPreferredTestLocation()
-            }
-            isInvitedForTest={hasInvitation(userInfo)}
-            hasCancelledAppointment={hasCancelledAppointment(userInfo)}
-            userInfo={userInfo}
-            token={token}
-          />)}
+          {getCompletionStatus() !== SurveysCompletionStatusEnum.NOT_DONE && (
+            <ThankYou
+              testLocation={
+                testLocationSurveySubmitted || getPreferredTestLocation()
+              }
+              isInvitedForTest={hasInvitation(userInfo)}
+              hasCancelledAppointment={hasCancelledAppointment(userInfo)}
+              userInfo={userInfo}
+              token={token}
+            />
+          )}
 
           {
             //if they fininshed  surveys and didn't pick location

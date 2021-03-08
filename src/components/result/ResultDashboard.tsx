@@ -69,7 +69,9 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
   const [result, setResult] = useState<TestResult | undefined>()
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const [savedSurveys, setSavedSurveys] = useState<SavedSurveysObject>()
-  const[unfinishedSurveysNum, setUnfinishedSurveysNum]= useState<number | undefined>(undefined)
+  const [unfinishedSurveysNum, setUnfinishedSurveysNum] = useState<
+    number | undefined
+  >(undefined)
   const { t } = useTranslation()
 
   const postLabSurveys: SurveyPostLabType[] = ['POST_LAB']
@@ -78,7 +80,7 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
       return false
     }
 
-    const savedSurvey =  savedSurveys.surveys.find(
+    const savedSurvey = savedSurveys.surveys.find(
       savedSurvey => surveyType === savedSurvey.type,
     )
 
@@ -96,7 +98,6 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
     return surveysToDo
   }
 
-
   useEffect(() => {
     let isSubscribed = true
     const getInfo = async () => {
@@ -105,19 +106,23 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
         try {
           const userInfoResponse = await UserService.getUserInfo(token)
           const ResultsResponse = await UserService.getTestResult(token)
-          if (isSubscribed){
-          setUserData(userInfoResponse.data)
-          if (ResultsResponse?.data?.items?.length > 0) {
-            const result = ResultsResponse.data.items[0]
-            setResult(result)
+          if (isSubscribed) {
+            setUserData(userInfoResponse.data)
+            if (ResultsResponse?.data?.items?.length > 0) {
+              const result = ResultsResponse.data.items[0]
+              setResult(result)
+            }
+            const surveys = await SurveyService.getUserSurveys(token)
+            setSavedSurveys(_.first(surveys.data.items)?.data)
           }
-          const surveys = await SurveyService.getUserSurveys(token)
-          setSavedSurveys(_.first(surveys.data.items)?.data)
-        }
         } catch (e) {
-          if (isSubscribed) {setError(e)}
+          if (isSubscribed) {
+            setError(e)
+          }
         } finally {
-         if (isSubscribed) {setIsLoading(false)}
+          if (isSubscribed) {
+            setIsLoading(false)
+          }
         }
       }
     }
@@ -144,14 +149,21 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
       navItems[0].img = liResultIndeterminate
     }
 
-   if (resultValue === 'POSITIVE') {
+    if (resultValue === 'POSITIVE') {
       navItems[0].img = liResultPositive
 
       let img = <img src={liResultNext}></img>
-        if (getUnfinishedSurveys()?.length) {
-          img = <div style={{position:'relative'}}>{img}<div className={classes.newNotification}>{getUnfinishedSurveys().length}</div></div>
-        }
-    
+      if (getUnfinishedSurveys()?.length) {
+        img = (
+          <div style={{ position: 'relative' }}>
+            {img}
+            <div className={classes.newNotification}>
+              {getUnfinishedSurveys().length}
+            </div>
+          </div>
+        )
+      }
+
       navItems.push({
         element: img,
         text: t('resultDashboard.li2'),
@@ -181,7 +193,9 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
             onClick={() => {
               setIsShowingShareDialog(true)
             }}
-          > {t('resultDashboard.inviteCTA')}
+          >
+            {' '}
+            {t('resultDashboard.inviteCTA')}
           </Button>
         </div>
       </div>
@@ -200,7 +214,15 @@ export const ResultDashboard: React.FunctionComponent<ResultProps> = ({
           changeTabCallbackFn={setActiveItemIndex}
         />
       ) : (
-        <WhatNext token={token} unfinishedSurveys={getUnfinishedSurveys()} onSurveyFinishedFn={()=> setUnfinishedSurveysNum(_prev =>  (_prev !== undefined)? (_prev - 1) : undefined) }></WhatNext>
+        <WhatNext
+          token={token}
+          unfinishedSurveys={getUnfinishedSurveys()}
+          onSurveyFinishedFn={() =>
+            setUnfinishedSurveysNum(_prev =>
+              _prev !== undefined ? _prev - 1 : undefined,
+            )
+          }
+        ></WhatNext>
       )
     }
 

@@ -1087,8 +1087,7 @@
     "job_commute": {
       "type": "object",
       "title": "",
-      "required": 
-      [
+      "required": [
         "transportation",
         "work_from_home",
         "job_title",
@@ -1238,7 +1237,7 @@
         }
       }
     },
-  
+
     "test_location": {
       "type": "object",
       "title": "",
@@ -1266,7 +1265,10 @@
           "type": "string",
           "uniqueItems": true,
           "enum": ["employed", "unemployed"],
-          "enumNames": ["Actualmente empleado", "Actualmente jubilado o desempleado"]
+          "enumNames": [
+            "Actualmente empleado",
+            "Actualmente jubilado o desempleado"
+          ]
         }
       },
       "dependencies": {

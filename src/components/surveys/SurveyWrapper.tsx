@@ -17,7 +17,7 @@ import {
   SavedSurvey,
   SavedSurveysObject,
   SurveyType,
-  UserDataGroup
+  UserDataGroup,
 } from '../../types/types'
 import SynapseForm, { ExtraUIProps } from './synapse_form_wrapper/SynapseForm'
 import { StatusEnum } from './synapse_form_wrapper/types'
