@@ -32,7 +32,7 @@ type RegistrationProps = {
 const EMAIL_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/email'
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 
-const FLAGS = {greatBritain: 'GB', india: 'IN', southAfrica: 'ZA'}
+const FLAGS = { greatBritain: 'GB', india: 'IN', southAfrica: 'ZA' }
 
 const signupIntro = {
   PHONE: (
@@ -63,7 +63,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     registrationType: { value: 'PHONE', error: '' },
   }
 
-  const [selectedFlag, setSelectedFlag] = useState(FLAGS.greatBritain);
+  const [selectedFlag, setSelectedFlag] = useState(FLAGS.greatBritain)
 
   const validationStateSchema = {
     //https://www.w3resource.com/javascript/form/email-validation.php
@@ -88,14 +88,16 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
-    let testUser :UserDataGroup[] = ['test_user' as UserDataGroup]
+    let testUser: UserDataGroup[] = ['test_user' as UserDataGroup]
     const data: RegistrationData = {
       email: state.email.value,
-      phone: state.phone.value ? makePhone(state.phone.value, selectedFlag) : undefined,
+      phone: state.phone.value
+        ? makePhone(state.phone.value, selectedFlag)
+        : undefined,
       clientData: {},
       appId: APP_ID,
-      substudyIds: ['wellcome-study'],     
-      dataGroups: testUser
+      substudyIds: ['wellcome-study'],
+      dataGroups: testUser,
     }
     let loginType: LoginType = 'EMAIL'
     const endPoint = {
@@ -225,19 +227,27 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   id="flag-selector"
                   value={selectedFlag}
                   onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                    setSelectedFlag(event.target.value as string);
+                    setSelectedFlag(event.target.value as string)
                   }}
                   variant="outlined"
                   className="phoneFlag"
                 >
                   <MenuItem value={FLAGS.greatBritain}>
-                    <img src={gb} className={"flagIcon"} alt="Great Britain"></img>
+                    <img
+                      src={gb}
+                      className={'flagIcon'}
+                      alt="Great Britain"
+                    ></img>
                   </MenuItem>
                   <MenuItem value={FLAGS.india}>
-                    <img src={ind} className={"flagIcon"} alt="India"></img>
+                    <img src={ind} className={'flagIcon'} alt="India"></img>
                   </MenuItem>
                   <MenuItem value={FLAGS.southAfrica}>
-                    <img src={za} className={"flagIcon"} alt="South Africa"></img>
+                    <img
+                      src={za}
+                      className={'flagIcon'}
+                      alt="South Africa"
+                    ></img>
                   </MenuItem>
                 </Select>
                 <TextField
