@@ -25,7 +25,7 @@ test('Generate Random Flow Selection for 4.5k', () => {
     //First flow test
     let firstFlowCount = (randomCount[0] / totalCount) * 100
     let actualValueFirstFlowCount = Math.abs(firstFlowCount - expectedPercent)
-    let tolerance = 1.5
+    let tolerance = 2
 
     console.log('expected 16.667%. Actual pct: ' + firstFlowCount)
     expect(actualValueFirstFlowCount).toBeLessThan(tolerance)
@@ -79,7 +79,7 @@ test('Generate Random Flow Selection for 10mil', () => {
     //First flow test
     let firstFlowCount = (randomCount[0] / totalCount) * 100
     let actualValueFirstFlowCount = Math.abs(firstFlowCount - expectedPercent)
-    let tolerance = 0.03
+    let tolerance = 0.05
 
     console.log('expected 16.667%. Actual pct: ' + firstFlowCount)
     expect(actualValueFirstFlowCount).toBeLessThan(tolerance)
