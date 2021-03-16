@@ -17,45 +17,35 @@ test('Generate Random Flow Selection', () => {
     //Actual count test
     let actualCount = randomCount.reduce((a, b) => a + b, 0)
     console.log('Total count expected: ' + totalCount)
-    console.log(
-      'Total count actual: ' + actualCount,
-    )
-    expect(totalCount).toBe(actualCount);
+    console.log('Total count actual: ' + actualCount)
+    expect(totalCount).toBe(actualCount)
 
     //First flow test
     let firstFlowCount = (randomCount[0] / totalCount) * 100
     let actualValueFirstFlowCount = Math.abs(firstFlowCount - 16.667)
 
-    console.log(
-      'expected 16.667%. Actual pct: ' + firstFlowCount,
-    )
-    expect(actualValueFirstFlowCount).toBeLessThan(5);
+    console.log('expected 16.667%. Actual pct: ' + firstFlowCount)
+    expect(actualValueFirstFlowCount).toBeLessThan(5)
 
     //Second flow test
     let secondFlowCount = (randomCount[1] / totalCount) * 100
     let actualValueSecondFlowCount = Math.abs(secondFlowCount - 16.667)
 
-    console.log(
-      'expected 16.667%. Actual pct: ' + secondFlowCount,
-    )
-    expect(actualValueSecondFlowCount).toBeLessThan(5);
+    console.log('expected 16.667%. Actual pct: ' + secondFlowCount)
+    expect(actualValueSecondFlowCount).toBeLessThan(5)
 
     //Third flow test
     let thirdFlowCount = (randomCount[2] / totalCount) * 100
     let actualValueThirdFlowCount = Math.abs(secondFlowCount - 16.667)
 
-    console.log(
-      'expected 16.667%. Actual pct: ' + thirdFlowCount,
-    )
+    console.log('expected 16.667%. Actual pct: ' + thirdFlowCount)
     expect(actualValueThirdFlowCount).toBeLessThan(5)
 
-    //Fourth flow test    
+    //Fourth flow test
     let fourthFlowCount = (randomCount[3] / totalCount) * 100
     let actualValueFourthFlowCount = Math.abs(fourthFlowCount - 50)
 
-    console.log(
-      'expected 50%. Actual pct: ' + fourthFlowCount,
-    )
+    console.log('expected 50%. Actual pct: ' + fourthFlowCount)
     expect(actualValueFourthFlowCount).toBeLessThan(5)
   }
   rand1()
