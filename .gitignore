@@ -3,4 +3,4 @@ cypress/integration/examples
 build
 cypress.env.json
 package-lock.json
-yarn.lock
+*.lock
