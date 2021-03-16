@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BlueSeparator from '../static/BlueSeparator'
 
 import useForm from '../useForm'
@@ -7,6 +7,7 @@ import {
   ENDPOINT,
   RegistrationData,
   LoginType,
+  UserDataGroup,
 } from '../../types/types'
 import {
   callEndpoint,
@@ -16,6 +17,12 @@ import {
 import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
 import { useTranslation, Trans } from 'react-i18next'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+
+import gb from '../../assets/flags/gb.svg'
+import ind from '../../assets/flags/ind.svg'
+import za from '../../assets/flags/za.svg'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -24,6 +31,8 @@ type RegistrationProps = {
 
 const EMAIL_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/email'
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
+
+const FLAGS = {greatBritain: 'GB', india: 'IN', southAfrica: 'ZA'}
 
 const signupIntro = {
   PHONE: (
@@ -51,17 +60,19 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   const stateSchema = {
     email: { value: '', error: '' },
     phone: { value: '', error: '' },
-    registrationType: { value: 'EMAIL', error: '' },
+    registrationType: { value: 'PHONE', error: '' },
   }
+
+  const [selectedFlag, setSelectedFlag] = useState(FLAGS.greatBritain);
 
   const validationStateSchema = {
     //https://www.w3resource.com/javascript/form/email-validation.php
     email: {},
     phone: {
-      validator: {
+      /*validator: {
         regEx: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
         error: t('registration.text5'),
-      },
+      },*/
     },
     registrationType: {},
   }
@@ -77,12 +88,14 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
+    let testUser :UserDataGroup[] = ['test_user' as UserDataGroup]
     const data: RegistrationData = {
       email: state.email.value,
-      phone: state.phone.value ? makePhone(state.phone.value) : undefined,
+      phone: state.phone.value ? makePhone(state.phone.value, selectedFlag) : undefined,
       clientData: {},
       appId: APP_ID,
-      substudyIds: ['columbia'],
+      substudyIds: ['wellcome-study'],     
+      dataGroups: testUser
     }
     let loginType: LoginType = 'EMAIL'
     const endPoint = {
@@ -206,7 +219,27 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
               <label htmlFor="phone" className="block--dark">
                 {t('common.phone')}
               </label>
-              <div className="input--padded">
+              <div className="input--padded--flags">
+                <Select
+                  labelId="flag-selector"
+                  id="flag-selector"
+                  value={selectedFlag}
+                  onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+                    setSelectedFlag(event.target.value as string);
+                  }}
+                  variant="outlined"
+                  className="phoneFlag"
+                >
+                  <MenuItem value={FLAGS.greatBritain}>
+                    <img src={gb} className={"flagIcon"} alt="Great Britain"></img>
+                  </MenuItem>
+                  <MenuItem value={FLAGS.india}>
+                    <img src={ind} className={"flagIcon"} alt="India"></img>
+                  </MenuItem>
+                  <MenuItem value={FLAGS.southAfrica}>
+                    <img src={za} className={"flagIcon"} alt="South Africa"></img>
+                  </MenuItem>
+                </Select>
                 <TextField
                   name="phone"
                   type="phone"
@@ -217,6 +250,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   variant="outlined"
                   fullWidth
                   onChange={handleOnChange}
+                  className="phoneInput"
                 />
               </div>
               {Object.keys(state).map(

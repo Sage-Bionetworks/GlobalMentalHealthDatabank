@@ -3,10 +3,10 @@ import { EmailFormFields } from 'react-mailchimp-subscribe'
 export const APP_ID = 'wellcome'
 
 export const SESSION_NAME = 'bridge-session-mindkind'
-export const ENDPOINT = 'https://webservices.sagebridge.org'
+export const ENDPOINT = 'https://webservices.sagebridge.org' 
 
 export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
-export const SURVEY_IDENTIFIER = 'mindkind' 
+export const SURVEY_IDENTIFIER = 'mindkind'
 
 export interface MailChimpFormFields extends EmailFormFields {
   NAME: string

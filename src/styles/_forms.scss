@@ -6,6 +6,11 @@
   padding: 20px;
 }
 
+.input--padded--flags {
+  padding: 20px;
+  display: flex;
+}
+
 .input--min-padded {
   padding: 5px;
 }
@@ -67,4 +72,20 @@ label.block--dark {
 }
 .modal-body {
   padding: 100px 50px;
+}
+
+.phoneFlag {
+  &.MuiOutlinedInput-root {
+    border-radius: 4px 0 0 4px;
+    top: -1px;
+    right: -1px;
+  }
+}
+.phoneInput {
+  .MuiOutlinedInput-root {
+    border-radius: 0 4px 4px 0;
+  }
+}
+.flagIcon {
+  width: 25px;
 }

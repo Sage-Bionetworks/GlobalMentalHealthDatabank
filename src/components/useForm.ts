@@ -28,12 +28,9 @@ function useForm(
   // in every re-render in component
   const validateState = useCallback(() => {
     const hasErrorInState = Object.keys(validationSchema).some(key => {
-      console.log('validatin' + key)
       const isInputFieldRequired = validationSchema[key].required
       const stateValue = state[key].value // state value
-      console.log('value is', stateValue)
       const stateError = state[key].error // state error
-      console.log(key + ' stateError ', stateError)
 
       return (isInputFieldRequired && !stateValue) || stateError
     })
@@ -45,10 +42,8 @@ function useForm(
   const handleOnChange = useCallback(
     event => {
       setIsDirty(true)
-      console.log(event)
       const name = event.target.name
       const value = event.target.value
-      console.log(name + ' is changed to ' + value)
 
       let error = ''
       if (validationSchema[name].required) {
@@ -88,7 +83,6 @@ function useForm(
   const handleOnSubmit = useCallback(
     event => {
       event.preventDefault()
-      console.log('state is ' + !validateState())
 
       // Make sure that validateState returns false
       // Before calling the submit callback function
