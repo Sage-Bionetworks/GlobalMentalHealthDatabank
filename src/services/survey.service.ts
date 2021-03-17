@@ -15,7 +15,7 @@ export const SurveyService = {
   getUserSurveys,
   postUserSurvey,
   saveSurvey,
-  completeSaveAndPostSurvey
+  completeSaveAndPostSurvey,
 }
 
 const SURVEY_ENDPOINT = `/v4/users/self/reports/${SURVEY_IDENTIFIER}`
@@ -115,13 +115,16 @@ async function saveSurvey(
   return
 }
 
-async function completeSaveAndPostSurvey  (name: SurveyType, data: any, token: string): Promise<any> {
- try {
-  await SurveyService.postToHealthData(name, data, token)
-  await SurveyService.saveSurvey(name, data, token, new Date())
-  return
- } catch(e) {
-   throw e
- }
-  
+async function completeSaveAndPostSurvey(
+  name: SurveyType,
+  data: any,
+  token: string,
+): Promise<any> {
+  try {
+    await SurveyService.postToHealthData(name, data, token)
+    await SurveyService.saveSurvey(name, data, token, new Date())
+    return
+  } catch (e) {
+    throw e
+  }
 }

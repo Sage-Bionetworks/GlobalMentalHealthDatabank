@@ -38,7 +38,6 @@ import LearningHub5 from './LearningHub5'
 import { useTranslation, Trans } from 'react-i18next'
 import _ from 'lodash'
 
-
 type ResultProps = {
   token?: string
 }
@@ -198,11 +197,16 @@ export const LearningHub: React.FunctionComponent<ResultProps> = ({
   }, [token])
 
   const getMain = (): JSX.Element => {
-    const elArray = [  <LearningHub0></LearningHub0>, <LearningHub1></LearningHub1>, <LearningHub2></LearningHub2>,<LearningHub3></LearningHub3>,<LearningHub4></LearningHub4>,<LearningHub5></LearningHub5>]
+    const elArray = [
+      <LearningHub0></LearningHub0>,
+      <LearningHub1></LearningHub1>,
+      <LearningHub2></LearningHub2>,
+      <LearningHub3></LearningHub3>,
+      <LearningHub4></LearningHub4>,
+      <LearningHub5></LearningHub5>,
+    ]
     const el = (
-      <div style={{ marginTop: '5rem' }}>
-        {elArray[activeItemIndex]}
-      </div>
+      <div style={{ marginTop: '5rem' }}>{elArray[activeItemIndex]}</div>
     )
 
     return el

@@ -17,7 +17,7 @@ Cypress.Commands.add('login', (email: string, password: string) => {
   cy.get('input[name=password]').type(`${password}{enter}`)
   cy.get('[data-cy=submit]').click()
 })
-  
+
 Cypress.Commands.add('logout', () => {
   cy.get('button').contains('Log Out').click()
 })

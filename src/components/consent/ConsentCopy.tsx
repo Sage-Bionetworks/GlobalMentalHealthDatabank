@@ -664,7 +664,8 @@ const ehrScreens = [
       </li>
       <li>
         <Trans i18nKey="consentEHR.screen10.text3">
-          <strong> [translate] </strong> [translate<a href="mailto:help@WIRB.com">help@WIRB.com</a> [translate]
+          <strong> [translate] </strong> [translate
+          <a href="mailto:help@WIRB.com">help@WIRB.com</a> [translate]
         </Trans>
       </li>
     </ul>

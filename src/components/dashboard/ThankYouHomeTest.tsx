@@ -59,8 +59,13 @@ const ThankYouHomeTest: FunctionComponent<ThankYouHomeTestProps> = ({
             <h2>[translate]</h2>
             <p>[translate]</p>
           </Trans>
-          <Box display="flex" justifyContent="space-between" paddingTop="16px" paddingBottom="32px">
-            <Box textAlign="left" fontWeight="bold" >
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            paddingTop="16px"
+            paddingBottom="32px"
+          >
+            <Box textAlign="left" fontWeight="bold">
               <span>{`${userInfo.attributes.address1} ${
                 userInfo.attributes.address2 ? userInfo.attributes.address2 : ''
               }`}</span>
@@ -71,7 +76,7 @@ const ThankYouHomeTest: FunctionComponent<ThankYouHomeTestProps> = ({
             <Button
               variant="outlined"
               color="primary"
-              style={{minWidth: "120px"}}
+              style={{ minWidth: '120px' }}
               onClick={() => setIsShowingDialog(true)}
             >
               {t('common.edit')}

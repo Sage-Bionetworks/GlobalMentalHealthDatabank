@@ -213,12 +213,11 @@ export const ConsentInfo: React.FunctionComponent<ConsentInfoProps> = ({
           className="FloatingToolbar__toggle__text"
           onClick={() => setIsFullText(false)}
         >
-             {t('consentinfo.summary')}
-
+          {t('consentinfo.summary')}
         </span>
         <Switch
           color="primary"
-          inputProps={{ 'aria-label':   t('consentinfo.consentSummaryToggle') }}
+          inputProps={{ 'aria-label': t('consentinfo.consentSummaryToggle') }}
           checked={isFullText}
           size="small"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -229,7 +228,7 @@ export const ConsentInfo: React.FunctionComponent<ConsentInfoProps> = ({
           className="FloatingToolbar__toggle__text"
           onClick={() => setIsFullText(true)}
         >
-             {t('consentinfo.fullText')}
+          {t('consentinfo.fullText')}
         </span>
       </div>
     )
