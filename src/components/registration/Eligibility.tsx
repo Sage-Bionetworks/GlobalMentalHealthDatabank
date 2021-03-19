@@ -24,7 +24,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
   return (
     <div id="Questions">
       <h1>{t('eligibility.title')}</h1>
-      <p className="">{t('eligibility.text1')}</p>
+      <p>{t('eligibility.text1')}</p>
       <GreenSeparator></GreenSeparator>
 
       <div className="form-group checkbox--nopad">

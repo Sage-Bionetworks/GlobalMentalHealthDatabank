@@ -55,7 +55,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const [error, setError] = useState('')
   const [isLinkSent, setIsLinkSent] = useState(false)
   const loginType = 'PHONE'
-  //const [loginType, setLoginType] = useState<LoginType>('PHONE')
   const [isLoading, setIsLoading] = useState(false)
 
   const { t } = useTranslation()
@@ -149,7 +148,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
     endpoint: string,
   ): Promise<any> => {
     let postData: SignInData
-    //setLoginType(_loginType)
     if (_loginType === 'PHONE') {
       postData = {
         appId: APP_ID,
@@ -216,7 +214,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                         indicatorColor="primary"
                         textColor="primary"
                         variant="fullWidth"
-                        //onChange={(_e, value) => setLoginType(value)}
                         aria-label="disabled tabs example"
                       >
                         <Tab label={t('common.email')} value="EMAIL" />
