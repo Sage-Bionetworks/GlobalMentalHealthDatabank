@@ -4,7 +4,7 @@ import useForm from '../useForm'
 import Button from '@material-ui/core/Button/Button'
 import { TextField, Checkbox, FormControlLabel } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
-import BlueSeparator from '../static/BlueSeparator'
+import GreenSeparator from '../static/GreenSeparator'
 import { useTranslation } from 'react-i18next'
 
 type EligibilityProps = {
@@ -16,27 +16,26 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
 }: EligibilityProps) => {
   const { t } = useTranslation()
   const [checks, setChecks] = useState({
-    over18: false,
-    cons: false,
-    hadCovid: false,
-    inUSA: false,
+    over16: false,
+    hasAndroid: false,
+    inValidLocation: false,
   })
 
   return (
     <div id="Questions">
-      <h2 className="text-center">{t('eligibility.title')}</h2>
-      <p>{t('eligibility.text1')}</p>
-      <BlueSeparator></BlueSeparator>
+      <h1>{t('eligibility.title')}</h1>
+      <p className="">{t('eligibility.text1')}</p>
+      <GreenSeparator></GreenSeparator>
 
-      <div className="form-group  checkbox--nopad">
+      <div className="form-group checkbox--nopad">
         <div className="form-group checkbox" style={{}}>
           <FormControlLabel
             control={
               <Checkbox
                 color="primary"
-                value={checks.over18}
+                value={checks.over16}
                 onChange={() =>
-                  setChecks(prev => ({ ...prev, over18: !prev.over18 }))
+                  setChecks(prev => ({ ...prev, over16: !prev.over16 }))
                 }
               />
             }
@@ -49,13 +48,16 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
             control={
               <Checkbox
                 color="primary"
-                value={checks.cons}
+                value={checks.inValidLocation}
                 onChange={() =>
-                  setChecks(prev => ({ ...prev, cons: !prev.cons }))
+                  setChecks(prev => ({
+                    ...prev,
+                    inValidLocation: !prev.inValidLocation,
+                  }))
                 }
               />
             }
-            label={t('eligibility.text3')}
+            label={t('eligibility.text5')}
           />
         </div>
 
@@ -64,28 +66,13 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
             control={
               <Checkbox
                 color="primary"
-                value={checks.hadCovid}
+                value={checks.hasAndroid}
                 onChange={() =>
-                  setChecks(prev => ({ ...prev, hadCovid: !prev.hadCovid }))
+                  setChecks(prev => ({ ...prev, hasAndroid: !prev.hasAndroid }))
                 }
               />
             }
             label={t('eligibility.text4')}
-          />
-        </div>
-
-        <div className="form-group checkbox">
-          <FormControlLabel
-            control={
-              <Checkbox
-                color="primary"
-                value={checks.inUSA}
-                onChange={() =>
-                  setChecks(prev => ({ ...prev, inUSA: !prev.inUSA }))
-                }
-              />
-            }
-            label={t('eligibility.text5a')}
           />
         </div>
       </div>
@@ -100,7 +87,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
           className="wideButton"
           onClick={() => setEligibilityFn()}
         >
-          {t('common.submit')}
+          {t('common.continue')}
         </Button>
       </div>
     </div>

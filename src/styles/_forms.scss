@@ -1,5 +1,8 @@
 .form-group {
   margin-bottom: 4.5rem;
+  label {
+    margin-bottom: 10px;
+  }
 }
 
 .input--padded {
@@ -7,7 +10,7 @@
 }
 
 .input--padded--flags {
-  padding: 20px;
+  padding: 20px 0 40px 0;
   display: flex;
 }
 
@@ -57,14 +60,15 @@
 }
 
 label.block--dark {
-  background: #efefef;
-  color: #0084ff;
-
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  padding: 1rem;
-  border-bottom: 1px solid #0084ff;
-  width: 100%;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+  padding-top: 31px;
 }
 
 .error {
@@ -76,16 +80,20 @@ label.block--dark {
 
 .phoneFlag {
   &.MuiOutlinedInput-root {
-    border-radius: 4px 0 0 4px;
-    top: -1px;
+    border-radius: 0;
     right: -1px;
+    div {
+      margin-bottom: -1px;
+    }
   }
 }
+
 .phoneInput {
   .MuiOutlinedInput-root {
-    border-radius: 0 4px 4px 0;
+    border-radius: 0;
   }
 }
+
 .flagIcon {
   width: 25px;
 }

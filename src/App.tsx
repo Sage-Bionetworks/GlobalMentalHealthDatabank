@@ -56,6 +56,8 @@ export const openSansFont = [
   'Roboto',
   'Helvetica',
   'Arial',
+  'Raleway',
+  'Quicksand',
 ].join(',')
 
 export const playfairDisplayFont = [
@@ -65,6 +67,8 @@ export const playfairDisplayFont = [
   'Roboto',
   'Helvetica',
   'Arial',
+  'Raleway',
+  'Quicksand',
 ].join(',')
 
 const defaultTheme = createMuiTheme()
@@ -79,11 +83,11 @@ const theme = createMuiTheme({
   },
   palette: {
     background: {
-      //default: '#e5e5e5'
+      default: '#f5f5f5',
     },
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#0085FF', ///'#202423' //'#ff4400',
+      main: '#4DB3B7', ///'#202423' //'#ff4400',
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
@@ -109,6 +113,11 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: 0,
+      },
+    },
     MuiSwitch: {
       track: {
         backgroundColor: '#807C7C',
@@ -119,16 +128,21 @@ const theme = createMuiTheme({
         borderRadius: 25,
         height: 47,
         fontFamily: openSansFont,
+        fontWeight: 700,
+        color: 'white',
       },
       text: {
         borderRadius: 25,
         height: 47,
         fontFamily: openSansFont,
-        color: '#0084FF',
+        color: 'white',
         '&:hover': {
           background: 'none',
           textDecoration: 'underline',
         },
+      },
+      containedPrimary: {
+        color: 'white',
       },
     },
     MuiInputBase: {
@@ -138,9 +152,10 @@ const theme = createMuiTheme({
     },
     MuiCard: {
       root: {
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#FCFCFC',
         maxWidth: '511px',
         margin: '0 auto',
+        padding: '40px',
       },
     },
     MuiCardContent: {

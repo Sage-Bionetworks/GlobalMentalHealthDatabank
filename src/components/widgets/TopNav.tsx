@@ -25,7 +25,7 @@ import { openSansFont } from '../../App'
 import { getSearchParams } from '../../helpers/utility'
 import { useSessionDataState, useSessionDataDispatch } from '../../AuthContext'
 import GlobalAlertCopy from './GlobalAlertCopy'
-import { ReactComponent as CovidRecoveryCorpsLogo } from '../../assets/CovidRecoveryCorpsLogo.svg'
+import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
 import i18n from '../../i18n'
 import { useTranslation } from 'react-i18next'
 import { Feature, TOGGLE_NAMES } from '../../helpers/FeatureToggle'
@@ -454,7 +454,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
               <div>
                 <Typography variant="h6" noWrap className={classes.navbarTitle}>
                   <NavLink to="/home">
-                    <CovidRecoveryCorpsLogo />
+                    <MindKindLogo />
                   </NavLink>
                 </Typography>
               </div>

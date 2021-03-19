@@ -28,7 +28,7 @@ import { ReactComponent as BooksApple } from '../../assets/books_apple.svg'
 import { ReactComponent as ShareIcon } from '../../assets/share_icon.svg'
 
 import { NavLink, Link } from 'react-router-dom'
-import BlueSeparator from './BlueSeparator'
+import GreenSeparator from './GreenSeparator'
 import ShareModal from '../widgets/ShareModal'
 
 import { useTranslation } from 'react-i18next'
@@ -428,7 +428,7 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
                 {t('home.text31')}
               </h3>
               <Hidden xsDown>
-                <BlueSeparator />
+                <GreenSeparator />
               </Hidden>
               <div className="text-center">
                 <a href="https://www.survivorcorps.com/" target="_blank">
@@ -462,7 +462,7 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
           <div className={classes.paperPanel}>
             <h2 className={classes.paperPanelTitle}>{t('home.text7')}</h2>
             <Hidden xsDown>
-              <BlueSeparator />
+              <GreenSeparator />
             </Hidden>
 
             {/* Step one               */}

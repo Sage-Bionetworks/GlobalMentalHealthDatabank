@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Alert from '@material-ui/lab/Alert'
 import Switch from '@material-ui/core/Switch/Switch'
 import ConsentCopy, { StepInfo, SCREENS_ENUM } from './ConsentCopy'
-import BlueSeparator from '../static/BlueSeparator'
+import GreenSeparator from '../static/GreenSeparator'
 import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core'
 import ConsentIcons from './ConsentIcons'
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
-import { ReactComponent as CovidRecoveryCorpsLogo } from '../../assets/CovidRecoveryCorpsLogo.svg'
+import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
 
 type ConsentInfoProps = {
   onDone: Function
@@ -169,7 +169,7 @@ export const ConsentInfo: React.FunctionComponent<ConsentInfoProps> = ({
             {quiz.explanation}
           </Alert>
         )}
-        <BlueSeparator></BlueSeparator>
+        <GreenSeparator></GreenSeparator>
         <RadioGroup
           aria-label="can consent"
           name="quizQuestion"
@@ -253,7 +253,7 @@ export const ConsentInfo: React.FunctionComponent<ConsentInfoProps> = ({
         )}
         {currentStep === -1 && (
           <div>
-            <CovidRecoveryCorpsLogo />
+            <MindKindLogo />
             <p>&nbsp;</p>
             <ConsentCopy
               screen={SCREENS_ENUM.CONSENT_INTRO}

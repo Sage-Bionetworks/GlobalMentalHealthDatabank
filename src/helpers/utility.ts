@@ -126,6 +126,7 @@ export const callEndpoint = async <T>(
 export const makePhone = (phone: string, regionCode?: string): Phone => {
   //const number = phone?.includes('+1') ? phone : `+1${phone}`
   return { number: phone, regionCode: regionCode || 'US' }
+  //return { number: phone, regionCode: 'UY' }
 }
 
 export const getMomentDate = (

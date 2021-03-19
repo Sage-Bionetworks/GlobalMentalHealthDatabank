@@ -8,16 +8,16 @@ test('Generate Random Flow Selection for 4.5k', () => {
     const totalCount = 4500
     for (let i = 0; i < totalCount; i++) {
       let rnd = Math.random()
-      if (rnd <= 0.5) randomCount[3]++
-      if (rnd > 0.5 && rnd <= 2 / 3) randomCount[0]++
-      if (rnd > 2 / 3 && rnd <= 5 / 6) randomCount[1]++
-      if (rnd > 5 / 6) randomCount[2]++
+      if (rnd < 0.5) randomCount[3]++
+      if (rnd >= 0.5 && rnd < 2 / 3) randomCount[0]++
+      if (rnd >= 2 / 3 && rnd < 5 / 6) randomCount[1]++
+      if (rnd >= 5 / 6) randomCount[2]++
     }
 
     //Actual count test
     let actualCount = randomCount.reduce((a, b) => a + b, 0)
-    console.log(`Total runns expected: ${totalCount}`)
-    console.log(`Total runns performed: ${actualCount}`)
+    console.log(`Total runs expected: ${totalCount}`)
+    console.log(`Total runs performed: ${actualCount}`)
     expect(totalCount).toBe(actualCount)
 
     let expectedPercent = 50 / 3
@@ -74,16 +74,16 @@ test('Generate Random Flow Selection for 10mil', () => {
     const totalCount = 10000000
     for (let i = 0; i < totalCount; i++) {
       let rnd = Math.random()
-      if (rnd <= 0.5) randomCount[3]++
-      if (rnd > 0.5 && rnd <= 2 / 3) randomCount[0]++
-      if (rnd > 2 / 3 && rnd <= 5 / 6) randomCount[1]++
-      if (rnd > 5 / 6) randomCount[2]++
+      if (rnd < 0.5) randomCount[3]++
+      if (rnd >= 0.5 && rnd < 2 / 3) randomCount[0]++
+      if (rnd >= 2 / 3 && rnd < 5 / 6) randomCount[1]++
+      if (rnd >= 5 / 6) randomCount[2]++
     }
 
     //Actual count test
     let actualCount = randomCount.reduce((a, b) => a + b, 0)
-    console.log(`Total runns expected: ${totalCount}`)
-    console.log(`Total runns performed: ${actualCount}`)
+    console.log(`Total runs expected: ${totalCount}`)
+    console.log(`Total runs performed: ${actualCount}`)
     expect(totalCount).toBe(actualCount)
 
     let expectedPercent = 50 / 3
