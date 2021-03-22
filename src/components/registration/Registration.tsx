@@ -25,7 +25,10 @@ import ind from '../../assets/flags/ind.svg'
 import za from '../../assets/flags/za.svg'
 
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import { getRandomFlowOption } from '../../helpers/RandomFlowGenerator'
+import {
+  getRandomFlowOption,
+  FLOW_OPTIONS,
+} from '../../helpers/RandomFlowGenerator'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -91,8 +94,22 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
-    let testUser: UserDataGroup[] = ['test_user' as UserDataGroup]
-    let flowSelection = getRandomFlowOption()
+    let flowSelection: string = getRandomFlowOption()
+    let dataGroups: UserDataGroup[] = ['test_user' as UserDataGroup]
+    switch (flowSelection) {
+      case FLOW_OPTIONS.ONE:
+        dataGroups.push(FLOW_OPTIONS.ONE as UserDataGroup)
+        break
+      case FLOW_OPTIONS.TWO:
+        dataGroups.push(FLOW_OPTIONS.TWO as UserDataGroup)
+        break
+      case FLOW_OPTIONS.THREE:
+        dataGroups.push(FLOW_OPTIONS.THREE as UserDataGroup)
+        break
+      case FLOW_OPTIONS.FOUR:
+        dataGroups.push(FLOW_OPTIONS.FOUR as UserDataGroup)
+        break
+    }
     const data: RegistrationData = {
       email: state.email.value,
       phone: state.phone.value
@@ -103,7 +120,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],
-      dataGroups: testUser,
+      dataGroups: dataGroups,
     }
     let loginType: LoginType = 'EMAIL'
     const endPoint = {
@@ -113,12 +130,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     if (!data.email) {
       delete data.email
       loginType = 'PHONE'
-    }
-
-    const hostname: string = window.location.hostname
-    if (hostname.includes('localhost') || hostname.includes('staging')) {
-      // issue 145: current hostname includes 'localhost' or 'staging', mark this as a test user account
-      data.dataGroups = ['test_user']
     }
 
     //send signinRequest

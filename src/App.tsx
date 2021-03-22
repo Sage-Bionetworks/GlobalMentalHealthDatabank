@@ -257,7 +257,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: '/eligibility',
                 state: { from: location },
               }}
             />
@@ -276,7 +276,7 @@ function App() {
             return (
               <Redirect
                 to={{
-                  pathname: '/login',
+                  pathname: '/eligibility',
                   state: { from: location },
                 }}
               />

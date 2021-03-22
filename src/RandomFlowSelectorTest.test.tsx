@@ -8,10 +8,10 @@ test('Generate Random Flow Selection for 4.5k', () => {
     const totalCount = 4500
     for (let i = 0; i < totalCount; i++) {
       let rnd = Math.random()
-      if (rnd < 0.5) randomCount[3]++
-      if (rnd >= 0.5 && rnd < 2 / 3) randomCount[0]++
-      if (rnd >= 2 / 3 && rnd < 5 / 6) randomCount[1]++
-      if (rnd >= 5 / 6) randomCount[2]++
+      if (rnd < 1 / 4) randomCount[0]++
+      if (rnd >= 1 / 4 && rnd < 1 / 2) randomCount[1]++
+      if (rnd >= 1 / 2 && rnd < 3 / 4) randomCount[2]++
+      if (rnd >= 3 / 4) randomCount[3]++
     }
 
     //Actual count test
@@ -20,14 +20,14 @@ test('Generate Random Flow Selection for 4.5k', () => {
     console.log(`Total runs performed: ${actualCount}`)
     expect(totalCount).toBe(actualCount)
 
-    let expectedPercent = 50 / 3
+    let expectedPercent = 25
 
     //First flow test
     let firstFlowCount = (randomCount[0] / totalCount) * 100
     let actualValueFirstFlowCount = Math.abs(firstFlowCount - expectedPercent)
     let tolerance = 2
 
-    console.log(`Expected 16.667%, got: ${firstFlowCount}`)
+    console.log(`Expected 25%, got: ${firstFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueFirstFlowCount}`,
     )
@@ -37,7 +37,7 @@ test('Generate Random Flow Selection for 4.5k', () => {
     let secondFlowCount = (randomCount[1] / totalCount) * 100
     let actualValueSecondFlowCount = Math.abs(secondFlowCount - expectedPercent)
 
-    console.log(`Expected 16.667%, got: ${secondFlowCount}`)
+    console.log(`Expected 25%, got: ${secondFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueSecondFlowCount}`,
     )
@@ -47,7 +47,7 @@ test('Generate Random Flow Selection for 4.5k', () => {
     let thirdFlowCount = (randomCount[2] / totalCount) * 100
     let actualValueThirdFlowCount = Math.abs(thirdFlowCount - expectedPercent)
 
-    console.log(`Expected 16.667%, got: ${thirdFlowCount}`)
+    console.log(`Expected 25%, got: ${thirdFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueThirdFlowCount}`,
     )
@@ -55,9 +55,9 @@ test('Generate Random Flow Selection for 4.5k', () => {
 
     //Fourth flow test
     let fourthFlowCount = (randomCount[3] / totalCount) * 100
-    let actualValueFourthFlowCount = Math.abs(fourthFlowCount - 50)
+    let actualValueFourthFlowCount = Math.abs(fourthFlowCount - expectedPercent)
 
-    console.log(`Expected 50%, got: ${fourthFlowCount}`)
+    console.log(`Expected 25%, got: ${fourthFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueFourthFlowCount}`,
     )
@@ -74,10 +74,10 @@ test('Generate Random Flow Selection for 10mil', () => {
     const totalCount = 10000000
     for (let i = 0; i < totalCount; i++) {
       let rnd = Math.random()
-      if (rnd < 0.5) randomCount[3]++
-      if (rnd >= 0.5 && rnd < 2 / 3) randomCount[0]++
-      if (rnd >= 2 / 3 && rnd < 5 / 6) randomCount[1]++
-      if (rnd >= 5 / 6) randomCount[2]++
+      if (rnd < 1 / 4) randomCount[0]++
+      if (rnd >= 1 / 4 && rnd < 1 / 2) randomCount[1]++
+      if (rnd >= 1 / 2 && rnd < 3 / 4) randomCount[2]++
+      if (rnd >= 3 / 4) randomCount[3]++
     }
 
     //Actual count test
@@ -86,14 +86,14 @@ test('Generate Random Flow Selection for 10mil', () => {
     console.log(`Total runs performed: ${actualCount}`)
     expect(totalCount).toBe(actualCount)
 
-    let expectedPercent = 50 / 3
+    let expectedPercent = 25
 
     //First flow test
     let firstFlowCount = (randomCount[0] / totalCount) * 100
     let actualValueFirstFlowCount = Math.abs(firstFlowCount - expectedPercent)
     let tolerance = 0.05
 
-    console.log(`Expected 16.667%, got: ${firstFlowCount}`)
+    console.log(`Expected 25%, got: ${firstFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueFirstFlowCount}`,
     )
@@ -103,7 +103,7 @@ test('Generate Random Flow Selection for 10mil', () => {
     let secondFlowCount = (randomCount[1] / totalCount) * 100
     let actualValueSecondFlowCount = Math.abs(secondFlowCount - expectedPercent)
 
-    console.log(`Expected 16.667%, got: ${secondFlowCount}`)
+    console.log(`Expected 25%, got: ${secondFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueSecondFlowCount}`,
     )
@@ -113,7 +113,7 @@ test('Generate Random Flow Selection for 10mil', () => {
     let thirdFlowCount = (randomCount[2] / totalCount) * 100
     let actualValueThirdFlowCount = Math.abs(thirdFlowCount - expectedPercent)
 
-    console.log(`Expected 16.667%, got: ${thirdFlowCount}`)
+    console.log(`Expected 25%, got: ${thirdFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueThirdFlowCount}`,
     )
@@ -121,9 +121,9 @@ test('Generate Random Flow Selection for 10mil', () => {
 
     //Fourth flow test
     let fourthFlowCount = (randomCount[3] / totalCount) * 100
-    let actualValueFourthFlowCount = Math.abs(fourthFlowCount - 50)
+    let actualValueFourthFlowCount = Math.abs(fourthFlowCount - expectedPercent)
 
-    console.log(`Expected 50%, got: ${fourthFlowCount}`)
+    console.log(`Expected 25%, got: ${fourthFlowCount}`)
     console.log(
       `Threshold: ${tolerance}, actual difference: ${actualValueFourthFlowCount}`,
     )

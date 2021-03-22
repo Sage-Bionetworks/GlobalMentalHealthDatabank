@@ -1,13 +1,15 @@
+export const FLOW_OPTIONS = {
+  ONE: 'test_arm_1',
+  TWO: 'test_arm_2',
+  THREE: 'test_arm_3',
+  FOUR: 'test_arm_4',
+}
+
 export const getRandomFlowOption = () => {
-  let options = {
-    ONE: 'option1',
-    TWO: 'option2',
-    THREE: 'option3',
-    FOUR: 'option4',
-  }
   let rnd = Math.random()
-  if (rnd < 0.5) return options.FOUR
-  if (rnd >= 0.5 && rnd < 2 / 3) return options.ONE
-  if (rnd >= 2 / 3 && rnd < 5 / 6) return options.TWO
-  if (rnd >= 5 / 6) return options.THREE
+  if (rnd < 1 / 4) return FLOW_OPTIONS.FOUR
+  if (rnd >= 1 / 4 && rnd < 1 / 2) return FLOW_OPTIONS.ONE
+  if (rnd >= 1 / 2 && rnd < 3 / 4) return FLOW_OPTIONS.TWO
+  if (rnd >= 3 / 4) return FLOW_OPTIONS.THREE
+  return 'FLOW_SELECTION_ERROR'
 }

@@ -104,11 +104,6 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
             <div className={classes.fullNavBarLink}></div>
 
             {!props.token && (
-              <NavLink to="/login" className={classes.fullNavBarLink}>
-                {t('footer.login')}
-              </NavLink>
-            )}
-            {!props.token && (
               <NavLink to="/eligibility" className={classes.fullNavBarLink}>
                 {t('footer.join')}
               </NavLink>

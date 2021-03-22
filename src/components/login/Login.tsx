@@ -75,7 +75,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
     if (loggedIn.ok || !consented) {
-      console.log('handleLogin')
       sessionUpdateFn({
         type: 'LOGIN',
         payload: {

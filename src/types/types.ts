@@ -76,6 +76,10 @@ export type UserDataGroup =
   | 'hipaa_consented'
   | 'test_user'
   | 'within_nyc'
+  | 'test_arm_1'
+  | 'test_arm_2'
+  | 'test_arm_3'
+  | 'test_arm_4'
 
 export interface LoggedInUserData extends UserData {
   sessionToken: string

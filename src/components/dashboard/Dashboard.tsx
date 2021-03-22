@@ -26,6 +26,14 @@ import i18next from 'i18next'
 import { Trans, useTranslation } from 'react-i18next'
 import ThankYou from './ThankYou'
 
+import ArmFlowOne from './armFlows/ArmFlowOne'
+import ArmFlowTwo from './armFlows/ArmFlowTwo'
+import ArmFlowThree from './armFlows/ArmFlowThree'
+import ArmFlowFour from './armFlows/ArmFlowFour'
+
+import { FLOW_OPTIONS } from '../../helpers/RandomFlowGenerator'
+import { UserDataGroup } from '../../types/types'
+
 type DashboardProps = {
   token: string
 }
@@ -210,6 +218,17 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
   }
 
   const renderSurveyItems = (savedSurveys: SavedSurvey[]) => {
+    const dataGroups = userInfo?.dataGroups || []
+    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup))
+      return <ArmFlowOne />
+    if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup))
+      return <ArmFlowTwo />
+    if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup))
+      return <ArmFlowThree />
+    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup))
+      return <ArmFlowFour />
+    return <></>
+
     const getIconImageForContact = (): JSX.Element => {
       return isContactInfoDone() ? (
         <img src={completeIconImg} alt="done"></img>
@@ -356,7 +375,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
             />
           )}
 
-          {
+          {/*{
             //if they fininshed  surveys and didn't pick location
             !getPreferredTestLocation() &&
               getCompletionStatus() ===
@@ -368,7 +387,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
                   token={token}
                 ></TestLocationSurvey>
               )
-          }
+          }*/}
           {getCompletionStatus() === SurveysCompletionStatusEnum.NOT_DONE && (
             <div>{renderSurveyItems(savedSurveys?.surveys || [])}</div>
           )}
