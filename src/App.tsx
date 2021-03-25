@@ -49,26 +49,29 @@ import LoginPassword from './components/login/LoginPassword'
 import UploadResult from './components/surveys/UploadResult'
 import TestKitShipped from './components/static/TestKitShipped'
 
+const fallbackFonts = [
+'serif',
+'Lato',
+'Roboto',
+'Helvetica',
+'Arial',
+'Raleway',
+'Quicksand',
+]
+
 export const openSansFont = [
   'Open Sans',
-  'serif',
-  'Lato',
-  'Roboto',
-  'Helvetica',
-  'Arial',
-  'Raleway',
-  'Quicksand',
+  ...fallbackFonts
 ].join(',')
 
 export const playfairDisplayFont = [
   'Playfair Display',
-  'serif',
-  'Lato',
-  'Roboto',
-  'Helvetica',
-  'Arial',
-  'Raleway',
-  'Quicksand',
+  ...fallbackFonts
+].join(',')
+
+export const sourceSansFont = [
+  'Source Sans Pro',
+  ...fallbackFonts
 ].join(',')
 
 const defaultTheme = createMuiTheme()
