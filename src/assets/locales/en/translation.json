@@ -473,9 +473,11 @@
     "text23": "You can call <1>212-305-5700</1> or email <3>COVIDRecoveryCorps@cumc.columbia.edu</3>."
   },
   "home": {
-    "title": "A community-powered movement to understand COVID-19.",
-    "text1": "If you have recovered from COVID-19 - or think you have - join our research study to better understand the long-term effects from this disease.",
-    "text3": "There is an urgent need to understand how COVID-19 will impact our communities over time.",
+    "title1": "A Mental Health Study",
+    "title2": "From Youth, For Emotional Health",
+    "text1": "Your personal experiences with emotional health are real.",
+    "text2": "What if you could help other young people by sharing your story?.",
+    "text3": "Want to make a difference? Join the MindKind Study.",
     "text31": "In partnership with:",
     "text4": "Our mission in this study is to understand how people recover from COVID-19 and the impacts of the disease on health, both today and in the future. By sharing your recovery experience, you can help researchers unlock the mysteries behind this disease and provide important new information for you, your loved ones, and thousands of others affected by the virus.",
     "text41": "Minority communities have been disproportionately affected by COVID-19. We are committed to engaging a diverse and representative group of participants so that the research can help those most impacted by this disease.",
