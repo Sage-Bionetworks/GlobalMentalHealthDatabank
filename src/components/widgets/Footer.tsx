@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Toolbar } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { openSansFont } from '../../App'
+import { openSansFont, sourceSansFont } from '../../App'
 import { ReactComponent as CZILogo } from '../../assets/czi_logo.svg'
 import { useTranslation, Trans } from 'react-i18next'
 
@@ -13,8 +13,8 @@ type FooterProps = {
 
 const useStyles = makeStyles(theme => ({
   footer: {
-    color: '#FCFCFC',
-    backgroundColor: '#2A2A2A',
+    color: '#FFFFFF',
+    backgroundColor: '#314D61',
     minHeight: '175px',
     display: 'flex',
     alignItems: 'center',
@@ -37,18 +37,23 @@ const useStyles = makeStyles(theme => ({
   },
   questionsCommentsText: {
     color: '#FFFFFF',
-    fontFamily: openSansFont,
-    fontSize: '14px',
-    lineHeight: '22px',
+    fontFamily: sourceSansFont,
+    fontSize: '13px',
+    lineHeight: '16px',
+    letterSpacing: '0.01em',
     padding: '20px 50px 30px 50px',
     [theme.breakpoints.down('sm')]: {
       paddingLeft: '30px',
     },
   },
+  questionCommentsLink: {
+    color: '#FFFFFF',
+  },
   fullNavBarLink: {
     fontFamily: openSansFont,
     color: '#FCFCFC',
-    fontSize: '14px',
+    fontSize: '13px',
+    lineHeight: '16px',
     marginLeft: 30,
     paddingBottom: 7,
     '&:hover': {
@@ -104,15 +109,20 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
             <div className={classes.fullNavBarLink}></div>
 
             {!props.token && (
+              <>
+              <NavLink to="/login" className={classes.fullNavBarLink}>
+                {t('footer.login')}
+              </NavLink>
               <NavLink to="/eligibility" className={classes.fullNavBarLink}>
                 {t('footer.join')}
               </NavLink>
+              </>
             )}
           </Toolbar>
           <div className={classes.questionsCommentsText}>
             <Trans i18nKey="footer.text1">
               [translate]
-              <a href="mailto:privacypolicy@sagebionetworks.org">[translate]</a>
+              <a className={classes.questionCommentsLink} href="mailto:privacypolicy@sagebionetworks.org">[translate]</a>
             </Trans>
           </div>
         </div>
