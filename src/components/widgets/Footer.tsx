@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       alignItems: 'flex-start',
-      padding: '35px 0px',
+      padding: '35px 0px 15px 0px',
     },
   },
   content: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '13px',
     lineHeight: '16px',
     letterSpacing: '0.01em',
-    padding: '20px 50px 30px 50px',
+    padding: '0px 50px 0px 50px',
     [theme.breakpoints.down('sm')]: {
       paddingLeft: '30px',
     },
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   cziLogoDiv: {
-    padding: '40px 50px 40px 30px',
+    padding: '20px 50px 40px 30px',
   },
 }))
 
@@ -110,19 +110,24 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
 
             {!props.token && (
               <>
-              <NavLink to="/login" className={classes.fullNavBarLink}>
-                {t('footer.login')}
-              </NavLink>
-              <NavLink to="/eligibility" className={classes.fullNavBarLink}>
-                {t('footer.join')}
-              </NavLink>
+                <NavLink to="/login" className={classes.fullNavBarLink}>
+                  {t('footer.login')}
+                </NavLink>
+                <NavLink to="/eligibility" className={classes.fullNavBarLink}>
+                  {t('footer.join')}
+                </NavLink>
               </>
             )}
           </Toolbar>
           <div className={classes.questionsCommentsText}>
             <Trans i18nKey="footer.text1">
               [translate]
-              <a className={classes.questionCommentsLink} href="mailto:privacypolicy@sagebionetworks.org">[translate]</a>
+              <a
+                className={classes.questionCommentsLink}
+                href="mailto:privacypolicy@sagebionetworks.org"
+              >
+                [translate]
+              </a>
             </Trans>
           </div>
         </div>
