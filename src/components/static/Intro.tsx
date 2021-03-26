@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles, Button, Grid, Hidden, Container } from '@material-ui/core'
 import { playfairDisplayFont, openSansFont } from '../../App'
 import LandingPageAboveFold0 from '../../assets/LandingPageAboveFold0.png'
 import LandingPageAboveFold0Mobile from '../../assets/LandingPageAboveFold0_mobile.png'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Butterfly1 } from '../../assets/butterfly1.svg'
+import { ReactComponent as Butterfly2 } from '../../assets/butterfly2.svg'
 
 type IntroProps = {
   token: string | null
@@ -41,27 +43,33 @@ export const useIntroStyles = makeStyles(theme => ({
       top: -250,
     },
   },
-  heroText: {
+  heroText1: {
     color: '#F2F2F2',
+    fontSize: '16px',
+    lineHeight: '30px',
+    fontFamily: 'Lato',
+  },
+  heroText2: {
+    color: '#F2F2F2',
+    fontSize: '30px',
+    lineHeight: '35px',
+    fontFamily: 'Lato',
   },
   heroTextDiv: {
     zIndex: 2,
     position: 'relative',
 
     [theme.breakpoints.up('xs')]: {
-      padding: '25px 20px 30px 30px',
-      maxWidth: '250px',
+      padding: '100px 20px 30px 30px',
     },
     [theme.breakpoints.up('sm')]: {
-      padding: '30px 20px 45px 40px',
-      maxWidth: '450px',
+      padding: '105px 20px 45px 40px',
     },
     [theme.breakpoints.up('md')]: {
-      padding: '120px 20px 100px 40px',
-      maxWidth: '650px',
+      padding: '195px 20px 100px 40px',
     },
     [theme.breakpoints.up('lg')]: {
-      padding: '180px 20px 130px 40px',
+      padding: '255px 20px 130px 40px',
     },
   },
   joinButton: {
@@ -82,6 +90,7 @@ export const useIntroStyles = makeStyles(theme => ({
     },
   },
   navLink: {
+    paddingTop: '45px',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -98,11 +107,10 @@ export const useIntroStyles = makeStyles(theme => ({
     paddingBottom: '50px',
     display: 'flex',
     justifyContent: 'center',
+    position: 'relative',
   },
   content1TextDiv: {
     color: 'white',
-    paddingLeft: '20px',
-    paddingRight: '20px',
     fontFamily: 'Lato',
     fontStyle: 'normal',
     fontWeight: 'normal',
@@ -111,6 +119,22 @@ export const useIntroStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       fontSize: '24px',
     },
+  },
+  containerButterflyText: {
+    [theme.breakpoints.down('md')]: {
+      width: '80%',
+    },
+  },
+  butterfly1: {
+    position: 'absolute',
+    top: '20%',
+    left: '80%',
+  },
+  butterfly2: {
+    position: 'absolute',
+    bottom: '-6%',
+    left: '10%',
+    zIndex: 3,
   },
   content2: {
     fontFamily: playfairDisplayFont,
@@ -121,11 +145,10 @@ export const useIntroStyles = makeStyles(theme => ({
     paddingBottom: '50px',
     display: 'flex',
     justifyContent: 'center',
+    position: 'relative',
   },
   content2TextDiv: {
     color: 'white',
-    paddingLeft: '20px',
-    paddingRight: '20px',
     fontFamily: 'Lato',
     fontStyle: 'normal',
     fontWeight: 'normal',
@@ -271,8 +294,8 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
   const heroTextContent = (
     <Container maxWidth="lg">
       <div className={classes.heroTextDiv}>
-        <h2 className={classes.heroText}>{t('home.title1')}</h2>
-        <h1 className={classes.heroText}>{t('home.title2')}</h1>
+        <h2 className={classes.heroText1}>{t('home.title1')}</h2>
+        <h1 className={classes.heroText2}>{t('home.title2')}</h1>
       </div>
     </Container>
   )
@@ -293,22 +316,29 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
           {heroTextContent}
         </div>
         <div className={classes.content1}>
-          <Container maxWidth="md">
+          <Container maxWidth="md" className={classes.containerButterflyText}>
             <div className={classes.content1TextDiv}>
               <div>{t('home.text1')}</div>
             </div>
           </Container>
+          <Butterfly1 className={classes.butterfly1} />
         </div>
         <div className={classes.content2}>
-          <Container maxWidth="md">
+          <Container maxWidth="md" className={classes.containerButterflyText}>
             <div className={classes.content2TextDiv}>
               <div>{t('home.text2')}</div>
             </div>
           </Container>
+          <Butterfly2 className={classes.butterfly2} />
         </div>
       </div>
+
       <div className={classes.fightTogetherDiv}>
-        <h2 className={classes.fightTogetherDivText}>{t('home.text3')}</h2>
+        <Container maxWidth="md" className={classes.containerButterflyText}>
+          <div className={classes.content2TextDiv}>
+            <div>{t('home.text3')}</div>
+          </div>
+        </Container>
         <Grid container justify="center" alignItems="center">
           <NavLink to="/eligibility" className={classes.navLink}>
             <Button
@@ -321,6 +351,21 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
           </NavLink>
         </Grid>
       </div>
+
+      {/*<div className={classes.fightTogetherDiv}>
+        <h2 className={classes.fightTogetherDivText}>{t('home.text3')}</h2>
+        <Grid container justify="center" alignItems="center">
+          <NavLink to="/eligibility" className={classes.navLink}>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.joinButton}
+            >
+              {t('common.joinStudy')}
+            </Button>
+          </NavLink>
+        </Grid>
+  </div>*/}
     </div>
   )
 }
