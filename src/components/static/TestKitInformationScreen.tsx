@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
-import { ReactComponent as CovidRecoveryCorpsLogo } from '../../assets/CovidRecoveryCorpsLogo.svg'
+import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
 import i18n from '../../i18n'
 import { useTranslation } from 'react-i18next'
 
@@ -73,7 +73,7 @@ const TestKitInformationScreen: React.FC<{}> = props => {
     <div className={classes.container}>
       <div className={classes.topBanner}>
         <NavLink to="/home">
-          <CovidRecoveryCorpsLogo />
+          <MindKindLogo />
         </NavLink>
       </div>
       <h2 className={classes.header}>

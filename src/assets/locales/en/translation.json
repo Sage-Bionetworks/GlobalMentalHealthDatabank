@@ -23,7 +23,8 @@
     "submit": "Submit",
     "yes": "Yes",
     "noTakeBack": "No, take me back",
-    "zipCode": "Zip code"
+    "zipCode": "Zip code",
+    "continue": "Continue"
   },
   "accountSettings": {
     "header": "Account Settings",
@@ -429,15 +430,15 @@
   },
   "eligibility": {
     "title": "Eligibility",
-    "error18": "To be eligible to take part in the COVID Recovery Corps study, you must be over 18.",
-    "errorCons": "To be eligible to take part in the COVID Recovery Corps study, you must be able to provide consent for yourself.",
-    "errorCovid": "To be eligible to take part in the COVID Recovery Corps study, you must think that you've had COVID-19.",
+    "error18": "To be eligible to take part in the MindKind Study, you must be over 16.",
+    "errorCons": "To be eligible to take part in the MindKind Study, you must be able to provide consent for yourself.",
+    "errorCovid": "To be eligible to take part in the MindKind Study, you must have an Android device.",
     "errorZip": "Invalid zip code.",
-    "text1": "To be eligible to take part in the COVID Recovery Corps study, you must fulfill the following:",
-    "text2": "I am 18 years of age or older",
+    "text1": "To be eligible to take part in the MindKind Study, you must fulfill the following:",
+    "text2": "I am 16 years of age or older",
     "text3": "I am able to provide consent for myself",
-    "text4": "I think I’ve had COVID-19",
-    "text5a": "I live in the United States"
+    "text4": "I have an Android device",
+    "text5": "I live in one of the eligible locations"
   },
   "faqs": {
     "title": "FAQs",
@@ -571,8 +572,11 @@
     "text3": "Create account",
     "text4": "Sign up with email",
     "text5": "Invalid Phone",
-    "intro1": "<0>Don't have email?</0> <1> At this time, we are only able to invite participants to lab draws with an email account. </1> <2> We are working on this issue. We hope to support scheduling appointments with your phone number in the near future. </2> <3> You can still join the COVID Recovery Corps and provide important information to our researchers by filling out surveys with your phone number. </3>",
-    "intro2": "<0>Getting Started</0> <1> To access the consent and surveys, you will need to create an account. </1> <2> You will use your email to log into your account in the future.</2>"
+    "intro1": "<0>Before we get started, could we have your number?</0> <1> We are asking you for your phone number to make this consent process easier and faster for you.</1> <2>We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity.</2> <3>We will not share your number with anyone. </3>",
+    "intro2": "<0>Getting Started</0> <1> To access the consent and surveys, you will need to create an account. </1> <2> You will use your email to log into your account in the future.</2>",
+    "phoneIntroTitle": "Before we get started, could we have your number?",
+    "phoneIntroBody": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone. ",
+    "myPhone": "My Phone number is:"
   },
   "result": {
     "positiveTitle1": "you are SARS-CoV-2 antibody positive",

@@ -7,7 +7,7 @@ import Lara from '../../assets/Lara.jpg'
 import { ReactComponent as ColumbiaLogo } from '../../assets/columbia_logo.svg'
 import { ReactComponent as SageLogo } from '../../assets/sage_logo.svg'
 import { ReactComponent as CZILogo } from '../../assets/czi_logo_dark.svg'
-import BlueSeparator from './BlueSeparator'
+import GreenSeparator from './GreenSeparator'
 import { useIntroStyles } from './Intro'
 
 import { useTranslation } from 'react-i18next'
@@ -76,7 +76,7 @@ export const Team: React.FunctionComponent<TeamProps> = ({}: TeamProps) => {
               <h2>{t('team.text1')}</h2>
             </div>
             <Hidden xsDown>
-              <BlueSeparator />
+              <GreenSeparator />
             </Hidden>
             <div className={introClasses.paperPanelStepContainer}>
               <div className={introClasses.paperPanelStepBody}>

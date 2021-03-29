@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 
-export const BlueSeparator: React.FunctionComponent = () => {
+export const GreenSeparator: React.FunctionComponent = () => {
   return (
     <Grid
       container
@@ -17,10 +17,10 @@ export const BlueSeparator: React.FunctionComponent = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="80" height="4" fill="#0085FF" />
+        <rect width="80" height="4" fill="#4DB3B7" />
       </svg>
     </Grid>
   )
 }
 
-export default BlueSeparator
+export default GreenSeparator

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import BlueSeparator from '../static/BlueSeparator'
+import GreenSeparator from '../static/GreenSeparator'
 
 import useForm from '../useForm'
 import {
@@ -23,6 +23,12 @@ import Select from '@material-ui/core/Select'
 import gb from '../../assets/flags/gb.svg'
 import ind from '../../assets/flags/ind.svg'
 import za from '../../assets/flags/za.svg'
+
+import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
+import {
+  getRandomFlowOption,
+  FLOW_OPTIONS,
+} from '../../helpers/RandomFlowGenerator'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -61,9 +67,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     email: { value: '', error: '' },
     phone: { value: '', error: '' },
     registrationType: { value: 'PHONE', error: '' },
+    countryCode: { value: FLAGS.greatBritain, error: '' },
   }
-
-  const [selectedFlag, setSelectedFlag] = useState(FLAGS.greatBritain)
 
   const validationStateSchema = {
     //https://www.w3resource.com/javascript/form/email-validation.php
@@ -75,6 +80,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       },*/
     },
     registrationType: {},
+    countryCode: {},
   }
 
   const submitRegistration = async (registrationData: RegistrationData) => {
@@ -88,35 +94,42 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
-    let testUser: UserDataGroup[] = ['test_user' as UserDataGroup]
+    let flowSelection: string = getRandomFlowOption()
+    let dataGroups: UserDataGroup[] = ['test_user' as UserDataGroup]
+    switch (flowSelection) {
+      case FLOW_OPTIONS.ONE:
+        dataGroups.push(FLOW_OPTIONS.ONE as UserDataGroup)
+        break
+      case FLOW_OPTIONS.TWO:
+        dataGroups.push(FLOW_OPTIONS.TWO as UserDataGroup)
+        break
+      case FLOW_OPTIONS.THREE:
+        dataGroups.push(FLOW_OPTIONS.THREE as UserDataGroup)
+        break
+      case FLOW_OPTIONS.FOUR:
+        dataGroups.push(FLOW_OPTIONS.FOUR as UserDataGroup)
+        break
+    }
     const data: RegistrationData = {
       email: state.email.value,
       phone: state.phone.value
-        ? makePhone(state.phone.value, selectedFlag)
+        ? makePhone(state.phone.value, state.countryCode.value)
         : undefined,
-      clientData: {},
+      clientData: {
+        'flow-selection': flowSelection,
+      },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],
-      dataGroups: testUser,
+      dataGroups: dataGroups,
     }
     let loginType: LoginType = 'EMAIL'
     const endPoint = {
       PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
       EMAIL: `${ENDPOINT}${EMAIL_SIGN_IN_TRIGGER_ENDPOINT}`,
     }
-    if (state.registrationType === 'EMAIL') {
-      delete data.phone
-      loginType = 'EMAIL'
-    }
     if (!data.email) {
       delete data.email
       loginType = 'PHONE'
-    }
-
-    const hostname: string = window.location.hostname
-    if (hostname.includes('localhost') || hostname.includes('staging')) {
-      // issue 145: current hostname includes 'localhost' or 'staging', mark this as a test user account
-      data.dataGroups = ['test_user']
     }
 
     //send signinRequest
@@ -148,13 +161,17 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   return (
     <div>
-      {signupIntro[state.registrationType.value as LoginType]}
-      <BlueSeparator></BlueSeparator>
+      <div className="media-wrapper">
+        <TextSent />
+      </div>
+      <div className="text-center">{t('registration.phoneIntroTitle')}</div>
+      <GreenSeparator />
+      <div className="text-center">{t('registration.phoneIntroBody')}</div>
 
       {state.registrationType.value === 'EMAIL' && (
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
-            <div className="tabbedField">
+            <div>
               <div>
                 <label htmlFor="email" className="block--dark">
                   {t('common.email')}
@@ -217,17 +234,22 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       {state.registrationType.value === 'PHONE' && (
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
-            <div className="tabbedField">
+            <div>
               <label htmlFor="phone" className="block--dark">
-                {t('common.phone')}
+                {t('registration.myPhone')}
               </label>
               <div className="input--padded--flags">
                 <Select
                   labelId="flag-selector"
                   id="flag-selector"
-                  value={selectedFlag}
+                  value={state.countryCode.value}
                   onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                    setSelectedFlag(event.target.value as string)
+                    handleOnChange({
+                      target: {
+                        name: 'countryCode',
+                        value: event.target.value,
+                      },
+                    })
                   }}
                   variant="outlined"
                   className="phoneFlag"
@@ -254,9 +276,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   name="phone"
                   type="phone"
                   value={state.phone.value}
-                  placeholder={t('common.phone')}
+                  placeholder={`${t('common.phone')} #`}
                   aria-label={t('common.phone')}
-                  label={t('common.phone')}
                   variant="outlined"
                   fullWidth
                   onChange={handleOnChange}
@@ -285,22 +306,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   {t('registration.text3')}
                 </Button>
               </div>
-            </div>
-
-            <div style={{ margin: '0 auto', textAlign: 'center' }}>
-              <Button
-                variant="text"
-                onClick={() => {
-                  handleOnChange({
-                    target: { name: 'registrationType', value: 'EMAIL' },
-                  })
-                  handleOnChange({
-                    target: { name: 'phone', value: '' },
-                  })
-                }}
-              >
-                {t('registration.text4')}
-              </Button>
             </div>
           </div>
         </form>

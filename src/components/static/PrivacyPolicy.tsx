@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, Grid, Hidden, Container } from '@material-ui/core'
 import { useIntroStyles } from './Intro'
-import BlueSeparator from './BlueSeparator'
+import GreenSeparator from './GreenSeparator'
 import LearnMore from '../widgets/LearnMore'
 import { ReactComponent as Graphic } from '../../assets/privacy_policy_graphic.svg'
 import { useTranslation, Trans } from 'react-i18next'
@@ -41,7 +41,7 @@ export const PrivacyPolicy: React.FunctionComponent = ({}) => {
             <h1>{t('privacy.title')}</h1>
           </div>
           <Hidden xsDown>
-            <BlueSeparator />
+            <GreenSeparator />
           </Hidden>
           <Grid
             container

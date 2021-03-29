@@ -54,7 +54,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const [phone, setPhone] = useState('')
   const [error, setError] = useState('')
   const [isLinkSent, setIsLinkSent] = useState(false)
-  const [loginType, setLoginType] = useState<LoginType>('EMAIL')
+  const loginType = 'PHONE'
   const [isLoading, setIsLoading] = useState(false)
 
   const { t } = useTranslation()
@@ -75,7 +75,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
     if (loggedIn.ok || !consented) {
-      console.log('handleLogin')
       sessionUpdateFn({
         type: 'LOGIN',
         payload: {
@@ -148,7 +147,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
     endpoint: string,
   ): Promise<any> => {
     let postData: SignInData
-    setLoginType(_loginType)
     if (_loginType === 'PHONE') {
       postData = {
         appId: APP_ID,
@@ -184,12 +182,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
           phone,
           `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
-      } else if (loginType === 'EMAIL' && email) {
-        result = await sendSignInRequest(
-          'EMAIL',
-          email,
-          `${ENDPOINT}${EMAIL_SIGN_IN_TRIGGER_ENDPOINT}`,
-        )
       }
       setIsLinkSent(true)
     } catch (e) {
@@ -221,7 +213,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                         indicatorColor="primary"
                         textColor="primary"
                         variant="fullWidth"
-                        onChange={(_e, value) => setLoginType(value)}
                         aria-label="disabled tabs example"
                       >
                         <Tab label={t('common.email')} value="EMAIL" />
@@ -233,23 +224,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                           )
                         }
                       </Tabs>
-
-                      {loginType === 'EMAIL' && (
-                        <div className="input--padded">
-                          <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            label={t('common.emailAddress')}
-                            fullWidth
-                            autoComplete={t('common.emailAddress')}
-                            placeholder={t('common.emailAddress')}
-                            name="email"
-                            type="email"
-                            value={email}
-                            onChange={e => setEmail(e.currentTarget.value)}
-                          />
-                        </div>
-                      )}
 
                       {loginType === 'PHONE' && (
                         <div className="input--padded">
