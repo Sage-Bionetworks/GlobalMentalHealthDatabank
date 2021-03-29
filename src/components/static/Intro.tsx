@@ -1,37 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import {
-  makeStyles,
-  Button,
-  Grid,
-  Hidden,
-  Container,
-  IconButton,
-} from '@material-ui/core'
+import React from 'react'
+import { makeStyles, Button, Grid, Hidden, Container } from '@material-ui/core'
 import { playfairDisplayFont, openSansFont } from '../../App'
 import LandingPageAboveFold0 from '../../assets/LandingPageAboveFold0.png'
-import LandingPageAboveFold1 from '../../assets/LandingPageAboveFold1.png'
-import LandingPageAboveFold2 from '../../assets/LandingPageAboveFold2.png'
-import LandingPageAboveFold3 from '../../assets/LandingPageAboveFold3.png'
-import LandingPageAboveFold4 from '../../assets/LandingPageAboveFold.png'
 import LandingPageAboveFold0Mobile from '../../assets/LandingPageAboveFold0_mobile.png'
-import LandingPageAboveFold1Mobile from '../../assets/LandingPageAboveFold1_mobile.png'
-import LandingPageAboveFold2Mobile from '../../assets/LandingPageAboveFold2_mobile.png'
-import LandingPageAboveFold3Mobile from '../../assets/LandingPageAboveFold3_mobile.png'
-import LandingPageAboveFold4Mobile from '../../assets/LandingPageAboveFold_mobile.png'
-import LandingPageWalk from '../../assets/LandingPageWalk.png'
-import { ReactComponent as ColumbiaLogo } from '../../assets/columbia_logo.svg'
-import { ReactComponent as SageLogo } from '../../assets/sage_logo.svg'
-import { ReactComponent as SurvivorCorpsLogo } from '../../assets/SurvivorCorpsLogo-Vertical.svg'
-import { ReactComponent as Tablet } from '../../assets/tablet.svg'
-import { ReactComponent as TestTubes } from '../../assets/test_tubes.svg'
-import { ReactComponent as BooksApple } from '../../assets/books_apple.svg'
-import { ReactComponent as ShareIcon } from '../../assets/share_icon.svg'
-
-import { NavLink, Link } from 'react-router-dom'
-import GreenSeparator from './GreenSeparator'
-import ShareModal from '../widgets/ShareModal'
-
+import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Butterfly1 } from '../../assets/butterfly1.svg'
+import { ReactComponent as Butterfly2 } from '../../assets/butterfly2.svg'
 
 type IntroProps = {
   token: string | null
@@ -41,7 +16,7 @@ export const useIntroStyles = makeStyles(theme => ({
   heroContainer: {
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '215px',
+    minHeight: '375px',
   },
   heroTextGradiant: {
     zIndex: 1,
@@ -68,39 +43,54 @@ export const useIntroStyles = makeStyles(theme => ({
       top: -250,
     },
   },
-  heroText: {
+  heroText1: {
     color: '#F2F2F2',
+    fontSize: '16px',
+    lineHeight: '30px',
+    fontFamily: 'Lato',
+  },
+  heroText2: {
+    color: '#F2F2F2',
+    fontSize: '30px',
+    lineHeight: '35px',
+    fontFamily: 'Lato',
   },
   heroTextDiv: {
     zIndex: 2,
     position: 'relative',
 
     [theme.breakpoints.up('xs')]: {
-      padding: '25px 20px 30px 30px',
-      maxWidth: '250px',
+      padding: '100px 20px 30px 30px',
     },
     [theme.breakpoints.up('sm')]: {
-      padding: '30px 20px 45px 40px',
-      maxWidth: '450px',
+      padding: '105px 20px 45px 40px',
     },
     [theme.breakpoints.up('md')]: {
-      padding: '120px 20px 100px 40px',
-      maxWidth: '650px',
+      padding: '195px 20px 100px 40px',
     },
     [theme.breakpoints.up('lg')]: {
-      padding: '180px 20px 130px 40px',
+      padding: '255px 20px 130px 40px',
     },
   },
   joinButton: {
-    height: '36px',
-    width: '150px',
+    width: '270px',
+    height: '52px',
+    backgroundColor: '#343F56',
     marginBottom: '5px',
+    fontFamily: 'Lato',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: '20px',
+    lineHeight: '23px',
+    textAlign: 'center',
+    letterSpacing: '0.04em',
     [theme.breakpoints.up('sm')]: {
       marginTop: '20px',
       marginBottom: '10px',
     },
   },
   navLink: {
+    paddingTop: '45px',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -110,18 +100,60 @@ export const useIntroStyles = makeStyles(theme => ({
   },
   content1: {
     fontFamily: playfairDisplayFont,
-    backgroundColor: '#90CCCC',
-    textAlign: 'center',
+    backgroundColor: '#343F56',
+    textAlign: 'left',
     fontWeight: 'bold',
     paddingTop: '50px',
     paddingBottom: '50px',
     display: 'flex',
     justifyContent: 'center',
+    position: 'relative',
   },
   content1TextDiv: {
-    paddingLeft: '20px',
-    paddingRight: '20px',
-    fontSize: '20px',
+    color: 'white',
+    fontFamily: 'Lato',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '24px',
+    lineHeight: '30px',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '24px',
+    },
+  },
+  containerButterflyText: {
+    [theme.breakpoints.down('md')]: {
+      width: '80%',
+    },
+  },
+  butterfly1: {
+    position: 'absolute',
+    top: '20%',
+    left: '80%',
+  },
+  butterfly2: {
+    position: 'absolute',
+    bottom: '-6%',
+    left: '10%',
+    zIndex: 3,
+  },
+  content2: {
+    fontFamily: playfairDisplayFont,
+    backgroundColor: '#4DB3B7',
+    textAlign: 'left',
+    fontWeight: 'bold',
+    paddingTop: '50px',
+    paddingBottom: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  content2TextDiv: {
+    color: 'white',
+    fontFamily: 'Lato',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '24px',
+    lineHeight: '30px',
     [theme.breakpoints.up('sm')]: {
       fontSize: '24px',
     },
@@ -236,31 +268,18 @@ export const useIntroStyles = makeStyles(theme => ({
     padding: '20px',
   },
   fightTogetherDiv: {
-    backgroundColor: '#3A3A3A',
+    backgroundColor: '#F5B33C',
     padding: '40px 0px',
   },
   fightTogetherDivText: {
-    textAlign: 'center',
+    textAlign: 'left',
     color: '#FFFFFF',
-    padding: '0px 25px 0px 25px',
-  },
-  shareButtonContainer: {
-    height: '0px',
-  },
-  shareButtonDiv: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  shareButton: {
-    width: '77px',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    backgroundColor: '#fff',
-    '&:hover': {
-      backgroundColor: 'rgba(242, 242, 242, 1)',
-    },
-    position: 'relative',
-    top: '-40px',
-    zIndex: 2,
+    padding: '0px 25px 50px 25px',
+    fontFamily: 'Lato',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '24px',
+    lineHeight: '30px',
   },
   logo: {
     height: '50px',
@@ -271,59 +290,12 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
   const { t } = useTranslation()
 
   const classes = useIntroStyles()
-  const [isShowingShareDialog, setIsShowingShareDialog] = useState(false)
-  const [heroImage0Opacity, setHeroImage0Opacity] = useState(1)
-  const [heroImage1Opacity, setHeroImage1Opacity] = useState(0)
-  const [heroImage2Opacity, setHeroImage2Opacity] = useState(0)
-  const [heroImage3Opacity, setHeroImage3Opacity] = useState(0)
-  const [heroImage4Opacity, setHeroImage4Opacity] = useState(0)
-
-  const selectNextHeroBackground = () => {
-    // get next image
-    let nextHeroBackgroundImage: string
-    if (heroImage0Opacity > 0) {
-      setHeroImage0Opacity(0)
-      setHeroImage1Opacity(1)
-    } else if (heroImage1Opacity > 0) {
-      setHeroImage1Opacity(0)
-      setHeroImage2Opacity(1)
-    } else if (heroImage2Opacity > 0) {
-      setHeroImage2Opacity(0)
-      setHeroImage3Opacity(1)
-    } else if (heroImage3Opacity > 0) {
-      setHeroImage3Opacity(0)
-      setHeroImage4Opacity(1)
-    } else {
-      setHeroImage4Opacity(0)
-      setHeroImage0Opacity(1)
-    }
-  }
-  useEffect(() => {
-    const interval = setInterval(selectNextHeroBackground, 8000)
-    return () => clearInterval(interval)
-  }, [
-    heroImage0Opacity,
-    heroImage1Opacity,
-    heroImage2Opacity,
-    heroImage3Opacity,
-    heroImage4Opacity,
-  ])
 
   const heroTextContent = (
     <Container maxWidth="lg">
       <div className={classes.heroTextDiv}>
-        <h1 className={classes.heroText}>{t('home.title')}</h1>
-        <div>
-          <NavLink to="/eligibility" className={classes.navLink}>
-            <Button
-              color="primary"
-              variant="contained"
-              className={classes.joinButton}
-            >
-              {t('common.joinUs')}
-            </Button>
-          </NavLink>
-        </div>
+        <h2 className={classes.heroText1}>{t('home.title1')}</h2>
+        <h1 className={classes.heroText2}>{t('home.title2')}</h1>
       </div>
     </Container>
   )
@@ -336,243 +308,37 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
             <img
               className={classes.heroImage}
               src={LandingPageAboveFold0Mobile}
-              style={{ opacity: heroImage0Opacity }}
-            />
-
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold1Mobile}
-              style={{ opacity: heroImage1Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold2Mobile}
-              style={{ opacity: heroImage2Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold3Mobile}
-              style={{ opacity: heroImage3Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold4Mobile}
-              style={{ opacity: heroImage4Opacity }}
             />
           </Hidden>
           <Hidden smDown>
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold0}
-              style={{ opacity: heroImage0Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold1}
-              style={{ opacity: heroImage1Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold2}
-              style={{ opacity: heroImage2Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold3}
-              style={{ opacity: heroImage3Opacity }}
-            />
-            <img
-              className={classes.heroImage}
-              src={LandingPageAboveFold4}
-              style={{ opacity: heroImage4Opacity }}
-            />
+            <img className={classes.heroImage} src={LandingPageAboveFold0} />
           </Hidden>
-
           {heroTextContent}
         </div>
-        <Container maxWidth="lg" className={classes.shareButtonContainer}>
-          <div className={classes.shareButtonDiv}>
-            <IconButton
-              aria-label="share"
-              className={classes.shareButton}
-              onClick={() => {
-                setIsShowingShareDialog(true)
-              }}
-            >
-              <ShareIcon />
-            </IconButton>
-          </div>
-        </Container>
-        <ShareModal
-          show={isShowingShareDialog}
-          onClose={() => {
-            setIsShowingShareDialog(false)
-          }}
-        />
         <div className={classes.content1}>
-          <Container maxWidth="md">
+          <Container maxWidth="md" className={classes.containerButterflyText}>
             <div className={classes.content1TextDiv}>
-              <h3>{t('home.text1')}</h3>
+              <div>{t('home.text1')}</div>
             </div>
           </Container>
+          <Butterfly1 className={classes.butterfly1} />
         </div>
-        <Container maxWidth="lg">
-          <div className={classes.logosDiv}>
-            <ColumbiaLogo className={classes.logo} />
-            <div className={classes.logosDivSeparator}></div>
-            <SageLogo className={classes.logo} />
-          </div>
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs={12} md={12}>
-              <h3 className={`${classes.labTextTitle} text-center`}>
-                {t('home.text31')}
-              </h3>
-              <Hidden xsDown>
-                <GreenSeparator />
-              </Hidden>
-              <div className="text-center">
-                <a href="https://www.survivorcorps.com/" target="_blank">
-                  <SurvivorCorpsLogo
-                    style={{ height: '80px', maxWidth: '300px' }}
-                  />
-                </a>
-                <div style={{ height: '40px' }}></div>
-              </div>
-            </Grid>
-          </Grid>
-          <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs={12} md={6}>
-              <div className={classes.labImageDiv}>
-                <img src={LandingPageWalk} alt="Lab" width="100%" />
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <div className={classes.labTextDiv}>
-                <h2 className={classes.labTextTitle}>{t('home.text3')}</h2>
-                <div className={classes.labTextBodyDiv}>
-                  <p>{t('home.text4')}</p>
-                  <p>{t('home.text41')}</p>
-                </div>
-              </div>
-            </Grid>
-          </Grid>
-        </Container>
-        <div className={classes.paperHeaderDiv}></div>
-        <Container maxWidth="md" className={classes.paperPanelWrapper}>
-          <div className={classes.paperPanel}>
-            <h2 className={classes.paperPanelTitle}>{t('home.text7')}</h2>
-            <Hidden xsDown>
-              <GreenSeparator />
-            </Hidden>
-
-            {/* Step one               */}
-            <Hidden smUp>
-              <div className={classes.paperPanelStepIconMobileDiv}>
-                <Tablet />
-              </div>
-            </Hidden>
-            <Grid container justify="center" alignItems="center">
-              <Grid
-                item
-                xs={12}
-                sm={9}
-                className={classes.paperPanelStepContainer}
-              >
-                <div className={classes.paperPanelStepNumber}>
-                  {t('home.text8')}
-                </div>
-                <h3 className={classes.paperPanelStepTitle}>
-                  {t('home.text9')}
-                </h3>
-                <div className={classes.paperPanelStepBody}>
-                  <p>
-                    {t('home.text10')}&nbsp;
-                    <Link to="/eligibility" style={{ fontWeight: 'bold' }}>
-                      {t('common.joinUs')}
-                    </Link>{' '}
-                    {t('home.text11')}
-                  </p>
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={3}>
-                <div className={classes.paperPanelStepIconDiv}>
-                  <Hidden xsDown>
-                    <Tablet />
-                  </Hidden>
-                </div>
-              </Grid>
-            </Grid>
-
-            {/* Step two               */}
-            <Hidden smUp>
-              <div className={classes.paperPanelStepIconMobileDiv}>
-                <TestTubes />
-              </div>
-            </Hidden>
-            <Grid container justify="center" alignItems="center">
-              <Grid
-                item
-                xs={12}
-                sm={9}
-                className={classes.paperPanelStepContainer}
-              >
-                <div className={classes.paperPanelStepNumber}>
-                  {' '}
-                  {t('home.text12')}
-                </div>
-                <h3 className={classes.paperPanelStepTitle}>
-                  {t('home.text13')}
-                </h3>
-                <div className={classes.paperPanelStepBody}>
-                  <p>{t('home.text14')}</p>
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={3}>
-                <div className={classes.paperPanelStepIconDiv}>
-                  <Hidden xsDown>
-                    <TestTubes />
-                  </Hidden>
-                </div>
-              </Grid>
-            </Grid>
-
-            {/* Step three               */}
-            <Hidden smUp>
-              <div className={classes.paperPanelStepIconMobileDiv}>
-                <BooksApple />
-              </div>
-            </Hidden>
-            <Grid container justify="center" alignItems="center">
-              <Grid
-                item
-                xs={12}
-                sm={9}
-                className={classes.paperPanelStepContainer}
-              >
-                <div className={classes.paperPanelStepNumber}>
-                  {' '}
-                  {t('home.text15')}
-                </div>
-                <h3 className={classes.paperPanelStepTitle}>
-                  {t('home.text16')}
-                </h3>
-                <div className={classes.paperPanelStepBody}>
-                  <p>{t('home.text17')}</p>
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={3}>
-                <div className={classes.paperPanelStepIconDiv}>
-                  <Hidden xsDown>
-                    <BooksApple />
-                  </Hidden>
-                </div>
-              </Grid>
-            </Grid>
-          </div>
-        </Container>
+        <div className={classes.content2}>
+          <Container maxWidth="md" className={classes.containerButterflyText}>
+            <div className={classes.content2TextDiv}>
+              <div>{t('home.text2')}</div>
+            </div>
+          </Container>
+          <Butterfly2 className={classes.butterfly2} />
+        </div>
       </div>
+
       <div className={classes.fightTogetherDiv}>
-        <h2 className={classes.fightTogetherDivText}>{t('home.text18')}</h2>
+        <Container maxWidth="md" className={classes.containerButterflyText}>
+          <div className={classes.content2TextDiv}>
+            <div>{t('home.text3')}</div>
+          </div>
+        </Container>
         <Grid container justify="center" alignItems="center">
           <NavLink to="/eligibility" className={classes.navLink}>
             <Button
@@ -585,6 +351,21 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
           </NavLink>
         </Grid>
       </div>
+
+      {/*<div className={classes.fightTogetherDiv}>
+        <h2 className={classes.fightTogetherDivText}>{t('home.text3')}</h2>
+        <Grid container justify="center" alignItems="center">
+          <NavLink to="/eligibility" className={classes.navLink}>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.joinButton}
+            >
+              {t('common.joinStudy')}
+            </Button>
+          </NavLink>
+        </Grid>
+  </div>*/}
     </div>
   )
 }
