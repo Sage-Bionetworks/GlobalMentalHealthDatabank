@@ -34,6 +34,8 @@ import ArmFlowFour from './armFlows/ArmFlowFour'
 import { FLOW_OPTIONS } from '../../helpers/RandomFlowGenerator'
 import { UserDataGroup } from '../../types/types'
 
+import ConsentSteps from './ConsentSteps'
+
 type DashboardProps = {
   token: string
 }
@@ -47,7 +49,7 @@ type UISurvey = {
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'white',
   },
 })
 
@@ -352,14 +354,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
     return (
       <div className="Dashboard" data-cy="page-dashboard">
         {getCompletionStatus() === SurveysCompletionStatusEnum.NOT_DONE && (
-          <div className="dashboard-intro">
-            <Trans i18nKey="dashboard.intro1">
-              <h2>[translate]</h2>
-              <p>[translate]</p>
-              <p>[translate]</p>
-              <p>[translate]</p>
-            </Trans>
-          </div>
+          <ConsentSteps />
         )}
 
         <Card className={classes.root}>
@@ -389,7 +384,10 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
               )
           }*/}
           {getCompletionStatus() === SurveysCompletionStatusEnum.NOT_DONE && (
-            <div>{renderSurveyItems(savedSurveys?.surveys || [])}</div>
+            <>
+              Dev message: you are on{' '}
+              {renderSurveyItems(savedSurveys?.surveys || [])}
+            </>
           )}
         </Card>
       </div>

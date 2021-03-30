@@ -27,19 +27,32 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Quicksand', Tahoma, Verdana, sans-serif;
+  font-family: 'Lato', Tahoma, Verdana, sans-serif;
   color: #2a2a2a;
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: normal;
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
 }
 
+h2 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+}
+
 .print-only {
   display: none !important;
 }
-
+/*
 @media (min-width: 600px) {
   h1,
   h2 {
@@ -97,7 +110,7 @@ h6 {
     line-height: 26px;
   }
 }
-
+*/
 .MuiCardContent-root {
   h1:first-child,
   h2:first-child {
@@ -107,7 +120,7 @@ h6 {
 
 p {
   color: #2a2a2a;
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -201,8 +214,8 @@ div.intro {
 }
 
 .partialGreen {
-  background-image: url('../assets/dashboard/bg_rectangle_color.svg');
-  background-repeat: repeat-x;
+  //background-image: url('../assets/dashboard/bg_rectangle_color.svg');
+  //background-repeat: repeat-x;
 }
 
 button.btnVerticallySpaced,
@@ -240,7 +253,100 @@ div.btnVerticallySpaced {
   .checkbox {
     span.MuiCheckbox-root {
       padding-top: 0;
-      top: -5px;
+      top: 5px;
     }
+  }
+}
+
+.progressBarHeader {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.progressBarWrapper {
+  padding: 10px 0 40px 0;
+  .MuiLinearProgress-colorPrimary {
+    background-color: #eaebee;
+    height: 10px;
+    .MuiLinearProgress-barColorPrimary {
+      background-color: #f5b33c;
+      border-radius: 0px 10px 10px 0px;
+    }
+  }
+}
+
+ul {
+  padding-top: 20px;
+  padding-inline-start: 20px;
+  li {
+    list-style-type: none;
+    padding-bottom: 20px;
+  }
+}
+
+.headerWrapper {
+  padding-bottom: 5px;
+}
+
+.arrowButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+
+.dashboardLink {
+  text-decoration: underline;
+  color: black;
+}
+
+.consentWrapper {
+  display: flex;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  input {
+    margin-right: 18px;
+  }
+}
+
+fieldset {
+  border: 1px black solid;
+  legend {
+    padding: 8px 15px;
+    text-align: center;
+    border: 0;
+    width: initial;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 5px 0;
+  }
+  input {
+    border: 0;
+    width: 90%;
+    padding: 0px 10px 5px 10px;
+    margin: 0 5% 15px 5%;
+  }
+}
+
+.sageForm {
+  fieldset {
+    border: 0;
+    span {
+      margin-left: 22px;
+    }
+    input {
+      width: inherit;
+      margin-top: 6px;
+    }
+  }
+}
+
+.errorMessage {
+  color: #f36e68;
+  display: flex;
+  svg {
+    margin-right: 10px;
   }
 }

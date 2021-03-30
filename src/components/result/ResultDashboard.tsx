@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles, Button, CircularProgress } from '@material-ui/core'
-import { playfairDisplayFont, openSansFont } from '../../App'
+import { playfairDisplayFont, systemFonts } from '../../App'
 import {
   TestResult,
   TestResultString,

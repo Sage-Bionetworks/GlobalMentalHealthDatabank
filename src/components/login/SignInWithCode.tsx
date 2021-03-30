@@ -5,7 +5,7 @@ import { callEndpoint, makePhone } from '../../helpers/utility'
 import Alert from '@material-ui/lab/Alert/Alert'
 import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
-import GreenSeparator from '../static/GreenSeparator'
+import Separator from '../static/Separator'
 import { useTranslation, Trans } from 'react-i18next'
 
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
@@ -57,7 +57,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             <TextSent />
             <p className="text-center">{t('signIn.text1')}</p>
             <p className="text-center">{phoneOrEmail}</p>
-            <GreenSeparator />
+            <Separator />
           </div>
           <form onSubmit={handleOnSubmit}>
             <div className="form-group">

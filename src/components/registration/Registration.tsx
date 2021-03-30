@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import GreenSeparator from '../static/GreenSeparator'
+import Separator from '../static/Separator'
 
 import useForm from '../useForm'
 import {
@@ -165,7 +165,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         <TextSent />
       </div>
       <div className="text-center">{t('registration.phoneIntroTitle')}</div>
-      <GreenSeparator />
+      <Separator />
       <div className="text-center">{t('registration.phoneIntroBody')}</div>
 
       {state.registrationType.value === 'EMAIL' && (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, Grid, Hidden, Container } from '@material-ui/core'
 import { useIntroStyles } from './Intro'
-import GreenSeparator from './GreenSeparator'
+import Separator from './Separator'
 import { Link } from 'react-router-dom'
 import { ReactComponent as Graphic } from '../../assets/contact_us_graphic.svg'
 import { useTranslation, Trans } from 'react-i18next'
@@ -35,7 +35,7 @@ export const Contact: React.FunctionComponent<ContactProps> = ({}: ContactProps)
             <h1>{t('contact.title')}</h1>
           </div>
           <Hidden xsDown>
-            <GreenSeparator />
+            <Separator />
           </Hidden>
           <Grid
             container

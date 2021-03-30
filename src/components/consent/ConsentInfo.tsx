@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Alert from '@material-ui/lab/Alert'
 import Switch from '@material-ui/core/Switch/Switch'
 import ConsentCopy, { StepInfo, SCREENS_ENUM } from './ConsentCopy'
-import GreenSeparator from '../static/GreenSeparator'
+import Separator from '../static/Separator'
 import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core'
 import ConsentIcons from './ConsentIcons'
 import { useTranslation } from 'react-i18next'
@@ -169,7 +169,7 @@ export const ConsentInfo: React.FunctionComponent<ConsentInfoProps> = ({
             {quiz.explanation}
           </Alert>
         )}
-        <GreenSeparator></GreenSeparator>
+        <Separator />
         <RadioGroup
           aria-label="can consent"
           name="quizQuestion"

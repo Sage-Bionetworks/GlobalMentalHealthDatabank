@@ -4,7 +4,7 @@ import useForm from '../useForm'
 import Button from '@material-ui/core/Button/Button'
 import { TextField, Checkbox, FormControlLabel } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
-import GreenSeparator from '../static/GreenSeparator'
+import Separator from '../static/Separator'
 import { useTranslation } from 'react-i18next'
 
 type EligibilityProps = {
@@ -25,7 +25,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
     <div id="Questions">
       <h1>{t('eligibility.title')}</h1>
       <p>{t('eligibility.text1')}</p>
-      <GreenSeparator></GreenSeparator>
+      <Separator />
 
       <div className="form-group checkbox--nopad">
         <div className="form-group checkbox" style={{}}>
