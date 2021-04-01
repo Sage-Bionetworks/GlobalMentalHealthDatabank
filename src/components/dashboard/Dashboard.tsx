@@ -21,7 +21,6 @@ import _ from 'lodash'
 import { UserService } from '../../services/user.service'
 import Alert from '@material-ui/lab/Alert/Alert'
 
-import TestLocationSurvey from '../surveys/TestLocationSurvey'
 import i18next from 'i18next'
 import { Trans, useTranslation } from 'react-i18next'
 import ThankYou from './ThankYou'

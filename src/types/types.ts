@@ -8,24 +8,16 @@ export const ENDPOINT = 'https://webservices.sagebridge.org'
 export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
 export const SURVEY_IDENTIFIER = 'mindkind'
 
-export interface MailChimpFormFields extends EmailFormFields {
-  NAME: string
-  ZIP: string
-}
-
 export type EmailSigninParams = {
   email: string
   token: string
   password?: string
 }
 
-export type IneligibilityReason = 'LOCATION' | 'NONE'
-
 export interface StringDictionary {
   [key: string]: any
 }
 
-export type LoginType = 'PHONE' | 'EMAIL'
 export type Phone = {
   number: string
   regionCode: string

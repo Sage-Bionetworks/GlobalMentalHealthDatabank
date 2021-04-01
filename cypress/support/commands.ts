@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', (email: string, password: string) => {
+/*Cypress.Commands.add('login', (email: string, password: string) => {
   cy.visit('/loginPassword')
   cy.wait(1000)
   cy.get('input[name=email]').type(email)
@@ -20,4 +20,4 @@ Cypress.Commands.add('login', (email: string, password: string) => {
 
 Cypress.Commands.add('logout', () => {
   cy.get('button').contains('Log Out').click()
-})
+})*/

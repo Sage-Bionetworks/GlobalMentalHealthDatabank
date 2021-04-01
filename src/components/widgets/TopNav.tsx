@@ -183,7 +183,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           onClick={handleDrawerToggle}
           className={classes.drawerCloseButton}
         >
-          <img className={classes.drawerCloseIcon} src={btnClose}></img>
+          <img className={classes.drawerCloseIcon} src={btnClose} alt=""></img>
         </Link>
       </div>
       <List>

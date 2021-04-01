@@ -16,7 +16,6 @@ export const useIntroStyles = makeStyles(theme => ({
   heroContainer: {
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '375px',
   },
   heroTextGradiant: {
     zIndex: 1,

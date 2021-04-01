@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Separator from '../static/Separator'
-
 import useForm from '../useForm'
 import {
   APP_ID,
   ENDPOINT,
   RegistrationData,
-  LoginType,
   UserDataGroup,
 } from '../../types/types'
 import {
@@ -16,14 +14,7 @@ import {
 } from '../../helpers/utility'
 import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
-import { useTranslation, Trans } from 'react-i18next'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-
-import gb from '../../assets/flags/gb.svg'
-import ind from '../../assets/flags/ind.svg'
-import za from '../../assets/flags/za.svg'
-
+import { useTranslation } from 'react-i18next'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import {
   getRandomFlowOption,
@@ -35,28 +26,7 @@ type RegistrationProps = {
   onErrorFn: Function
 }
 
-const EMAIL_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/email'
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
-
-const FLAGS = { greatBritain: 'GB', india: 'IN', southAfrica: 'ZA' }
-
-const signupIntro = {
-  PHONE: (
-    <Trans i18nKey="registration.intro1">
-      <h2>[translate]</h2>
-      <p>[translate]</p>
-      <p>[translate]</p>
-      <p>[translate]</p>
-    </Trans>
-  ),
-  EMAIL: (
-    <Trans i18nKey="registration.intro2">
-      <h2>[translate]</h2>
-      <p>[translate] </p>
-      <p> [translate]</p>
-    </Trans>
-  ),
-}
 
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
@@ -64,22 +34,20 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 }: RegistrationProps) => {
   const { t } = useTranslation()
   const stateSchema = {
-    email: { value: '', error: '' },
     phone: { value: '', error: '' },
-    registrationType: { value: 'PHONE', error: '' },
-    countryCode: { value: FLAGS.greatBritain, error: '' },
+    countryCode: {
+      value: window.localStorage.getItem('selected_country') || '',
+      error: '',
+    },
   }
 
   const validationStateSchema = {
-    //https://www.w3resource.com/javascript/form/email-validation.php
-    email: {},
     phone: {
       /*validator: {
         regEx: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
         error: t('registration.text5'),
       },*/
     },
-    registrationType: {},
     countryCode: {},
   }
 
@@ -111,7 +79,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         break
     }
     const data: RegistrationData = {
-      email: state.email.value,
       phone: state.phone.value
         ? makePhone(state.phone.value, state.countryCode.value)
         : undefined,
@@ -122,156 +89,49 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       substudyIds: ['wellcome-study'],
       dataGroups: dataGroups,
     }
-    let loginType: LoginType = 'EMAIL'
     const endPoint = {
       PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
-      EMAIL: `${ENDPOINT}${EMAIL_SIGN_IN_TRIGGER_ENDPOINT}`,
-    }
-    if (!data.email) {
-      delete data.email
-      loginType = 'PHONE'
     }
 
     //send signinRequest
-    const phoneOrEmail = data.email || data.phone?.number || ''
+    const phoneNumber = data.phone?.number || ''
     const result = await submitRegistration(data)
     if (result.status === 201) {
       const sentSigninRequest = await sendSignInRequest(
-        loginType,
-        phoneOrEmail,
-        endPoint[loginType],
+        phoneNumber,
+        state.countryCode.value,
+        endPoint['PHONE'],
       )
 
-      onSuccessFn(
-        loginType,
-        sentSigninRequest.status,
-        sentSigninRequest.data,
-        phoneOrEmail,
-      )
+      onSuccessFn(sentSigninRequest.status, sentSigninRequest.data, phoneNumber)
     } else {
       onErrorFn(result.status)
     }
   }
 
-  const { state, handleOnChange, handleOnSubmit, disable } = useForm(
+  const { state, handleOnChange, handleOnSubmit } = useForm(
     stateSchema,
     validationStateSchema,
     onSubmitForm,
   )
 
   return (
-    <div>
-      <div className="media-wrapper">
+    <div className="quizWrapper">
+      <div className="media-wrapper text-left">
         <TextSent />
       </div>
-      <div className="text-center">{t('registration.phoneIntroTitle')}</div>
+      <div className="text-left">{t('registration.phoneIntroTitle')}</div>
       <Separator />
-      <div className="text-center">{t('registration.phoneIntroBody')}</div>
+      <div className="text-left">{t('registration.phoneIntroBody')}</div>
 
-      {state.registrationType.value === 'EMAIL' && (
-        <form className="demoForm" onSubmit={handleOnSubmit}>
-          <div className="form-group" style={{ marginBottom: 0 }}>
-            <div>
-              <div>
-                <label htmlFor="email" className="block--dark">
-                  {t('common.email')}
-                </label>
-                <div className="input--padded">
-                  <TextField
-                    name="email"
-                    type="email"
-                    value={state.email.value}
-                    aria-label={t('common.email')}
-                    onChange={handleOnChange}
-                    variant="outlined"
-                    label={t('common.email')}
-                    fullWidth
-                    autoComplete={t('common.emailAddress')}
-                    placeholder={t('common.emailAddress')}
-                  />
-                </div>
-
-                <div className="text-center">
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    size="large"
-                    type="submit"
-                    disabled={!state.email.value}
-                    className="wideButton"
-                  >
-                    {t('registration.text1')}
-                  </Button>
-                  <br />
-                </div>
-              </div>
-            </div>
-            {
-              // temporarily disabling phone login
-              false && (
-                <div style={{ margin: '0 auto', textAlign: 'center' }}>
-                  <Button
-                    variant="text"
-                    onClick={() => {
-                      handleOnChange({
-                        target: { name: 'registrationType', value: 'PHONE' },
-                      })
-                      handleOnChange({
-                        target: { name: 'email', value: '' },
-                      })
-                      window.scrollTo(0, 0)
-                    }}
-                  >
-                    {t('registration.text2')}
-                  </Button>
-                </div>
-              )
-            }
-          </div>
-        </form>
-      )}
-
-      {state.registrationType.value === 'PHONE' && (
+      {
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
             <div>
               <label htmlFor="phone" className="block--dark">
                 {t('registration.myPhone')}
               </label>
-              <div className="input--padded--flags">
-                <Select
-                  labelId="flag-selector"
-                  id="flag-selector"
-                  value={state.countryCode.value}
-                  onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                    handleOnChange({
-                      target: {
-                        name: 'countryCode',
-                        value: event.target.value,
-                      },
-                    })
-                  }}
-                  variant="outlined"
-                  className="phoneFlag"
-                >
-                  <MenuItem value={FLAGS.greatBritain}>
-                    <img
-                      src={gb}
-                      className={'flagIcon'}
-                      alt="Great Britain"
-                    ></img>
-                  </MenuItem>
-                  <MenuItem value={FLAGS.india}>
-                    <img src={ind} className={'flagIcon'} alt="India"></img>
-                  </MenuItem>
-                  <MenuItem value={FLAGS.southAfrica}>
-                    <img
-                      src={za}
-                      className={'flagIcon'}
-                      alt="South Africa"
-                    ></img>
-                  </MenuItem>
-                </Select>
+              <div className="input--padded">
                 <TextField
                   name="phone"
                   type="phone"
@@ -309,7 +169,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
             </div>
           </div>
         </form>
-      )}
+      }
     </div>
   )
 }

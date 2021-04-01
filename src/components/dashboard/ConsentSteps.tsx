@@ -3,16 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../assets/arrow_button_right.svg'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button/Button'
 import moment from 'moment'
 import i18next from 'i18next'
-import Separator from '../static/Separator'
 
-import SageForm from './SageForm'
-import { ReactComponent as ErrorMessageIcon } from '../../assets/error_message_icon.svg'
+import SageForm from '../form/SageForm'
+import { COUNTRIES, PARTICIPATE_OPTIONS } from '../form/types'
+import ProgressBar from '../progressBar/ProgressBar'
 
-const MAX_STEPS: number = 3
+const MAX_STEPS: number = 4
 
 const ConsentSteps: React.FunctionComponent = () => {
   const [step, setStep] = useState(1)
@@ -22,26 +21,14 @@ const ConsentSteps: React.FunctionComponent = () => {
 
   useEffect(() => {
     setErrorMessage('')
+    setSignatureName('')
+    setConsented(false)
   }, [step])
-
-  const renderProgresBar = () => {
-    return (
-      <>
-        <div className="progressBarHeader">{`STEP ${step} OF N`}</div>
-        <div className="progressBarWrapper">
-          <LinearProgress
-            variant="determinate"
-            value={(step * 100) / MAX_STEPS}
-          />
-        </div>
-      </>
-    )
-  }
 
   if (step === MAX_STEPS) {
     return (
-      <div>
-        {renderProgresBar()}
+      <div className="textStepWrapper">
+        <ProgressBar step={step} maxSteps={MAX_STEPS} />
         <LogoNoText />
         <div className="headerWrapper">
           <h1>Consent Signature</h1>
@@ -97,28 +84,18 @@ const ConsentSteps: React.FunctionComponent = () => {
 
   if (step === 2) {
     return (
-      <div>
-        {renderProgresBar()}
-        <div className="headerWrapper">
-          <h1>What are we studying?</h1>
-        </div>
-
-        {errorMessage && (
-          <div className="errorMessage">
-            <ErrorMessageIcon />
-            {errorMessage}
-          </div>
-        )}
-        <Separator />
-
+      <div className="quizWrapper">
+        <ProgressBar step={step} maxSteps={MAX_STEPS} />
         <SageForm
+          title={'Where do you currently live?'}
+          errorMessage={errorMessage}
           formId={'countrySelector'}
           onSubmit={(event: any) => {
             const selectedCountry = event.formData.country_chooser
             if (selectedCountry && Object.keys(selectedCountry).length === 0)
               setErrorMessage('You must choose an option')
             else {
-              if (selectedCountry.your_country === 'Other')
+              if (selectedCountry.your_country === COUNTRIES.OTHER)
                 setErrorMessage(
                   'We are sorry but your country is not supported in this survey',
                 )
@@ -133,9 +110,32 @@ const ConsentSteps: React.FunctionComponent = () => {
     )
   }
 
+  if (step === 3) {
+    return (
+      <div className="quizWrapper">
+        <ProgressBar step={step} maxSteps={MAX_STEPS} />
+        <SageForm
+          title={'Which of the following will you be asked to do?'}
+          errorMessage={errorMessage}
+          formId={'howToParticipate'}
+          onSubmit={(event: any) => {
+            const selectedOption = event.formData.how_to_participate
+            if (selectedOption && Object.keys(selectedOption).length === 0)
+              setErrorMessage('You must choose an option')
+            else {
+              setStep((current: number) =>
+                current < MAX_STEPS ? current + 1 : current,
+              )
+            }
+          }}
+        />
+      </div>
+    )
+  }
+
   return (
-    <div>
-      {renderProgresBar()}
+    <div className="textStepWrapper">
+      <ProgressBar step={step} maxSteps={MAX_STEPS} />
       <LogoNoText />
       <div className="headerWrapper">
         <h1>What are we studying?</h1>

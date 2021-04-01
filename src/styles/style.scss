@@ -147,6 +147,8 @@ a {
   padding: 0px 45px;
   font-weight: bold;
   letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .cookiesBanner {
@@ -289,6 +291,7 @@ ul {
 
 .headerWrapper {
   padding-bottom: 5px;
+  width: 75%;
 }
 
 .arrowButtonsWrapper {
@@ -333,6 +336,9 @@ fieldset {
 .sageForm {
   fieldset {
     border: 0;
+    legend {
+      display: none;
+    }
     span {
       margin-left: 22px;
     }
@@ -343,10 +349,38 @@ fieldset {
   }
 }
 
+.form-group {
+  margin-bottom: 2rem;
+}
+
 .errorMessage {
+  padding-top: 30px;
   color: #f36e68;
   display: flex;
   svg {
     margin-right: 10px;
   }
+}
+
+.rejectionText {
+  padding-bottom: 150px;
+}
+
+.text-left {
+  text-align: left;
+  &.padded {
+    padding: 40px 0 10px 0;
+  }
+}
+
+.quizWrapper {
+  background-color: white;
+  margin: 0 9px 60px 9px;
+  padding: 20px 25px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.textStepWrapper {
+  padding: 20px 25px;
+  background: white;
 }

@@ -7,7 +7,6 @@ import img1 from '../../assets/hub/img1.svg'
 export const useStyles = makeStyles(theme => ({}))
 
 const LearningHub0: FunctionComponent = () => {
-  const classes = useStyles()
   const { t } = useTranslation()
   return (
     <div>

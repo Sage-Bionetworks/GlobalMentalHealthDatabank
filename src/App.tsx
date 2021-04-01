@@ -31,7 +31,6 @@ import ConsentEHR from './components/consent/ConsentEHR'
 import Team from './components/static/Team'
 import Contact from './components/static/Contact'
 import FAQs from './components/static/FAQs'
-import TestKitInformationScreen from './components/static/TestKitInformationScreen'
 import { TopNav } from './components/widgets/TopNav'
 import { UserService } from './services/user.service'
 import AcountSettings from './components/AccountSettings'
@@ -45,7 +44,6 @@ import { UserDataGroup, SessionData } from './types/types'
 import ResultDashboard from './components/result/ResultDashboard'
 import LearningHub from './components/learningHub/LearningHub'
 import { FeaturesProvider, TOGGLE_NAMES } from './helpers/FeatureToggle'
-import LoginPassword from './components/login/LoginPassword'
 import UploadResult from './components/surveys/UploadResult'
 import TestKitShipped from './components/static/TestKitShipped'
 
@@ -148,7 +146,7 @@ const theme = createMuiTheme({
     },
     MuiCard: {
       root: {
-        backgroundColor: '#FCFCFC',
+        backgroundColor: 'white',
         maxWidth: '511px',
         margin: '0 auto',
         padding: '40px',
@@ -183,8 +181,7 @@ function renderWithGridLayout(el: JSX.Element) {
       direction="row"
       justify="center"
       alignItems="center"
-      spacing={2}
-      style={{ padding: '24px', backgroundColor: 'white' }}
+      style={{ backgroundColor: '#F4F4F4' }}
     >
       <Grid item xs={12} md={8} lg={6}>
         {el}
@@ -407,15 +404,6 @@ function App() {
                       }}
                     ></Route>
                     <Route
-                      exact={true}
-                      path="/loginPassword"
-                      render={props =>
-                        renderWithGridLayout(
-                          <LoginPassword {...props} key={Math.random()} />,
-                        )
-                      }
-                    ></Route>
-                    <Route
                       path="/eligibility"
                       render={props => {
                         const searchParamsProps = getSearchParams(
@@ -509,9 +497,6 @@ function App() {
                         <ResultDashboard token={token || ''} />,
                       )}
                     </ConsentedRoute>
-                    <Route path="/testkit">
-                      <TestKitInformationScreen />
-                    </Route>
                     <Route path="/faqs">
                       <FAQs />
                     </Route>

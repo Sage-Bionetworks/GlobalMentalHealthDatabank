@@ -89,7 +89,7 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = ({
               style={{ backgroundColor: activeColor }}
             ></div>
           )}
-          {item.img && <img src={item.img}></img>}
+          {item.img && <img src={item.img} alt=""></img>}
           {item.element && <div className="img">{item.element}</div>}
           <span>{item.text}</span>
         </li>
