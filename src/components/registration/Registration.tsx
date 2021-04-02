@@ -43,7 +43,9 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   const validationStateSchema = {
     phone: {
-      /*validator: {
+      /*
+      We can add a validation with the following schema
+      validator: {
         regEx: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
         error: t('registration.text5'),
       },*/

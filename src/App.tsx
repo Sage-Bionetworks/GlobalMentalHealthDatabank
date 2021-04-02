@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/style.scss'
 import {
   BrowserRouter as Router,
@@ -45,7 +45,6 @@ import ResultDashboard from './components/result/ResultDashboard'
 import LearningHub from './components/learningHub/LearningHub'
 import { FeaturesProvider, TOGGLE_NAMES } from './helpers/FeatureToggle'
 import UploadResult from './components/surveys/UploadResult'
-import TestKitShipped from './components/static/TestKitShipped'
 
 const fallbackFonts = [
   'OpenSans',

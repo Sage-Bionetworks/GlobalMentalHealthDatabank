@@ -178,7 +178,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
     )
   }
 
-  return <></>
+  return null
 }
 
 export default Eligibility

@@ -72,7 +72,6 @@ const ConsentSteps: React.FunctionComponent = () => {
           fullWidth
           color="primary"
           style={{ margin: '40px 0' }}
-          //onClick={() => alert('sent')}
           onClick={() => setStep(1)}
           disabled={!consented || signatureName.length < 5}
         >
