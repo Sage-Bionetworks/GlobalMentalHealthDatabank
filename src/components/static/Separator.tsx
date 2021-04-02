@@ -1,26 +1,26 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 
-export const GreenSeparator: React.FunctionComponent = () => {
+export const Separator: React.FunctionComponent = () => {
   return (
     <Grid
       container
       direction="row"
-      justify="center"
+      justify="flex-start"
       alignItems="center"
       className="margin-top-std margin-bottom-std"
     >
       <svg
-        width="80"
+        width="100"
         height="4"
-        viewBox="0 0 80 4"
+        viewBox="0 0 100 4"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="80" height="4" fill="#4DB3B7" />
+        <rect width="100" height="4" fill="#343F56" />
       </svg>
     </Grid>
   )
 }
 
-export default GreenSeparator
+export default Separator

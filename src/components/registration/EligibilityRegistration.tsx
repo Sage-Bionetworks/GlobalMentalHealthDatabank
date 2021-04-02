@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Response, LoggedInUserData, LoginType } from '../../types/types'
+import { Response, LoggedInUserData } from '../../types/types'
 import { useState } from 'react'
 import Eligiblity from './Eligibility'
 import SignInWithCode from '../login/SignInWithCode'
@@ -20,10 +20,8 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   callbackFn,
 }: EligibilityRegistrationProps) => {
   const [eligible, setEligible] = useState<boolean | undefined>(undefined)
-
-  const [loginType, setLoginType] = useState<LoginType>()
-  const [phoneOrEmail, setPhoneOrEmail] = useState('')
-
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const countryCode = window.localStorage.getItem('selected_country') || ''
   const [error, setError] = useState<string>()
 
   const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
@@ -41,8 +39,8 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   }
 
   return (
-    <Card>
-      <CardContent>
+    <div>
+      <div>
         {eligible === undefined && (
           <Eligiblity
             setEligibilityFn={() => {
@@ -51,33 +49,31 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
             }}
           ></Eligiblity>
         )}
-        {eligible && !loginType && (
+        {eligible && !phoneNumber && (
           <Registration
             onSuccessFn={(
-              type: LoginType,
               status: number,
               data: object,
-              phoneOrEmail: string,
+              phoneNumber: string,
             ) => {
-              setLoginType(type)
-              setPhoneOrEmail(phoneOrEmail)
+              setPhoneNumber(phoneNumber)
             }}
             onErrorFn={(status: number) => {
               setError(status + '')
             }}
           ></Registration>
         )}
-        {eligible && loginType && (
+        {eligible && phoneNumber && (
           <SignInWithCode
-            loginType={loginType}
-            phoneOrEmail={phoneOrEmail}
             loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
               handleLoggedIn(result)
             }
-          ></SignInWithCode>
+            phoneNumber={phoneNumber}
+            countryCode={countryCode}
+          />
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }
 

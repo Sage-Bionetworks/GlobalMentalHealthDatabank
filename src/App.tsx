@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/style.scss'
 import {
   BrowserRouter as Router,
@@ -31,7 +31,6 @@ import ConsentEHR from './components/consent/ConsentEHR'
 import Team from './components/static/Team'
 import Contact from './components/static/Contact'
 import FAQs from './components/static/FAQs'
-import TestKitInformationScreen from './components/static/TestKitInformationScreen'
 import { TopNav } from './components/widgets/TopNav'
 import { UserService } from './services/user.service'
 import AcountSettings from './components/AccountSettings'
@@ -45,41 +44,32 @@ import { UserDataGroup, SessionData } from './types/types'
 import ResultDashboard from './components/result/ResultDashboard'
 import LearningHub from './components/learningHub/LearningHub'
 import { FeaturesProvider, TOGGLE_NAMES } from './helpers/FeatureToggle'
-import LoginPassword from './components/login/LoginPassword'
 import UploadResult from './components/surveys/UploadResult'
-import TestKitShipped from './components/static/TestKitShipped'
 
 const fallbackFonts = [
-'serif',
-'Lato',
-'Roboto',
-'Helvetica',
-'Arial',
-'Raleway',
-'Quicksand',
+  'OpenSans',
+  'serif',
+  'Roboto',
+  'Helvetica',
+  'Arial',
+  'Raleway',
+  'Quicksand',
 ]
 
-export const openSansFont = [
-  'Open Sans',
-  ...fallbackFonts
-].join(',')
+export const systemFonts = ['Lato', ...fallbackFonts].join(',')
 
-export const playfairDisplayFont = [
-  'Playfair Display',
-  ...fallbackFonts
-].join(',')
+export const playfairDisplayFont = ['Playfair Display', ...fallbackFonts].join(
+  ',',
+)
 
-export const sourceSansFont = [
-  'Source Sans Pro',
-  ...fallbackFonts
-].join(',')
+export const sourceSansFont = ['Source Sans Pro', ...fallbackFonts].join(',')
 
 const defaultTheme = createMuiTheme()
 const theme = createMuiTheme({
   typography: {
     // Tell Material-UI what's the font-size on the html element is.
     htmlFontSize: 10,
-    fontFamily: openSansFont,
+    fontFamily: systemFonts,
     button: {
       textTransform: 'none',
     },
@@ -90,7 +80,7 @@ const theme = createMuiTheme({
     },
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#4DB3B7', ///'#202423' //'#ff4400',
+      main: '#343F56', ///'#202423' //'#ff4400',
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
@@ -130,14 +120,14 @@ const theme = createMuiTheme({
       root: {
         borderRadius: 25,
         height: 47,
-        fontFamily: openSansFont,
+        fontFamily: systemFonts,
         fontWeight: 700,
         color: 'white',
       },
       text: {
         borderRadius: 25,
         height: 47,
-        fontFamily: openSansFont,
+        fontFamily: systemFonts,
         color: 'white',
         '&:hover': {
           background: 'none',
@@ -150,12 +140,12 @@ const theme = createMuiTheme({
     },
     MuiInputBase: {
       root: {
-        fontFamily: openSansFont,
+        fontFamily: systemFonts,
       },
     },
     MuiCard: {
       root: {
-        backgroundColor: '#FCFCFC',
+        backgroundColor: 'white',
         maxWidth: '511px',
         margin: '0 auto',
         padding: '40px',
@@ -190,8 +180,7 @@ function renderWithGridLayout(el: JSX.Element) {
       direction="row"
       justify="center"
       alignItems="center"
-      spacing={2}
-      style={{ padding: '24px' }}
+      style={{ backgroundColor: '#F4F4F4' }}
     >
       <Grid item xs={12} md={8} lg={6}>
         {el}
@@ -414,15 +403,6 @@ function App() {
                       }}
                     ></Route>
                     <Route
-                      exact={true}
-                      path="/loginPassword"
-                      render={props =>
-                        renderWithGridLayout(
-                          <LoginPassword {...props} key={Math.random()} />,
-                        )
-                      }
-                    ></Route>
-                    <Route
                       path="/eligibility"
                       render={props => {
                         const searchParamsProps = getSearchParams(
@@ -516,9 +496,6 @@ function App() {
                         <ResultDashboard token={token || ''} />,
                       )}
                     </ConsentedRoute>
-                    <Route path="/testkit">
-                      <TestKitInformationScreen />
-                    </Route>
                     <Route path="/faqs">
                       <FAQs />
                     </Route>

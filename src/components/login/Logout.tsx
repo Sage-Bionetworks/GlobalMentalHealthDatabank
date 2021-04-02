@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router'
 import { useSessionDataDispatch } from '../../AuthContext'
 import { makeStyles, Button } from '@material-ui/core'
-import { useTranslation, Trans } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles(theme => ({
   fullNavBarButton: {

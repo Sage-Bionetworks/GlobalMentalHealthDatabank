@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
-import { openSansFont } from '../../App'
 
 export type LeftNavItem = {
   img?: string
@@ -35,7 +34,7 @@ export const useStyles = makeStyles(theme => ({
       alignItems: 'center',
       cursor: 'pointer',
       '& span': {
-        fontFamily: openSansFont,
+        fontFamily: 'Lato',
         fontWeight: 600,
         fontSize: '1.6rem',
         lineHeight: '2.5rem',
@@ -90,7 +89,7 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = ({
               style={{ backgroundColor: activeColor }}
             ></div>
           )}
-          {item.img && <img src={item.img}></img>}
+          {item.img && <img src={item.img} alt=""></img>}
           {item.element && <div className="img">{item.element}</div>}
           <span>{item.text}</span>
         </li>

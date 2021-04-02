@@ -1,0 +1,12 @@
+export const COUNTRIES = {
+  UK: 0,
+  INDIA: 1,
+  SOUTH_AFRICA: 2,
+  OTHER: 3,
+}
+
+export const PARTICIPATE_OPTIONS = {
+  ANSWER_SURVEY_QUESTIONS: 0,
+  IN_PERSON_VISITS: 1,
+  PHONE_CALLS: 2,
+}

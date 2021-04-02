@@ -8,7 +8,7 @@ import {
   CircularProgress,
   createMuiTheme,
 } from '@material-ui/core'
-import { playfairDisplayFont, openSansFont } from '../../App'
+import { playfairDisplayFont, systemFonts } from '../../App'
 import {
   TestResult,
   TestResultString,

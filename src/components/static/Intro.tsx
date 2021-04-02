@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Button, Grid, Hidden, Container } from '@material-ui/core'
-import { playfairDisplayFont, openSansFont } from '../../App'
+import { playfairDisplayFont, systemFonts } from '../../App'
 import LandingPageAboveFold0 from '../../assets/LandingPageAboveFold0.png'
 import LandingPageAboveFold0Mobile from '../../assets/LandingPageAboveFold0_mobile.png'
 import { NavLink } from 'react-router-dom'
@@ -16,7 +16,6 @@ export const useIntroStyles = makeStyles(theme => ({
   heroContainer: {
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '375px',
   },
   heroTextGradiant: {
     zIndex: 1,
@@ -138,7 +137,7 @@ export const useIntroStyles = makeStyles(theme => ({
   },
   content2: {
     fontFamily: playfairDisplayFont,
-    backgroundColor: '#4DB3B7',
+    backgroundColor: '#343F56',
     textAlign: 'left',
     fontWeight: 'bold',
     paddingTop: '50px',
@@ -206,7 +205,7 @@ export const useIntroStyles = makeStyles(theme => ({
   },
   photographyNote: {
     fontSize: '12px',
-    fontFamily: openSansFont,
+    fontFamily: systemFonts,
     fontStyle: 'italic',
     float: 'right',
     paddingTop: '3px',
@@ -247,7 +246,7 @@ export const useIntroStyles = makeStyles(theme => ({
   },
   paperPanelStepNumber: {
     color: '#FC9090',
-    fontFamily: openSansFont,
+    fontFamily: systemFonts,
     fontSize: '12px',
     fontWeight: 'bold',
     paddingBottom: '5px',

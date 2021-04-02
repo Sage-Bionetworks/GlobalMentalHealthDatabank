@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, Grid, Hidden, Container } from '@material-ui/core'
 import { useIntroStyles } from './Intro'
-import GreenSeparator from './GreenSeparator'
+import Separator from './Separator'
 import LearnMore from '../widgets/LearnMore'
 import { ReactComponent as Graphic } from '../../assets/faqs_graphic.svg'
 import { Link } from 'react-router-dom'
@@ -35,7 +35,7 @@ export const FAQs: React.FunctionComponent<FAQProps> = ({}: FAQProps) => {
             <h1>{t('faqs.title')}</h1>
           </div>
           <Hidden xsDown>
-            <GreenSeparator />
+            <Separator />
           </Hidden>
           <Grid
             container

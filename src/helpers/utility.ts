@@ -3,10 +3,8 @@ import {
   Phone,
   SignInData,
   LoggedInUserData,
-  SignInDataEmail,
   SignInDataPhone,
   APP_ID,
-  LoginType,
   StringDictionary,
   SESSION_NAME,
 } from '../types/types'
@@ -124,7 +122,6 @@ export const callEndpoint = async <T>(
 }
 
 export const makePhone = (phone: string, regionCode?: string): Phone => {
-  //const number = phone?.includes('+1') ? phone : `+1${phone}`
   return { number: phone, regionCode: regionCode || 'US' }
 }
 
@@ -172,23 +169,16 @@ export const setSession = (data: SessionData) => {
 }
 
 export const sendSignInRequest = async (
-  loginType: LoginType,
-  phoneOrEmail: string,
+  phoneNumber: string,
+  countryCode: string,
   endpoint: string,
 ): Promise<any> => {
   let postData: SignInData
-  // setLoginType(_loginType)
-  if (loginType === 'PHONE') {
-    postData = {
-      appId: APP_ID,
-      phone: makePhone(phoneOrEmail),
-    } as SignInDataPhone
-  } else {
-    postData = {
-      appId: APP_ID,
-      email: phoneOrEmail,
-    } as SignInDataEmail
-  }
+
+  postData = {
+    appId: APP_ID,
+    phone: makePhone(phoneNumber, countryCode),
+  } as SignInDataPhone
 
   try {
     return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)

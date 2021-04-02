@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { makeStyles } from '@material-ui/core/styles'
 import Logout from '../login/Logout'
@@ -21,14 +21,13 @@ import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Alert from '@material-ui/lab/Alert'
-import { openSansFont } from '../../App'
+import { systemFonts } from '../../App'
 import { getSearchParams } from '../../helpers/utility'
 import { useSessionDataState, useSessionDataDispatch } from '../../AuthContext'
 import GlobalAlertCopy from './GlobalAlertCopy'
 import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
 import i18n from '../../i18n'
 import { useTranslation } from 'react-i18next'
-import { Feature, TOGGLE_NAMES } from '../../helpers/FeatureToggle'
 
 type TopNavProps = {
   token: string | undefined
@@ -48,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     color: '#2E2E2E', // dark
-    backgroundColor: '#FCFCFC', // light
+    backgroundColor: '#F4F4F4', // light
     minHeight: '80px',
   },
   menuButton: {
@@ -73,7 +72,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   fullNavBarLink: {
-    fontFamily: openSansFont,
+    fontFamily: systemFonts,
     color: '#2E2E2E',
     marginLeft: 30,
     paddingBottom: 7,
@@ -144,14 +143,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
   const sessionData = useSessionDataState()
   const alertCode = sessionData.alert
   const sessionUpdateFn = useSessionDataDispatch()
-  //const [alertCode, setAlertCode] = useSessionStorage('alert', undefined)
 
   const { t } = useTranslation()
 
-  const clearAlertCode = () => {
-    //setAlertCode(undefined)
-    sessionUpdateFn({ type: 'CLEAR_ALERT' })
-  }
   const isGlobalNotificationAlertHidden = (location: string): boolean => {
     const specialPages = ['settings', 'appointment', 'consent']
     return (
@@ -182,13 +176,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
     setLanguage(i18n.language)
   }, [i18n.language])
 
-  const changeLanguage = () => {
-    const newLanguage = i18n.language === 'es' ? 'en' : 'es'
-    window.localStorage.setItem('appUILang', newLanguage)
-
-    i18n.changeLanguage(newLanguage)
-  }
-
   const drawer = (
     <div>
       <div className={classes.drawerHeader}>
@@ -196,7 +183,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           onClick={handleDrawerToggle}
           className={classes.drawerCloseButton}
         >
-          <img className={classes.drawerCloseIcon} src={btnClose}></img>
+          <img className={classes.drawerCloseIcon} src={btnClose} alt=""></img>
         </Link>
       </div>
       <List>

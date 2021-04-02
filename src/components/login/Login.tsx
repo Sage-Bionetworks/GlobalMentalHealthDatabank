@@ -5,8 +5,6 @@ import {
   LoggedInUserData,
   SignInData,
   SignInDataPhone,
-  SignInDataEmail,
-  LoginType,
   Response,
   ENDPOINT,
 } from '../../types/types'
@@ -42,16 +40,14 @@ type LoginPostData = {
   token: string
 }
 
-const EMAIL_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/email'
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
-const EMAIL_SIGN_IN_ENDPOINT = '/v3/auth/email/signIn'
 
 export const Login: React.FunctionComponent<LoginProps> = ({
   searchParams,
   history,
 }: LoginProps) => {
-  const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
+  const countryCode = window.localStorage.getItem('selected_country') || ''
   const [error, setError] = useState('')
   const [isLinkSent, setIsLinkSent] = useState(false)
   const loginType = 'PHONE'
@@ -91,50 +87,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
     }
   }
 
-  React.useEffect(() => {
-    let isSubscribed = true
-
-    const signIn = async (postData: LoginPostData) => {
-      setIsLoading(true)
-
-      try {
-        const endpoint = `${ENDPOINT}${EMAIL_SIGN_IN_ENDPOINT}`
-        setError('')
-        setIsLoading(true)
-        const loggedIn = await callEndpoint<LoggedInUserData>(
-          endpoint,
-          'POST',
-          postData,
-        )
-        if (isSubscribed) {
-          handleLoggedIn(loggedIn)
-        }
-      } catch (e) {
-        //alert(JSON.stringify(e, null, 2))
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    if (sessionData.token) {
-      redirect(sessionData.consented || false)
-    } else {
-      if (searchParams?.email) {
-        const email = decodeURIComponent(searchParams.email)
-        const token = decodeURIComponent(searchParams.token)
-
-        let postData: LoginPostData = {
-          appId: APP_ID,
-          email,
-          token,
-        }
-        signIn(postData)
-      }
-    }
-    return () => {
-      isSubscribed = false
-    }
-  }, [searchParams])
-
   /**
    * Handle user login on click
    *
@@ -142,22 +94,16 @@ export const Login: React.FunctionComponent<LoginProps> = ({
    */
 
   const sendSignInRequest = async (
-    _loginType: 'PHONE' | 'EMAIL',
-    phoneOrEmail: string,
+    _loginType: 'PHONE',
+    phoneNumber: string,
+    countryCode: string,
     endpoint: string,
   ): Promise<any> => {
     let postData: SignInData
-    if (_loginType === 'PHONE') {
-      postData = {
-        appId: APP_ID,
-        phone: makePhone(phoneOrEmail),
-      } as SignInDataPhone
-    } else {
-      postData = {
-        appId: APP_ID,
-        email: email,
-      } as SignInDataEmail
-    }
+    postData = {
+      appId: APP_ID,
+      phone: makePhone(phoneNumber, countryCode),
+    } as SignInDataPhone
 
     try {
       setError('')
@@ -170,19 +116,17 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const handleLogin = async (
     clickEvent: React.FormEvent<HTMLElement>,
   ): Promise<any> => {
-    let result
     clickEvent.preventDefault() // avoid page refresh
 
     try {
       setIsLoading(true)
       setError('')
-      if (loginType === 'PHONE' && phone) {
-        result = await sendSignInRequest(
-          'PHONE',
-          phone,
-          `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
-        )
-      }
+      await sendSignInRequest(
+        'PHONE',
+        phone,
+        countryCode,
+        `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
+      )
       setIsLinkSent(true)
     } catch (e) {
       setError(e.message)
@@ -266,9 +210,9 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                 loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
                   handleLoggedIn(result)
                 }
-                phoneOrEmail={loginType === 'PHONE' ? phone : email}
-                loginType={loginType!}
-              ></SignInWithCode>
+                phoneNumber={phone}
+                countryCode={countryCode}
+              />
             )}
             {!isLinkSent && (
               <div style={{ margin: '0px auto', textAlign: 'center' }}>
