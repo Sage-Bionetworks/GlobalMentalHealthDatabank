@@ -14,6 +14,8 @@ import { UserDataGroup } from '../../types/types'
 
 const FIRST_CONSENT_STEPS: number = 5
 const SECOND_CONSENT_STEPS: number = 10
+const FOURTH_ARM_FLOW_LENGTH: number = 4
+const OTHER_ARM_FLOW_LENGTH: number = 1
 
 type ConsentStepsProps = {
   dataGroups: Array<string>
@@ -29,31 +31,34 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup)) steps++
     if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup)) steps++
     if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup)) steps++
-    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup)) steps += 4
+    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup))
+      steps += FOURTH_ARM_FLOW_LENGTH
     return steps
   }
 
   const findSecondCommonStepsStart = () => {
     return (
       FIRST_CONSENT_STEPS +
-      (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup) ? 4 : 1)
+      (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup)
+        ? FOURTH_ARM_FLOW_LENGTH
+        : OTHER_ARM_FLOW_LENGTH)
     )
-  }
-
-  const renderArmFlow = () => {
-    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup))
-      return <ArmFlowOne />
-    if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup))
-      return <ArmFlowTwo />
-    if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup))
-      return <ArmFlowThree />
-    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup))
-      return <ArmFlowFour />
-    return null
   }
 
   const maxSteps = findMaxSteps()
   const secondCommonStepsStart = findSecondCommonStepsStart()
+
+  const renderArmFlow = () => {
+    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup))
+      return <ArmFlowOne step={step} setStep={setStep} maxSteps={maxSteps} />
+    if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup))
+      return <ArmFlowTwo step={step} setStep={setStep} maxSteps={maxSteps} />
+    if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup))
+      return <ArmFlowThree step={step} setStep={setStep} maxSteps={maxSteps} />
+    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup))
+      return <ArmFlowFour step={step} setStep={setStep} maxSteps={maxSteps} />
+    return null
+  }
 
   if (step <= FIRST_CONSENT_STEPS) {
     return (
@@ -66,32 +71,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   }
 
   if (step > FIRST_CONSENT_STEPS && step <= secondCommonStepsStart) {
-    return (
-      <div className="textStepWrapper">
-        <ProgressBar step={step} maxSteps={maxSteps} />
-        <LogoNoText />
-        <div className="headerWrapper">
-          <h1>This is an arm flow</h1>
-        </div>
-        {renderArmFlow()}
-        <div className="arrowButtonsWrapper">
-          <ArrowButtonLeft
-            onClick={() =>
-              setStep((current: number) =>
-                current > 1 ? current - 1 : current,
-              )
-            }
-          />
-          <ArrowButtonRight
-            onClick={() =>
-              setStep((current: number) =>
-                current < maxSteps ? current + 1 : current,
-              )
-            }
-          />
-        </div>
-      </div>
-    )
+    return renderArmFlow()
   }
 
   if (step > secondCommonStepsStart) {
