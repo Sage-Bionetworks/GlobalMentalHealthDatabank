@@ -183,8 +183,6 @@ export const sendSignInRequest = async (
   try {
     return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
   } catch (e) {
-    console.log(e)
-
     throw e
   }
 }

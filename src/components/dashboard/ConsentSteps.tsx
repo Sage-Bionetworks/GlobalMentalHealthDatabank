@@ -1,180 +1,111 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useState } from 'react'
 import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../assets/arrow_button_right.svg'
-import Button from '@material-ui/core/Button/Button'
-import moment from 'moment'
-import i18next from 'i18next'
-
-import SageForm from '../form/SageForm'
-import { COUNTRIES, PARTICIPATE_OPTIONS } from '../form/types'
 import ProgressBar from '../progressBar/ProgressBar'
+import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
+import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
+import ArmFlowOne from './armFlows/ArmFlowOne'
+import ArmFlowTwo from './armFlows/ArmFlowTwo'
+import ArmFlowThree from './armFlows/ArmFlowThree'
+import ArmFlowFour from './armFlows/ArmFlowFour'
+import { FLOW_OPTIONS } from '../../helpers/RandomFlowGenerator'
+import { UserDataGroup } from '../../types/types'
 
-const MAX_STEPS: number = 4
+const FIRST_CONSENT_STEPS: number = 5
+const SECOND_CONSENT_STEPS: number = 10
 
-const ConsentSteps: React.FunctionComponent = () => {
+type ConsentStepsProps = {
+  dataGroups: Array<string>
+}
+
+const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
+  dataGroups,
+}: ConsentStepsProps) => {
   const [step, setStep] = useState(1)
-  const [consented, setConsented] = useState(false)
-  const [signatureName, setSignatureName] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
 
-  useEffect(() => {
-    setErrorMessage('')
-    setSignatureName('')
-    setConsented(false)
-  }, [step])
+  const findMaxSteps = () => {
+    let steps = FIRST_CONSENT_STEPS + SECOND_CONSENT_STEPS
+    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup)) steps++
+    if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup)) steps++
+    if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup)) steps++
+    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup)) steps += 4
+    return steps
+  }
 
-  if (step === MAX_STEPS) {
+  const findSecondCommonStepsStart = () => {
+    return (
+      FIRST_CONSENT_STEPS +
+      (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup) ? 4 : 1)
+    )
+  }
+
+  const renderArmFlow = () => {
+    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup))
+      return <ArmFlowOne />
+    if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup))
+      return <ArmFlowTwo />
+    if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup))
+      return <ArmFlowThree />
+    if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup))
+      return <ArmFlowFour />
+    return null
+  }
+
+  const maxSteps = findMaxSteps()
+  const secondCommonStepsStart = findSecondCommonStepsStart()
+
+  if (step <= FIRST_CONSENT_STEPS) {
+    return (
+      <FirstCommonConsentSection
+        step={step}
+        setStep={setStep}
+        maxSteps={maxSteps}
+      />
+    )
+  }
+
+  if (step > FIRST_CONSENT_STEPS && step <= secondCommonStepsStart) {
     return (
       <div className="textStepWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
+        <ProgressBar step={step} maxSteps={maxSteps} />
         <LogoNoText />
         <div className="headerWrapper">
-          <h1>Consent Signature</h1>
+          <h1>This is an arm flow</h1>
         </div>
-        <h3>
-          Please <b>check the box below</b> if you <b>agree</b> to take part:
-        </h3>
-        <span className="consentWrapper">
-          <input
-            type="checkbox"
-            id="consented"
-            value="consented"
-            onClick={() => setConsented(prev => !prev)}
-          />
-          <div>
-            <b>
-              I have read and understand the information presented in this
-              consent process. All of my questions have been answered. I freely
-              and willingly choose to participate in the MindKind study. By
-              signing this consent, I have not given up any of my legal rights.
-            </b>
-          </div>
-        </span>
-
-        <h2>{moment().locale(i18next.language).format('MMMM Do, YYYY')}</h2>
-
-        <fieldset>
-          <legend>Full Name of adult participant:</legend>
-          <input
-            type="text"
-            value={signatureName}
-            onChange={e => {
-              setSignatureName(e.target.value)
-            }}
-          ></input>
-        </fieldset>
-
-        <Button
-          type="button"
-          variant="contained"
-          fullWidth
-          color="primary"
-          style={{ margin: '40px 0' }}
-          onClick={() => setStep(1)}
-          disabled={!consented || signatureName.length < 5}
-        >
-          Submit
-        </Button>
-      </div>
-    )
-  }
-
-  if (step === 2) {
-    return (
-      <div className="quizWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
-        <SageForm
-          title={'Where do you currently live?'}
-          errorMessage={errorMessage}
-          formId={'countrySelector'}
-          onSubmit={(event: any) => {
-            const selectedCountry = event.formData.country_chooser
-            if (selectedCountry && Object.keys(selectedCountry).length === 0)
-              setErrorMessage('You must choose an option')
-            else {
-              if (selectedCountry.your_country === COUNTRIES.OTHER)
-                setErrorMessage(
-                  'We are sorry but your country is not supported in this survey',
-                )
-              else
-                setStep((current: number) =>
-                  current < MAX_STEPS ? current + 1 : current,
-                )
-            }
-          }}
-        />
-      </div>
-    )
-  }
-
-  if (step === 3) {
-    return (
-      <div className="quizWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
-        <SageForm
-          title={'Which of the following will you be asked to do?'}
-          errorMessage={errorMessage}
-          formId={'howToParticipate'}
-          onSubmit={(event: any) => {
-            const selectedOption = event.formData.how_to_participate
-            if (selectedOption && Object.keys(selectedOption).length === 0)
-              setErrorMessage('You must choose an option')
-            else {
+        {renderArmFlow()}
+        <div className="arrowButtonsWrapper">
+          <ArrowButtonLeft
+            onClick={() =>
               setStep((current: number) =>
-                current < MAX_STEPS ? current + 1 : current,
+                current > 1 ? current - 1 : current,
               )
             }
-          }}
-        />
+          />
+          <ArrowButtonRight
+            onClick={() =>
+              setStep((current: number) =>
+                current < maxSteps ? current + 1 : current,
+              )
+            }
+          />
+        </div>
       </div>
     )
   }
 
-  return (
-    <div className="textStepWrapper">
-      <ProgressBar step={step} maxSteps={MAX_STEPS} />
-      <LogoNoText />
-      <div className="headerWrapper">
-        <h1>What are we studying?</h1>
-      </div>
-      <h2>We are trying to answer these questions:</h2>
-      <ul>
-        <li>
-          Are young people willing to use an app to collect information (data)
-          about their mental health? If so, will they use it for 3 months?
-        </li>
-        <li>
-          Are young people willing to share that data for health research? If
-          so, under what conditions?
-        </li>
-      </ul>
-      <div>
-        This study is funded by The Wellcome Foundation, and lead by Dr. Lara
-        Mangravite in the United States. It is being conducted under the
-        supervision of scientists in South Africa, India, and the United
-        Kingdom. You can{' '}
-        <a className="dashboardLink">learn more about our team</a> of
-        researchers on the study website{' '}
-      </div>
+  if (step > secondCommonStepsStart) {
+    return (
+      <SecondCommonConsentSection
+        step={step}
+        setStep={setStep}
+        maxSteps={maxSteps}
+        startingStep={secondCommonStepsStart}
+      />
+    )
+  }
 
-      <div className="arrowButtonsWrapper">
-        <ArrowButtonLeft
-          onClick={() =>
-            setStep((current: number) => (current > 1 ? current - 1 : current))
-          }
-        />
-        <ArrowButtonRight
-          onClick={() =>
-            setStep((current: number) =>
-              current < MAX_STEPS ? current + 1 : current,
-            )
-          }
-        />
-      </div>
-    </div>
-  )
+  return null
 }
 
 export default ConsentSteps

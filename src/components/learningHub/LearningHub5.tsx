@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LearningHub5: FunctionComponent = () => {
-  console.log('lh53')
   const classes = useStyles()
   const { t } = useTranslation()
   const [arr] = React.useState(new Array(5))

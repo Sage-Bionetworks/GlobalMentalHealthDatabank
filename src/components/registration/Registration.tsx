@@ -97,17 +97,25 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
     //send signinRequest
     const phoneNumber = data.phone?.number || ''
-    const result = await submitRegistration(data)
-    if (result.status === 201) {
-      const sentSigninRequest = await sendSignInRequest(
-        phoneNumber,
-        state.countryCode.value,
-        endPoint['PHONE'],
-      )
+    try {
+      const result = await submitRegistration(data)
 
-      onSuccessFn(sentSigninRequest.status, sentSigninRequest.data, phoneNumber)
-    } else {
-      onErrorFn(result.status)
+      if (result.status === 201) {
+        const sentSigninRequest = await sendSignInRequest(
+          phoneNumber,
+          state.countryCode.value,
+          endPoint['PHONE'],
+        )
+        onSuccessFn(
+          sentSigninRequest.status,
+          sentSigninRequest.data,
+          phoneNumber,
+        )
+      } else {
+        onErrorFn(result.status)
+      }
+    } catch (e) {
+      onErrorFn(e.statusCode, e.message)
     }
   }
 

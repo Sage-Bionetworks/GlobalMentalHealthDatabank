@@ -116,7 +116,6 @@ const ThankYouHomeTest: FunctionComponent<ThankYouHomeTestProps> = ({
               /*alert(e);*/ scrollToBottom()
             }}
             onDoneCallback={(e: any) => {
-              console.log(e)
               setIsSubmitted(true)
               handleClose()
             }}

@@ -16,7 +16,6 @@ function loginAsAdmin(): Cypress.Chainable {
     })
     .then(response => {
       const token = response.body.sessionToken
-      console.log('token,', token)
       return token
     })
 }
