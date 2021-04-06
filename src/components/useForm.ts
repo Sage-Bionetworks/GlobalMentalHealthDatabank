@@ -66,8 +66,6 @@ function useForm(
           const result = validationSchema[name].validator.fn(value)
           if (value && !validationSchema[name].validator.fn(value)) {
             error = validationSchema[name].validator.error
-
-            console.log('validation for' + value + ' ' + result)
           }
         }
       }

@@ -856,7 +856,6 @@ export default class SynapseForm extends React.Component<
       } else {
         const path = paramProp.split('[*]')[0].substring(1)
         const data = _.get(formData, path)
-        console.log(data)
         // generate a rule for each item in the data array by substituting [*] w/ appropriate index
         if (Array.isArray(data) && typeof data !== 'string') {
           for (let i = 0; i < data.length; i++) {
@@ -934,7 +933,6 @@ export default class SynapseForm extends React.Component<
     try {
       const result: RulesResult = await engine.run(data)
       const validationEvents = result.events as IRulesValidationEvent[]
-      console.log(result)
       validationEvents.forEach(event => {
         const msg =
           event.params.name === 'range'

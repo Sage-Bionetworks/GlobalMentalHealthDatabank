@@ -200,7 +200,6 @@ export const ConsentInfo: React.FunctionComponent<ConsentInfoProps> = ({
   }
 
   const renderNavChildren = (step: number): JSX.Element | string => {
-    console.log(step, 'step')
     if (step < 1 || step === 13) {
       return t('consentinfo.studyConsent')
     }

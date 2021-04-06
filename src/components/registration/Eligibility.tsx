@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button/Button'
-import { useTranslation } from 'react-i18next'
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'

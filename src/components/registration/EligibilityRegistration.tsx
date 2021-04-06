@@ -5,8 +5,6 @@ import Eligiblity from './Eligibility'
 import SignInWithCode from '../login/SignInWithCode'
 import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -22,7 +20,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   const [eligible, setEligible] = useState<boolean | undefined>(undefined)
   const [phoneNumber, setPhoneNumber] = useState('')
   const countryCode = window.localStorage.getItem('selected_country') || ''
-  const [error, setError] = useState<string>()
+  const [error, setError] = useState<object>({ status: 0, message: '' })
 
   const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -34,7 +32,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
         history.push('/consent')
       }
     } else {
-      setError('Error ' + loggedIn.status)
+      setError({ message: 'Error attempting login', status: loggedIn.status })
     }
   }
 
@@ -47,7 +45,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
               setEligible(true)
               window.scrollTo(0, 0)
             }}
-          ></Eligiblity>
+          />
         )}
         {eligible && !phoneNumber && (
           <Registration
@@ -58,10 +56,10 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
             ) => {
               setPhoneNumber(phoneNumber)
             }}
-            onErrorFn={(status: number) => {
-              setError(status + '')
+            onErrorFn={(status: number, message?: string) => {
+              setError({ message: 'Error when registering', status: status })
             }}
-          ></Registration>
+          />
         )}
         {eligible && phoneNumber && (
           <SignInWithCode
