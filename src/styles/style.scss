@@ -355,12 +355,14 @@ fieldset {
   margin-bottom: 2rem;
 }
 
-.errorMessage {
+.form-message {
   padding-top: 30px;
-  color: #f36e68;
   display: flex;
   svg {
     margin-right: 10px;
+  }
+  &.error {
+    color: #f36e68;
   }
 }
 

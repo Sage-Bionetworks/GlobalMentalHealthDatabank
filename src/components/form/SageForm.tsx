@@ -3,6 +3,7 @@ import { default as Form } from 'react-jsonschema-form'
 import Button from '@material-ui/core/Button'
 import Separator from '../static/Separator'
 import { ReactComponent as ErrorMessageIcon } from '../../assets/error_message_icon.svg'
+import { ReactComponent as InfoMessageIcon } from '../../assets/info_message_icon.svg'
 import {
   schemaCountrySelector,
   uiSchemaCountrySelector,
@@ -39,6 +40,8 @@ type SageFormProps = {
   onSubmit: any
   title: string
   errorMessage?: string
+  infoMessage?: string
+  buttonText?: string
 }
 
 export default function SageForm({
@@ -46,6 +49,8 @@ export default function SageForm({
   onSubmit,
   title,
   errorMessage,
+  infoMessage,
+  buttonText,
 }: SageFormProps) {
   const getSchemaFromId = (id: string) => {
     switch (id) {
@@ -96,9 +101,16 @@ export default function SageForm({
       </div>
 
       {errorMessage && (
-        <div className="errorMessage">
+        <div className="form-message error">
           <ErrorMessageIcon />
           {errorMessage}
+        </div>
+      )}
+
+      {infoMessage && (
+        <div className="form-message">
+          <InfoMessageIcon />
+          {infoMessage}
         </div>
       )}
 
@@ -118,7 +130,7 @@ export default function SageForm({
               type="submit"
               className="wideButton"
             >
-              Submit
+              {buttonText || 'Submit'}
             </Button>
           </div>
         </Form>
