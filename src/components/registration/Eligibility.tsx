@@ -22,6 +22,19 @@ const INITIAL_QUIZ_CHOICES = {
   inAgeRange: '',
 }
 
+const getCountryCode = (numCode: number) => {
+  switch (numCode) {
+    case COUNTRIES.INDIA:
+      return 'IN'
+    case COUNTRIES.SOUTH_AFRICA:
+      return 'ZA'
+    case COUNTRIES.UK:
+      return 'UK'
+    default:
+      return 'OTHER'
+  }
+}
+
 export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
   setEligibilityFn,
 }: EligibilityProps) => {
@@ -102,7 +115,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
               else {
                 window.localStorage.setItem(
                   'selected_country',
-                  selectedCountry.your_country,
+                  getCountryCode(selectedCountry.your_country),
                 )
                 setQuizChoices(prev => {
                   return {
