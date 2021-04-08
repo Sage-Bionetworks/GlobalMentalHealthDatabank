@@ -37,7 +37,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   }
 
   return (
-    <div>
+    <>
       <div>
         {eligible === undefined && (
           <Eligiblity
@@ -71,7 +71,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
           />
         )}
       </div>
-    </div>
+    </>
   )
 }
 

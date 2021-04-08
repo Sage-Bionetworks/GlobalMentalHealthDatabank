@@ -20,6 +20,14 @@ import {
   schemaSupportVerify,
   uiSchemaSupportVerify,
 } from '../schemas/supportVerify'
+import {
+  schemaHowDidYouHear,
+  uiSchemaHowDidYouHear,
+} from '../schemas/howDidYouHear'
+import {
+  schemaUnderstandsEnglish,
+  uiSchemaUnderstandsEnglish,
+} from '../schemas/understandsEnglish'
 
 type FormSchema = {
   properties?: any
@@ -51,6 +59,10 @@ export default function SageForm({
         return schemaAndroidVerify
       case 'supportVerify':
         return schemaSupportVerify
+      case 'howDidYouHear':
+        return schemaHowDidYouHear
+      case 'understandsEnglish':
+        return schemaUnderstandsEnglish
       default:
         return null
     }
@@ -68,6 +80,10 @@ export default function SageForm({
         return uiSchemaAndroidVerify
       case 'supportVerify':
         return uiSchemaSupportVerify
+      case 'howDidYouHear':
+        return uiSchemaHowDidYouHear
+      case 'understandsEnglish':
+        return uiSchemaUnderstandsEnglish
       default:
         return null
     }
