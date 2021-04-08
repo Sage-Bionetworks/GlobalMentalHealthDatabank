@@ -1,8 +1,9 @@
 export const COUNTRIES = {
   UK: 0,
-  INDIA: 1,
-  SOUTH_AFRICA: 2,
+  IN: 1,
+  ZA: 2,
   OTHER: 3,
+  US: 4,
 }
 
 export const PARTICIPATE_OPTIONS = {
