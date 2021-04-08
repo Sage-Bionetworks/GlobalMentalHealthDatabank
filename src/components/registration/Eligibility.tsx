@@ -11,142 +11,215 @@ type EligibilityProps = {
   setEligibilityFn: Function
 }
 
-const MAX_STEPS: number = 5
+const MAX_STEPS: number = 6
+
+const INITIAL_QUIZ_CHOICES = {
+  howDidYouHear: -1,
+  accessToSupport: '',
+  userLocation: -1,
+  hasAndroid: '',
+  understandsEnglish: '',
+  inAgeRange: '',
+}
+
+const getCountryCode = (numCode: number) => {
+  switch (numCode) {
+    case COUNTRIES.INDIA:
+      return 'IN'
+    case COUNTRIES.SOUTH_AFRICA:
+      return 'ZA'
+    case COUNTRIES.UK:
+      return 'UK'
+    default:
+      return 'OTHER'
+  }
+}
 
 export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
   setEligibilityFn,
 }: EligibilityProps) => {
-  const [checks, setChecks] = useState({
-    validAgeRange: false,
-    hasAndroid: false,
-    inValidLocation: false,
-    supportSurvey: false,
-  })
-
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
+  const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
 
   useEffect(() => {
     setErrorMessage('')
   }, [step])
 
-  if (step === 1) {
-    return (
-      <div className="quizWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
-        <SageForm
-          title={'Where do you currently live?'}
-          errorMessage={errorMessage}
-          formId={'countrySelector'}
-          onSubmit={(event: any) => {
-            const selectedCountry = event.formData.country_chooser
-            if (selectedCountry && Object.keys(selectedCountry).length === 0)
-              setErrorMessage('You must choose an option')
-            else {
-              window.localStorage.setItem(
-                'selected_country',
-                selectedCountry.your_country,
-              )
-              if (selectedCountry.your_country !== COUNTRIES.OTHER)
-                setChecks(prev => {
-                  return { ...prev, inValidLocation: true }
+  window.scrollTo(0, 0)
+
+  switch (step) {
+    case 1:
+      return (
+        <div className="quizWrapper">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <SageForm
+            title={'How did you hear about us?'}
+            errorMessage={errorMessage}
+            formId={'howDidYouHear'}
+            onSubmit={(event: any) => {
+              const selectedOption = event.formData.how_did_you_hear
+              if (selectedOption && Object.keys(selectedOption).length === 0)
+                setErrorMessage('You must choose an option')
+              else {
+                setQuizChoices((prev: any) => ({
+                  ...prev,
+                  howDidYouHear: selectedOption.how_options,
+                }))
+                setStep((current: number) =>
+                  current < MAX_STEPS ? current + 1 : current,
+                )
+              }
+            }}
+          />
+        </div>
+      )
+    case 2:
+      return (
+        <div className="quizWrapper">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <SageForm
+            title={
+              'Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?'
+            }
+            errorMessage={errorMessage}
+            formId={'supportVerify'}
+            onSubmit={(event: any) => {
+              const selectedOption = event.formData.support_verify
+              if (selectedOption && Object.keys(selectedOption).length === 0)
+                setErrorMessage('You must choose an option')
+              else {
+                setQuizChoices(prev => {
+                  return { ...prev, accessToSupport: selectedOption.accept }
                 })
-              setStep((current: number) =>
-                current < MAX_STEPS ? current + 1 : current,
-              )
+                setStep((current: number) =>
+                  current < MAX_STEPS ? current + 1 : current,
+                )
+              }
+            }}
+          />
+        </div>
+      )
+    case 3:
+      return (
+        <div className="quizWrapper">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <SageForm
+            title={'Where do you currently live?'}
+            errorMessage={errorMessage}
+            formId={'countrySelector'}
+            onSubmit={(event: any) => {
+              const selectedCountry = event.formData.country_chooser
+              if (selectedCountry && Object.keys(selectedCountry).length === 0)
+                setErrorMessage('You must choose an option')
+              else {
+                window.localStorage.setItem(
+                  'selected_country',
+                  getCountryCode(selectedCountry.your_country),
+                )
+                setQuizChoices(prev => {
+                  return {
+                    ...prev,
+                    userLocation: selectedCountry.your_country,
+                  }
+                })
+                setStep((current: number) =>
+                  current < MAX_STEPS ? current + 1 : current,
+                )
+              }
+            }}
+          />
+        </div>
+      )
+
+    case 4:
+      return (
+        <div className="quizWrapper">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <SageForm
+            title={'Do you have access to an Android smart phone?'}
+            errorMessage={errorMessage}
+            formId={'androidVerify'}
+            onSubmit={(event: any) => {
+              const selectedOption = event.formData.android_verify
+              if (selectedOption && Object.keys(selectedOption).length === 0)
+                setErrorMessage('You must choose an option')
+              else {
+                setQuizChoices(prev => {
+                  return { ...prev, hasAndroid: selectedOption.has_android }
+                })
+                setStep((current: number) =>
+                  current < MAX_STEPS ? current + 1 : current,
+                )
+              }
+            }}
+          />
+        </div>
+      )
+
+    case 5:
+      return (
+        <div className="quizWrapper">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <SageForm
+            title={'Are you comfortable reading and writing in English?'}
+            errorMessage={errorMessage}
+            formId={'understandsEnglish'}
+            onSubmit={(event: any) => {
+              const selectedOption = event.formData.understands_english
+              if (selectedOption && Object.keys(selectedOption).length === 0)
+                setErrorMessage('You must choose an option')
+              else {
+                setQuizChoices(prev => {
+                  return {
+                    ...prev,
+                    understandsEnglish:
+                      selectedOption.understands_english_option,
+                  }
+                })
+                setStep((current: number) =>
+                  current < MAX_STEPS ? current + 1 : current,
+                )
+              }
+            }}
+          />
+        </div>
+      )
+
+    case 6:
+      return (
+        <div className="quizWrapper">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <SageForm
+            title={
+              'Are you between the ages of 18 to 24 years old, or 16-24 years old if you live in the United Kingdom?'
             }
-          }}
-        />
-      </div>
-    )
+            errorMessage={errorMessage}
+            formId={'ageVerify'}
+            onSubmit={(event: any) => {
+              const selectedOption = event.formData.age_verify
+              if (selectedOption && Object.keys(selectedOption).length === 0)
+                setErrorMessage('You must choose an option')
+              else {
+                setQuizChoices(prev => {
+                  return { ...prev, inAgeRange: selectedOption.age_range }
+                })
+                setStep((current: number) =>
+                  current <= MAX_STEPS ? current + 1 : current,
+                )
+              }
+            }}
+          />
+        </div>
+      )
   }
 
-  if (step === 2) {
-    return (
-      <div className="quizWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
-        <SageForm
-          title={'Are you between the ages of 18 - 24 years old?'}
-          errorMessage={errorMessage}
-          formId={'ageVerify'}
-          onSubmit={(event: any) => {
-            const selectedOption = event.formData.age_verify
-            if (selectedOption && Object.keys(selectedOption).length === 0)
-              setErrorMessage('You must choose an option')
-            else {
-              setChecks(prev => {
-                return { ...prev, validAgeRange: selectedOption.age_range }
-              })
-              setStep((current: number) =>
-                current < MAX_STEPS ? current + 1 : current,
-              )
-            }
-          }}
-        />
-      </div>
-    )
-  }
-
-  if (step === 3) {
-    return (
-      <div className="quizWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
-        <SageForm
-          title={'Do you have access to an Android smart phone?'}
-          errorMessage={errorMessage}
-          formId={'androidVerify'}
-          onSubmit={(event: any) => {
-            const selectedOption = event.formData.android_verify
-            if (selectedOption && Object.keys(selectedOption).length === 0)
-              setErrorMessage('You must choose an option')
-            else {
-              setChecks(prev => {
-                return { ...prev, hasAndroid: selectedOption.has_android }
-              })
-              setStep((current: number) =>
-                current < MAX_STEPS ? current + 1 : current,
-              )
-            }
-          }}
-        />
-      </div>
-    )
-  }
-
-  if (step === 4) {
-    return (
-      <div className="quizWrapper">
-        <ProgressBar step={step} maxSteps={MAX_STEPS} />
-        <SageForm
-          title={
-            'Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?'
-          }
-          errorMessage={errorMessage}
-          formId={'supportVerify'}
-          onSubmit={(event: any) => {
-            const selectedOption = event.formData.support_verify
-            if (selectedOption && Object.keys(selectedOption).length === 0)
-              setErrorMessage('You must choose an option')
-            else {
-              setChecks(prev => {
-                return { ...prev, supportSurvey: selectedOption.accept }
-              })
-              setStep((current: number) =>
-                current < MAX_STEPS ? current + 1 : current,
-              )
-            }
-          }}
-        />
-      </div>
-    )
-  }
-
-  if (step === 5) {
+  if (step > MAX_STEPS) {
     if (
-      checks.hasAndroid &&
-      checks.inValidLocation &&
-      checks.supportSurvey &&
-      checks.validAgeRange
+      quizChoices.userLocation !== COUNTRIES.OTHER &&
+      quizChoices.hasAndroid &&
+      quizChoices.inAgeRange &&
+      quizChoices.understandsEnglish
     )
       setEligibilityFn()
 
@@ -176,7 +249,6 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
       </div>
     )
   }
-
   return null
 }
 

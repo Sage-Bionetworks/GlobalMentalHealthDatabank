@@ -37,7 +37,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   }
 
   return (
-    <div>
+    <>
       <div>
         {eligible === undefined && (
           <Eligiblity
@@ -57,7 +57,11 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
               setPhoneNumber(phoneNumber)
             }}
             onErrorFn={(status: number, message?: string) => {
-              setError({ message: 'Error when registering', status: status })
+              setError({
+                message:
+                  'Error when registering, please verify your phone number and country selection',
+                status: status,
+              })
             }}
           />
         )}
@@ -71,7 +75,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
           />
         )}
       </div>
-    </div>
+    </>
   )
 }
 

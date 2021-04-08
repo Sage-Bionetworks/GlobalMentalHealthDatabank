@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Separator from '../static/Separator'
 import useForm from '../useForm'
 import {
@@ -14,7 +14,6 @@ import {
 } from '../../helpers/utility'
 import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
-import { useTranslation } from 'react-i18next'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import {
   getRandomFlowOption,
@@ -32,7 +31,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
   onErrorFn,
 }: RegistrationProps) => {
-  const { t } = useTranslation()
   const stateSchema = {
     phone: { value: '', error: '' },
     countryCode: {
@@ -52,6 +50,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     },
     countryCode: {},
   }
+
+  const [error, setErrorMessage] = useState('')
 
   const submitRegistration = async (registrationData: RegistrationData) => {
     const result = await callEndpoint(
@@ -101,6 +101,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       const result = await submitRegistration(data)
 
       if (result.status === 201) {
+        setErrorMessage('')
         const sentSigninRequest = await sendSignInRequest(
           phoneNumber,
           state.countryCode.value,
@@ -112,9 +113,15 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
           phoneNumber,
         )
       } else {
+        setErrorMessage(
+          'Error when registering, please verify your phone number and country selection',
+        )
         onErrorFn(result.status)
       }
     } catch (e) {
+      setErrorMessage(
+        'Error when registering, please verify your phone number and country selection',
+      )
       onErrorFn(e.statusCode, e.message)
     }
   }
@@ -130,24 +137,32 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       <div className="media-wrapper text-left">
         <TextSent />
       </div>
-      <div className="text-left">{t('registration.phoneIntroTitle')}</div>
+      <div className="text-left">
+        Before we get started, could we have your number?
+      </div>
       <Separator />
-      <div className="text-left">{t('registration.phoneIntroBody')}</div>
+      <div className="text-left">
+        We are asking you for your phone number to make this consent process
+        easier and faster for you. We will not keep your number if you decide
+        not to join MindKind. If you do join, we will store your phone number
+        securely. It will be kept separately from your data to protect your
+        identity. We will not share your number with anyone.{' '}
+      </div>
 
       {
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
             <div>
               <label htmlFor="phone" className="block--dark">
-                {t('registration.myPhone')}
+                My Phone number is:
               </label>
               <div className="input--padded">
                 <TextField
                   name="phone"
                   type="phone"
                   value={state.phone.value}
-                  placeholder={`${t('common.phone')} #`}
-                  aria-label={t('common.phone')}
+                  placeholder={'Phone #'}
+                  aria-label={'Phone #'}
                   variant="outlined"
                   fullWidth
                   onChange={handleOnChange}
@@ -165,6 +180,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                     </p>
                   ),
               )}
+              <p className="error-message">{error}</p>
               <div className="text-center">
                 <Button
                   color="primary"
@@ -173,7 +189,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   type="submit"
                   disabled={!state.phone.value}
                 >
-                  {t('registration.text3')}
+                  Create account
                 </Button>
               </div>
             </div>
