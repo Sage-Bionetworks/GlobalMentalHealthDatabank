@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import Separator from '../static/Separator'
 import { ReactComponent as ErrorMessageIcon } from '../../assets/error_message_icon.svg'
 import { ReactComponent as InfoMessageIcon } from '../../assets/info_message_icon.svg'
+import { FORM_IDS } from '../../components/form/types'
 import {
   schemaCountrySelector,
   uiSchemaCountrySelector,
@@ -54,19 +55,19 @@ export default function SageForm({
 }: SageFormProps) {
   const getSchemaFromId = (id: string) => {
     switch (id) {
-      case 'countrySelector':
+      case FORM_IDS.COUNTRY_SELECTOR:
         return schemaCountrySelector
-      case 'howToParticipate':
+      case FORM_IDS.HOW_TO_PARTICIPATE:
         return schemaHowToParticipate
-      case 'ageVerify':
+      case FORM_IDS.AGE_VERIFY:
         return schemaAgeVerify
-      case 'androidVerify':
+      case FORM_IDS.ANDROID_VERIFY:
         return schemaAndroidVerify
-      case 'supportVerify':
+      case FORM_IDS.SUPPORT_VERIFY:
         return schemaSupportVerify
-      case 'howDidYouHear':
+      case FORM_IDS.HOW_DID_YOU_HEAR:
         return schemaHowDidYouHear
-      case 'understandsEnglish':
+      case FORM_IDS.UNDERSTANDS_ENGLISH:
         return schemaUnderstandsEnglish
       default:
         return null
@@ -75,19 +76,19 @@ export default function SageForm({
 
   const getUISchemaFromId = (id: string) => {
     switch (id) {
-      case 'countrySelector':
+      case FORM_IDS.COUNTRY_SELECTOR:
         return uiSchemaCountrySelector
-      case 'howToParticipate':
+      case FORM_IDS.HOW_TO_PARTICIPATE:
         return uiSchemaHowToParticipate
-      case 'ageVerify':
+      case FORM_IDS.AGE_VERIFY:
         return uiSchemaAgeVerify
-      case 'androidVerify':
+      case FORM_IDS.ANDROID_VERIFY:
         return uiSchemaAndroidVerify
-      case 'supportVerify':
+      case FORM_IDS.SUPPORT_VERIFY:
         return uiSchemaSupportVerify
-      case 'howDidYouHear':
+      case FORM_IDS.HOW_DID_YOU_HEAR:
         return uiSchemaHowDidYouHear
-      case 'understandsEnglish':
+      case FORM_IDS.UNDERSTANDS_ENGLISH:
         return uiSchemaUnderstandsEnglish
       default:
         return null

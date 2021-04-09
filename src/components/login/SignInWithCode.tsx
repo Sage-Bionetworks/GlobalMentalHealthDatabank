@@ -52,7 +52,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
       <div>
         <div className="text-left margin-top-std">
           <TextSent />
-          <p className="text-left padded">{t('signIn.text1')}</p>
+          <p className="text-left padded">We just sent an SMS to:</p>
           <p className="text-left ">{phoneNumber}</p>
           <Separator />
         </div>

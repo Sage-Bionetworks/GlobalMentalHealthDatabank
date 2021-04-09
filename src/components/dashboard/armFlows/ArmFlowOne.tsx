@@ -8,9 +8,15 @@ type ArmFlowOneProps = {
   step: number
   setStep: Function
   maxSteps: number
+  updateClientData: Function
 }
 
-function ArmFlowOne({ step, setStep, maxSteps }: ArmFlowOneProps) {
+function ArmFlowOne({
+  step,
+  setStep,
+  maxSteps,
+  updateClientData,
+}: ArmFlowOneProps) {
   return (
     <div className="textStepWrapper">
       <ProgressBar step={step} maxSteps={maxSteps} />
@@ -46,11 +52,12 @@ function ArmFlowOne({ step, setStep, maxSteps }: ArmFlowOneProps) {
           }
         />
         <ArrowButtonRight
-          onClick={() =>
+          onClick={() => {
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-          }
+            updateClientData(step)
+          }}
         />
       </div>
     </div>

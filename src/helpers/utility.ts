@@ -115,14 +115,13 @@ export const callEndpoint = async <T>(
 
   const result = await response.json()
   if (!response.ok && response.status !== 412) {
-    //alert(JSON.stringify(result, null, 2))
     throw result
   }
   return { status: response.status, data: result, ok: response.ok }
 }
 
 export const makePhone = (phone: string, regionCode?: string): Phone => {
-  return { number: phone, regionCode: regionCode || 'US' }
+  return { number: phone, regionCode: regionCode || '0' }
 }
 
 export const getMomentDate = (

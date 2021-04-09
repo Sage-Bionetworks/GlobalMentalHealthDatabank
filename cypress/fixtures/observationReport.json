@@ -130,8 +130,8 @@
               }
             ],
             "managingOrganization": {
-              "reference": "CovidRecovery",
-              "display": "Covid Recovery Corp"
+              "reference": "MindKind",
+              "display": "MindKind"
             }
           }
         ],
@@ -141,7 +141,7 @@
           "coding": [
             {
               "code": "484670513",
-              "display": "COVID-19 Sero Interp"
+              "display": "MindKind"
             }
           ]
         },

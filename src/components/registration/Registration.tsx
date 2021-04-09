@@ -85,7 +85,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         ? makePhone(state.phone.value, state.countryCode.value)
         : undefined,
       clientData: {
-        'flow-selection': flowSelection,
+        flowSelection: flowSelection,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],

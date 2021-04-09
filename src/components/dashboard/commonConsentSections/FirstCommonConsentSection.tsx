@@ -4,18 +4,20 @@ import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import SageForm from '../../form/SageForm'
-import { PARTICIPATE_OPTIONS } from '../../form/types'
+import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 
 type FirstCommonConsentProps = {
   step: number
   setStep: Function
   maxSteps: number
+  updateClientData: Function
 }
 
 function FirstCommonConsentSection({
   step,
   setStep,
   maxSteps,
+  updateClientData,
 }: FirstCommonConsentProps) {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
@@ -25,20 +27,22 @@ function FirstCommonConsentSection({
     setSuccessMessage('')
   }, [step])
 
-  const renderArrows = () => {
+  const renderArrows = (preventBack?: boolean) => {
     return (
       <div className="arrowButtonsWrapper">
         <ArrowButtonLeft
+          style={{ visibility: preventBack ? 'hidden' : 'visible' }}
           onClick={() =>
             setStep((current: number) => (current > 1 ? current - 1 : current))
           }
         />
         <ArrowButtonRight
-          onClick={() =>
+          onClick={() => {
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-          }
+            updateClientData(step)
+          }}
         />
       </div>
     )
@@ -129,7 +133,7 @@ function FirstCommonConsentSection({
             title={'Which of the following will you be asked to do?'}
             errorMessage={errorMessage}
             infoMessage={successMessage}
-            formId={'howToParticipate'}
+            formId={FORM_IDS.HOW_TO_PARTICIPATE}
             buttonText={successMessage ? 'Next' : undefined}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.how_to_participate
@@ -152,6 +156,11 @@ function FirstCommonConsentSection({
                     'This study will only require you to answer weekly survey questions.',
                   )
                   setErrorMessage('')
+                  updateClientData(
+                    step,
+                    FORM_IDS.HOW_TO_PARTICIPATE,
+                    selectedOption.participate_option,
+                  )
                 } else {
                   setErrorMessage(
                     'This study will only require you to answer weekly survey questions.',
@@ -192,7 +201,7 @@ function FirstCommonConsentSection({
               We store all of the coded study data on a secure cloud server.
             </p>
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
 

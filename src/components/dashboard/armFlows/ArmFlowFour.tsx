@@ -8,20 +8,26 @@ type ArmFlowFourProps = {
   step: number
   setStep: Function
   maxSteps: number
+  updateClientData: Function
 }
 
-function ArmFlowFour({ step, setStep, maxSteps }: ArmFlowFourProps) {
+function ArmFlowFour({
+  step,
+  setStep,
+  maxSteps,
+  updateClientData,
+}: ArmFlowFourProps) {
   return (
     <div className="textStepWrapper">
       <ProgressBar step={step} maxSteps={maxSteps} />
       <LogoNoText />
       <div className="headerWrapper">
-        <h1>Placeholder for arm 4</h1>
+        <h1>Placeholder for arm flow 4</h1>
       </div>
-      <h2>placeholder h2</h2>
+      <h2>participant_choice</h2>
       <ul>
-        <li>lorem ipsun</li>
-        <li> lorem ipsun</li>
+        <li>Content A</li>
+        <li>Content B</li>
       </ul>
 
       <div className="arrowButtonsWrapper">
@@ -31,11 +37,12 @@ function ArmFlowFour({ step, setStep, maxSteps }: ArmFlowFourProps) {
           }
         />
         <ArrowButtonRight
-          onClick={() =>
+          onClick={() => {
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-          }
+            updateClientData(step)
+          }}
         />
       </div>
     </div>
