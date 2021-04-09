@@ -13,6 +13,7 @@ type SecondCommonConsentProps = {
   step: number
   setStep: Function
   maxSteps: number
+  updateClientData: Function
 }
 
 function SecondCommonConsentSection({
@@ -20,6 +21,7 @@ function SecondCommonConsentSection({
   step,
   setStep,
   maxSteps,
+  updateClientData,
 }: SecondCommonConsentProps) {
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
@@ -38,28 +40,13 @@ function SecondCommonConsentSection({
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
           <div className="headerWrapper">
-            <h1>This is second consent section</h1>
+            <h1>This is second consent section placeholder</h1>
           </div>
-          <h2>We are trying to answer these questions:</h2>
+          <h2>Subtitle placeholder</h2>
           <ul>
-            <li>
-              Are young people willing to use an app to collect information
-              (data) about their mental health? If so, will they use it for 3
-              months?
-            </li>
-            <li>
-              Are young people willing to share that data for health research?
-              If so, under what conditions?
-            </li>
+            <li>Content A</li>
+            <li>Content B</li>
           </ul>
-          <div>
-            This study is funded by The Wellcome Foundation, and lead by Dr.
-            Lara Mangravite in the United States. It is being conducted under
-            the supervision of scientists in South Africa, India, and the United
-            Kingdom. You can{' '}
-            <a className="dashboardLink">learn more about our team</a> of
-            researchers on the study website{' '}
-          </div>
 
           <div className="arrowButtonsWrapper">
             <ArrowButtonLeft
@@ -70,11 +57,12 @@ function SecondCommonConsentSection({
               }
             />
             <ArrowButtonRight
-              onClick={() =>
+              onClick={() => {
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
-              }
+                updateClientData(step)
+              }}
             />
           </div>
         </div>

@@ -16,14 +16,15 @@ import TextField from '@material-ui/core/TextField/TextField'
 
 import { RouteComponentProps } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert/Alert'
-import {
-  Tabs,
-  Tab,
-  Card,
-  CardContent,
-  CircularProgress,
-} from '@material-ui/core'
+import { Card, CardContent, CircularProgress } from '@material-ui/core'
 
+import uk from '../../assets/flags/uk.svg'
+import ind from '../../assets/flags/ind.svg'
+import za from '../../assets/flags/za.svg'
+import us from '../../assets/flags/us.svg'
+
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
 import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 
@@ -34,22 +35,23 @@ export interface OwnLoginProps {
 
 export type LoginProps = OwnLoginProps & RouteComponentProps
 
-type LoginPostData = {
-  appId: string
-  email: string
-  token: string
-}
-
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
+
+const FLAGS = {
+  unitedKingdom: 'UK',
+  india: 'IN',
+  southAfrica: 'ZA',
+  unitedStates: 'US',
+}
 
 export const Login: React.FunctionComponent<LoginProps> = ({
   searchParams,
   history,
 }: LoginProps) => {
   const [phone, setPhone] = useState('')
-  const countryCode = window.localStorage.getItem('selected_country') || ''
+  const [countryCode, setCountryCode] = useState(FLAGS.unitedKingdom)
   const [error, setError] = useState('')
-  const [isLinkSent, setIsLinkSent] = useState(false)
+  const [isCodeSent, setIsCodeSent] = useState(false)
   const loginType = 'PHONE'
   const [isLoading, setIsLoading] = useState(false)
 
@@ -127,7 +129,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
         countryCode,
         `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
       )
-      setIsLinkSent(true)
+      setIsCodeSent(true)
     } catch (e) {
       setError(e.message)
     } finally {
@@ -136,7 +138,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   }
 
   return (
-    <>
+    <div>
       {isLoading && (
         <div className="text-center">
           <CircularProgress color="primary" />
@@ -145,67 +147,89 @@ export const Login: React.FunctionComponent<LoginProps> = ({
       {!isLoading && (
         <Card>
           <CardContent>
-            {(!isLinkSent || error) && (
+            {(!isCodeSent || error) && (
               <div>
                 <h2 className="text-center">{t('common.logIn')}</h2>
 
                 <form onSubmit={handleLogin}>
                   <div>
-                    <div className="tabbedField">
-                      <Tabs
-                        value={loginType}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="fullWidth"
-                        aria-label="disabled tabs example"
-                      >
-                        <Tab label={t('common.email')} value="EMAIL" />
-
-                        {
-                          // temporarily disabling phone login
-                          false && (
-                            <Tab label={t('common.phone')} value="PHONE" />
-                          )
-                        }
-                      </Tabs>
-
-                      {loginType === 'PHONE' && (
-                        <div className="input--padded">
-                          <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            autoComplete="phone"
-                            placeholder={t('common.phone')}
-                            label={t('common.phone')}
-                            fullWidth
-                            name="phone"
-                            type="phone"
-                            value={phone}
-                            onChange={e => setPhone(e.currentTarget.value)}
-                          />
-                        </div>
-                      )}
-                      <div className="text-center">
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          size="large"
-                          type="submit"
-                          disabled={!loginType}
-                          onSubmit={handleLogin}
-                          className="wideButton"
+                    {loginType === 'PHONE' && (
+                      <div className="input--padded--flags">
+                        <Select
+                          labelId="flag-selector"
+                          id="flag-selector"
+                          value={countryCode}
+                          onChange={(
+                            event: React.ChangeEvent<{ value: unknown }>,
+                          ) => {
+                            setCountryCode(event.target.value as any)
+                          }}
+                          variant="outlined"
+                          className="phoneFlag"
                         >
-                          {t('common.logIn')}
-                        </Button>
+                          <MenuItem value={FLAGS.unitedKingdom}>
+                            <img
+                              src={uk}
+                              className={'flagIcon'}
+                              alt="United Kingdom"
+                            ></img>
+                          </MenuItem>
+                          <MenuItem value={FLAGS.india}>
+                            <img
+                              src={ind}
+                              className={'flagIcon'}
+                              alt="India"
+                            ></img>
+                          </MenuItem>
+                          <MenuItem value={FLAGS.southAfrica}>
+                            <img
+                              src={za}
+                              className={'flagIcon'}
+                              alt="South Africa"
+                            ></img>
+                          </MenuItem>
+                          <MenuItem value={FLAGS.unitedStates}>
+                            <img
+                              src={us}
+                              className={'flagIcon'}
+                              alt="United States"
+                            ></img>
+                          </MenuItem>
+                        </Select>
+
+                        <TextField
+                          id="outlined-basic"
+                          variant="outlined"
+                          autoComplete="phone"
+                          placeholder="Phone #"
+                          label="Phone #"
+                          fullWidth
+                          name="phone"
+                          type="phone"
+                          value={phone}
+                          onChange={e => setPhone(e.currentTarget.value)}
+                        />
                       </div>
+                    )}
+                    <div className="text-center">
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        size="large"
+                        type="submit"
+                        disabled={!loginType}
+                        onSubmit={handleLogin}
+                        className="wideButton"
+                      >
+                        {t('common.logIn')}
+                      </Button>
                     </div>
                   </div>
                   {error && <Alert severity="error">{error}</Alert>}
                 </form>
               </div>
             )}
-
-            {isLinkSent && (
+            {isCodeSent && (
               <SignInWithCode
                 loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
                   handleLoggedIn(result)
@@ -214,7 +238,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                 countryCode={countryCode}
               />
             )}
-            {!isLinkSent && (
+            {!isCodeSent && (
               <div style={{ margin: '0px auto', textAlign: 'center' }}>
                 <Button
                   variant="text"
@@ -227,7 +251,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
           </CardContent>
         </Card>
       )}
-    </>
+    </div>
   )
 }
 

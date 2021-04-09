@@ -193,10 +193,10 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className={classes.navBarLink}
         >
           <ListItem button className={classes.mobileMenuItem}>
-            {t('topnav.text1')}
+            Home
           </ListItem>
         </NavLink>
-        <NavLink
+        {/*<NavLink
           to="/team"
           onClick={handleDrawerToggle}
           className={classes.navBarLink}
@@ -242,7 +242,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           <ListItem button className={classes.mobileMenuItem}>
             {t('topnav.text5')}
           </ListItem>
-        </NavLink>
+      </NavLink>*/}
         <Divider className={classes.mobileMenuSeparator} />
         {props.token && sessionData.consented && (
           <NavLink
@@ -255,7 +255,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </ListItem>
           </NavLink>
         )}
-        {props.token && sessionData.consented && (
+        {/*props.token && sessionData.consented && (
           <NavLink
             to="/settings"
             onClick={handleDrawerToggle}
@@ -265,7 +265,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
               {t('topnav.text7')}
             </ListItem>
           </NavLink>
-        )}
+        )*/}
         {props.token && (
           <NavLink
             to="/logout"
@@ -292,6 +292,17 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </ListItem>
           </NavLink>
         )}
+        {!props.token && (
+          <NavLink
+            to="/login"
+            onClick={handleDrawerToggle}
+            className={classes.navBarLink}
+          >
+            <ListItem button className={classes.mobileMenuItem}>
+              Sign in
+            </ListItem>
+          </NavLink>
+        )}
       </List>
     </div>
   )
@@ -304,9 +315,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         style={{ whiteSpace: 'nowrap' }}
         activeClassName={classes.fullNavBarLinkActive}
       >
-        {t('topnav.text1')}
+        Home
       </NavLink>
-      <NavLink
+      {/*<NavLink
         to="/team"
         className={classes.fullNavBarLink}
         activeClassName={classes.fullNavBarLinkActive}
@@ -341,7 +352,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         activeClassName={classes.fullNavBarLinkActive}
       >
         {t('topnav.text5')}
-      </NavLink>
+      </NavLink>*/}
       {props.token && sessionData.consented && (
         <NavLink
           to="/dashboard"
@@ -351,7 +362,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           {t('topnav.text6')}
         </NavLink>
       )}
-      {props.token && sessionData.consented && (
+      {/*props.token && sessionData.consented && (
         <NavLink
           to="/settings"
           className={classes.fullNavBarLink}
@@ -359,7 +370,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         >
           {t('topnav.text7')}
         </NavLink>
-      )}
+      )*/}
 
       {props.token && (
         <NavLink
@@ -383,6 +394,18 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className={classes.fullNavBarButton}
           >
             {t('common.joinUs')}
+          </Button>
+        </NavLink>
+      )}
+      {!props.token && (
+        <NavLink to="/login" className={classes.fullNavBarLink}>
+          <Button
+            style={{ marginLeft: '60px' }}
+            color="primary"
+            variant="outlined"
+            className={classes.navBarLink}
+          >
+            Sign in
           </Button>
         </NavLink>
       )}

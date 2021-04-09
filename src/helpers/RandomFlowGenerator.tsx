@@ -1,8 +1,8 @@
 export const FLOW_OPTIONS = {
-  ONE: 'test_arm_1',
-  TWO: 'test_arm_2',
-  THREE: 'test_arm_3',
-  FOUR: 'test_arm_4',
+  ONE: 'researcher_norms',
+  TWO: 'youth_informed',
+  THREE: 'hybrid',
+  FOUR: 'participant_choice',
 }
 
 export const getRandomFlowOption = () => {

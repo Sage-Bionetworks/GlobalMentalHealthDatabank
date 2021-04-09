@@ -249,7 +249,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: '/eligibility',
+                pathname: '/login',
                 state: { from: location },
               }}
             />

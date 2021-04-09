@@ -30,13 +30,13 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
             <NavLink to="/home" className="footer__navlink">
               Home
             </NavLink>
-            <NavLink to="/about" className="footer__navlink">
+            <NavLink to="/home" className="footer__navlink">
               About
             </NavLink>
-            <NavLink to="/team" className="footer__navlink">
+            <NavLink to="/home" className="footer__navlink">
               Research Team
             </NavLink>
-            <NavLink to="/contact" className="footer__navlink">
+            <NavLink to="/home" className="footer__navlink">
               Contact
             </NavLink>
           </Toolbar>
@@ -45,7 +45,7 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
               The MindKind Study is a research study and does not provide
               medical advice, diagnosis or treatment.
             </div>
-            <div>Copyright Company Name 2021</div>
+            <div>Copyright Mindkind 2021</div>
           </div>
         </div>
       </div>

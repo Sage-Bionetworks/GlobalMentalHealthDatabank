@@ -8,9 +8,15 @@ type ArmFlowTwoProps = {
   step: number
   setStep: Function
   maxSteps: number
+  updateClientData: Function
 }
 
-function ArmFlowTwo({ step, setStep, maxSteps }: ArmFlowTwoProps) {
+function ArmFlowTwo({
+  step,
+  setStep,
+  maxSteps,
+  updateClientData,
+}: ArmFlowTwoProps) {
   return (
     <div className="textStepWrapper">
       <ProgressBar step={step} maxSteps={maxSteps} />
@@ -61,11 +67,12 @@ function ArmFlowTwo({ step, setStep, maxSteps }: ArmFlowTwoProps) {
           }
         />
         <ArrowButtonRight
-          onClick={() =>
+          onClick={() => {
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-          }
+            updateClientData(step)
+          }}
         />
       </div>
     </div>

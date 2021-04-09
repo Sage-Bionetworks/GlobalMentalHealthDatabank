@@ -10,12 +10,14 @@ type FirstCommonConsentProps = {
   step: number
   setStep: Function
   maxSteps: number
+  updateClientData: Function
 }
 
 function FirstCommonConsentSection({
   step,
   setStep,
   maxSteps,
+  updateClientData,
 }: FirstCommonConsentProps) {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
@@ -25,20 +27,22 @@ function FirstCommonConsentSection({
     setSuccessMessage('')
   }, [step])
 
-  const renderArrows = () => {
+  const renderArrows = (preventBack?: boolean) => {
     return (
       <div className="arrowButtonsWrapper">
         <ArrowButtonLeft
+          style={{ visibility: preventBack ? 'hidden' : 'visible' }}
           onClick={() =>
             setStep((current: number) => (current > 1 ? current - 1 : current))
           }
         />
         <ArrowButtonRight
-          onClick={() =>
+          onClick={() => {
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-          }
+            updateClientData(step)
+          }}
         />
       </div>
     )
@@ -152,6 +156,11 @@ function FirstCommonConsentSection({
                     'This study will only require you to answer weekly survey questions.',
                   )
                   setErrorMessage('')
+                  updateClientData(
+                    step,
+                    'howToParticipate',
+                    selectedOption.participate_option,
+                  )
                 } else {
                   setErrorMessage(
                     'This study will only require you to answer weekly survey questions.',
@@ -192,7 +201,7 @@ function FirstCommonConsentSection({
               We store all of the coded study data on a secure cloud server.
             </p>
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
 
