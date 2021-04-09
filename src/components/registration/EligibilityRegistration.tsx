@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { Response, LoggedInUserData } from '../../types/types'
 import { useState } from 'react'
-import Eligiblity from './Eligibility'
+import Eligibility from './Eligibility'
 import SignInWithCode from '../login/SignInWithCode'
 import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
+import { useElegibility } from './context/ElegibilityContext'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -17,10 +18,11 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   history,
   callbackFn,
 }: EligibilityRegistrationProps) => {
-  const [eligible, setEligible] = useState<boolean | undefined>(undefined)
   const [phoneNumber, setPhoneNumber] = useState('')
   const countryCode = window.localStorage.getItem('selected_country') || ''
   const [error, setError] = useState<object>({ status: 0, message: '' })
+
+  const { isEligible } = useElegibility()
 
   const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -38,43 +40,30 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
 
   return (
     <>
-      <div>
-        {eligible === undefined && (
-          <Eligiblity
-            setEligibilityFn={() => {
-              setEligible(true)
-              window.scrollTo(0, 0)
-            }}
-          />
-        )}
-        {eligible && !phoneNumber && (
-          <Registration
-            onSuccessFn={(
-              status: number,
-              data: object,
-              phoneNumber: string,
-            ) => {
-              setPhoneNumber(phoneNumber)
-            }}
-            onErrorFn={(status: number, message?: string) => {
-              setError({
-                message:
-                  'Error when registering, please verify your phone number and country selection',
-                status: status,
-              })
-            }}
-          />
-        )}
-        {eligible && phoneNumber && (
-          <SignInWithCode
-            loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
-              handleLoggedIn(result)
-            }
-            phoneNumber={phoneNumber}
-            countryCode={countryCode}
-          />
-        )}
-      </div>
+      {!isEligible && <Eligibility />}
+      {isEligible && !phoneNumber && (
+        <Registration
+          onSuccessFn={(status: number, data: object, phoneNumber: string) => {
+            setPhoneNumber(phoneNumber)
+          }}
+          onErrorFn={(status: number, message?: string) => {
+            setError({
+              message:
+                'Error when registering, please verify your phone number and country selection',
+              status: status,
+            })
+          }}
+        />
+      )}
+      {isEligible && phoneNumber && (
+        <SignInWithCode
+          loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
+            handleLoggedIn(result)
+          }
+          phoneNumber={phoneNumber}
+          countryCode={countryCode}
+        />
+      )}
     </>
   )
 }

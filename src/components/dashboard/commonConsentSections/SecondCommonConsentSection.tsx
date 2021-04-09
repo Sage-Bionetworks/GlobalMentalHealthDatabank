@@ -141,11 +141,12 @@ function SecondCommonConsentSection({
               }
             />
             <ArrowButtonRight
-              onClick={() =>
+              onClick={() => {
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
-              }
+                updateClientData(step)
+              }}
             />
           </div>
         </div>

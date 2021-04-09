@@ -4,12 +4,9 @@ import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
 import Separator from '../static/Separator'
-import { Redirect } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
-
-type EligibilityProps = {
-  setEligibilityFn: Function
-}
+import { Redirect, NavLink } from 'react-router-dom'
+import { useElegibility } from './context/ElegibilityContext'
+import { FORM_IDS } from '../form/types'
 
 const MAX_STEPS: number = 6
 
@@ -22,15 +19,25 @@ const INITIAL_QUIZ_CHOICES = {
   inAgeRange: '',
 }
 
-export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
-  setEligibilityFn,
-}: EligibilityProps) => {
+export const Eligibility: React.FunctionComponent = () => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
   const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
 
+  const { setIsEligible } = useElegibility()
+
   useEffect(() => {
     setErrorMessage('')
+    if (step > MAX_STEPS) {
+      if (
+        quizChoices.userLocation !== COUNTRIES.OTHER &&
+        quizChoices.hasAndroid &&
+        quizChoices.inAgeRange &&
+        quizChoices.understandsEnglish
+      ) {
+        setIsEligible(true)
+      }
+    }
   }, [step])
 
   window.scrollTo(0, 0)
@@ -43,7 +50,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
           <SageForm
             title={'How did you hear about us?'}
             errorMessage={errorMessage}
-            formId={'howDidYouHear'}
+            formId={FORM_IDS.HOW_DID_YOU_HEAR}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.how_did_you_hear
               if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -70,7 +77,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
               'Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?'
             }
             errorMessage={errorMessage}
-            formId={'supportVerify'}
+            formId={FORM_IDS.SUPPORT_VERIFY}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.support_verify
               if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -94,7 +101,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
           <SageForm
             title={'Where do you currently live?'}
             errorMessage={errorMessage}
-            formId={'countrySelector'}
+            formId={FORM_IDS.COUNTRY_SELECTOR}
             onSubmit={(event: any) => {
               const selectedCountry = event.formData.country_chooser
               if (selectedCountry && Object.keys(selectedCountry).length === 0)
@@ -126,7 +133,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
           <SageForm
             title={'Do you have access to an Android smart phone?'}
             errorMessage={errorMessage}
-            formId={'androidVerify'}
+            formId={FORM_IDS.ANDROID_VERIFY}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.android_verify
               if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -151,7 +158,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
           <SageForm
             title={'Are you comfortable reading and writing in English?'}
             errorMessage={errorMessage}
-            formId={'understandsEnglish'}
+            formId={FORM_IDS.UNDERSTANDS_ENGLISH}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.understands_english
               if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -182,7 +189,7 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
               'Are you between the ages of 18 to 24 years old, or 16-24 years old if you live in the United Kingdom?'
             }
             errorMessage={errorMessage}
-            formId={'ageVerify'}
+            formId={FORM_IDS.AGE_VERIFY}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.age_verify
               if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -202,14 +209,6 @@ export const Eligibility: React.FunctionComponent<EligibilityProps> = ({
   }
 
   if (step > MAX_STEPS) {
-    if (
-      quizChoices.userLocation !== COUNTRIES.OTHER &&
-      quizChoices.hasAndroid &&
-      quizChoices.inAgeRange &&
-      quizChoices.understandsEnglish
-    )
-      setEligibilityFn()
-
     return (
       <div className="quizWrapper">
         <div className="headerWrapper">

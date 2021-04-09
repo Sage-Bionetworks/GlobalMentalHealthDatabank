@@ -4,7 +4,7 @@ import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import SageForm from '../../form/SageForm'
-import { PARTICIPATE_OPTIONS } from '../../form/types'
+import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 
 type FirstCommonConsentProps = {
   step: number
@@ -133,7 +133,7 @@ function FirstCommonConsentSection({
             title={'Which of the following will you be asked to do?'}
             errorMessage={errorMessage}
             infoMessage={successMessage}
-            formId={'howToParticipate'}
+            formId={FORM_IDS.HOW_TO_PARTICIPATE}
             buttonText={successMessage ? 'Next' : undefined}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.how_to_participate
@@ -158,7 +158,7 @@ function FirstCommonConsentSection({
                   setErrorMessage('')
                   updateClientData(
                     step,
-                    'howToParticipate',
+                    FORM_IDS.HOW_TO_PARTICIPATE,
                     selectedOption.participate_option,
                   )
                 } else {
