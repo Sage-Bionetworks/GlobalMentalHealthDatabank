@@ -6,6 +6,7 @@ import SignInWithCode from '../login/SignInWithCode'
 import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
+import { useTranslation } from 'react-i18next'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -23,6 +24,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   const [error, setError] = useState<object>({ status: 0, message: '' })
 
   const { isEligible } = useElegibility()
+  const { t } = useTranslation()
 
   const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -34,7 +36,10 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
         history.push('/consent')
       }
     } else {
-      setError({ message: 'Error attempting login', status: loggedIn.status })
+      setError({
+        message: t('eligibility.loginError'),
+        status: loggedIn.status,
+      })
     }
   }
 
@@ -48,8 +53,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
           }}
           onErrorFn={(status: number, message?: string) => {
             setError({
-              message:
-                'Error when registering, please verify your phone number and country selection',
+              message: t('eligibility.registerError'),
               status: status,
             })
           }}

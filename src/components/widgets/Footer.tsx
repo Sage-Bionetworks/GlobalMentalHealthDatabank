@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Toolbar } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { useTranslation } from 'react-i18next'
 
 type FooterProps = {
   token: string | undefined
@@ -21,6 +22,7 @@ const useStyles = makeStyles(theme => ({
 
 export const Footer: React.FunctionComponent<FooterProps> = props => {
   const classes = useStyles()
+  const { t } = useTranslation()
   return (
     <div>
       <div className="footer">
@@ -28,24 +30,21 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
         <div className="footer__container">
           <Toolbar className={classes.toolBar}>
             <NavLink to="/home" className="footer__navlink">
-              Home
+              {t('footer.home')}
             </NavLink>
             <NavLink to="/home" className="footer__navlink">
-              About
+              {t('footer.about')}
             </NavLink>
             <NavLink to="/home" className="footer__navlink">
-              Research Team
+              {t('footer.contact')}
             </NavLink>
             <NavLink to="/home" className="footer__navlink">
-              Contact
+              {t('footer.team')}
             </NavLink>
           </Toolbar>
           <div className="footer__right-section">
-            <div>
-              The MindKind Study is a research study and does not provide
-              medical advice, diagnosis or treatment.
-            </div>
-            <div>Copyright Mindkind 2021</div>
+            <div>{t('footer.disclaimer')}</div>
+            <div>{t('footer.copyright')}</div>
           </div>
         </div>
       </div>

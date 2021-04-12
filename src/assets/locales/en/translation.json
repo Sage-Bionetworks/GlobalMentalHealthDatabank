@@ -26,451 +26,118 @@
     "zipCode": "Zip code",
     "continue": "Continue"
   },
-  "accountSettings": {
-    "header": "Account Settings",
-    "updateLink": "Update contact information",
-    "shareDataLabel": "Share my study data with qualified researchers for future COVID related work",
-    "shareLearnMore": "<0> You will have the opportunity to share your data with qualified researchers outside of the COVID Recovery Corps. </0> <0> All qualified researchers must be approved by the COVID Recovery Corps study team and will only use de-identified data. This de-identified data does not contain identifiers like name, date of birth, or zip code. </0> <0> These researchers may be from outside the United States and may work for a non-profit institution, commercial drug or medical device companies, or be a private citizen. </0> <0> Sharing your data with qualified researchers is optional and you can change your mind at any time by updating your data sharing options in your profile. </0> <0> But once we share your data we cannot get it back. If you decide to end data sharing, we will not share your future data. </0>",
-    "shareEHRLabel": "Share my electronic health records",
-    "ehrLearnMore": "<0> Sharing your EHR (electronic health records) is optional. </0> <0> Your electronic health record (EHR) is a digital version of your medical health record (which may include information like your doctor's notes from visits, diagnosis information and medications). </0> <0> If you say yes to sharing, we will see data about your health problems, test results, medical procedures, images (such as X-rays), and medicines you take. </0> <0> It may tell us about your mental health, genetic conditions, or use of alcohol or drugs. EHR may contain sexual or infection data, including HIV status. You can say no to sharing your health records and still take part in COVID Recovery Corps. </0> <0> There will be a separate form called a HIPAA Authorization for you to sign if you decide to give us access to your health records. </0>",
-    "withdrawLink": "Withdraw from study",
-    "withdrawConfirm": "<0> Withdrawing from COVID Recovery Corps: </0> <1> If you withdraw, your samples will be destroyed. Your data will not be distributed any more. </1> <1> However, if researchers already have your data or samples for their studies, the COVID Recovery Corps study cannot get it back. </1>",
-    "withdrawYes": "Yes, withdraw study",
-    "withdrawNo": "No, keep me in the study"
+  "eligibility": {
+    "howDidYouHear": "How did you hear about us?",
+    "benefit": "Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?",
+    "where": "Where do you currently live?",
+    "android": "Do you have access to an Android smart phone?",
+    "english": "Are you comfortable reading and writing in English?",
+    "ageRange": "Are you between the ages of 18 to 24 years old, or 16-24 years old if you live in the United Kingdom?",
+    "thanks": "Thank you for your time!",
+    "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
+    "back": "Back to home",
+    "loginError": "Error attempting login",
+    "registerError": "Error when registering, please verify your phone number and country selection",
+    "askPhone": "Before we get started, could we have your number?",
+    "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
+    "myPhone": "My phone number is: ",
+    "createAccount": "Create account"
   },
-  "appointment": {
-    "title": "Appointment confirmation",
-    "text1": "Your lab appointment has been confirmed for:",
-    "text2": "DATE",
-    "text3": "LOCATION",
-    "text4": "View Map",
-    "text5": "<0> You will stop at the main Information desk in the lobby and will be directed to the proper location. Please bring this email on your smartphone or a printout of this email with you to your appointment. </0> <1> As a token of our appreciation, all participants who complete all of the surveys and provide a lab sample will receive a $50 gift card. Please complete the four surveys prior to your lab appointment. </1>",
-    "text6": "<0> If you have a fever, cough, sore throat, shortness of breath, diarrhea, or body aches, you should not come to have your blood drawn. </0> <1> If you need to reschedule your appointment or need assistance, call 212-305-5700 or email<1> COVIDRecoveryCorps@cumc.columbia.edu </1> </1>"
-  },
-  "consent": {
-    "consentSignature": "Consent Signature",
-    "closeConfirmationText": "Are you sure you want to leave the consent process?",
-    "hipaaText1": "Do you want to share your electronic health records with us?",
-    "hipaaText2": "Sharing your EHR (electronic health records) is <1>optional</1>.",
-    "hipaaText3": "<0> Your electronic health record (EHR) is a digital version of your medical health record (which may include information like your doctor’s notes from visits, diagnosis information and medications). </0> <1> If you say yes to sharing, we will see data about your health problems, test results, medical procedures, images (such as X-rays), and medicines you take. </1> <2> It may tell us about your mental health, genetic conditions, or use of alcohol or drugs. EHR may contain sexual or infection data, including HIV status. You can say no to sharing your health records and still take part in COVID Recovery Corps. </2> <3> There will be a separate form called a HIPAA Authorization for you to sign if you decide to give us access to your health records. </3>",
-    "hipaaReview": "Review what it means",
-    "shareYes": "Yes, share",
-    "shareNo": "No, don't share"
-  },
-  "consentEHR": {
-    "header": {
-      "text1": "HIPAA Authorization",
-      "confirmation": "Are you sure you want to leave the HIPPA Authorization process?"
+  "form": {
+    "firstCommonConsent": {
+      "whatAreWeStudying": "What are we studying?",
+      "getAnswers": "We are trying to answer these questions:",
+      "section1": "Are young people willing to use an app to collect information (data) about their mental health? If so, will they use it for 3 months?",
+      "section2": "Are young people willing to share that data for health research? If so, under what conditions?",
+      "section3": {
+        "section1": "This study is funded by The Wellcome Foundation, and lead by Dr.Lara Mangravite in the United States. It is being conducted under the supervision of scientists in South Africa, India, and the United Kingdom. You can",
+        "link": "learn more about our team",
+        "section2": "of researchers on the study website"
+      },
+      "whatWillYouAsk": "What will you ask me to do?",
+      "step1": "1. Finish reading this consent. Ask any questions you have. Sign up.",
+      "step2": "2. Install the MindKind Study App on your phone.",
+      "step3": "3. Open the MindKind Study App to take part.",
+      "week1": "Week 1: answer questions about your health and background. It should take about 15 minutes. You can skip any questions you do not wish to answer.",
+      "week2": "Week 2 - Week 12: answer one or two surveys about your wellbeing. They should take less than 10 minutes each. You can skip any questions you do not wish to answer.",
+      "also": "Also! We will ask for your permission to collect data directly from your phone, like screen-time and step count. We will NEVER collect your exact location. We will NEVER collect what you say or type outside of the app (voice memos, text messages, emails, etc.). If you don’t want to share data from your phone with us that’s okay -- you can still participate in the rest of study.",
+      "quiz": "Which of the following will you be asked to do?",
+      "next": "Next",
+      "answer": "This study will only require you to answer weekly survey questions.",
+      "dataCollection": "Data Collection, Storage & Privacy",
+      "yourData": "Your study data is:",
+      "yourDataApp": "the data you share with us in the MindKind Study App and",
+      "yourDataPhone": "the data you give us permission to collect from your phone.",
+      "weEncrypt": "We will encrypt your study data.",
+      "weTransfer": "We will transfer it to our server.",
+      "replaceName": "Once we get your study data, we will replace your name with a random code.",
+      "combineData": "We will combine your coded study data with coded data from the other people in the study.",
+      "storeCloud": "We store all of the coded study data on a secure cloud server.",
+      "transferAndRights": "Transfer of Data & your data rights.",
+      "transferAway": "We will transfer your study data out of your home country.",
+      "transferToUS": "We may transfer your study data anywhere in the world, including to the United States.",
+      "yourRights": "You have rights when it comes to your data:",
+      "requestData": "You can request a copy of the data you have provided.",
+      "correctData": "You can ask us to correct information about you that is incorrect.",
+      "ifCitizenEU": "If you are a citizen or resident of the European Union, click here to",
+      "ifCitizenEULink": "learn more about your data rights."
     },
-    "welcome": {
-      "text1": "HIPAA Consent",
-      "text2": "Before you decide to share your electronic health record (EHR) with us, let’s learn more about how the COVID Recovery Corp will use this information.",
-      "text3": "The next screens will tell you about why we are asking you to share your EHR information, what types of information is collected in your EHR, and what we will do with this information.",
-      "text4": "Start HIPAA"
+    "armOne": {
+      "title": "How will your study data be used?",
+      "subTitle": "Your study data will be part of a global databank for researchers.",
+      "subText1": "Researchers will be able to download a copy of the data from the databank. They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
+      "subText2": "The researchers who access this data will be from all over the world, and are investigating all kinds of topics. Researchers will use your data to make discoveries. If any of their studies lead to new tests, drugs, or other commercial products, you will not get any profits. These inventions will be the property of the researchers who develop them."
     },
-    "screen1": {
-      "text1": "What is an EHR?",
-      "text2": "Health records are the data collected when you get healthcare. Electronic health records, or EHR, are when these data are kept in secure electronic systems."
+    "armTwo": {
+      "title": "How will your study data be used?",
+      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
+      "subText1": "What topics should researchers using the study data be allowed to study? (Mental health only? Health generally? Any topic?)",
+      "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
+      "subText3": "Is it okay for researchers to make a profit from using the data?",
+      "subText4": "No matter what the result of the vote is, researchers will only be able to access the data in a secure server.",
+      "subText5": "They will not be able to download the study data. Also, they will have to sign an agreement saying they will not try to find out who you are.",
+      "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
     },
-    "screen2": {
-      "text1": "What data is in my EHR?",
-      "text2": "The information in your EHR depends on what kinds of healthcare providers you see. Your EHR tells about the health problems and care you have received. It might list the medicines you take. It might have test results. It might have images, like X-rays. If you have had a medical procedure, notes about it will probably be in your EHR."
+    "armThree": {
+      "title": "How will your study data be used?",
+      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
+      "subText1": "What topics should researchers using the study data be allowed to study? (Mental health only? Health generally? Any topic?)",
+      "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
+      "subText3": "Is it okay for researchers to make a profit from using the data?",
+      "subText4": "No matter what the result of the vote is, researchers will be able to download a copy of the data from the databank.",
+      "subText5": "They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
+      "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
     },
-    "screen3": {
-      "text1": "Are there sensitive data in my EHR?",
-      "text2": "There might be sensitive data in your EHR. For example, about your use of alcohol or drugs. Your EHR might have data about sexually transmitted infections, like HIV. It might have results from genetic (DNA) tests. We will be able to see these data.",
-      "text3": "If you have seen counselors or doctors who treat addictions or substance use disorders, information about your care might be part of your EHR. The same goes for if you have seen counselors or doctors who treat mental health, like depression or bipolar disorder. These data would be about your diagnosis and treatment. We will be able to see these data.",
-      "text4": "One exception are any notes from counselors or doctors in specialized clinics who treat addictions or substance use disorders. These notes are usually private and not part of the EHR. We will only be able to see these notes if they are part of your EHR."
+    "consentSignature": {
+      "title": "Consent Signature",
+      "pleaseCheck": {
+        "text1": "Please",
+        "check": "check the box below ",
+        "if": "if you",
+        "agree": "agree",
+        "takePart": "to take part:"
+      },
+      "agreement": "I have read and understand the information presented in this consent process. All of my questions have been answered. I freely and willingly choose to participate in the MindKind study. By signing this consent, I have not given up any of my legal rights.",
+      "fullName": "Full Name of adult participant:"
     },
-    "screen4": {
-      "text1": "What exactly will you access in my EHR?",
-      "text2": "We will access your whole EHR. That means we will take a copy of all the tests, results, and images in your EHR. This includes data about your diagnoses, medications, symptoms, allergies, and treatments."
-    },
-    "screen5": {
-      "text1": "Why do you want access to my EHR?",
-      "text2": "Your EHR contains important data about your health. We will add your EHR to your COVID Recovery Corps record. Your record will be part of the COVID Recovery Corps scientific database. In order to use this database, researchers will have to be approved by COVID Recovery Corps. Researchers will use this database to look for patterns related to the COVID-19 infection."
-    },
-    "screen6": {
-      "text1": "Who will be sending you my EHR?",
-      "text2": "We will request your EHR from all of your healthcare providers. This includes your regular healthcare providers. It also includes specialists.",
-      "text3": "We may ask for your EHR from many different places. This may include hospitals where you have gotten care."
-    },
-    "screen7": {
-      "text1": "Who will be getting access to my EHR?",
-      "text2": "If you sign this form, COVID Recovery Corps will be getting access to your EHR. We will add your EHR to your COVID Recovery Corps study data. The lead researcher of COVID Recovery Corps is Dr. Wendy Chung. She oversees the whole Research Program.",
-      "text3": "The scientific database will have individual-level information about people in COVID Recovery Corps. Access to this cloud-based database will be controlled. Researchers will have to be approved by COVID Recovery Corps to use this database. These researchers may be from anywhere in the world. They may work for commercial companies, like drug companies. Their research will be on COVID-19 and related viruses.",
-      "text4": "Once your information is shared with COVID Recovery Corps, it may no longer be protected by patient privacy rules (like “HIPAA”). However, it will still be protected by other privacy rules and agreements. These include the rules and agreements that researchers must follow to access the COVID Recovery Corps scientific database."
-    },
-    "screen8": {
-      "text1": "What if I don’t want to give access to my EHR? What if I change my mind?",
-      "text2": "Giving COVID Recovery Corps access to your EHR is voluntary. You get to choose. No matter what you decide, now or in the future, it will not affect your medical care. If you decide to give COVID Recovery Corps access to your EHR, you can change your mind at any time. If you decide you want to stop giving us access, you need to tell us you would like to withdraw from the study.",
-      "text3": "You can tell us through the app or website, or use the contact information at the end of this form to call or write to us. You can update the study’s access to your EHR in your profile settings on the website at any time.",
-      "text4": "However, if researchers have already accessed data from your EHR for their studies, we at COVID Recovery Corps cannot get it back. Also, we will let researchers check the results of past studies. If they need your old data to do this work, we will give it to them."
-    },
-    "screen9": {
-      "text1": "When will my consent expire?",
-      "text2": "Unless you tell us to stop, we will access your EHR until the COVID Recovery Corps study ends to check what has happened to your health after your COVID-19 infection."
-    },
-    "screen10": {
-      "text1": "Who can answer my questions?",
-      "text2": "<0>For general questions,</0> please contact the COVID Recovery Corps study at 212-305-5700 (24 hours) or <2> COVIDRecoveryCorps@cumc.columbia.edu </2>",
-      "text3": "<0> For questions about your rights as a research participant, concerns or complaints, </0> please contact Western IRB (WIRB) at <2>help@WIRB.com</2> at 360-252-2500 or toll-free at 800-562-4789."
-    },
-    "screen11": {
-      "text1": "I know the following information may be gathered from my EHR:",
-      "text2": "All health information pertaining to my medical history, mental or physical condition, and treatment received",
-      "text3": "Mental health diagnosis or treatment information",
-      "text4": "HIV/AIDS testing information",
-      "text5": "Alcohol/drug abuse, diagnosis or treatment information",
-      "text6": "Genetic testing information",
-      "text7": "Information about domestic violence and sexual assault counseling",
-      "text8": "By signing this form, I voluntarily authorize my healthcare providers and organizations to share my EHR with the COVID Recovery Corps Research Study, led by Dr. Wendy Chung, and its partner organization Sage Bionetworks.",
-      "text9": "Full Name of adult participant:",
-      "text10": "Agree"
-    }
-  },
-  "consentinfo": {
-    "closeconfirmationtext": "Are you sure you want to leave the consent process?",
-    "startConsent": "Start Consent",
-    "studyConsent": "Study Consent",
-    "consentSummaryToggle": "consent text summary toggle",
-    "summary": "Summary",
-    "fullText": "Full Text",
-    "consentQuestion": "Consent Question",
-    "welcome": {
-      "text1": "Welcome!",
-      "text2": "Before you decide to join the study, let's learn more about COVID Recovery Corps.",
-      "text3": "The next screens will tell you about the purpose of the study, what we will ask you to do, the benefits and risks of participation. Let's get started!"
-    },
-    "screen1": {
-      "text1": "About the Study",
-      "text2": "COVID Recovery Corps is a <1> research study</1>.",
-      "text3": "The goal of the study is to <1> collect information from participants who have been diagnosed or believe they have had COVID-19</1>.</0>",
-      "text4": "Researchers will use this information to <1> better understand how the body fights COVID-19</1>.</0>",
-      "text5": "This study is being led by Columbia University and Sage Bionetworks. The study is being funded by the Chan Zuckerberg Initiative.",
-      "text6": "This study will <1> last for 12 months </1> from the time you enroll.",
-      "text7": "This study will <1> not provide medical care </1> for COVID-19. Participation in this study is <1> voluntary </1> and you may leave the study at any time.",
-      "text8": "You will be given $50 gift card if you complete all of the surveys and provide biosamples in person they provide samples in person or a $20 gift card if you provide biosamples from home."
-    },
-    "screen2": {
-      "text1": "What will I be asked to do?",
-      "text2": "If you join the study, you will be asked to:",
-      "text3": "<0> Fill out surveys </0> on your experience with COVID-19, your past and current health conditions, and lifestyle.",
-      "text4": "The <1> first 4 surveys </1> may take up to <1> 30-60 minutes total </1>. On a <1> monthly basis</1>, we will contact you to complete a <1> 15-minute survey</1>. ",
-      "text5": "It is ok if you don't remember or know the answer to some of the questions.",
-      "text6": "You can pick \"Prefer not to answer\" for any of the questions.",
-      "text7": "We may ask you to provide the following:",
-      "text8": "A <1>biosample</1> such as blood, pee, spit, or sample from a nose swab. We may contact you to schedule a blood draw or we may mail you an at-home testing kit. We will provide you with instructions and postage to mail the kit back to our lab.",
-      "text9": "If you have a <1>positive test result for COVID-19</1>, we may ask you to upload a picture or a scanned copy of the document to the study website. This is <1>optional</1>.",
-      "text10": "Access to your <1>electronic health record (EHR)</1>. Your EHR contains <1>sensitive information </1>on your health problems, test results, visits to the doctor and medications. This is <1>optional </1>and you can still take part in the study without sharing your EHR.",
-      "text11": "If you decide to share your EHR with us, you will receive a prompt to complete a HIPAA authorization form after this consent process.",
-      "text12": "We also may contact you to invite you to participate in other COVID-related research studies."
-    },
-    "fullTextScreen2": {
-      "text1": "What will I be asked to do?",
-      "text2": "If you decide to join COVID Recovery Corps, we will ask you to answer survey questions. We will use the answers you give us to guess when you might have been infected to decide if and when to ask you to give a biosample such as blood, pee, spit, or sample from a nose swab. You can say no to providing these samples and still take part in COVID Recovery Corps study.",
-      "text3": "If you say yes to giving a blood sample, we may use a needle to draw about 3 tablespoons of blood from your arm. We will contact you to schedule the blood sample.",
-      "text4": "Some people might get a testing kit sent to their house. Those people might use a finger stick to provide a small blood sample on a card. The kit may also ask you to provide a sample by using a nose swab, peeing in a cup, or spitting in a cup. We will provide you with instructions and postage to mail the kit back to our lab.",
-      "text5": "If you have a positive test result for COVID-19, we may ask you to upload a picture or a scanned copy of the document to the study website. This is optional and not required to take part in the study.",
-      "text6": "We also will ask you if you would like to share your electronic health record (EHR) with the study. Your electronic health record is a digital version of your medical health record (which may include information like your doctor's notes from visits, diagnosis information and medications). There will be a separate form called a HIPAA Authorization for you to sign if you decide to give us access to your health records. If you say yes to sharing, we will see data about your health problems, test results, medical procedures, images (such as X-rays), and medicines you take.",
-      "text7": "It is important to remember that health records can contain sensitive data. For example, it may tell us about your mental health, genetic conditions, or use of alcohol or drugs. They may contain sexual or infection data, including HIV status. You can say no to sharing your health records and still take part in COVID Recovery Corps.",
-      "text8": "We may contact you by email or text to remind you to answer the survey or to give you directions about providing a blood sample. We expect it will take you about 30-60 minutes to fill out the first four surveys, and then 15 minutes every month to answer the survey questions to see how you are doing. If you are asked and decide to give a blood sample, that will take additional time."
-    },
-    "screen3": {
-      "text1": "What is the purpose of COVID Recovery Corps?",
-      "text2": "To receive medical treatment for COVID-19",
-      "text3": "To be able to better understand COVID-19",
-      "text4": "This study is a research study to understand COVID-19 better. The study does not provide medical treatment."
-    },
-    "screen4": {
-      "text1": "What are the benefits?",
-      "text2": "You may or may not benefit from volunteering for this research study. This study is<1> not medical treatment</1>.",
-      "text3": "If you are invited to give a biosample, we will provide you with results from your test. These results may let you know if you have been or are now infected with COVID-19.",
-      "text4": "The primary benefit of this study is helping researchers <1> better understand COVID-19 </1>and help future generations."
-    },
-    "fullTextScreen4": {
-      "text1": "What are the benefits?",
-      "text2": "COVID Recovery Corps is not medical treatment. It is a research study. You will not get direct medical benefit from taking part in COVID Recovery Corps. That said, you may indirectly benefit from taking part in COVID Recovery Corps. These results may be interesting to you.",
-      "text3": "You may learn about your health. This might include results about your samples and if you have been or are now infected with COVID-19. Knowing about your COVID-19 status might be a benefit to you.",
-      "text4": "You will be able to share your COVID Recovery Corps study information with your healthcare provider if you choose. You will have the option to learn about additional study opportunities. Finally, you will be helping researchers and other people make discoveries that may help each other as well as future generations."
-    },
-    "screen5": {
-      "text1": "What are the risks?",
-      "text2": "The main risk of participating in this study is to your <1> privacy</1>.",
-      "text3": "We understand you are sharing and allowing us to collect sensitive health information from you.",
-      "text4": "We take great care to <1> protect your information</1>. However, if there is a <1>data breach</1> it may be possible to <1>identify you and your sensitive information</1> may be seen by someone without your permission. This risk is <1> low but it is not zero</1>.",
-      "text5": "COVID-19 is also a risk to public health. <1> Thus we may have to give out your data if public health authorities demand it. </1>",
-      "text5a": "If you are invited to provide a biosample to the lab, the lab will need you to provide <1>the name and address of your employer</1>. This is a New York State requirement.",
-      "text5b": "We <1>cannot control</1> any of the information you provide <1>directly to the lab</1> if you are tested for COVID.",
-      "text6": "If you give a <1>blood sample</1>, the most common risks are <1>brief pain and bruising</1>. Some people may become dizzy or feel faint. There is also a small risk of infection.",
-      "text7": "If you are asked to provide a sample from a <1> nose  or fecal swab </1>you may feel <1> brief discomfort</1>."
-    },
-    "fullTextScreen5": {
-      "text1": "What are the risks?",
-      "text2": "The main risk of taking part in COVID Recovery Corps is to your privacy. A data breach is when someone sees or uses data without permission. If there is a data breach, someone could see or use the data we have about you. Even without your name, there is a chance someone could figure out who you are. They could misuse your data.",
-      "text3": "Your privacy is very important to us. We will take great care to protect it. Here are a few of the steps we will take:",
-      "text4": "Data we have about you will be stored on protected computers. We will limit and keep track of who can see these data.",
-      "text5": "We will limit who is allowed to see information that could directly identify you, like your name or date of birth.",
-      "text6": "In order to work with your health data, researchers must sign a contract stating they will not try to find out who you are.",
-      "text7": "We will tell you if there is a data breach.",
-      "text7a": "If you are invited to provide a biosample to the lab, the lab will need you to provide the name and address of your employer. This is a New York State requirement. This information (employer’s name and address) will not be sent or stored by the Covid Recovery Corps study.",
-      "text7b": "We cannot control any of the information you provide directly to the lab if you are tested for COVID.",
-      "text8": "To help us protect your privacy, we received a Certificate of Confidentiality from the National Institutes of Health (NIH). With this Certificate, we cannot be forced to provide information that may identify you, even by a court subpoena, in any federal, state, or local civil, criminal, administrative, legislative, or other proceedings. We will use the Certificate to resist any demands for information that would identify you, except as explained below",
-      "text9": "The Certificate of Confidentiality does not stop you or a member of your family from telling others about yourself or your involvement in this research. If an insurer, employer, or other person gets your written consent to receive research information, then we cannot use the Certificate to withhold that information.",
-      "text10": "The Certificate cannot be used to resist a demand for information from representatives of the United States Government that is used for auditing or evaluation of projects they are responsible for overseeing or for information that must be provided in order to meet the requirements of the federal Food and Drug Administration (FDA).",
-      "text11": "You should also know that this Certificate does not protect you from our responsibility to report certain communicable diseases, suspected child abuse, or danger of physical or mental harm, to appropriate agencies or authorities.",
-      "text12": "We believe the chance of this is very small, but it is not zero.",
-      "text13": "We will gather data from you through the COVID Recovery Corps website. There is a risk to your privacy whenever you use the website.",
-      "text14": "Researchers will use basic facts like your race, ethnic group, and sex in their studies. These data help researchers learn if the things that affect health are the same for different groups of people. These studies could one day help people of the same race, ethnic group, or sex as you. It is important to have a diverse group of individuals in COVID Recovery Corps to make sure the results will help everyone. However, there is a risk that someone could use this data to support harmful ideas about certain groups.",
-      "text15": "If you give a blood sample, the most common risks are brief pain and bruising. Some people may become dizzy or feel faint. There is also a small risk of infection. If you are asked to provide a sample from a nose or fecal swab you may feel brief discomfort."
-    },
-    "screen6": {
-      "text1": "What is the primary risk in this study?",
-      "text2": "Privacy",
-      "text3": "There is no risk in participating in this study",
-      "text4": "We will do our best to protect your privacy. But we can’t guarantee your privacy. It is possible that public health authorities will ask to see the data.",
-      "text5": ""
-    },
-    "screen7": {
-      "text1": "What will you do with my data and samples?",
-      "text2": "We will use the data and samples to <1> make discoveries about COVID-19</1>.",
-      "text3": "We will study the differences in symptoms people have over time and why some people responded differently than others.",
-      "text4": "To protect your data, we will <1> use a code to identify your data </1> and samples rather than your name or other personal information. This <1>code cannot be used to directly identify you</1>.",
-      "text5": "This coded data is known as <1> de-identified data</1>. Only key people from our study team can link your identity to your study data.",
-      "text6": "Your data and samples will be <1> securely stored and controlled by the COVID Recovery Corps study</1>. Your data will be stored in the COVID Recovery Corps study database and your samples will be stored in the study's biobank."
-    },
-    "fullTextScreen7": {
-      "text1": "What will you do with my data and samples",
-      "text2": "We will store your data and samples securely, along with the data and samples from all the other people who take part in COVID Recovery Corps. Your data will be stored in the COVID Recovery Corps database and the COVID Recovery Corps Biobank will store your biosamples. We will use the data and samples to make discoveries about COVID-19. We will study the  differences in symptoms people have over time and why some people  responded differently than others. We will study how different people’s  bodies fought the virus with their immune system. We will also study changes in health after people have recovered from COVID-19.",
-      "text3": "We will create a scientific database and a biobank for the COVID Recovery Corps study. The scientific database will have individual-level data and the biobank will store your samples like your blood, and pee.",
-      "text4": "To protect your data, we will use a code to identify your data and samples rather than your name or other personal information. This code cannot be used to directly identify you. This coded data is known as de-identified data.Only key people from our study team can link your identity to your study.",
-      "text5": "Access to this database will be controlled. Researchers will have to be approved by COVID Recovery Corps and will use only de-identified or coded data."
-    },
-    "screen8": {
-      "text1": "Sharing your data with future researchers",
-      "text2": "You will have the <1> opportunity to share your data with qualified researchers </1> outside of the COVID Recovery Corps.",
-      "text3": "All qualified researchers must be approved by the COVID Recovery Corps study team and will only use de-identified data.",
-      "text4": "This de-identified data does not contain identifiers like name, date of birth, or email address.",
-      "text5": "These researchers may be from <1>outside the United States</1> and may work for a <1> non-profit institution, commercial drug or medical device companies, or be a private citizen </1>.",
-      "text6": "Sharing your data with qualified researchers is optional and you can change your mind at any time by updating your data sharing options in account settings.",
-      "text7": "But once we <1>share your data we cannot get it back</1>. If you decide to end data sharing, we will not share your <1>future data</1>."
-    },
-    "fullTextScreen8": {
-      "text1": "Sharing your data with future researchers",
-      "text2": "The de-identified data that you donate for COVID Recovery Corps study could be used for other COVID- related research. You get to decide if you want to share your coded study data with qualified researchers worldwide. If you give permission, sharing will be done without additional informed consent.",
-      "text3": "We have rules to qualify researchers. Qualified researchers must register on Synapse, our data analysis platform. To access the data, qualified researchers must write a short statement about their research. The research could be about any topic. The research could be on topics you disagree with or find offensive. We post the researchers’ statements on Synapse for anyone to read. They must sign an oath to use the data ethically and do no harm. Researchers will not be able to easily figure out your identity using your coded study data.",
-      "text4": "Anyone in the US or abroad can qualify to be a qualified researcher. The person could be from a non-profit institution, commercial drug or medical device companies, or be a private citizen.",
-      "text5": "You cannot take back your data once it is used in research. Your data will not be destroyed or deleted. Once we share your data, there isn’t a way for us to delete it or take it back."
-    },
-    "screen9": {
-      "text1": "I decided to share my data broadly with qualified researchers and now I want to stop. What happens to the data I have already shared?",
-      "text2": "The study will destroy or delete my data",
-      "text3": "The study will not share my future data",
-      "text4": "If you decide to end your data sharing with qualified researchers, we will not share your future data. But the data we have already shared with qualified researchers, we unfortunately cannot get back."
-    },
-    "screen10": {
-      "text1": "Will I receive any form of compensation for participating in the study?",
-      "text2": "You will be given a <1>$50 gift card</1> if you complete all of the surveys and provide biosamples in person. If you complete all your surveys and provide a biosample with an at-home kit will receive a <1>$20 gift card</1>.",
-      "text3": "You will not receive any profit from this or future research."
-    },
-    "fullTextScreen10": {
-      "text1": "Will I receive any form of compensation for participating in the study?",
-      "text2": "You will be given a $50 gift card if you complete all of the surveys and provide biosamples in person. If you complete all your surveys and provide a biosample with an at-home kit will receive a $20 gift card.",
-      "text3": "Researchers will use your data to make discoveries. If any of their studies lead to new tests, drugs, or other commercial products, you will not get any profits. These inventions will be the property of the researchers who develop them."
-    },
-    "screen11": {
-      "text1": "Not Medical Care",
-      "text2": "The COVID Recovery Corps is a <1>research study</1>.",
-      "text3": "The study does <1>not</1> provide <1> medical care, medical advice</1> or <1> treatment</1>.",
-      "text4": "If you have <1>questions or concerns</1> related to your health, you should <1>contact your doctor</1>."
-    },
-    "fullTextScreen11": {
-      "text1": "Not Medical Care",
-      "text2": "The COVID Recovery Corps study is a research study. You will not receive medical care, medical advice or treatment by taking part in this study.",
-      "text3": "If you have questions or concerns related to your health, you should contact your doctor."
-    },
-    "screen12": {
-      "text1": "Leaving the study",
-      "text2": "Taking part in COVID Recovery Corps is <1> voluntary</1>. You can choose to join or not.",
-      "text3": "No matter what you decide, now or in the future, it will <1> not affect how your doctor treats you</1>.",
-      "text4": "If you decide to withdraw (quit) the study, you can tell us by <1> going to the website and by clicking the <1> \"Withdraw from study\" section in account settings. You can also use our contact information to email, write or call to us. </1>",
-      "text5": "If you withdraw, <1>your samples will be destroyed</1>. Your <1>data will not be distributed any more</1>.",
-      "text6": "However, if researchers already have your data or samples for their studies, the COVID Recovery Corps study cannot get it back."
-    },
-    "fullTextScreen12": {
-      "text1": "Leaving the study",
-      "text2": "Taking part in COVID Recovery Corps is voluntary. You can choose to join or not. No matter what you decide, now or in the future, it will not affect how your doctor treats you.",
-      "text3": "If you decide to join COVID Recovery Corps, you can change your mind at any time. If you decide you want to withdraw (quit), you need to tell us. You can tell us by going to the website and clicking the “Withdraw Study” section in your profile setting. You can use our contact information to email or write to us.",
-      "text4": "If you withdraw, your samples will be destroyed. Your data will not be distributed any more.",
-      "text5": "However, if researchers already have your data or samples for their studies, the COVID Recovery Corps study cannot get it back. Also, we will let researchers check the results of past studies. If they need your old data to do this work, we will give it to them.",
-      "text6": "Even if you withdraw, we will keep your name and contact information. We keep this information so we can follow U.S. research laws and regulations."
-    },
-    "screen13": {
-      "text1": "Things you should consider before you say yes",
-      "text2": "Before you say yes to joining the study, please consider the following:",
-      "text3": "You will<1> not receive any profit</1> from this or future research.",
-      "text4": "Your study information <1> will not be shared with insurance companies or your doctor without your permission. </1>",
-      "text5": "The risk of injury is low in this study. You will <1> not be compensated for injury</1>.",
-      "text6": "If you are invited to <1>provide a biosample to the lab</1>, the lab will need you to provide the <1>name and address of your employer</1>. This is a <1> New York State requirement</1>.",
-      "text7": "We cannot control any of the information you provide <1>directly to the lab</1> if you are tested for COVID."
-    },
-    "fullTextScreen13": {
-      "text1": "Things you should consider before you say yes",
-      "text2": "Researchers will use your data to make discoveries. If any of their studies lead to new tests, drugs, or other commercial products, you will not get any profits. These inventions will be the property of the researchers who develop them.",
-      "text3": "We will keep your data private, and even if public health authorities access this data about COVID, it cannot be transferred to an insurance company or your healthcare provider without your permission.",
-      "text4": "If you are invited to provide a biosample to the lab, the lab will need you to provide the name and address of your employer. This is a New York State requirement. We cannot control any of the information you provide directly to the lab if you are tested for COVID.",
-      "text4a": "If you think you have been injured because of taking part in COVID Recovery Corps, contact us using the information at the end of this form. If we find that you were injured as a direct result of taking part in COVID Recovery Corps:",
-      "text5": "Beyond your immediate medical care, we will not pay for your injury.",
-      "text6": "If you need follow-up care to treat your injury, you and/or your insurance will have to pay for it.",
-      "text7": "If you have any long-term costs to treat your injury, you and/or your insurance will have to pay them.",
-      "text8": "You do not give up any of your legal rights if you take part in COVID Recovery Corps."
-    },
-    "screen14": {
-      "text1": "How to contact us?",
-      "text2": "<0>For general questions,</0> please contact the COVID Recovery Corps study at 212-305-5700 (24 hours) or <2> COVIDRecoveryCorps@cumc.columbia.edu </2> .",
-      "text3": "<0> For questions about your rights as a research participant, concerns or complaints, </0> please contact Western IRB (WIRB) at <2>help@WIRB.com</2> at 360-252-2500 or toll-free at 800-562-478."
-    },
-    "screen15": {
-      "text1": "If you understand and agree to the benefits and risk of participating in this study, please sign below.",
-      "text2": "I understand and agree to the following:",
-      "text3": "My data will be stored in the COVID Recovery Corps databases.",
-      "text4": "If I give a biosample, it will be stored at the COVID Recovery Corps biobank. This includes my DNA or genetic material. Information that researchers learn by studying my samples will be stored in the COVID Recovery Corps databases.",
-      "text5": "Researchers will do COVID-19 studies using the COVID Recovery Corps databases and biobank. They may also do research on other health conditions that are related to how the body responds to COVID-19.",
-      "text6": "If my sample is used up, I may be asked to give another biosample. I can say yes or no.",
-      "text7": "My contact information may be used to tell me about other COVID-related studies.",
-      "text8": "I can withdraw (quit) at any time. There is no penalty if I withdraw.",
-      "text9": "Would you like to share your study data with other qualified researchers for future research on COVID related work?",
-      "text10": "Yes, share my study data with qualified researchers for future COVID related work.",
-      "text11": "No, only use my study data for this (COVID Recovery Corps) study only.",
-      "text12": "By default, you are sharing your data with this study only.",
-      "text13": "Please check the box below if you agree to take part:",
-      "text14": "I have read this consent form (or someone read it to me). I understand the information in this form. All of my questions have been answered. I freely and willingly choose to take part in COVID Recovery Corps study.",
-      "text15": "Full Name of adult participant",
-      "text16": "Agree"
-    },
-    "learnMoreScreen15": {
-      "text1": "You will have the opportunity to share your data with qualified researchers outside of the COVID Recovery Corps. All qualified researchers must be approved by the COVID Recovery Corps study team and will only use de-identified data. This de-identified data does not contain identifiers like name, date of birth, or zip code. These researchers may be from outside the United States and may work for a non-profit institution, commercial drug or medical device companies, or be a private citizen.",
-      "text2": "Sharing your data with qualified researchers is optional and you can change your mind at any time by updating your data sharing options in your profile. But once we share your data we cannot get it back. If you decide to end data sharing, we will not share your future data."
-    }
-  },
-  "consentSent": {
-    "title": "Thank you for joining the COVID Recovery Corps !",
-    "viewDashboard": "View Dashboard",
-    "beginStudy": "Begin Study",
-    "textConsent": "We just sent you a copy of your study consent.",
-    "textEHR": "We just sent you a copy of your HIPAA Authorization."
-  },
-  "contact": {
-    "title": "Contact Us",
-    "text1": "For information about participating and questions related to the study, visit the <1>FAQ</1> section of the site. If you have additional questions, please send us a message.",
-    "text2": "<0> COVID-19 Recovery Corps is a research study. This study does not provide medical advice, diagnosis, or treatment of any kind. If you have questions about your health, talk to your healthcare team. Do not use the information provided on the study website or email correspondence in place of advice from your healthcare team. </0> <1> Sage Bionetworks, Columbia University, Survivor Corps, and The Chan Zuckerberg Initiative are not liable or responsible for any advice, course of treatment, diagnosis or any other information, or services you obtain through the study. </1> <2> If you have any questions at any time before, during, or after the study, contact: </2>",
-    "text3": "Dr. Wendy Chung, MD, PhD, Principal Investigator of the study. If you have any questions or need assistance, you can call <1>212-305-5700</1> or email <3></3> <4> COVIDRecoveryCorps@cumc.columbia.edu </4> .",
-    "text4": "Privacy",
-    "text5": "For questions, comments, or requests regarding the <1>privacy policy</1> or our processing of your information, please contact: <3></3> <4> privacypolicy@sagebionetworks.org </4> .",
-    "text6": "Independent Review",
-    "text7": "The Western Institutional Review Board (WIRB) oversees the COVID Recovery Corps study. Contact WIRB if you have questions or concerns about your rights as a participant in this study.",
-    "text8": "<0>Western Institutional Review Board® (WIRB®)</0> <1></1> 1019 39th Avenue SE<3></3> Suite 120<5></5> Puyallup, WA 98374-2115<7></7> <8>800-562-4789</8> or <10>360-252-2500</10> <11></11><12></12> <13>Help@wirb.com</13>"
-  },
-  "cookieBanner": {
-    "text1": "This site uses Cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy."
-  },
-  "dashboard": {
-    "text1": "profile",
-    "text2": "Contact Information",
-    "text3": "Survey 1",
-    "text4": "Tell us about yourself",
-    "text5": "Survey 2",
-    "text6": "Recent COVID Experience",
-    "text61": "Test Results",
-    "text62": "Upload COVID-19 Test Result",
-    "text7": "Survey 3",
-    "text8": "Medical History",
-    "text9": "Survey 4",
-    "text10": "More COVID Experience",
-    "intro1": "<0>Study surveys</0><1>Your responses to the information below will help researchers learn more about COVID-19.</1> <1>If you feel uncomfortable about any of the questions, you can always click \"Prefer not to answer\".</1><1>Thank you for your time.</1>",
-    "text11": "Minimum surveys required for lab invites",
-    "min": "min",
-    "thankYou": {
-      "surveysDoneTitle": "Thank you for completing the surveys!",
-      "surveysDoneText": "<0>You now qualify for the antibody test waitlist!</0><0>To receive a gift card, you will need to be invited to an antibody test and provide a biosample.</0><0>We cannot guarantee testing invites for all participants at this time.</0><0>Please note that at-home test kits won’t be available until after December 2020.</0>",
-      "selectedHomeTestText": "<0>Mailing Address for Home Kit</0><1>Should you be selected, we will be mailing the kit to this address below. Please edit if necessary before submitting your survey. </1>",
-
-      "selectedTestText": "<0>If you are selected to receive an antibody test, you will receive an email. </0>",
-      "selectedNoTestTitle": "Thank you for your contribution to the COVID Recovery Corps Study!",
-      "selectedNoTestText": "<0>As we learn more, we will provide updates on the results of the study in newsletters, online presentations, and community meetings.</0>",
-      "invitedTitle": "You’re invited!",
-      "invitedText1": "We sent an invitation to schedule a lab appointment to: {{email}}.",
-      "invitedText2": "<0>Please check your email and junk mail folder.</0><1>If you have any questions, please call 212-305-5700 or email: <0>COVIDRecoveryCorps@cumc.columbia.edu</0>.</1>",
-      "missedTitle": "Looks like like we missed you... ",
-      "missedText": "If you would like to re-schedule a lab appointment, please call 212-305-5700 or email: <0>COVIDRecoveryCorps@cumc.columbia.edu</0>. ",
-      "cancelledTitle": "Your lab appointment has been canceled.",
-      "cancelledText": "If you would like to re-schedule a lab appointment, please call 212-305-5700 or email: <0>COVIDRecoveryCorps@cumc.columbia.edu</0>. ",
-
-      "addressUdateLink": "<0>Please update your address under </0> <1>Contact Information</1>"
-    }
+    "youAreInStep": "You are in step",
+    "submit": "Submit",
+    "chooseAnOption": "You must choose an option"
   },
   "footer": {
+    "copyright": "Copyright Mindkind 2021",
+    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
     "dashboard": "Dashboard",
     "about": "About",
-    "meet": "Meet the Researchers",
+    "home": "Home",
+    "team": "Research team",
     "faq": "FAQs",
-    "contactUs": " Contact Us",
+    "contact": " Contact",
     "privacy": "Privacy Policies",
     "settings": "Account Settings",
     "login": "Log in",
     "join": "Join Us",
     "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
-  },
-  "globalAlert": {
-    "withdrawn": "<0>We are sorry to see you go!</0><1></1><2>You are now withdrawn from the COVID Recovery Corps Study.</2>",
-    "cancelledConsent": "You will need to complete the consent process before you can join the study.",
-    "startConsent": "Start consent",
-    "booked": "Your lab appointment to get your blood drawn has been confirmed. ",
-    "viewDetails": "View details"
-  },
-  "eligibility": {
-    "title": "Eligibility",
-    "error18": "To be eligible to take part in the MindKind Study, you must be over 16.",
-    "errorCons": "To be eligible to take part in the MindKind Study, you must be able to provide consent for yourself.",
-    "errorCovid": "To be eligible to take part in the MindKind Study, you must have an Android device.",
-    "errorZip": "Invalid zip code.",
-    "text1": "To be eligible to take part in the MindKind Study, you must fulfill the following:",
-    "text2": "I am 16 years of age or older",
-    "text3": "I am able to provide consent for myself",
-    "text4": "I have an Android device",
-    "text5": "I live in one of the eligible locations"
-  },
-  "faqs": {
-    "title": "FAQs",
-    "text1": "What is the COVID Recovery Corps study?",
-    "text2": "COVID Recovery Corps is a research study. If you join and provide consent, we will gather data about you. We will ask you to fill out a survey. We will also invite you to share your electronic health record (EHR)) with us -- this is optional and not required for participation in the study. We might invite you to give a biosample (blood, urine or spit). Researchers will use these data to study how the body fights COVID-19. Researchers may also use it to study how other diseases like high blood pressure, diabetes, and lung diseases may be connected to how the body responds to COVID-19.",
-    "text3": "Researchers who wish to access the information that you provide for research purposes will need to be approved by COVID Recovery Corps prior to using these data. Researchers may be from anywhere in the world. They may work for research labs, medical institutions, or commercial companies, like drug companies. Their research will be on COVID-19 and related viruses.",
-    "text4": "What is the goal of this study?",
-    "text5": "The goal of this study is to learn more about how the body fights COVID-19. We also want to understand how other diseases like high blood pressure, diabetes, and lung diseases may be connected to how the body responds to COVID-19.",
-    "text41": "How do I participate in the study?",
-    "text51": "<1>If you decide to join COVID Recovery Corps, we will ask you to answer survey questions. We will use the answers you give to guess when you might have been infected.</1> <1> You may be asked to provide a biosample (such as blood and spit) to test if you have antibodies. If you are invited to provide a biosample, we will ask you if you would like to visit a lab location or be put on the waitlist for an at-home lab testing kit. </1><1> We will contact you on a periodic basis to ask you to fill out a follow-up survey on your current and your COVID-related symptoms. </1>",
-    "text6": "Who is eligible to participate?",
-    "text7": "We are committed to protecting your privacy. Except as required by law, you will not be identified by your name or by any other direct personal identifier. Your contact information, including your name and e-mail address will be stored separately from the study data. We will use a random code number instead of your name on all your study data. This code cannot be used to directly re-identify you. Information about the code will be kept in a secure system. Only a small team of the study staff and IT staff will have the key to associate your coded study data to your name and account information. Your coded study data (without your name) will be encrypted and stored on a secure cloud server to prevent improper access. Sage, Columbia University, the Chan Zuckerberg Initiative, Survivor Corps, or anyone else affiliated with the COVID Recovery Corps will never sell, rent, or lease your contact information.",
-    "text8": "I have never been diagnosed with COVID-19. Can I participate?",
-    "text9": "We are enrolling participants who have been diagnosed or believe they were infected with COVID-19.",
-    "text10": "Are there any costs for me to participate?",
-    "text11": "There are no direct or indirect costs to taking part in the COVID Recovery Corps.",
-    "text12": "<0>You are eligible to participate in the study, if you:</0> <1> <0>Are 18 years old or older and are able to consent to participate in the study</0> <1>Have access to email or are able to receive text messages</1> <2>Have been diagnosed with or believe you have had COVID-19</2> <3> Read or understand English or Spanish </3> </1>",
-    "text13": "Who is running the COVID Recovery Corps study?",
-    "text14": "The COVID Recovery Corps study is being led by Columbia University and Sage Bionetworks and is supported by the Chan Zuckerberg Initiative. The <1>Principal Investigators</1> on this study are Dr. Wendy Chung at Columbia University and Dr. Lara Mangravite at Sage Bionetworks. This study is funded by the Chan Zuckerberg Initiative.",
-    "text15": "Who else will have access to my study data?",
-    "text16": "<0>We will create a scientific database and a biobank for the COVID Recovery Corps study. The scientific database will have individual-level data and the biobank will store your biosamples like your blood and urine.</0> <1>Access to this database will be controlled. Researchers will be approved by COVID Recovery Corps prior to using these data and will use only de-identified data.</1> <2>The U.S. and state governments might mandate access to the data so they can use it for public health activities. This includes law enforcement. We may be required to provide the data if they ask, even though we have a Certificate of Confidentiality from the U.S. government.</2> <3>We may offer you the chance to donate your data to other databases or researchers. You will get to decide if you want to share your data beyond this study.</3>",
-    "text151": "Will I have access to my test results?",
-    "text161": "Yes, we will provide you with access to your test results and information on what the results may mean.",
-    "text20": "Will you share back with me what you learn from the study?",
-    "text21": "Yes, as the study makes discoveries, the results will be shared with all participants. We also hope to provide periodic updates to participants through newsletters, webinars and public meetings.",
-    "text17": "How is my privacy protected?",
-    "text18": "Will participating in this study affect my insurance or medical services?",
-    "text19": "The COVID Recovery Corps is an observational study and not a clinical trial. We will not be asking you to change what you do or to take a specific medication. This study will not affect your medical insurance or healthcare.",
-    "text181": "Will I receive any form of compensation for participating in the study?",
-    "text191": "<0>Yes, participants who complete the surveys and provide a biosample by visiting a lab will receive a $50 gift card.</0> <0>For participants who provide a biosample using an at-home testing kit, you will receive a $20 gift card.</0> <0> Please remember to complete your surveys before your lab appointment or mailing back your at-home testing kit.</0>",
-    "text22": "I have a question that isn't answered in this FAQ. Who do I contact?",
-    "text23": "You can call <1>212-305-5700</1> or email <3>COVIDRecoveryCorps@cumc.columbia.edu</3>."
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -494,54 +161,6 @@
     "text16": "Learn with us along the way",
     "text17": "If you are asked to provide a sample, we will test the sample for antibodies related to COVID-19 infection, using an antibody test approved by the New York State Department of Health. We will share your test results with you, along with information about what those results may mean. As we learn more about the impact of COVID-19 across study participants, we will share regular updates with the broader scientific and patient community. We may also ask if you are interested in joining other related studies. For instance, some participants may choose to be notified of opportunities to donate plasma and help those still fighting for survival from COVID-19.",
     "text18": "Together, we can fight COVID-19."
-  },
-  "learningHub": {
-    "title": "COVID-19 Learning Hub",
-    "text1": "<0> There’s a lot we need to learn about COVID-19. Why does it affect people differently? How long do symptoms last? </0> <1> Are there long lasting side effects? As we find answers, we will post them here. We will also send out information in newsletters and plan to host online discussions with scientists and healthcare providers. </1>",
-    "nav0": "What we know so far about COVID-19",
-    "nav1": "Types of COVID-19 Tests",
-    "nav2": "The immune response to SARS-CoV-2.",
-    "nav3": "What COVID-19 positive people can do now.",
-    "nav4": "What COVID-19 negative people can do now.",
-    "nav5": "FAQ about serology results",
-    "lh0": {
-      "title": "What we know so far about COVID-19",
-      "text1": "<0> COVID-19 is a new infectious disease, caused by the SARS-CoV-2 virus (a Corona virus). It first occurred at the end of 2019 in China and has since spread across the globe. </0> <1> For the most part COVID-19 is an airborne disease, which means that it is spread from one person to another through droplets from an infected person when they exhale, talk, sing, sneeze or cough. </1> <2> This is why wearing face masks, washing your hands, and keeping a social distance of 6 feet (or 2 meters) significantly reduces the chances of spreading the virus. </2>",
-      "text2": "<0> Some people who get infected with this virus do not develop any symptoms and are not aware they are infected. They are called “asymptomatic carriers” who can still spread the virus. </0> <1> Others who become infected with the virus develop a disease and have symptoms such as coughing, sneezing, shortness of breath, fever, chills, body aches, weakness, and/or loss of smell and taste. These symptoms can last for days. </1> <2> A small proportion of people who are infected develop more severe difficulties in breathing, requiring hospitalisation and help breathing with oxygen, medication, or a ventilator. </2> <3> We currently do not understand why people respond to the virus differently. There is currently no vaccine and there is no cure although there is growing evidence that some existing drugs and therapies may be helpful to people who develop the severe form of COVID-19. </3>"
-    },
-    "lh1": {
-      "title": "Types of COVID-19 Tests",
-      "p1": "There are two types of COVID-19 tests: the PCR (swab from the nose) test and serology (blood test) test.",
-      "subhead1": "PCR test (Swab from the nose)",
-      "text1": "The PCR test is performed by taking a swab from the nose to detect the presence of the virus. If the PCR test is positive, this means that the person currently carries has the virus in the body. Rarely, the test may be a “false negative” which means that the person has the virus in their body, but there was not enough virus in the swab taken from the nose for the test to detect it.",
-      "subhead2": "Serology test (blood test)",
-      "text2": "The other type of test is the serology test to detect antibodies.  This is the test included in this study.  A positive serology test means you likely had the SARS-CoV-2 virus in your body in the past. If the serology test detects antibodies to SARS-CoV-2 this is not a guarantee you are protected from getting COVID-19 again but it does make it less likely. You should still wear a face mask, wash your hands, and keep a safe social distance."
-    },
-    "lh2": {
-      "title": "The immune response to SARS-CoV-2.",
-      "text": "<0>People who get infected with the SARS-CoV-2 virus mount an immune response against it. There are 2 types of immune response to an infection: non-specific and specific. </0><1> The non-specific immune response is a first line response and is not directed specifically to the virus. </1><2> The specific immune response is a second line response and is specific to the virus. The specific immune response to the virus relies on the body’s production of specific antibodies (also known as immunoglobulins). The antibodies are an indicator that there was a prior infection with the virus. The antibodies may also be protective from future re-infection with the virus. We are not sure yet which antibodies protect individuals from infection or how long they protect you.</2>"
-    },
-    "lh3": {
-      "title": "What COVID-19 positive people can do now.",
-      "text": "If a person has antibodies in their blood, these antibodies may help a person who is sick with COVID-19 fight the infection. You can donate the part of your blood containing antibodies to give to someone who is sick with COVID-19 to help fight the infection. This is called “convalescent plasma donation.”"
-    },
-    "lh4": {
-      "title": "What COVID-19 negative people can do now.",
-      "text": "<0>For people with a negative serology test, what do I do now? </0><1> People who have a negative serology test and never had a positive PCR test, most likely were not infected with the SARS-CoV-2 virus. You should wear a face mask, wash your hands, and keep a safe social distance to keep from getting infected. </1><2> Vaccines to the SARS-CoV-2 virus are being developed.  The purpose of a vaccine is to help the body mount an immune response to the virus without being infected with the virus.  This immune response can protect against future infection without the risk of infection. </2><3> Vaccines undergo a lengthy development process including careful studies of safety and efficacy. While currently there is no vaccine for COVID-19, the FDA has prioritized clinical trials for vaccine development and is supporting efforts for large scale manufacturing when a </3>"
-    },
-    "lh5": {
-      "title": "FAQs about serology results:",
-      "q1": "Can I have a positive and then a negative PCR result?",
-      "a1": "Yes, this would mean that you had an active infection when the PCR test was positive and then cleared the virus from your body which is why the PCR test is later negative. ",
-      "q2": "Can I have a negative and then a positive PCR result?",
-      "a2": "Yes. This would mean that at the time you were tested initially you either were not infected, the nasal swab was not taken properly, or that there was not enough virus in your nose to detect it. The second PCR test detected the presence of the virus, and that means the infection was/is active at the time of the second test. ",
-      "q3": "I had symptoms and a positive PCR test for the virus a few weeks ago. How is it possible that I don’t have antibodies? ",
-      "a3": "The immune response and antibody production change over time.  We are not sure how long the body continues to produce antibodies after infection, but at some point the antibody levels dropped to under the detection levels of the serology test. ",
-      "q4": "If I have antibodies, am I protected from another infection with Coronavirus?",
-      "a4": "The protection conferred by the antibodies to the virus is under investigation. It is presumed that antibodies protect you from future infection, but we are not sure how long that protection lasts or if it protects everyone. Studies like this will answer this and other questions. ",
-      "q5": "Are there any drugs that can prevent infection with SARS-CoV-2 virus?",
-      "a5": "No. Currently, there is no proven medicine that can prevent the infection. However, wearing face masks, washing your hands, and keeping a safe social distance does reduce the chances of being infected. "
-    }
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -580,157 +199,18 @@
     "phoneIntroBody": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone. ",
     "myPhone": "My Phone number is:"
   },
-  "result": {
-    "positiveTitle1": "you are SARS-CoV-2 antibody positive",
-    "positiveTitle2": "which indicates that you have been exposed to SARS-CoV-2.",
-    "negativeTitle1": "you are SARS-CoV-2 antibody negative",
-    "negativeTitle2": "which indicates that you have not been exposed to SARS-CoV-2.",
-    "inconclusiveTitle1": "your exposure to the SARS-CoV-2 virus cannot be determined",
-    "positiveText1": "<0>A positive result suggests that your immune system has developed antibodies to fight SARS-CoV-2, the virus that causes COVID-19. </0> <1>It is greater than 90% likely that you were infected with SARS-CoV-2.</1>",
-    "negativeText1": "<0>A negative result suggests the absence of an immune response to SAR-CoV-2. Negative results do not rule out COVID-19 infection or recent exposure to the virus. </0> <1>A negative test means that antibodies against SARS-CoV-2 were not detected. There are several reasons why this could happen:</1>",
-    "inconclusiveText1": "Indeterminate results may represent a partial immune response, but this cannot be concluded with certainty based on currently available data. This result is relatively infrequent and may represent antibodies to only one of the SARS-CoV-2 viral proteins.",
-    "positiveText2": "<0><0>Your positive test result means that antibodies against SARS-CoV-2, the virus that causes COVID-19, were detected.</0> <1>It is very likely that you have had recent infection or exposure to SARS-CoV-2 (true positive). Your body is mounting an antibody response now. </1> <1>Rarely, positive results could be from infection with another virus. Regardless of your antibody test result, you should follow the current guidance of wearing a mask or other personal protective equipment, and washing your hands.</1> <1> It is unknown if having SARS-CoV-2 antibodies means that someone is immune from future SARS-CoV-2 infections.</1> <1>It is unknown how long antibodies to SARS-CoV-2 last after infection.</1></0>",
-    "negativeText2": "<0><0>You had recent infection, but did not make a response, or your antibody response is still developing and the antibodies were too low to be detected.</0> <1>You were not exposed, and the symptoms you experienced were not COVID-19.</1> <1>A negative test does not rule out infection with SARS-CoV-2 virus / COVID-19 disease. Antibodies show up 80% of the time, three to four weeks after symptoms start.</1> <1> Regardless of your antibody test result, you should follow the current guidance of wearing a mask or other personal protective equipment, and washing your hands.</1></0>",
-    "inconclusiveText2": "<0><0>You had recent infection, but did not make a response, or your antibody response is still developing and the antibodies were too low to be detected.</0> <1> You were not exposed, and the symptoms you experienced were not COVID-19.</1> <2> A negative test does not rule out infection with SARS-CoV-2 virus / COVID-19 disease. Antibodies show up 80% of the time, three to four weeks after symptoms start.  </2> <3>Regardless of your antibody test result, you should follow the current guidance of wearing a mask or other personal protective equipment, and washing your hands.</3></0>",
-    "download": "Download your lab results",
-    "explain": "Your antibody test results explained.",
-    "text1": "Please note that the antibody test used to generate these results does not detect the virus itself. If you are currently <1>experiencing symptoms</1> of COVID-19 or believe that you have recently been exposed to COVID-19, you should talk to a healthcare professional, who may recommend additional testing options for you.",
-    "text2": "<0>A serology test for COVID-19 looks for the presence of proteins, called antibodies, which can be used to help understand if you were exposed to the virus recently or in the past. Antibodies develop when your immune system responds to a pathogen, such as COVID-19. </0><1> There are different types of antibodies, including ones called IgM and IgG. IgM is the first antibody that develops after you have been exposed to a virus like COVID-19. This is followed by the development of IgG antibodies. Most people that have been infected with a virus like COVID-19 develop IgG antibodies about 14 days after their symptoms start. Once you have developed IgG antibodies, if you come into contact with the same virus again, the IgG antibodies help your immune system respond faster and more effectively than it did the first time and may prevent reinfection to the virus.</1>",
-    "techInfo": "Technical information about the test",
-    "learnMoreCTA": "Learn more",
-    "whatNext": "What can you do next",
-    "learnMore": "To learn more about our latesting study findings around COVID-19, please check out our Learning Hub page. ",
-    "contact": "Contact us",
-    "contactText": "<0>If you have any questions about your results, please reach out via:</0> <1> phone:  212-305-5700<1></1> email: <3>COVIDRecoveryCorps@cumc.columbia.edu</3> </1> ",
-    "inProcess": "<0>We are currently processing your antibody test results.</0> <1>Please stay tuned.</1>"
-  },
-  "resultDashboard": {
-    "li1": "My test results",
-    "li2": "What's next",
-    "li3": "My surveys",
-    "inviteCTA": "Invite a Friend to Join the Study",
-    "thankYou": "Thank you for your help!"
-  },
-  "resultNext": {
-    "title": "What COVID-19 positive people can do now.",
-    "subtitle1": "2 min post lab follow up",
-    "text1": "We are curious about how you are processing this outcome. Please help us design the study and future questionnaires by providing quick responses to a few follow up questions.",
-    "subtitle2": "Future surveys",
-    "text2": "Because the virus is new, we are not sure yet what the long-term consequences of being infected are. We are going to ask participants like you to answer quick questions approximately 5 times over the next year. It will be important to hear how you are doing, even if you are completely recovered from COVID-19, to better understand the ways in which the virus affects the body and if any complications have occured.",
-    "surveyCTA": "Take post-lab survey"
-  },
-  "resultTechInfo": {
-    "title": "Technical information about the test",
-    "p1": "This test is intended to detect the development of antibodies to SARS-CoV-2, the virus that causes COVID-19. It should not be used to diagnose an active infection of COVID-19. For individuals who currently have symptoms consistent with COVID-19, your doctor may choose to order a test to rule out current infection.",
-    "subhead1": "Intended Uses",
-    "text1": "<0>This is a new blood test that measures antibodies against SARS-CoV-2, the virus that causes COVID-19. The antibodies are made by the body as part of the immune response against SARS-CoV-2. Both IgM and IgG are measured.</0><1> This test provides results that will be provided as positive (antibodies detected), negative (antibodies not detected) or indeterminant.</1>",
-    "subhead2": "Limitations",
-    "text2": "<0>This test has not been reviewed by the FDA. It is a laboratory-developed test offered in the Clinical Laboratories at NewYork-Presbyterian Hospital-Columbia University Irving Medical Center (PFI 5310). </0><1>Results from this antibody test should not be used as the sole basis to diagnose or exclude SARS-CoV-2 infection or exposure.</1>"
-  },
   "signIn": {
-    "text1": "We just sent an SMS to: ",
-    "text2": "Please enter your code: ",
-    "text3": "Code from SMS",
+    "SMSSent": "We just sent an SMS to: ",
+    "enterCode": "Please enter your code: ",
+    "code": "Code from SMS",
     "phone": "phone",
-    "text4": "We just sent a link to: "
-  },
-  "surveys": {
-    "saveProgress": "Save progress",
-    "saved": "Successfully saved",
-    "submitted": "Your information has been submitted",
-    "working": "working on it ....",
-    "responsesRequired": "Responses required above",
-    "clear": "Clear",
-    "error": "Error",
-    "dataNotSaved": "Data you have entered may not be saved",
-    "exitSurvey": "Exit Survey?",
-    "contact": {
-      "zip": "zip code",
-      "state": "state",
-      "city": "city",
-      "invalidAddress": "Sorry, the {{invalidField}} entered does not correspond to a valid mailing address. Did you mean '{{suggestedValue}}'?"
-    },
-    "done": {
-      "thanks": "Thank you for submitting your survey!",
-      "toDashboard": "Return to dashboard"
-    },
-    "errors": {
-      "required": "is a required field",
-      "minimum": "should be at least {{value}}",
-      "maximum": "should be at most {{value}}",
-      "between": "should be between {{min}} and {{max}}",
-      "invalid": "invalid value",
-      "symptomSequence": "please check that your symptoms dates are in the right sequence"
-    },
-    "testLocationSurvey": {
-      "text1": "If you were invited to get an antibody test, what is your testing preference?",
-      "text2": "Go to a lab for an antibody test ",
-      "text3": "Receive an at-home test kit (available after December 2020)",
-      "text4": "Not interested in testing"
-    },
-    "withdrawSurvey": {
-      "text1": "Please help us make the COVID Recovery Corps study better by telling us about your reasons for withdrawing. (Check all that apply)",
-      "text2": "Study was taking too much of my time",
-      "text3": "Not enough benefit for me to continue",
-      "text4": "I am concerned about my privacy",
-      "text5": "I am concerned about the use of my data",
-      "text6": "Withdrawing for personal reason that do not involve this study",
-      "text7": "Prefer not to answer"
-    },
-    "postLab": {
-      "text1": "Please select a value the best represents how you feel for each concern:",
-      "concern0": "Not at all concerned",
-      "concern1": "Slightly concerned",
-      "concern2": "Somewhat concerned",
-      "concern3": "Moderately concerned",
-      "concern4": "Extremely concerned"
-    }
-  },
-  "team": {
-    "title": "The COVID Recovery Corps is a citizen-powered research study that aims to accelerate progress in the global fight against COVID-19.",
-    "text1": "Study Leadership",
-    "text2": "Led by Columbia University and Sage Bionetworks, the study aims to enable those who have recovered from COVID-19 to partner with scientists to answer key questions - about how the body fights coronavirus, whether and how often infection affords immunity, and why infection is more severe in some communities. Starting in the New York metropolitan area - the initial epicenter of the pandemic in the United States - participants will help build a powerful dataset that may significantly advance science and help save lives. We want to learn as quickly as possible so we can keep our community safe from the virus and improve health in the future.",
-    "text3": " Dr. Wendy Chung",
-    "text4": "Dr. Wendy Chung is a co-Principal Investigator based at Columbia University with oversight over clinical operations. Dr Chung is an ABMG board certified clinical and molecular geneticist with 20 years of experience in clinical research, largely for rare diseases. She leads the Precision Medicine Resource of the Irving Institute at Columbia University and is the principal investigator of the large U.S. study of autism, SPARK.",
-    "text5": "She works with many patient and family led organizations to develop better supports and treatments for rare diseases and was recognized by the National Organization of Rare Disorders with the Rare Impact Award in 2019. She was recently featured in the documentary,",
-    "text6": "The Gene: An Intimate History",
-    "text61": "www.columbia.edu",
-    "text7": "Dr. Lara Mangravite",
-    "text8": "Dr. Lara Mangravite is a co-Principal Investigator with oversight over technology, governance, and data commons. Dr. Mangravite has extensive experience leading projects at Sage Bionetworks. She favors applying collaborative approaches to advance understanding of disease biology and treatment outcomes at a systems level with the overriding goal of improving clinical care.",
-    "text9": "Dr. Mangravite obtained a BS in Physics from the Pennsylvania State University and a PhD in Pharmaceutical Chemistry from the University of California, San Francisco. She completed a postdoctoral fellowship in cardiovascular pharmacogenomics at the Children’s Hospital Oakland Research Institute.",
-    "text10": "www.sagebionetworks.org",
-    "text14": "With support from the Chan Zuckerberg Initiative",
-    "text15": "Founded by Dr. Priscilla Chan and Mark Zuckerberg in 2015, the Chan Zuckerberg Initiative (CZI) is a new kind of philanthropy that’s leveraging technology to help solve some of the world’s toughest challenges — from eradicating disease, to improving education, to reforming the criminal justice system. Across three core Initiative focus areas of Science, Education, and Justice & Opportunity,  we’re pairing engineering with grant-making, impact investing, and policy and advocacy work to help build an inclusive, just and healthy future for everyone.",
-    "text16": "www.chanzuckerberg.com"
+    "linkSent": "We just sent a link to: "
   },
   "topnav": {
-    "text1": "About",
-    "text2": "Meet the Researchers",
-    "text3": "FAQs",
-    "text31": "Learning Hub",
-    "text4": "Contact Us",
-    "text5": "Privacy Policy",
-    "text6": "Dashboard",
-    "text7": "Account Settings",
-    "text8": "Log in"
-  },
-  "uploadResult": {
-    "title": "Upload COVID-19 test result",
-    "description": "<0>You’ve answered that you’ve taken a Nasal Swab and/or a Serum antibody test.</0> <0>Please upload a copy of your test results.</0> <0> The test result document can be a .jpeg, pdf, .png, or a .tiff.</0>",
-    "text2": "Select file to upload",
-    "text3": "I don't have a copy",
-    "text4": "Upload this file",
-    "add": "+ Add another file",
-    "successfulUpload": "has been uploaded",
-    "duplicateUpload": "has already been uploaded",
-    "uploadFailed": "could not be uploaded"
-  },
-  "testKitShipped": {
-    "title": "Your test kit is on its way!",
-    "text1": "<0>Thank you for registering for the COVID Recovery Corps study to understand how the body responds to and recovers from COVID-19 infection. </0> <0> We have sent out your at-home test kit. Your blood sample will check whether your body has produced antibodies to fight the COVID-19 infection. </0><0> Please collect the blood sample and return the kit as soon as possible. Antibodies disappear over time, and we want to test for the antibodies while they are still in your system. </0><0> As a token of our appreciation, all participants who complete all of the surveys and provide at-home sample will receive a $20 gift card. </0><0> Collecting your samples should take less than 10 minutes. </0>",
-    "cta": "Track my test kit"
-  },
-  "testKitInstructionPage": {
-    "instructionHeader": "Blood Sample Collection Instructions"
+    "about": "About",
+    "policy": "Privacy Policy",
+    "dashboard": "Dashboard",
+    "login": "Sign in",
+    "home": "Home"
   }
 }

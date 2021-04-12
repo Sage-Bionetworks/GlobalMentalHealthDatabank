@@ -7,6 +7,7 @@ import Separator from '../static/Separator'
 import { Redirect, NavLink } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { FORM_IDS } from '../form/types'
+import { useTranslation } from 'react-i18next'
 
 const MAX_STEPS: number = 6
 
@@ -25,6 +26,7 @@ export const Eligibility: React.FunctionComponent = () => {
   const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
 
   const { setIsEligible } = useElegibility()
+  const { t } = useTranslation()
 
   useEffect(() => {
     setErrorMessage('')
@@ -48,13 +50,13 @@ export const Eligibility: React.FunctionComponent = () => {
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
-            title={'How did you hear about us?'}
+            title={t('eligibility.howDidYouHear')}
             errorMessage={errorMessage}
             formId={FORM_IDS.HOW_DID_YOU_HEAR}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.how_did_you_hear
               if (selectedOption && Object.keys(selectedOption).length === 0)
-                setErrorMessage('You must choose an option')
+                setErrorMessage(t('form.chooseAnOption'))
               else {
                 setQuizChoices((prev: any) => ({
                   ...prev,
@@ -73,15 +75,13 @@ export const Eligibility: React.FunctionComponent = () => {
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
-            title={
-              'Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?'
-            }
+            title={t('eligibility.benefit')}
             errorMessage={errorMessage}
             formId={FORM_IDS.SUPPORT_VERIFY}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.support_verify
               if (selectedOption && Object.keys(selectedOption).length === 0)
-                setErrorMessage('You must choose an option')
+                setErrorMessage(t('form.chooseAnOption'))
               else {
                 setQuizChoices(prev => {
                   return { ...prev, accessToSupport: selectedOption.accept }
@@ -99,13 +99,13 @@ export const Eligibility: React.FunctionComponent = () => {
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
-            title={'Where do you currently live?'}
+            title={t('eligibility.where')}
             errorMessage={errorMessage}
             formId={FORM_IDS.COUNTRY_SELECTOR}
             onSubmit={(event: any) => {
               const selectedCountry = event.formData.country_chooser
               if (selectedCountry && Object.keys(selectedCountry).length === 0)
-                setErrorMessage('You must choose an option')
+                setErrorMessage(t('form.chooseAnOption'))
               else {
                 window.localStorage.setItem(
                   'selected_country',
@@ -131,13 +131,13 @@ export const Eligibility: React.FunctionComponent = () => {
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
-            title={'Do you have access to an Android smart phone?'}
+            title={t('eligibility.android')}
             errorMessage={errorMessage}
             formId={FORM_IDS.ANDROID_VERIFY}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.android_verify
               if (selectedOption && Object.keys(selectedOption).length === 0)
-                setErrorMessage('You must choose an option')
+                setErrorMessage(t('form.chooseAnOption'))
               else {
                 setQuizChoices(prev => {
                   return { ...prev, hasAndroid: selectedOption.has_android }
@@ -156,13 +156,13 @@ export const Eligibility: React.FunctionComponent = () => {
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
-            title={'Are you comfortable reading and writing in English?'}
+            title={t('eligibility.english')}
             errorMessage={errorMessage}
             formId={FORM_IDS.UNDERSTANDS_ENGLISH}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.understands_english
               if (selectedOption && Object.keys(selectedOption).length === 0)
-                setErrorMessage('You must choose an option')
+                setErrorMessage(t('form.chooseAnOption'))
               else {
                 setQuizChoices(prev => {
                   return {
@@ -185,15 +185,13 @@ export const Eligibility: React.FunctionComponent = () => {
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
-            title={
-              'Are you between the ages of 18 to 24 years old, or 16-24 years old if you live in the United Kingdom?'
-            }
+            title={t('eligibility.ageRange')}
             errorMessage={errorMessage}
             formId={FORM_IDS.AGE_VERIFY}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.age_verify
               if (selectedOption && Object.keys(selectedOption).length === 0)
-                setErrorMessage('You must choose an option')
+                setErrorMessage(t('form.chooseAnOption'))
               else {
                 setQuizChoices(prev => {
                   return { ...prev, inAgeRange: selectedOption.age_range }
@@ -212,24 +210,19 @@ export const Eligibility: React.FunctionComponent = () => {
     return (
       <div className="quizWrapper">
         <div className="headerWrapper">
-          <h1>Thank you for your time!</h1>
+          <h1>{t('eligibility.thanks')}</h1>
         </div>
         <Separator />
-        <div className="rejectionText">
-          It looks like this is not the right study for you, but we really
-          appreciate your interest in helping us out!
-        </div>
+        <div className="rejectionText">{t('eligibility.notElegible')}</div>
         <NavLink to="/home">
           <Button
             color="primary"
             variant="contained"
             size="large"
             className="wideButton"
-            onClick={() => {
-              return <Redirect to="/home" />
-            }}
+            onClick={() => <Redirect to="/home" />}
           >
-            Back to home
+            {t('eligibility.back')}
           </Button>
         </NavLink>
       </div>

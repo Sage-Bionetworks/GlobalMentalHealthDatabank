@@ -8,13 +8,11 @@ import './i18n'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <SessionDataProvider>
-      <Suspense fallback={null}>
-        <App />
-      </Suspense>
-    </SessionDataProvider>
-  </React.StrictMode>,
+  <SessionDataProvider>
+    <Suspense fallback={null}>
+      <App />
+    </Suspense>
+  </SessionDataProvider>,
   document.getElementById('root'),
 )
 

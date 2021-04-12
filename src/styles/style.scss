@@ -5,12 +5,11 @@
 @import 'components/intro';
 @import 'components/dashboard';
 @import 'components/footer';
-@import 'components/consent';
 @import 'components/static';
-@import 'components/floating-toolbar';
 @import 'components/sage-form';
 @import 'material-overrides';
 @import 'forms';
+@import 'components/topnav';
 @import 'mobile' screen and (max-width: 768px);
 
 html {
@@ -19,7 +18,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   background: #efefef;
 }
 
@@ -54,65 +53,7 @@ h3 {
 .print-only {
   display: none !important;
 }
-/*
-@media (min-width: 600px) {
-  h1,
-  h2 {
-    margin-top: 32px;
-    margin-bottom: 32px;
-  }
-  h3,
-  h4 {
-    margin-top: 24px;
-    margin-bottom: 24px;
-  }
-  h1 {
-    font-size: 40px;
-    line-height: 51px;
-  }
-  h2 {
-    font-size: 32px;
-    line-height: 37px;
-  }
-  h3 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  h4 {
-    font-size: 18px;
-    line-height: 25px;
-  }
-  h5 {
-    font-size: 14px;
-    line-height: 22px;
-  }
-}
 
-@media (max-width: 599px) {
-  h1,
-  h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  h3,
-  h4 {
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  h2 {
-    font-size: 22px;
-    line-height: 28px;
-  }
-  h3 {
-    font-size: 20px;
-    line-height: 26px;
-  }
-}
-*/
 .MuiCardContent-root {
   h1:first-child,
   h2:first-child {
@@ -380,4 +321,12 @@ fieldset {
 .input--padded--flags {
   padding: 20px 0 40px 0;
   display: flex;
+}
+
+.demoForm {
+  padding-top: 15px;
+}
+
+.text-center {
+  text-align: center;
 }

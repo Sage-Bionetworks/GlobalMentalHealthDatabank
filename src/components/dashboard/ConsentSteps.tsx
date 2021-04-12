@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
 import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
 import ArmFlowOne from './armFlows/ArmFlowOne'
@@ -90,7 +90,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   const sessionData = useSessionDataState()
   const token = sessionData.token
 
-  useEffect(() => {
+  useCallback(() => {
     const getInfo = async () => {
       if (token) {
         const userInfoResponse = await UserService.getUserInfo(token)
