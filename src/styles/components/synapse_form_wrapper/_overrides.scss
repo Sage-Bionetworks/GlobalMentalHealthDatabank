@@ -8,7 +8,7 @@
   $text-dark: #2a2a2a;
 
   @mixin label_level2 {
-    font-family: 'Open Sans';
+    font-family: 'Lato';
     font-style: italic;
     font-weight: normal;
     font-size: 14px;
@@ -33,7 +33,7 @@
   }
 
   @mixin control_label {
-    font-family: 'Open Sans';
+    font-family: 'Lato';
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -43,7 +43,7 @@
   }
 
   @mixin field-description {
-    font-family: 'Open Sans';
+    font-family: 'Lato';
     font-style: normal;
     font-weight: normal;
     font-size: 1.4rem;
@@ -62,7 +62,7 @@
   margin-right: 0;
 
   span {
-    font-family: 'Open Sans';
+    font-family: 'Lato';
   }
 
   legend {
@@ -189,7 +189,7 @@
     }
     .surveyIntro {
       margin: 0 0 2.4rem 0;
-      font-family: 'Open Sans';
+      font-family: 'Lato';
       font-style: normal;
       font-weight: normal;
 
@@ -347,7 +347,7 @@
     }
 
     > label span {
-      font-family: 'Open Sans';
+      font-family: 'Lato';
       display: flex;
       align-items: center;
       font-style: normal;

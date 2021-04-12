@@ -174,6 +174,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
               <p className="error-message">{error}</p>
               <div className="text-center">
                 <Button
+                  fullWidth
                   color="primary"
                   variant="contained"
                   size="large"
