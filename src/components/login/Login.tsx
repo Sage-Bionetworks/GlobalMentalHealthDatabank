@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import {
   APP_ID,
-  EmailSigninParams,
   LoggedInUserData,
   SignInData,
   SignInDataPhone,
@@ -30,7 +29,7 @@ import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
-  searchParams?: EmailSigninParams
+  searchParams?: any
 }
 
 export type LoginProps = OwnLoginProps & RouteComponentProps

@@ -285,7 +285,9 @@ export const useIntroStyles = makeStyles(theme => ({
     maxWidth: '200px',
   },
 }))
-export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
+export const Intro: React.FunctionComponent<IntroProps> = (
+  token: IntroProps,
+) => {
   const { t } = useTranslation()
 
   const classes = useIntroStyles()
@@ -307,10 +309,15 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
             <img
               className={classes.heroImage}
               src={LandingPageAboveFold0Mobile}
+              alt="heroImage1"
             />
           </Hidden>
           <Hidden smDown>
-            <img className={classes.heroImage} src={LandingPageAboveFold0} />
+            <img
+              className={classes.heroImage}
+              src={LandingPageAboveFold0}
+              alt="heroImage2"
+            />
           </Hidden>
           {heroTextContent}
         </div>
@@ -350,21 +357,6 @@ export const Intro: React.FunctionComponent<IntroProps> = ({}: IntroProps) => {
           </NavLink>
         </Grid>
       </div>
-
-      {/*<div className={classes.fightTogetherDiv}>
-        <h2 className={classes.fightTogetherDivText}>{t('home.text3')}</h2>
-        <Grid container justify="center" alignItems="center">
-          <NavLink to="/eligibility" className={classes.navLink}>
-            <Button
-              color="primary"
-              variant="contained"
-              className={classes.joinButton}
-            >
-              {t('common.joinStudy')}
-            </Button>
-          </NavLink>
-        </Grid>
-  </div>*/}
     </div>
   )
 }

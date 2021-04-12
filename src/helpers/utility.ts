@@ -9,7 +9,6 @@ import {
   SESSION_NAME,
 } from '../types/types'
 
-import { zipcodes } from '../data/zips.json'
 import moment from 'moment'
 import i18n from 'i18next'
 import { useState } from 'react'
@@ -243,5 +242,3 @@ export const bytesToSize = (bytes: number) => {
   if (i === 0) return `${bytes} ${sizes[i]})`
   return `${(bytes / 1024 ** i).toFixed(1)}${sizes[i]}`
 }
-
-export const isWithin25Miles = (zip: string) => zipcodes.includes(zip)

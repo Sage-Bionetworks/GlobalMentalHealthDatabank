@@ -63,7 +63,6 @@ function useForm(
         }
 
         if (validationSchema[name].validator.fn !== undefined) {
-          const result = validationSchema[name].validator.fn(value)
           if (value && !validationSchema[name].validator.fn(value)) {
             error = validationSchema[name].validator.error
           }

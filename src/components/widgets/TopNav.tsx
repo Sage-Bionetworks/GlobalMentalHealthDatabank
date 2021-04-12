@@ -4,14 +4,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { makeStyles } from '@material-ui/core/styles'
 import Logout from '../login/Logout'
-
 import btnClose from '../../assets/btn_close_dark.svg'
 import {
   ListItem,
   List,
   Divider,
   Hidden,
-  Grid,
   Button,
   Link,
 } from '@material-ui/core'
@@ -20,11 +18,9 @@ import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import Alert from '@material-ui/lab/Alert'
 import { systemFonts } from '../../App'
 import { getSearchParams } from '../../helpers/utility'
 import { useSessionDataState, useSessionDataDispatch } from '../../AuthContext'
-import GlobalAlertCopy from './GlobalAlertCopy'
 import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
 import i18n from '../../i18n'
 import { useTranslation } from 'react-i18next'
@@ -352,26 +348,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
               {drawer}
             </Drawer>
           </nav>
-          {/* global alert area */}
-          {alertCode && !isGlobalNotificationAlertHiddenFlag && (
-            <Alert
-              severity="error"
-              variant="filled"
-              icon={false}
-              classes={{
-                message: classes.globalAlertMessage,
-              }}
-            >
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignItems="center"
-              >
-                <GlobalAlertCopy code={alertCode}></GlobalAlertCopy>
-              </Grid>
-            </Alert>
-          )}
           <div className={classes.content}>{props.children}</div>
         </div>
       ) : (

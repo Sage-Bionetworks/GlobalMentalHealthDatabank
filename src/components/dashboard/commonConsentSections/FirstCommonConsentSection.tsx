@@ -74,8 +74,10 @@ function FirstCommonConsentSection({
             Lara Mangravite in the United States. It is being conducted under
             the supervision of scientists in South Africa, India, and the United
             Kingdom. You can{' '}
-            <a className="dashboardLink">learn more about our team</a> of
-            researchers on the study website{' '}
+            <a className="dashboardLink" href="/dashboard">
+              learn more about our team
+            </a>{' '}
+            of researchers on the study website{' '}
           </div>
           {renderArrows()}
         </div>
@@ -228,7 +230,9 @@ function FirstCommonConsentSection({
           <div>
             If you are a citizen or resident of the European Union, click here
             to{' '}
-            <a className="dashboardLink">learn more about your data rights.</a>
+            <a className="dashboardLink" href="/dashboard">
+              learn more about your data rights.
+            </a>
           </div>
           {renderArrows()}
         </div>

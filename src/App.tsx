@@ -6,14 +6,10 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-
+import Intro from './components/static/Intro'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
-import SurveyWrapper from './components/surveys/SurveyWrapper'
-import Done from './components/surveys/Done'
 import Login from './components/login/Login'
-import Consent from './components/consent/Consent'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
-
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
 import {
@@ -22,30 +18,15 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core'
-
 import { getSearchParams } from './helpers/utility'
-
-import Intro from './components/static/Intro'
 import Dashboard from './components/dashboard/Dashboard'
-import ConsentEHR from './components/consent/ConsentEHR'
-import Team from './components/static/Team'
-import Contact from './components/static/Contact'
-import FAQs from './components/static/FAQs'
 import { TopNav } from './components/widgets/TopNav'
 import { UserService } from './services/user.service'
-import AcountSettings from './components/AccountSettings'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
-import CookieNotificationBanner from './components/widgets/CookieNotificationBanner'
 import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
-import Appointment from './components/static/Appointment'
 import { UserDataGroup, SessionData } from './types/types'
-import ResultDashboard from './components/result/ResultDashboard'
-import LearningHub from './components/learningHub/LearningHub'
-import { FeaturesProvider, TOGGLE_NAMES } from './helpers/FeatureToggle'
-import UploadResult from './components/surveys/UploadResult'
-
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
 
 const fallbackFonts = [
@@ -191,23 +172,6 @@ function renderWithGridLayout(el: JSX.Element) {
   )
 }
 
-function renderWithWiderGridLayout(el: JSX.Element) {
-  return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      spacing={2}
-      style={{ padding: '24px' }}
-    >
-      <Grid item xs={12} md={12} lg={10}>
-        {el}
-      </Grid>
-    </Grid>
-  )
-}
-
 function App() {
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
@@ -261,51 +225,7 @@ function App() {
     )
   }
 
-  function ConsentedRoute({ children, ...rest }: any) {
-    return (
-      <Route
-        {...rest}
-        render={({ location }) => {
-          if (!token) {
-            return (
-              <Redirect
-                to={{
-                  pathname: '/eligibility',
-                  state: { from: location },
-                }}
-              />
-            )
-          }
-          if (!sessionData.consented) {
-            return (
-              <Redirect
-                to={{
-                  pathname: '/consent',
-                  state: { from: location },
-                }}
-              />
-            )
-          }
-          return children
-        }}
-      />
-    )
-  }
-
   function getDashboardPage(sessionData: SessionData) {
-    if (
-      sessionData.userDataGroup.includes('tests_available') ||
-      sessionData.userDataGroup.includes('tests_collected')
-    ) {
-      return renderWithWiderGridLayout(<ResultDashboard token={token || ''} />)
-    }
-    /* once we know the new condition -- show the testKitShipped page
-    if (sessionData.userDataGroup.includes('tests_scheduled')) {
-      return renderWithGridLayout(<TestKitShipped token={token || ''} />)
-    }*/
-    if (sessionData.userDataGroup.includes('tests_scheduled')) {
-      return renderWithGridLayout(<Appointment token={token || ''} />)
-    }
     return renderWithGridLayout(<Dashboard token={token || ''} />)
   }
 
@@ -358,193 +278,82 @@ function App() {
     )
   }
 
-  const TOGGLES = {
-    [TOGGLE_NAMES.RESULTS_VIDEO]: true,
-    [TOGGLE_NAMES.SPANISH]: true,
-  }
   return (
-    <FeaturesProvider value={TOGGLES}>
-      <ThemeProvider theme={theme}>
-        <ElegibilityProvider>
-          <Typography component={'div'}>
-            <div className={classes.root}>
-              <CssBaseline />
-              <Router>
-                <div className={getTopClass(currentLocation)}>
-                  <CookieNotificationBanner />
-                  <GoogleAnalyticsPageTracker />
-                  <ScrollToTopOnRouteChange
-                    onRouteChangeFn={(location: string) =>
-                      setCurrentLocation(location)
-                    }
-                  />
-                  <TopNav
-                    token={token}
-                    logoutCallbackFn={() =>
-                      setUserSession(undefined, '', false, [])
-                    }
-                    showTopNavigator={currentLocation !== '/testkit'}
-                  >
-                    {/* A <Switch> looks through its children <Route>s and
+    <ThemeProvider theme={theme}>
+      <ElegibilityProvider>
+        <Typography component={'div'}>
+          <div className={classes.root}>
+            <CssBaseline />
+            <Router>
+              <div className={getTopClass(currentLocation)}>
+                <GoogleAnalyticsPageTracker />
+                <ScrollToTopOnRouteChange
+                  onRouteChangeFn={(location: string) =>
+                    setCurrentLocation(location)
+                  }
+                />
+                <TopNav
+                  token={token}
+                  logoutCallbackFn={() =>
+                    setUserSession(undefined, '', false, [])
+                  }
+                  showTopNavigator={currentLocation !== '/testkit'}
+                >
+                  {/* A <Switch> looks through its children <Route>s and
          renders the first one that matches the current URL. */}{' '}
-                    <Switch>
-                      <Route
-                        exact={true}
-                        path="/login"
-                        render={props => {
-                          const searchParamsProps = getSearchParams(
-                            props.location.search,
-                          )
-                          // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
-                          return renderWithGridLayout(
-                            <Login
-                              {...props}
-                              key={Math.random()}
-                              searchParams={searchParamsProps as any}
-                            />,
-                          )
-                        }}
-                      ></Route>
-                      <Route
-                        path="/eligibility"
-                        render={props => {
-                          const searchParamsProps = getSearchParams(
-                            props.location.search,
-                          )
-                          // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
-                          return renderWithGridLayout(
-                            <EligibilityRegistration
-                              {...props}
-                              callbackFn={(token: string, name: string) =>
-                                setUserSession(token, name, false, [])
-                              }
-                            />,
-                          )
-                        }}
-                      ></Route>
-                      <ConsentedRoute exact={true} path="/dashboard">
-                        {getDashboardPage(sessionData)}
-                      </ConsentedRoute>
-                      {/*todo make private */}
-                      <PrivateRoute exact={true} path="/consent">
-                        {renderWithGridLayout(<Consent token={token || ''} />)}
-                      </PrivateRoute>
-                      {/*todo make private */}
-                      <PrivateRoute exact={true} path="/consentehr">
-                        {renderWithGridLayout(
-                          <ConsentEHR token={token || ''} />,
-                        )}
-                      </PrivateRoute>
-                      {/*todo make private */}
-                      <ConsentedRoute exact={true} path="/contactinfo">
-                        {renderWithGridLayout(
-                          <SurveyWrapper
-                            formTitle="Tell us about yourself"
-                            token={token || ''}
-                            surveyName={'CONTACT'}
-                            formClass="crc"
-                          ></SurveyWrapper>,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/survey1">
-                        {renderWithGridLayout(
-                          <SurveyWrapper
-                            formTitle="Tell us about yourself"
-                            token={token || ''}
-                            surveyName={'DEMOGRAPHIC'}
-                            formClass="crc"
-                          ></SurveyWrapper>,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/survey2">
-                        {renderWithGridLayout(
-                          <SurveyWrapper
-                            formTitle="Your COVID experience"
-                            token={token || ''}
-                            surveyName={'COVID_EXPERIENCE'}
-                            formClass="crc"
-                          ></SurveyWrapper>,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/survey3">
-                        {renderWithGridLayout(
-                          <SurveyWrapper
-                            formTitle="Health History"
-                            token={token || ''}
-                            surveyName={'HISTORY'}
-                            formClass="crc"
-                          ></SurveyWrapper>,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/survey4">
-                        {renderWithGridLayout(
-                          <SurveyWrapper
-                            formTitle="COVID Part II"
-                            token={token || ''}
-                            surveyName={'MORE'}
-                            formClass="crc"
-                          ></SurveyWrapper>,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/resultupload">
-                        {renderWithGridLayout(
-                          <UploadResult token={token || ''}></UploadResult>,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/appointment">
-                        {renderWithGridLayout(
-                          <Appointment token={token || ''} />,
-                        )}
-                      </ConsentedRoute>
-                      <ConsentedRoute exact={true} path="/result">
-                        {renderWithWiderGridLayout(
-                          <ResultDashboard token={token || ''} />,
-                        )}
-                      </ConsentedRoute>
-                      <Route path="/faqs">
-                        <FAQs />
-                      </Route>
-                      <Route path="/learninghub">
-                        {renderWithWiderGridLayout(
-                          <LearningHub token={token} />,
-                        )}
-                      </Route>
-                      <Route path="/team">
-                        <Team />
-                      </Route>
-                      <Route path="/contact">
-                        <Contact />
-                      </Route>
-                      <Route path="/privacypolicy">
-                        <PrivacyPolicy />
-                      </Route>
-
-                      <Route path="/settings">
-                        {renderWithGridLayout(
-                          <AcountSettings token={token!}></AcountSettings>,
-                        )}
-                      </Route>
-                      <Route path="/done">
-                        {renderWithGridLayout(<Done />)}
-                      </Route>
-                      <Route path="/home">
-                        <Intro token={token || null}></Intro>
-                      </Route>
-                      <Route path="/">
-                        <Intro token={token || null}></Intro>
-                      </Route>
-                    </Switch>
-                  </TopNav>
-                  {shouldShowFooter(currentLocation) && (
-                    <Footer token={token} />
-                  )}
-                </div>
-              </Router>
-            </div>
-          </Typography>
-        </ElegibilityProvider>
-      </ThemeProvider>
-    </FeaturesProvider>
+                  <Switch>
+                    <Route
+                      exact={true}
+                      path="/login"
+                      render={props => {
+                        const searchParamsProps = getSearchParams(
+                          props.location.search,
+                        )
+                        // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
+                        return renderWithGridLayout(
+                          <Login
+                            {...props}
+                            key={Math.random()}
+                            searchParams={searchParamsProps as any}
+                          />,
+                        )
+                      }}
+                    ></Route>
+                    <Route
+                      path="/eligibility"
+                      render={props => {
+                        // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
+                        return renderWithGridLayout(
+                          <EligibilityRegistration
+                            {...props}
+                            callbackFn={(token: string, name: string) =>
+                              setUserSession(token, name, false, [])
+                            }
+                          />,
+                        )
+                      }}
+                    ></Route>
+                    <PrivateRoute exact={true} path="/dashboard">
+                      {getDashboardPage(sessionData)}
+                    </PrivateRoute>
+                    <Route path="/privacypolicy">
+                      <PrivacyPolicy />
+                    </Route>
+                    <Route path="/home">
+                      <Intro token={token || null}></Intro>
+                    </Route>
+                    <Route path="/">
+                      <Intro token={token || null}></Intro>
+                    </Route>
+                  </Switch>
+                </TopNav>
+                {shouldShowFooter(currentLocation) && <Footer token={token} />}
+              </div>
+            </Router>
+          </div>
+        </Typography>
+      </ElegibilityProvider>
+    </ThemeProvider>
   )
 }
 

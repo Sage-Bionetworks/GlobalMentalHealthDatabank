@@ -5,7 +5,6 @@ import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import Button from '@material-ui/core/Button/Button'
 import moment from 'moment'
-import SageForm from '../../form/SageForm'
 import i18next from 'i18next'
 
 type SecondCommonConsentProps = {
@@ -131,7 +130,7 @@ function SecondCommonConsentSection({
           <div className="headerWrapper">
             <h1>You are in step {step}</h1>
           </div>
-
+          <div className="error-message">{errorMessage}</div>
           <div className="arrowButtonsWrapper">
             <ArrowButtonLeft
               onClick={() =>

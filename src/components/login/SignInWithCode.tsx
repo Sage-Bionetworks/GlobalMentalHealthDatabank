@@ -5,7 +5,7 @@ import { callEndpoint, makePhone } from '../../helpers/utility'
 import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
 import Separator from '../static/Separator'
-import { useTranslation, Trans } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
