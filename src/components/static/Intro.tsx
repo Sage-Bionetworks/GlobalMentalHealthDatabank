@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Button, Grid, Hidden, Container } from '@material-ui/core'
-import { playfairDisplayFont, systemFonts } from '../../App'
+import { systemFonts } from '../../theme'
 import LandingPageAboveFold0 from '../../assets/LandingPageAboveFold0.png'
 import LandingPageAboveFold0Mobile from '../../assets/LandingPageAboveFold0_mobile.png'
 import { NavLink } from 'react-router-dom'
@@ -98,7 +98,7 @@ export const useIntroStyles = makeStyles(theme => ({
     },
   },
   content1: {
-    fontFamily: playfairDisplayFont,
+    fontFamily: systemFonts,
     backgroundColor: '#343F56',
     textAlign: 'left',
     fontWeight: 'bold',
@@ -136,7 +136,7 @@ export const useIntroStyles = makeStyles(theme => ({
     zIndex: 3,
   },
   content2: {
-    fontFamily: playfairDisplayFont,
+    fontFamily: systemFonts,
     backgroundColor: '#343F56',
     textAlign: 'left',
     fontWeight: 'bold',
