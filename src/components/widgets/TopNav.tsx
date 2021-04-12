@@ -73,7 +73,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
       <List>
         <NavLink to="/home" onClick={handleDrawerToggle} className="navBarLink">
           <ListItem button className="mobileMenuItem">
-            Home
+            {t('topnav.home')}
           </ListItem>
         </NavLink>
         <Divider className="mobileMenuSeparator" />
@@ -84,7 +84,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="navBarLink"
           >
             <ListItem button className="mobileMenuItem">
-              {t('topnav.text6')}
+              {t('topnav.dashboard')}
             </ListItem>
           </NavLink>
         )}
@@ -121,7 +121,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="navBarLink"
           >
             <ListItem button className="mobileMenuItem">
-              Sign in
+              {t('topnav.login')}
             </ListItem>
           </NavLink>
         )}
