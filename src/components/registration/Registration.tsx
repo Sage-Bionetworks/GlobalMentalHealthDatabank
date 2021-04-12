@@ -136,24 +136,16 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       <div className="media-wrapper text-left">
         <TextSent />
       </div>
-      <div className="text-left">
-        Before we get started, could we have your number?
-      </div>
+      <div className="text-left">{t('eligibility.askPhone')}</div>
       <Separator />
-      <div className="text-left">
-        We are asking you for your phone number to make this consent process
-        easier and faster for you. We will not keep your number if you decide
-        not to join MindKind. If you do join, we will store your phone number
-        securely. It will be kept separately from your data to protect your
-        identity. We will not share your number with anyone.{' '}
-      </div>
+      <div className="text-left">{t('eligibility.whyAsk')}</div>
 
       {
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
             <div>
               <label htmlFor="phone" className="block--dark">
-                My Phone number is:
+                {t('eligibility.myPhone')}
               </label>
               <div className="input--padded">
                 <TextField
@@ -188,7 +180,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   type="submit"
                   disabled={!state.phone.value}
                 >
-                  Create account
+                  {t('eligibility.createAccount')}
                 </Button>
               </div>
             </div>

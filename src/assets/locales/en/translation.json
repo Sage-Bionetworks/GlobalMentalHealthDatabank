@@ -37,7 +37,11 @@
     "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
     "back": "Back to home",
     "loginError": "Error attempting login",
-    "registerError": "Error when registering, please verify your phone number and country selection"
+    "registerError": "Error when registering, please verify your phone number and country selection",
+    "askPhone": "Before we get started, could we have your number?",
+    "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
+    "myPhone": "My phone number is: ",
+    "createAccount": "Create account"
   },
   "form": {
     "firstCommonConsent": {
