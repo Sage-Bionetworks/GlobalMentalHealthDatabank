@@ -2,7 +2,7 @@ import React from 'react'
 
 //Flows should be distributed on a 50-50 first and 1/3 each on one half
 //npm run test ../GlobalMentalHealthDatabank/src/RandomFlowSelectorTest.test.tsx
-test('Generate Random Flow Selection for 4.5k', () => {
+xtest('Generate Random Flow Selection for 4.5k', () => {
   let rand1 = function () {
     let randomCount = [0, 0, 0, 0]
     const totalCount = 4500

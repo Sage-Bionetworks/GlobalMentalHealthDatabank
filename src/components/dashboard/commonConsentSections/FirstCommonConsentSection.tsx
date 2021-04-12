@@ -71,7 +71,7 @@ function FirstCommonConsentSection({
             </a>{' '}
             {t('form.firstCommonConsent.section3.section2')}{' '}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
 
@@ -83,15 +83,15 @@ function FirstCommonConsentSection({
           <div className="headerWrapper">
             <h1>{t('form.firstCommonConsent.whatWillYouAsk')}</h1>
           </div>
-          <p>
+          <div>
             <h2>{t('form.firstCommonConsent.step1')}</h2>{' '}
-          </p>
-          <p>
+          </div>
+          <div>
             <h2>{t('form.firstCommonConsent.step2')}</h2>
-          </p>
-          <p>
+          </div>
+          <div>
             <h2>{t('form.firstCommonConsent.step3')}</h2>{' '}
-          </p>
+          </div>
           <ul>
             <li>{t('form.firstCommonConsent.week1')}</li>
             <li>{t('form.firstCommonConsent.week2')}</li>
@@ -183,7 +183,7 @@ function FirstCommonConsentSection({
           <p>{t('form.firstCommonConsent.transferToUS')}</p>
           <h2>{t('form.firstCommonConsent.yourRights')}</h2>
           <ul>
-            <li></li>
+            <li>{t('form.firstCommonConsent.requestData')}</li>
             <li>{t('form.firstCommonConsent.correctData')}</li>
           </ul>
           <div>
