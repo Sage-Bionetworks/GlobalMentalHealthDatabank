@@ -3,6 +3,7 @@ import ProgressBar from '../../progressBar/ProgressBar'
 import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
+import { useTranslation } from 'react-i18next'
 
 type ArmFlowThreeProps = {
   step: number
@@ -17,47 +18,24 @@ function ArmFlowThree({
   maxSteps,
   updateClientData,
 }: ArmFlowThreeProps) {
+  const { t } = useTranslation()
   return (
     <div className="textStepWrapper">
       <ProgressBar step={step} maxSteps={maxSteps} />
       <LogoNoText />
       <div className="headerWrapper">
-        <h1>How will your study data be used?</h1>
+        <h1>{t('form.armThree.title')}</h1>
       </div>
-      <h2>
-        All of the people who join the study will get to vote on how the data is
-        used. The vote takes place after you join the study. We will ask for you
-        to vote on questions like:
-      </h2>
+      <h2>{t('form.armThree.subTitle')}</h2>
       <ul>
-        <li>
-          What topics should researchers using the study data be allowed to
-          study? (Mental health only? Health generally? Any topic?)
-        </li>
-        <li>
-          Who reviews requests to use the data? (Participants like you? A
-          special panel?)
-        </li>
-        <li>
-          Is it okay for researchers to make a profit from using the data?
-        </li>
+        <li>{t('form.armThree.subText1')}</li>
+        <li>{t('form.armThree.subText2')}</li>
+        <li>{t('form.armThree.subText3')}</li>
       </ul>
-      <h2>
-        No matter what the result of the vote is, researchers will be able to
-        download a copy of the data from the databank.
-      </h2>
+      <h2>{t('form.armThree.subText4')}</h2>
       <ul>
-        <li>
-          They will have to agree to follow strict data security rules. They
-          will have to sign an agreement saying they will not try to find out
-          who you are.
-        </li>
-        <li>
-          We will tell you the results of the vote before we let any researchers
-          use the data. If you disagree with the vote, you can quit (withdraw)
-          from the study. We will delete any information that directly
-          identifies you. We will not delete any coded study data.
-        </li>
+        <li>{t('form.armThree.subText5')}</li>
+        <li>{t('form.armThree.subText6')}</li>
       </ul>
 
       <div className="arrowButtonsWrapper">

@@ -52,19 +52,19 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
       <div>
         <div className="text-left margin-top-std">
           <TextSent />
-          <p className="text-left padded">We just sent an SMS to:</p>
+          <p className="text-left padded">{t('signIn.SMSSent')}</p>
           <p className="text-left ">{phoneNumber}</p>
           <Separator />
         </div>
         <form onSubmit={handleOnSubmit}>
           <div className="form-group">
-            <label htmlFor="smsCode">{t('signIn.text2')}</label>
+            <label htmlFor="smsCode">{t('signIn.enterCode')}</label>
             <TextField
               name="code"
               type="code"
               value={code}
-              placeholder={t('signIn.text3')}
-              aria-label={t('signIn.text3')}
+              placeholder={t('signIn.code')}
+              aria-label={t('signIn.code')}
               variant="outlined"
               fullWidth
               onChange={e => setCode(e.currentTarget.value)}

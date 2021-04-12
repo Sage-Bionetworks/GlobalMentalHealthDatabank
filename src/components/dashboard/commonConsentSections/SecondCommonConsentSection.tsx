@@ -6,6 +6,7 @@ import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button
 import Button from '@material-ui/core/Button/Button'
 import moment from 'moment'
 import i18next from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -25,6 +26,7 @@ function SecondCommonConsentSection({
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const { t } = useTranslation()
 
   useEffect(() => {
     setErrorMessage('')
@@ -73,10 +75,14 @@ function SecondCommonConsentSection({
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
           <div className="headerWrapper">
-            <h1>Consent Signature</h1>
+            <h1>{t('form.consentSignature.title')}</h1>
           </div>
           <h3>
-            Please <b>check the box below</b> if you <b>agree</b> to take part:
+            {t('form.consentSignature.pleaseCheck.text1')}{' '}
+            <b>{t('form.consentSignature.pleaseCheck.check')}</b>
+            {t('form.consentSignature.pleaseCheck.if')}{' '}
+            <b>{t('form.consentSignature.pleaseCheck.agree')}</b>{' '}
+            {t('form.consentSignature.pleaseCheck.takePart')}
           </h3>
           <span className="consentWrapper">
             <input
@@ -86,20 +92,14 @@ function SecondCommonConsentSection({
               onClick={() => setConsented(prev => !prev)}
             />
             <div>
-              <b>
-                I have read and understand the information presented in this
-                consent process. All of my questions have been answered. I
-                freely and willingly choose to participate in the MindKind
-                study. By signing this consent, I have not given up any of my
-                legal rights.
-              </b>
+              <b>{t('form.consentSignature.agreement')}</b>
             </div>
           </span>
 
           <h2>{moment().locale(i18next.language).format('MMMM Do, YYYY')}</h2>
 
           <fieldset>
-            <legend>Full Name of adult participant:</legend>
+            <legend>{t('form.consentSignature.fullName')}</legend>
             <input
               type="text"
               value={signatureName}
@@ -118,7 +118,7 @@ function SecondCommonConsentSection({
             onClick={() => setStep(1)}
             disabled={!consented || signatureName.length < 5}
           >
-            Submit
+            {t('form.submit')}
           </Button>
         </div>
       )
@@ -128,7 +128,10 @@ function SecondCommonConsentSection({
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
           <div className="headerWrapper">
-            <h1>You are in step {step}</h1>
+            <h1>
+              {t('form.youAreInStep')}
+              {step}
+            </h1>
           </div>
           <div className="error-message">{errorMessage}</div>
           <div className="arrowButtonsWrapper">

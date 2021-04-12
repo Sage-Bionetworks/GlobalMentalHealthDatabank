@@ -30,6 +30,7 @@ import {
   schemaUnderstandsEnglish,
   uiSchemaUnderstandsEnglish,
 } from '../schemas/understandsEnglish'
+import { useTranslation } from 'react-i18next'
 
 type FormSchema = {
   properties?: any
@@ -53,6 +54,8 @@ export default function SageForm({
   infoMessage,
   buttonText,
 }: SageFormProps) {
+  const { t } = useTranslation()
+
   const getSchemaFromId = (id: string) => {
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
@@ -131,7 +134,7 @@ export default function SageForm({
               type="submit"
               className="wideButton"
             >
-              {buttonText || 'Submit'}
+              {buttonText || t('form.submit')}
             </Button>
           </div>
         </Form>

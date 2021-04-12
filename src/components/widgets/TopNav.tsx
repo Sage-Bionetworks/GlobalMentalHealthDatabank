@@ -19,7 +19,6 @@ import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { systemFonts } from '../../App'
-import { getSearchParams } from '../../helpers/utility'
 import { useSessionDataState, useSessionDataDispatch } from '../../AuthContext'
 import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
 import i18n from '../../i18n'
@@ -137,31 +136,8 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
   const [language, setLanguage] = React.useState(i18n.language)
   const classes = useStyles()
   const sessionData = useSessionDataState()
-  const alertCode = sessionData.alert
-  const sessionUpdateFn = useSessionDataDispatch()
 
   const { t } = useTranslation()
-
-  const isGlobalNotificationAlertHidden = (location: string): boolean => {
-    const specialPages = ['settings', 'appointment', 'consent']
-    return (
-      specialPages.find(page => location.toLowerCase().includes(page)) !==
-      undefined
-    )
-  }
-  const isGlobalNotificationAlertHiddenFlag = isGlobalNotificationAlertHidden(
-    window.location.pathname,
-  )
-  if (!isGlobalNotificationAlertHiddenFlag) {
-    const searchParamsProps = getSearchParams(window.location.search)
-    const searchParamAlertCode: string = searchParamsProps['alert']
-    if (searchParamAlertCode && searchParamAlertCode !== alertCode) {
-      sessionUpdateFn({
-        type: 'SET_ALERT',
-        payload: { ...sessionData, alert: searchParamAlertCode },
-      })
-    }
-  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -188,7 +164,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className={classes.navBarLink}
         >
           <ListItem button className={classes.mobileMenuItem}>
-            Home
+            {t('topnav.home')}
           </ListItem>
         </NavLink>
         <Divider className={classes.mobileMenuSeparator} />
@@ -199,7 +175,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className={classes.navBarLink}
           >
             <ListItem button className={classes.mobileMenuItem}>
-              {t('topnav.text6')}
+              {t('topnav.dashboard')}
             </ListItem>
           </NavLink>
         )}
@@ -236,7 +212,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className={classes.navBarLink}
           >
             <ListItem button className={classes.mobileMenuItem}>
-              Sign in
+              {t('topnav.login')}
             </ListItem>
           </NavLink>
         )}
@@ -252,7 +228,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         style={{ whiteSpace: 'nowrap' }}
         activeClassName={classes.fullNavBarLinkActive}
       >
-        Home
+        {t('topnav.home')}
       </NavLink>
       {props.token && sessionData.consented && (
         <NavLink
@@ -260,7 +236,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className={classes.fullNavBarLink}
           activeClassName={classes.fullNavBarLinkActive}
         >
-          {t('topnav.text6')}
+          {t('topnav.dashboard')}
         </NavLink>
       )}
       {props.token && (
@@ -296,7 +272,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             variant="outlined"
             className={classes.navBarLink}
           >
-            Sign in
+            {t('topnav.login')}
           </Button>
         </NavLink>
       )}

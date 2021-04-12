@@ -19,6 +19,7 @@ import {
   getRandomFlowOption,
   FLOW_OPTIONS,
 } from '../../helpers/RandomFlowGenerator'
+import { useTranslation } from 'react-i18next'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -31,6 +32,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
   onErrorFn,
 }: RegistrationProps) => {
+  const { t } = useTranslation()
+
   const stateSchema = {
     phone: { value: '', error: '' },
     countryCode: {
@@ -113,15 +116,11 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
           phoneNumber,
         )
       } else {
-        setErrorMessage(
-          'Error when registering, please verify your phone number and country selection',
-        )
+        setErrorMessage(t('eligibility.registerError'))
         onErrorFn(result.status)
       }
     } catch (e) {
-      setErrorMessage(
-        'Error when registering, please verify your phone number and country selection',
-      )
+      setErrorMessage(t('eligibility.registerError'))
       onErrorFn(e.statusCode, e.message)
     }
   }
