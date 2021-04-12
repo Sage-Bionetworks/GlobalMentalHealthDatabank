@@ -3,15 +3,12 @@ import {
   Phone,
   SignInData,
   LoggedInUserData,
-  SignInDataEmail,
   SignInDataPhone,
   APP_ID,
-  LoginType,
   StringDictionary,
   SESSION_NAME,
 } from '../types/types'
 
-import { zipcodes } from '../data/zips.json'
 import moment from 'moment'
 import i18n from 'i18next'
 import { useState } from 'react'
@@ -33,7 +30,7 @@ function makeRequest(
         reject({
           status: this.status,
           statusText: xhr.statusText,
-          message: JSON.parse(xhr.responseText).message
+          message: JSON.parse(xhr.responseText).message,
         })
       }
     }
@@ -41,7 +38,7 @@ function makeRequest(
       reject({
         status: this.status,
         statusText: xhr.statusText,
-        message: xhr.response
+        message: xhr.response,
       })
     }
     xhr.setRequestHeader('Accept-Language', i18n.language)
@@ -60,26 +57,23 @@ export const callEndpointXHR = async <T>(
   data: StringDictionary,
   token?: string,
 ): Promise<Response<T>> => {
-
   let body: string | undefined = JSON.stringify(data)
-  
+
   if (method === 'GET') {
     const queryString = Object.keys(data)
       .map(key => key + '=' + data[key])
       .join('&')
     endpoint = queryString ? `${endpoint}?${queryString}` : endpoint
-  
-    body = undefined
 
+    body = undefined
   }
   return makeRequest(method, endpoint, body, token).then(
     ({ status, response, ok }) => {
       const result = JSON.parse(response)
       return { status: status, data: result, ok: ok }
-
     },
     error => {
-      throw(error)
+      throw error
     },
   )
 }
@@ -90,7 +84,6 @@ export const callEndpoint = async <T>(
   data: StringDictionary,
   token?: string,
 ): Promise<Response<T>> => {
-
   const ls = window.localStorage
   const isE2E = ls.getItem('crc_e2e')
   if (isE2E) {
@@ -121,18 +114,13 @@ export const callEndpoint = async <T>(
 
   const result = await response.json()
   if (!response.ok && response.status !== 412) {
-    //alert(JSON.stringify(result, null, 2))
     throw result
   }
   return { status: response.status, data: result, ok: response.ok }
 }
 
-export const makePhone = (phone: string): Phone => {
-  const number = phone?.includes('+1') ? phone : `+1${phone}`
-  return {
-    number: number,
-    regionCode: 'US',
-  }
+export const makePhone = (phone: string, regionCode?: string): Phone => {
+  return { number: phone, regionCode: regionCode || '0' }
 }
 
 export const getMomentDate = (
@@ -179,29 +167,20 @@ export const setSession = (data: SessionData) => {
 }
 
 export const sendSignInRequest = async (
-  loginType: LoginType,
-  phoneOrEmail: string,
+  phoneNumber: string,
+  countryCode: string,
   endpoint: string,
 ): Promise<any> => {
   let postData: SignInData
-  // setLoginType(_loginType)
-  if (loginType === 'PHONE') {
-    postData = {
-      appId: APP_ID,
-      phone: makePhone(phoneOrEmail),
-    } as SignInDataPhone
-  } else {
-    postData = {
-      appId: APP_ID,
-      email: phoneOrEmail,
-    } as SignInDataEmail
-  }
+
+  postData = {
+    appId: APP_ID,
+    phone: makePhone(phoneNumber, countryCode),
+  } as SignInDataPhone
 
   try {
     return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
   } catch (e) {
-    console.log(e)
-
     throw e
   }
 }
@@ -263,5 +242,3 @@ export const bytesToSize = (bytes: number) => {
   if (i === 0) return `${bytes} ${sizes[i]})`
   return `${(bytes / 1024 ** i).toFixed(1)}${sizes[i]}`
 }
-
-export const isWithin25Miles=(zip: string) => (zipcodes.includes(zip)) 

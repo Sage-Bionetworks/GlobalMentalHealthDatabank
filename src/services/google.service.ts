@@ -1,5 +1,6 @@
 export const GoogleService = {
   sendPageView,
+  sendEvent,
 }
 
 function sendPageView() {

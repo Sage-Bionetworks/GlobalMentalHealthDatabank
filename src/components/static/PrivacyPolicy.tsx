@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles, Grid, Hidden, Container } from '@material-ui/core'
-import { useIntroStyles } from './Intro'
-import BlueSeparator from './BlueSeparator'
+import Separator from './Separator'
 import LearnMore from '../widgets/LearnMore'
 import { ReactComponent as Graphic } from '../../assets/privacy_policy_graphic.svg'
 import { useTranslation, Trans } from 'react-i18next'
@@ -26,22 +25,19 @@ export const useStyles = makeStyles(theme => ({
     padding: '30px 0px',
   },
 }))
-export const PrivacyPolicy: React.FunctionComponent = ({}) => {
-  const introClasses = useIntroStyles()
+export const PrivacyPolicy: React.FunctionComponent = () => {
   const classes = useStyles()
   const { t } = useTranslation()
   return (
     <div>
-      <div
-        className={`${classes.paperHeaderDiv} ${introClasses.paperHeaderDiv}`}
-      ></div>
-      <Container maxWidth="md" className={introClasses.paperPanelWrapper}>
-        <div className={introClasses.paperPanel}>
-          <div className={introClasses.paperPanelTitle}>
+      <div className={`${classes.paperHeaderDiv}`}></div>
+      <Container maxWidth="md">
+        <div>
+          <div>
             <h1>{t('privacy.title')}</h1>
           </div>
           <Hidden xsDown>
-            <BlueSeparator />
+            <Separator />
           </Hidden>
           <Grid
             container
@@ -49,12 +45,7 @@ export const PrivacyPolicy: React.FunctionComponent = ({}) => {
             justify="center"
             alignItems="flex-start"
           >
-            <Grid
-              item
-              xs={12}
-              md={8}
-              className={introClasses.paperPanelStepContainer}
-            >
+            <Grid item xs={12} md={8}>
               <div>
                 <div>
                   <Trans i18nKey="privacy.text1">

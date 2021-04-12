@@ -1,0 +1,79 @@
+.navbarTitle {
+  padding-top: 11px;
+  padding-left: 15px;
+}
+
+.navBarLink {
+  color: #2e2e2e;
+  &:hover {
+    text-decoration: none;
+    color: #2e2e2e;
+  }
+}
+
+.fullNavBarLink {
+  color: #2e2e2e;
+  margin-left: 30px;
+  padding-bottom: 7px;
+  font-weight: 400;
+  &:hover {
+    text-decoration: none;
+    color: #2e2e2e;
+  }
+  &:focus {
+    text-decoration: none;
+    color: #2e2e2e;
+  }
+}
+
+.fullNavBarLinkActive {
+  border-bottom: 4px solid #0084ff;
+}
+
+.fullNavBarButton {
+  white-space: nowrap;
+  min-width: 100px;
+  height: 37px;
+
+  font-weight: bold;
+  border: 2px solid;
+  &:hover {
+    border: 2px solid;
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  justify-content: flex-end;
+  height: 72px;
+  margin-bottom: 10px;
+}
+
+.drawerCloseButton {
+  width: 48px;
+}
+
+.drawerCloseIcon {
+  color: #2a2a2a;
+}
+
+.mobileMenuItem {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  font-style: normal;
+  padding: 10px 0px 10px 40px;
+  color: #2a2a2a;
+}
+.mobileMenuSeparator {
+  height: 2px;
+  margin: 20px 0px;
+  background-color: #2a2a2a;
+}
+
+.content {
+  flex-grow: 1;
+  min-height: calc(100vh - 275px);
+}

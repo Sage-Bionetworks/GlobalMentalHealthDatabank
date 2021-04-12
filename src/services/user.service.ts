@@ -3,8 +3,6 @@ import {
   LoggedInUserData,
   Response,
   UserAttributes,
-  ReportDataList,
-  TestResult,
 } from '../types/types'
 
 import { callEndpoint } from '../helpers/utility'
@@ -13,9 +11,7 @@ export const UserService = {
   getUserInfo,
   updateUserAttributes,
   updateUserData,
-  getAppointments,
-  getTestResult
-  
+  updateUserClientData,
 }
 
 async function getUserInfo(token: string): Promise<Response<LoggedInUserData>> {
@@ -51,7 +47,7 @@ async function updateUserData(
     firstName: data.firstName,
     lastName: data.lastName,
     attributes: data.attributes,
-    dataGroups: data.dataGroups
+    dataGroups: data.dataGroups,
   }
   const result = await callEndpoint<LoggedInUserData>(
     `${ENDPOINT}/v3/participants/self`,
@@ -62,31 +58,17 @@ async function updateUserData(
   return result
 }
 
-async function getAppointments(
+async function updateUserClientData(
   token: string,
-): Promise<Response<ReportDataList>> {
-  const result = await callEndpoint<ReportDataList>(
-    `${ENDPOINT}/v3/users/self/reports/appointment?startDate=1970-01-01&endDate=1970-01-01`,
-    'GET',
-    {},
-    token,
-  )
-  return result
-}
-
-async function getTestResult(
-  token: string,
-): Promise<
-  Response<{
-    items: TestResult[]
-  }>
-> {
-  const result = await callEndpoint<{
-    items: TestResult[]
-  }>(
-    `${ENDPOINT}/v3/users/self/reports/observation?startDate=1970-01-01&endDate=1970-01-01`,
-    'GET',
-    {},
+  data: any,
+): Promise<Response<LoggedInUserData>> {
+  const payload = {
+    clientData: data,
+  }
+  const result = await callEndpoint<LoggedInUserData>(
+    `${ENDPOINT}/v3/participants/self`,
+    'POST',
+    payload,
     token,
   )
   return result

@@ -1,13 +1,12 @@
 .form-group {
   margin-bottom: 4.5rem;
+  label {
+    margin-bottom: 10px;
+  }
 }
 
 .input--padded {
-  padding: 20px;
-}
-
-.input--min-padded {
-  padding: 5px;
+  padding: 15px 0 20px 0;
 }
 
 .tabbedField {
@@ -52,14 +51,8 @@
 }
 
 label.block--dark {
-  background: #efefef;
-  color: #0084ff;
-
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  padding: 1rem;
-  border-bottom: 1px solid #0084ff;
-  width: 100%;
+  font-weight: 700;
+  line-height: 25px;
 }
 
 .error {
@@ -67,4 +60,24 @@ label.block--dark {
 }
 .modal-body {
   padding: 100px 50px;
+}
+
+.phoneFlag {
+  &.MuiOutlinedInput-root {
+    border-radius: 0;
+    right: -1px;
+    div {
+      margin-bottom: -2px;
+    }
+  }
+}
+
+.phoneInput {
+  .MuiOutlinedInput-root {
+    border-radius: 0;
+  }
+}
+
+.flagIcon {
+  width: 25px;
 }

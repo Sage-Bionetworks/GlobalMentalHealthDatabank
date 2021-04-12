@@ -1,12 +1,11 @@
-import React from 'react'
-import BlueSeparator from '../static/BlueSeparator'
-
+import React, { useState } from 'react'
+import Separator from '../static/Separator'
 import useForm from '../useForm'
 import {
   APP_ID,
   ENDPOINT,
   RegistrationData,
-  LoginType,
+  UserDataGroup,
 } from '../../types/types'
 import {
   callEndpoint,
@@ -15,56 +14,47 @@ import {
 } from '../../helpers/utility'
 import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
-import { useTranslation, Trans } from 'react-i18next'
+import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
+import {
+  getRandomFlowOption,
+  FLOW_OPTIONS,
+} from '../../helpers/RandomFlowGenerator'
+import { useTranslation } from 'react-i18next'
 
 type RegistrationProps = {
   onSuccessFn: Function
   onErrorFn: Function
 }
 
-const EMAIL_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/email'
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
-
-const signupIntro = {
-  PHONE: (
-    <Trans i18nKey="registration.intro1">
-      <h2>[translate]</h2>
-      <p>[translate]</p>
-      <p>[translate]</p>
-      <p>[translate]</p>
-    </Trans>
-  ),
-  EMAIL: (
-    <Trans i18nKey="registration.intro2">
-      <h2>[translate]</h2>
-      <p>[translate] </p>
-      <p> [translate]</p>
-    </Trans>
-  ),
-}
 
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
   onErrorFn,
 }: RegistrationProps) => {
   const { t } = useTranslation()
+
   const stateSchema = {
-    email: { value: '', error: '' },
     phone: { value: '', error: '' },
-    registrationType: { value: 'EMAIL', error: '' },
+    countryCode: {
+      value: window.localStorage.getItem('selected_country') || '',
+      error: '',
+    },
   }
 
   const validationStateSchema = {
-    //https://www.w3resource.com/javascript/form/email-validation.php
-    email: {},
     phone: {
+      /*
+      We can add a validation with the following schema
       validator: {
         regEx: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
         error: t('registration.text5'),
-      },
+      },*/
     },
-    registrationType: {},
+    countryCode: {},
   }
+
+  const [error, setErrorMessage] = useState('')
 
   const submitRegistration = async (registrationData: RegistrationData) => {
     const result = await callEndpoint(
@@ -77,146 +67,97 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
-    const data: RegistrationData = {
-      email: state.email.value,
-      phone: state.phone.value ? makePhone(state.phone.value) : undefined,
-      clientData: {},
-      appId: APP_ID,
-      substudyIds: ['columbia'],
+    let flowSelection: string = getRandomFlowOption()
+    let dataGroups: UserDataGroup[] = ['test_user' as UserDataGroup]
+    switch (flowSelection) {
+      case FLOW_OPTIONS.ONE:
+        dataGroups.push(FLOW_OPTIONS.ONE as UserDataGroup)
+        break
+      case FLOW_OPTIONS.TWO:
+        dataGroups.push(FLOW_OPTIONS.TWO as UserDataGroup)
+        break
+      case FLOW_OPTIONS.THREE:
+        dataGroups.push(FLOW_OPTIONS.THREE as UserDataGroup)
+        break
+      case FLOW_OPTIONS.FOUR:
+        dataGroups.push(FLOW_OPTIONS.FOUR as UserDataGroup)
+        break
     }
-    let loginType: LoginType = 'EMAIL'
+    const data: RegistrationData = {
+      phone: state.phone.value
+        ? makePhone(state.phone.value, state.countryCode.value)
+        : undefined,
+      clientData: {
+        flowSelection: flowSelection,
+      },
+      appId: APP_ID,
+      substudyIds: ['wellcome-study'],
+      dataGroups: dataGroups,
+    }
     const endPoint = {
       PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
-      EMAIL: `${ENDPOINT}${EMAIL_SIGN_IN_TRIGGER_ENDPOINT}`,
-    }
-    if (state.registrationType === 'EMAIL') {
-      delete data.phone
-      loginType = 'EMAIL'
-    }
-    if (!data.email) {
-      delete data.email
-      loginType = 'PHONE'
-    }
-
-    const hostname: string = window.location.hostname
-    if (hostname.includes('localhost') || hostname.includes('staging')) {
-      // issue 145: current hostname includes 'localhost' or 'staging', mark this as a test user account
-      data.dataGroups = ['test_user']
     }
 
     //send signinRequest
-    const phoneOrEmail = data.email || data.phone?.number || ''
-    const result = await submitRegistration(data)
-    if (result.status === 201) {
-      const sentSigninRequest = await sendSignInRequest(
-        loginType,
-        phoneOrEmail,
-        endPoint[loginType],
-      )
+    const phoneNumber = data.phone?.number || ''
+    try {
+      const result = await submitRegistration(data)
 
-      onSuccessFn(
-        loginType,
-        sentSigninRequest.status,
-        sentSigninRequest.data,
-        phoneOrEmail,
-      )
-    } else {
-      onErrorFn(result.status)
+      if (result.status === 201) {
+        setErrorMessage('')
+        const sentSigninRequest = await sendSignInRequest(
+          phoneNumber,
+          state.countryCode.value,
+          endPoint['PHONE'],
+        )
+        onSuccessFn(
+          sentSigninRequest.status,
+          sentSigninRequest.data,
+          phoneNumber,
+        )
+      } else {
+        setErrorMessage(t('eligibility.registerError'))
+        onErrorFn(result.status)
+      }
+    } catch (e) {
+      setErrorMessage(t('eligibility.registerError'))
+      onErrorFn(e.statusCode, e.message)
     }
   }
 
-  const { state, handleOnChange, handleOnSubmit, disable } = useForm(
+  const { state, handleOnChange, handleOnSubmit } = useForm(
     stateSchema,
     validationStateSchema,
     onSubmitForm,
   )
 
   return (
-    <div>
-      {signupIntro[state.registrationType.value as LoginType]}
-      <BlueSeparator></BlueSeparator>
+    <div className="quizWrapper">
+      <div className="media-wrapper text-left">
+        <TextSent />
+      </div>
+      <div className="text-left">{t('eligibility.askPhone')}</div>
+      <Separator />
+      <div className="text-left">{t('eligibility.whyAsk')}</div>
 
-      {state.registrationType.value === 'EMAIL' && (
+      {
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
-            <div className="tabbedField">
-              <div>
-                <label htmlFor="email" className="block--dark">
-                  {t('common.email')}
-                </label>
-                <div className="input--padded">
-                  <TextField
-                    name="email"
-                    type="email"
-                    value={state.email.value}
-                    aria-label={t('common.email')}
-                    onChange={handleOnChange}
-                    variant="outlined"
-                    label={t('common.email')}
-                    fullWidth
-                    autoComplete={t('common.emailAddress')}
-                    placeholder={t('common.emailAddress')}
-                  />
-                </div>
-
-                <div className="text-center">
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    size="large"
-                    type="submit"
-                    disabled={!state.email.value}
-                    className="wideButton"
-                  >
-                    {t('registration.text1')}
-                  </Button>
-                  <br />
-                </div>
-              </div>
-            </div>
-            {
-              // temporarily disabling phone login
-              false && (
-                <div style={{ margin: '0 auto', textAlign: 'center' }}>
-                  <Button
-                    variant="text"
-                    onClick={() => {
-                      handleOnChange({
-                        target: { name: 'registrationType', value: 'PHONE' },
-                      })
-                      handleOnChange({
-                        target: { name: 'email', value: '' },
-                      })
-                      window.scrollTo(0, 0)
-                    }}
-                  >
-                    {t('registration.text2')}
-                  </Button>
-                </div>
-              )
-            }
-          </div>
-        </form>
-      )}
-
-      {state.registrationType.value === 'PHONE' && (
-        <form className="demoForm" onSubmit={handleOnSubmit}>
-          <div className="form-group" style={{ marginBottom: 0 }}>
-            <div className="tabbedField">
+            <div>
               <label htmlFor="phone" className="block--dark">
-                {t('common.phone')}
+                {t('eligibility.myPhone')}
               </label>
               <div className="input--padded">
                 <TextField
                   name="phone"
                   type="phone"
                   value={state.phone.value}
-                  placeholder={t('common.phone')}
-                  aria-label={t('common.phone')}
-                  label={t('common.phone')}
+                  placeholder={'Phone #'}
+                  aria-label={'Phone #'}
                   variant="outlined"
                   fullWidth
                   onChange={handleOnChange}
+                  className="phoneInput"
                 />
               </div>
               {Object.keys(state).map(
@@ -230,37 +171,23 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                     </p>
                   ),
               )}
+              <p className="error-message">{error}</p>
               <div className="text-center">
                 <Button
+                  fullWidth
                   color="primary"
                   variant="contained"
                   size="large"
                   type="submit"
                   disabled={!state.phone.value}
                 >
-                  {t('registration.text3')}
+                  {t('eligibility.createAccount')}
                 </Button>
               </div>
             </div>
-
-            <div style={{ margin: '0 auto', textAlign: 'center' }}>
-              <Button
-                variant="text"
-                onClick={() => {
-                  handleOnChange({
-                    target: { name: 'registrationType', value: 'EMAIL' },
-                  })
-                  handleOnChange({
-                    target: { name: 'phone', value: '' },
-                  })
-                }}
-              >
-                {t('registration.text4')}
-              </Button>
-            </div>
           </div>
         </form>
-      )}
+      }
     </div>
   )
 }

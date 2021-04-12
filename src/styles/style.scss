@@ -4,11 +4,12 @@
 @import 'components/synapse_form_wrapper/overrides';
 @import 'components/intro';
 @import 'components/dashboard';
-@import 'components/consent';
+@import 'components/footer';
 @import 'components/static';
-@import 'components/floating-toolbar';
+@import 'components/sage-form';
 @import 'material-overrides';
 @import 'forms';
+@import 'components/topnav';
 @import 'mobile' screen and (max-width: 768px);
 
 html {
@@ -17,7 +18,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Open Sans', serif, 'Lato', 'Roboto', Helvetica, Arial;
+  font-family: 'Lato', sans-serif;
   background: #efefef;
 }
 
@@ -27,72 +28,30 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Playfair Display', serif, 'Lato', 'Roboto', Helvetica, Arial;
-  font-style: normal;
+  font-family: 'Lato', Tahoma, Verdana, sans-serif;
   color: #2a2a2a;
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+h2 {
   font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
 }
 
 .print-only {
   display: none !important;
-}
-
-@media (min-width: 600px) {
-  h1,
-  h2 {
-    margin-top: 32px;
-    margin-bottom: 32px;
-  }
-  h3,
-  h4 {
-    margin-top: 24px;
-    margin-bottom: 24px;
-  }
-  h1 {
-    font-size: 40px;
-    line-height: 51px;
-  }
-  h2 {
-    font-size: 32px;
-    line-height: 37px;
-  }
-  h3 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  h4 {
-    font-size: 18px;
-    line-height: 25px;
-  }
-  h5 {
-    font-size: 14px;
-    line-height: 22px;
-  }
-}
-
-@media (max-width: 599px) {
-  h1,
-  h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  h3,
-  h4 {
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  h2 {
-    font-size: 22px;
-    line-height: 28px;
-  }
-  h3 {
-    font-size: 20px;
-    line-height: 26px;
-  }
 }
 
 .MuiCardContent-root {
@@ -104,8 +63,13 @@ h6 {
 
 p {
   color: #2a2a2a;
-  font-size: 16px;
-  line-height: 25px;
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 a {
@@ -124,6 +88,10 @@ a {
 
 #root .wideButton {
   padding: 0px 45px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .cookiesBanner {
@@ -191,11 +159,12 @@ div.intro {
 }
 
 .partialGreen {
-  background-image: url('../assets/dashboard/bg_rectangle_color.svg');
-  background-repeat: repeat-x;
+  //background-image: url('../assets/dashboard/bg_rectangle_color.svg');
+  //background-repeat: repeat-x;
 }
 
-button.btnVerticallySpaced, div.btnVerticallySpaced{
+button.btnVerticallySpaced,
+div.btnVerticallySpaced {
   margin: 30px auto;
   @media (min-width: 961px) {
     margin: 35px auto;
@@ -210,4 +179,154 @@ button.btnVerticallySpaced, div.btnVerticallySpaced{
   .print-only {
     display: block !important;
   }
+}
+
+.MuiButton-containedPrimary {
+  color: white;
+}
+
+.media-wrapper {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.error-message {
+  color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .checkbox {
+    span.MuiCheckbox-root {
+      padding-top: 0;
+      top: 5px;
+    }
+  }
+}
+
+.progressBarHeader {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.progressBarWrapper {
+  padding: 10px 0 40px 0;
+  .MuiLinearProgress-colorPrimary {
+    background-color: #eaebee;
+    height: 10px;
+    .MuiLinearProgress-barColorPrimary {
+      background-color: #f5b33c;
+      border-radius: 0px 10px 10px 0px;
+    }
+  }
+}
+
+ul {
+  padding-top: 20px;
+  padding-inline-start: 20px;
+  li {
+    list-style-type: none;
+    padding-bottom: 20px;
+  }
+}
+
+.headerWrapper {
+  padding-bottom: 5px;
+  width: 75%;
+}
+
+.arrowButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+
+.dashboardLink {
+  text-decoration: underline;
+  color: black;
+}
+
+.consentWrapper {
+  display: flex;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  input {
+    margin-right: 18px;
+  }
+}
+
+fieldset {
+  border: 1px black solid;
+  legend {
+    padding: 8px 15px;
+    text-align: center;
+    border: 0;
+    width: initial;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 5px 0;
+  }
+  input {
+    border: 0;
+    width: 90%;
+    padding: 0px 10px 5px 10px;
+    margin: 0 5% 15px 5%;
+  }
+}
+
+.sageForm {
+  fieldset {
+    border: 0;
+    legend {
+      display: none;
+    }
+    span {
+      margin-left: 22px;
+    }
+    input {
+      width: inherit;
+      margin-top: 6px;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-message {
+  padding-top: 30px;
+  display: flex;
+  svg {
+    margin-right: 10px;
+  }
+  &.error {
+    color: #f36e68;
+  }
+}
+
+.rejectionText {
+  padding-bottom: 150px;
+}
+
+.text-left {
+  text-align: left;
+  &.padded {
+    padding: 40px 0 10px 0;
+  }
+}
+
+.input--padded--flags {
+  padding: 20px 0 40px 0;
+  display: flex;
+}
+
+.demoForm {
+  padding-top: 15px;
+}
+
+.text-center {
+  text-align: center;
 }

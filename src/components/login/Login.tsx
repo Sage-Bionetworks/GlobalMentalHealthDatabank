@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import {
   APP_ID,
-  EmailSigninParams,
   LoggedInUserData,
   SignInData,
   SignInDataPhone,
-  SignInDataEmail,
-  LoginType,
   Response,
   ENDPOINT,
 } from '../../types/types'
@@ -18,43 +15,43 @@ import TextField from '@material-ui/core/TextField/TextField'
 
 import { RouteComponentProps } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert/Alert'
-import {
-  Tabs,
-  Tab,
-  Card,
-  CardContent,
-  CircularProgress,
-} from '@material-ui/core'
+import { Card, CardContent, CircularProgress } from '@material-ui/core'
 
+import uk from '../../assets/flags/uk.svg'
+import ind from '../../assets/flags/ind.svg'
+import za from '../../assets/flags/za.svg'
+import us from '../../assets/flags/us.svg'
+
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
 import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
-  searchParams?: EmailSigninParams
+  searchParams?: any
 }
 
 export type LoginProps = OwnLoginProps & RouteComponentProps
 
-type LoginPostData = {
-  appId: string
-  email: string
-  token: string
-}
-
-const EMAIL_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/email'
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
-const EMAIL_SIGN_IN_ENDPOINT = '/v3/auth/email/signIn'
+
+const FLAGS = {
+  unitedKingdom: 'UK',
+  india: 'IN',
+  southAfrica: 'ZA',
+  unitedStates: 'US',
+}
 
 export const Login: React.FunctionComponent<LoginProps> = ({
   searchParams,
   history,
 }: LoginProps) => {
-  const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
+  const [countryCode, setCountryCode] = useState(FLAGS.unitedKingdom)
   const [error, setError] = useState('')
-  const [isLinkSent, setIsLinkSent] = useState(false)
-  const [loginType, setLoginType] = useState<LoginType>('EMAIL')
+  const [isCodeSent, setIsCodeSent] = useState(false)
+  const loginType = 'PHONE'
   const [isLoading, setIsLoading] = useState(false)
 
   const { t } = useTranslation()
@@ -75,7 +72,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
     if (loggedIn.ok || !consented) {
-      console.log('handleLogin')
       sessionUpdateFn({
         type: 'LOGIN',
         payload: {
@@ -92,50 +88,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
     }
   }
 
-  React.useEffect(() => {
-    let isSubscribed = true
-
-    const signIn = async (postData: LoginPostData) => {
-      setIsLoading(true)
-
-      try {
-        const endpoint = `${ENDPOINT}${EMAIL_SIGN_IN_ENDPOINT}`
-        setError('')
-        setIsLoading(true)
-        const loggedIn = await callEndpoint<LoggedInUserData>(
-          endpoint,
-          'POST',
-          postData,
-        )
-        if (isSubscribed) {
-          handleLoggedIn(loggedIn)
-        }
-      } catch (e) {
-        //alert(JSON.stringify(e, null, 2))
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    if (sessionData.token) {
-      redirect(sessionData.consented || false)
-    } else {
-      if (searchParams?.email) {
-        const email = decodeURIComponent(searchParams.email)
-        const token = decodeURIComponent(searchParams.token)
-       
-        let postData: LoginPostData = {
-          appId: APP_ID,
-          email,
-          token
-        }
-        signIn(postData)
-      }
-    }
-    return () => {
-      isSubscribed = false
-    }
-  }, [searchParams])
-
   /**
    * Handle user login on click
    *
@@ -143,23 +95,16 @@ export const Login: React.FunctionComponent<LoginProps> = ({
    */
 
   const sendSignInRequest = async (
-    _loginType: 'PHONE' | 'EMAIL',
-    phoneOrEmail: string,
+    _loginType: 'PHONE',
+    phoneNumber: string,
+    countryCode: string,
     endpoint: string,
   ): Promise<any> => {
     let postData: SignInData
-    setLoginType(_loginType)
-    if (_loginType === 'PHONE') {
-      postData = {
-        appId: APP_ID,
-        phone: makePhone(phoneOrEmail),
-      } as SignInDataPhone
-    } else {
-      postData = {
-        appId: APP_ID,
-        email: email,
-      } as SignInDataEmail
-    }
+    postData = {
+      appId: APP_ID,
+      phone: makePhone(phoneNumber, countryCode),
+    } as SignInDataPhone
 
     try {
       setError('')
@@ -172,26 +117,18 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const handleLogin = async (
     clickEvent: React.FormEvent<HTMLElement>,
   ): Promise<any> => {
-    let result
     clickEvent.preventDefault() // avoid page refresh
 
     try {
       setIsLoading(true)
       setError('')
-      if (loginType === 'PHONE' && phone) {
-        result = await sendSignInRequest(
-          'PHONE',
-          phone,
-          `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
-        )
-      } else if (loginType === 'EMAIL' && email) {
-        result = await sendSignInRequest(
-          'EMAIL',
-          email,
-          `${ENDPOINT}${EMAIL_SIGN_IN_TRIGGER_ENDPOINT}`,
-        )
-      }
-      setIsLinkSent(true)
+      await sendSignInRequest(
+        'PHONE',
+        phone,
+        countryCode,
+        `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
+      )
+      setIsCodeSent(true)
     } catch (e) {
       setError(e.message)
     } finally {
@@ -200,7 +137,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   }
 
   return (
-    <>
+    <div>
       {isLoading && (
         <div className="text-center">
           <CircularProgress color="primary" />
@@ -209,94 +146,98 @@ export const Login: React.FunctionComponent<LoginProps> = ({
       {!isLoading && (
         <Card>
           <CardContent>
-            {(!isLinkSent || error) && (
+            {(!isCodeSent || error) && (
               <div>
                 <h2 className="text-center">{t('common.logIn')}</h2>
 
                 <form onSubmit={handleLogin}>
                   <div>
-                    <div className="tabbedField">
-                      <Tabs
-                        value={loginType}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="fullWidth"
-                        onChange={(_e, value) => setLoginType(value)}
-                        aria-label="disabled tabs example"
-                      >
-                        <Tab label={t('common.email')} value="EMAIL" />
-
-                        {
-                          // temporarily disabling phone login
-                          false && (
-                            <Tab label={t('common.phone')} value="PHONE" />
-                          )
-                        }
-                      </Tabs>
-
-                      {loginType === 'EMAIL' && (
-                        <div className="input--padded">
-                          <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            label={t('common.emailAddress')}
-                            fullWidth
-                            autoComplete={t('common.emailAddress')}
-                            placeholder={t('common.emailAddress')}
-                            name="email"
-                            type="email"
-                            value={email}
-                            onChange={e => setEmail(e.currentTarget.value)}
-                          />
-                        </div>
-                      )}
-
-                      {loginType === 'PHONE' && (
-                        <div className="input--padded">
-                          <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            autoComplete="phone"
-                            placeholder={t('common.phone')}
-                            label={t('common.phone')}
-                            fullWidth
-                            name="phone"
-                            type="phone"
-                            value={phone}
-                            onChange={e => setPhone(e.currentTarget.value)}
-                          />
-                        </div>
-                      )}
-                      <div className="text-center">
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          size="large"
-                          type="submit"
-                          disabled={!loginType}
-                          onSubmit={handleLogin}
-                          className="wideButton"
+                    {loginType === 'PHONE' && (
+                      <div className="input--padded--flags">
+                        <Select
+                          labelId="flag-selector"
+                          id="flag-selector"
+                          value={countryCode}
+                          onChange={(
+                            event: React.ChangeEvent<{ value: unknown }>,
+                          ) => {
+                            setCountryCode(event.target.value as any)
+                          }}
+                          variant="outlined"
+                          className="phoneFlag"
                         >
-                          {t('common.logIn')}
-                        </Button>
+                          <MenuItem value={FLAGS.unitedKingdom}>
+                            <img
+                              src={uk}
+                              className={'flagIcon'}
+                              alt="United Kingdom"
+                            ></img>
+                          </MenuItem>
+                          <MenuItem value={FLAGS.india}>
+                            <img
+                              src={ind}
+                              className={'flagIcon'}
+                              alt="India"
+                            ></img>
+                          </MenuItem>
+                          <MenuItem value={FLAGS.southAfrica}>
+                            <img
+                              src={za}
+                              className={'flagIcon'}
+                              alt="South Africa"
+                            ></img>
+                          </MenuItem>
+                          <MenuItem value={FLAGS.unitedStates}>
+                            <img
+                              src={us}
+                              className={'flagIcon'}
+                              alt="United States"
+                            ></img>
+                          </MenuItem>
+                        </Select>
+
+                        <TextField
+                          id="outlined-basic"
+                          variant="outlined"
+                          autoComplete="phone"
+                          placeholder="Phone #"
+                          label="Phone #"
+                          fullWidth
+                          name="phone"
+                          type="phone"
+                          value={phone}
+                          onChange={e => setPhone(e.currentTarget.value)}
+                        />
                       </div>
+                    )}
+                    <div className="text-center">
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        size="large"
+                        type="submit"
+                        disabled={!loginType}
+                        onSubmit={handleLogin}
+                        className="wideButton"
+                      >
+                        {t('common.logIn')}
+                      </Button>
                     </div>
                   </div>
                   {error && <Alert severity="error">{error}</Alert>}
                 </form>
               </div>
             )}
-
-            {isLinkSent && (
+            {isCodeSent && (
               <SignInWithCode
                 loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
                   handleLoggedIn(result)
                 }
-                phoneOrEmail={loginType === 'PHONE' ? phone : email}
-                loginType={loginType!}
-              ></SignInWithCode>
+                phoneNumber={phone}
+                countryCode={countryCode}
+              />
             )}
-            {!isLinkSent && (
+            {!isCodeSent && (
               <div style={{ margin: '0px auto', textAlign: 'center' }}>
                 <Button
                   variant="text"
@@ -309,7 +250,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
           </CardContent>
         </Card>
       )}
-    </>
+    </div>
   )
 }
 

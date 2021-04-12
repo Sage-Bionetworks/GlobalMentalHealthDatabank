@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { Response, LoggedInUserData, LoginType } from '../../types/types'
+import { Response, LoggedInUserData } from '../../types/types'
 import { useState } from 'react'
-import Eligiblity from './Eligibility'
+import Eligibility from './Eligibility'
 import SignInWithCode from '../login/SignInWithCode'
 import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
+import { useElegibility } from './context/ElegibilityContext'
+import { useTranslation } from 'react-i18next'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -19,12 +19,12 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   history,
   callbackFn,
 }: EligibilityRegistrationProps) => {
-  const [eligible, setEligible] = useState<boolean | undefined>(undefined)
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const countryCode = window.localStorage.getItem('selected_country') || ''
+  const [error, setError] = useState<object>({ status: 0, message: '' })
 
-  const [loginType, setLoginType] = useState<LoginType>()
-  const [phoneOrEmail, setPhoneOrEmail] = useState('')
-
-  const [error, setError] = useState<string>()
+  const { isEligible } = useElegibility()
+  const { t } = useTranslation()
 
   const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -36,48 +36,39 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
         history.push('/consent')
       }
     } else {
-      setError('Error ' + loggedIn.status)
+      setError({
+        message: t('eligibility.loginError'),
+        status: loggedIn.status,
+      })
     }
   }
 
   return (
-    <Card>
-      <CardContent>
-        {eligible === undefined && (
-          <Eligiblity
-            setEligibilityFn={() => {
-              setEligible(true)
-              window.scrollTo(0, 0)
-            }}
-          ></Eligiblity>
-        )}
-        {eligible && !loginType && (
-          <Registration
-            onSuccessFn={(
-              type: LoginType,
-              status: number,
-              data: object,
-              phoneOrEmail: string,
-            ) => {
-              setLoginType(type)
-              setPhoneOrEmail(phoneOrEmail)
-            }}
-            onErrorFn={(status: number) => {
-              setError(status + '')
-            }}
-          ></Registration>
-        )}
-        {eligible && loginType && (
-          <SignInWithCode
-            loginType={loginType}
-            phoneOrEmail={phoneOrEmail}
-            loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
-              handleLoggedIn(result)
-            }
-          ></SignInWithCode>
-        )}
-      </CardContent>
-    </Card>
+    <>
+      {!isEligible && <Eligibility />}
+      {isEligible && !phoneNumber && (
+        <Registration
+          onSuccessFn={(status: number, data: object, phoneNumber: string) => {
+            setPhoneNumber(phoneNumber)
+          }}
+          onErrorFn={(status: number, message?: string) => {
+            setError({
+              message: t('eligibility.registerError'),
+              status: status,
+            })
+          }}
+        />
+      )}
+      {isEligible && phoneNumber && (
+        <SignInWithCode
+          loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
+            handleLoggedIn(result)
+          }
+          phoneNumber={phoneNumber}
+          countryCode={countryCode}
+        />
+      )}
+    </>
   )
 }
 
