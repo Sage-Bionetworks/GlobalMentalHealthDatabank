@@ -7,7 +7,7 @@ function sendPageView() {
   const windowAny: any = window
   const gtag = windowAny.gtag
   if (gtag) {
-    gtag('config', 'UA-148914952-2', {
+    gtag('config', 'G-JJ5VL2RP03', {
       page_location: window.location.href,
       page_path: window.location.pathname,
     })
