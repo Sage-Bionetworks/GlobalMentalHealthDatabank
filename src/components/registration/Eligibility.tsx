@@ -8,6 +8,7 @@ import { Redirect, NavLink } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { FORM_IDS } from '../form/types'
 import { useTranslation } from 'react-i18next'
+import { GoogleService } from '../../services/google.service'
 
 const MAX_STEPS: number = 6
 
@@ -58,6 +59,12 @@ export const Eligibility: React.FunctionComponent = () => {
               if (selectedOption && Object.keys(selectedOption).length === 0)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
+                GoogleService.sendEvent(
+                  'quiz-accept',
+                  'eligibility',
+                  t('eligibility.howDidYouHear'),
+                  selectedOption.how_options,
+                )
                 setQuizChoices((prev: any) => ({
                   ...prev,
                   howDidYouHear: selectedOption.how_options,
