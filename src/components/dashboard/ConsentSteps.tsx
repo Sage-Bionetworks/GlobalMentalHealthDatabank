@@ -90,7 +90,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   const sessionData = useSessionDataState()
   const token = sessionData.token
 
-  useCallback(() => {
+  useEffect(() => {
     const getInfo = async () => {
       if (token) {
         const userInfoResponse = await UserService.getUserInfo(token)
