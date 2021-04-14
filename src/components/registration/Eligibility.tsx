@@ -53,7 +53,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           pathname: '/eligibility',
           search: '?step=howDidYouHear',
         })
-      document.title = 'How did you hear about us?'
+      document.title = 'MindKind > How did you hear about us?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -90,7 +90,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           pathname: '/eligibility',
           search: '?step=benefit',
         })
-      document.title = 'Benefits of health support'
+      document.title = 'MindKind > Benefits of health support'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -126,7 +126,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           pathname: '/eligibility',
           search: '?step=where',
         })
-      document.title = 'Where do you live?'
+      document.title = 'MindKind > Where do you live?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -169,7 +169,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           pathname: '/eligibility',
           search: '?step=android',
         })
-      document.title = 'Do you have an android?'
+      document.title = 'MindKind > Do you have an android?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -206,7 +206,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           pathname: '/eligibility',
           search: '?step=english',
         })
-      document.title = 'Do you speak english?'
+      document.title = 'MindKind > Do you speak english?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -247,7 +247,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           pathname: '/eligibility',
           search: '?step=ageRange',
         })
-      document.title = 'Are you on the age range?'
+      document.title = 'MindKind > Are you on the age range?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
