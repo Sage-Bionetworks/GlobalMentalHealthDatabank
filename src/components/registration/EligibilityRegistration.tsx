@@ -20,7 +20,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   callbackFn,
 }: EligibilityRegistrationProps) => {
   const [phoneNumber, setPhoneNumber] = useState('')
-  const countryCode = window.localStorage.getItem('selected_country') || ''
+  const [countryCode, setCountryCode] = useState('')
   const [error, setError] = useState<object>({ status: 0, message: '' })
 
   const { isEligible } = useElegibility()
@@ -45,9 +45,10 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
 
   return (
     <>
-      {!isEligible && <Eligibility />}
+      {!isEligible && <Eligibility setCountryCode={setCountryCode} />}
       {isEligible && !phoneNumber && (
         <Registration
+          countryCode={countryCode}
           onSuccessFn={(status: number, data: object, phoneNumber: string) => {
             setPhoneNumber(phoneNumber)
           }}

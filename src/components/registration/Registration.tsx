@@ -24,6 +24,7 @@ import { useTranslation } from 'react-i18next'
 type RegistrationProps = {
   onSuccessFn: Function
   onErrorFn: Function
+  countryCode: string
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
@@ -31,13 +32,14 @@ const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
   onErrorFn,
+  countryCode,
 }: RegistrationProps) => {
   const { t } = useTranslation()
 
   const stateSchema = {
     phone: { value: '', error: '' },
     countryCode: {
-      value: window.localStorage.getItem('selected_country') || '',
+      value: countryCode,
       error: '',
     },
   }

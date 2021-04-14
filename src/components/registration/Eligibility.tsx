@@ -9,6 +9,7 @@ import { useElegibility } from './context/ElegibilityContext'
 import { FORM_IDS } from '../form/types'
 import { useTranslation } from 'react-i18next'
 import { GoogleService } from '../../services/google.service'
+import { withRouter } from 'react-router-dom'
 
 const MAX_STEPS: number = 6
 
@@ -21,7 +22,7 @@ const INITIAL_QUIZ_CHOICES = {
   inAgeRange: '',
 }
 
-export const Eligibility: React.FunctionComponent = () => {
+export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
   const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
@@ -47,6 +48,12 @@ export const Eligibility: React.FunctionComponent = () => {
 
   switch (step) {
     case 1:
+      if (!props.history.location.search.includes('howDidYouHear'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=howDidYouHear',
+        })
+      document.title = 'MindKind > How did you hear about us?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -78,6 +85,12 @@ export const Eligibility: React.FunctionComponent = () => {
         </div>
       )
     case 2:
+      if (!props.history.location.search.includes('benefit'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=benefit',
+        })
+      document.title = 'MindKind > Benefits of health support'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -90,6 +103,12 @@ export const Eligibility: React.FunctionComponent = () => {
               if (selectedOption && Object.keys(selectedOption).length === 0)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
+                GoogleService.sendEvent(
+                  'quiz-accept',
+                  'eligibility',
+                  t('eligibility.benefit'),
+                  selectedOption.accept,
+                )
                 setQuizChoices(prev => {
                   return { ...prev, accessToSupport: selectedOption.accept }
                 })
@@ -102,6 +121,12 @@ export const Eligibility: React.FunctionComponent = () => {
         </div>
       )
     case 3:
+      if (!props.history.location.search.includes('where'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=where',
+        })
+      document.title = 'MindKind > Where do you live?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -114,9 +139,14 @@ export const Eligibility: React.FunctionComponent = () => {
               if (selectedCountry && Object.keys(selectedCountry).length === 0)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
-                window.localStorage.setItem(
-                  'selected_country',
+                props.setCountryCode(
                   Object.keys(COUNTRIES)[selectedCountry.your_country],
+                )
+                GoogleService.sendEvent(
+                  'quiz-accept',
+                  'eligibility',
+                  t('eligibility.where'),
+                  selectedCountry.your_country,
                 )
                 setQuizChoices(prev => {
                   return {
@@ -134,6 +164,12 @@ export const Eligibility: React.FunctionComponent = () => {
       )
 
     case 4:
+      if (!props.history.location.search.includes('android'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=android',
+        })
+      document.title = 'MindKind > Do you have an android?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -146,6 +182,12 @@ export const Eligibility: React.FunctionComponent = () => {
               if (selectedOption && Object.keys(selectedOption).length === 0)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
+                GoogleService.sendEvent(
+                  'quiz-accept',
+                  'eligibility',
+                  t('eligibility.android'),
+                  selectedOption.has_android,
+                )
                 setQuizChoices(prev => {
                   return { ...prev, hasAndroid: selectedOption.has_android }
                 })
@@ -159,6 +201,12 @@ export const Eligibility: React.FunctionComponent = () => {
       )
 
     case 5:
+      if (!props.history.location.search.includes('english'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=english',
+        })
+      document.title = 'MindKind > Do you speak english?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -171,6 +219,12 @@ export const Eligibility: React.FunctionComponent = () => {
               if (selectedOption && Object.keys(selectedOption).length === 0)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
+                GoogleService.sendEvent(
+                  'quiz-accept',
+                  'eligibility',
+                  t('eligibility.english'),
+                  selectedOption.understands_english_option,
+                )
                 setQuizChoices(prev => {
                   return {
                     ...prev,
@@ -188,6 +242,12 @@ export const Eligibility: React.FunctionComponent = () => {
       )
 
     case 6:
+      if (!props.history.location.search.includes('ageRange'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=ageRange',
+        })
+      document.title = 'MindKind > Are you on the age range?'
       return (
         <div className="quizWrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -200,6 +260,12 @@ export const Eligibility: React.FunctionComponent = () => {
               if (selectedOption && Object.keys(selectedOption).length === 0)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
+                GoogleService.sendEvent(
+                  'quiz-accept',
+                  'eligibility',
+                  t('eligibility.ageRange'),
+                  selectedOption.age_range,
+                )
                 setQuizChoices(prev => {
                   return { ...prev, inAgeRange: selectedOption.age_range }
                 })
@@ -238,4 +304,4 @@ export const Eligibility: React.FunctionComponent = () => {
   return null
 }
 
-export default Eligibility
+export default withRouter(Eligibility)

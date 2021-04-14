@@ -1,6 +1,7 @@
 import React from 'react'
 import EligibilityRegistration from './EligibilityRegistration'
 import TestRenderer from 'react-test-renderer'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 test('renders EligibilityRegistration', () => {
   const routeComponentPropsMock = {
@@ -9,10 +10,12 @@ test('renders EligibilityRegistration', () => {
     match: {} as any,
   }
   const testRenderer = TestRenderer.create(
-    <EligibilityRegistration
-      callbackFn={() => {}}
-      {...routeComponentPropsMock}
-    />,
+    <Router>
+      <EligibilityRegistration
+        callbackFn={() => {}}
+        {...routeComponentPropsMock}
+      />
+    </Router>,
   )
   const testInstance = testRenderer.root
   expect(testInstance.findByType(EligibilityRegistration))
