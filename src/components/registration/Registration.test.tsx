@@ -4,7 +4,11 @@ import TestRenderer from 'react-test-renderer'
 
 test('renders Registration', () => {
   const testRenderer = TestRenderer.create(
-    <Registration onSuccessFn={() => {}} onErrorFn={() => {}} />,
+    <Registration
+      onSuccessFn={() => {}}
+      onErrorFn={() => {}}
+      countryCode={'US'}
+    />,
   )
   const testInstance = testRenderer.root
   expect(testInstance.findByType(Registration))
