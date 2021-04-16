@@ -1,3 +1,5 @@
+import { GA_PROPERTY_ID } from '../types/types'
+
 export const GoogleService = {
   sendPageView,
   sendEvent,
@@ -7,7 +9,7 @@ function sendPageView() {
   const windowAny: any = window
   const gtag = windowAny.gtag
   if (gtag) {
-    gtag('config', 'G-JJ5VL2RP03', {
+    gtag('config', GA_PROPERTY_ID, {
       page_location: window.location.href,
       page_path: window.location.pathname,
     })

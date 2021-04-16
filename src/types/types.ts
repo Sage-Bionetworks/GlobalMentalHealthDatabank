@@ -6,6 +6,8 @@ export const ENDPOINT = 'https://webservices.sagebridge.org'
 export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
 export const SURVEY_IDENTIFIER = 'mindkind'
 
+export const GA_PROPERTY_ID = 'UA-131999358-2'
+
 export interface StringDictionary {
   [key: string]: any
 }
