@@ -18,7 +18,6 @@ function sendEvent(
   label: string,
   value: number | boolean,
 ) {
-  console.log('sendEvent')
   const windowAny: any = window
   const ga = windowAny.ga
   if (value === true || value === false) {
