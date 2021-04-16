@@ -1,5 +1,3 @@
-import { GA_PROPERTY_ID } from '../types/types'
-
 export const GoogleService = {
   sendPageView,
   sendEvent,
@@ -7,12 +5,10 @@ export const GoogleService = {
 
 function sendPageView() {
   const windowAny: any = window
-  const gtag = windowAny.gtag
-  if (gtag) {
-    gtag('config', GA_PROPERTY_ID, {
-      page_location: window.location.href,
-      page_path: window.location.pathname,
-    })
+  const ga = windowAny.ga
+  if (ga) {
+    ga('set', 'page', window.location.pathname + window.location.search)
+    ga('send', 'pageview')
   }
 }
 
@@ -20,15 +16,20 @@ function sendEvent(
   action: string,
   category: string,
   label: string,
-  value: string,
+  value: number | boolean,
 ) {
   const windowAny: any = window
-  const gtag = windowAny.gtag
-  if (gtag) {
-    gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value,
+  const ga = windowAny.ga
+  if (value === true || value === false) {
+    value = value === true ? 1 : 0
+  }
+  if (ga) {
+    ga('send', {
+      hitType: 'event',
+      eventAction: action,
+      eventCategory: category,
+      eventLabel: label,
+      eventValue: value,
     })
   }
 }
