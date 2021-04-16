@@ -90,8 +90,7 @@
     },
     "armTwo": {
       "title": "How will your study data be used?",
-      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
-      "subText1": "What topics should researchers using the study data be allowed to study? (Mental health only? Health generally? Any topic?)",
+      "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now.",
       "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
       "subText3": "Is it okay for researchers to make a profit from using the data?",
       "subText4": "No matter what the result of the vote is, researchers will only be able to access the data in a secure server.",
@@ -107,6 +106,22 @@
       "subText4": "No matter what the result of the vote is, researchers will be able to download a copy of the data from the databank.",
       "subText5": "They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
       "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
+    },
+    "armFour": {
+      "pageOne": {
+        "title": "How will your study data be used?",
+        "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now."
+      },
+      "pageTwo": {
+        "title": "How should researchers be allowed to access the study data?",
+        "subTitle": "Choose the option that you want us to use."
+      },
+      "pageThree": {
+        "title": "Who controls your data? Choose the option that you want used for your data."
+      },
+      "pageFour": {
+        "title": "Would you like to volunteer as a review for the community review panel?"
+      }
     },
     "consentSignature": {
       "title": "Consent Signature",
