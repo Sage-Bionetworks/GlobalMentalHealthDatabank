@@ -20,4 +20,7 @@ export const FORM_IDS = {
   SUPPORT_VERIFY: 'supportVerify',
   HOW_DID_YOU_HEAR: 'howDidYouHear',
   UNDERSTANDS_ENGLISH: 'understandsEnglish',
+  HOW_RESEARCHERS_ACCESS: 'howResearchersAccess',
+  WHO_CONTROLS_DATA: 'whoControlsData',
+  WOULD_LIKE_TO_VOLUNTEER: 'wouldYouLikeToVolunteer',
 }
