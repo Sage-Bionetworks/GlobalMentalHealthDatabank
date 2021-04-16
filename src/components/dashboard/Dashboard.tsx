@@ -4,6 +4,7 @@ import { LoggedInUserData } from '../../types/types'
 import { UserService } from '../../services/user.service'
 import Alert from '@material-ui/lab/Alert/Alert'
 import ConsentSteps from './ConsentSteps'
+import RankChoice from './RankChoice/RankChoice'
 
 type DashboardProps = {
   token: string
@@ -56,7 +57,8 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
 
     return (
       <div className="Dashboard" data-cy="page-dashboard">
-        <ConsentSteps dataGroups={userInfo?.dataGroups || []} />
+        {/* <ConsentSteps dataGroups={userInfo?.dataGroups || []} /> */}
+        <RankChoice />
       </div>
     )
   }
