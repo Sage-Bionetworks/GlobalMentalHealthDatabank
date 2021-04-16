@@ -30,6 +30,19 @@ import {
   schemaUnderstandsEnglish,
   uiSchemaUnderstandsEnglish,
 } from '../schemas/understandsEnglish'
+import {
+  schemaHowResearchersAccess,
+  uiSchemaHowResearchersAccess,
+} from '../schemas/howResearchersAccess'
+import {
+  schemaWouldYouLikeToVolunteer,
+  uiSchemaWouldYouLikeToVolunteer,
+} from '../schemas/wouldYouLikeToVolunteer'
+import {
+  schemaWhoControlsData,
+  uiSchemaWhoControlsData,
+} from '../schemas/whoControlsData'
+
 import { useTranslation } from 'react-i18next'
 
 type FormSchema = {
@@ -41,18 +54,22 @@ type SageFormProps = {
   formId: string
   onSubmit: any
   title: string
+  subTitle?: string
   errorMessage?: string
   infoMessage?: string
   buttonText?: string
+  widgets?: any
 }
 
 export default function SageForm({
   formId,
   onSubmit,
   title,
+  subTitle,
   errorMessage,
   infoMessage,
   buttonText,
+  widgets,
 }: SageFormProps) {
   const { t } = useTranslation()
 
@@ -72,6 +89,12 @@ export default function SageForm({
         return schemaHowDidYouHear
       case FORM_IDS.UNDERSTANDS_ENGLISH:
         return schemaUnderstandsEnglish
+      case FORM_IDS.HOW_RESEARCHERS_ACCESS:
+        return schemaHowResearchersAccess
+      case FORM_IDS.WHO_CONTROLS_DATA:
+        return schemaWhoControlsData
+      case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
+        return schemaWouldYouLikeToVolunteer
       default:
         return null
     }
@@ -93,6 +116,12 @@ export default function SageForm({
         return uiSchemaHowDidYouHear
       case FORM_IDS.UNDERSTANDS_ENGLISH:
         return uiSchemaUnderstandsEnglish
+      case FORM_IDS.HOW_RESEARCHERS_ACCESS:
+        return uiSchemaHowResearchersAccess
+      case FORM_IDS.WHO_CONTROLS_DATA:
+        return uiSchemaWhoControlsData
+      case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
+        return uiSchemaWouldYouLikeToVolunteer
       default:
         return null
     }
@@ -103,6 +132,7 @@ export default function SageForm({
       <div className="headerWrapper">
         <h1>{title}</h1>
       </div>
+      {subTitle && <h2>{subTitle}</h2>}
 
       {errorMessage && (
         <div className="form-message error">
@@ -125,6 +155,7 @@ export default function SageForm({
           onSubmit={onSubmit}
           schema={getSchemaFromId(formId) as FormSchema}
           uiSchema={getUISchemaFromId(formId) as FormSchema}
+          widgets={widgets || undefined}
         >
           <div className="text-center">
             <Button

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
 import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
 import ArmFlowOne from './armFlows/ArmFlowOne'
@@ -82,6 +82,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
           setStep={setStep}
           maxSteps={maxSteps}
           updateClientData={updateClientData}
+          startingStep={FIRST_CONSENT_STEPS + 1}
         />
       )
     return null
@@ -96,7 +97,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
         const userInfoResponse = await UserService.getUserInfo(token)
         const data = userInfoResponse?.data as any
         const previousQuizStep = data.clientData.checkpoint
-        setUserClientData(data)
+        setUserClientData(data.clientData)
         if (previousQuizStep > 1) {
           setStep(previousQuizStep + 1)
         }
@@ -111,15 +112,16 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     value?: string,
   ) => {
     let newData = {}
-    if (fieldName && value)
+    if (fieldName)
       newData = {
-        ...userClientData.clientData,
+        ...userClientData,
         [fieldName]: value,
         checkpoint: step,
       }
-    else newData = { ...userClientData.clientData, checkpoint: step }
+    else newData = { ...userClientData, checkpoint: step }
     if (token) {
-      await UserService.updateUserClientData(token, newData)
+      const response = await UserService.updateUserClientData(token, newData)
+      setUserClientData(response.data.clientData)
     }
   }
 

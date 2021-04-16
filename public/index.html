@@ -20,23 +20,23 @@
     />
     <meta property="og:image" content="%PUBLIC_URL%/crc-share-page-image.png" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-JJ5VL2RP03"
-    ></script>
+    <!-- Google Analytics -->
     <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-      gtag('consent', 'default', {
-        ad_storage: 'denied',
-        analytics_storage: 'denied',
+      window.ga =
+        window.ga ||
+        function () {
+          ;(ga.q = ga.q || []).push(arguments)
+        }
+      ga.l = +new Date()
+      ga('create', 'UA-131999358-2', {
+        storage: 'none',
+        storeGac: false,
       })
-      gtag('config', 'G-JJ5VL2RP03')
+      ga('set', 'anonymizeIp', true)
+      ga('send', 'pageview')
     </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
 
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="MindKind" />
