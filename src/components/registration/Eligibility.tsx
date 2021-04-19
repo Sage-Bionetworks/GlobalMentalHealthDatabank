@@ -292,7 +292,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
             color="primary"
             variant="contained"
             size="large"
-            className="wideButton"
+            className="wide-button"
             onClick={() => <Redirect to="/home" />}
           >
             {t('eligibility.back')}
