@@ -10,7 +10,6 @@ function RankChoice() {
     setCards(shuffle(rankOptions))
   }, [])
   const moveUp = (position: number) => {
-    console.log('move up')
     if (position > 0) {
       const newCards = cloneDeep(cards)
       const temp = cards[position - 1]
@@ -20,7 +19,6 @@ function RankChoice() {
     }
   }
   const moveDown = (position: number) => {
-    console.log('move down')
     if (position < cards.length - 1) {
       const newCards = cloneDeep(cards)
       const temp = cards[position + 1]
@@ -58,7 +56,7 @@ function RankChoice() {
         {cards.map((card, index) => (
           <Card
             key={card.id}
-            title="Title here"
+            title={card.title}
             text={card.text}
             active={card.id === activeCard}
             onClick={() => setActiveCard(card.id)}
