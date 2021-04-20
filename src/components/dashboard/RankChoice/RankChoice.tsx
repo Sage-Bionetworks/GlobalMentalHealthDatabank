@@ -29,10 +29,15 @@ function RankChoice() {
   }
   return (
     <div className="rankingChoice">
-      <h1>Which is correct?</h1>
+      <h1>Voting Screen</h1>
       <p>
         All of the people who join the study will get to vote on how the data is
         used. <span>Now is the time for you to cast your ballot.</span>
+      </p>
+      <p>
+        We are asking you to do rank choice voting. This means ordering the
+        statements below from your top choice (most preferred) to your bottom
+        choice (least preferred).
       </p>
       <p>
         Based on how all the people in the study vote, the top items will be the
@@ -42,14 +47,14 @@ function RankChoice() {
         If there is disagreement between two items, only the top-most will be
         used. For example, if the second highest voted item is: “No one can use
         this data to make a profit” and the third highest voted item is: “Anyone
-        can use this data and make a profit,” we will not let researchers use
-        the data to make a profit.
+        can use this data and make a profit” we will not let researchers use the
+        data to make a profit.
       </p>
       <p>
         <span>
-          Order the statements below from your top choice (most preferred) to
-          your bottom choice (least preferred). Tap or click an option to select
-          it.
+          Order the statements below from most preferred (top) to least
+          preferred (bottom) Tap an item to select it and use the arrow buttons
+          to move.
         </span>
       </p>
       <div className="cards">
