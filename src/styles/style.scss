@@ -87,36 +87,12 @@ a {
   margin-bottom: 4rem;
 }
 
-#root .wideButton {
+#root .wide-button {
   padding: 0px 45px;
   font-weight: bold;
   letter-spacing: 0.04em;
   margin-bottom: 10px;
   width: 100%;
-}
-
-.cookiesBanner {
-  background: #0085ff;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  font-size: 15px;
-  padding: 20px 20px;
-  // stick to bottom
-  position: fixed;
-  bottom: 15px;
-  z-index: 6;
-  width: 100%;
-
-  a {
-    color: white;
-  }
-  button {
-    height: 33px;
-    margin-left: 10px;
-  }
 }
 
 div.intro {

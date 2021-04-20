@@ -4,7 +4,6 @@ export const schemaWouldYouLikeToVolunteer = {
     would_you_volunteer: {
       title: ' ',
       type: 'boolean',
-      title: ' ',
       enumNames: ['Yes', 'No'],
     },
   },
