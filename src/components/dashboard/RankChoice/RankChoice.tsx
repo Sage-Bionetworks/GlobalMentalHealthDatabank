@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { cloneDeep, shuffle } from 'lodash'
+import { useTranslation } from 'react-i18next'
 import Card from './components/Card'
 import { rankOptions } from './options'
 
 function RankChoice() {
   const [cards, setCards] = useState(rankOptions)
   const [activeCard, setActiveCard] = useState<number | undefined>()
+  const { t } = useTranslation()
   useEffect(() => {
     setCards(shuffle(rankOptions))
   }, [])
@@ -29,33 +31,13 @@ function RankChoice() {
   }
   return (
     <div className="rankingChoice">
-      <h1>Voting Screen</h1>
+      <h1>{t('form.secondCommonConsent.ranking.title')}</h1>
+      <p>{t('form.secondCommonConsent.ranking.paragraph1')}</p>
+      <p>{t('form.secondCommonConsent.ranking.paragraph2')}</p>
+      <p>{t('form.secondCommonConsent.ranking.paragraph3')}</p>
+      <p>{t('form.secondCommonConsent.ranking.paragraph4')}</p>
       <p>
-        All of the people who join the study will get to vote on how the data is
-        used. <span>Now is the time for you to cast your ballot.</span>
-      </p>
-      <p>
-        We are asking you to do rank choice voting. This means ordering the
-        statements below from your top choice (most preferred) to your bottom
-        choice (least preferred).
-      </p>
-      <p>
-        Based on how all the people in the study vote, the top items will be the
-        rules for the databank.
-      </p>
-      <p>
-        If there is disagreement between two items, only the top-most will be
-        used. For example, if the second highest voted item is: “No one can use
-        this data to make a profit” and the third highest voted item is: “Anyone
-        can use this data and make a profit” we will not let researchers use the
-        data to make a profit.
-      </p>
-      <p>
-        <span>
-          Order the statements below from most preferred (top) to least
-          preferred (bottom) Tap an item to select it and use the arrow buttons
-          to move.
-        </span>
+        <span>{t('form.secondCommonConsent.ranking.paragraph5')}</span>
       </p>
       <div className="cards">
         {cards.map((card, index) => (
