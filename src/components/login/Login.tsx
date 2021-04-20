@@ -218,7 +218,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                         type="submit"
                         disabled={!loginType}
                         onSubmit={handleLogin}
-                        className="wideButton"
+                        className="wide-button"
                       >
                         {t('common.logIn')}
                       </Button>

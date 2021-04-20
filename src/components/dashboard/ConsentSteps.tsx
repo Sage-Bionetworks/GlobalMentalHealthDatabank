@@ -146,7 +146,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
         step={step}
         setStep={setStep}
         maxSteps={maxSteps}
-        startingStep={secondCommonStepsStart}
+        startingStep={secondCommonStepsStart + 1}
         updateClientData={updateClientData}
       />
     )

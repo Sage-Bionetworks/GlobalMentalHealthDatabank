@@ -42,6 +42,14 @@ import {
   schemaWhoControlsData,
   uiSchemaWhoControlsData,
 } from '../schemas/whoControlsData'
+import {
+  schemaWhatIsThePurpose,
+  uiSchemaWhatIsThePurpose,
+} from '../schemas/whatIsThePurpose'
+import {
+  schemaWhichIsCorrect,
+  uiSchemaWhichIsCorrect,
+} from '../schemas/whichIsCorrect'
 
 import { useTranslation } from 'react-i18next'
 
@@ -95,6 +103,10 @@ export default function SageForm({
         return schemaWhoControlsData
       case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
         return schemaWouldYouLikeToVolunteer
+      case FORM_IDS.WHAT_IS_THE_PURPOSE:
+        return schemaWhatIsThePurpose
+      case FORM_IDS.WHICH_IS_CORRECT:
+        return schemaWhichIsCorrect
       default:
         return null
     }
@@ -122,6 +134,10 @@ export default function SageForm({
         return uiSchemaWhoControlsData
       case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
         return uiSchemaWouldYouLikeToVolunteer
+      case FORM_IDS.WHAT_IS_THE_PURPOSE:
+        return uiSchemaWhatIsThePurpose
+      case FORM_IDS.WHICH_IS_CORRECT:
+        return uiSchemaWhichIsCorrect
       default:
         return null
     }
@@ -163,7 +179,7 @@ export default function SageForm({
               variant="contained"
               size="large"
               type="submit"
-              className="wideButton"
+              className="wide-button"
             >
               {buttonText || t('form.submit')}
             </Button>

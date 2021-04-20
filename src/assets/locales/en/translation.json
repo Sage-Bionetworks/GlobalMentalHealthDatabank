@@ -123,6 +123,48 @@
         "title": "Would you like to volunteer as a review for the community review panel?"
       }
     },
+    "secondCommonConsent": {
+      "pageOne": {
+        "risks&benefit": "Potential Risks & Benefits",
+        "risks": "Potential Risks",
+        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \n\nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \n\nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
+        "benefits": "Potential Benefits",
+        "benefitDescription": "You may not personally benefit from taking part in this study. \n\nYou may be contributing to valuable research. \n\nYou may help researchers better understand how young adults can manage their mental health."
+      },
+      "pageTwo": {
+        "costs&payment": "Costs & Payment",
+        "description": "The time you use on this app may count against your mobile data plan. You can set up the app to use Wi-Fi instead. \n\nYou will not be paid for participating in this study. \n\nYou will not be paid for sharing your data."
+      },
+      "pageThree": {
+        "notMedicalCare": "Not Medical Care",
+        "description": "This is a research study. It is NOT treatment for mental health. \n\n We will not monitor the MindKind Study App in real time. \n\nIf you experience a mental health crisis, contact a doctor or mental health care provider directly. Resources are available on the study website (Link to Resources page on study website) \n\nIf you have questions about the study, you can reach us by email at: ",
+        "link": "MindKindSupport@sagebionetworks.org"
+      },
+      "pageFour": {
+        "title": "What is the purpose of this study?",
+        "toParticipate": "To participate in research",
+        "toRecieveMedicalCare": "To receive medical care",
+        "toObtainMedicalInsurance": "To obtain medial insurance"
+      },
+      "pageFive": {
+        "leaving": "Leaving the Study",
+        "description": "Joining this study is voluntary.\n\n If you join, you may leave this study (withdraw) at any time and for any reason. \n\nIf you withdraw, you can ask us to delete all your study data. \n\nIf you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
+      },
+      "pageSix": {
+        "title": "Which is correct?",
+        "ifParticipate": "If I start participating, I have to continue until the end.",
+        "iCanStop": "I can stop at any time. ",
+        "penalty": "I will get a penalty if I leave the study."
+      },
+      "pageSeven": {
+        "contact": "Contact",
+        "description": "If you have questions you can reach us by email at MindKindSupport@sagebionetworks.org or call <study phone number>. \n\nWe may want to reach out to you in the future. You can opt out of these follow-up notifications at any time. "
+      },
+      "pageEight": {
+        "summary": "Summary",
+        "description": "The purpose of the MindKind Study is to understand whether, and how, young adults are willing to use a mobile App to self-manage and share their data regarding their mental health. \n\nI can choose whether or not to participate. If I choose to participate, I can change my mind at any time. \n\nThis is a research study, not medical care. My responses will not be monitored in real time. \n\nI am not expected to personally benefit from the study. \n\nI will use the MindKind Study App to respond to questions about my mental health and wellbeing and can contribute data directly from my phone.\n\nMy information will be transferred to the United States and stored securely. \n\nResearchers will use my information for research. If I give my permission, they may share data with other researchers for future research. \n\nI have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.\n\nI can contact the study team with any questions or concerns related to the MindKind study."
+      }
+    },
     "consentSignature": {
       "title": "Consent Signature",
       "pleaseCheck": {
