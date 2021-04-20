@@ -1,0 +1,66 @@
+.rankingChoice {
+  p {
+    span {
+      font-weight: 700;
+    }
+  }
+  .cards {
+    .card {
+      min-height: 120px;
+      width: 100%;
+      display: flex;
+      padding: 10px;
+      margin-bottom: 5px;
+      background: #fafafa;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border: 2px solid #fafafa;
+      h5 {
+        margin: 0;
+      }
+      .card__content {
+        flex: 8;
+        padding-right: 10px;
+        .card__content__title {
+          font-size: 1.6rem;
+          line-height: 1.8rem;
+          font-weight: 700;
+        }
+        .card__content__text {
+          font-size: 1.4rem;
+          line-height: 1.8rem;
+          font-weight: 400;
+        }
+      }
+      .card__buttons {
+        flex: 2;
+        visibility: hidden;
+        button {
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          margin: 15px 10px;
+          border: none;
+          cursor: pointer;
+          &:disabled {
+            background-color: #b1b1b1;
+            cursor: not-allowed;
+          }
+        }
+        .card__button__up {
+          background: #343f56;
+        }
+        .card__button__down {
+          border: 2px solid #343f56;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .card.active {
+      border: 2px solid #343f56;
+      .card__buttons {
+        visibility: visible;
+      }
+    }
+  }
+}

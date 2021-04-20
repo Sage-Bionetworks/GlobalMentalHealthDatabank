@@ -9,6 +9,7 @@ import i18next from 'i18next'
 import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../form/types'
+import RankChoice from '../RankChoice/RankChoice'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -218,9 +219,7 @@ function SecondCommonConsentSection({
         <div className="textStepWrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
-          <div className="headerWrapper">
-            <h1>Here goes the ranking</h1>
-          </div>
+          <RankChoice />
           <div className="form-text-content"></div>
           {renderArrows()}
         </div>
