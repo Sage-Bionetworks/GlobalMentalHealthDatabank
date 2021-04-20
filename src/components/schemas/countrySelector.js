@@ -6,16 +6,9 @@ export const schemaCountrySelector = {
       type: 'object',
       properties: {
         your_country: {
-          type: 'number',
+          type: 'string',
           title: ' ',
-          enumNames: [
-            'UK',
-            'India',
-            'South Africa',
-            'Other',
-            'US (Testing only)',
-          ],
-          enum: [0, 1, 2, 3, 4],
+          enum: ['UK', 'India', 'South Africa', 'Other', 'US (Testing only)'],
         },
       },
     },
