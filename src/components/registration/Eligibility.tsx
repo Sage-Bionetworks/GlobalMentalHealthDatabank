@@ -27,7 +27,15 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
 
-  const { setIsEligible } = useElegibility()
+  const {
+    setIsEligible,
+    setHowDidYouHear,
+    setEverBenefitedFromTreatment,
+    setWhereDoYouLive,
+    setDoYouHaveAnAndroid,
+    setUnderstandEnglish,
+    setBetweenAgeRange,
+  } = useElegibility()
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -76,6 +84,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                   ...prev,
                   howDidYouHear: selectedOption.how_options,
                 }))
+                setHowDidYouHear(selectedOption.how_options)
                 setStep((current: number) =>
                   current < MAX_STEPS ? current + 1 : current,
                 )
@@ -112,6 +121,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 setQuizChoices(prev => {
                   return { ...prev, accessToSupport: selectedOption.accept }
                 })
+                setEverBenefitedFromTreatment(selectedOption.accept)
                 setStep((current: number) =>
                   current < MAX_STEPS ? current + 1 : current,
                 )
@@ -154,6 +164,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     userLocation: selectedCountry.your_country,
                   }
                 })
+                setWhereDoYouLive(selectedCountry.your_country)
                 setStep((current: number) =>
                   current < MAX_STEPS ? current + 1 : current,
                 )
@@ -191,6 +202,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 setQuizChoices(prev => {
                   return { ...prev, hasAndroid: selectedOption.has_android }
                 })
+                setDoYouHaveAnAndroid(selectedOption.has_android)
                 setStep((current: number) =>
                   current < MAX_STEPS ? current + 1 : current,
                 )
@@ -232,6 +244,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                       selectedOption.understands_english_option,
                   }
                 })
+                setUnderstandEnglish(selectedOption.understands_english_option)
                 setStep((current: number) =>
                   current < MAX_STEPS ? current + 1 : current,
                 )
@@ -269,6 +282,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 setQuizChoices(prev => {
                   return { ...prev, inAgeRange: selectedOption.age_range }
                 })
+                setBetweenAgeRange(selectedOption.age_range)
                 setStep((current: number) =>
                   current <= MAX_STEPS ? current + 1 : current,
                 )

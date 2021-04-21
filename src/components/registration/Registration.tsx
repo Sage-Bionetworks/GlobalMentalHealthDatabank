@@ -20,6 +20,7 @@ import {
   FLOW_OPTIONS,
 } from '../../helpers/RandomFlowGenerator'
 import { useTranslation } from 'react-i18next'
+import { useElegibility } from './context/ElegibilityContext'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -34,6 +35,14 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onErrorFn,
   countryCode,
 }: RegistrationProps) => {
+  const {
+    howDidYouHear,
+    everBenefitedFromTreatment,
+    whereDoYouLive,
+    doYouHaveAnAndroid,
+    understandEnglish,
+    betweenAgeRange,
+  } = useElegibility()
   const { t } = useTranslation()
 
   const stateSchema = {
@@ -90,7 +99,13 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         ? makePhone(state.phone.value, state.countryCode.value)
         : undefined,
       clientData: {
-        flowSelection: flowSelection,
+        flowSelection,
+        howDidYouHear,
+        everBenefitedFromTreatment,
+        whereDoYouLive,
+        doYouHaveAnAndroid,
+        understandEnglish,
+        betweenAgeRange,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],
@@ -102,6 +117,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
     //send signinRequest
     const phoneNumber = data.phone?.number || ''
+
     try {
       const result = await submitRegistration(data)
 
