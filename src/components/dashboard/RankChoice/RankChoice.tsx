@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import Card from './components/Card'
-import { rankOptions } from './options'
+import { rankOptions } from '../../../data/ranking/options'
 
 function RankChoice() {
   const [cards, setCards] = useState(rankOptions)
