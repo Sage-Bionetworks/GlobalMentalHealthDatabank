@@ -10,6 +10,9 @@ import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../form/types'
 import RankChoice from '../RankChoice/RankChoice'
+import { ConsentService } from '../../../services/consent.service'
+import { useSessionDataState } from '../../../AuthContext'
+import { Redirect } from 'react-router'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -37,15 +40,22 @@ function SecondCommonConsentSection({
     setConsented(false)
   }, [step])
 
-  const signConsent = () => {
-    /*const response = await UserService.updateUserClientData(token, newData)
-      
-    updateClientData(
-      step,
-      "consented",
-      true,
-    )*/
-    return null
+  const sessionData = useSessionDataState()
+  const { token } = sessionData
+
+  const signConsent = async () => {
+    if (!token) return
+    try {
+      await ConsentService.signGeneralConsent(
+        signatureName,
+        'all_qualified_researchers',
+        token,
+      )
+      updateClientData(step, 'consented', true)
+      //return <Redirect to={'/dashboard'} push={true} />
+    } catch (e) {
+      setErrorMessage(e.message)
+    }
   }
 
   const renderArrows = (preventBack?: boolean) => {

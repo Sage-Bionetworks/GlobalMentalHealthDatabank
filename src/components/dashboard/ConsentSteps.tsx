@@ -89,7 +89,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   }
 
   const sessionData = useSessionDataState()
-  const token = sessionData.token
+  const { token } = sessionData
 
   useEffect(() => {
     const getInfo = async () => {
@@ -105,6 +105,8 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     }
     getInfo()
   }, [token])
+
+  console.log(userClientData)
 
   const updateClientData = async (
     step: number,
