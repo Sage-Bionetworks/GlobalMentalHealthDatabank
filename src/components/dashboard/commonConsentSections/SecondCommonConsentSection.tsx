@@ -37,6 +37,17 @@ function SecondCommonConsentSection({
     setConsented(false)
   }, [step])
 
+  const signConsent = () => {
+    /*const response = await UserService.updateUserClientData(token, newData)
+      
+    updateClientData(
+      step,
+      "consented",
+      true,
+    )*/
+    return null
+  }
+
   const renderArrows = (preventBack?: boolean) => {
     return (
       <div className="arrowButtonsWrapper">
@@ -75,7 +86,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageOne.benefitDescription')}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
     }
@@ -152,7 +163,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageFive.description')}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
     }
@@ -195,7 +206,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageSeven.description')}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
     }
@@ -271,7 +282,7 @@ function SecondCommonConsentSection({
             variant="contained"
             fullWidth
             color="primary"
-            onClick={() => setStep(1)}
+            onClick={() => signConsent()}
             disabled={!consented || signatureName.length < 5}
           >
             {t('form.submit')}

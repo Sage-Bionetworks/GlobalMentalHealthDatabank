@@ -120,7 +120,7 @@ export const callEndpoint = async <T>(
 }
 
 export const makePhone = (phone: string, regionCode?: string): Phone => {
-  return { number: phone, regionCode: regionCode || '0' }
+  return { number: phone, regionCode: 'UY' /*regionCode || '0' */ }
 }
 
 export const getMomentDate = (
