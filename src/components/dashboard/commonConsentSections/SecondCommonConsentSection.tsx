@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
-import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
-import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import Button from '@material-ui/core/Button/Button'
 import moment from 'moment'
 import i18next from 'i18next'
@@ -13,6 +11,7 @@ import RankChoice from '../RankChoice/RankChoice'
 import { ConsentService } from '../../../services/consent.service'
 import { useSessionDataState } from '../../../AuthContext'
 import { Redirect } from 'react-router'
+import NavigationArrows from '../../common/NavigationArrows'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -58,26 +57,12 @@ function SecondCommonConsentSection({
     }
   }
 
-  const renderArrows = (preventBack?: boolean) => {
-    return (
-      <div className="arrowButtonsWrapper">
-        <ArrowButtonLeft
-          style={{ visibility: preventBack ? 'hidden' : 'visible' }}
-          onClick={() =>
-            setStep((current: number) => (current > 1 ? current - 1 : current))
-          }
-        />
-        <ArrowButtonRight
-          onClick={() => {
-            setStep((current: number) =>
-              current < maxSteps ? current + 1 : current,
-            )
-            updateClientData(step)
-          }}
-        />
-      </div>
-    )
+  const handleNext = () => {
+    setStep((current: number) => (current < maxSteps ? current + 1 : current))
+    updateClientData(step)
   }
+  const handleBack = () =>
+    setStep((current: number) => (current > 1 ? current - 1 : current))
 
   switch (step) {
     case startingStep: {
@@ -96,7 +81,11 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageOne.benefitDescription')}
           </div>
-          {renderArrows(true)}
+          <NavigationArrows
+            onBack={handleBack}
+            onNext={handleNext}
+            preventBack
+          />
         </div>
       )
     }
@@ -111,7 +100,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageTwo.description')}
           </div>
-          {renderArrows()}
+          <NavigationArrows onBack={handleBack} onNext={handleNext} />
         </div>
       )
     }
@@ -129,7 +118,7 @@ function SecondCommonConsentSection({
           <a href={t('form.secondCommonConsent.pageThree.link')}>
             {t('form.secondCommonConsent.pageThree.link')}
           </a>
-          {renderArrows()}
+          <NavigationArrows onBack={handleBack} onNext={handleNext} />
         </div>
       )
     }
@@ -173,7 +162,11 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageFive.description')}
           </div>
-          {renderArrows(true)}
+          <NavigationArrows
+            onBack={handleBack}
+            onNext={handleNext}
+            preventBack
+          />
         </div>
       )
     }
@@ -216,7 +209,11 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageSeven.description')}
           </div>
-          {renderArrows(true)}
+          <NavigationArrows
+            onBack={handleBack}
+            onNext={handleNext}
+            preventBack
+          />
         </div>
       )
     }
@@ -231,7 +228,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageEight.description')}
           </div>
-          {renderArrows()}
+          <NavigationArrows onBack={handleBack} onNext={handleNext} />
         </div>
       )
     }
@@ -240,9 +237,11 @@ function SecondCommonConsentSection({
         <div className="textStepWrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
-          <RankChoice />
-          <div className="form-text-content"></div>
-          {renderArrows()}
+          <RankChoice
+            step={step}
+            setStep={setStep}
+            updateClientData={updateClientData}
+          />
         </div>
       )
     }
