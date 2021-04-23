@@ -8,48 +8,51 @@ import { FORM_IDS } from '../../components/form/types'
 import {
   schemaCountrySelector,
   uiSchemaCountrySelector,
-} from '../schemas/countrySelector'
+} from '../../data/schemas/countrySelector'
 import {
   schemaHowToParticipate,
   uiSchemaHowToParticipate,
-} from '../schemas/howToParticipate'
-import { schemaAgeVerify, uiSchemaAgeVerify } from '../schemas/ageVerify'
+} from '../../data/schemas/howToParticipate'
+import {
+  schemaAgeVerify,
+  uiSchemaAgeVerify,
+} from '../../data/schemas/ageVerify'
 import {
   schemaAndroidVerify,
   uiSchemaAndroidVerify,
-} from '../schemas/androidVerify'
+} from '../../data/schemas/androidVerify'
 import {
   schemaSupportVerify,
   uiSchemaSupportVerify,
-} from '../schemas/supportVerify'
+} from '../../data/schemas/supportVerify'
 import {
   schemaHowDidYouHear,
   uiSchemaHowDidYouHear,
-} from '../schemas/howDidYouHear'
+} from '../../data/schemas/howDidYouHear'
 import {
   schemaUnderstandsEnglish,
   uiSchemaUnderstandsEnglish,
-} from '../schemas/understandsEnglish'
+} from '../../data/schemas/understandsEnglish'
 import {
   schemaHowResearchersAccess,
   uiSchemaHowResearchersAccess,
-} from '../schemas/howResearchersAccess'
+} from '../../data/schemas/howResearchersAccess'
 import {
   schemaWouldYouLikeToVolunteer,
   uiSchemaWouldYouLikeToVolunteer,
-} from '../schemas/wouldYouLikeToVolunteer'
+} from '../../data/schemas/wouldYouLikeToVolunteer'
 import {
   schemaWhoControlsData,
   uiSchemaWhoControlsData,
-} from '../schemas/whoControlsData'
+} from '../../data/schemas/whoControlsData'
 import {
   schemaWhatIsThePurpose,
   uiSchemaWhatIsThePurpose,
-} from '../schemas/whatIsThePurpose'
+} from '../../data/schemas/whatIsThePurpose'
 import {
   schemaWhichIsCorrect,
   uiSchemaWhichIsCorrect,
-} from '../schemas/whichIsCorrect'
+} from '../../data/schemas/whichIsCorrect'
 
 import { useTranslation } from 'react-i18next'
 
