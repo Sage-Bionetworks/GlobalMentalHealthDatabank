@@ -1,17 +1,14 @@
-@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
+@import 'abstracts/variables', 'abstracts/mixins';
 
-@import 'components/synapse_form_wrapper/synapse-form-wrapper';
-@import 'components/synapse_form_wrapper/overrides';
-@import 'components/intro';
+@import 'components/home';
 @import 'components/dashboard';
 @import 'components/footer';
-@import 'components/static';
 @import 'components/sage-form';
 @import 'material-overrides';
 @import 'forms';
 @import 'components/ranking-choice';
 @import 'components/topnav';
-@import 'mobile' screen and (max-width: 768px);
+@import 'components/download-app';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */

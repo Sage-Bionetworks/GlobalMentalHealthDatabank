@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next'
 import { ReactComponent as Butterfly1 } from '../../assets/butterfly1.svg'
 import { ReactComponent as Butterfly2 } from '../../assets/butterfly2.svg'
 
-type IntroProps = {
+type HomeProps = {
   token: string | null
 }
 
-export const useIntroStyles = makeStyles(theme => ({
+export const useHomeStyles = makeStyles(theme => ({
   heroContainer: {
     position: 'relative',
     overflow: 'hidden',
@@ -285,12 +285,10 @@ export const useIntroStyles = makeStyles(theme => ({
     maxWidth: '200px',
   },
 }))
-export const Intro: React.FunctionComponent<IntroProps> = (
-  token: IntroProps,
-) => {
+export const Home: React.FunctionComponent<HomeProps> = (token: HomeProps) => {
   const { t } = useTranslation()
 
-  const classes = useIntroStyles()
+  const classes = useHomeStyles()
 
   const heroTextContent = (
     <Container maxWidth="lg">
@@ -301,7 +299,7 @@ export const Intro: React.FunctionComponent<IntroProps> = (
     </Container>
   )
   return (
-    <div className="Intro">
+    <div className="home">
       <div>
         <div className={classes.heroContainer}>
           <div className={classes.heroTextGradiant}></div>
@@ -361,4 +359,4 @@ export const Intro: React.FunctionComponent<IntroProps> = (
   )
 }
 
-export default Intro
+export default Home

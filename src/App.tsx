@@ -5,15 +5,15 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
-import { ThemeProvider, Typography, Grid } from '@material-ui/core'
-import Intro from './components/static/Intro'
+import { ThemeProvider, Typography } from '@material-ui/core'
+import Home from './components/static/Home'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
 import Login from './components/login/Login'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
 import { getSearchParams } from './helpers/utility'
 import Dashboard from './components/dashboard/Dashboard'
+import DownloadApp from './components/dashboard/DownloadApp'
 import { TopNav } from './components/widgets/TopNav'
 import { UserService } from './services/user.service'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
@@ -22,35 +22,14 @@ import Footer from './components/widgets/Footer'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
+import GridLayout from './components/layout/GridLayout'
 import { theme } from './theme'
 import './styles/style.scss'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    height: '100%',
-  },
-}))
-
-function renderWithGridLayout(el: JSX.Element) {
-  return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      style={{ backgroundColor: '#F4F4F4' }}
-    >
-      <Grid item xs={12} md={8} lg={6}>
-        {el}
-      </Grid>
-    </Grid>
-  )
-}
-
 function App() {
-  const sessionData = useSessionDataState()
+  const sessionData: SessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
-  const token = sessionData.token
+  const { token } = sessionData
 
   const [currentLocation, setCurrentLocation] = useState(
     window.location.pathname,
@@ -58,7 +37,6 @@ function App() {
 
   useEffect(() => {
     let isSubscribed = true
-    //the whole point of this is to log out the user if their session ha expired on the servier
     async function getInfo(token: string | undefined) {
       if (token && isSubscribed) {
         try {
@@ -100,10 +78,6 @@ function App() {
     )
   }
 
-  function getDashboardPage(sessionData: SessionData) {
-    return renderWithGridLayout(<Dashboard token={token || ''} />)
-  }
-
   const setUserSession = (
     token: string | undefined,
     name: string,
@@ -117,22 +91,20 @@ function App() {
         type: 'LOGIN',
         payload: {
           ...sessionData,
-          token: token,
-          name: name,
-          consented: consented,
+          token,
+          name,
+          consented,
           userDataGroup: dataGroup,
         },
       })
     }
   }
 
-  const classes = useStyles()
-
   return (
     <ThemeProvider theme={theme}>
       <ElegibilityProvider>
         <Typography component={'div'}>
-          <div className={classes.root}>
+          <div style={{ height: '100%' }}>
             <CssBaseline />
             <Router>
               <div>
@@ -149,8 +121,6 @@ function App() {
                   }
                   showTopNavigator={currentLocation !== '/testkit'}
                 >
-                  {/* A <Switch> looks through its children <Route>s and
-         renders the first one that matches the current URL. */}{' '}
                   <Switch>
                     <Route
                       exact={true}
@@ -159,41 +129,47 @@ function App() {
                         const searchParamsProps = getSearchParams(
                           props.location.search,
                         )
-                        // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
-                        return renderWithGridLayout(
-                          <Login
-                            {...props}
-                            key={Math.random()}
-                            searchParams={searchParamsProps as any}
-                          />,
+                        return (
+                          <GridLayout>
+                            <Login
+                              {...props}
+                              searchParams={searchParamsProps as any}
+                            />
+                          </GridLayout>
                         )
                       }}
                     ></Route>
                     <Route
                       path="/eligibility"
                       render={props => {
-                        // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
-                        return renderWithGridLayout(
-                          <EligibilityRegistration
-                            {...props}
-                            callbackFn={(token: string, name: string) =>
-                              setUserSession(token, name, false, [])
-                            }
-                          />,
+                        return (
+                          <GridLayout>
+                            <EligibilityRegistration
+                              {...props}
+                              callbackFn={(token: string, name: string) =>
+                                setUserSession(token, name, false, [])
+                              }
+                            />
+                          </GridLayout>
                         )
                       }}
                     ></Route>
                     <PrivateRoute exact={true} path="/dashboard">
-                      {getDashboardPage(sessionData)}
+                      <GridLayout>
+                        <Dashboard token={token || ''} />
+                      </GridLayout>
                     </PrivateRoute>
                     <Route path="/privacypolicy">
                       <PrivacyPolicy />
                     </Route>
+                    <Route path="/download">
+                      <DownloadApp />
+                    </Route>
                     <Route path="/home">
-                      <Intro token={token || null}></Intro>
+                      <Home token={token || null}></Home>
                     </Route>
                     <Route path="/">
-                      <Intro token={token || null}></Intro>
+                      <Home token={token || null}></Home>
                     </Route>
                   </Switch>
                 </TopNav>

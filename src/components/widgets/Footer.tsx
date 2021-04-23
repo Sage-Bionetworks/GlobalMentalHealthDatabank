@@ -11,11 +11,20 @@ type FooterProps = {
 
 const useStyles = makeStyles(theme => ({
   toolBar: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.up('xs')]: {
       flexDirection: 'column',
       alignItems: 'flex-start',
       padding: '35px 0px 15px 0px',
       width: '30%',
+    },
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+      flexWrap: 'nowrap',
+      order: 2,
+      alignItems: 'flex-start',
+      justifyContent: 'flex-end',
+      padding: '35px 35px 15px 0px',
+      width: '45%',
     },
   },
 }))
@@ -42,7 +51,7 @@ export const Footer: React.FunctionComponent<FooterProps> = props => {
               {t('footer.team')}
             </NavLink>
           </Toolbar>
-          <div className="footer__right-section">
+          <div className="footer__texts">
             <div>{t('footer.disclaimer')}</div>
             <div>{t('footer.copyright')}</div>
           </div>
