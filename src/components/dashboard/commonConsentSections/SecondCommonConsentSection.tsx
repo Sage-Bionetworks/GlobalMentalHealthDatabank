@@ -10,6 +10,9 @@ import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../form/types'
 import RankChoice from '../RankChoice/RankChoice'
+import { ConsentService } from '../../../services/consent.service'
+import { useSessionDataState } from '../../../AuthContext'
+import { Redirect } from 'react-router'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -36,6 +39,24 @@ function SecondCommonConsentSection({
     setSignatureName('')
     setConsented(false)
   }, [step])
+
+  const sessionData = useSessionDataState()
+  const { token } = sessionData
+
+  const signConsent = async () => {
+    if (!token) return
+    try {
+      await ConsentService.signGeneralConsent(
+        signatureName,
+        'all_qualified_researchers',
+        token,
+      )
+      updateClientData(step, 'consented', true)
+      return <Redirect to={'/download'} push={true} />
+    } catch (e) {
+      setErrorMessage(e.message)
+    }
+  }
 
   const renderArrows = (preventBack?: boolean) => {
     return (
@@ -75,7 +96,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageOne.benefitDescription')}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
     }
@@ -152,7 +173,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageFive.description')}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
     }
@@ -195,7 +216,7 @@ function SecondCommonConsentSection({
           <div className="form-text-content">
             {t('form.secondCommonConsent.pageSeven.description')}
           </div>
-          {renderArrows()}
+          {renderArrows(true)}
         </div>
       )
     }
@@ -271,7 +292,7 @@ function SecondCommonConsentSection({
             variant="contained"
             fullWidth
             color="primary"
-            onClick={() => setStep(1)}
+            onClick={() => signConsent()}
             disabled={!consented || signatureName.length < 5}
           >
             {t('form.submit')}
