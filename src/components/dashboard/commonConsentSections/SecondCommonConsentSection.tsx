@@ -52,7 +52,7 @@ function SecondCommonConsentSection({
         token,
       )
       updateClientData(step, 'consented', true)
-      //return <Redirect to={'/dashboard'} push={true} />
+      return <Redirect to={'/download'} push={true} />
     } catch (e) {
       setErrorMessage(e.message)
     }
