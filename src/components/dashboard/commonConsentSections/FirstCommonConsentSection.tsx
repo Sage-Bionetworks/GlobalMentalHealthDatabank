@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
-import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
-import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import SageForm from '../../form/SageForm'
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 import { useTranslation } from 'react-i18next'
+import NavigationArrows from '../../common/NavigationArrows'
 
 type FirstCommonConsentProps = {
   step: number
@@ -28,27 +27,12 @@ function FirstCommonConsentSection({
     setErrorMessage('')
     setSuccessMessage('')
   }, [step])
-
-  const renderArrows = (preventBack?: boolean) => {
-    return (
-      <div className="arrowButtonsWrapper">
-        <ArrowButtonLeft
-          style={{ visibility: preventBack ? 'hidden' : 'visible' }}
-          onClick={() =>
-            setStep((current: number) => (current > 1 ? current - 1 : current))
-          }
-        />
-        <ArrowButtonRight
-          onClick={() => {
-            setStep((current: number) =>
-              current < maxSteps ? current + 1 : current,
-            )
-            updateClientData(step)
-          }}
-        />
-      </div>
-    )
+  const handleNext = () => {
+    setStep((current: number) => (current < maxSteps ? current + 1 : current))
+    updateClientData(step)
   }
+  const handleBack = () =>
+    setStep((current: number) => (current > 1 ? current - 1 : current))
 
   switch (step) {
     case 1:
@@ -71,7 +55,11 @@ function FirstCommonConsentSection({
             </a>{' '}
             {t('form.firstCommonConsent.section3.section2')}{' '}
           </div>
-          {renderArrows(true)}
+          <NavigationArrows
+            onBack={handleBack}
+            onNext={handleNext}
+            preventBack
+          />
         </div>
       )
 
@@ -97,7 +85,7 @@ function FirstCommonConsentSection({
             <li>{t('form.firstCommonConsent.week2')}</li>
             <li>{t('form.firstCommonConsent.also')}</li>
           </ul>
-          {renderArrows()}
+          <NavigationArrows onBack={handleBack} onNext={handleNext} />
         </div>
       )
 
@@ -167,7 +155,11 @@ function FirstCommonConsentSection({
             <p>{t('form.firstCommonConsent.combineData')}</p>
             <p>{t('form.firstCommonConsent.storeCloud')}</p>
           </div>
-          {renderArrows(true)}
+          <NavigationArrows
+            onBack={handleBack}
+            onNext={handleNext}
+            preventBack
+          />
         </div>
       )
 
@@ -192,7 +184,7 @@ function FirstCommonConsentSection({
               {t('form.firstCommonConsent.ifCitizenEULink')}
             </a>
           </div>
-          {renderArrows()}
+          <NavigationArrows onBack={handleBack} onNext={handleNext} />
         </div>
       )
   }
