@@ -4,3 +4,4 @@ build
 cypress.env.json
 package-lock.json
 *.lock
+.DS_Store

@@ -57,7 +57,7 @@ import {
   schemaWhichIsCorrect,
   uiSchemaWhichIsCorrect,
 } from '../../data/schemas/whichIsCorrect'
-
+import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
 
 type FormSchema = {
@@ -89,6 +89,8 @@ export default function SageForm({
   const { t } = useTranslation()
 
   const getSchemaFromId = (id: string) => {
+    let schemaCopy
+    let shuffledOptions
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
         return schemaCountrySelector
@@ -107,9 +109,33 @@ export default function SageForm({
       case FORM_IDS.UNDERSTANDS_ENGLISH:
         return schemaUnderstandsEnglish
       case FORM_IDS.HOW_RESEARCHERS_ACCESS:
-        return schemaHowResearchersAccess
+        schemaCopy = cloneDeep(schemaHowResearchersAccess)
+        shuffledOptions = shuffle(
+          schemaCopy.properties.how_researchers_access.enum,
+        )
+        schemaCopy.properties.how_researchers_access.enum = shuffledOptions
+        return schemaCopy
       case FORM_IDS.WHO_CONTROLS_DATA:
-        return schemaWhoControlsData
+        schemaCopy = cloneDeep(schemaWhoControlsData)
+        shuffledOptions = shuffle(
+          Array.from(
+            Array(schemaCopy.properties.who_controls_data.enum.length).keys(),
+          ),
+        )
+        let shuffledEnum = []
+        let shuffledEnumNames = []
+        for (let i = 0; i < shuffledOptions.length; i++) {
+          let indexOption = shuffledOptions[i]
+          shuffledEnum[i] =
+            schemaWhoControlsData.properties.who_controls_data.enum[indexOption]
+          shuffledEnumNames[i] =
+            schemaWhoControlsData.properties.who_controls_data.enumNames[
+              indexOption
+            ]
+        }
+        schemaCopy.properties.who_controls_data.enum = shuffledEnum
+        schemaCopy.properties.who_controls_data.enumNames = shuffledEnumNames
+        return schemaCopy
       case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
         return schemaWouldYouLikeToVolunteer
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
