@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service'
 import { Redirect } from 'react-router'
 
 const FIRST_CONSENT_STEPS: number = 5
-const SECOND_CONSENT_STEPS: number = 10
+const SECOND_CONSENT_STEPS: number = 9
 const FOURTH_ARM_FLOW_LENGTH: number = 4
 const OTHER_ARM_FLOW_LENGTH: number = 1
 

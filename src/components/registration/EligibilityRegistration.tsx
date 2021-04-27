@@ -44,7 +44,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   }
 
   return (
-    <>
+    <div className="eligibility-wrapper">
       {!isEligible && <Eligibility setCountryCode={setCountryCode} />}
       {isEligible && !phoneNumber && (
         <Registration
@@ -69,7 +69,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
           countryCode={countryCode}
         />
       )}
-    </>
+    </div>
   )
 }
 

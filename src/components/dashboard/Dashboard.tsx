@@ -55,7 +55,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
     }
 
     return (
-      <div className="Dashboard" data-cy="page-dashboard">
+      <div className="dashboard" data-cy="page-dashboard">
         <ConsentSteps dataGroups={userInfo?.dataGroups || []} />
       </div>
     )

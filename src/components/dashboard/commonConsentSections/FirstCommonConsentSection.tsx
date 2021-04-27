@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
+import { ReactComponent as Questions } from '../../../assets/consent/questions.svg'
+import { ReactComponent as Network } from '../../../assets/consent/network.svg'
+import { ReactComponent as Padlock } from '../../../assets/consent/padlock.svg'
 import SageForm from '../../form/SageForm'
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 import { useTranslation } from 'react-i18next'
 import NavigationArrows from '../../common/NavigationArrows'
+import { zIndex } from 'material-ui/styles'
 
 type FirstCommonConsentProps = {
   step: number
@@ -13,12 +17,47 @@ type FirstCommonConsentProps = {
   updateClientData: Function
 }
 
+const CustomRadio = ({ options, value, onChange }: any) => {
+  const { enumOptions } = options
+  const _onChange = (event: any) => onChange(event.currentTarget.id)
+  return enumOptions.map((option: any) => {
+    return (
+      <div
+        className={
+          'custom-radio-who-controls ' +
+          (option.value === 'Answer survey questions' ? 'radio correct' : '')
+        }
+      >
+        <input
+          type="radio"
+          id={option.value}
+          checked={option.value === 'Answer survey questions' ? true : false}
+          onChange={_onChange as any}
+          className={'radio-z-index'}
+        />
+        <div
+          id={`label-${option.value}`}
+          dangerouslySetInnerHTML={{ __html: option.label }}
+          className={'radio-z-index'}
+        />
+      </div>
+    )
+  })
+}
+
+const widgets = {
+  RadioWidget: CustomRadio,
+}
+
 function FirstCommonConsentSection({
   step,
   setStep,
   maxSteps,
   updateClientData,
 }: FirstCommonConsentProps) {
+  const [howToParticipateForm, setHowToParticipateForm] = useState(
+    FORM_IDS.HOW_TO_PARTICIPATE,
+  )
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
@@ -37,10 +76,10 @@ function FirstCommonConsentSection({
   switch (step) {
     case 1:
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
-          <div className="headerWrapper">
+          <div className="header-wrapper">
             <h1>{t('form.firstCommonConsent.whatAreWeStudying')}</h1>
           </div>
           <h2>{t('form.firstCommonConsent.getAnswers')}</h2>
@@ -50,7 +89,7 @@ function FirstCommonConsentSection({
           </ul>
           <div>
             {t('form.firstCommonConsent.section3.section1')}{' '}
-            <a className="dashboardLink" href="/dashboard">
+            <a className="dashboard-link" href="/dashboard">
               {t('form.firstCommonConsent.section3.link')}
             </a>{' '}
             {t('form.firstCommonConsent.section3.section2')}{' '}
@@ -65,10 +104,10 @@ function FirstCommonConsentSection({
 
     case 2:
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Questions />
+          <div className="header-wrapper">
             <h1>{t('form.firstCommonConsent.whatWillYouAsk')}</h1>
           </div>
           <div>
@@ -91,20 +130,28 @@ function FirstCommonConsentSection({
 
     case 3:
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <SageForm
             title={t('form.firstCommonConsent.quiz')}
             errorMessage={errorMessage}
             infoMessage={successMessage}
-            formId={FORM_IDS.HOW_TO_PARTICIPATE}
+            formId={howToParticipateForm}
             buttonText={
               successMessage ? t('form.firstCommonConsent.next') : undefined
+            }
+            widgets={
+              howToParticipateForm === FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE
+                ? widgets
+                : undefined
             }
             onSubmit={(event: any) => {
               const selectedOption = event.formData.how_to_participate
 
-              if (successMessage) {
+              if (
+                successMessage ||
+                howToParticipateForm === FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE
+              ) {
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
@@ -120,15 +167,16 @@ function FirstCommonConsentSection({
                 ) {
                   setSuccessMessage(t('form.firstCommonConsent.answer'))
                   setErrorMessage('')
-                  updateClientData(
-                    step,
-                    FORM_IDS.HOW_TO_PARTICIPATE,
-                    selectedOption.participate_option,
-                  )
                 } else {
                   setErrorMessage(t('form.firstCommonConsent.answer'))
                   setSuccessMessage('')
                 }
+                setHowToParticipateForm(FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE)
+                updateClientData(
+                  step,
+                  FORM_IDS.HOW_TO_PARTICIPATE,
+                  selectedOption.participate_option,
+                )
               }
             }}
           />
@@ -137,10 +185,10 @@ function FirstCommonConsentSection({
 
     case 4:
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Padlock />
+          <div className="header-wrapper">
             <h1>{t('form.firstCommonConsent.dataCollection')}</h1>
           </div>
           <h2>{t('form.firstCommonConsent.yourData')}</h2>
@@ -165,10 +213,10 @@ function FirstCommonConsentSection({
 
     case 5:
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Network />
+          <div className="header-wrapper">
             <h1>{t('form.firstCommonConsent.transferAndRights')}</h1>
           </div>
           <p>{t('form.firstCommonConsent.transferAway')}</p>{' '}
@@ -180,7 +228,7 @@ function FirstCommonConsentSection({
           </ul>
           <div>
             {t('form.firstCommonConsent.ifCitizenEU')}{' '}
-            <a className="dashboardLink" href="/dashboard">
+            <a className="dashboard-link" href="/dashboard">
               {t('form.firstCommonConsent.ifCitizenEULink')}
             </a>
           </div>

@@ -150,7 +150,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   )
 
   return (
-    <div className="quizWrapper">
+    <div className="quiz-wrapper">
       <div className="media-wrapper text-left">
         <TextSent />
       </div>
@@ -175,7 +175,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   variant="outlined"
                   fullWidth
                   onChange={handleOnChange}
-                  className="phoneInput"
+                  className="phone-input"
                 />
               </div>
               {Object.keys(state).map(

@@ -12,6 +12,11 @@ import { ConsentService } from '../../../services/consent.service'
 import { useSessionDataState } from '../../../AuthContext'
 import { Redirect } from 'react-router'
 import NavigationArrows from '../../common/NavigationArrows'
+import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
+import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
+import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
+import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
+import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -67,10 +72,10 @@ function SecondCommonConsentSection({
   switch (step) {
     case startingStep: {
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <RisksBenefits width="75" />
+          <div className="header-wrapper">
             <h1>{t('form.secondCommonConsent.pageOne.risks&benefit')}</h1>
           </div>
           <h2>{t('form.secondCommonConsent.pageOne.risks')}</h2>
@@ -91,25 +96,10 @@ function SecondCommonConsentSection({
     }
     case startingStep + 1: {
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
-            <h1>{t('form.secondCommonConsent.pageTwo.costs&payment')}</h1>
-          </div>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageTwo.description')}
-          </div>
-          <NavigationArrows onBack={handleBack} onNext={handleNext} />
-        </div>
-      )
-    }
-    case startingStep + 2: {
-      return (
-        <div className="textStepWrapper">
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <NotMedical />
+          <div className="header-wrapper">
             <h1>{t('form.secondCommonConsent.pageThree.notMedicalCare')}</h1>
           </div>
           <div className="form-text-content">
@@ -123,9 +113,9 @@ function SecondCommonConsentSection({
       )
     }
 
-    case startingStep + 3: {
+    case startingStep + 2: {
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <SageForm
             title={t('form.secondCommonConsent.pageFour.title')}
@@ -151,12 +141,12 @@ function SecondCommonConsentSection({
         </div>
       )
     }
-    case startingStep + 4: {
+    case startingStep + 3: {
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Exit />
+          <div className="header-wrapper">
             <h1>{t('form.secondCommonConsent.pageFive.leaving')}</h1>
           </div>
           <div className="form-text-content">
@@ -170,9 +160,9 @@ function SecondCommonConsentSection({
         </div>
       )
     }
-    case startingStep + 5: {
+    case startingStep + 4: {
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <SageForm
             title={t('form.secondCommonConsent.pageSix.title')}
@@ -198,12 +188,12 @@ function SecondCommonConsentSection({
         </div>
       )
     }
-    case startingStep + 6: {
+    case startingStep + 5: {
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Envelope />
+          <div className="header-wrapper">
             <h1>{t('form.secondCommonConsent.pageSeven.contact')}</h1>
           </div>
           <div className="form-text-content">
@@ -217,12 +207,12 @@ function SecondCommonConsentSection({
         </div>
       )
     }
-    case startingStep + 7: {
+    case startingStep + 6: {
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Summary />
+          <div className="header-wrapper">
             <h1>{t('form.secondCommonConsent.pageEight.summary')}</h1>
           </div>
           <div className="form-text-content">
@@ -232,11 +222,10 @@ function SecondCommonConsentSection({
         </div>
       )
     }
-    case startingStep + 8: {
+    case startingStep + 7: {
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
           <RankChoice
             step={step}
             setStep={setStep}
@@ -248,10 +237,10 @@ function SecondCommonConsentSection({
 
     case maxSteps:
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <LogoNoText />
-          <div className="headerWrapper">
+          <div className="header-wrapper">
             <h1>{t('form.consentSignature.title')}</h1>
           </div>
           <h3>
@@ -261,7 +250,7 @@ function SecondCommonConsentSection({
             <b>{t('form.consentSignature.pleaseCheck.agree')}</b>{' '}
             {t('form.consentSignature.pleaseCheck.takePart')}
           </h3>
-          <span className="consentWrapper">
+          <span className="consent-wrapper">
             <input
               type="checkbox"
               id="consented"

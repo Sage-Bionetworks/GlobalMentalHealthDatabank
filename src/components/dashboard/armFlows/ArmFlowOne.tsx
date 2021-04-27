@@ -4,6 +4,7 @@ import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 
 type ArmFlowOneProps = {
   step: number
@@ -20,10 +21,10 @@ function ArmFlowOne({
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
   return (
-    <div className="textStepWrapper">
+    <div className="text-step-wrapper">
       <ProgressBar step={step} maxSteps={maxSteps} />
-      <LogoNoText />
-      <div className="headerWrapper">
+      <Globe />
+      <div className="header-wrapper">
         <h1>{t('form.armOne.title')}</h1>
       </div>
       <h2>{t('form.armOne.subTitle')}</h2>
@@ -32,7 +33,7 @@ function ArmFlowOne({
         <li>{t('form.armOne.subText2')}</li>
       </ul>
 
-      <div className="arrowButtonsWrapper">
+      <div className="arrow-buttons-wrapper">
         <ArrowButtonLeft
           onClick={() =>
             setStep((current: number) => (current > 1 ? current - 1 : current))

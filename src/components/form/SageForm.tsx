@@ -14,6 +14,10 @@ import {
   uiSchemaHowToParticipate,
 } from '../../data/schemas/howToParticipate'
 import {
+  schemaHowToParticipateResponse,
+  uiSchemaHowToParticipateResponse,
+} from '../../data/schemas/howToParticipateResponse'
+import {
   schemaAgeVerify,
   uiSchemaAgeVerify,
 } from '../../data/schemas/ageVerify'
@@ -90,6 +94,8 @@ export default function SageForm({
         return schemaCountrySelector
       case FORM_IDS.HOW_TO_PARTICIPATE:
         return schemaHowToParticipate
+      case FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE:
+        return schemaHowToParticipateResponse
       case FORM_IDS.AGE_VERIFY:
         return schemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
@@ -121,6 +127,8 @@ export default function SageForm({
         return uiSchemaCountrySelector
       case FORM_IDS.HOW_TO_PARTICIPATE:
         return uiSchemaHowToParticipate
+      case FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE:
+        return uiSchemaHowToParticipateResponse
       case FORM_IDS.AGE_VERIFY:
         return uiSchemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
@@ -148,7 +156,7 @@ export default function SageForm({
 
   return (
     <>
-      <div className="headerWrapper">
+      <div className="header-wrapper">
         <h1>{title}</h1>
       </div>
       {subTitle && <h2>{subTitle}</h2>}

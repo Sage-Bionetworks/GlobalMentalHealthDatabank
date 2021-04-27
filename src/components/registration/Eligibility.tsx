@@ -63,7 +63,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > How did you hear about us?'
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
             title={t('eligibility.howDidYouHear')}
@@ -101,7 +101,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Benefits of health support'
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
             title={t('eligibility.benefit')}
@@ -138,7 +138,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Where do you live?'
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
             title={t('eligibility.where')}
@@ -182,7 +182,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Do you have an android?'
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
             title={t('eligibility.android')}
@@ -220,7 +220,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Do you speak english?'
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
             title={t('eligibility.english')}
@@ -262,7 +262,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Are you on the age range?'
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <SageForm
             title={t('eligibility.ageRange')}
@@ -295,8 +295,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   if (step > MAX_STEPS) {
     return (
-      <div className="quizWrapper">
-        <div className="headerWrapper">
+      <div className="quiz-wrapper">
+        <div className="header-wrapper">
           <h1>{t('eligibility.thanks')}</h1>
         </div>
         <Separator />
