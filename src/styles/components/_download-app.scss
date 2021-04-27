@@ -10,6 +10,7 @@
     font-weight: 700;
     font-family: 'Lato';
     color: #ffffff;
+    cursor: pointer;
   }
   .download--not-installed {
     background-color: #343f56;
@@ -34,6 +35,53 @@
     padding: 50px 25px;
     .download__button {
       background: #343f56;
+    }
+  }
+  @include breakpoint('md') {
+    position: relative;
+    height: calc(100vh - 180px);
+    .download__button {
+      margin: 36px 0;
+    }
+    .download--not-installed {
+      padding: 50px 70px;
+      height: 50%;
+      background-image: url('../../assets/download-bg.svg');
+      background-color: #f5f5f5;
+      background-size: cover;
+      background-position: left bottom;
+      .download__title {
+        color: #ffffff;
+      }
+      .download__button {
+        background: #ffffff;
+        color: #000000;
+      }
+      .logo {
+        display: none;
+      }
+    }
+    .download--already-installed {
+      padding: 50px 70px;
+      height: 50%;
+    }
+    .phone {
+      width: 250px;
+      height: 300px;
+      position: absolute;
+      bottom: 0;
+      right: 70px;
+      background-color: white;
+      background-size: cover;
+      background-position: left top;
+      border: 5px solid black;
+      .phone__bg {
+        background-color: white;
+        width: 190px;
+        height: 280px;
+        display: block;
+        margin: 10px auto;
+      }
     }
   }
 }
