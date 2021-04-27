@@ -47,7 +47,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   }
 
   return (
-    <div className="quizWrapper">
+    <div>
       <div className="error-message">{error}</div>
       <div>
         <div className="text-left margin-top-std">

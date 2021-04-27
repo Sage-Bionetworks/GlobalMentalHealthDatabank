@@ -143,14 +143,12 @@ function App() {
                       path="/eligibility"
                       render={props => {
                         return (
-                          <GridLayout>
-                            <EligibilityRegistration
-                              {...props}
-                              callbackFn={(token: string, name: string) =>
-                                setUserSession(token, name, false, [])
-                              }
-                            />
-                          </GridLayout>
+                          <EligibilityRegistration
+                            {...props}
+                            callbackFn={(token: string, name: string) =>
+                              setUserSession(token, name, false, [])
+                            }
+                          />
                         )
                       }}
                     ></Route>

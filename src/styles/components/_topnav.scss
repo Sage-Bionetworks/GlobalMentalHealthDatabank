@@ -76,4 +76,7 @@
 .content {
   flex-grow: 1;
   min-height: calc(100vh - 275px);
+  @include breakpoint('md') {
+    min-height: calc(100vh - 180px);
+  }
 }
