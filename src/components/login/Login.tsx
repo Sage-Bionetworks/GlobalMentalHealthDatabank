@@ -137,7 +137,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   }
 
   return (
-    <div>
+    <div className="login-wrapper">
       {isLoading && (
         <div className="text-center">
           <CircularProgress color="primary" />
@@ -164,33 +164,33 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                             setCountryCode(event.target.value as any)
                           }}
                           variant="outlined"
-                          className="phoneFlag"
+                          className="phone-flag"
                         >
                           <MenuItem value={FLAGS.unitedKingdom}>
                             <img
                               src={uk}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="United Kingdom"
                             ></img>
                           </MenuItem>
                           <MenuItem value={FLAGS.india}>
                             <img
                               src={ind}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="India"
                             ></img>
                           </MenuItem>
                           <MenuItem value={FLAGS.southAfrica}>
                             <img
                               src={za}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="South Africa"
                             ></img>
                           </MenuItem>
                           <MenuItem value={FLAGS.unitedStates}>
                             <img
                               src={us}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="United States"
                             ></img>
                           </MenuItem>

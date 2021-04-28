@@ -1,4 +1,4 @@
-.quizWrapper {
+.quiz-wrapper {
   @include breakpoint('md') {
     background-color: white;
     margin: 0 9px 60px 9px;
@@ -7,7 +7,7 @@
   }
 }
 
-.textStepWrapper {
+.text-step-wrapper {
   padding: 20px 25px;
   background: white;
 }

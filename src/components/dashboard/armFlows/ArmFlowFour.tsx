@@ -6,6 +6,7 @@ import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button
 import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../../components/form/types'
+import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 
 type ArmFlowFourProps = {
   step: number
@@ -56,7 +57,7 @@ function ArmFlowFour({
 
   const renderArrows = (preventBack?: boolean) => {
     return (
-      <div className="arrowButtonsWrapper">
+      <div className="arrow-buttons-wrapper">
         <ArrowButtonLeft
           style={{ visibility: preventBack ? 'hidden' : 'visible' }}
           onClick={() =>
@@ -78,10 +79,10 @@ function ArmFlowFour({
   switch (step) {
     case startingStep:
       return (
-        <div className="textStepWrapper">
+        <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="headerWrapper">
+          <Globe />
+          <div className="header-wrapper">
             <h1>{t('form.armFour.pageOne.title')}</h1>
           </div>
           <div>
@@ -93,7 +94,7 @@ function ArmFlowFour({
 
     case startingStep + 1:
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <SageForm
             title={t('form.armFour.pageTwo.title')}
@@ -122,7 +123,7 @@ function ArmFlowFour({
 
     case startingStep + 2:
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <SageForm
             title={t('form.armFour.pageThree.title')}
@@ -151,7 +152,7 @@ function ArmFlowFour({
 
     case startingStep + 3:
       return (
-        <div className="quizWrapper">
+        <div className="quiz-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <SageForm
             title={t('form.armFour.pageFour.title')}

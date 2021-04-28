@@ -66,7 +66,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quizWrapper">
+          <div className="quiz-wrapper">
             <SageForm
               title={t('eligibility.howDidYouHear')}
               errorMessage={errorMessage}
@@ -106,7 +106,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quizWrapper">
+          <div className="quiz-wrapper">
             <SageForm
               title={t('eligibility.benefit')}
               errorMessage={errorMessage}
@@ -145,7 +145,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quizWrapper">
+          <div className="quiz-wrapper">
             <SageForm
               title={t('eligibility.where')}
               errorMessage={errorMessage}
@@ -194,7 +194,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quizWrapper">
+          <div className="quiz-wrapper">
             <SageForm
               title={t('eligibility.android')}
               errorMessage={errorMessage}
@@ -234,7 +234,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quizWrapper">
+          <div className="quiz-wrapper">
             <SageForm
               title={t('eligibility.english')}
               errorMessage={errorMessage}
@@ -280,7 +280,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quizWrapper">
+          <div className="quiz-wrapper">
             <SageForm
               title={t('eligibility.ageRange')}
               errorMessage={errorMessage}
@@ -313,8 +313,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   if (step > MAX_STEPS) {
     return (
-      <div className="quizWrapper">
-        <div className="headerWrapper">
+      <div className="quiz-wrapper">
+        <div className="header-wrapper">
           <h1>{t('eligibility.thanks')}</h1>
         </div>
         <Separator />

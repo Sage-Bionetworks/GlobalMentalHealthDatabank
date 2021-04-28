@@ -1,4 +1,4 @@
-export const schemaHowToParticipate = {
+export const schemaHowToParticipateResponse = {
   type: 'object',
   properties: {
     how_to_participate: {
@@ -8,6 +8,11 @@ export const schemaHowToParticipate = {
         participate_option: {
           type: 'string',
           title: ' ',
+          enumNames: [
+            '<span class="radio-z-index">Answer survey questions</span>',
+            '<span class="radio-z-index error-message">Complete in-person visits</span>',
+            '<span class="radio-z-index error-message">Make Phone Calls</span>',
+          ],
           enum: [
             'Answer survey questions',
             'Complete in-person visits',
@@ -19,7 +24,7 @@ export const schemaHowToParticipate = {
   },
 }
 
-export const uiSchemaHowToParticipate = {
+export const uiSchemaHowToParticipateResponse = {
   how_to_participate: {
     participate_option: {
       'ui:widget': 'radio',

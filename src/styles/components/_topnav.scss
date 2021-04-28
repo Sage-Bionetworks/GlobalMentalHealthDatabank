@@ -1,17 +1,22 @@
-.navbarTitle {
+.topnav__title {
   padding-top: 11px;
   padding-left: 15px;
 }
-
-.navBarLink {
+.topnav__content {
+  flex-grow: 1;
+  min-height: calc(100vh - 275px);
+  @include breakpoint('md') {
+    min-height: calc(100vh - 180px);
+  }
+}
+.topnav__link {
   color: #2e2e2e;
   &:hover {
     text-decoration: none;
     color: #2e2e2e;
   }
 }
-
-.fullNavBarLink {
+.topnav__link--full {
   color: #2e2e2e;
   margin-left: 30px;
   padding-bottom: 7px;
@@ -25,12 +30,10 @@
     color: #2e2e2e;
   }
 }
-
-.fullNavBarLinkActive {
+.topnav__link--active {
   border-bottom: 4px solid #0084ff;
 }
-
-.fullNavBarButton {
+.topnav__button--full {
   white-space: nowrap;
   min-width: 100px;
   height: 37px;
@@ -42,24 +45,30 @@
   }
 }
 
-.drawerHeader {
+.drawer {
+  width: $drawerWidth;
+  flex-shrink: 0;
+}
+.drawer__paper {
+  width: $drawerWidth;
+}
+.drawer__close-button {
+  width: 32px;
+}
+.drawer__close-icon {
+  color: #2a2a2a;
+}
+.drawer__header {
   display: flex;
   align-items: center;
   padding: 0 8px;
   justify-content: flex-end;
   height: 72px;
   margin-bottom: 10px;
+  min-width: 160px;
 }
 
-.drawerCloseButton {
-  width: 48px;
-}
-
-.drawerCloseIcon {
-  color: #2a2a2a;
-}
-
-.mobileMenuItem {
+.mobile-menu__item {
   font-size: 18px;
   font-weight: bold;
   line-height: 30px;
@@ -67,16 +76,21 @@
   padding: 10px 0px 10px 40px;
   color: #2a2a2a;
 }
-.mobileMenuSeparator {
+.mobile-menu__separator {
   height: 2px;
   margin: 20px 0px;
   background-color: #2a2a2a;
 }
 
-.content {
-  flex-grow: 1;
-  min-height: calc(100vh - 275px);
-  @include breakpoint('md') {
-    min-height: calc(100vh - 180px);
-  }
+.tool-bar {
+  display: flex;
+  justify-content: space-between;
+  color: #2e2e2e;
+  background-color: white;
+  min-height: 80px;
+  filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+.menu__button {
+  margin-right: 16px;
 }

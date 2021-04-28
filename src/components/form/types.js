@@ -7,13 +7,14 @@ export const COUNTRIES = {
 }
 
 export const PARTICIPATE_OPTIONS = {
-  ANSWER_SURVEY_QUESTIONS: 0,
-  IN_PERSON_VISITS: 1,
-  PHONE_CALLS: 2,
+  ANSWER_SURVEY_QUESTIONS: 'Answer survey questions',
+  IN_PERSON_VISITS: 'Complete in-person visits',
+  PHONE_CALLS: 'Make Phone Calls',
 }
 
 export const FORM_IDS = {
   HOW_TO_PARTICIPATE: 'howToParticipate',
+  HOW_TO_PARTICIPATE_RESPONSE: 'howToParticipateResponse',
   AGE_VERIFY: 'ageVerify',
   COUNTRY_SELECTOR: 'countrySelector',
   ANDROID_VERIFY: 'androidVerify',

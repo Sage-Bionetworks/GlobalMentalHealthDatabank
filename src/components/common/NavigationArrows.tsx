@@ -10,7 +10,7 @@ type Props = {
 
 function NavigationArrows({ preventBack, onNext, onBack }: Props) {
   return (
-    <div className="arrowButtonsWrapper">
+    <div className="arrow-buttons-wrapper">
       <ArrowButtonLeft
         style={{ visibility: preventBack ? 'hidden' : 'visible' }}
         onClick={onBack}
