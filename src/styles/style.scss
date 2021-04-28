@@ -110,31 +110,9 @@ div.intro {
   }
 }
 
-// material ui "lab" component override is challenging: https://github.com/mui-org/material-ui/issues/19427
-// overriding the style here:
-
-#root .MuiAlert-filledError {
-  border-radius: 0;
-  background-color: #fc9090;
-  color: #000000;
-  padding: 20px 30px;
-  border-bottom: 1px rgb(46, 46, 46) solid;
-}
-#root .MuiAlert-filledInfo {
-  border-radius: 0;
-  background-color: #0084ff;
-  padding: 20px 30px;
-  border-bottom: 1px rgb(46, 46, 46) solid;
-}
-
 // if a button is in a link, do not decorate the text on hover
 #root a:hover > button {
   text-decoration: 'none';
-}
-
-.partialGreen {
-  //background-image: url('../assets/dashboard/bg_rectangle_color.svg');
-  //background-repeat: repeat-x;
 }
 
 button.btnVerticallySpaced,
@@ -222,10 +200,6 @@ ul {
   color: black;
 }
 
-.eligibility-wrapper {
-  margin-top: 20px;
-}
-
 .login-wrapper {
   margin-top: 20px;
   padding: 0 10px;
@@ -257,23 +231,6 @@ fieldset {
     padding: 0px 10px 5px 10px;
     margin: 0 5% 15px 5%;
     font-size: 18px;
-  }
-}
-
-.sageForm {
-  fieldset {
-    border: 0;
-    padding: 0;
-    legend {
-      display: none;
-    }
-    span {
-      margin-left: 22px;
-    }
-    input {
-      width: inherit;
-      margin-top: 6px;
-    }
   }
 }
 
@@ -343,7 +300,7 @@ fieldset {
 }
 
 .elegibilityWrapper {
-  margin: 0 9px 60px 9px;
+  margin: 20px 9px 60px 9px;
   background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 20px 25px;
@@ -359,6 +316,10 @@ fieldset {
     }
     .elegibilityContent {
       margin-top: -175px;
+      .elegibilityContentInner {
+        max-width: 500px;
+        margin: 0 auto 60px auto;
+      }
       .progressBarHeader {
         color: #fcfcfc;
       }

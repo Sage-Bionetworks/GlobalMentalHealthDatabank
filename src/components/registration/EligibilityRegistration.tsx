@@ -45,7 +45,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   }
 
   return (
-    <div className="eligibility-wrapper">
+    <div>
       {!isEligible && <Eligibility setCountryCode={setCountryCode} />}
       {isEligible && !phoneNumber && (
         <ElegibilityStepWrapper>
@@ -69,13 +69,15 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
       )}
       {isEligible && phoneNumber && (
         <ElegibilityStepWrapper>
-          <SignInWithCode
-            loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
-              handleLoggedIn(result)
-            }
-            phoneNumber={phoneNumber}
-            countryCode={countryCode}
-          />
+          <div className="quiz-wrapper">
+            <SignInWithCode
+              loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
+                handleLoggedIn(result)
+              }
+              phoneNumber={phoneNumber}
+              countryCode={countryCode}
+            />
+          </div>
         </ElegibilityStepWrapper>
       )}
     </div>
