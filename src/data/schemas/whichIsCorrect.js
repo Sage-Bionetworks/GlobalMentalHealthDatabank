@@ -6,7 +6,7 @@ export const schemaWhichIsCorrect = {
       title: ' ',
       enum: [
         'If I start participating, I have to continue until the end.',
-        'I can stop at any time. ',
+        'I can stop at any time.',
         'I will get a penalty if I leave the study.',
       ],
     },

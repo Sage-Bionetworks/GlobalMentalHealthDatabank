@@ -35,17 +35,20 @@ function ArmFlowFour({
     const _onChange = (event: any) => onChange(event.currentTarget.id)
     return enumOptions.map((option: any) => {
       return (
-        <div className={'custom-radio-who-controls'}>
-          <input
-            type="radio"
-            id={option.value}
-            checked={value == option.value ? true : false}
-            onChange={_onChange as any}
-          />
-          <div
-            id={`label-${option.value}`}
-            dangerouslySetInnerHTML={{ __html: option.label }}
-          />
+        <div className={'quiz-radio-wrapper'}>
+          <label>
+            <input
+              type="radio"
+              id={option.value}
+              checked={value == option.value ? true : false}
+              onChange={_onChange as any}
+            />
+            <div
+              id={`label-${option.value}`}
+              dangerouslySetInnerHTML={{ __html: option.label }}
+              className={'radio-button-label'}
+            />
+          </label>
         </div>
       )
     })

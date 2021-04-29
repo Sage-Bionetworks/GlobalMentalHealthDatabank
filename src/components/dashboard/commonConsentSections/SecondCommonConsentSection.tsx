@@ -6,7 +6,11 @@ import moment from 'moment'
 import i18next from 'i18next'
 import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
-import { FORM_IDS } from '../../form/types'
+import {
+  WHAT_IS_THE_PURPOSE_OPTIONS,
+  WHICH_IS_CORRECT_OPTIONS,
+  FORM_IDS,
+} from '../../form/types'
 import RankChoice from '../RankChoice/RankChoice'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
@@ -36,12 +40,111 @@ function SecondCommonConsentSection({
   maxSteps,
   updateClientData,
 }: SecondCommonConsentProps) {
+  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState(
+    undefined,
+  )
+  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState(
+    undefined,
+  )
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
 
+  const CustomRadioWhatIsThePurpose = ({ options, value, onChange }: any) => {
+    const { enumOptions } = options
+    const _onChange = (event: any) => onChange(event.currentTarget.id)
+    return enumOptions.map((option: any) => {
+      return (
+        <div
+          className={
+            'quiz-radio-wrapper ' +
+            (option.value ===
+            WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH
+              ? 'radio correct'
+              : '')
+          }
+        >
+          <input
+            type="radio"
+            id={option.value}
+            checked={
+              option.value === whatIsThePurposeSelection ||
+              option.value ===
+                WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH
+                ? true
+                : false
+            }
+            onChange={_onChange as any}
+          />
+          <div
+            id={`label-${option.value}`}
+            dangerouslySetInnerHTML={{ __html: option.label }}
+            className={
+              'radio-button-label' +
+              (option.value === whatIsThePurposeSelection &&
+              option.value !==
+                WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH
+                ? ' error-message wrong-opt'
+                : ' correct-opt')
+            }
+          />
+        </div>
+      )
+    })
+  }
+
+  const widgetsWhatIsThePurpose = {
+    RadioWidget: CustomRadioWhatIsThePurpose,
+  }
+
+  const CustomRadioWhichIsCorrect = ({ options, value, onChange }: any) => {
+    const { enumOptions } = options
+    const _onChange = (event: any) => onChange(event.currentTarget.id)
+    return enumOptions.map((option: any) => {
+      return (
+        <div
+          className={
+            'quiz-radio-wrapper ' +
+            (option.value === WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
+              ? 'radio correct'
+              : '')
+          }
+        >
+          <input
+            type="radio"
+            id={option.value}
+            checked={
+              option.value === whichIsCorrectSelection ||
+              option.value === WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
+                ? true
+                : false
+            }
+            onChange={_onChange as any}
+          />
+          <div
+            id={`label-${option.value}`}
+            dangerouslySetInnerHTML={{ __html: option.label }}
+            className={
+              'radio-button-label' +
+              (option.value === whichIsCorrectSelection &&
+              option.value !== WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
+                ? ' error-message wrong-opt'
+                : ' correct-opt')
+            }
+          />
+        </div>
+      )
+    })
+  }
+
+  const widgetsWhichIsCorrect = {
+    RadioWidget: CustomRadioWhichIsCorrect,
+  }
+
   useEffect(() => {
+    setSuccessMessage('')
     setErrorMessage('')
     setSignatureName('')
     setConsented(false)
@@ -140,12 +243,26 @@ function SecondCommonConsentSection({
           <SageForm
             title={t('form.secondCommonConsent.pageFour.title')}
             errorMessage={errorMessage}
+            infoMessage={successMessage}
             formId={FORM_IDS.WHAT_IS_THE_PURPOSE}
+            buttonText={
+              successMessage ? t('form.firstCommonConsent.next') : undefined
+            }
+            widgets={
+              whatIsThePurposeSelection ? widgetsWhatIsThePurpose : undefined
+            }
             onSubmit={(event: any) => {
               const selectedOption = event.formData.what_is_the_purpose
-              if (!selectedOption) {
+
+              if (successMessage || whatIsThePurposeSelection) {
+                setStep((current: number) =>
+                  current < maxSteps ? current + 1 : current,
+                )
+              }
+
+              if (selectedOption && Object.keys(selectedOption).length === 0) {
                 setErrorMessage(t('form.chooseAnOption'))
-                window.scrollTo(0, 0)
+                setSuccessMessage('')
               } else {
                 updateClientData(step, {
                   [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
@@ -185,12 +302,26 @@ function SecondCommonConsentSection({
           <SageForm
             title={t('form.secondCommonConsent.pageSix.title')}
             errorMessage={errorMessage}
+            infoMessage={successMessage}
             formId={FORM_IDS.WHICH_IS_CORRECT}
+            buttonText={
+              successMessage ? t('form.firstCommonConsent.next') : undefined
+            }
+            widgets={
+              whichIsCorrectSelection ? widgetsWhichIsCorrect : undefined
+            }
             onSubmit={(event: any) => {
               const selectedOption = event.formData.which_is_correct
-              if (!selectedOption) {
+
+              if (successMessage || whichIsCorrectSelection) {
+                setStep((current: number) =>
+                  current < maxSteps ? current + 1 : current,
+                )
+              }
+
+              if (selectedOption && Object.keys(selectedOption).length === 0) {
                 setErrorMessage(t('form.chooseAnOption'))
-                window.scrollTo(0, 0)
+                setSuccessMessage('')
               } else {
                 updateClientData(step, {
                   [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,

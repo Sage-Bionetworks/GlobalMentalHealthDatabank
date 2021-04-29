@@ -8,7 +8,6 @@ import SageForm from '../../form/SageForm'
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 import { useTranslation } from 'react-i18next'
 import NavigationArrows from '../../common/NavigationArrows'
-import { zIndex } from 'material-ui/styles'
 
 type FirstCommonConsentProps = {
   step: number
@@ -17,50 +16,62 @@ type FirstCommonConsentProps = {
   updateClientData: Function
 }
 
-const CustomRadio = ({ options, value, onChange }: any) => {
-  const { enumOptions } = options
-  const _onChange = (event: any) => onChange(event.currentTarget.id)
-  return enumOptions.map((option: any) => {
-    return (
-      <div
-        className={
-          'custom-radio-who-controls ' +
-          (option.value === 'Answer survey questions' ? 'radio correct' : '')
-        }
-      >
-        <input
-          type="radio"
-          id={option.value}
-          checked={option.value === 'Answer survey questions' ? true : false}
-          onChange={_onChange as any}
-          className={'radio-z-index'}
-        />
-        <div
-          id={`label-${option.value}`}
-          dangerouslySetInnerHTML={{ __html: option.label }}
-          className={'radio-z-index'}
-        />
-      </div>
-    )
-  })
-}
-
-const widgets = {
-  RadioWidget: CustomRadio,
-}
-
 function FirstCommonConsentSection({
   step,
   setStep,
   maxSteps,
   updateClientData,
 }: FirstCommonConsentProps) {
-  const [howToParticipateForm, setHowToParticipateForm] = useState(
-    FORM_IDS.HOW_TO_PARTICIPATE,
+  const [howToParticipateSelection, setHowToParticipateSelection] = useState(
+    undefined,
   )
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
+
+  const CustomRadio = ({ options, value, onChange }: any) => {
+    const { enumOptions } = options
+    const _onChange = (event: any) => onChange(event.currentTarget.id)
+    return enumOptions.map((option: any) => {
+      return (
+        <div
+          className={
+            'quiz-radio-wrapper ' +
+            (option.value === PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS
+              ? 'radio correct'
+              : '')
+          }
+        >
+          <input
+            type="radio"
+            id={option.value}
+            checked={
+              option.value === howToParticipateSelection ||
+              option.value === PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS
+                ? true
+                : false
+            }
+            onChange={_onChange as any}
+          />
+          <div
+            id={`label-${option.value}`}
+            dangerouslySetInnerHTML={{ __html: option.label }}
+            className={
+              'radio-button-label' +
+              (option.value === howToParticipateSelection &&
+              option.value !== PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS
+                ? ' error-message wrong-opt'
+                : ' correct-opt')
+            }
+          />
+        </div>
+      )
+    })
+  }
+
+  const widgets = {
+    RadioWidget: CustomRadio,
+  }
 
   useEffect(() => {
     setErrorMessage('')
@@ -136,22 +147,15 @@ function FirstCommonConsentSection({
             title={t('form.firstCommonConsent.quiz')}
             errorMessage={errorMessage}
             infoMessage={successMessage}
-            formId={howToParticipateForm}
+            formId={FORM_IDS.HOW_TO_PARTICIPATE}
             buttonText={
               successMessage ? t('form.firstCommonConsent.next') : undefined
             }
-            widgets={
-              howToParticipateForm === FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE
-                ? widgets
-                : undefined
-            }
+            widgets={howToParticipateSelection ? widgets : undefined}
             onSubmit={(event: any) => {
               const selectedOption = event.formData.how_to_participate
 
-              if (
-                successMessage ||
-                howToParticipateForm === FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE
-              ) {
+              if (successMessage || howToParticipateSelection) {
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
