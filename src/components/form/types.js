@@ -12,6 +12,12 @@ export const PARTICIPATE_OPTIONS = {
   PHONE_CALLS: 'Make Phone Calls',
 }
 
+export const WHO_CONTROLS_DATA_OPTIONS = {
+  DEMOCRACY: 'Democracy',
+  VOLUNTEER_COMMUNITY_REVIEW_PANEL: 'Volunteer community review panel',
+  PROFESSIONAL_REVIEW_PANEL: 'Professional review panel',
+}
+
 export const FORM_IDS = {
   HOW_TO_PARTICIPATE: 'howToParticipate',
   HOW_TO_PARTICIPATE_RESPONSE: 'howToParticipateResponse',

@@ -107,11 +107,9 @@ function ArmFlowFour({
                 setErrorMessage(t('form.chooseAnOption'))
                 window.scrollTo(0, 0)
               } else {
-                updateClientData(
-                  step,
-                  FORM_IDS.HOW_RESEARCHERS_ACCESS,
-                  selectedOption,
-                )
+                updateClientData(step, {
+                  [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
+                })
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
@@ -136,11 +134,10 @@ function ArmFlowFour({
                 setErrorMessage(t('form.chooseAnOption'))
                 window.scrollTo(0, 0)
               } else {
-                updateClientData(
-                  step,
-                  FORM_IDS.WHO_CONTROLS_DATA,
-                  selectedOption.who_controls_data,
-                )
+                updateClientData(step, {
+                  [FORM_IDS.WHO_CONTROLS_DATA]:
+                    selectedOption.who_controls_data,
+                })
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
@@ -163,11 +160,9 @@ function ArmFlowFour({
               if (selectedOption === undefined)
                 setErrorMessage(t('form.chooseAnOption'))
               else {
-                updateClientData(
-                  step,
-                  FORM_IDS.WOULD_LIKE_TO_VOLUNTEER,
-                  selectedOption,
-                )
+                updateClientData(step, {
+                  [FORM_IDS.WOULD_LIKE_TO_VOLUNTEER]: selectedOption,
+                })
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
