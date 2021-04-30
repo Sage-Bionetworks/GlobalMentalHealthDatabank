@@ -78,9 +78,9 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
-    let flowSelection: string = getRandomFlowOption()
+    let consentModel: string = getRandomFlowOption()
     let dataGroups: UserDataGroup[] = ['test_user' as UserDataGroup]
-    switch (flowSelection) {
+    switch (consentModel) {
       case FLOW_OPTIONS.ONE:
         dataGroups.push(FLOW_OPTIONS.ONE as UserDataGroup)
         break
@@ -99,7 +99,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         ? makePhone(state.phone.value, state.countryCode.value)
         : undefined,
       clientData: {
-        flowSelection,
+        consentModel,
         howDidYouHear,
         everBenefitedFromTreatment,
         whereDoYouLive,

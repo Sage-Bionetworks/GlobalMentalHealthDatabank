@@ -172,11 +172,10 @@ function FirstCommonConsentSection({
                   setSuccessMessage('')
                 }
                 setHowToParticipateForm(FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE)
-                updateClientData(
-                  step,
-                  FORM_IDS.HOW_TO_PARTICIPATE,
-                  selectedOption.participate_option,
-                )
+                updateClientData(step, {
+                  [FORM_IDS.HOW_TO_PARTICIPATE]:
+                    selectedOption.participate_option,
+                })
               }
             }}
           />

@@ -36,11 +36,13 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
       setCards(newCards)
     }
   }
+
   const handleNext = () => {
     setStep((current: number) => current + 1)
     const cardTitles = cards.map(card => card.title)
-    updateClientData(step, 'rankingChoice', cardTitles)
+    updateClientData(step, { rankingChoice: cardTitles, skipRanking: true })
   }
+
   const handleBack = () => setStep((current: number) => current - 1)
   return (
     <div>
