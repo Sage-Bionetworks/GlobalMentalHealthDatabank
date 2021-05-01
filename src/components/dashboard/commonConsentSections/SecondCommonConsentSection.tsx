@@ -9,15 +9,17 @@ import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../form/types'
 import RankChoice from '../RankChoice/RankChoice'
 import { ConsentService } from '../../../services/consent.service'
+import { HealthService } from '../../../services/health.service'
+import { UserService } from '../../../services/user.service'
 import { useSessionDataState } from '../../../AuthContext'
-import { Redirect } from 'react-router'
 import NavigationArrows from '../../common/NavigationArrows'
-import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
 import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
 import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
+import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
+import { WHO_CONTROLS_DATA_OPTIONS } from '../../form/types'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -56,8 +58,25 @@ function SecondCommonConsentSection({
         'all_qualified_researchers',
         token,
       )
-      updateClientData(step, 'consented', true)
-      return <Redirect to={'/download'} push={true} />
+
+      const userInfoResponse = await UserService.getUserInfo(token)
+      const { clientData } = userInfoResponse?.data as any
+
+      if (
+        [FLOW_OPTIONS.TWO, FLOW_OPTIONS.THREE].includes(
+          clientData.consentModel,
+        ) ||
+        (clientData.consentModel === FLOW_OPTIONS.FOUR &&
+          clientData.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.DEMOCRACY)
+      ) {
+        //go to steps after consent (ranking)
+        await updateClientData(step, { skipRanking: false, consented: true })
+      } else {
+        await updateClientData(step, { skipRanking: true, consented: true })
+      }
+
+      await HealthService.sendHealthData(token, clientData)
+      setStep((current: number) => (current < maxSteps ? current + 1 : current))
     } catch (e) {
       setErrorMessage(e.message)
     }
@@ -128,11 +147,9 @@ function SecondCommonConsentSection({
                 setErrorMessage(t('form.chooseAnOption'))
                 window.scrollTo(0, 0)
               } else {
-                updateClientData(
-                  step,
-                  FORM_IDS.WHAT_IS_THE_PURPOSE,
-                  selectedOption,
-                )
+                updateClientData(step, {
+                  [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
+                })
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
@@ -175,11 +192,9 @@ function SecondCommonConsentSection({
                 setErrorMessage(t('form.chooseAnOption'))
                 window.scrollTo(0, 0)
               } else {
-                updateClientData(
-                  step,
-                  FORM_IDS.WHICH_IS_CORRECT,
-                  selectedOption,
-                )
+                updateClientData(step, {
+                  [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
+                })
                 setStep((current: number) =>
                   current < maxSteps ? current + 1 : current,
                 )
@@ -223,22 +238,8 @@ function SecondCommonConsentSection({
         </div>
       )
     }
-    case startingStep + 7: {
-      return (
-        <ElegibilityStepWrapper>
-          <div className="text-step-wrapper">
-            <ProgressBar step={step} maxSteps={maxSteps} />
-            <RankChoice
-              step={step}
-              setStep={setStep}
-              updateClientData={updateClientData}
-            />
-          </div>
-        </ElegibilityStepWrapper>
-      )
-    }
 
-    case maxSteps:
+    case startingStep + 7:
       return (
         <div className="text-step-wrapper">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -290,6 +291,29 @@ function SecondCommonConsentSection({
           </Button>
         </div>
       )
+
+    case startingStep + 8: {
+      return (
+        <div className="text-step-wrapper">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <RankChoice
+            step={step}
+            setStep={setStep}
+            updateClientData={updateClientData}
+          />
+        </div>
+      )
+    }
+
+    case maxSteps: {
+      return (
+        <div className="text-step-wrapper">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          Here goes the ranking summary
+        </div>
+      )
+    }
+
     default:
       return null
   }

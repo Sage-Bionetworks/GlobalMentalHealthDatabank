@@ -30,14 +30,15 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
     const shuffledCards = shuffle(rankOptions)
     setCards(shuffledCards)
     const cardTitles = shuffledCards.map(card => card.title)
-    updateClientData(step - 1, 'rankedChoiceInitial', cardTitles)
+    updateClientData(step - 1, { rankedChoiceInitial: cardTitles })
   }, [])
 
   const handleNext = () => {
     setStep((current: number) => current + 1)
     const cardTitles = cards.map(card => card.title)
-    updateClientData(step, 'rankedChoiceFinal', cardTitles)
+    updateClientData(step, { rankedChoiceFinal: cardTitles, skipRanking: true })
   }
+
   const handleBack = () => setStep((current: number) => current - 1)
   return (
     <div>
