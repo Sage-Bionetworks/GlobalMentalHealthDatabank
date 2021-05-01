@@ -5,6 +5,7 @@ function DownloadApp() {
   return (
     <div className="download-app">
       <div className="download--not-installed">
+        <div className="plus-signs"></div>
         <LogoNoText className="logo" />
         <h1 className="download__title">Download the MindKind app</h1>
         <p>
@@ -17,9 +18,7 @@ function DownloadApp() {
         <p>Click here to log-in to the app and begin the study!</p>
         <button className="download__button">Sign In to the App</button>
       </div>
-      <div className="phone">
-        <div className="phone__bg"></div>
-      </div>
+      <div className="phone"></div>
     </div>
   )
 }
