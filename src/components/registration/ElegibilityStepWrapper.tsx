@@ -12,7 +12,7 @@ function ElegibilityStepWrapper({ children }: Props) {
       <div className="elegibilityContent">
         <Grid container direction="row" justify="center" alignItems="center">
           <Grid item xs={12} md={8} lg={6}>
-            {children}
+            <div className="elegibilityContentInner">{children}</div>
           </Grid>
         </Grid>
       </div>

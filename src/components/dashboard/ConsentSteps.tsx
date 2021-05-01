@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service'
 import { Redirect } from 'react-router'
 
 const FIRST_CONSENT_STEPS: number = 5
-const SECOND_CONSENT_STEPS: number = 9
+const SECOND_CONSENT_STEPS: number = 10
 const FOURTH_ARM_FLOW_LENGTH: number = 4
 const OTHER_ARM_FLOW_LENGTH: number = 1
 
@@ -107,18 +107,17 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     getInfo()
   }, [token])
 
-  if (userClientData.consented) return <Redirect to={'/download'} push={true} />
+  if (userClientData.consented && userClientData.skipRanking) {
+    return <Redirect to={'/download'} push={true} />
+  }
 
-  const updateClientData = async (
-    step: number,
-    fieldName?: string,
-    value?: string,
-  ) => {
+  const updateClientData = async (step: number, fields?: object) => {
     let newData = {}
-    if (fieldName)
+
+    if (fields)
       newData = {
         ...userClientData,
-        [fieldName]: value,
+        ...fields,
         checkpoint: step,
       }
     else newData = { ...userClientData, checkpoint: step }

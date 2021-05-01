@@ -171,7 +171,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
       {props.showTopNavigator ? (
         <div>
           <div className="no-print">
-            <Toolbar className="tool-bar">
+            <Toolbar className="tool-bar" style={{ minHeight: '80px' }}>
               <div>
                 <Typography variant="h6" noWrap className="topnav__title">
                   <NavLink to="/home">
