@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { cloneDeep, shuffle } from 'lodash'
+import { shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
-import Card from './components/Card'
 import { rankOptions } from '../../../data/ranking/options'
 import NavigationArrows from '../../common/NavigationArrows'
+import useBreakpoint from '../../../helpers/hooks/useBreakpoint'
+import MobileRanking from './mobile/MobileRanking'
+import DesktopRanking from './desktop/DesktopRanking'
+
+type Card = {
+  id: number
+  title: string
+  text: string
+}
 
 type Props = {
   step: number
@@ -14,32 +22,21 @@ type Props = {
 function RankChoice({ step, setStep, updateClientData }: Props) {
   const [cards, setCards] = useState(rankOptions)
   const [activeCard, setActiveCard] = useState<number | undefined>()
+  const breakpoint = useBreakpoint()
+  const isMobile = breakpoint < 768
   const { t } = useTranslation()
+
   useEffect(() => {
-    setCards(shuffle(rankOptions))
+    const shuffledCards = shuffle(rankOptions)
+    setCards(shuffledCards)
+    const cardTitles = shuffledCards.map(card => card.title)
+    updateClientData(step - 1, 'rankedChoiceInitial', cardTitles)
   }, [])
-  const moveUp = (position: number) => {
-    if (position > 0) {
-      const newCards = cloneDeep(cards)
-      const temp = cards[position - 1]
-      newCards[position - 1] = cards[position]
-      newCards[position] = temp
-      setCards(newCards)
-    }
-  }
-  const moveDown = (position: number) => {
-    if (position < cards.length - 1) {
-      const newCards = cloneDeep(cards)
-      const temp = cards[position + 1]
-      newCards[position + 1] = cards[position]
-      newCards[position] = temp
-      setCards(newCards)
-    }
-  }
+
   const handleNext = () => {
     setStep((current: number) => current + 1)
     const cardTitles = cards.map(card => card.title)
-    updateClientData(step, 'rankingChoice', cardTitles)
+    updateClientData(step, 'rankedChoiceFinal', cardTitles)
   }
   const handleBack = () => setStep((current: number) => current - 1)
   return (
@@ -53,23 +50,17 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
         <p>
           <span>{t('form.secondCommonConsent.ranking.paragraph5')}</span>
         </p>
-        <div className="cards">
-          {cards.map((card, index) => (
-            <Card
-              key={card.id}
-              title={card.title}
-              text={card.text}
-              active={card.id === activeCard}
-              onClick={() => setActiveCard(card.id)}
-              moveUp={() => moveUp(index)}
-              moveDown={() => moveDown(index)}
-              disableUp={index === 0}
-              disableDown={index === cards.length - 1}
-            />
-          ))}
-        </div>
+        {isMobile ? (
+          <MobileRanking
+            cards={cards}
+            setCards={setCards}
+            activeCard={activeCard}
+            setActiveCard={setActiveCard}
+          />
+        ) : (
+          <DesktopRanking cards={cards} setCards={setCards} />
+        )}
       </div>
-      <div className="form-text-content"></div>
       <NavigationArrows onBack={handleBack} onNext={handleNext} />
     </div>
   )

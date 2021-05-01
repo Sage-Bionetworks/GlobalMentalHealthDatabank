@@ -24,8 +24,10 @@
 }
 
 .text-step-wrapper {
-  padding: 20px 25px;
   background: white;
+  @include breakpoint('md') {
+    padding: 20px 25px;
+  }
 }
 
 .radio {

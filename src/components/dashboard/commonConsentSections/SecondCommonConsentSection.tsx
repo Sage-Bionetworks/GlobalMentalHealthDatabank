@@ -12,6 +12,7 @@ import { ConsentService } from '../../../services/consent.service'
 import { useSessionDataState } from '../../../AuthContext'
 import { Redirect } from 'react-router'
 import NavigationArrows from '../../common/NavigationArrows'
+import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
@@ -224,14 +225,16 @@ function SecondCommonConsentSection({
     }
     case startingStep + 7: {
       return (
-        <div className="text-step-wrapper">
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <RankChoice
-            step={step}
-            setStep={setStep}
-            updateClientData={updateClientData}
-          />
-        </div>
+        <ElegibilityStepWrapper>
+          <div className="text-step-wrapper">
+            <ProgressBar step={step} maxSteps={maxSteps} />
+            <RankChoice
+              step={step}
+              setStep={setStep}
+              updateClientData={updateClientData}
+            />
+          </div>
+        </ElegibilityStepWrapper>
       )
     }
 

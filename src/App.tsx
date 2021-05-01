@@ -153,9 +153,7 @@ function App() {
                       }}
                     ></Route>
                     <PrivateRoute exact={true} path="/dashboard">
-                      <GridLayout>
-                        <Dashboard token={token || ''} />
-                      </GridLayout>
+                      <Dashboard token={token || ''} />
                     </PrivateRoute>
                     <Route path="/privacypolicy">
                       <PrivacyPolicy />
