@@ -7,12 +7,13 @@ import i18next from 'i18next'
 import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../form/types'
-import RankChoice from '../RankChoice/RankChoice'
+import RankedChoice from '../RankedChoice/RankedChoice'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
 import { useSessionDataState } from '../../../AuthContext'
 import NavigationArrows from '../../common/NavigationArrows'
+import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
@@ -294,14 +295,16 @@ function SecondCommonConsentSection({
 
     case startingStep + 8: {
       return (
-        <div className="text-step-wrapper">
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <RankChoice
-            step={step}
-            setStep={setStep}
-            updateClientData={updateClientData}
-          />
-        </div>
+        <ElegibilityStepWrapper>
+          <div className="text-step-wrapper">
+            <ProgressBar step={step} maxSteps={maxSteps} />
+            <RankedChoice
+              step={step}
+              setStep={setStep}
+              updateClientData={updateClientData}
+            />
+          </div>
+        </ElegibilityStepWrapper>
       )
     }
 

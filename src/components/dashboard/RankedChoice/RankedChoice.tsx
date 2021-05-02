@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
-import { rankOptions } from '../../../data/ranking/options'
 import NavigationArrows from '../../common/NavigationArrows'
 import useBreakpoint from '../../../helpers/hooks/useBreakpoint'
 import MobileRanking from './mobile/MobileRanking'
 import DesktopRanking from './desktop/DesktopRanking'
+import { useRankedChoice } from './context/RankedChoiceContext'
 
 type Card = {
   id: number
@@ -20,14 +20,13 @@ type Props = {
 }
 
 function RankChoice({ step, setStep, updateClientData }: Props) {
-  const [cards, setCards] = useState(rankOptions)
-  const [activeCard, setActiveCard] = useState<number | undefined>()
+  const { cards, setCards, activeCard, setActiveCard } = useRankedChoice()
   const breakpoint = useBreakpoint()
   const isMobile = breakpoint < 768
   const { t } = useTranslation()
 
   useEffect(() => {
-    const shuffledCards = shuffle(rankOptions)
+    const shuffledCards = shuffle(cards)
     setCards(shuffledCards)
     const cardTitles = shuffledCards.map(card => card.title)
     updateClientData(step - 1, { rankedChoiceInitial: cardTitles })
@@ -36,7 +35,7 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
   const handleNext = () => {
     setStep((current: number) => current + 1)
     const cardTitles = cards.map(card => card.title)
-    updateClientData(step, { rankedChoiceFinal: cardTitles, skipRanking: true })
+    updateClientData(step, { rankedChoiceFinal: cardTitles })
   }
 
   const handleBack = () => setStep((current: number) => current - 1)
