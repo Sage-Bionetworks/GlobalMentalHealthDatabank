@@ -1,17 +1,10 @@
 import React, { useEffect } from 'react'
-import { shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import NavigationArrows from '../../common/NavigationArrows'
 import useBreakpoint from '../../../helpers/hooks/useBreakpoint'
 import MobileRanking from './mobile/MobileRanking'
 import DesktopRanking from './desktop/DesktopRanking'
 import { useRankedChoice } from './context/RankedChoiceContext'
-
-type Card = {
-  id: number
-  title: string
-  text: string
-}
 
 type Props = {
   step: number
@@ -26,16 +19,12 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
   const { t } = useTranslation()
 
   useEffect(() => {
-    const shuffledCards = shuffle(cards)
-    setCards(shuffledCards)
-    const cardTitles = shuffledCards.map(card => card.title)
+    const cardTitles = cards.map(card => card.title)
     updateClientData(step - 1, { rankedChoiceInitial: cardTitles })
   }, [])
 
   const handleNext = () => {
     setStep((current: number) => current + 1)
-    const cardTitles = cards.map(card => card.title)
-    updateClientData(step, { rankedChoiceFinal: cardTitles })
   }
 
   const handleBack = () => setStep((current: number) => current - 1)

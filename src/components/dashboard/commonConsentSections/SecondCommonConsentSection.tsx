@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../form/types'
 import RankedChoice from '../RankedChoice/RankedChoice'
+import RankedChoiceSummary from '../RankedChoiceSummary'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
@@ -296,8 +297,8 @@ function SecondCommonConsentSection({
     case startingStep + 8: {
       return (
         <ElegibilityStepWrapper>
+          <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <ProgressBar step={step} maxSteps={maxSteps} />
             <RankedChoice
               step={step}
               setStep={setStep}
@@ -310,10 +311,16 @@ function SecondCommonConsentSection({
 
     case maxSteps: {
       return (
-        <div className="text-step-wrapper">
+        <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          Here goes the ranking summary
-        </div>
+          <div className="text-step-wrapper">
+            <RankedChoiceSummary
+              step={step}
+              setStep={setStep}
+              updateClientData={updateClientData}
+            />
+          </div>
+        </ElegibilityStepWrapper>
       )
     }
 

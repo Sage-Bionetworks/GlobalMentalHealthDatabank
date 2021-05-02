@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { shuffle } from 'lodash'
 import { rankOptions } from '../../../../data/ranking/options'
 
 type Card = {
@@ -26,7 +27,7 @@ export const useRankedChoice = () => React.useContext(RankedChoiceContext)
 export function RankedChoiceProvider(props: { children: React.ReactNode }) {
   const { children } = props
 
-  const [cards, setCards] = useState(rankOptions)
+  const [cards, setCards] = useState(shuffle(rankOptions))
   const [activeCard, setActiveCard] = useState<number | undefined>()
 
   const value = {
