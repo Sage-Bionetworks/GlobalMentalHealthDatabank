@@ -254,12 +254,6 @@ function SecondCommonConsentSection({
             onSubmit={(event: any) => {
               const selectedOption = event.formData.what_is_the_purpose
 
-              if (successMessage || whatIsThePurposeSelection) {
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
-                )
-              }
-
               if (selectedOption && Object.keys(selectedOption).length === 0) {
                 setErrorMessage(t('form.chooseAnOption'))
                 setSuccessMessage('')
@@ -276,12 +270,16 @@ function SecondCommonConsentSection({
                   setErrorMessage(t('form.secondCommonConsent.pageFour.answer'))
                   setSuccessMessage('')
                 }
-                setWhatIsThePurposeSelection(selectedOption)
-                updateClientData(
-                  step,
-                  FORM_IDS.WHAT_IS_THE_PURPOSE,
-                  selectedOption,
-                )
+                if (successMessage || whatIsThePurposeSelection) {
+                  setStep((current: number) =>
+                    current < maxSteps ? current + 1 : current,
+                  )
+                } else {
+                  setWhatIsThePurposeSelection(selectedOption)
+                  updateClientData(step, {
+                    [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
+                  })
+                }
               }
             }}
           />
@@ -325,12 +323,6 @@ function SecondCommonConsentSection({
             onSubmit={(event: any) => {
               const selectedOption = event.formData.which_is_correct
 
-              if (successMessage || whichIsCorrectSelection) {
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
-                )
-              }
-
               if (selectedOption && Object.keys(selectedOption).length === 0) {
                 setErrorMessage(t('form.chooseAnOption'))
                 setSuccessMessage('')
@@ -347,12 +339,17 @@ function SecondCommonConsentSection({
                   setErrorMessage(t('form.secondCommonConsent.pageSix.answer'))
                   setSuccessMessage('')
                 }
-                setWhichIsCorrectSelection(selectedOption)
-                updateClientData(
-                  step,
-                  FORM_IDS.WHICH_IS_CORRECT,
-                  selectedOption,
-                )
+
+                if (successMessage || whichIsCorrectSelection) {
+                  setStep((current: number) =>
+                    current < maxSteps ? current + 1 : current,
+                  )
+                } else {
+                  setWhichIsCorrectSelection(selectedOption)
+                  updateClientData(step, {
+                    [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
+                  })
+                }
               }
             }}
           />
