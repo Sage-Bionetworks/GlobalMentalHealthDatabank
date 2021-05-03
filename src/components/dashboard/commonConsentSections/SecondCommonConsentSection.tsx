@@ -9,21 +9,23 @@ import SageForm from '../../form/SageForm'
 import {
   WHAT_IS_THE_PURPOSE_OPTIONS,
   WHICH_IS_CORRECT_OPTIONS,
+  WHO_CONTROLS_DATA_OPTIONS,
   FORM_IDS,
 } from '../../form/types'
-import RankChoice from '../RankChoice/RankChoice'
+import RankedChoice from '../RankedChoice/RankedChoice'
+import RankedChoiceSummary from '../RankedChoiceSummary'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
 import { useSessionDataState } from '../../../AuthContext'
 import NavigationArrows from '../../common/NavigationArrows'
+import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
 import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
 import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
 import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
-import { WHO_CONTROLS_DATA_OPTIONS } from '../../form/types'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -446,23 +448,31 @@ function SecondCommonConsentSection({
 
     case startingStep + 8: {
       return (
-        <div className="text-step-wrapper">
+        <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <RankChoice
-            step={step}
-            setStep={setStep}
-            updateClientData={updateClientData}
-          />
-        </div>
+          <div className="text-step-wrapper">
+            <RankedChoice
+              step={step}
+              setStep={setStep}
+              updateClientData={updateClientData}
+            />
+          </div>
+        </ElegibilityStepWrapper>
       )
     }
 
     case maxSteps: {
       return (
-        <div className="text-step-wrapper">
+        <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          Here goes the ranking summary
-        </div>
+          <div className="text-step-wrapper">
+            <RankedChoiceSummary
+              step={step}
+              setStep={setStep}
+              updateClientData={updateClientData}
+            />
+          </div>
+        </ElegibilityStepWrapper>
       )
     }
 

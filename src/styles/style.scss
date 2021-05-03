@@ -375,11 +375,10 @@ input[type='radio'] {
 
 .elegibilityWrapper {
   margin: 20px 9px 60px 9px;
-  background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 20px 25px;
   @include breakpoint('md') {
-    margin: 0 0 60px 0;
+    margin: 0;
     background-color: transparent;
     padding: 0;
     box-shadow: none;
@@ -393,6 +392,10 @@ input[type='radio'] {
       .elegibilityContentInner {
         max-width: 500px;
         margin: 0 auto 60px auto;
+        .text-step-wrapper {
+          background-color: #fcfcfc;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
       }
       .progressBarHeader {
         color: #fcfcfc;

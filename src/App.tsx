@@ -22,6 +22,7 @@ import Footer from './components/widgets/Footer'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
+import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
 import GridLayout from './components/layout/GridLayout'
 import { theme } from './theme'
 import './styles/style.scss'
@@ -103,79 +104,79 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ElegibilityProvider>
-        <Typography component={'div'}>
-          <div style={{ height: '100%' }}>
-            <CssBaseline />
-            <Router>
-              <div>
-                <GoogleAnalyticsPageTracker />
-                <ScrollToTopOnRouteChange
-                  onRouteChangeFn={(location: string) =>
-                    setCurrentLocation(location)
-                  }
-                />
-                <TopNav
-                  token={token}
-                  logoutCallbackFn={() =>
-                    setUserSession(undefined, '', false, [])
-                  }
-                  showTopNavigator={currentLocation !== '/testkit'}
-                >
-                  <Switch>
-                    <Route
-                      exact={true}
-                      path="/login"
-                      render={props => {
-                        const searchParamsProps = getSearchParams(
-                          props.location.search,
-                        )
-                        return (
-                          <GridLayout>
-                            <Login
+        <RankedChoiceProvider>
+          <Typography component={'div'}>
+            <div style={{ height: '100%' }}>
+              <CssBaseline />
+              <Router>
+                <div>
+                  <GoogleAnalyticsPageTracker />
+                  <ScrollToTopOnRouteChange
+                    onRouteChangeFn={(location: string) =>
+                      setCurrentLocation(location)
+                    }
+                  />
+                  <TopNav
+                    token={token}
+                    logoutCallbackFn={() =>
+                      setUserSession(undefined, '', false, [])
+                    }
+                    showTopNavigator={currentLocation !== '/testkit'}
+                  >
+                    <Switch>
+                      <Route
+                        exact={true}
+                        path="/login"
+                        render={props => {
+                          const searchParamsProps = getSearchParams(
+                            props.location.search,
+                          )
+                          return (
+                            <GridLayout>
+                              <Login
+                                {...props}
+                                searchParams={searchParamsProps as any}
+                              />
+                            </GridLayout>
+                          )
+                        }}
+                      ></Route>
+                      <Route
+                        path="/eligibility"
+                        render={props => {
+                          return (
+                            <EligibilityRegistration
                               {...props}
-                              searchParams={searchParamsProps as any}
+                              callbackFn={(token: string, name: string) =>
+                                setUserSession(token, name, false, [])
+                              }
                             />
-                          </GridLayout>
-                        )
-                      }}
-                    ></Route>
-                    <Route
-                      path="/eligibility"
-                      render={props => {
-                        return (
-                          <EligibilityRegistration
-                            {...props}
-                            callbackFn={(token: string, name: string) =>
-                              setUserSession(token, name, false, [])
-                            }
-                          />
-                        )
-                      }}
-                    ></Route>
-                    <PrivateRoute exact={true} path="/dashboard">
-                      <GridLayout>
+                          )
+                        }}
+                      ></Route>
+                      <PrivateRoute exact={true} path="/dashboard">
                         <Dashboard token={token || ''} />
-                      </GridLayout>
-                    </PrivateRoute>
-                    <Route path="/privacypolicy">
-                      <PrivacyPolicy />
-                    </Route>
-                    <Route path="/download">
-                      <DownloadApp />
-                    </Route>
-                    <Route path="/home">
-                      <Home token={token || null}></Home>
-                    </Route>
-                    <Route path="/">
-                      <Home token={token || null}></Home>
-                    </Route>
-                  </Switch>
-                </TopNav>
-                <Footer token={token} />
-              </div>
-            </Router>
-          </div>
-        </Typography>
+                      </PrivateRoute>
+                      <Route path="/privacypolicy">
+                        <PrivacyPolicy />
+                      </Route>
+                      <Route path="/download">
+                        <DownloadApp />
+                      </Route>
+                      <Route path="/home">
+                        <Home token={token || null}></Home>
+                      </Route>
+                      <Route path="/">
+                        <Home token={token || null}></Home>
+                      </Route>
+                    </Switch>
+                  </TopNav>
+                  <Footer token={token} />
+                </div>
+              </Router>
+            </div>
+          </Typography>
+        </RankedChoiceProvider>
       </ElegibilityProvider>
     </ThemeProvider>
   )

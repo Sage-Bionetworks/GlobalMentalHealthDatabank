@@ -31,7 +31,7 @@ export const rankOptions = [
   },
   {
     id: 6,
-    title: ' Data Available for Mental Health Research Only',
+    title: 'Data Available for Mental Health Research Only',
     text: 'This data can only be used for research about mental health.',
   },
   {
