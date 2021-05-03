@@ -264,11 +264,23 @@ function SecondCommonConsentSection({
                 setErrorMessage(t('form.chooseAnOption'))
                 setSuccessMessage('')
               } else {
-                updateClientData(step, {
-                  [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
-                })
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
+                if (
+                  selectedOption ===
+                  WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH
+                ) {
+                  setSuccessMessage(
+                    t('form.secondCommonConsent.pageFour.answer'),
+                  )
+                  setErrorMessage('')
+                } else {
+                  setErrorMessage(t('form.secondCommonConsent.pageFour.answer'))
+                  setSuccessMessage('')
+                }
+                setWhatIsThePurposeSelection(selectedOption)
+                updateClientData(
+                  step,
+                  FORM_IDS.WHAT_IS_THE_PURPOSE,
+                  selectedOption,
                 )
               }
             }}
@@ -323,11 +335,23 @@ function SecondCommonConsentSection({
                 setErrorMessage(t('form.chooseAnOption'))
                 setSuccessMessage('')
               } else {
-                updateClientData(step, {
-                  [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
-                })
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
+                if (
+                  selectedOption ===
+                  WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
+                ) {
+                  setSuccessMessage(
+                    t('form.secondCommonConsent.pageSix.answer'),
+                  )
+                  setErrorMessage('')
+                } else {
+                  setErrorMessage(t('form.secondCommonConsent.pageSix.answer'))
+                  setSuccessMessage('')
+                }
+                setWhichIsCorrectSelection(selectedOption)
+                updateClientData(
+                  step,
+                  FORM_IDS.WHICH_IS_CORRECT,
+                  selectedOption,
                 )
               }
             }}

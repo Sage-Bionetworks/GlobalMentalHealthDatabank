@@ -175,7 +175,7 @@ function FirstCommonConsentSection({
                   setErrorMessage(t('form.firstCommonConsent.answer'))
                   setSuccessMessage('')
                 }
-                setHowToParticipateForm(FORM_IDS.HOW_TO_PARTICIPATE_RESPONSE)
+                setHowToParticipateSelection(selectedOption.participate_option)
                 updateClientData(step, {
                   [FORM_IDS.HOW_TO_PARTICIPATE]:
                     selectedOption.participate_option,
