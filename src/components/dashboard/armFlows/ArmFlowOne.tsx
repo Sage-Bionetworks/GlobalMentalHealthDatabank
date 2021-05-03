@@ -4,6 +4,7 @@ import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
+import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
 
 type ArmFlowOneProps = {
   step: number
@@ -20,34 +21,38 @@ function ArmFlowOne({
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
   return (
-    <div className="text-step-wrapper">
+    <ElegibilityStepWrapper>
       <ProgressBar step={step} maxSteps={maxSteps} />
-      <Globe />
-      <div className="header-wrapper">
-        <h1>{t('form.armOne.title')}</h1>
-      </div>
-      <h2>{t('form.armOne.subTitle')}</h2>
-      <ul>
-        <li>{t('form.armOne.subText1')}</li>
-        <li>{t('form.armOne.subText2')}</li>
-      </ul>
+      <div className="text-step-wrapper">
+        <Globe />
+        <div className="header-wrapper">
+          <h1>{t('form.armOne.title')}</h1>
+        </div>
+        <h2>{t('form.armOne.subTitle')}</h2>
+        <ul>
+          <li>{t('form.armOne.subText1')}</li>
+          <li>{t('form.armOne.subText2')}</li>
+        </ul>
 
-      <div className="arrow-buttons-wrapper">
-        <ArrowButtonLeft
-          onClick={() =>
-            setStep((current: number) => (current > 1 ? current - 1 : current))
-          }
-        />
-        <ArrowButtonRight
-          onClick={() => {
-            setStep((current: number) =>
-              current < maxSteps ? current + 1 : current,
-            )
-            updateClientData(step)
-          }}
-        />
+        <div className="arrow-buttons-wrapper">
+          <ArrowButtonLeft
+            onClick={() =>
+              setStep((current: number) =>
+                current > 1 ? current - 1 : current,
+              )
+            }
+          />
+          <ArrowButtonRight
+            onClick={() => {
+              setStep((current: number) =>
+                current < maxSteps ? current + 1 : current,
+              )
+              updateClientData(step)
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </ElegibilityStepWrapper>
   )
 }
 
