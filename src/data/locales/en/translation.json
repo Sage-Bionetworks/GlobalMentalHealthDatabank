@@ -95,6 +95,7 @@
     },
     "armTwo": {
       "title": "How will your study data be used?",
+      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
       "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now.",
       "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
       "subText3": "Is it okay for researchers to make a profit from using the data?",
