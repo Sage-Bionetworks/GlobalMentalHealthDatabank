@@ -144,7 +144,8 @@
         "title": "What is the purpose of this study?",
         "toParticipate": "To participate in research",
         "toRecieveMedicalCare": "To receive medical care",
-        "toObtainMedicalInsurance": "To obtain medial insurance"
+        "toObtainMedicalInsurance": "To obtain medial insurance",
+        "answer": "The purpose of this study is to participate in research."
       },
       "pageFive": {
         "leaving": "Leaving the Study",
@@ -153,8 +154,9 @@
       "pageSix": {
         "title": "Which is correct?",
         "ifParticipate": "If I start participating, I have to continue until the end.",
-        "iCanStop": "I can stop at any time. ",
-        "penalty": "I will get a penalty if I leave the study."
+        "iCanStop": "I can stop at any time.",
+        "penalty": "I will get a penalty if I leave the study.",
+        "answer": "You can stop participating in the study at any time."
       },
       "pageSeven": {
         "contact": "Contact",

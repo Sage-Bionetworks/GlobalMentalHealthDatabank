@@ -2,7 +2,6 @@ import { ENDPOINT, LoggedInUserData } from '../types/types'
 import { Response } from '../types/types'
 import { callEndpoint } from '../helpers/utility'
 import moment from 'moment'
-import i18n from 'i18next'
 
 const SHARE_SCOPE_PARTNERS = 'sponsors_and_partners'
 const SHARE_SCOPE_ALL = 'all_qualified_researchers'

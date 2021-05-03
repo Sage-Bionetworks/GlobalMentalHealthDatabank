@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ProgressBar from '../../progressBar/ProgressBar'
-import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
 import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import { useTranslation } from 'react-i18next'
@@ -35,17 +34,20 @@ function ArmFlowFour({
     const _onChange = (event: any) => onChange(event.currentTarget.id)
     return enumOptions.map((option: any) => {
       return (
-        <div className={'custom-radio-who-controls'}>
-          <input
-            type="radio"
-            id={option.value}
-            checked={value == option.value ? true : false}
-            onChange={_onChange as any}
-          />
-          <div
-            id={`label-${option.value}`}
-            dangerouslySetInnerHTML={{ __html: option.label }}
-          />
+        <div className={'quiz-radio-wrapper'}>
+          <label>
+            <input
+              type="radio"
+              id={option.value}
+              checked={value == option.value ? true : false}
+              onChange={_onChange as any}
+            />
+            <div
+              id={`label-${option.value}`}
+              dangerouslySetInnerHTML={{ __html: option.label }}
+              className={'radio-button-label'}
+            />
+          </label>
         </div>
       )
     })
