@@ -12,15 +12,15 @@ import { GoogleService } from '../../services/google.service'
 import { withRouter } from 'react-router-dom'
 import ElegibilityStepWrapper from './ElegibilityStepWrapper'
 
-const MAX_STEPS: number = 6
+const MAX_STEPS: number = 8
 
 const INITIAL_QUIZ_CHOICES = {
-  howDidYouHear: -1,
+  howDidYouHear: '',
   accessToSupport: '',
-  userLocation: -1,
+  userLocation: '',
   hasAndroid: '',
   understandsEnglish: '',
-  inAgeRange: '',
+  age: -1,
 }
 
 export const Eligibility: React.FunctionComponent<any> = (props: any) => {
@@ -35,7 +35,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     setWhereDoYouLive,
     setDoYouHaveAnAndroid,
     setUnderstandEnglish,
-    setBetweenAgeRange,
+    setAge,
+    setGender,
   } = useElegibility()
   const { t } = useTranslation()
 
@@ -45,7 +46,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       if (
         quizChoices.userLocation !== COUNTRIES.OTHER &&
         quizChoices.hasAndroid &&
-        quizChoices.inAgeRange &&
+        validateAgeRange(quizChoices.userLocation, quizChoices.age) &&
         quizChoices.understandsEnglish
       ) {
         setIsEligible(true)
@@ -53,10 +54,51 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     }
   }, [step])
 
+  const validateAgeRange = (location: string, age: number) => {
+    //Check if age is 18 to 24 years old, or 16-24 years old if it's in the United Kingdom
+    if (!location || !age) return false
+    if (
+      location === COUNTRIES.UK &&
+      !(quizChoices.age >= 16 && quizChoices.age <= 24)
+    )
+      return false
+    if (
+      location !== COUNTRIES.UK &&
+      !(quizChoices.age >= 18 && quizChoices.age <= 24)
+    )
+      return false
+    return true
+  }
+
   window.scrollTo(0, 0)
 
   switch (step) {
     case 1:
+      return (
+        <div className="quiz-wrapper">
+          <div className="header-wrapper">
+            <h1>{t('eligibility.thankYouForYourInterest')}</h1>
+          </div>
+          <Separator />
+          <div className="rejectionText">
+            {t('eligibility.weHaveAFewQuestions')}
+          </div>
+          <Button
+            color="primary"
+            variant="contained"
+            size="large"
+            className="wide-button"
+            onClick={() =>
+              setStep((current: number) =>
+                current < MAX_STEPS ? current + 1 : current,
+              )
+            }
+          >
+            {t('eligibility.begin')}
+          </Button>
+        </div>
+      )
+    case 2:
       if (!props.history.location.search.includes('howDidYouHear'))
         props.history.push({
           pathname: '/eligibility',
@@ -87,45 +129,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     howDidYouHear: selectedOption.how_options,
                   }))
                   setHowDidYouHear(selectedOption.how_options)
-                  setStep((current: number) =>
-                    current < MAX_STEPS ? current + 1 : current,
-                  )
-                }
-              }}
-            />
-          </div>
-        </ElegibilityStepWrapper>
-      )
-    case 2:
-      if (!props.history.location.search.includes('benefit'))
-        props.history.push({
-          pathname: '/eligibility',
-          search: '?step=benefit',
-        })
-      document.title = 'MindKind > Benefits of health support'
-      return (
-        <ElegibilityStepWrapper>
-          <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quiz-wrapper">
-            <SageForm
-              title={t('eligibility.benefit')}
-              errorMessage={errorMessage}
-              formId={FORM_IDS.SUPPORT_VERIFY}
-              onSubmit={(event: any) => {
-                const selectedOption = event.formData.support_verify
-                if (selectedOption && Object.keys(selectedOption).length === 0)
-                  setErrorMessage(t('form.chooseAnOption'))
-                else {
-                  GoogleService.sendEvent(
-                    'quiz-accept',
-                    'eligibility',
-                    t('eligibility.benefit'),
-                    selectedOption.accept,
-                  )
-                  setQuizChoices(prev => {
-                    return { ...prev, accessToSupport: selectedOption.accept }
-                  })
-                  setEverBenefitedFromTreatment(selectedOption.accept)
                   setStep((current: number) =>
                     current < MAX_STEPS ? current + 1 : current,
                   )
@@ -183,7 +186,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ElegibilityStepWrapper>
       )
-
     case 4:
       if (!props.history.location.search.includes('android'))
         props.history.push({
@@ -269,14 +271,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ElegibilityStepWrapper>
       )
-
     case 6:
       if (!props.history.location.search.includes('ageRange'))
         props.history.push({
           pathname: '/eligibility',
           search: '?step=ageRange',
         })
-      document.title = 'MindKind > Are you on the age range?'
+      document.title = 'MindKind > How old are you?'
       return (
         <ElegibilityStepWrapper>
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -286,20 +287,98 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               errorMessage={errorMessage}
               formId={FORM_IDS.AGE_VERIFY}
               onSubmit={(event: any) => {
-                const selectedOption = event.formData.age_verify
+                const selectedOption = event.formData
+                if (!selectedOption) setErrorMessage(t('form.chooseAnOption'))
+                else {
+                  GoogleService.sendEvent(
+                    'quiz-accept',
+                    'eligibility',
+                    t('eligibility.ageRange'),
+                    selectedOption,
+                  )
+                  setQuizChoices(prev => {
+                    return { ...prev, age: selectedOption }
+                  })
+                  setAge(selectedOption)
+                  setStep((current: number) =>
+                    current < MAX_STEPS ? current + 1 : current,
+                  )
+                }
+              }}
+            />
+          </div>
+        </ElegibilityStepWrapper>
+      )
+    case 7:
+      if (!props.history.location.search.includes('gender'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=gender',
+        })
+      document.title = 'MindKind > What is your current gender/gender identity?'
+      return (
+        <ElegibilityStepWrapper>
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('eligibility.gender')}
+              subTitle={t('eligibility.selectAll')}
+              errorMessage={errorMessage}
+              formId={FORM_IDS.GENDER}
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.gender
+                if (!selectedOption || selectedOption.length === 0)
+                  setErrorMessage(t('form.chooseAnOption'))
+                else {
+                  GoogleService.sendEvent(
+                    'quiz-accept',
+                    'eligibility',
+                    t('eligibility.gender'),
+                    selectedOption,
+                  )
+                  setQuizChoices(prev => {
+                    return { ...prev, gender: selectedOption }
+                  })
+                  setGender(selectedOption)
+                  setStep((current: number) =>
+                    current < MAX_STEPS ? current + 1 : current,
+                  )
+                }
+              }}
+            />
+          </div>
+        </ElegibilityStepWrapper>
+      )
+    case 8:
+      if (!props.history.location.search.includes('benefit'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=benefit',
+        })
+      document.title = 'MindKind > Benefits of health support'
+      return (
+        <ElegibilityStepWrapper>
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('eligibility.benefit')}
+              errorMessage={errorMessage}
+              formId={FORM_IDS.SUPPORT_VERIFY}
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.support_verify
                 if (selectedOption && Object.keys(selectedOption).length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
                     'quiz-accept',
                     'eligibility',
-                    t('eligibility.ageRange'),
-                    selectedOption.age_range,
+                    t('eligibility.benefit'),
+                    selectedOption.accept,
                   )
                   setQuizChoices(prev => {
-                    return { ...prev, inAgeRange: selectedOption.age_range }
+                    return { ...prev, accessToSupport: selectedOption.accept }
                   })
-                  setBetweenAgeRange(selectedOption.age_range)
+                  setEverBenefitedFromTreatment(selectedOption.accept)
                   setStep((current: number) =>
                     current <= MAX_STEPS ? current + 1 : current,
                   )
@@ -310,7 +389,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ElegibilityStepWrapper>
       )
   }
-
   if (step > MAX_STEPS) {
     return (
       <div className="quiz-wrapper">
