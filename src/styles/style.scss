@@ -143,7 +143,7 @@ div.btnVerticallySpaced {
 }
 
 .error-message {
-  color: red;
+  color: #f36e68;
 }
 
 @media screen and (max-width: 480px) {
@@ -237,18 +237,92 @@ fieldset {
 .radio-z-index {
   z-index: 60;
 }
+
+input[type='radio'] {
+  z-index: 60;
+  &:checked,
+  &:not(:checked) {
+    position: absolute;
+    left: -9999px;
+  }
+  &:checked + div.radio-button-label,
+  &:not(:checked) + div.radio-button-label,
+  &:checked + span,
+  &:not(:checked) + span {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #000;
+      border-radius: 100%;
+      background: #fff;
+    }
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: #343f56;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      border-radius: 100%;
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+
+    &.correct-opt {
+      &:after {
+        background: #4db3b7;
+      }
+    }
+
+    &.wrong-opt {
+      &:after {
+        background: #f36e68;
+      }
+    }
+  }
+  &:not(:checked) + div.radio-button-label:after,
+  &:not(:checked) + span:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  &:checked + div.radio-button-label:after,
+  &:checked + span:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
 .radio {
+  > label {
+    > span {
+      @extend .quiz-radio-wrapper;
+    }
+  }
+
   &.correct {
     &:before {
       content: '';
       background: #e2f5f5;
-      padding: 25px;
+      padding: 30px;
       width: calc(100% - 15px);
       position: absolute;
       left: 50%;
       right: 0;
       transform: translateX(-50%);
-      margin-top: -10px;
+      margin-top: -16px;
       @media (min-width: 768px) {
         width: calc(66.666667% - 15px);
       }
@@ -327,5 +401,11 @@ fieldset {
         color: #fcfcfc;
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .MuiDrawer-paper {
+    width: 80%;
   }
 }
