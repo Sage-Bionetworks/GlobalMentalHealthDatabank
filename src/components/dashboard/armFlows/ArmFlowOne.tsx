@@ -1,9 +1,9 @@
 import React from 'react'
 import ProgressBar from '../../progressBar/ProgressBar'
-import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
-import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
-import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
+import NavigationArrows from '../../common/NavigationArrows'
 
 type ArmFlowOneProps = {
   step: number
@@ -20,26 +20,23 @@ function ArmFlowOne({
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
   return (
-    <div className="textStepWrapper">
+    <ResponsiveStepWrapper>
       <ProgressBar step={step} maxSteps={maxSteps} />
-      <LogoNoText />
-      <div className="headerWrapper">
-        <h1>{t('form.armOne.title')}</h1>
-      </div>
-      <h2>{t('form.armOne.subTitle')}</h2>
-      <ul>
-        <li>{t('form.armOne.subText1')}</li>
-        <li>{t('form.armOne.subText2')}</li>
-      </ul>
-
-      <div className="arrowButtonsWrapper">
-        <ArrowButtonLeft
-          onClick={() =>
+      <div className="text-step-wrapper">
+        <Globe />
+        <div className="header-wrapper">
+          <h1>{t('form.armOne.title')}</h1>
+        </div>
+        <h2>{t('form.armOne.subTitle')}</h2>
+        <ul>
+          <li>{t('form.armOne.subText1')}</li>
+          <li>{t('form.armOne.subText2')}</li>
+        </ul>
+        <NavigationArrows
+          onBack={() =>
             setStep((current: number) => (current > 1 ? current - 1 : current))
           }
-        />
-        <ArrowButtonRight
-          onClick={() => {
+          onNext={() => {
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
@@ -47,7 +44,7 @@ function ArmFlowOne({
           }}
         />
       </div>
-    </div>
+    </ResponsiveStepWrapper>
   )
 }
 

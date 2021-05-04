@@ -1,16 +1,15 @@
-@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
+@import 'abstracts/variables', 'abstracts/mixins';
 
-@import 'components/synapse_form_wrapper/synapse-form-wrapper';
-@import 'components/synapse_form_wrapper/overrides';
-@import 'components/intro';
+@import 'components/home';
 @import 'components/dashboard';
 @import 'components/footer';
-@import 'components/static';
 @import 'components/sage-form';
 @import 'material-overrides';
 @import 'forms';
+@import 'components/ranking-choice';
 @import 'components/topnav';
-@import 'mobile' screen and (max-width: 768px);
+@import 'components/download-app';
+@import 'components/responsive-step';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -86,36 +85,12 @@ a {
   margin-bottom: 4rem;
 }
 
-#root .wideButton {
+#root .wide-button {
   padding: 0px 45px;
   font-weight: bold;
   letter-spacing: 0.04em;
   margin-bottom: 10px;
   width: 100%;
-}
-
-.cookiesBanner {
-  background: #0085ff;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  font-size: 15px;
-  padding: 20px 20px;
-  // stick to bottom
-  position: fixed;
-  bottom: 15px;
-  z-index: 6;
-  width: 100%;
-
-  a {
-    color: white;
-  }
-  button {
-    height: 33px;
-    margin-left: 10px;
-  }
 }
 
 div.intro {
@@ -136,31 +111,9 @@ div.intro {
   }
 }
 
-// material ui "lab" component override is challenging: https://github.com/mui-org/material-ui/issues/19427
-// overriding the style here:
-
-#root .MuiAlert-filledError {
-  border-radius: 0;
-  background-color: #fc9090;
-  color: #000000;
-  padding: 20px 30px;
-  border-bottom: 1px rgb(46, 46, 46) solid;
-}
-#root .MuiAlert-filledInfo {
-  border-radius: 0;
-  background-color: #0084ff;
-  padding: 20px 30px;
-  border-bottom: 1px rgb(46, 46, 46) solid;
-}
-
 // if a button is in a link, do not decorate the text on hover
 #root a:hover > button {
   text-decoration: 'none';
-}
-
-.partialGreen {
-  //background-image: url('../assets/dashboard/bg_rectangle_color.svg');
-  //background-repeat: repeat-x;
 }
 
 button.btnVerticallySpaced,
@@ -191,7 +144,7 @@ div.btnVerticallySpaced {
 }
 
 .error-message {
-  color: red;
+  color: #f36e68;
 }
 
 @media screen and (max-width: 480px) {
@@ -232,23 +185,28 @@ ul {
   }
 }
 
-.headerWrapper {
+.header-wrapper {
   padding-bottom: 5px;
   width: 75%;
 }
 
-.arrowButtonsWrapper {
+.arrow-buttons-wrapper {
   display: flex;
   justify-content: space-between;
   padding: 50px 0;
 }
 
-.dashboardLink {
+.dashboard-link {
   text-decoration: underline;
   color: black;
 }
 
-.consentWrapper {
+.login-wrapper {
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.consent-wrapper {
   display: flex;
   padding-top: 20px;
   margin-bottom: 30px;
@@ -272,22 +230,137 @@ fieldset {
     border: 0;
     width: 90%;
     padding: 0px 10px 5px 10px;
-    margin: 0 5% 15px 5%;
+    margin: 0 5%;
+    font-size: 18px;
   }
 }
 
-.sageForm {
-  fieldset {
-    border: 0;
-    legend {
-      display: none;
+.checkbox > label > span,
+.radio > label > span {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid black;
+  padding: 6px;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  &:active,
+  &:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+      inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: 0;
+  }
+  &:checked {
+    background-color: white;
+    color: black;
+    &:after {
+      content: (url('../assets/checkmark.svg'));
+      right: 3px;
+      bottom: 8px;
+      position: relative;
     }
-    span {
-      margin-left: 22px;
+  }
+}
+
+input[type='radio'] {
+  z-index: 60;
+  &:checked,
+  &:not(:checked) {
+    position: absolute;
+    left: -9999px;
+  }
+  &:checked + div.radio-button-label,
+  &:not(:checked) + div.radio-button-label,
+  &:checked + span,
+  &:not(:checked) + span {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #000;
+      border-radius: 100%;
+      background: #fff;
     }
-    input {
-      width: inherit;
-      margin-top: 6px;
+    &:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: #343f56;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      border-radius: 100%;
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+
+    &.correct-opt {
+      &:after {
+        background: #4db3b7;
+      }
+    }
+
+    &.wrong-opt {
+      &:after {
+        background: #f36e68;
+      }
+    }
+  }
+  &:not(:checked) + div.radio-button-label:after,
+  &:not(:checked) + span:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  &:checked + div.radio-button-label:after,
+  &:checked + span:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.radio {
+  > label {
+    > span {
+      @extend .quiz-radio-wrapper;
+    }
+  }
+
+  &.correct {
+    &:before {
+      content: '';
+      background: #e2f5f5;
+      padding: 30px;
+      width: calc(100% - 15px);
+      position: absolute;
+      left: 50%;
+      right: 0;
+      transform: translateX(-50%);
+      margin-top: -16px;
+      @media (min-width: 768px) {
+        width: calc(66.666667% - 15px);
+      }
+
+      @media (min-width: 1024px) {
+        width: calc(50% - 15px);
+      }
     }
   }
 }
@@ -329,4 +402,10 @@ fieldset {
 
 .text-center {
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .MuiDrawer-paper {
+    width: 80%;
+  }
 }

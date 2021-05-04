@@ -7,6 +7,7 @@ import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { useTranslation } from 'react-i18next'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -44,32 +45,40 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
   }
 
   return (
-    <>
+    <div>
       {!isEligible && <Eligibility setCountryCode={setCountryCode} />}
       {isEligible && !phoneNumber && (
-        <Registration
-          countryCode={countryCode}
-          onSuccessFn={(status: number, data: object, phoneNumber: string) => {
-            setPhoneNumber(phoneNumber)
-          }}
-          onErrorFn={(status: number, message?: string) => {
-            setError({
-              message: t('eligibility.registerError'),
-              status: status,
-            })
-          }}
-        />
+        <ResponsiveStepWrapper variant="card">
+          <Registration
+            onSuccessFn={(
+              status: number,
+              data: object,
+              phoneNumber: string,
+            ) => {
+              setPhoneNumber(phoneNumber)
+            }}
+            onErrorFn={(status: number, message?: string) => {
+              setError({
+                message: t('eligibility.registerError'),
+                status: status,
+              })
+            }}
+          />
+        </ResponsiveStepWrapper>
       )}
       {isEligible && phoneNumber && (
-        <SignInWithCode
-          loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
-            handleLoggedIn(result)
-          }
-          phoneNumber={phoneNumber}
-          countryCode={countryCode}
-        />
+        <ResponsiveStepWrapper variant="card">
+          <div className="quiz-wrapper">
+            <SignInWithCode
+              loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
+                handleLoggedIn(result)
+              }
+              phoneNumber={phoneNumber}
+            />
+          </div>
+        </ResponsiveStepWrapper>
       )}
-    </>
+    </div>
   )
 }
 

@@ -8,41 +8,53 @@ import { FORM_IDS } from '../../components/form/types'
 import {
   schemaCountrySelector,
   uiSchemaCountrySelector,
-} from '../schemas/countrySelector'
+} from '../../data/schemas/countrySelector'
 import {
   schemaHowToParticipate,
   uiSchemaHowToParticipate,
-} from '../schemas/howToParticipate'
-import { schemaAgeVerify, uiSchemaAgeVerify } from '../schemas/ageVerify'
+} from '../../data/schemas/howToParticipate'
+import {
+  schemaAgeVerify,
+  uiSchemaAgeVerify,
+} from '../../data/schemas/ageVerify'
 import {
   schemaAndroidVerify,
   uiSchemaAndroidVerify,
-} from '../schemas/androidVerify'
+} from '../../data/schemas/androidVerify'
 import {
   schemaSupportVerify,
   uiSchemaSupportVerify,
-} from '../schemas/supportVerify'
+} from '../../data/schemas/supportVerify'
 import {
   schemaHowDidYouHear,
   uiSchemaHowDidYouHear,
-} from '../schemas/howDidYouHear'
+} from '../../data/schemas/howDidYouHear'
 import {
   schemaUnderstandsEnglish,
   uiSchemaUnderstandsEnglish,
-} from '../schemas/understandsEnglish'
+} from '../../data/schemas/understandsEnglish'
 import {
   schemaHowResearchersAccess,
   uiSchemaHowResearchersAccess,
-} from '../schemas/howResearchersAccess'
+} from '../../data/schemas/howResearchersAccess'
 import {
   schemaWouldYouLikeToVolunteer,
   uiSchemaWouldYouLikeToVolunteer,
-} from '../schemas/wouldYouLikeToVolunteer'
+} from '../../data/schemas/wouldYouLikeToVolunteer'
 import {
   schemaWhoControlsData,
   uiSchemaWhoControlsData,
-} from '../schemas/whoControlsData'
-
+} from '../../data/schemas/whoControlsData'
+import {
+  schemaWhatIsThePurpose,
+  uiSchemaWhatIsThePurpose,
+} from '../../data/schemas/whatIsThePurpose'
+import {
+  schemaWhichIsCorrect,
+  uiSchemaWhichIsCorrect,
+} from '../../data/schemas/whichIsCorrect'
+import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
+import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
 
 type FormSchema = {
@@ -74,6 +86,8 @@ export default function SageForm({
   const { t } = useTranslation()
 
   const getSchemaFromId = (id: string) => {
+    let schemaCopy
+    let shuffledOptions
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
         return schemaCountrySelector
@@ -90,11 +104,41 @@ export default function SageForm({
       case FORM_IDS.UNDERSTANDS_ENGLISH:
         return schemaUnderstandsEnglish
       case FORM_IDS.HOW_RESEARCHERS_ACCESS:
-        return schemaHowResearchersAccess
+        schemaCopy = cloneDeep(schemaHowResearchersAccess)
+        shuffledOptions = shuffle(
+          schemaCopy.properties.how_researchers_access.enum,
+        )
+        schemaCopy.properties.how_researchers_access.enum = shuffledOptions
+        return schemaCopy
       case FORM_IDS.WHO_CONTROLS_DATA:
-        return schemaWhoControlsData
+        schemaCopy = cloneDeep(schemaWhoControlsData)
+        shuffledOptions = shuffle(
+          Array.from(
+            Array(schemaCopy.properties.who_controls_data.enum.length).keys(),
+          ),
+        )
+        let shuffledEnum = []
+        let shuffledEnumNames = []
+        for (let i = 0; i < shuffledOptions.length; i++) {
+          let indexOption = shuffledOptions[i]
+          shuffledEnum[i] =
+            schemaWhoControlsData.properties.who_controls_data.enum[indexOption]
+          shuffledEnumNames[i] =
+            schemaWhoControlsData.properties.who_controls_data.enumNames[
+              indexOption
+            ]
+        }
+        schemaCopy.properties.who_controls_data.enum = shuffledEnum
+        schemaCopy.properties.who_controls_data.enumNames = shuffledEnumNames
+        return schemaCopy
       case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
         return schemaWouldYouLikeToVolunteer
+      case FORM_IDS.WHAT_IS_THE_PURPOSE:
+        return schemaWhatIsThePurpose
+      case FORM_IDS.WHICH_IS_CORRECT:
+        return schemaWhichIsCorrect
+      case FORM_IDS.GENDER:
+        return schemaGender
       default:
         return null
     }
@@ -122,6 +166,12 @@ export default function SageForm({
         return uiSchemaWhoControlsData
       case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
         return uiSchemaWouldYouLikeToVolunteer
+      case FORM_IDS.WHAT_IS_THE_PURPOSE:
+        return uiSchemaWhatIsThePurpose
+      case FORM_IDS.WHICH_IS_CORRECT:
+        return uiSchemaWhichIsCorrect
+      case FORM_IDS.GENDER:
+        return uiSchemaGender
       default:
         return null
     }
@@ -129,7 +179,7 @@ export default function SageForm({
 
   return (
     <>
-      <div className="headerWrapper">
+      <div className="header-wrapper">
         <h1>{title}</h1>
       </div>
       {subTitle && <h2>{subTitle}</h2>}
@@ -163,7 +213,7 @@ export default function SageForm({
               variant="contained"
               size="large"
               type="submit"
-              className="wideButton"
+              className="wide-button"
             >
               {buttonText || t('form.submit')}
             </Button>

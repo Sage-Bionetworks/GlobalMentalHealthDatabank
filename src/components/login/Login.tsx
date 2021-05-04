@@ -15,7 +15,7 @@ import TextField from '@material-ui/core/TextField/TextField'
 
 import { RouteComponentProps } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert/Alert'
-import { Card, CardContent, CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core'
 
 import uk from '../../assets/flags/uk.svg'
 import ind from '../../assets/flags/ind.svg'
@@ -26,6 +26,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
@@ -137,15 +138,15 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   }
 
   return (
-    <div>
-      {isLoading && (
-        <div className="text-center">
-          <CircularProgress color="primary" />
-        </div>
-      )}
-      {!isLoading && (
-        <Card>
-          <CardContent>
+    <ResponsiveStepWrapper variant="card">
+      <div className="login-wrapper">
+        {isLoading && (
+          <div className="text-center">
+            <CircularProgress color="primary" />
+          </div>
+        )}
+        {!isLoading && (
+          <div className="quiz-wrapper">
             {(!isCodeSent || error) && (
               <div>
                 <h2 className="text-center">{t('common.logIn')}</h2>
@@ -164,33 +165,33 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                             setCountryCode(event.target.value as any)
                           }}
                           variant="outlined"
-                          className="phoneFlag"
+                          className="phone-flag"
                         >
                           <MenuItem value={FLAGS.unitedKingdom}>
                             <img
                               src={uk}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="United Kingdom"
                             ></img>
                           </MenuItem>
                           <MenuItem value={FLAGS.india}>
                             <img
                               src={ind}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="India"
                             ></img>
                           </MenuItem>
                           <MenuItem value={FLAGS.southAfrica}>
                             <img
                               src={za}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="South Africa"
                             ></img>
                           </MenuItem>
                           <MenuItem value={FLAGS.unitedStates}>
                             <img
                               src={us}
-                              className={'flagIcon'}
+                              className={'flag-icon'}
                               alt="United States"
                             ></img>
                           </MenuItem>
@@ -218,7 +219,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                         type="submit"
                         disabled={!loginType}
                         onSubmit={handleLogin}
-                        className="wideButton"
+                        className="wide-button"
                       >
                         {t('common.logIn')}
                       </Button>
@@ -234,7 +235,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                   handleLoggedIn(result)
                 }
                 phoneNumber={phone}
-                countryCode={countryCode}
               />
             )}
             {!isCodeSent && (
@@ -247,10 +247,10 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                 </Button>
               </div>
             )}
-          </CardContent>
-        </Card>
-      )}
-    </div>
+          </div>
+        )}
+      </div>
+    </ResponsiveStepWrapper>
   )
 }
 

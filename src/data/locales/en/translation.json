@@ -1,0 +1,291 @@
+{
+  "common": {
+    "date": {
+      "year": "year",
+      "month": "month",
+      "day": "day"
+    },
+    "cancel": "Cancel",
+    "done": "Done",
+    "edit": "Edit",
+    "email": "Email",
+    "emailAddress": "Email address",
+    "joinUs": "Join Us",
+    "joinStudy": "Join The Study",
+    "learnMore": "Learn More",
+    "logIn": "Sign in",
+    "logOut": "Sign Out",
+    "moreInfoVisit": "For more information, please visit",
+    "phone": "Phone",
+    "fullName": "Full name",
+    "ok": "OK",
+    "signUpForAccount": "Sign up for an account",
+    "submit": "Submit",
+    "yes": "Yes",
+    "noTakeBack": "No, take me back",
+    "zipCode": "Zip code",
+    "continue": "Continue"
+  },
+  "eligibility": {
+    "begin": "Begin",
+    "thankYouForYourInterest": "Thank you for your interest in the MindKind study!",
+    "weHaveAFewQuestions": "We have a few questions for you to help get us started.",
+    "howDidYouHear": "How did you hear about us?",
+    "benefit": "Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?",
+    "where": "Where do you currently live?",
+    "android": "Do you have access to an Android smart phone?",
+    "english": "Are you comfortable reading and writing in English?",
+    "ageRange": "How old are you?",
+    "gender": "What is your current gender/gender identity?",
+    "selectAll": "(select all that apply)",
+    "thanks": "Thank you for your time!",
+    "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
+    "back": "Back to home",
+    "loginError": "Error attempting login",
+    "registerError": "Error when registering, please verify your phone number and country selection",
+    "askPhone": "Before we get started, could we have your number?",
+    "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
+    "myPhone": "My phone number is: ",
+    "createAccount": "Create account"
+  },
+  "form": {
+    "firstCommonConsent": {
+      "whatAreWeStudying": "What are we studying?",
+      "getAnswers": "We are trying to answer these questions:",
+      "section1": "Are young people willing to use an app to collect information (data) about their mental health? If so, will they use it for 3 months?",
+      "section2": "Are young people willing to share that data for health research? If so, under what conditions?",
+      "section3": {
+        "section1": "This study is funded by The Wellcome Foundation, and lead by Dr.Lara Mangravite in the United States. It is being conducted under the supervision of scientists in South Africa, India, and the United Kingdom. You can",
+        "link": "learn more about our team",
+        "section2": "of researchers on the study website"
+      },
+      "whatWillYouAsk": "What will you ask me to do?",
+      "step1": "1. Finish reading this consent. Ask any questions you have. Sign up.",
+      "step2": "2. Install the MindKind Study App on your phone.",
+      "step3": "3. Open the MindKind Study App to take part.",
+      "week1": "Week 1: answer questions about your health and background. It should take about 15 minutes. You can skip any questions you do not wish to answer.",
+      "week2": "Week 2 - Week 12: answer one or two surveys about your wellbeing. They should take less than 10 minutes each. You can skip any questions you do not wish to answer.",
+      "also": "Also! We will ask for your permission to collect data directly from your phone, like screen-time and step count. We will NEVER collect your exact location. We will NEVER collect what you say or type outside of the app (voice memos, text messages, emails, etc.). If you don’t want to share data from your phone with us that’s okay -- you can still participate in the rest of study.",
+      "quiz": "Which of the following will you be asked to do?",
+      "next": "Next",
+      "answer": "This study will only require you to answer weekly survey questions.",
+      "dataCollection": "Data Collection, Storage & Privacy",
+      "yourData": "Your study data is:",
+      "yourDataApp": "the data you share with us in the MindKind Study App and",
+      "yourDataPhone": "the data you give us permission to collect from your phone.",
+      "weEncrypt": "We will encrypt your study data.",
+      "weTransfer": "We will transfer it to our server.",
+      "replaceName": "Once we get your study data, we will replace your name with a random code.",
+      "combineData": "We will combine your coded study data with coded data from the other people in the study.",
+      "storeCloud": "We store all of the coded study data on a secure cloud server.",
+      "transferAndRights": "Transfer of Data & your data rights.",
+      "transferAway": "We will transfer your study data out of your home country.",
+      "transferToUS": "We may transfer your study data anywhere in the world, including to the United States.",
+      "yourRights": "You have rights when it comes to your data:",
+      "requestData": "You can request a copy of the data you have provided.",
+      "correctData": "You can ask us to correct information about you that is incorrect.",
+      "ifCitizenEU": "If you are a citizen or resident of the European Union, click here to",
+      "ifCitizenEULink": "learn more about your data rights."
+    },
+    "armOne": {
+      "title": "How will your study data be used?",
+      "subTitle": "Your study data will be part of a global databank for researchers.",
+      "subText1": "Researchers will be able to download a copy of the data from the databank. They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
+      "subText2": "The researchers who access this data will be from all over the world, and are investigating all kinds of topics. Researchers will use your data to make discoveries. If any of their studies lead to new tests, drugs, or other commercial products, you will not get any profits. These inventions will be the property of the researchers who develop them."
+    },
+    "armTwo": {
+      "title": "How will your study data be used?",
+      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
+      "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now.",
+      "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
+      "subText3": "Is it okay for researchers to make a profit from using the data?",
+      "subText4": "No matter what the result of the vote is, researchers will only be able to access the data in a secure server.",
+      "subText5": "They will not be able to download the study data. Also, they will have to sign an agreement saying they will not try to find out who you are.",
+      "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
+    },
+    "armThree": {
+      "title": "How will your study data be used?",
+      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
+      "subText1": "What topics should researchers using the study data be allowed to study? (Mental health only? Health generally? Any topic?)",
+      "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
+      "subText3": "Is it okay for researchers to make a profit from using the data?",
+      "subText4": "No matter what the result of the vote is, researchers will be able to download a copy of the data from the databank.",
+      "subText5": "They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
+      "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
+    },
+    "armFour": {
+      "pageOne": {
+        "title": "How will your study data be used?",
+        "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now."
+      },
+      "pageTwo": {
+        "title": "How should researchers be allowed to access the study data?",
+        "subTitle": "Choose the option that you want us to use."
+      },
+      "pageThree": {
+        "title": "Who controls your data? Choose the option that you want used for your data."
+      },
+      "pageFour": {
+        "title": "Would you like to volunteer for the community review panel?"
+      }
+    },
+    "secondCommonConsent": {
+      "pageOne": {
+        "risks&benefit": "Potential Risks & Benefits",
+        "risks": "Potential Risks",
+        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \n\nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \n\nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
+        "benefits": "Potential Benefits",
+        "benefitDescription": "You may not personally benefit from taking part in this study. \n\nYou may be contributing to valuable research. \n\nYou may help researchers better understand how young adults can manage their mental health."
+      },
+      "pageTwo": {
+        "costs&payment": "Costs & Payment",
+        "description": "The time you use on this app may count against your mobile data plan. You can set up the app to use Wi-Fi instead. \n\nYou will not be paid for participating in this study. \n\nYou will not be paid for sharing your data."
+      },
+      "pageThree": {
+        "notMedicalCare": "Not Medical Care",
+        "description": "This is a research study. It is NOT treatment for mental health. \n\n We will not monitor the MindKind Study App in real time. \n\nIf you experience a mental health crisis, contact a doctor or mental health care provider directly. Resources are available on the study website (Link to Resources page on study website) \n\nIf you have questions about the study, you can reach us by email at: ",
+        "link": "MindKindSupport@sagebionetworks.org"
+      },
+      "pageFour": {
+        "title": "What is the purpose of this study?",
+        "toParticipate": "To participate in research",
+        "toRecieveMedicalCare": "To receive medical care",
+        "toObtainMedicalInsurance": "To obtain medial insurance",
+        "answer": "The purpose of this study is to participate in research."
+      },
+      "pageFive": {
+        "leaving": "Leaving the Study",
+        "description": "Joining this study is voluntary.\n\n If you join, you may leave this study (withdraw) at any time and for any reason. \n\nIf you withdraw, you can ask us to delete all your study data. \n\nIf you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
+      },
+      "pageSix": {
+        "title": "Which is correct?",
+        "ifParticipate": "If I start participating, I have to continue until the end.",
+        "iCanStop": "I can stop at any time.",
+        "penalty": "I will get a penalty if I leave the study.",
+        "answer": "You can stop participating in the study at any time."
+      },
+      "pageSeven": {
+        "contact": "Contact",
+        "description": "If you have questions you can reach us by email at MindKindSupport@sagebionetworks.org or call <study phone number>. \n\nWe may want to reach out to you in the future. You can opt out of these follow-up notifications at any time. "
+      },
+      "pageEight": {
+        "summary": "Summary",
+        "description": "The purpose of the MindKind Study is to understand whether, and how, young adults are willing to use a mobile App to self-manage and share their data regarding their mental health. \n\nI can choose whether or not to participate. If I choose to participate, I can change my mind at any time. \n\nThis is a research study, not medical care. My responses will not be monitored in real time. \n\nI am not expected to personally benefit from the study. \n\nI will use the MindKind Study App to respond to questions about my mental health and wellbeing and can contribute data directly from my phone.\n\nMy information will be transferred to the United States and stored securely. \n\nResearchers will use my information for research. If I give my permission, they may share data with other researchers for future research. \n\nI have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.\n\nI can contact the study team with any questions or concerns related to the MindKind study."
+      },
+      "ranking": {
+        "title": "Voting Screen",
+        "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
+        "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
+        "paragraph3": "Based on how all the people in the study vote, the top items will be the rules for the databank.",
+        "paragraph4": "If there is disagreement between two items, only the top-most will be used. For example, if the second highest voted item is: “No one can use this data to make a profit” and the third highest voted item is: “Anyone can use this data and make a profit” we will not let researchers use the data to make a profit.",
+        "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
+        "confirmation": "Voting Confirmation",
+        "review": "Review the list below to confirm this represents your choices."
+      }
+    },
+    "consentSignature": {
+      "title": "Consent Signature",
+      "pleaseCheck": {
+        "text1": "Please",
+        "check": "check the box below ",
+        "if": "if you",
+        "agree": "agree",
+        "takePart": "to take part:"
+      },
+      "agreement": "I have read and understand the information presented in this consent process. All of my questions have been answered. I freely and willingly choose to participate in the MindKind study. By signing this consent, I have not given up any of my legal rights.",
+      "fullName": "Full Name of adult participant:"
+    },
+    "youAreInStep": "You are in step",
+    "submit": "Submit",
+    "chooseAnOption": "You must choose an option"
+  },
+  "footer": {
+    "copyright": "Copyright Mindkind 2021",
+    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
+    "dashboard": "Dashboard",
+    "about": "About",
+    "home": "Home",
+    "team": "Research team",
+    "faq": "FAQs",
+    "contact": " Contact",
+    "privacy": "Privacy Policies",
+    "settings": "Account Settings",
+    "login": "Sign in",
+    "join": "Join Us",
+    "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
+  },
+  "home": {
+    "title1": "A Mental Health Study",
+    "title2": "From Youth, For Emotional Health",
+    "text1": "Your personal experiences with emotional health are real.",
+    "text2": "What if you could help other young people by sharing your story?",
+    "text3": "Want to make a difference? Join the MindKind Study",
+    "text31": "In partnership with:",
+    "text4": "Our mission in this study is to understand how people recover from COVID-19 and the impacts of the disease on health, both today and in the future. By sharing your recovery experience, you can help researchers unlock the mysteries behind this disease and provide important new information for you, your loved ones, and thousands of others affected by the virus.",
+    "text41": "Minority communities have been disproportionately affected by COVID-19. We are committed to engaging a diverse and representative group of participants so that the research can help those most impacted by this disease.",
+    "text6": "Participation is simple.",
+    "text7": "Here’s how you can participate.",
+    "text8": "STEP ONE",
+    "text9": "Register and take the surveys",
+    "text10": "To get started, click",
+    "text11": "and learn what will happen in the study. After registering, you will be invited to take brief surveys that may help scientists begin to answer questions like: Why do some people experience very mild symptoms while others get very sick? How does recovering from COVID-19 impact your health over time?",
+    "text12": "STEP TWO",
+    "text13": "Share your samples",
+    "text14": "We will invite some participants to donate a sample. Sharing your samples will help answer important questions including: Who was really infected with COVID-19? What levels of antibodies are needed to protect us from reinfection? Is it possible to develop full immunity to COVID-19?",
+    "text15": "STEP THREE",
+    "text16": "Learn with us along the way",
+    "text17": "If you are asked to provide a sample, we will test the sample for antibodies related to COVID-19 infection, using an antibody test approved by the New York State Department of Health. We will share your test results with you, along with information about what those results may mean. As we learn more about the impact of COVID-19 across study participants, we will share regular updates with the broader scientific and patient community. We may also ask if you are interested in joining other related studies. For instance, some participants may choose to be notified of opportunities to donate plasma and help those still fighting for survival from COVID-19.",
+    "text18": "Together, we can fight COVID-19."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "text1": "<0>The COVID Recovery Corps study (the “Study”) is a collaboration between Sage Bionetworks and Columbia University. The Study is sponsored by the Chan Zuckerberg Initiative. The goal of the Study is to collect information from participants who have been diagnosed or believe they have had COVID-19. Researchers will use this information to better understand how the body fights COVID-19. </0> <1> The Study is committed to protecting your online privacy. This Privacy Policy explains the personal information we collect about you through the Website (defined below), how we use and share it, and the choices you have regarding this information. </1> <2> This Privacy Policy applies to visitors to <1>www.covidrecoverycorps.org</1> (the “Website”), including participants in the Study. If you don’t agree with this Privacy Policy, please do not access the Website or participate in the Study. </2>",
+    "text2": "Data We Collect From You",
+    "text3": "<0> “Personal information” or “personal data” means any direct information about you such as your name and contact information or indirect information that could be reasonably linked to you such as your device’s internet protocol address (IP Address). When you visit the Website, we collect the following information (collectively, “Personal Data”): </0> <1>Who You Are (“User Information”)</1> <2> We collect information that you provide to us during the informed consent and account creation process, and in any correspondence you have with us. For example, this could include your name, email, and any other contact information you share with us. </2> <3>Where you go on the Website (“Usage Data”)</3> <4> Whenever you use any online service, certain information gets created and logged automatically; the same is true when you visit the Website. We may collect technical data on the different pages you visit on the Website. For example, we may collect the date and time when you visit the Website. </4><5>We use a Facebook Pixel to measure if our advertising is working, and to understand the actions people take on our website. For example, the Pixel lets us know when someone clicks to sign up for an email from us. Facebook can learn from this information.</5>",
+    "text4": "Why We Collect This Data ",
+    "text5": "<0>User Information</0> <1> We use user-reported information for any of the following: <1> <0> Authenticating/administering your account </0> <1> Responding to user requests, questions, and concerns</1> <2> Requesting user feedback to enhance and improve the website </2> <3> Sending study communications such as newsletters and other materials that may be of interest to you.</3> </1> </1> <2>Usage Data</2> <3> We use usage data for the following purposes: <1> <0> Maintaining, securing, and enhancing the website </0> <1> Detecting and remedying disruptions in our systems </1> <2> Performing statistical analysis of usage patterns </2> <3> Operating, maintaining, enhancing, and providing all the features of the website </3> </1> </3>",
+    "text6": "To Whom/When We Disclose Data",
+    "text7": "<0> We work with vendors, service providers, and other partners that help us support and maintain the Website by providing services on our behalf. </0> <1>Vendors/Service Providers</1> <2> We may rely on vendors and service providers to provide the necessary hardware, software, networking, storage, and related technology required to operate, support and maintain the website. We required that all service providers agree to put in place reasonable security to keep users information confidential and secure, and to process information only for performing tasks on Sage Bionetwork’s behalf. We do not permit service providers to use or disclose users’ information, except as necessary to their work on the website. </2> <3>The COVID Recovery Corps website uses the following service providers: <1> <0> Amazon Web Services </0> <1> Google Analytics </1> </1> </3> <4>Statistical and Aggregate Information</4> <5> In accordance with applicable law, we may share aggregate and statistical information derived from users’ information with third parties for analysis. </5> <6>Compliance with Laws</6> <7> We may be required by law to give your user information in the case of any civil, criminal, administrative, legislative, or other proceedings. We will protect your privacy as much as possible. </7> <8>Business Transfers</8> <9> If Sage Bionetworks (website’s host) goes through a management or business transition such as a merger, closure, sale, joint venture, assignment, transfer, management reorganization, or other disposition of all or any portion of Sage Bionetworks’ business, assets, or stock, information or data may be transferred to a third party. In such cases, we will take reasonable steps to direct the transferee to use the information and data in a manner consistent with this Privacy Policy. </9>",
+    "text8": "How Long We Keep this Data ",
+    "text9": "<0> We keep the information, including personal information, for as long as necessary to provide our services and to fulfill any other purposes for which the information was initially collected, unless otherwise required by applicable law. For instance, we will keep personally identifiable information related to authentication of user identity only for as long as is necessary for authentication. </0> <1> Users may edit their information or remove their information by withdrawing from the study in the profile settings. We will retain and archive a record of user’s activities performed while the account was active to use for audit purposes, legitimate business purposes, to keep with our legal obligations, resolve disputes, and enforce our agreements and policies. </1>",
+    "text10": "Information/Data Security",
+    "text11": "<0> Sage Bionetworks maintains industry standard physical, organizational, technical, and administrative measures to protect the personal identifiable information we collect, store, or otherwise process in connection to the study against accidental, unlawful, or unauthorized access, destruction, disclosure, misuse, alteration, or loss. </0> <1> The data security measures are a combination of Privacy-Enhancing Technologies (PET) options and policies/processes for data handling. Still, no environment is 100% secure. There is some risk that an unauthorized third party may find a way to circumvent our security systems. </1>",
+    "text12": "What We Do Not Do",
+    "text13": "We do not use your personal information for advertising purposes. We do not sell or lease your information.",
+    "text14": "Your Rights",
+    "text15": "<0>You may request to access, update, correct, restrict or delete the personal information you provide to us. You also have the right to object to the processing of your personal information under certain conditions. For all such inquiries, we can be reached at the following: </0> <1> <0>Sage Bionetworks</0><1 /> Attention: Data Protection Officer <3 /> 2901 Third Avenue, Suite 330, <5 /> Seattle, WA 98121 <7 /> United States of America <9 /> <10 /> <11>privacyofficer@sagebionetworks.org</11></1><2> Upon request, we will provide you with reasonable access to the personal information about you that we hold. If your personal account information is deleted, your account becomes deactivated. </2> <3> You may opt-out of receiving study communications from us by clicking on the “unsubscribe” link included in each such communication or by notifying us by email at <1>privacyofficer@sagebionetworks.org</1> with the word “remove” in the subject header, and we will remove your contact details from our mailing list. </3>",
+    "text16": "Cross-Border Transfer of Your Information",
+    "text17": "Although you may access the website from a location outside of the United States, the website is primarily operated and managed within the United States. When we transfer information and data, we will protect the information and data as described in this Privacy Policy.",
+    "text18": "How to Contact Us ",
+    "text19": "<0> Sage Bionetworks is the controller of your information when it is collected and processed in the context of our sites and services. Our Data Protection Officer (DPO) is responsible for overseeing what we do with your information and ensuring we comply with applicable data protection laws. Our Data Protection Officer may be contacted by emailing  <1> privacyofficer@sagebionetworks.org </1> or by writing to: </0> <1> <0>Sage Bionetworks</0> <1 /> Attention: Data Protection Officer <3 /> 2901 Third Avenue, Suite 330, <5 /> Seattle, WA 98121 <7 /> United States of America <9 /> <10 /> </1>",
+    "text20": "Updates",
+    "text21": "We may update our Privacy Policy from time to time to clarify how we collect, process, store, use and disclose information. We want to be as transparent as possible about the changes we make to our Privacy Policy.",
+    "text22": "COVID Recovery Corps. Appendix C_V2.0. 17.June.2020"
+  },
+  "registration": {
+    "text1": "Create account",
+    "text2": "I don't have an email account",
+    "text3": "Create account",
+    "text4": "Sign up with email",
+    "text5": "Invalid Phone",
+    "intro1": "<0>Before we get started, could we have your number?</0> <1> We are asking you for your phone number to make this consent process easier and faster for you.</1> <2>We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity.</2> <3>We will not share your number with anyone. </3>",
+    "intro2": "<0>Getting Started</0> <1> To access the consent and surveys, you will need to create an account. </1> <2> You will use your email to log into your account in the future.</2>",
+    "phoneIntroTitle": "Before we get started, could we have your number?",
+    "phoneIntroBody": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone. ",
+    "myPhone": "My Phone number is:"
+  },
+  "signIn": {
+    "SMSSent": "We just sent an SMS to: ",
+    "enterCode": "Please enter your code: ",
+    "code": "Code from SMS",
+    "phone": "phone",
+    "linkSent": "We just sent a link to: "
+  },
+  "topnav": {
+    "about": "About",
+    "policy": "Privacy Policy",
+    "dashboard": "Dashboard",
+    "login": "Sign in",
+    "home": "Home"
+  }
+}

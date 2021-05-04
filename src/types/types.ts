@@ -101,3 +101,24 @@ export enum SurveysCompletionStatusEnum {
   'NOT_DONE',
   'ALL_DONE',
 }
+
+export interface HealhDataResponse {
+  appVersion: string
+  createdOn: string
+  createdOnTimeZone: string
+  data: object
+  dayInStudy: number
+  id: string
+  metadata: object
+  phoneInfo: string
+  rawDataAttachmentId: string
+  appId: string
+  uploadDate: string
+  uploadedOn: string
+  userSharingScope: string
+  userDataGroups: UserDataGroup[]
+  userStudyMemberships: object
+  version: number
+  studyId: string
+  type: string
+}

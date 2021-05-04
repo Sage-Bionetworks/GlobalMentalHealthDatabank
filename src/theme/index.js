@@ -5,13 +5,22 @@ const fallbackFonts = ['sans-serif']
 export const systemFonts = ['Lato', ...fallbackFonts].join(',')
 
 export const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 320,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    },
+  },
   typography: {
     htmlFontSize: 10,
     fontFamily: systemFonts,
   },
   palette: {
     background: {
-      default: '#f5f5f5',
+      default: '#ffffff',
     },
     primary: {
       main: '#343F56',

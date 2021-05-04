@@ -20,11 +20,11 @@ import {
   FLOW_OPTIONS,
 } from '../../helpers/RandomFlowGenerator'
 import { useTranslation } from 'react-i18next'
+import { useElegibility } from './context/ElegibilityContext'
 
 type RegistrationProps = {
   onSuccessFn: Function
   onErrorFn: Function
-  countryCode: string
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
@@ -32,14 +32,22 @@ const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
   onErrorFn,
-  countryCode,
 }: RegistrationProps) => {
+  const {
+    howDidYouHear,
+    everBenefitedFromTreatment,
+    whereDoYouLive,
+    doYouHaveAnAndroid,
+    understandEnglish,
+    age,
+    gender,
+  } = useElegibility()
   const { t } = useTranslation()
 
   const stateSchema = {
     phone: { value: '', error: '' },
     countryCode: {
-      value: countryCode,
+      value: whereDoYouLive,
       error: '',
     },
   }
@@ -69,9 +77,9 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
   async function onSubmitForm(state: any) {
     //register
-    let flowSelection: string = getRandomFlowOption()
+    let consentModel: string = getRandomFlowOption()
     let dataGroups: UserDataGroup[] = ['test_user' as UserDataGroup]
-    switch (flowSelection) {
+    switch (consentModel) {
       case FLOW_OPTIONS.ONE:
         dataGroups.push(FLOW_OPTIONS.ONE as UserDataGroup)
         break
@@ -90,7 +98,14 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         ? makePhone(state.phone.value, state.countryCode.value)
         : undefined,
       clientData: {
-        flowSelection: flowSelection,
+        consentModel,
+        howDidYouHear,
+        everBenefitedFromTreatment,
+        whereDoYouLive,
+        doYouHaveAnAndroid,
+        understandEnglish,
+        age,
+        gender,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],
@@ -102,6 +117,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
     //send signinRequest
     const phoneNumber = data.phone?.number || ''
+
     try {
       const result = await submitRegistration(data)
 
@@ -134,7 +150,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   )
 
   return (
-    <div className="quizWrapper">
+    <div className="quiz-wrapper">
       <div className="media-wrapper text-left">
         <TextSent />
       </div>
@@ -159,7 +175,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                   variant="outlined"
                   fullWidth
                   onChange={handleOnChange}
-                  className="phoneInput"
+                  className="phone-input"
                 />
               </div>
               {Object.keys(state).map(

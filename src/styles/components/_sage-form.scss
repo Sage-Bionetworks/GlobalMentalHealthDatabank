@@ -1,13 +1,29 @@
-.quizWrapper {
-  background-color: white;
-  margin: 0 9px 60px 9px;
-  padding: 20px 25px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.sageForm {
+  fieldset {
+    border: 0;
+    padding: 0;
+    legend {
+      display: none;
+    }
+    span {
+      margin-left: 22px;
+    }
+  }
 }
 
-.textStepWrapper {
-  padding: 20px 25px;
+.quiz-wrapper {
+  @include breakpoint('md') {
+    background-color: white;
+    padding: 20px 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.text-step-wrapper {
   background: white;
+  @include breakpoint('md') {
+    padding: 20px 25px;
+  }
 }
 
 .radio {
@@ -20,8 +36,17 @@
   }
 }
 
-.custom-radio-who-controls {
+.quiz-radio-wrapper {
   margin-top: 30px;
   margin-left: 30px;
   display: flex;
+}
+
+.consent-signature {
+  margin-bottom: 40px;
+}
+
+.form-text-content {
+  white-space: pre-line;
+  margin-bottom: 30px;
 }

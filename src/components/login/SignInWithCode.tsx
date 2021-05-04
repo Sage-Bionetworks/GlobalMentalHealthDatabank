@@ -6,13 +6,12 @@ import Button from '@material-ui/core/Button/Button'
 import TextField from '@material-ui/core/TextField/TextField'
 import Separator from '../static/Separator'
 import { useTranslation } from 'react-i18next'
-
+import { useElegibility } from '../../components/registration/context/ElegibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type SignInWithCodeProps = {
   loggedInByPhoneFn?: Function
   phoneNumber: string
-  countryCode: string
 }
 
 const PHONE_SIGN_IN_ENDPOINT = '/v3/auth/phone/signIn'
@@ -20,11 +19,11 @@ const PHONE_SIGN_IN_ENDPOINT = '/v3/auth/phone/signIn'
 export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   loggedInByPhoneFn,
   phoneNumber,
-  countryCode,
 }: SignInWithCodeProps) => {
   const [error, setError] = useState('')
   const [code, setCode] = useState('')
 
+  const { whereDoYouLive } = useElegibility()
   const { t } = useTranslation()
 
   async function handleOnSubmit(clickEvent: React.FormEvent<HTMLElement>) {
@@ -32,7 +31,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
 
     const postData = {
       appId: APP_ID,
-      phone: makePhone(phoneNumber, countryCode),
+      phone: makePhone(phoneNumber, whereDoYouLive),
       token: code,
     }
 
@@ -47,7 +46,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   }
 
   return (
-    <div className="quizWrapper">
+    <div>
       <div className="error-message">{error}</div>
       <div>
         <div className="text-left margin-top-std">

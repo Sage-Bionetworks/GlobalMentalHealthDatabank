@@ -9,6 +9,7 @@ import { FLOW_OPTIONS } from '../../helpers/RandomFlowGenerator'
 import { UserDataGroup } from '../../types/types'
 import { useSessionDataState } from '../../AuthContext'
 import { UserService } from '../../services/user.service'
+import { Redirect } from 'react-router'
 
 const FIRST_CONSENT_STEPS: number = 5
 const SECOND_CONSENT_STEPS: number = 10
@@ -89,7 +90,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   }
 
   const sessionData = useSessionDataState()
-  const token = sessionData.token
+  const { token } = sessionData
 
   useEffect(() => {
     const getInfo = async () => {
@@ -106,22 +107,24 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     getInfo()
   }, [token])
 
-  const updateClientData = async (
-    step: number,
-    fieldName?: string,
-    value?: string,
-  ) => {
+  if (userClientData.consented && userClientData.skipRanking) {
+    return <Redirect to={'/download'} push={true} />
+  }
+
+  const updateClientData = async (step: number, fields?: object) => {
     let newData = {}
-    if (fieldName)
+
+    if (fields)
       newData = {
         ...userClientData,
-        [fieldName]: value,
+        ...fields,
         checkpoint: step,
       }
     else newData = { ...userClientData, checkpoint: step }
     if (token) {
       const response = await UserService.updateUserClientData(token, newData)
       setUserClientData(response.data.clientData)
+      return response
     }
   }
 
@@ -146,7 +149,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
         step={step}
         setStep={setStep}
         maxSteps={maxSteps}
-        startingStep={secondCommonStepsStart}
+        startingStep={secondCommonStepsStart + 1}
         updateClientData={updateClientData}
       />
     )
