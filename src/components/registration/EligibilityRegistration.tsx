@@ -50,7 +50,6 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
       {isEligible && !phoneNumber && (
         <ResponsiveStepWrapper variant="card">
           <Registration
-            countryCode={countryCode}
             onSuccessFn={(
               status: number,
               data: object,

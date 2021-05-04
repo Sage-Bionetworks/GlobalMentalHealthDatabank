@@ -25,7 +25,6 @@ import { useElegibility } from './context/ElegibilityContext'
 type RegistrationProps = {
   onSuccessFn: Function
   onErrorFn: Function
-  countryCode: string
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
@@ -33,7 +32,6 @@ const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
   onErrorFn,
-  countryCode,
 }: RegistrationProps) => {
   const {
     howDidYouHear,
@@ -49,7 +47,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   const stateSchema = {
     phone: { value: '', error: '' },
     countryCode: {
-      value: countryCode,
+      value: whereDoYouLive,
       error: '',
     },
   }
