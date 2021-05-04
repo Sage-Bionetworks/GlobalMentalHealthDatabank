@@ -8,7 +8,14 @@ export const schemaCountrySelector = {
         your_country: {
           type: 'string',
           title: ' ',
-          enum: ['UK', 'India', 'South Africa', 'Other', 'US (Testing only)'],
+          enumNames: [
+            'UK',
+            'India',
+            'South Africa',
+            'Other',
+            'US (Testing only)',
+          ],
+          enum: ['UK', 'IN', 'ZA', 'Other', 'US'],
         },
       },
     },
