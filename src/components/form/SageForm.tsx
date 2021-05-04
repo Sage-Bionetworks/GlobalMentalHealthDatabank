@@ -53,6 +53,7 @@ import {
   schemaWhichIsCorrect,
   uiSchemaWhichIsCorrect,
 } from '../../data/schemas/whichIsCorrect'
+import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
 
@@ -136,6 +137,8 @@ export default function SageForm({
         return schemaWhatIsThePurpose
       case FORM_IDS.WHICH_IS_CORRECT:
         return schemaWhichIsCorrect
+      case FORM_IDS.GENDER:
+        return schemaGender
       default:
         return null
     }
@@ -167,6 +170,8 @@ export default function SageForm({
         return uiSchemaWhatIsThePurpose
       case FORM_IDS.WHICH_IS_CORRECT:
         return uiSchemaWhichIsCorrect
+      case FORM_IDS.GENDER:
+        return uiSchemaGender
       default:
         return null
     }

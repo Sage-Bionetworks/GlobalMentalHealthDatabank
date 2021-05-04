@@ -27,12 +27,17 @@
     "continue": "Continue"
   },
   "eligibility": {
+    "begin": "Begin",
+    "thankYouForYourInterest": "Thank you for your interest in the MindKind study!",
+    "weHaveAFewQuestions": "We have a few questions for you to help get us started.",
     "howDidYouHear": "How did you hear about us?",
     "benefit": "Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?",
     "where": "Where do you currently live?",
     "android": "Do you have access to an Android smart phone?",
     "english": "Are you comfortable reading and writing in English?",
-    "ageRange": "Are you between the ages of 18 to 24 years old, or 16-24 years old if you live in the United Kingdom?",
+    "ageRange": "How old are you?",
+    "gender": "What is your current gender/gender identity?",
+    "selectAll": "(select all that apply)",
     "thanks": "Thank you for your time!",
     "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
     "back": "Back to home",
@@ -90,6 +95,7 @@
     },
     "armTwo": {
       "title": "How will your study data be used?",
+      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
       "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now.",
       "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
       "subText3": "Is it okay for researchers to make a profit from using the data?",
