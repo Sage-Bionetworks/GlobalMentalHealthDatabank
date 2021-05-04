@@ -166,6 +166,7 @@ function SecondCommonConsentSection({
 
       const userInfoResponse = await UserService.getUserInfo(token)
       const { clientData } = userInfoResponse?.data as any
+      let updateClientDataResponse = undefined
 
       if (
         [FLOW_OPTIONS.TWO, FLOW_OPTIONS.THREE].includes(
@@ -175,12 +176,20 @@ function SecondCommonConsentSection({
           clientData.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.DEMOCRACY)
       ) {
         //go to steps after consent (ranking)
-        await updateClientData(step, { skipRanking: false, consented: true })
+        updateClientDataResponse = await updateClientData(step, {
+          skipRanking: false,
+          consented: true,
+        })
       } else {
-        await updateClientData(step, { skipRanking: true, consented: true })
+        updateClientDataResponse = await updateClientData(step, {
+          skipRanking: true,
+          consented: true,
+        })
       }
-
-      await HealthService.sendHealthData(token, clientData)
+      await HealthService.sendHealthData(
+        token,
+        updateClientDataResponse.data.clientData,
+      )
       setStep((current: number) => (current < maxSteps ? current + 1 : current))
     } catch (e) {
       setErrorMessage(e.message)

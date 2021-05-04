@@ -124,6 +124,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     if (token) {
       const response = await UserService.updateUserClientData(token, newData)
       setUserClientData(response.data.clientData)
+      return response
     }
   }
 

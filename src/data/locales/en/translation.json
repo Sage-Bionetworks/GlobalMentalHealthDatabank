@@ -178,7 +178,9 @@
         "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
         "paragraph3": "Based on how all the people in the study vote, the top items will be the rules for the databank.",
         "paragraph4": "If there is disagreement between two items, only the top-most will be used. For example, if the second highest voted item is: “No one can use this data to make a profit” and the third highest voted item is: “Anyone can use this data and make a profit” we will not let researchers use the data to make a profit.",
-        "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move."
+        "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
+        "confirmation": "Voting Confirmation",
+        "review": "Review the list below to confirm this represents your choices."
       }
     },
     "consentSignature": {
