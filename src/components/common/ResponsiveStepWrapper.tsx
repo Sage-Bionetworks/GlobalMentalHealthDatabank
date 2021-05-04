@@ -3,11 +3,12 @@ import { Grid } from '@material-ui/core'
 
 type Props = {
   children: React.ReactNode
+  variant?: 'default' | 'card'
 }
 
-function ElegibilityStepWrapper({ children }: Props) {
+function ElegibilityStepWrapper({ children, variant }: Props) {
   return (
-    <div className="responsive-step">
+    <div className={`responsive-step ${variant === 'card' ? 'card' : ''}`}>
       <div className="responsive-step__top-bg"></div>
       <div className="responsive-step__content">
         <Grid container direction="row" justify="center" alignItems="center">

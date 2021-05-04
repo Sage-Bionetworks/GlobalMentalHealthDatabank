@@ -89,7 +89,7 @@ function ArmFlowFour({
 
     case startingStep + 1:
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -118,7 +118,7 @@ function ArmFlowFour({
 
     case startingStep + 2:
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -148,7 +148,7 @@ function ArmFlowFour({
 
     case startingStep + 3:
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm

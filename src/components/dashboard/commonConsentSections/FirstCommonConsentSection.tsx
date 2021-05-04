@@ -146,7 +146,7 @@ function FirstCommonConsentSection({
 
     case 3:
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm

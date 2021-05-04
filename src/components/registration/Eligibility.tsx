@@ -64,7 +64,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > How did you hear about us?'
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -104,7 +104,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Benefits of health support'
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -143,7 +143,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Where do you live?'
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -192,7 +192,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Do you have an android?'
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -232,7 +232,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Do you speak english?'
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -278,7 +278,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Are you on the age range?'
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -313,7 +313,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   if (step > MAX_STEPS) {
     return (
-      <ResponsiveStepWrapper>
+      <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
           <div className="header-wrapper">
             <h1>{t('eligibility.thanks')}</h1>

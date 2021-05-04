@@ -244,7 +244,7 @@ function SecondCommonConsentSection({
 
     case startingStep + 2: {
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -322,7 +322,7 @@ function SecondCommonConsentSection({
     }
     case startingStep + 4: {
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -419,7 +419,7 @@ function SecondCommonConsentSection({
 
     case startingStep + 7:
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <LogoNoText />
