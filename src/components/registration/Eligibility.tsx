@@ -10,7 +10,7 @@ import { FORM_IDS } from '../form/types'
 import { useTranslation } from 'react-i18next'
 import { GoogleService } from '../../services/google.service'
 import { withRouter } from 'react-router-dom'
-import ElegibilityStepWrapper from './ElegibilityStepWrapper'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 const MAX_STEPS: number = 8
 
@@ -75,28 +75,30 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   switch (step) {
     case 1:
       return (
-        <div className="quiz-wrapper">
-          <div className="header-wrapper">
-            <h1>{t('eligibility.thankYouForYourInterest')}</h1>
+        <ResponsiveStepWrapper variant="card">
+          <div className="quiz-wrapper">
+            <div className="header-wrapper">
+              <h1>{t('eligibility.thankYouForYourInterest')}</h1>
+            </div>
+            <Separator />
+            <div className="rejectionText">
+              {t('eligibility.weHaveAFewQuestions')}
+            </div>
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button"
+              onClick={() =>
+                setStep((current: number) =>
+                  current < MAX_STEPS ? current + 1 : current,
+                )
+              }
+            >
+              {t('eligibility.begin')}
+            </Button>
           </div>
-          <Separator />
-          <div className="rejectionText">
-            {t('eligibility.weHaveAFewQuestions')}
-          </div>
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            className="wide-button"
-            onClick={() =>
-              setStep((current: number) =>
-                current < MAX_STEPS ? current + 1 : current,
-              )
-            }
-          >
-            {t('eligibility.begin')}
-          </Button>
-        </div>
+        </ResponsiveStepWrapper>
       )
     case 2:
       if (!props.history.location.search.includes('howDidYouHear'))
@@ -106,7 +108,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > How did you hear about us?'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -136,7 +138,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     case 3:
       if (!props.history.location.search.includes('where'))
@@ -146,7 +148,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Where do you live?'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -184,7 +186,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     case 4:
       if (!props.history.location.search.includes('android'))
@@ -194,7 +196,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Do you have an android?'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -223,7 +225,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case 5:
@@ -234,7 +236,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Do you speak english?'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -269,7 +271,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     case 6:
       if (!props.history.location.search.includes('ageRange'))
@@ -279,7 +281,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > How old are you?'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -307,7 +309,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     case 7:
       if (!props.history.location.search.includes('gender'))
@@ -317,7 +319,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > What is your current gender/gender identity?'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -347,7 +349,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     case 8:
       if (!props.history.location.search.includes('benefit'))
@@ -357,7 +359,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         })
       document.title = 'MindKind > Benefits of health support'
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
@@ -386,29 +388,31 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
   }
   if (step > MAX_STEPS) {
     return (
-      <div className="quiz-wrapper">
-        <div className="header-wrapper">
-          <h1>{t('eligibility.thanks')}</h1>
+      <ResponsiveStepWrapper variant="card">
+        <div className="quiz-wrapper">
+          <div className="header-wrapper">
+            <h1>{t('eligibility.thanks')}</h1>
+          </div>
+          <Separator />
+          <div className="rejectionText">{t('eligibility.notElegible')}</div>
+          <NavLink to="/home">
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button"
+              onClick={() => <Redirect to="/home" />}
+            >
+              {t('eligibility.back')}
+            </Button>
+          </NavLink>
         </div>
-        <Separator />
-        <div className="rejectionText">{t('eligibility.notElegible')}</div>
-        <NavLink to="/home">
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            className="wide-button"
-            onClick={() => <Redirect to="/home" />}
-          >
-            {t('eligibility.back')}
-          </Button>
-        </NavLink>
-      </div>
+      </ResponsiveStepWrapper>
     )
   }
   return null

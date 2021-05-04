@@ -19,7 +19,7 @@ import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
 import { useSessionDataState } from '../../../AuthContext'
 import NavigationArrows from '../../common/NavigationArrows'
-import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
@@ -197,258 +197,284 @@ function SecondCommonConsentSection({
   switch (step) {
     case startingStep: {
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <RisksBenefits width="75" />
-          <div className="header-wrapper">
-            <h1>{t('form.secondCommonConsent.pageOne.risks&benefit')}</h1>
+          <div className="text-step-wrapper">
+            <RisksBenefits width="75" />
+            <div className="header-wrapper">
+              <h1>{t('form.secondCommonConsent.pageOne.risks&benefit')}</h1>
+            </div>
+            <h2>{t('form.secondCommonConsent.pageOne.risks')}</h2>
+            <div className="form-text-content">
+              {t('form.secondCommonConsent.pageOne.riskDescription')}
+            </div>
+            <h2>{t('form.secondCommonConsent.pageOne.benefits')}</h2>
+            <div className="form-text-content">
+              {t('form.secondCommonConsent.pageOne.benefitDescription')}
+            </div>
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={handleNext}
+              preventBack
+            />
           </div>
-          <h2>{t('form.secondCommonConsent.pageOne.risks')}</h2>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageOne.riskDescription')}
-          </div>
-          <h2>{t('form.secondCommonConsent.pageOne.benefits')}</h2>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageOne.benefitDescription')}
-          </div>
-          <NavigationArrows
-            onBack={handleBack}
-            onNext={handleNext}
-            preventBack
-          />
-        </div>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 1: {
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <NotMedical />
-          <div className="header-wrapper">
-            <h1>{t('form.secondCommonConsent.pageThree.notMedicalCare')}</h1>
+          <div className="text-step-wrapper">
+            <NotMedical />
+            <div className="header-wrapper">
+              <h1>{t('form.secondCommonConsent.pageThree.notMedicalCare')}</h1>
+            </div>
+            <div className="form-text-content">
+              {t('form.secondCommonConsent.pageThree.description')}
+            </div>
+            <a href={t('form.secondCommonConsent.pageThree.link')}>
+              {t('form.secondCommonConsent.pageThree.link')}
+            </a>
+            <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageThree.description')}
-          </div>
-          <a href={t('form.secondCommonConsent.pageThree.link')}>
-            {t('form.secondCommonConsent.pageThree.link')}
-          </a>
-          <NavigationArrows onBack={handleBack} onNext={handleNext} />
-        </div>
+        </ResponsiveStepWrapper>
       )
     }
 
     case startingStep + 2: {
       return (
-        <div className="quiz-wrapper">
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <SageForm
-            title={t('form.secondCommonConsent.pageFour.title')}
-            errorMessage={errorMessage}
-            infoMessage={successMessage}
-            formId={FORM_IDS.WHAT_IS_THE_PURPOSE}
-            buttonText={
-              successMessage ? t('form.firstCommonConsent.next') : undefined
-            }
-            widgets={
-              whatIsThePurposeSelection ? widgetsWhatIsThePurpose : undefined
-            }
-            onSubmit={(event: any) => {
-              const selectedOption = event.formData.what_is_the_purpose
-
-              if (selectedOption && Object.keys(selectedOption).length === 0) {
-                setErrorMessage(t('form.chooseAnOption'))
-                setSuccessMessage('')
-              } else {
-                if (
-                  selectedOption ===
-                  WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH
-                ) {
-                  setSuccessMessage(
-                    t('form.secondCommonConsent.pageFour.answer'),
-                  )
-                  setErrorMessage('')
-                } else {
-                  setErrorMessage(t('form.secondCommonConsent.pageFour.answer'))
-                  setSuccessMessage('')
-                }
-                if (successMessage || whatIsThePurposeSelection) {
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
-                } else {
-                  setWhatIsThePurposeSelection(selectedOption)
-                  updateClientData(step, {
-                    [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
-                  })
-                }
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.secondCommonConsent.pageFour.title')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.WHAT_IS_THE_PURPOSE}
+              buttonText={
+                successMessage ? t('form.firstCommonConsent.next') : undefined
               }
-            }}
-          />
-        </div>
+              widgets={
+                whatIsThePurposeSelection ? widgetsWhatIsThePurpose : undefined
+              }
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.what_is_the_purpose
+
+                if (
+                  selectedOption &&
+                  Object.keys(selectedOption).length === 0
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption ===
+                    WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH
+                  ) {
+                    setSuccessMessage(
+                      t('form.secondCommonConsent.pageFour.answer'),
+                    )
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(
+                      t('form.secondCommonConsent.pageFour.answer'),
+                    )
+                    setSuccessMessage('')
+                  }
+                  if (successMessage || whatIsThePurposeSelection) {
+                    setStep((current: number) =>
+                      current < maxSteps ? current + 1 : current,
+                    )
+                  } else {
+                    setWhatIsThePurposeSelection(selectedOption)
+                    updateClientData(step, {
+                      [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
+                    })
+                  }
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 3: {
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <Exit />
-          <div className="header-wrapper">
-            <h1>{t('form.secondCommonConsent.pageFive.leaving')}</h1>
+          <div className="text-step-wrapper">
+            <Exit />
+            <div className="header-wrapper">
+              <h1>{t('form.secondCommonConsent.pageFive.leaving')}</h1>
+            </div>
+            <div className="form-text-content">
+              {t('form.secondCommonConsent.pageFive.description')}
+            </div>
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={handleNext}
+              preventBack
+            />
           </div>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageFive.description')}
-          </div>
-          <NavigationArrows
-            onBack={handleBack}
-            onNext={handleNext}
-            preventBack
-          />
-        </div>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 4: {
       return (
-        <div className="quiz-wrapper">
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <SageForm
-            title={t('form.secondCommonConsent.pageSix.title')}
-            errorMessage={errorMessage}
-            infoMessage={successMessage}
-            formId={FORM_IDS.WHICH_IS_CORRECT}
-            buttonText={
-              successMessage ? t('form.firstCommonConsent.next') : undefined
-            }
-            widgets={
-              whichIsCorrectSelection ? widgetsWhichIsCorrect : undefined
-            }
-            onSubmit={(event: any) => {
-              const selectedOption = event.formData.which_is_correct
-
-              if (selectedOption && Object.keys(selectedOption).length === 0) {
-                setErrorMessage(t('form.chooseAnOption'))
-                setSuccessMessage('')
-              } else {
-                if (
-                  selectedOption ===
-                  WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
-                ) {
-                  setSuccessMessage(
-                    t('form.secondCommonConsent.pageSix.answer'),
-                  )
-                  setErrorMessage('')
-                } else {
-                  setErrorMessage(t('form.secondCommonConsent.pageSix.answer'))
-                  setSuccessMessage('')
-                }
-
-                if (successMessage || whichIsCorrectSelection) {
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
-                } else {
-                  setWhichIsCorrectSelection(selectedOption)
-                  updateClientData(step, {
-                    [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
-                  })
-                }
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.secondCommonConsent.pageSix.title')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.WHICH_IS_CORRECT}
+              buttonText={
+                successMessage ? t('form.firstCommonConsent.next') : undefined
               }
-            }}
-          />
-        </div>
+              widgets={
+                whichIsCorrectSelection ? widgetsWhichIsCorrect : undefined
+              }
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.which_is_correct
+
+                if (
+                  selectedOption &&
+                  Object.keys(selectedOption).length === 0
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption ===
+                    WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
+                  ) {
+                    setSuccessMessage(
+                      t('form.secondCommonConsent.pageSix.answer'),
+                    )
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(
+                      t('form.secondCommonConsent.pageSix.answer'),
+                    )
+                    setSuccessMessage('')
+                  }
+
+                  if (successMessage || whichIsCorrectSelection) {
+                    setStep((current: number) =>
+                      current < maxSteps ? current + 1 : current,
+                    )
+                  } else {
+                    setWhichIsCorrectSelection(selectedOption)
+                    updateClientData(step, {
+                      [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
+                    })
+                  }
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 5: {
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <Envelope />
-          <div className="header-wrapper">
-            <h1>{t('form.secondCommonConsent.pageSeven.contact')}</h1>
+          <div className="text-step-wrapper">
+            <Envelope />
+            <div className="header-wrapper">
+              <h1>{t('form.secondCommonConsent.pageSeven.contact')}</h1>
+            </div>
+            <div className="form-text-content">
+              {t('form.secondCommonConsent.pageSeven.description')}
+            </div>
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={handleNext}
+              preventBack
+            />
           </div>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageSeven.description')}
-          </div>
-          <NavigationArrows
-            onBack={handleBack}
-            onNext={handleNext}
-            preventBack
-          />
-        </div>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 6: {
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <Summary />
-          <div className="header-wrapper">
-            <h1>{t('form.secondCommonConsent.pageEight.summary')}</h1>
+          <div className="text-step-wrapper">
+            <Summary />
+            <div className="header-wrapper">
+              <h1>{t('form.secondCommonConsent.pageEight.summary')}</h1>
+            </div>
+            <div className="form-text-content">
+              {t('form.secondCommonConsent.pageEight.description')}
+            </div>
+            <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-          <div className="form-text-content">
-            {t('form.secondCommonConsent.pageEight.description')}
-          </div>
-          <NavigationArrows onBack={handleBack} onNext={handleNext} />
-        </div>
+        </ResponsiveStepWrapper>
       )
     }
 
     case startingStep + 7:
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="header-wrapper">
-            <h1>{t('form.consentSignature.title')}</h1>
-          </div>
-          <h3>
-            {t('form.consentSignature.pleaseCheck.text1')}{' '}
-            <b>{t('form.consentSignature.pleaseCheck.check')}</b>
-            {t('form.consentSignature.pleaseCheck.if')}{' '}
-            <b>{t('form.consentSignature.pleaseCheck.agree')}</b>{' '}
-            {t('form.consentSignature.pleaseCheck.takePart')}
-          </h3>
-          <span className="consent-wrapper">
-            <input
-              type="checkbox"
-              id="consented"
-              value="consented"
-              onClick={() => setConsented(prev => !prev)}
-            />
-            <div>
-              <b>{t('form.consentSignature.agreement')}</b>
+          <div className="text-step-wrapper">
+            <LogoNoText />
+            <div className="header-wrapper">
+              <h1>{t('form.consentSignature.title')}</h1>
             </div>
-          </span>
+            <h3>
+              {t('form.consentSignature.pleaseCheck.text1')}{' '}
+              <b>{t('form.consentSignature.pleaseCheck.check')}</b>
+              {t('form.consentSignature.pleaseCheck.if')}{' '}
+              <b>{t('form.consentSignature.pleaseCheck.agree')}</b>{' '}
+              {t('form.consentSignature.pleaseCheck.takePart')}
+            </h3>
+            <span className="consent-wrapper">
+              <input
+                type="checkbox"
+                id="consented"
+                value="consented"
+                onClick={() => setConsented(prev => !prev)}
+              />
+              <div>
+                <b>{t('form.consentSignature.agreement')}</b>
+              </div>
+            </span>
 
-          <h2>{moment().locale(i18next.language).format('MMMM Do, YYYY')}</h2>
+            <h2>{moment().locale(i18next.language).format('MMMM Do, YYYY')}</h2>
 
-          <fieldset className="consent-signature">
-            <legend>{t('form.consentSignature.fullName')}</legend>
-            <input
-              type="text"
-              value={signatureName}
-              onChange={e => {
-                setSignatureName(e.target.value)
-              }}
-            ></input>
-          </fieldset>
+            <fieldset className="consent-signature">
+              <legend>{t('form.consentSignature.fullName')}</legend>
+              <input
+                type="text"
+                value={signatureName}
+                onChange={e => {
+                  setSignatureName(e.target.value)
+                }}
+              ></input>
+            </fieldset>
 
-          <Button
-            type="button"
-            variant="contained"
-            fullWidth
-            color="primary"
-            onClick={() => signConsent()}
-            disabled={!consented || signatureName.length < 5}
-          >
-            {t('form.submit')}
-          </Button>
-        </div>
+            <Button
+              type="button"
+              variant="contained"
+              fullWidth
+              color="primary"
+              onClick={() => signConsent()}
+              disabled={!consented || signatureName.length < 5}
+            >
+              {t('form.submit')}
+            </Button>
+          </div>
+        </ResponsiveStepWrapper>
       )
 
     case startingStep + 8: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <RankedChoice
@@ -457,13 +483,13 @@ function SecondCommonConsentSection({
               updateClientData={updateClientData}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
 
     case maxSteps: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <RankedChoiceSummary
@@ -472,7 +498,7 @@ function SecondCommonConsentSection({
               updateClientData={updateClientData}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
 

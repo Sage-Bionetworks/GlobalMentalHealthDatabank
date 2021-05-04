@@ -23,7 +23,6 @@ import PrivacyPolicy from './components/static/PrivacyPolicy'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
-import GridLayout from './components/layout/GridLayout'
 import { theme } from './theme'
 import './styles/style.scss'
 
@@ -132,12 +131,10 @@ function App() {
                             props.location.search,
                           )
                           return (
-                            <GridLayout>
-                              <Login
-                                {...props}
-                                searchParams={searchParamsProps as any}
-                              />
-                            </GridLayout>
+                            <Login
+                              {...props}
+                              searchParams={searchParamsProps as any}
+                            />
                           )
                         }}
                       ></Route>

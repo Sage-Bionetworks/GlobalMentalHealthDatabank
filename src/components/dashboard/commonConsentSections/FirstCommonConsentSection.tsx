@@ -8,6 +8,7 @@ import SageForm from '../../form/SageForm'
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 import { useTranslation } from 'react-i18next'
 import NavigationArrows from '../../common/NavigationArrows'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 
 type FirstCommonConsentProps = {
   step: number
@@ -87,156 +88,171 @@ function FirstCommonConsentSection({
   switch (step) {
     case 1:
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <LogoNoText />
-          <div className="header-wrapper">
-            <h1>{t('form.firstCommonConsent.whatAreWeStudying')}</h1>
+          <div className="text-step-wrapper">
+            <LogoNoText />
+            <div className="header-wrapper">
+              <h1>{t('form.firstCommonConsent.whatAreWeStudying')}</h1>
+            </div>
+            <h2>{t('form.firstCommonConsent.getAnswers')}</h2>
+            <ul>
+              <li>{t('form.firstCommonConsent.section1')}</li>
+              <li>{t('form.firstCommonConsent.section2')}</li>
+            </ul>
+            <div>
+              {t('form.firstCommonConsent.section3.section1')}{' '}
+              <a className="dashboard-link" href="/dashboard">
+                {t('form.firstCommonConsent.section3.link')}
+              </a>{' '}
+              {t('form.firstCommonConsent.section3.section2')}{' '}
+            </div>
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={handleNext}
+              preventBack
+            />
           </div>
-          <h2>{t('form.firstCommonConsent.getAnswers')}</h2>
-          <ul>
-            <li>{t('form.firstCommonConsent.section1')}</li>
-            <li>{t('form.firstCommonConsent.section2')}</li>
-          </ul>
-          <div>
-            {t('form.firstCommonConsent.section3.section1')}{' '}
-            <a className="dashboard-link" href="/dashboard">
-              {t('form.firstCommonConsent.section3.link')}
-            </a>{' '}
-            {t('form.firstCommonConsent.section3.section2')}{' '}
-          </div>
-          <NavigationArrows
-            onBack={handleBack}
-            onNext={handleNext}
-            preventBack
-          />
-        </div>
+        </ResponsiveStepWrapper>
       )
 
     case 2:
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <Questions />
-          <div className="header-wrapper">
-            <h1>{t('form.firstCommonConsent.whatWillYouAsk')}</h1>
+          <div className="text-step-wrapper">
+            <Questions />
+            <div className="header-wrapper">
+              <h1>{t('form.firstCommonConsent.whatWillYouAsk')}</h1>
+            </div>
+            <div>
+              <h2>{t('form.firstCommonConsent.step1')}</h2>{' '}
+            </div>
+            <div>
+              <h2>{t('form.firstCommonConsent.step2')}</h2>
+            </div>
+            <div>
+              <h2>{t('form.firstCommonConsent.step3')}</h2>{' '}
+            </div>
+            <ul>
+              <li>{t('form.firstCommonConsent.week1')}</li>
+              <li>{t('form.firstCommonConsent.week2')}</li>
+              <li>{t('form.firstCommonConsent.also')}</li>
+            </ul>
+            <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-          <div>
-            <h2>{t('form.firstCommonConsent.step1')}</h2>{' '}
-          </div>
-          <div>
-            <h2>{t('form.firstCommonConsent.step2')}</h2>
-          </div>
-          <div>
-            <h2>{t('form.firstCommonConsent.step3')}</h2>{' '}
-          </div>
-          <ul>
-            <li>{t('form.firstCommonConsent.week1')}</li>
-            <li>{t('form.firstCommonConsent.week2')}</li>
-            <li>{t('form.firstCommonConsent.also')}</li>
-          </ul>
-          <NavigationArrows onBack={handleBack} onNext={handleNext} />
-        </div>
+        </ResponsiveStepWrapper>
       )
 
     case 3:
       return (
-        <div className="quiz-wrapper">
+        <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <SageForm
-            title={t('form.firstCommonConsent.quiz')}
-            errorMessage={errorMessage}
-            infoMessage={successMessage}
-            formId={FORM_IDS.HOW_TO_PARTICIPATE}
-            buttonText={
-              successMessage ? t('form.firstCommonConsent.next') : undefined
-            }
-            widgets={howToParticipateSelection ? widgets : undefined}
-            onSubmit={(event: any) => {
-              const selectedOption = event.formData.how_to_participate
-
-              if (successMessage || howToParticipateSelection) {
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
-                )
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.firstCommonConsent.quiz')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.HOW_TO_PARTICIPATE}
+              buttonText={
+                successMessage ? t('form.firstCommonConsent.next') : undefined
               }
+              widgets={howToParticipateSelection ? widgets : undefined}
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.how_to_participate
 
-              if (selectedOption && Object.keys(selectedOption).length === 0) {
-                setErrorMessage(t('form.chooseAnOption'))
-                setSuccessMessage('')
-              } else {
-                if (
-                  selectedOption.participate_option ===
-                  PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS
-                ) {
-                  setSuccessMessage(t('form.firstCommonConsent.answer'))
-                  setErrorMessage('')
-                } else {
-                  setErrorMessage(t('form.firstCommonConsent.answer'))
-                  setSuccessMessage('')
+                if (successMessage || howToParticipateSelection) {
+                  setStep((current: number) =>
+                    current < maxSteps ? current + 1 : current,
+                  )
                 }
-                setHowToParticipateSelection(selectedOption.participate_option)
-                updateClientData(step, {
-                  [FORM_IDS.HOW_TO_PARTICIPATE]:
+
+                if (
+                  selectedOption &&
+                  Object.keys(selectedOption).length === 0
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption.participate_option ===
+                    PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS
+                  ) {
+                    setSuccessMessage(t('form.firstCommonConsent.answer'))
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(t('form.firstCommonConsent.answer'))
+                    setSuccessMessage('')
+                  }
+                  setHowToParticipateSelection(
                     selectedOption.participate_option,
-                })
-              }
-            }}
-          />
-        </div>
+                  )
+                  updateClientData(step, {
+                    [FORM_IDS.HOW_TO_PARTICIPATE]:
+                      selectedOption.participate_option,
+                  })
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
       )
 
     case 4:
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <Padlock />
-          <div className="header-wrapper">
-            <h1>{t('form.firstCommonConsent.dataCollection')}</h1>
+          <div className="text-step-wrapper">
+            <Padlock />
+            <div className="header-wrapper">
+              <h1>{t('form.firstCommonConsent.dataCollection')}</h1>
+            </div>
+            <h2>{t('form.firstCommonConsent.yourData')}</h2>
+            <ul>
+              <li>{t('form.firstCommonConsent.yourDataApp')}</li>
+              <li>{t('form.firstCommonConsent.yourDataPhone')}</li>
+            </ul>
+            <div>
+              <p>{t('form.firstCommonConsent.weEncrypt')}</p>
+              <p>{t('form.firstCommonConsent.weTransfer')}</p>
+              <p>{t('form.firstCommonConsent.replaceName')} </p>
+              <p>{t('form.firstCommonConsent.combineData')}</p>
+              <p>{t('form.firstCommonConsent.storeCloud')}</p>
+            </div>
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={handleNext}
+              preventBack
+            />
           </div>
-          <h2>{t('form.firstCommonConsent.yourData')}</h2>
-          <ul>
-            <li>{t('form.firstCommonConsent.yourDataApp')}</li>
-            <li>{t('form.firstCommonConsent.yourDataPhone')}</li>
-          </ul>
-          <div>
-            <p>{t('form.firstCommonConsent.weEncrypt')}</p>
-            <p>{t('form.firstCommonConsent.weTransfer')}</p>
-            <p>{t('form.firstCommonConsent.replaceName')} </p>
-            <p>{t('form.firstCommonConsent.combineData')}</p>
-            <p>{t('form.firstCommonConsent.storeCloud')}</p>
-          </div>
-          <NavigationArrows
-            onBack={handleBack}
-            onNext={handleNext}
-            preventBack
-          />
-        </div>
+        </ResponsiveStepWrapper>
       )
 
     case 5:
       return (
-        <div className="text-step-wrapper">
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
-          <Network />
-          <div className="header-wrapper">
-            <h1>{t('form.firstCommonConsent.transferAndRights')}</h1>
+          <div className="text-step-wrapper">
+            <Network />
+            <div className="header-wrapper">
+              <h1>{t('form.firstCommonConsent.transferAndRights')}</h1>
+            </div>
+            <p>{t('form.firstCommonConsent.transferAway')}</p>{' '}
+            <p>{t('form.firstCommonConsent.transferToUS')}</p>
+            <h2>{t('form.firstCommonConsent.yourRights')}</h2>
+            <ul>
+              <li>{t('form.firstCommonConsent.requestData')}</li>
+              <li>{t('form.firstCommonConsent.correctData')}</li>
+            </ul>
+            <div>
+              {t('form.firstCommonConsent.ifCitizenEU')}{' '}
+              <a className="dashboard-link" href="/dashboard">
+                {t('form.firstCommonConsent.ifCitizenEULink')}
+              </a>
+            </div>
+            <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-          <p>{t('form.firstCommonConsent.transferAway')}</p>{' '}
-          <p>{t('form.firstCommonConsent.transferToUS')}</p>
-          <h2>{t('form.firstCommonConsent.yourRights')}</h2>
-          <ul>
-            <li>{t('form.firstCommonConsent.requestData')}</li>
-            <li>{t('form.firstCommonConsent.correctData')}</li>
-          </ul>
-          <div>
-            {t('form.firstCommonConsent.ifCitizenEU')}{' '}
-            <a className="dashboard-link" href="/dashboard">
-              {t('form.firstCommonConsent.ifCitizenEULink')}
-            </a>
-          </div>
-          <NavigationArrows onBack={handleBack} onNext={handleNext} />
-        </div>
+        </ResponsiveStepWrapper>
       )
   }
   return null

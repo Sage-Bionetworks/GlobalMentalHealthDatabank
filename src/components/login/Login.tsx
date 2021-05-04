@@ -15,7 +15,7 @@ import TextField from '@material-ui/core/TextField/TextField'
 
 import { RouteComponentProps } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert/Alert'
-import { Card, CardContent, CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core'
 
 import uk from '../../assets/flags/uk.svg'
 import ind from '../../assets/flags/ind.svg'
@@ -26,6 +26,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
@@ -137,15 +138,15 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   }
 
   return (
-    <div className="login-wrapper">
-      {isLoading && (
-        <div className="text-center">
-          <CircularProgress color="primary" />
-        </div>
-      )}
-      {!isLoading && (
-        <Card>
-          <CardContent>
+    <ResponsiveStepWrapper variant="card">
+      <div className="login-wrapper">
+        {isLoading && (
+          <div className="text-center">
+            <CircularProgress color="primary" />
+          </div>
+        )}
+        {!isLoading && (
+          <div className="quiz-wrapper">
             {(!isCodeSent || error) && (
               <div>
                 <h2 className="text-center">{t('common.logIn')}</h2>
@@ -247,10 +248,10 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                 </Button>
               </div>
             )}
-          </CardContent>
-        </Card>
-      )}
-    </div>
+          </div>
+        )}
+      </div>
+    </ResponsiveStepWrapper>
   )
 }
 

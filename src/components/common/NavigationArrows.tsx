@@ -12,10 +12,13 @@ function NavigationArrows({ preventBack, onNext, onBack }: Props) {
   return (
     <div className="arrow-buttons-wrapper">
       <ArrowButtonLeft
-        style={{ visibility: preventBack ? 'hidden' : 'visible' }}
+        style={{
+          visibility: preventBack ? 'hidden' : 'visible',
+          cursor: 'pointer',
+        }}
         onClick={onBack}
       />
-      <ArrowButtonRight onClick={onNext} />
+      <ArrowButtonRight onClick={onNext} style={{ cursor: 'pointer' }} />
     </div>
   )
 }
