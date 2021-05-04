@@ -75,7 +75,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   switch (step) {
     case 1:
       return (
-        <ResponsiveStepWrapper>
+        <ResponsiveStepWrapper variant="card">
           <div className="quiz-wrapper">
             <div className="header-wrapper">
               <h1>{t('eligibility.thankYouForYourInterest')}</h1>
