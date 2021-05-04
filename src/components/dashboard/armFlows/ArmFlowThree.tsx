@@ -1,10 +1,9 @@
 import React from 'react'
 import ProgressBar from '../../progressBar/ProgressBar'
-import { ReactComponent as ArrowButtonLeft } from '../../../assets/arrow_button_left.svg'
-import { ReactComponent as ArrowButtonRight } from '../../../assets/arrow_button_right.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
+import NavigationArrows from '../../common/NavigationArrows'
 
 type ArmFlowThreeProps = {
   step: number
@@ -39,24 +38,17 @@ function ArmFlowThree({
           <li>{t('form.armThree.subText5')}</li>
           <li>{t('form.armThree.subText6')}</li>
         </ul>
-
-        <div className="arrow-buttons-wrapper">
-          <ArrowButtonLeft
-            onClick={() =>
-              setStep((current: number) =>
-                current > 1 ? current - 1 : current,
-              )
-            }
-          />
-          <ArrowButtonRight
-            onClick={() => {
-              setStep((current: number) =>
-                current < maxSteps ? current + 1 : current,
-              )
-              updateClientData(step)
-            }}
-          />
-        </div>
+        <NavigationArrows
+          onBack={() =>
+            setStep((current: number) => (current > 1 ? current - 1 : current))
+          }
+          onNext={() => {
+            setStep((current: number) =>
+              current < maxSteps ? current + 1 : current,
+            )
+            updateClientData(step)
+          }}
+        />
       </div>
     </ResponsiveStepWrapper>
   )
