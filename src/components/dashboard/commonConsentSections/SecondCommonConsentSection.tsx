@@ -19,7 +19,7 @@ import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
 import { useSessionDataState } from '../../../AuthContext'
 import NavigationArrows from '../../common/NavigationArrows'
-import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
@@ -197,7 +197,7 @@ function SecondCommonConsentSection({
   switch (step) {
     case startingStep: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <RisksBenefits width="75" />
@@ -218,12 +218,12 @@ function SecondCommonConsentSection({
               preventBack
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 1: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <NotMedical />
@@ -238,13 +238,13 @@ function SecondCommonConsentSection({
             </a>
             <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
 
     case startingStep + 2: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -296,12 +296,12 @@ function SecondCommonConsentSection({
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 3: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Exit />
@@ -317,12 +317,12 @@ function SecondCommonConsentSection({
               preventBack
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 4: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -375,12 +375,12 @@ function SecondCommonConsentSection({
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 5: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Envelope />
@@ -396,12 +396,12 @@ function SecondCommonConsentSection({
               preventBack
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
     case startingStep + 6: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Summary />
@@ -413,13 +413,13 @@ function SecondCommonConsentSection({
             </div>
             <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
 
     case startingStep + 7:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <LogoNoText />
@@ -469,12 +469,12 @@ function SecondCommonConsentSection({
               {t('form.submit')}
             </Button>
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case startingStep + 8: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <RankedChoice
@@ -483,13 +483,13 @@ function SecondCommonConsentSection({
               updateClientData={updateClientData}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
 
     case maxSteps: {
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <RankedChoiceSummary
@@ -498,7 +498,7 @@ function SecondCommonConsentSection({
               updateClientData={updateClientData}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     }
 

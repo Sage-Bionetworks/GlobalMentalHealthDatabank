@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
 import { FORM_IDS } from '../../../components/form/types'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
-import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import NavigationArrows from '../../common/NavigationArrows'
 
 type ArmFlowFourProps = {
@@ -60,7 +60,7 @@ function ArmFlowFour({
   switch (step) {
     case startingStep:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Globe />
@@ -84,12 +84,12 @@ function ArmFlowFour({
               />
             </div>
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case startingStep + 1:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -113,12 +113,12 @@ function ArmFlowFour({
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case startingStep + 2:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -143,12 +143,12 @@ function ArmFlowFour({
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case startingStep + 3:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -170,7 +170,7 @@ function ArmFlowFour({
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
     default:
       return null

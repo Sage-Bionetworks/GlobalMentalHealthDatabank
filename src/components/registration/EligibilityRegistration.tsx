@@ -7,7 +7,7 @@ import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { useTranslation } from 'react-i18next'
-import ElegibilityStepWrapper from './ElegibilityStepWrapper'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -48,7 +48,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
     <div>
       {!isEligible && <Eligibility setCountryCode={setCountryCode} />}
       {isEligible && !phoneNumber && (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <Registration
             countryCode={countryCode}
             onSuccessFn={(
@@ -65,10 +65,10 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
               })
             }}
           />
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )}
       {isEligible && phoneNumber && (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <div className="quiz-wrapper">
             <SignInWithCode
               loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
@@ -78,7 +78,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
               countryCode={countryCode}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )}
     </div>
   )

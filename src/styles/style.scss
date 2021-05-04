@@ -9,6 +9,7 @@
 @import 'components/ranking-choice';
 @import 'components/topnav';
 @import 'components/download-app';
+@import 'components/responsive-step';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -371,37 +372,6 @@ input[type='radio'] {
 
 .text-center {
   text-align: center;
-}
-
-.elegibilityWrapper {
-  margin: 20px 9px 60px 9px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 20px 25px;
-  @include breakpoint('md') {
-    margin: 0;
-    background-color: transparent;
-    padding: 0;
-    box-shadow: none;
-    .top-bg {
-      width: 100%;
-      height: 225px;
-      background-color: #3e8f92;
-    }
-    .elegibilityContent {
-      margin-top: -175px;
-      .elegibilityContentInner {
-        max-width: 500px;
-        margin: 0 auto 60px auto;
-        .text-step-wrapper {
-          background-color: #fcfcfc;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        }
-      }
-      .progressBarHeader {
-        color: #fcfcfc;
-      }
-    }
-  }
 }
 
 @media (max-width: 767px) {

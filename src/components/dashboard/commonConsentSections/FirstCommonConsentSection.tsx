@@ -8,7 +8,7 @@ import SageForm from '../../form/SageForm'
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
 import { useTranslation } from 'react-i18next'
 import NavigationArrows from '../../common/NavigationArrows'
-import ElegibilityStepWrapper from '../../registration/ElegibilityStepWrapper'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 
 type FirstCommonConsentProps = {
   step: number
@@ -88,7 +88,7 @@ function FirstCommonConsentSection({
   switch (step) {
     case 1:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <LogoNoText />
@@ -113,12 +113,12 @@ function FirstCommonConsentSection({
               preventBack
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case 2:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Questions />
@@ -141,12 +141,12 @@ function FirstCommonConsentSection({
             </ul>
             <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case 3:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
             <SageForm
@@ -195,12 +195,12 @@ function FirstCommonConsentSection({
               }}
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case 4:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Padlock />
@@ -225,12 +225,12 @@ function FirstCommonConsentSection({
               preventBack
             />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
 
     case 5:
       return (
-        <ElegibilityStepWrapper>
+        <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <Network />
@@ -252,7 +252,7 @@ function FirstCommonConsentSection({
             </div>
             <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
-        </ElegibilityStepWrapper>
+        </ResponsiveStepWrapper>
       )
   }
   return null
