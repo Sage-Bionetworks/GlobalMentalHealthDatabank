@@ -74,7 +74,6 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
                 handleLoggedIn(result)
               }
               phoneNumber={phoneNumber}
-              countryCode={countryCode}
             />
           </div>
         </ResponsiveStepWrapper>

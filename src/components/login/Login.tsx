@@ -235,7 +235,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                   handleLoggedIn(result)
                 }
                 phoneNumber={phone}
-                countryCode={countryCode}
               />
             )}
             {!isCodeSent && (
