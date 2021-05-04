@@ -1,24 +1,20 @@
+import React from 'react'
+
 export const schemaAgeVerify = {
-  type: 'object',
-  properties: {
-    age_verify: {
-      title: ' ',
-      type: 'object',
-      properties: {
-        age_range: {
-          type: 'boolean',
-          title: ' ',
-          enumNames: ['Yes', 'No'],
-        },
-      },
-    },
-  },
+  type: 'string',
 }
 
 export const uiSchemaAgeVerify = {
-  age_verify: {
-    age_range: {
-      'ui:widget': 'radio',
-    },
+  'ui:widget': props => {
+    return (
+      <input
+        type="number"
+        placeholder="Input Age..."
+        className="age-input"
+        value={props.value}
+        required={props.required}
+        onChange={event => props.onChange(event.target.value)}
+      />
+    )
   },
 }

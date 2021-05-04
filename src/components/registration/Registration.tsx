@@ -41,7 +41,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     whereDoYouLive,
     doYouHaveAnAndroid,
     understandEnglish,
-    betweenAgeRange,
+    age,
+    gender,
   } = useElegibility()
   const { t } = useTranslation()
 
@@ -105,7 +106,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         whereDoYouLive,
         doYouHaveAnAndroid,
         understandEnglish,
-        betweenAgeRange,
+        age,
+        gender,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],

@@ -1,9 +1,9 @@
 export const COUNTRIES = {
-  UK: 0,
-  IN: 1,
-  ZA: 2,
-  OTHER: 3,
-  US: 4,
+  UK: 'UK',
+  IN: 'IN',
+  SOUTH_AFRICA: 'ZA',
+  OTHER: 'OTHER',
+  US: 'US',
 }
 
 export const PARTICIPATE_OPTIONS = {
@@ -42,4 +42,5 @@ export const FORM_IDS = {
   WOULD_LIKE_TO_VOLUNTEER: 'wouldYouLikeToVolunteer',
   WHAT_IS_THE_PURPOSE: 'whatIsThePurpose',
   WHICH_IS_CORRECT: 'whichIsCorrect',
+  GENDER: 'gender',
 }

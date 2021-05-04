@@ -13,8 +13,10 @@ type ElegibilityState = {
   setDoYouHaveAnAndroid: (state: string) => void
   understandEnglish: boolean
   setUnderstandEnglish: (state: boolean) => void
-  betweenAgeRange: boolean
-  setBetweenAgeRange: (state: boolean) => void
+  age: number
+  setAge: (state: number) => void
+  gender: object
+  setGender: (state: object) => void
 }
 
 const ElegibilityContext = React.createContext<ElegibilityState>({
@@ -30,8 +32,10 @@ const ElegibilityContext = React.createContext<ElegibilityState>({
   setDoYouHaveAnAndroid: (state: string) => {},
   understandEnglish: false,
   setUnderstandEnglish: (state: boolean) => {},
-  betweenAgeRange: false,
-  setBetweenAgeRange: (state: boolean) => {},
+  age: 0,
+  setAge: (state: number) => {},
+  gender: {},
+  setGender: (state: object) => {},
 })
 
 export const useElegibility = () => React.useContext(ElegibilityContext)
@@ -47,7 +51,8 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
   const [whereDoYouLive, setWhereDoYouLive] = useState('')
   const [doYouHaveAnAndroid, setDoYouHaveAnAndroid] = useState('')
   const [understandEnglish, setUnderstandEnglish] = useState(false)
-  const [betweenAgeRange, setBetweenAgeRange] = useState(false)
+  const [age, setAge] = useState(0)
+  const [gender, setGender] = useState({})
 
   const value = {
     isEligible,
@@ -62,8 +67,10 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
     setDoYouHaveAnAndroid,
     understandEnglish,
     setUnderstandEnglish,
-    betweenAgeRange,
-    setBetweenAgeRange,
+    age,
+    setAge,
+    gender,
+    setGender,
   }
 
   return (
