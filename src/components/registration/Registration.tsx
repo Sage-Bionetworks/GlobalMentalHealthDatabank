@@ -106,6 +106,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         understandEnglish,
         age,
         gender,
+        consented: false,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],

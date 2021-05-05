@@ -55,10 +55,19 @@ label.block--dark {
   padding: 100px 50px;
 }
 
+.input--padded--flags {
+  padding: 20px 0 40px 0;
+  display: flex;
+  .MuiTextField-root {
+    height: 56px;
+  }
+}
+
 .phone-flag {
   &.MuiOutlinedInput-root {
     border-radius: 0;
     right: -1px;
+    height: 56px;
     div {
       margin-bottom: -2px;
     }

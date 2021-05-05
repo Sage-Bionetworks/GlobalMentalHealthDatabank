@@ -17,6 +17,9 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
   const sessionData = useSessionDataState()
   const { token } = sessionData
 
+  const handleBack = () =>
+    setStep((current: number) => (current > 1 ? current - 1 : current))
+
   const handleNext = async () => {
     if (token) {
       setStep((current: number) => current + 1)
@@ -26,7 +29,10 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
         skipRanking: true,
       })
       const { clientData } = response.data
-      await HealthService.sendHealthData(token, clientData)
+      await HealthService.sendHealthData(token, {
+        rankedChoiceFinal: cardTitles,
+        rankedChoiceInitial: clientData.rankedChoiceInitial,
+      })
     }
   }
 
@@ -39,7 +45,7 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
           &gt; {card.title}
         </p>
       ))}
-      <NavigationArrows preventBack onNext={handleNext} />
+      <NavigationArrows onBack={handleBack} onNext={handleNext} />
     </div>
   )
 }
