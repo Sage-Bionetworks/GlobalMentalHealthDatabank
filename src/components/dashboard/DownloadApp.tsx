@@ -4,7 +4,7 @@ import { useSessionDataState } from '../../AuthContext'
 
 function DownloadApp() {
   const { token } = useSessionDataState()
-  const playStoreLink = process.env.REACT_APP_DOWNLOAD_APP_URL
+  const playStoreLink = process.env.REACT_APP_PLAY_STORE_URL
   const deepLink = `${process.env.REACT_APP_DEEPLINK_URL}${token}`
   return (
     <div className="download-app">
