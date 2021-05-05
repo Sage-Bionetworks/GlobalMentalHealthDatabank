@@ -21,8 +21,8 @@ function ArmFlowThree({
   const { t } = useTranslation()
   return (
     <ResponsiveStepWrapper>
+      <ProgressBar step={step} maxSteps={maxSteps} />
       <div className="text-step-wrapper">
-        <ProgressBar step={step} maxSteps={maxSteps} />
         <Globe />
         <div className="header-wrapper">
           <h1>{t('form.armThree.title')}</h1>
