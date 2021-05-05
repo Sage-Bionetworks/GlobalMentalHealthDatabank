@@ -7,7 +7,7 @@ export const schemaWhatIsThePurpose = {
       enum: [
         'To participate in research',
         'To receive medical care',
-        'To obtain medial insurance',
+        'To obtain medical insurance',
       ],
     },
   },
