@@ -348,18 +348,14 @@ input[type='radio'] {
       content: '';
       background: #e2f5f5;
       padding: 30px;
-      width: calc(100% - 15px);
+      width: calc(100% - 20px);
       position: absolute;
       left: 50%;
       right: 0;
       transform: translateX(-50%);
       margin-top: -16px;
-      @media (min-width: 768px) {
-        width: calc(66.666667% - 15px);
-      }
-
-      @media (min-width: 1024px) {
-        width: calc(50% - 15px);
+      @include breakpoint('md') {
+        width: 500px;
       }
     }
   }
@@ -389,11 +385,6 @@ input[type='radio'] {
   &.padded {
     padding: 40px 0 10px 0;
   }
-}
-
-.input--padded--flags {
-  padding: 20px 0 40px 0;
-  display: flex;
 }
 
 .demoForm {
