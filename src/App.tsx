@@ -161,10 +161,10 @@ function App() {
                         <DownloadApp />
                       </Route>
                       <Route path="/home">
-                        <Home token={token || null}></Home>
+                        <Home />
                       </Route>
                       <Route path="/">
-                        <Home token={token || null}></Home>
+                        <Home />
                       </Route>
                     </Switch>
                   </TopNav>
