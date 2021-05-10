@@ -1,8 +1,6 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core'
 
-const fallbackFonts = ['sans-serif']
-
-export const systemFonts = ['Lato', ...fallbackFonts].join(',')
+export const systemFonts = ['Lato', 'sans-serif'].join(',')
 
 export const theme = responsiveFontSizes(
   createMuiTheme({
@@ -111,4 +109,8 @@ export const theme = responsiveFontSizes(
       },
     },
   }),
+  {
+    factor: 4,
+    variants: ['h1', 'h2', 'h3', 'h4', 'h5', 'body1'],
+  },
 )
