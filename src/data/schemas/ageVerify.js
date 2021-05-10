@@ -10,7 +10,7 @@ export const uiSchemaAgeVerify = {
       <input
         type="number"
         placeholder="Input Age..."
-        className="age-input"
+        className="custom-input age"
         value={props.value}
         required={props.required}
         onChange={event => props.onChange(event.target.value)}

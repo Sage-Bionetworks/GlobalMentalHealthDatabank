@@ -456,16 +456,13 @@ function SecondCommonConsentSection({
 
             <h2>{moment().locale(i18next.language).format('MMMM Do, YYYY')}</h2>
 
-            <fieldset className="consent-signature">
-              <legend>{t('form.consentSignature.fullName')}</legend>
-              <input
-                type="text"
-                value={signatureName}
-                onChange={e => {
-                  setSignatureName(e.target.value)
-                }}
-              ></input>
-            </fieldset>
+            <input
+              className="custom-input signature"
+              type="text"
+              value={signatureName}
+              placeholder={t('form.consentSignature.fullName')}
+              onChange={e => setSignatureName(e.target.value)}
+            />
 
             <Button
               type="button"
