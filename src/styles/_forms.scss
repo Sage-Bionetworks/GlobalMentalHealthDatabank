@@ -84,12 +84,17 @@ label.block--dark {
   width: 25px;
 }
 
-.age-input {
+.custom-input {
   width: 100%;
   background: #ffffff;
   border: 1px solid #343f56;
   box-sizing: border-box;
   padding: 14px;
   font-size: 14px;
-  margin-bottom: 270px;
+  &.age {
+    margin-bottom: 270px;
+  }
+  &.signature {
+    margin-bottom: 95px;
+  }
 }
