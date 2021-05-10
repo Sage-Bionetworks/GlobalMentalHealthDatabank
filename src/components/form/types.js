@@ -14,7 +14,7 @@ export const PARTICIPATE_OPTIONS = {
 export const WHAT_IS_THE_PURPOSE_OPTIONS = {
   TO_PARTICIPATE_IN_RESEARCH: 'To participate in research',
   TO_RECEIVE_MEDICAL_CARE: 'To receive medical care',
-  TO_OBTAIN_MEDIAL_INSURANCE: 'To obtain medial insurance',
+  TO_OBTAIN_MEDICAL_INSURANCE: 'To obtain medical insurance',
 }
 export const WHICH_IS_CORRECT_OPTIONS = {
   CONTINUE_UNTIL_THE_END:

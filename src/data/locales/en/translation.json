@@ -28,7 +28,7 @@
   },
   "eligibility": {
     "begin": "Begin",
-    "thankYouForYourInterest": "Thank you for your interest in the MindKind study!",
+    "thankYouForYourInterest": "Thank you for your interest in the MindKind Study!",
     "weHaveAFewQuestions": "We have a few questions for you to help get us started.",
     "howDidYouHear": "How did you hear about us?",
     "benefit": "Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?",
@@ -55,7 +55,7 @@
       "section1": "Are young people willing to use an app to collect information (data) about their mental health? If so, will they use it for 3 months?",
       "section2": "Are young people willing to share that data for health research? If so, under what conditions?",
       "section3": {
-        "section1": "This study is funded by The Wellcome Foundation, and lead by Dr.Lara Mangravite in the United States. It is being conducted under the supervision of scientists in South Africa, India, and the United Kingdom. You can",
+        "section1": "This study is funded by The Wellcome Foundation, and led by Dr. Lara Mangravite in the United States. It is being conducted under the supervision of scientists in South Africa, India, and the United Kingdom. You can",
         "link": "learn more about our team",
         "section2": "of researchers on the study website"
       },
@@ -150,7 +150,7 @@
         "title": "What is the purpose of this study?",
         "toParticipate": "To participate in research",
         "toRecieveMedicalCare": "To receive medical care",
-        "toObtainMedicalInsurance": "To obtain medial insurance",
+        "toObtainMedicalInsurance": "To obtain medical insurance",
         "answer": "The purpose of this study is to participate in research."
       },
       "pageFive": {
@@ -166,11 +166,11 @@
       },
       "pageSeven": {
         "contact": "Contact",
-        "description": "If you have questions you can reach us by email at MindKindSupport@sagebionetworks.org or call <study phone number>. \n\nWe may want to reach out to you in the future. You can opt out of these follow-up notifications at any time. "
+        "description": "If you have questions you can reach us by email at MindKindSupport@sagebionetworks.org. \n\nWe may want to reach out to you in the future. You can opt out of these follow-up notifications at any time. "
       },
       "pageEight": {
         "summary": "Summary",
-        "description": "The purpose of the MindKind Study is to understand whether, and how, young adults are willing to use a mobile App to self-manage and share their data regarding their mental health. \n\nI can choose whether or not to participate. If I choose to participate, I can change my mind at any time. \n\nThis is a research study, not medical care. My responses will not be monitored in real time. \n\nI am not expected to personally benefit from the study. \n\nI will use the MindKind Study App to respond to questions about my mental health and wellbeing and can contribute data directly from my phone.\n\nMy information will be transferred to the United States and stored securely. \n\nResearchers will use my information for research. If I give my permission, they may share data with other researchers for future research. \n\nI have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.\n\nI can contact the study team with any questions or concerns related to the MindKind study."
+        "description": "The purpose of the MindKind Study is to understand whether, and how, young adults are willing to use a mobile App to self-manage and share their data regarding their mental health. \n\nI can choose whether or not to participate. If I choose to participate, I can change my mind at any time. \n\nThis is a research study, not medical care. My responses will not be monitored in real time. \n\nI am not expected to personally benefit from the study. \n\nI will use the MindKind Study App to respond to questions about my mental health and wellbeing and can contribute data directly from my phone.\n\nMy information will be transferred to the United States and stored securely. \n\nResearchers will use my information for research. If I give my permission, they may share data with other researchers for future research. \n\nI have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.\n\nI can contact the study team with any questions or concerns related to the MindKind Study."
       },
       "ranking": {
         "title": "Voting Screen",
@@ -192,7 +192,7 @@
         "agree": "agree",
         "takePart": "to take part:"
       },
-      "agreement": "I have read and understand the information presented in this consent process. All of my questions have been answered. I freely and willingly choose to participate in the MindKind study. By signing this consent, I have not given up any of my legal rights.",
+      "agreement": "I have read and understand the information presented in this consent process. All of my questions have been answered. I freely and willingly choose to participate in the MindKind Study. By signing this consent, I have not given up any of my legal rights.",
       "fullName": "Full Name of adult participant:"
     },
     "youAreInStep": "You are in step",
