@@ -28,6 +28,8 @@ type RegistrationProps = {
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
+const LIVED_EXPERIENCE_YES = 'lived_experience_yes'
+const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
@@ -93,6 +95,10 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         dataGroups.push(FLOW_OPTIONS.FOUR as UserDataGroup)
         break
     }
+    if (everBenefitedFromTreatment)
+      dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
+    else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
+
     const data: RegistrationData = {
       phone: state.phone.value
         ? makePhone(state.phone.value, state.countryCode.value)
@@ -110,7 +116,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],
-      dataGroups: dataGroups,
+      dataGroups,
     }
     const endPoint = {
       PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
