@@ -10,19 +10,62 @@
   font-weight: 500;
   font-size: 10px;
   line-height: 14px;
-  position: relative;
+  .footer__disclaimer {
+    padding: 15px 25px;
+    border-bottom: 1px solid #535d71;
+    width: 100%;
+    @include breakpoint('md') {
+      padding: 10px 90px;
+    }
+  }
+  .footer__bottom {
+    display: flex;
+    padding: 0 25px 15px;
+    width: 100%;
+    div:last-child {
+      padding-left: 25px;
+    }
+    @include breakpoint('md') {
+      padding: 0 90px 15px;
+    }
+  }
   .footer__container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .footer__texts {
-    padding: 35px 15px 15px 10px;
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
+  .footer__column {
+    flex: 50%;
     flex-direction: column;
+    @include breakpoint('md') {
+      flex: initial;
+    }
+    &.mobile {
+      display: block;
+      @include breakpoint('md') {
+        display: none;
+      }
+    }
+    &.desktop {
+      display: none;
+      @include breakpoint('md') {
+        display: block;
+      }
+    }
+    .separator {
+      margin: 0 5px;
+    }
+  }
+  .footer__toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    column-count: 2;
+    padding: 10px 25px;
+    @include breakpoint('md') {
+      flex-direction: row;
+      padding: 10px 90px;
+    }
   }
   .footer__navlink {
     color: $secondary-font-color;
@@ -30,8 +73,16 @@
     font-weight: 500;
     font-size: 10px;
     line-height: 14px;
-    margin-left: 30px;
     padding-bottom: 7px;
+    margin-right: 15px;
+
+    &.bottom {
+      margin-right: 0;
+    }
+
+    @include breakpoint('md') {
+      text-decoration: underline;
+    }
     &:hover {
       text-decoration: none;
       color: $secondary-font-color;
@@ -40,6 +91,9 @@
       text-decoration: none;
       color: $secondary-font-color;
     }
+    &.underlined {
+      text-decoration: underline;
+    }
   }
   @include breakpoint('md') {
     min-height: 100px;
@@ -47,11 +101,6 @@
     justify-content: flex-start;
     .footer__navlink {
       font-size: 1.2rem;
-    }
-    .footer__texts {
-      width: 55%;
-      order: 1;
-      line-height: 16px;
     }
   }
 }

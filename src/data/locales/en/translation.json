@@ -200,18 +200,23 @@
     "chooseAnOption": "You must choose an option"
   },
   "footer": {
-    "copyright": "Copyright Mindkind 2021",
+    "copyright": "Copyright © 2021, Sage Bionetworks",
     "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
     "dashboard": "Dashboard",
-    "about": "About",
+    "about": "About the Study",
     "home": "Home",
     "team": "Research team",
     "faq": "FAQs",
-    "contact": " Contact",
-    "privacy": "Privacy Policies",
+    "contact": "Contact",
+    "crisis": "If you are in a Crisis",
+    "privacy": "Privacy Policy",
+    "dataRights": "Data Rights",
     "settings": "Account Settings",
     "login": "Sign in",
-    "join": "Join Us",
+    "join": "Join the Study",
+    "consent1": "Consent: Language 1",
+    "consent2": "Consent: Language 2",
+    "consent3": "Consent: Language 3",
     "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
   },
   "home": {
