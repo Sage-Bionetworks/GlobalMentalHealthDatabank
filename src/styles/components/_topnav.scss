@@ -1,6 +1,9 @@
 .topnav__title {
   padding-top: 11px;
   padding-left: 15px;
+  @include breakpoint('lg') {
+    float: left;
+  }
 }
 .topnav__content {
   flex-grow: 1;
@@ -29,10 +32,17 @@
     text-decoration: none;
     color: #2e2e2e;
   }
+  &.logout {
+    text-decoration: underline;
+  }
+  &.centered {
+    font-weight: 700;
+  }
+  @include breakpoint('lg') {
+    white-space: nowrap;
+  }
 }
-.topnav__link--active {
-  border-bottom: 4px solid #0084ff;
-}
+
 .topnav__button--full {
   white-space: nowrap;
   min-width: 100px;
@@ -70,16 +80,15 @@
 
 .mobile-menu__item {
   font-size: 18px;
-  font-weight: bold;
-  line-height: 30px;
   font-style: normal;
-  padding: 10px 0px 10px 40px;
-  color: $font-color;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0em;
 }
 .mobile-menu__separator {
-  height: 2px;
-  margin: 20px 0px;
-  background-color: $font-color;
+  &.MuiDivider-root {
+    margin: 10px 0px;
+  }
 }
 
 .tool-bar {
@@ -87,10 +96,34 @@
   justify-content: space-between;
   color: #2e2e2e;
   background-color: white;
-  min-height: 80px;
+  min-height: 65px;
   filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.15));
 }
 
 .menu__button {
   margin-right: 16px;
+}
+
+.topnav-center-section {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topnav-right-section {
+  float: right;
+}
+
+.select-pdf {
+  background-color: white;
+  &.MuiListItem-root.Mui-selected {
+    background-color: white;
+  }
+  .MuiSelect-select:focus {
+    background-color: white;
+  }
+  .MuiSelect-select.MuiSelect-select {
+    padding-right: 0;
+  }
 }

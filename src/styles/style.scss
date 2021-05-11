@@ -395,10 +395,8 @@ input[type='radio'] {
   text-align: center;
 }
 
-@media (max-width: 767px) {
-  .MuiDrawer-paper {
-    width: 80%;
-  }
+.MuiDrawer-paper {
+  width: 90%;
 }
 
 .data-regulation-wrapper {

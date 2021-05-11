@@ -1,25 +1,18 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Logout from '../login/Logout'
 import btnClose from '../../assets/btn_close_dark.svg'
-import {
-  ListItem,
-  List,
-  Divider,
-  Hidden,
-  Button,
-  Link,
-} from '@material-ui/core'
+import { ListItem, List, Divider, Hidden, Link } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { useSessionDataState } from '../../AuthContext'
-import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
-import i18n from '../../i18n'
+import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Burger } from '../../assets/burger.svg'
+import { ReactComponent as ChevronDownLight } from '../../assets/chevron-down-light.svg'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 type TopNavProps = {
   token: string | undefined
@@ -28,11 +21,17 @@ type TopNavProps = {
 }
 
 export const TopNav: React.FunctionComponent<TopNavProps> = props => {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const { language } = i18n
-  const sessionData = useSessionDataState()
-
   const { t } = useTranslation()
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const OPTIONS = [
+    t('topnav.english'),
+    t('topnav.southAfrica'),
+    t('topnav.india'),
+  ]
+  const [
+    selectedPDFLanguageDownload,
+    setSelectedPDFLanguageDownload,
+  ] = useState(OPTIONS[0] || '')
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -42,7 +41,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
     <div>
       <div className="drawer__header">
         <Link onClick={handleDrawerToggle} className="drawer__close-button">
-          <img className="drawer__close-icon " src={btnClose} alt="close"></img>
+          <img className="drawer__close-icon" src={btnClose} alt="close" />
         </Link>
       </div>
       <List>
@@ -56,17 +55,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
         <Divider className="mobile-menu__separator" />
-        {props.token && sessionData.consented && (
-          <NavLink
-            to="/dashboard"
-            onClick={handleDrawerToggle}
-            className="topnav__link"
-          >
-            <ListItem button className="mobile-menu__item">
-              {t('topnav.dashboard')}
-            </ListItem>
-          </NavLink>
-        )}
+
         {props.token && (
           <NavLink
             to="/logout"
@@ -82,6 +71,35 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </ListItem>
           </NavLink>
         )}
+
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            {t('topnav.aboutStudy')}
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            {t('topnav.researchTeam')}
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            {t('topnav.ifInCrisis')}
+          </ListItem>
+        </NavLink>
+
         {!props.token && (
           <NavLink
             to="/eligibility"
@@ -89,7 +107,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="topnav__link"
           >
             <ListItem button className="mobile-menu__item">
-              {t('common.joinUs')}
+              {t('common.joinStudy')}
             </ListItem>
           </NavLink>
         )}
@@ -104,83 +122,108 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </ListItem>
           </NavLink>
         )}
+        <Divider className="mobile-menu__separator" />
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            {t('topnav.consent1')}
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            {t('topnav.consent2')}
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            {t('topnav.consent3')}
+          </ListItem>
+        </NavLink>
       </List>
     </div>
   )
 
   const fullScreenNavBar = (
-    <div style={{ display: language === 'es' ? 'flex' : 'block' }}>
-      <NavLink
-        to="/home"
-        className="topnav__link--full"
-        style={{ whiteSpace: 'nowrap' }}
-        activeClassName="topnav__link--active"
-      >
-        {t('topnav.home')}
-      </NavLink>
-      {props.token && sessionData.consented && (
-        <NavLink
-          to="/dashboard"
-          className="topnav__link--full"
-          activeClassName="topnav__link--active"
+    <div>
+      <div className="topnav-center-section">
+        <NavLink to="/home" className="topnav__link--full centered">
+          {t('topnav.home')}
+        </NavLink>
+        <NavLink to="/home" className="topnav__link--full centered">
+          {t('topnav.about')}
+        </NavLink>
+        <NavLink to="/home" className="topnav__link--full centered">
+          {t('topnav.research')}
+        </NavLink>
+        <NavLink to="/home" className="topnav__link--full centered">
+          {t('topnav.crisis')}
+        </NavLink>
+      </div>
+      <div className="topnav-right-section">
+        <Select
+          className="select-pdf"
+          value={selectedPDFLanguageDownload}
+          onChange={(e: any) => setSelectedPDFLanguageDownload(e.target.value)}
+          disableUnderline
+          IconComponent={() => <ChevronDownLight />}
         >
-          {t('topnav.dashboard')}
-        </NavLink>
-      )}
-      {props.token && (
-        <NavLink
-          to="/logout"
-          className="topnav__link--full"
-          activeClassName="topnav__link--active"
-        >
-          <Logout
-            onLogout={() => {
-              props.logoutCallbackFn(undefined, '', false)
-            }}
-          ></Logout>
-        </NavLink>
-      )}
-      {!props.token && (
-        <NavLink to="/eligibility" className="topnav__link--full">
-          <Button
-            style={{ marginLeft: '60px' }}
-            color="primary"
-            variant="outlined"
-            className="topnav__button--full"
-          >
-            {t('common.joinUs')}
-          </Button>
-        </NavLink>
-      )}
-      {!props.token && (
-        <NavLink to="/login" className="topnav__link--full">
-          <Button
-            style={{ marginLeft: '60px' }}
-            color="primary"
-            variant="outlined"
-            className="topnav__link"
-          >
+          <MenuItem className="select-pdf" value={OPTIONS[0]}>
+            {t('topnav.english')}
+          </MenuItem>
+          <MenuItem className="select-pdf" value={OPTIONS[1]}>
+            {t('topnav.southAfrica')}
+          </MenuItem>
+          <MenuItem className="select-pdf" value={OPTIONS[2]}>
+            {t('topnav.india')}
+          </MenuItem>
+        </Select>
+
+        {!props.token && (
+          <NavLink to="/eligibility" className="topnav__link--full">
+            {t('common.joinStudy')}
+          </NavLink>
+        )}
+        {!props.token && (
+          <NavLink to="/login" className="topnav__link--full">
             {t('topnav.login')}
-          </Button>
-        </NavLink>
-      )}
+          </NavLink>
+        )}
+
+        {props.token && (
+          <NavLink to="/logout" className="topnav__link--full logout">
+            <Logout
+              onLogout={() => {
+                props.logoutCallbackFn(undefined, '', false)
+              }}
+            ></Logout>
+          </NavLink>
+        )}
+      </div>
     </div>
   )
+
   return (
     <div>
       {props.showTopNavigator ? (
         <div>
           <div className="no-print">
-            <Toolbar className="tool-bar" style={{ minHeight: '80px' }}>
-              <div>
-                <Typography variant="h6" noWrap className="topnav__title">
-                  <NavLink to="/home">
-                    <MindKindLogo />
-                  </NavLink>
-                </Typography>
-              </div>
-
-              {/* show hamburger menu on xs and sm, but full nav bar on md and up */}
+            <Toolbar className="tool-bar">
+              <Typography variant="h6" noWrap className="topnav__title">
+                <NavLink to="/home">
+                  <MindKindLogoDark />
+                </NavLink>
+              </Typography>
               <Hidden lgUp>
                 <IconButton
                   color="inherit"
@@ -189,7 +232,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
                   onClick={handleDrawerToggle}
                   className="menu__button"
                 >
-                  <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+                  <Burger />
                 </IconButton>
               </Hidden>
               <Hidden mdDown>{fullScreenNavBar}</Hidden>
