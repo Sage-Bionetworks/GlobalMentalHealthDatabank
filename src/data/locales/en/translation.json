@@ -238,6 +238,48 @@
     "text17": "If you are asked to provide a sample, we will test the sample for antibodies related to COVID-19 infection, using an antibody test approved by the New York State Department of Health. We will share your test results with you, along with information about what those results may mean. As we learn more about the impact of COVID-19 across study participants, we will share regular updates with the broader scientific and patient community. We may also ask if you are interested in joining other related studies. For instance, some participants may choose to be notified of opportunities to donate plasma and help those still fighting for survival from COVID-19.",
     "text18": "Together, we can fight COVID-19."
   },
+  "contact": {
+    "title1": "If you are in a crisis",
+    "subtitle1": "If you are in crisis, or feel that you are going to hurt yourself or others, please contact your healthcare provider. Additional resources provided below.",
+    "help": {
+      "get": "Get help in your region",
+      "find": "Find Help"
+    },
+    "localResources": {
+      "india": {
+        "title": "Local Resources in India",
+        "text1": "iCallHelpline provides free counseling.",
+        "text2": "The iCallHelpline is available Monday-Saturday, 10am-8pm. Call 022-25521111",
+        "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
+        "link": {
+          "text": "Visit Website",
+          "url": ""
+        }
+      },
+      "southAfrica": {
+        "title": "Local Resources in South Africa",
+        "text1": "SADAG is available for emotional support.",
+        "text2": "The SADAG hotline is available 24/7 to provide assistance.",
+        "text3": "Call 0800456789",
+        "text4": "You can also email SADAG at Zane@sadag.org for information about counseling.",
+        "link": {
+          "text": "Visit Website",
+          "url": ""
+        }
+      },
+      "unitedKingdom": {
+        "title": "Local Resources in the UK",
+        "text1": " Samaritans UK is available for emotional support.",
+        "text2": "The Samaritans UK hotline is available 24/7.",
+        "text3": " For English, call 116 123 For Welsh, call l 0808 164 0123",
+        "text4": " You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
+        "link": {
+          "text": "Visit Website",
+          "url": ""
+        }
+      }
+    }
+  },
   "privacy": {
     "title": "Privacy Policy",
     "text1": "<0>The COVID Recovery Corps study (the “Study”) is a collaboration between Sage Bionetworks and Columbia University. The Study is sponsored by the Chan Zuckerberg Initiative. The goal of the Study is to collect information from participants who have been diagnosed or believe they have had COVID-19. Researchers will use this information to better understand how the body fights COVID-19. </0> <1> The Study is committed to protecting your online privacy. This Privacy Policy explains the personal information we collect about you through the Website (defined below), how we use and share it, and the choices you have regarding this information. </1> <2> This Privacy Policy applies to visitors to <1>www.covidrecoverycorps.org</1> (the “Website”), including participants in the Study. If you don’t agree with this Privacy Policy, please do not access the Website or participate in the Study. </2>",
