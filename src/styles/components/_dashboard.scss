@@ -11,13 +11,13 @@
 
     margin: 0 auto;
     p {
-      font-family: 'Lato';
+      font-family: Lato;
       font-style: normal;
       font-weight: normal;
       font-size: 1.6rem;
       line-height: 2.6rem;
       margin-bottom: 2rem;
-      color: #2a2a2a;
+      color: $font-color;
       &:last-child {
         margin-bottom: 0;
       }
@@ -112,7 +112,7 @@
         justify-content: space-between;
 
         .title {
-          font-family: 'Lato';
+          font-family: Lato;
           font-style: normal;
           font-weight: bold;
           font-size: 12px;
@@ -132,7 +132,7 @@
           font-size: 1.8rem;
           line-height: 2.6rem;
 
-          color: #2a2a2a;
+          color: $font-color;
         }
         .graphics {
           width: 5.6rem;

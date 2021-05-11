@@ -21,6 +21,7 @@ import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPage
 import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
+import DataRegulation from './components/static/DataRegulation'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
@@ -158,6 +159,9 @@ function App() {
                       <Route path="/privacypolicy">
                         <PrivacyPolicy />
                       </Route>
+                      <Route path="/dataregulation">
+                        <DataRegulation />
+                      </Route>
                       <Route path="/download">
                         <DownloadApp />
                       </Route>
@@ -165,10 +169,10 @@ function App() {
                         <Contact />
                       </Route>
                       <Route path="/home">
-                        <Home token={token || null}></Home>
+                        <Home />
                       </Route>
                       <Route path="/">
-                        <Home token={token || null}></Home>
+                        <Home />
                       </Route>
                     </Switch>
                   </TopNav>
