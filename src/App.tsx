@@ -172,7 +172,7 @@ function App() {
                       </Route>
                     </Switch>
                   </TopNav>
-                  <Footer token={token} />
+                  <Footer />
                 </div>
               </Router>
             </div>
