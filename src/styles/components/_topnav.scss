@@ -56,7 +56,7 @@
   width: 32px;
 }
 .drawer__close-icon {
-  color: #2a2a2a;
+  color: $font-color;
 }
 .drawer__header {
   display: flex;
@@ -74,12 +74,12 @@
   line-height: 30px;
   font-style: normal;
   padding: 10px 0px 10px 40px;
-  color: #2a2a2a;
+  color: $font-color;
 }
 .mobile-menu__separator {
   height: 2px;
   margin: 20px 0px;
-  background-color: #2a2a2a;
+  background-color: $font-color;
 }
 
 .tool-bar {
