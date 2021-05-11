@@ -82,7 +82,10 @@ export const Footer: React.FunctionComponent = () => {
                 {t('footer.privacy')}
               </NavLink>
               <span className="separator">|</span>
-              <NavLink to="/home" className="footer__navlink underlined bottom">
+              <NavLink
+                to="/dataregulation"
+                className="footer__navlink underlined bottom"
+              >
                 {t('footer.dataRights')}
               </NavLink>
             </div>
