@@ -296,10 +296,21 @@
     "linkSent": "We just sent a link to: "
   },
   "topnav": {
+    "aboutStudy": "About the Study",
     "about": "About",
+    "researchTeam": "Research Team",
+    "research": "Research",
+    "ifInCrisis": "If You are in Crisis",
+    "crisis": "Crisis",
     "policy": "Privacy Policy",
     "dashboard": "Dashboard",
     "login": "Sign in",
-    "home": "Home"
+    "home": "Home",
+    "consent1": "Consent: Language Name",
+    "consent2": "Consent: Language Name",
+    "consent3": "Consent: Language Name",
+    "english": "English",
+    "southAfrica": "South Africa",
+    "india": "India"
   }
 }
