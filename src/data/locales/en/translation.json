@@ -263,6 +263,19 @@
     "text21": "We may update our Privacy Policy from time to time to clarify how we collect, process, store, use and disclose information. We want to be as transparent as possible about the changes we make to our Privacy Policy.",
     "text22": "COVID Recovery Corps. Appendix C_V2.0. 17.June.2020"
   },
+  "dataRegulation": {
+    "title": "EEA - General Data Protection Regulation Addendum",
+    "text1": "As required by the law of the European Union, and its member countries, additional information is being provided to you as a research participant.",
+    "text2": "For the purpose of EU law, particularly the General Data Protection Regulation (GDPR), the legal basis for the collection and use of your data is your consent as well as the public interest in the research being conducted.",
+    "text3": "If you are habitually located in the EEA, you have certain rights related to the processing of the information we collect from you.  While some of these rights apply generally, certain rights apply only in certain limited circumstances.  We will comply with your request to exercise your rights unless we have compelling legitimate grounds to deny your request or we cannot comply with your request for legal reasons. We will respond to your request within 1 month of receiving it.",
+    "text4": "You have the right to access your data. You can write to us at any time asking to know what personal information is being held where and for what purpose.",
+    "text5": "You have the right to rectification. If there is an error in the information we collect from you, you have the right to make a request to have it fixed. You can write to us to ask for any incorrect personal data about you to be corrected.",
+    "text6": "You have the right to erasure. You may ask us to delete or remove some or all of your personal data at any time.",
+    "text7": "You have the right to restrict processing. At any time, you can withdraw your consent to our processing of your Personal Data.",
+    "text8": "You have the right to data portability. You can request a copy of your data in usable format. ",
+    "text9": "You have the right to object. You can withdraw from providing data to the App at any time.",
+    "text10": "If you have questions about your rights and choices or would like more information about your rights and choices, you can email privacyofficer@sagebionetworks.org."
+  },
   "registration": {
     "text1": "Create account",
     "text2": "I don't have an email account",
