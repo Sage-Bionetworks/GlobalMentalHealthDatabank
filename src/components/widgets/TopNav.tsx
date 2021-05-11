@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Logout from '../login/Logout'
 import btnClose from '../../assets/btn_close_dark.svg'
 import {
@@ -17,9 +15,10 @@ import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { useSessionDataState } from '../../AuthContext'
-import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
+import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import i18n from '../../i18n'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Burger } from '../../assets/burger.svg'
 
 type TopNavProps = {
   token: string | undefined
@@ -175,7 +174,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
               <div>
                 <Typography variant="h6" noWrap className="topnav__title">
                   <NavLink to="/home">
-                    <MindKindLogo />
+                    <MindKindLogoDark />
                   </NavLink>
                 </Typography>
               </div>
@@ -189,7 +188,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
                   onClick={handleDrawerToggle}
                   className="menu__button"
                 >
-                  <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+                  <Burger />
                 </IconButton>
               </Hidden>
               <Hidden mdDown>{fullScreenNavBar}</Hidden>
