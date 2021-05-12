@@ -378,6 +378,11 @@ input[type='radio'] {
   text-align: center;
 }
 
+.dashboard--loader {
+  text-align: center;
+  transform: translate(0, 100%);
+}
+
 .MuiDrawer-paper {
   width: 90%;
 }

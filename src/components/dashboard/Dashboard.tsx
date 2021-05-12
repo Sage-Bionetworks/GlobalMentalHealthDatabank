@@ -45,7 +45,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
 
   if ((isLoading || !userInfo) && !error) {
     return (
-      <div className="text-center">
+      <div className="dashboard--loader">
         <CircularProgress color="primary" />
       </div>
     )
