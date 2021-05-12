@@ -1,6 +1,5 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
-import { Button, Grid } from '@material-ui/core'
+import { Typography, Button, Grid } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Butterfly1 } from '../../assets/home/butterfly1.svg'
