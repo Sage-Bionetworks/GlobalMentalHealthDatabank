@@ -42,7 +42,7 @@ export const theme = responsiveFontSizes(
       },
       body2: {
         fontSize: '1.4rem',
-        marginBottom: '20px',
+        lineHeight: '20px',
       },
       subtitle1: {
         fontSize: '1.2rem',

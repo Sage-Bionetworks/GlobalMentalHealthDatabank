@@ -22,34 +22,6 @@ body {
   background: #efefef;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: Lato, Tahoma, Verdana, sans-serif;
-  color: $font-color;
-  font-size: 30px;
-  font-weight: normal;
-  line-height: 30px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-h3 {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.04em;
-}
-
 .print-only {
   display: none !important;
 }
@@ -59,17 +31,6 @@ h3 {
   h2:first-child {
     margin-top: 2rem;
   }
-}
-
-p {
-  color: black;
-  font-family: Lato, Arial, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
 }
 
 a {
@@ -161,15 +122,9 @@ div.btnVerticallySpaced {
 
 ul {
   padding-inline-start: 10px;
-  @include breakpoint('md') {
-    padding-inline-start: 15px;
-  }
   li {
     list-style-type: none;
     padding-bottom: 10px;
-    @include breakpoint('md') {
-      padding-bottom: 15px;
-    }
   }
 }
 
@@ -399,4 +354,8 @@ input[type='radio'] {
 .data-regulation-butterflies {
   left: 80%;
   position: relative;
+}
+
+.icon-wrapper {
+  margin-bottom: 20px;
 }

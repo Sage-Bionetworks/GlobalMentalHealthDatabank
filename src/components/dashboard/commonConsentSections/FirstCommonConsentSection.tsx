@@ -91,17 +91,18 @@ function FirstCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <LogoNoText />
-            <div className="header-wrapper">
-              <Typography variant="h4">
-                {t('form.firstCommonConsent.whatAreWeStudying')}
-              </Typography>
+            <div className="icon-wrapper">
+              <LogoNoText />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h6">
-                {t('form.firstCommonConsent.getAnswers')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.firstCommonConsent.whatAreWeStudying')}
+            </Typography>
+
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.getAnswers')}
+            </Typography>
+
             <ul>
               <li>
                 <Typography variant="body2">
@@ -116,12 +117,10 @@ function FirstCommonConsentSection({
             </ul>
             <div>
               <Typography variant="body2">
-                {t('form.firstCommonConsent.section3.section1')}
-              </Typography>
-              <a className="dashboard-link" href="/dashboard">
-                {t('form.firstCommonConsent.section3.link')}
-              </a>
-              <Typography variant="body2">
+                {t('form.firstCommonConsent.section3.section1')}{' '}
+                <a className="dashboard-link" href="/dashboard">
+                  {t('form.firstCommonConsent.section3.link')}
+                </a>{' '}
                 {t('form.firstCommonConsent.section3.section2')}
               </Typography>
             </div>
@@ -139,23 +138,37 @@ function FirstCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <Questions />
-            <div className="header-wrapper">
-              <h1>{t('form.firstCommonConsent.whatWillYouAsk')}</h1>
+            <div className="icon-wrapper">
+              <Questions />
             </div>
-            <div>
-              <h2>{t('form.firstCommonConsent.step1')}</h2>{' '}
-            </div>
-            <div>
-              <h2>{t('form.firstCommonConsent.step2')}</h2>
-            </div>
-            <div>
-              <h2>{t('form.firstCommonConsent.step3')}</h2>{' '}
-            </div>
+            <Typography variant="h3">
+              {t('form.firstCommonConsent.whatWillYouAsk')}
+            </Typography>
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.step1')}
+            </Typography>
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.step2')}
+            </Typography>
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.step3')}
+            </Typography>
             <ul>
-              <li>{t('form.firstCommonConsent.week1')}</li>
-              <li>{t('form.firstCommonConsent.week2')}</li>
-              <li>{t('form.firstCommonConsent.also')}</li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.week1')}{' '}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.week2')}{' '}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.also')}{' '}
+                </Typography>
+              </li>
             </ul>
             <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
