@@ -141,11 +141,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="login-wrapper">
-        {isLoading && (
-          <div className="text-center">
-            <CircularProgress color="primary" />
-          </div>
-        )}
         {!isLoading && (
           <div className="quiz-wrapper">
             {(!isCodeSent || error) && (
@@ -214,17 +209,23 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                       </div>
                     )}
                     <div className="text-center">
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        size="large"
-                        type="submit"
-                        disabled={!loginType}
-                        onSubmit={handleLogin}
-                        className="wide-button"
-                      >
-                        {t('common.logIn')}
-                      </Button>
+                      {isLoading ? (
+                        <div className="text-center">
+                          <CircularProgress color="primary" />
+                        </div>
+                      ) : (
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          size="large"
+                          type="submit"
+                          disabled={!loginType}
+                          onSubmit={handleLogin}
+                          className="wide-button"
+                        >
+                          {t('common.logIn')}
+                        </Button>
+                      )}
                     </div>
                   </div>
                   {error && <Alert severity="error">{error}</Alert>}
