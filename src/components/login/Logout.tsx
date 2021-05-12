@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Typography from '@material-ui/core/Typography'
+import { Typography } from '@material-ui/core'
 import { Redirect } from 'react-router'
 import { useSessionDataDispatch } from '../../AuthContext'
 import { useTranslation } from 'react-i18next'

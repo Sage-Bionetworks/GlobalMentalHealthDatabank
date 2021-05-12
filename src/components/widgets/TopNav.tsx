@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Typography from '@material-ui/core/Typography'
+import { Typography } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import Logout from '../login/Logout'
 import btnClose from '../../assets/btn_close_dark.svg'
