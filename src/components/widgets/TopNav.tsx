@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
-import { Typography } from '@material-ui/core'
+import {
+  Typography,
+  ListItem,
+  List,
+  Divider,
+  Hidden,
+  Link,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Select,
+  MenuItem,
+} from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import Logout from '../login/Logout'
 import btnClose from '../../assets/btn_close_dark.svg'
-import { ListItem, List, Divider, Hidden, Link } from '@material-ui/core'
-import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
-import Toolbar from '@material-ui/core/Toolbar'
 import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Burger } from '../../assets/burger.svg'
 import { ReactComponent as ChevronDownLight } from '../../assets/chevron-down-light.svg'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
 
 type TopNavProps = {
   token: string | undefined
