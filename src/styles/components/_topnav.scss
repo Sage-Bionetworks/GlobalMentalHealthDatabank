@@ -95,7 +95,7 @@
   display: flex;
   justify-content: space-between;
   color: #2e2e2e;
-  background-color: white;
+  background-color: $primary-bg-color;
   min-height: 65px;
   filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.15));
 }
@@ -116,12 +116,12 @@
 }
 
 .select-pdf {
-  background-color: white;
+  background-color: $primary-bg-color;
   &.MuiListItem-root.Mui-selected {
-    background-color: white;
+    background-color: $primary-bg-color;
   }
   .MuiSelect-select:focus {
-    background-color: white;
+    background-color: $primary-bg-color;
   }
   .MuiSelect-select.MuiSelect-select {
     padding-right: 0;

@@ -1,4 +1,5 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography'
 import { Button, Grid } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -18,13 +19,15 @@ export const Home: React.FunctionComponent = () => {
     <div className="home">
       <div className="home__container">
         <div className="home__title-container">
-          <h2 className="home__subtitle">{t('home.title1')}</h2>
-          <h1 className="home__title">
+          <Typography variant="h4" className="home__subtitle">
+            {t('home.title1')}
+          </Typography>
+          <Typography variant="h1" className="home__title">
             {t('home.title2-from-youth')}
             <span style={{ display: 'block' }}>
               {t('home.title2-for-health')}
             </span>
-          </h1>
+          </Typography>
         </div>
         <HeartOverlay className="heart-svg-bg-top" />
       </div>
@@ -33,7 +36,9 @@ export const Home: React.FunctionComponent = () => {
           <div className="home__butterfly-text">
             <div className="home__section-container">
               <Book width="95" />
-              <div className="home__section-text">{t('home.text1')}</div>
+              <Typography variant="h4" className="home__section-text">
+                {t('home.text1')}
+              </Typography>
             </div>
           </div>
         </div>
@@ -42,7 +47,9 @@ export const Home: React.FunctionComponent = () => {
           <div className="home__butterfly-text">
             <div className="home__section-container">
               <Lifesaver width="95" />
-              <div className="home__section-text">{t('home.text2')}</div>
+              <Typography variant="h4" className="home__section-text">
+                {t('home.text2')}
+              </Typography>
             </div>
           </div>
         </div>
@@ -56,9 +63,12 @@ export const Home: React.FunctionComponent = () => {
           <div className="home__butterfly-text-container">
             <Butterflies className="butterflies-svg" />
             <div className="home__butterfly-text">
-              <div className="home__section2-text bottom-section">
-                <div>{t('home.text3')}</div>
-              </div>
+              <Typography
+                variant="h4"
+                className="home__section-text bottom-section"
+              >
+                {t('home.text3')}
+              </Typography>
             </div>
             <Grid container justify="center" alignItems="center">
               <NavLink to="/eligibility" className="home__nav-link">

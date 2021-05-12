@@ -91,7 +91,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
         <NavLink
-          to="/home"
+          to="/contact"
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -166,7 +166,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         <NavLink to="/home" className="topnav__link--full centered">
           {t('topnav.research')}
         </NavLink>
-        <NavLink to="/home" className="topnav__link--full centered">
+        <NavLink to="/contact" className="topnav__link--full centered">
           {t('topnav.crisis')}
         </NavLink>
       </div>

@@ -24,7 +24,7 @@ export const Footer: React.FunctionComponent = () => {
               <NavLink to="/home" className="footer__navlink">
                 {t('footer.team')}
               </NavLink>
-              <NavLink to="/home" className="footer__navlink">
+              <NavLink to="/contact" className="footer__navlink">
                 {t('footer.crisis')}
               </NavLink>
               <NavLink to="/eligibility" className="footer__navlink">
@@ -53,7 +53,7 @@ export const Footer: React.FunctionComponent = () => {
               <NavLink to="/home" className="footer__navlink">
                 {t('footer.team')}
               </NavLink>
-              <NavLink to="/home" className="footer__navlink">
+              <NavLink to="/contact" className="footer__navlink">
                 {t('footer.crisis')}
               </NavLink>
             </Toolbar>
