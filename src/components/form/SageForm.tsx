@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import { default as Form } from 'react-jsonschema-form'
 import Button from '@material-ui/core/Button'
 import Separator from '../static/Separator'
@@ -180,10 +181,11 @@ export default function SageForm({
   return (
     <>
       <div className="header-wrapper">
-        <h1>{title}</h1>
+        <Typography variant="h4">{title}</Typography>
       </div>
-      {subTitle && <h2>{subTitle}</h2>}
-
+      <div className="form-subtitle">
+        {subTitle && <Typography variant="h6">{subTitle}</Typography>}
+      </div>
       {errorMessage && (
         <div className="form-message error">
           <ErrorMessageIcon />

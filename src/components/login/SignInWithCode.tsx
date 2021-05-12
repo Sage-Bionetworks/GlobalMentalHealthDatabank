@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { Typography } from '@material-ui/core'
 import { APP_ID, ENDPOINT } from '../../types/types'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import Button from '@material-ui/core/Button/Button'
@@ -51,13 +51,19 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
       <div>
         <div className="text-left margin-top-std">
           <TextSent />
-          <p className="text-left padded">{t('signIn.SMSSent')}</p>
-          <p className="text-left ">{phoneNumber}</p>
+          <Typography className="text-left padded" variant="h4">
+            {t('signIn.SMSSent')}
+          </Typography>
+          <Typography className="text-left" variant="body2">
+            {phoneNumber}
+          </Typography>
           <Separator />
         </div>
         <form onSubmit={handleOnSubmit}>
           <div className="form-group">
-            <label htmlFor="smsCode">{t('signIn.enterCode')}</label>
+            <label htmlFor="smsCode">
+              <Typography variant="body2">{t('signIn.enterCode')}</Typography>
+            </label>
             <TextField
               name="code"
               type="code"

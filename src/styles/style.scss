@@ -79,11 +79,11 @@ a {
 }
 
 #root .margin-top-std {
-  margin-top: 4rem;
+  margin-top: 2.5rem;
 }
 
 #root .margin-bottom-std {
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 #root .wide-button {
@@ -92,24 +92,6 @@ a {
   letter-spacing: 0.04em;
   margin-bottom: 10px;
   width: 100%;
-}
-
-div.intro {
-  background-color: #0084ff;
-  color: #fff;
-  font-size: 1.6em;
-  line-height: 1.8rem;
-  padding: 3.2rem 4rem;
-
-  p,
-  span {
-    color: #fff;
-  }
-
-  h1:first-child,
-  h2:first-child {
-    margin-top: 4.8rem;
-  }
 }
 
 // if a button is in a link, do not decorate the text on hover
@@ -166,7 +148,7 @@ div.btnVerticallySpaced {
 }
 
 .progressBarWrapper {
-  padding: 10px 0 40px 0;
+  padding: 10px 0 20px 0;
   .MuiLinearProgress-colorPrimary {
     background-color: #eaebee;
     height: 10px;
@@ -187,8 +169,7 @@ ul {
 }
 
 .header-wrapper {
-  padding-bottom: 5px;
-  width: 75%;
+  width: 90%;
 }
 
 .arrow-buttons-wrapper {
@@ -240,6 +221,7 @@ fieldset {
 .radio > label > span {
   display: flex;
   margin-bottom: 15px;
+  font-size: 1.6rem;
 }
 
 input[type='checkbox'] {
@@ -362,8 +344,8 @@ input[type='radio'] {
   }
 }
 
-.form-group {
-  margin-bottom: 2rem;
+.form-subtitle {
+  margin: 20px 0;
 }
 
 .form-message {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
@@ -78,11 +78,15 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         <ResponsiveStepWrapper variant="card">
           <div className="quiz-wrapper">
             <div className="header-wrapper">
-              <h1>{t('eligibility.thankYouForYourInterest')}</h1>
+              <Typography variant="h4">
+                {t('eligibility.thankYouForYourInterest')}
+              </Typography>
             </div>
             <Separator />
             <div className="rejectionText">
-              {t('eligibility.weHaveAFewQuestions')}
+              <Typography variant="body2">
+                {t('eligibility.weHaveAFewQuestions')}
+              </Typography>
             </div>
             <Button
               color="primary"
@@ -396,10 +400,14 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
           <div className="header-wrapper">
-            <h1>{t('eligibility.thanks')}</h1>
+            <Typography variant="h4">{t('eligibility.thanks')}</Typography>
           </div>
           <Separator />
-          <div className="rejectionText">{t('eligibility.notElegible')}</div>
+          <div className="rejectionText">
+            <Typography variant="body2">
+              {t('eligibility.notElegible')}
+            </Typography>
+          </div>
           <NavLink to="/home">
             <Button
               color="primary"

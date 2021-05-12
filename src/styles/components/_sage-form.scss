@@ -5,16 +5,13 @@
     legend {
       display: none;
     }
-    span {
-      margin-left: 22px;
-    }
   }
 }
 
 .quiz-wrapper {
   @include breakpoint('md') {
     background-color: white;
-    padding: 20px 25px;
+    padding: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
@@ -22,7 +19,7 @@
 .text-step-wrapper {
   background: white;
   @include breakpoint('md') {
-    padding: 20px 25px;
+    padding: 30px;
   }
 }
 
@@ -31,14 +28,13 @@
     span {
       white-space: pre-line;
       display: flex;
-      margin-bottom: 5px;
+      font-size: 1.6rem;
     }
   }
 }
 
 .quiz-radio-wrapper {
   margin-top: 30px;
-  margin-left: 30px;
   display: flex;
 }
 

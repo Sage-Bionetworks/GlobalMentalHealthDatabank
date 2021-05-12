@@ -1,12 +1,16 @@
 .form-group {
-  margin-bottom: 4.5rem;
+  margin-top: -1rem;
+  margin-bottom: 3.2rem;
   label {
     margin-bottom: 10px;
+  }
+  .checkboxes {
+    margin-top: 20px;
   }
 }
 
 .input--padded {
-  padding: 15px 0 20px 0;
+  padding: 15px 0 85px 0;
 }
 
 .buttons--action {
@@ -92,7 +96,8 @@ label.block--dark {
   padding: 14px;
   font-size: 14px;
   &.age {
-    margin-bottom: 270px;
+    margin-top: 10px;
+    margin-bottom: 200px;
   }
   &.signature {
     margin-bottom: 95px;

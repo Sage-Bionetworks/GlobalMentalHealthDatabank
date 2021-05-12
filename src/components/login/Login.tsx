@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Typography } from '@material-ui/core'
 import {
   APP_ID,
   LoggedInUserData,
@@ -149,8 +150,9 @@ export const Login: React.FunctionComponent<LoginProps> = ({
           <div className="quiz-wrapper">
             {(!isCodeSent || error) && (
               <div>
-                <h2 className="text-center">{t('common.logIn')}</h2>
-
+                <Typography className="text-center" variant="h4">
+                  {t('common.logIn')}
+                </Typography>
                 <form onSubmit={handleLogin}>
                   <div>
                     {loginType === 'PHONE' && (
