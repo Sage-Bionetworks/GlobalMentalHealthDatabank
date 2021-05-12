@@ -2,6 +2,7 @@ import React from 'react'
 import EligibilityRegistration from './EligibilityRegistration'
 import TestRenderer from 'react-test-renderer'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { SessionDataProvider } from '../../AuthContext'
 
 test('renders EligibilityRegistration', () => {
   const routeComponentPropsMock = {
@@ -11,10 +12,12 @@ test('renders EligibilityRegistration', () => {
   }
   const testRenderer = TestRenderer.create(
     <Router>
-      <EligibilityRegistration
-        callbackFn={() => {}}
-        {...routeComponentPropsMock}
-      />
+      <SessionDataProvider>
+        <EligibilityRegistration
+          callbackFn={() => {}}
+          {...routeComponentPropsMock}
+        />
+      </SessionDataProvider>
     </Router>,
   )
   const testInstance = testRenderer.root
