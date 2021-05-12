@@ -1,9 +1,10 @@
 import React from 'react'
-import ProgressBar from '../../progressBar/ProgressBar'
+import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import NavigationArrows from '../../common/NavigationArrows'
+import ProgressBar from '../../progressBar/ProgressBar'
 
 type ArmFlowOneProps = {
   step: number
@@ -25,12 +26,16 @@ function ArmFlowOne({
       <div className="text-step-wrapper">
         <Globe />
         <div className="header-wrapper">
-          <h1>{t('form.armOne.title')}</h1>
+           <Typography variant="h3">{t('form.armOne.title')}</Typography>
         </div>
-        <h2>{t('form.armOne.subTitle')}</h2>
+        <Typography variant="h6">{t('form.armOne.subTitle')}</Typography>
         <ul>
-          <li>{t('form.armOne.subText1')}</li>
-          <li>{t('form.armOne.subText2')}</li>
+          <li>
+            <Typography variant="body2">{t('form.armOne.subText1')}</Typography>
+          </li>
+          <li>
+            <Typography variant="body2">{t('form.armOne.subText2')}</Typography>
+          </li>
         </ul>
         <NavigationArrows
           onBack={() =>
