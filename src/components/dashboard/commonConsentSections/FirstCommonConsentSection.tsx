@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Typography } from '@material-ui/core'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as Questions } from '../../../assets/consent/questions.svg'
@@ -23,9 +24,8 @@ function FirstCommonConsentSection({
   maxSteps,
   updateClientData,
 }: FirstCommonConsentProps) {
-  const [howToParticipateSelection, setHowToParticipateSelection] = useState(
-    undefined,
-  )
+  const [howToParticipateSelection, setHowToParticipateSelection] =
+    useState(undefined)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
@@ -93,19 +93,37 @@ function FirstCommonConsentSection({
           <div className="text-step-wrapper">
             <LogoNoText />
             <div className="header-wrapper">
-              <h1>{t('form.firstCommonConsent.whatAreWeStudying')}</h1>
+              <Typography variant="h4">
+                {t('form.firstCommonConsent.whatAreWeStudying')}
+              </Typography>
             </div>
-            <h2>{t('form.firstCommonConsent.getAnswers')}</h2>
+            <div className="header-wrapper">
+              <Typography variant="h6">
+                {t('form.firstCommonConsent.getAnswers')}
+              </Typography>
+            </div>
             <ul>
-              <li>{t('form.firstCommonConsent.section1')}</li>
-              <li>{t('form.firstCommonConsent.section2')}</li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.section1')}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.section2')}
+                </Typography>
+              </li>
             </ul>
             <div>
-              {t('form.firstCommonConsent.section3.section1')}{' '}
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.section3.section1')}
+              </Typography>
               <a className="dashboard-link" href="/dashboard">
                 {t('form.firstCommonConsent.section3.link')}
-              </a>{' '}
-              {t('form.firstCommonConsent.section3.section2')}{' '}
+              </a>
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.section3.section2')}
+              </Typography>
             </div>
             <NavigationArrows
               onBack={handleBack}

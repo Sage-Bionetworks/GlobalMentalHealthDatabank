@@ -160,16 +160,22 @@ div.btnVerticallySpaced {
 }
 
 ul {
-  padding-top: 20px;
-  padding-inline-start: 20px;
+  padding-inline-start: 10px;
+  @include breakpoint('md') {
+    padding-inline-start: 15px;
+  }
   li {
     list-style-type: none;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    @include breakpoint('md') {
+      padding-bottom: 15px;
+    }
   }
 }
 
 .header-wrapper {
   width: 90%;
+  margin-bottom: 20px;
 }
 
 .arrow-buttons-wrapper {
