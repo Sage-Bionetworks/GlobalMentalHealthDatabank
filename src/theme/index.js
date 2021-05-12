@@ -65,6 +65,7 @@ export const theme = responsiveFontSizes(
       MuiOutlinedInput: {
         root: {
           borderRadius: 0,
+          fontSize: '1.4rem',
         },
       },
       MuiSwitch: {

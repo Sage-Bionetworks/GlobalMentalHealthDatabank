@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Typography } from '@material-ui/core'
 import Separator from '../static/Separator'
 import useForm from '../useForm'
 import {
@@ -161,16 +162,25 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       <div className="media-wrapper text-left">
         <TextSent />
       </div>
-      <div className="text-left">{t('eligibility.askPhone')}</div>
+      <div className="text-left">
+        <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
+      </div>
       <Separator />
-      <div className="text-left">{t('eligibility.whyAsk')}</div>
+      <div className="text-left">
+        <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
+      </div>
 
       {
         <form className="demoForm" onSubmit={handleOnSubmit}>
           <div className="form-group" style={{ marginBottom: 0 }}>
             <div>
               <label htmlFor="phone" className="block--dark">
-                {t('eligibility.myPhone')}
+                <Typography
+                  variant="body2"
+                  style={{ fontWeight: 'bold', marginTop: '10px' }}
+                >
+                  {t('eligibility.myPhone')}
+                </Typography>
               </label>
               <div className="input--padded">
                 <TextField
