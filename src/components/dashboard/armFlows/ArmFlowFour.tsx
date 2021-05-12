@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Typography } from '@material-ui/core'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { useTranslation } from 'react-i18next'
 import SageForm from '../../form/SageForm'
@@ -65,10 +66,14 @@ function ArmFlowFour({
           <div className="text-step-wrapper">
             <Globe />
             <div className="header-wrapper">
-              <h1>{t('form.armFour.pageOne.title')}</h1>
+              <Typography variant="h3">
+                {t('form.armFour.pageOne.title')}
+              </Typography>
             </div>
             <div>
-              {t('form.armFour.pageOne.subText1')}
+              <Typography variant="body2">
+                {t('form.armFour.pageOne.subText1')}
+              </Typography>
               <NavigationArrows
                 onBack={() =>
                   setStep((current: number) =>

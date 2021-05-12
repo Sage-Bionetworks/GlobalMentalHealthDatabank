@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
@@ -25,18 +26,38 @@ function ArmFlowThree({
       <div className="text-step-wrapper">
         <Globe />
         <div className="header-wrapper">
-          <h1>{t('form.armThree.title')}</h1>
+          <Typography variant="h3">{t('form.armThree.title')}</Typography>
         </div>
-        <h2>{t('form.armThree.subTitle')}</h2>
+        <Typography variant="h6">{t('form.armThree.subTitle')}</Typography>
         <ul>
-          <li>{t('form.armThree.subText1')}</li>
-          <li>{t('form.armThree.subText2')}</li>
-          <li>{t('form.armThree.subText3')}</li>
+          <li>
+            <Typography variant="body2">
+              {t('form.armThree.subText1')}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {t('form.armThree.subText2')}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {t('form.armThree.subText3')}
+            </Typography>
+          </li>
         </ul>
-        <h2>{t('form.armThree.subText4')}</h2>
+        <Typography variant="h6">{t('form.armThree.subText4')}</Typography>
         <ul>
-          <li>{t('form.armThree.subText5')}</li>
-          <li>{t('form.armThree.subText6')}</li>
+          <li>
+            <Typography variant="body2">
+              {t('form.armThree.subText5')}
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              {t('form.armThree.subText6')}
+            </Typography>
+          </li>
         </ul>
         <NavigationArrows
           onBack={() =>
