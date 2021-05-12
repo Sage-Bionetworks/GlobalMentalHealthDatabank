@@ -141,6 +141,7 @@
 }
 .home__section-text {
   padding-top: 15px;
+  text-align: center;
 }
 .home__section-butterfly {
   position: absolute;
@@ -170,6 +171,7 @@
     z-index: 2;
     position: relative;
     @include breakpoint('md') {
+      color: $secondary-font-color;
       font-size: 30px;
       padding-bottom: 20px;
       padding-top: 20px;
@@ -186,6 +188,9 @@
   }
   @include breakpoint('md') {
     padding: 0 0 20px;
+    .MuiButton-containedPrimary:hover {
+      background-color: $primary-bg-color;
+    }
   }
 }
 .home__join-button {
@@ -255,7 +260,7 @@
       }
       &:nth-child(3) {
         background-color: $primary-color;
-        color: white;
+        color: $secondary-font-color;
         display: initial;
         margin: 5px 0;
         .home__butterfly-text-container {

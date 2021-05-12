@@ -13,14 +13,14 @@
 
 .quiz-wrapper {
   @include breakpoint('md') {
-    background-color: white;
+    background-color: $primary-bg-color;
     padding: 20px 25px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
 
 .text-step-wrapper {
-  background: white;
+  background: $primary-bg-color;
   @include breakpoint('md') {
     padding: 20px 25px;
   }
