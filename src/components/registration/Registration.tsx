@@ -96,9 +96,12 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         dataGroups.push(FLOW_OPTIONS.FOUR as UserDataGroup)
         break
     }
+
     if (everBenefitedFromTreatment)
       dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
     else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
+
+    dataGroups.push(whereDoYouLive as UserDataGroup)
 
     const data: RegistrationData = {
       phone: state.phone.value
