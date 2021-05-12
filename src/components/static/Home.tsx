@@ -1,4 +1,5 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography'
 import { Button, Grid } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -11,7 +12,6 @@ import { ReactComponent as Book } from '../../assets/home/book.svg'
 import { ReactComponent as Lifesaver } from '../../assets/home/lifesaver.svg'
 import { ReactComponent as Circle } from '../../assets/home/circle.svg'
 import { ReactComponent as PlusSigns } from '../../assets/home/plus-signs.svg'
-import Typography from '@material-ui/core/Typography'
 
 export const Home: React.FunctionComponent = () => {
   const { t } = useTranslation()
