@@ -118,7 +118,7 @@ div.btnVerticallySpaced {
 }
 
 .MuiButton-containedPrimary {
-  color: white;
+  color: $secondary-font-color;
 }
 
 .media-wrapper {
@@ -241,7 +241,7 @@ input[type='checkbox'] {
     outline: 0;
   }
   &:checked {
-    background-color: white;
+    background-color: $primary-bg-color;
     color: black;
     &:after {
       content: (url('../assets/checkmark.svg'));
