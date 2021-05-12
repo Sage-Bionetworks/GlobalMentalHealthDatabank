@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Typography } from '@material-ui/core'
 import { Redirect } from 'react-router'
 import { useSessionDataDispatch } from '../../AuthContext'
 import { useTranslation } from 'react-i18next'
@@ -18,13 +19,18 @@ export const Logout: React.FunctionComponent<LogoutProps> = ({
   const logout = () => {
     sessionUpdateFn({ type: 'LOGOUT' })
     onLogout()
-
     setNavigate(true)
   }
   if (navigate) {
     return <Redirect to={redirectUrl || '/login'} push={true} />
   } else {
-    return <span onClick={logout}>{t('common.logOut')}</span>
+    return (
+      <span onClick={logout}>
+        <Typography variant="h6" className="topnav__text">
+          {t('common.logOut')}
+        </Typography>
+      </span>
+    )
   }
 }
 
