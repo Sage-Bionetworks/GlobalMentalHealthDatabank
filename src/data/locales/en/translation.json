@@ -187,8 +187,8 @@
       "title": "Consent Signature",
       "pleaseCheck": {
         "text1": "Please",
-        "check": "check the box below ",
-        "if": "if you",
+        "check": "check the box",
+        "if": "below if you",
         "agree": "agree",
         "takePart": "to take part:"
       },

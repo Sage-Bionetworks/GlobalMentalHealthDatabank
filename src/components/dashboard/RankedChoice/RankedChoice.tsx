@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import NavigationArrows from '../../common/NavigationArrows'
 import useBreakpoint from '../../../helpers/hooks/useBreakpoint'
@@ -31,14 +32,24 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
   return (
     <div>
       <div className="rankingChoice">
-        <h1>{t('form.secondCommonConsent.ranking.title')}</h1>
-        <p>{t('form.secondCommonConsent.ranking.paragraph1')}</p>
-        <p>{t('form.secondCommonConsent.ranking.paragraph2')}</p>
-        <p>{t('form.secondCommonConsent.ranking.paragraph3')}</p>
-        <p>{t('form.secondCommonConsent.ranking.paragraph4')}</p>
-        <p>
-          <span>{t('form.secondCommonConsent.ranking.paragraph5')}</span>
-        </p>
+        <Typography variant="h3">
+          {t('form.secondCommonConsent.ranking.title')}
+        </Typography>
+        <Typography variant="body2">
+          {t('form.secondCommonConsent.ranking.paragraph1')}
+        </Typography>
+        <Typography variant="body2">
+          {t('form.secondCommonConsent.ranking.paragraph2')}
+        </Typography>
+        <Typography variant="body2">
+          {t('form.secondCommonConsent.ranking.paragraph3')}
+        </Typography>
+        <Typography variant="body2">
+          {t('form.secondCommonConsent.ranking.paragraph4')}
+        </Typography>
+        <Typography variant="h6">
+          {t('form.secondCommonConsent.ranking.paragraph5')}
+        </Typography>
         {isMobile ? (
           <MobileRanking
             cards={cards}

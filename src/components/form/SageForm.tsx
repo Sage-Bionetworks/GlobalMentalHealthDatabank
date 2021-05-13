@@ -181,7 +181,7 @@ export default function SageForm({
   return (
     <>
       <div className="header-wrapper">
-        <Typography variant="h4">{title}</Typography>
+        <Typography variant="h3">{title}</Typography>
       </div>
       <div className="form-subtitle">
         {subTitle && <Typography variant="h6">{subTitle}</Typography>}

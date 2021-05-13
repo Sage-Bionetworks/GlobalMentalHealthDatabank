@@ -34,7 +34,7 @@ body {
 }
 
 a {
-  color: #0085ff;
+  color: #4db3b7;
   text-decoration: none;
   cursor: pointer;
 }
@@ -310,7 +310,7 @@ input[type='radio'] {
       left: 50%;
       right: 0;
       transform: translateX(-50%);
-      margin-top: -16px;
+      margin-top: -19px;
       @include breakpoint('md') {
         width: 500px;
       }
@@ -323,6 +323,7 @@ input[type='radio'] {
 }
 
 .form-message {
+  font-size: 1.6rem;
   padding-top: 30px;
   display: flex;
   svg {

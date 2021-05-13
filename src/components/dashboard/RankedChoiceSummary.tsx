@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import NavigationArrows from '../common/NavigationArrows'
 import { useRankedChoice } from './RankedChoice/context/RankedChoiceContext'
 import { useTranslation } from 'react-i18next'
@@ -38,8 +39,12 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
 
   return (
     <div className="ranking-summary">
-      <h1>{t('form.secondCommonConsent.ranking.confirmation')}</h1>
-      <p>{t('form.secondCommonConsent.ranking.review')}</p>
+      <Typography variant="h3">
+        {t('form.secondCommonConsent.ranking.confirmation')}
+      </Typography>
+      <Typography variant="body2" className="review-text">
+        {t('form.secondCommonConsent.ranking.review')}
+      </Typography>
       {cards.map(card => (
         <p className="option" key={`card-id-${card.id}`}>
           &gt; {card.title}
