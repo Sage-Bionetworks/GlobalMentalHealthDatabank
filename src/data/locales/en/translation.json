@@ -46,7 +46,7 @@
     "askPhone": "Before we get started, could we have your number?",
     "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
     "myPhone": "My phone number is: ",
-    "createAccount": "Create account"
+    "createAccount": "Sign Up"
   },
   "form": {
     "firstCommonConsent": {
@@ -133,9 +133,9 @@
       "pageOne": {
         "risks&benefit": "Potential Risks & Benefits",
         "risks": "Potential Risks",
-        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \n\nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \n\nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
+        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
         "benefits": "Potential Benefits",
-        "benefitDescription": "You may not personally benefit from taking part in this study. \n\nYou may be contributing to valuable research. \n\nYou may help researchers better understand how young adults can manage their mental health."
+        "benefitDescription": "You may not personally benefit from taking part in this study. \nYou may be contributing to valuable research. \nYou may help researchers better understand how young adults can manage their mental health."
       },
       "pageTwo": {
         "costs&payment": "Costs & Payment",
@@ -155,7 +155,7 @@
       },
       "pageFive": {
         "leaving": "Leaving the Study",
-        "description": "Joining this study is voluntary.\n\n If you join, you may leave this study (withdraw) at any time and for any reason. \n\nIf you withdraw, you can ask us to delete all your study data. \n\nIf you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
+        "description": "Joining this study is voluntary.\n If you join, you may leave this study (withdraw) at any time and for any reason.\n If you withdraw, you can ask us to delete all your study data.\n If you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
       },
       "pageSix": {
         "title": "Which is correct?",
@@ -187,8 +187,8 @@
       "title": "Consent Signature",
       "pleaseCheck": {
         "text1": "Please",
-        "check": "check the box below ",
-        "if": "if you",
+        "check": "check the box",
+        "if": "below if you",
         "agree": "agree",
         "takePart": "to take part:"
       },

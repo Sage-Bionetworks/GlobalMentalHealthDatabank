@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Typography } from '@material-ui/core'
+import { withRouter } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
@@ -7,9 +10,7 @@ import Separator from '../static/Separator'
 import { Redirect, NavLink } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { FORM_IDS } from '../form/types'
-import { useTranslation } from 'react-i18next'
 import { GoogleService } from '../../services/google.service'
-import { withRouter } from 'react-router-dom'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
@@ -56,6 +57,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         setIsEligible(true)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step])
 
   if (token) {
@@ -85,16 +87,18 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ResponsiveStepWrapper variant="card">
           <div className="quiz-wrapper">
-            <div className="header-wrapper">
-              <Typography variant="h4">
-                {t('eligibility.thankYouForYourInterest')}
-              </Typography>
-            </div>
-            <Separator />
-            <div className="rejectionText">
+            <Typography variant="h3">
+              {t('eligibility.thankYouForYourInterest')}
+            </Typography>
+
+            <div className="bottom-twenty-wrapper ">
               <Typography variant="body2">
                 {t('eligibility.weHaveAFewQuestions')}
               </Typography>
+            </div>
+
+            <div className="rejection-text">
+              <Separator />
             </div>
             <Button
               color="primary"
@@ -127,6 +131,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.howDidYouHear')}
               errorMessage={errorMessage}
               formId={FORM_IDS.HOW_DID_YOU_HEAR}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.how_did_you_hear
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -167,6 +172,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.where')}
               errorMessage={errorMessage}
               formId={FORM_IDS.COUNTRY_SELECTOR}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedCountry = event.formData.country_chooser
                 if (
@@ -215,6 +221,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.android')}
               errorMessage={errorMessage}
               formId={FORM_IDS.ANDROID_VERIFY}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.android_verify
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -255,6 +262,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.english')}
               errorMessage={errorMessage}
               formId={FORM_IDS.UNDERSTANDS_ENGLISH}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.understands_english
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -300,6 +308,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.ageRange')}
               errorMessage={errorMessage}
               formId={FORM_IDS.AGE_VERIFY}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedOption = event.formData
                 if (!selectedOption) setErrorMessage(t('form.chooseAnOption'))
@@ -339,6 +348,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               subTitle={t('eligibility.selectAll')}
               errorMessage={errorMessage}
               formId={FORM_IDS.GENDER}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.gender
                 if (!selectedOption || selectedOption.length === 0)
@@ -378,6 +388,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.benefit')}
               errorMessage={errorMessage}
               formId={FORM_IDS.SUPPORT_VERIFY}
+              buttonText="Next"
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.support_verify
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -408,14 +419,15 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
           <div className="header-wrapper">
-            <Typography variant="h4">{t('eligibility.thanks')}</Typography>
+            <Typography variant="h3">{t('eligibility.thanks')}</Typography>
           </div>
-          <Separator />
-          <div className="rejectionText">
+
+          <div className="rejection-text">
             <Typography variant="body2">
               {t('eligibility.notElegible')}
             </Typography>
           </div>
+          <Separator />
           <NavLink to="/home">
             <Button
               color="primary"

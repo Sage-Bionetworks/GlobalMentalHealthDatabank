@@ -180,12 +180,13 @@ export default function SageForm({
 
   return (
     <>
-      <div className="header-wrapper">
-        <Typography variant="h4">{title}</Typography>
-      </div>
-      <div className="form-subtitle">
-        {subTitle && <Typography variant="h6">{subTitle}</Typography>}
-      </div>
+      <Typography variant="h3">{title}</Typography>
+
+      {subTitle && (
+        <div className="form-subtitle">
+          <Typography variant="h6">{subTitle}</Typography>
+        </div>
+      )}
       {errorMessage && (
         <div className="form-message error">
           <ErrorMessageIcon />

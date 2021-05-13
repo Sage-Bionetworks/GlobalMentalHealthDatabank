@@ -34,17 +34,17 @@ body {
 }
 
 a {
-  color: #0085ff;
+  color: #4db3b7;
   text-decoration: none;
   cursor: pointer;
 }
 
 #root .margin-top-std {
-  margin-top: 2.5rem;
+  margin-top: 20px;
 }
 
 #root .margin-bottom-std {
-  margin-bottom: 5rem;
+  margin-bottom: 50px;
 }
 
 #root .wide-button {
@@ -53,6 +53,7 @@ a {
   letter-spacing: 0.04em;
   margin-bottom: 10px;
   width: 100%;
+  text-transform: none;
 }
 
 // if a button is in a link, do not decorate the text on hover
@@ -138,10 +139,6 @@ ul {
   }
 }
 
-.header-wrapper {
-  width: 90%;
-}
-
 .arrow-buttons-wrapper {
   display: flex;
   justify-content: space-between;
@@ -159,15 +156,6 @@ ul {
 .login-wrapper {
   margin-top: 20px;
   padding: 0 10px;
-}
-
-.consent-wrapper {
-  display: flex;
-  padding-top: 20px;
-  margin-bottom: 30px;
-  input {
-    margin-right: 18px;
-  }
 }
 
 fieldset {
@@ -309,7 +297,7 @@ input[type='radio'] {
       left: 50%;
       right: 0;
       transform: translateX(-50%);
-      margin-top: -16px;
+      margin-top: -19px;
       @include breakpoint('md') {
         width: 500px;
       }
@@ -322,6 +310,7 @@ input[type='radio'] {
 }
 
 .form-message {
+  font-size: 1.6rem;
   padding-top: 30px;
   display: flex;
   svg {
@@ -332,7 +321,7 @@ input[type='radio'] {
   }
 }
 
-.rejectionText {
+.rejection-text {
   padding-bottom: 150px;
 }
 
@@ -374,8 +363,17 @@ input[type='radio'] {
 }
 
 // common consent styles
+.header-wrapper {
+  margin-bottom: 55px;
+}
+
 .icon-wrapper {
   margin-bottom: 20px;
+  height: 90px;
+}
+
+.consent-instruction {
+  margin-bottom: 40px;
 }
 
 .bottom-space {
@@ -385,6 +383,20 @@ input[type='radio'] {
   }
 }
 
-.common-title-spaced {
-  margin-bottom: 55px !important;
+.consent-wrapper {
+  display: flex;
+  margin: 40px 0 20px;
+  input {
+    margin-right: 18px;
+  }
+}
+
+.bottom-twenty-wrapper {
+  margin-bottom: 20px;
+}
+.bottom-forty-wrapper {
+  margin-bottom: 40px;
+}
+.bottom-fifty-wrapper {
+  margin-bottom: 50px;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Typography } from '@material-ui/core'
-import Separator from '../static/Separator'
+
 import useForm from '../useForm'
 import {
   APP_ID,
@@ -166,69 +166,65 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   return (
     <div className="quiz-wrapper">
       <div className="media-wrapper text-left">
-        <TextSent />
+        <div className="icon-wrapper">
+          <TextSent width="75" />
+        </div>
       </div>
-      <div className="text-left">
+
+      <div className="bottom-twenty-wrapper">
         <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
       </div>
-      <Separator />
-      <div className="text-left">
+
+      <div className="bottom-forty-wrapper">
         <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
       </div>
 
-      {
-        <form className="demoForm" onSubmit={handleOnSubmit}>
-          <div className="form-group" style={{ marginBottom: 0 }}>
-            <div>
-              <label htmlFor="phone" className="block--dark">
-                <Typography
-                  variant="body2"
-                  style={{ fontWeight: 'bold', marginTop: '10px' }}
-                >
-                  {t('eligibility.myPhone')}
-                </Typography>
-              </label>
-              <div className="input--padded">
-                <TextField
-                  name="phone"
-                  type="phone"
-                  value={state.phone.value}
-                  placeholder={'Phone #'}
-                  aria-label={'Phone #'}
-                  variant="outlined"
-                  fullWidth
-                  onChange={handleOnChange}
-                  className="phone-input"
-                />
-              </div>
-              {Object.keys(state).map(
-                key =>
-                  state[key].error && (
-                    <p
-                      className="error"
-                      style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
-                    >
-                      {state[key].error}
-                    </p>
-                  ),
-              )}
-              <p className="error-message">{error}</p>
-              <div className="text-center">
-                <Button
-                  fullWidth
-                  color="primary"
-                  variant="contained"
-                  size="large"
-                  type="submit"
-                  disabled={!state.phone.value}
-                >
-                  {t('eligibility.createAccount')}
-                </Button>
-              </div>
+      <form className="demoForm" onSubmit={handleOnSubmit}>
+        <div className="form-group" style={{ marginBottom: 0 }}>
+          <div>
+            <label htmlFor="phone" className="block--dark">
+              <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
+            </label>
+            <div className="input--padded">
+              <TextField
+                fullWidth
+                className="phone-input"
+                variant="outlined"
+                name="phone"
+                type="phone"
+                value={state.phone.value}
+                placeholder="Phone #"
+                aria-label="Phone #"
+                onChange={handleOnChange}
+              />
+            </div>
+            {Object.keys(state).map(
+              key =>
+                state[key].error && (
+                  <p
+                    className="error"
+                    style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
+                  >
+                    {state[key].error}
+                  </p>
+                ),
+            )}
+            <p className="error-message">{error}</p>
+            <div className="text-center">
+              <Button
+                fullWidth
+                color="primary"
+                variant="contained"
+                size="large"
+                type="submit"
+                disabled={!state.phone.value}
+              >
+                {t('eligibility.createAccount')}
+              </Button>
             </div>
           </div>
-        </form>
-      }
+        </div>
+      </form>
     </div>
   )
 }
