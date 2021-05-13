@@ -28,9 +28,9 @@ function ArmFlowTwo({
         <div className="icon-wrapper">
           <Globe />
         </div>
-        <div className="header-wrapper">
-          <Typography variant="h3">{t('form.armTwo.title')}</Typography>
-        </div>
+
+        <Typography variant="h3">{t('form.armTwo.title')}</Typography>
+
         <Typography variant="h6">{t('form.armTwo.subTitle')}</Typography>
         <ul>
           <li>

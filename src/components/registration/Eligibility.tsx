@@ -418,9 +418,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     return (
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
-          <div className="header-wrapper">
-            <Typography variant="h3">{t('eligibility.thanks')}</Typography>
-          </div>
+          <Typography variant="h3">{t('eligibility.thanks')}</Typography>
 
           <div className="rejection-text">
             <Typography variant="body2">

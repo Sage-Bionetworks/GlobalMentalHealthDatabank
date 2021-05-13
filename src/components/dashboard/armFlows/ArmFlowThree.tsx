@@ -28,9 +28,9 @@ function ArmFlowThree({
         <div className="icon-wrapper">
           <Globe />
         </div>
-        <div className="header-wrapper">
-          <Typography variant="h3">{t('form.armThree.title')}</Typography>
-        </div>
+
+        <Typography variant="h3">{t('form.armThree.title')}</Typography>
+
         <Typography variant="h6">{t('form.armThree.subTitle')}</Typography>
         <ul>
           <li>
