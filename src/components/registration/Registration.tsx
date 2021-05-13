@@ -168,11 +168,11 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         </div>
       </div>
 
-      <div className="registration-title-wrapper">
+      <div className="bottom-twenty-wrapper">
         <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
       </div>
 
-      <div className="registration-content-wrapper">
+      <div className="bottom-forty-wrapper">
         <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
       </div>
 

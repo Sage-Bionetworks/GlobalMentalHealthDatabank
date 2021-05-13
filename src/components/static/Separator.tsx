@@ -8,7 +8,7 @@ export const Separator: React.FunctionComponent = () => {
       direction="row"
       justify="flex-start"
       alignItems="center"
-      className="margin-top-std margin-bottom-std"
+      className="margin-bottom-std"
     >
       <svg
         width="100"
