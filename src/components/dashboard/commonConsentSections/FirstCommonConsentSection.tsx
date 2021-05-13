@@ -292,9 +292,11 @@ function FirstCommonConsentSection({
             <div className="icon-wrapper">
               <Network />
             </div>
-            <Typography variant="h3" className="common-title-spaced">
-              {t('form.firstCommonConsent.transferAndRights')}
-            </Typography>
+            <div className="header-wrapper">
+              <Typography variant="h3">
+                {t('form.firstCommonConsent.transferAndRights')}
+              </Typography>
+            </div>
 
             <Typography variant="body2" className="bottom-space">
               {t('form.firstCommonConsent.transferAway')}

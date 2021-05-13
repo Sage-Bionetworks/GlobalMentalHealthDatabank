@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Typography } from '@material-ui/core'
 import moment from 'moment'
 import i18next from 'i18next'
+import { Button, Typography, TextField } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
+
 import SageForm from '../../form/SageForm'
 import ProgressBar from '../../progressBar/ProgressBar'
 import {
@@ -42,12 +43,10 @@ function SecondCommonConsentSection({
   maxSteps,
   updateClientData,
 }: SecondCommonConsentProps) {
-  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState(
-    undefined,
-  )
-  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState(
-    undefined,
-  )
+  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] =
+    useState(undefined)
+  const [whichIsCorrectSelection, setWhichIsCorrectSelection] =
+    useState(undefined)
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -248,13 +247,13 @@ function SecondCommonConsentSection({
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
             <div className="icon-wrapper">
-              <NotMedical />
+              <NotMedical width="75" />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.secondCommonConsent.pageThree.notMedicalCare')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageThree.notMedicalCare')}
+            </Typography>
+
             <div className="form-text-content">
               <Typography variant="body2">
                 {t('form.secondCommonConsent.pageThree.description')}
@@ -336,11 +335,11 @@ function SecondCommonConsentSection({
             <div className="icon-wrapper">
               <Exit />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.secondCommonConsent.pageFive.leaving')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageFive.leaving')}
+            </Typography>
+
             <div className="form-text-content">
               <Typography variant="body2">
                 {t('form.secondCommonConsent.pageFive.description')}
@@ -421,11 +420,11 @@ function SecondCommonConsentSection({
             <div className="icon-wrapper">
               <Envelope />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.secondCommonConsent.pageSeven.contact')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageSeven.contact')}
+            </Typography>
+
             <div className="form-text-content">
               <Typography variant="body2">
                 {t('form.secondCommonConsent.pageSeven.description')}
@@ -448,11 +447,11 @@ function SecondCommonConsentSection({
             <div className="icon-wrapper">
               <Summary />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.secondCommonConsent.pageEight.summary')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageEight.summary')}
+            </Typography>
+
             <div className="form-text-content">
               <Typography variant="body2">
                 {t('form.secondCommonConsent.pageEight.description')}
@@ -472,11 +471,11 @@ function SecondCommonConsentSection({
             <div className="icon-wrapper">
               <LogoNoText />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.consentSignature.title')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.consentSignature.title')}
+            </Typography>
+
             <Typography variant="body2">
               {t('form.consentSignature.pleaseCheck.text1')}{' '}
               <b>{t('form.consentSignature.pleaseCheck.check')}</b>{' '}
@@ -484,6 +483,7 @@ function SecondCommonConsentSection({
               <b>{t('form.consentSignature.pleaseCheck.agree')}</b>{' '}
               {t('form.consentSignature.pleaseCheck.takePart')}
             </Typography>
+
             <span className="consent-wrapper">
               <input
                 type="checkbox"
@@ -502,11 +502,11 @@ function SecondCommonConsentSection({
               {moment().locale(i18next.language).format('MMMM Do, YYYY')}
             </Typography>
 
-            <input
+            <TextField
               className="custom-input signature"
-              type="text"
-              value={signatureName}
+              variant="outlined"
               placeholder={t('form.consentSignature.fullName')}
+              value={signatureName}
               onChange={e => setSignatureName(e.target.value)}
             />
 

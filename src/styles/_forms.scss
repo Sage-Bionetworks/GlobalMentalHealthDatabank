@@ -10,7 +10,7 @@
 }
 
 .input--padded {
-  padding: 15px 0 45px 0;
+  margin-bottom: 50px;
 }
 
 .buttons--action {
@@ -80,7 +80,8 @@ label.block--dark {
 
 .phone-input {
   .MuiOutlinedInput-root {
-    border-radius: 0;
+    background: $primary-bg-color;
+    font-size: 16px;
   }
 }
 
@@ -94,12 +95,18 @@ label.block--dark {
   border: 1px solid $button-bg-color;
   box-sizing: border-box;
   padding: 14px;
-  font-size: 14px;
+  font-size: 16px;
   &.age {
-    margin-top: 10px;
-    margin-bottom: 98px;
+    margin-bottom: 95px;
+    .MuiInputBase-input {
+      padding: 20px 15px;
+      border: 1px solid $button-bg-color;
+    }
   }
   &.signature {
-    margin-bottom: 95px;
+    margin-bottom: 50px;
+    .MuiOutlinedInput-input {
+      padding: 20px 15px;
+    }
   }
 }
