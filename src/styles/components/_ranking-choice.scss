@@ -1,8 +1,6 @@
 .rankingChoice {
   p {
-    span {
-      font-weight: 700;
-    }
+    margin-bottom: 10px;
   }
   .cards {
     .card {
@@ -122,6 +120,9 @@
 }
 
 .ranking-summary {
+  .review-text {
+    margin-bottom: 50px;
+  }
   .option {
     font-weight: bold;
     font-size: 14px;

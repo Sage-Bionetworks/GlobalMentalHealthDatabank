@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
 import { useSessionDataState } from '../../AuthContext'
 
@@ -11,10 +12,12 @@ function DownloadApp() {
       <div className="download--not-installed">
         <div className="plus-signs"></div>
         <LogoNoText className="logo" />
-        <h1 className="download__title">Download the MindKind app</h1>
-        <p>
+        <Typography variant="h2" className="download__title">
+          Download the MindKind app
+        </Typography>
+        <Typography>
           Some placeholder text about the app and what you may do in the app.
-        </p>
+        </Typography>
         <a
           className="download__button"
           href={playStoreLink}
@@ -25,8 +28,12 @@ function DownloadApp() {
         </a>
       </div>
       <div className="download--already-installed">
-        <h1 className="download__title">If you already have the app</h1>
-        <p>Click here to log-in to the app and begin the study!</p>
+        <Typography variant="h2" className="download__title">
+          If you already have the app
+        </Typography>
+        <Typography>
+          Click here to log-in to the app and begin the study!
+        </Typography>
         <a
           className="download__button"
           href={deepLink}
