@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next'
 import { GoogleService } from '../../services/google.service'
 import { withRouter } from 'react-router-dom'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
+import { useSessionDataState } from '../../AuthContext'
+import { SessionData } from '../../types/types'
 
 const MAX_STEPS: number = 8
 
@@ -27,6 +29,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
   const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
+  const sessionData: SessionData = useSessionDataState()
+  const { token } = sessionData
 
   const {
     setIsEligible,
@@ -53,6 +57,10 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       }
     }
   }, [step])
+
+  if (token) {
+    return <Redirect to={'/dashboard'} push={true} />
+  }
 
   const validateAgeRange = (location: string, age: number) => {
     //Check if age is 18 to 24 years old, or 16-24 years old if it's in the United Kingdom
