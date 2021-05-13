@@ -24,6 +24,7 @@ export const theme = responsiveFontSizes(
       },
       h3: {
         fontSize: '4rem',
+        marginBottom: '20px',
       },
       h4: {
         fontSize: '3rem',
@@ -34,12 +35,14 @@ export const theme = responsiveFontSizes(
       h6: {
         fontSize: '1.4rem',
         fontWeight: 'bold',
+        marginBottom: '20px',
       },
       body1: {
         fontSize: '2rem',
       },
       body2: {
         fontSize: '1.4rem',
+        lineHeight: '20px',
       },
       subtitle1: {
         fontSize: '1.2rem',
