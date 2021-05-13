@@ -5,6 +5,7 @@ import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import NavigationArrows from '../../common/NavigationArrows'
 import ProgressBar from '../../progressBar/ProgressBar'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type ArmFlowOneProps = {
   step: number
@@ -45,7 +46,9 @@ function ArmFlowOne({
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-            updateClientData(step)
+            updateClientData(step + 1, {
+              [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
+            })
           }}
         />
       </div>

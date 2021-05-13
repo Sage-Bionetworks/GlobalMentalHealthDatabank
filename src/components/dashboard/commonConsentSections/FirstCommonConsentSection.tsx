@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
-
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 import NavigationArrows from '../../common/NavigationArrows'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import ProgressBar from '../../progressBar/ProgressBar'
@@ -11,12 +11,14 @@ import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as Questions } from '../../../assets/consent/questions.svg'
 import { ReactComponent as Network } from '../../../assets/consent/network.svg'
 import { ReactComponent as Padlock } from '../../../assets/consent/padlock.svg'
+import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
 
 type FirstCommonConsentProps = {
   step: number
   setStep: Function
   maxSteps: number
   updateClientData: Function
+  consentModel: string
 }
 
 function FirstCommonConsentSection({
@@ -24,14 +26,16 @@ function FirstCommonConsentSection({
   setStep,
   maxSteps,
   updateClientData,
+  consentModel,
 }: FirstCommonConsentProps) {
-  const [howToParticipateSelection, setHowToParticipateSelection] =
-    useState(undefined)
+  const [howToParticipateSelection, setHowToParticipateSelection] = useState(
+    undefined,
+  )
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
 
-  const CustomRadio = ({ options, value, onChange }: any) => {
+  const CustomRadio = ({ options, onChange }: any) => {
     const { enumOptions } = options
     const _onChange = (event: any) => onChange(event.currentTarget.id)
     return enumOptions.map((option: any) => {
@@ -71,6 +75,19 @@ function FirstCommonConsentSection({
     })
   }
 
+  const getStepName = () => {
+    switch (consentModel) {
+      case FLOW_OPTIONS.ONE:
+        return PAGE_ID.RESEARCH_NORMS
+      case FLOW_OPTIONS.TWO:
+        return PAGE_ID.YOUTH_INFORMED
+      case FLOW_OPTIONS.THREE:
+        return PAGE_ID.HYBRID
+      case FLOW_OPTIONS.FOUR:
+        return PAGE_ID.PARTICIPANT_CHOICE_01
+    }
+  }
+
   const widgets = {
     RadioWidget: CustomRadio,
   }
@@ -79,9 +96,10 @@ function FirstCommonConsentSection({
     setErrorMessage('')
     setSuccessMessage('')
   }, [step])
-  const handleNext = () => {
+
+  const handleNext = (pageId: string | undefined) => {
     setStep((current: number) => (current < maxSteps ? current + 1 : current))
-    updateClientData(step)
+    updateClientData(step + 1, { [PAGE_ID_FIELD_NAME]: pageId })
   }
   const handleBack = () =>
     setStep((current: number) => (current > 1 ? current - 1 : current))
@@ -95,7 +113,6 @@ function FirstCommonConsentSection({
             <div className="icon-wrapper">
               <LogoNoText />
             </div>
-
             <Typography variant="h3">
               {t('form.firstCommonConsent.whatAreWeStudying')}
             </Typography>
@@ -103,7 +120,6 @@ function FirstCommonConsentSection({
             <Typography variant="h6">
               {t('form.firstCommonConsent.getAnswers')}
             </Typography>
-
             <ul>
               <li>
                 <Typography variant="body2">
@@ -127,7 +143,7 @@ function FirstCommonConsentSection({
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK)}
               preventBack
             />
           </div>
@@ -171,7 +187,10 @@ function FirstCommonConsentSection({
                 </Typography>
               </li>
             </ul>
-            <NavigationArrows onBack={handleBack} onNext={handleNext} />
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK_QUIZ)}
+            />
           </div>
         </ResponsiveStepWrapper>
       )
@@ -219,9 +238,10 @@ function FirstCommonConsentSection({
                   setHowToParticipateSelection(
                     selectedOption.participate_option,
                   )
-                  updateClientData(step, {
+                  updateClientData(step + 1, {
                     [FORM_IDS.HOW_TO_PARTICIPATE]:
                       selectedOption.participate_option,
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.DATA_COLLECTION,
                   })
                 }
               }}
@@ -277,7 +297,7 @@ function FirstCommonConsentSection({
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.DATA_RIGHTS)}
               preventBack
             />
           </div>
@@ -326,7 +346,10 @@ function FirstCommonConsentSection({
               </a>
             </Typography>
 
-            <NavigationArrows onBack={handleBack} onNext={handleNext} />
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(getStepName())}
+            />
           </div>
         </ResponsiveStepWrapper>
       )

@@ -13,7 +13,7 @@ import {
   FORM_IDS,
 } from '../../form/types'
 import RankedChoice from '../RankedChoice/RankedChoice'
-import RankedChoiceSummary from '../RankedChoiceSummary'
+import RankedChoiceSummary from '../RankedChoice/RankedChoiceSummary'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
@@ -26,6 +26,7 @@ import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg
 import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
 import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
 import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -176,14 +177,16 @@ function SecondCommonConsentSection({
           clientData.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.DEMOCRACY)
       ) {
         //go to steps after consent (ranking)
-        updateClientDataResponse = await updateClientData(step, {
+        updateClientDataResponse = await updateClientData(step + 1, {
           skipRanking: false,
           consented: true,
+          [PAGE_ID_FIELD_NAME]: PAGE_ID.RANKING_CHOICE,
         })
       } else {
-        updateClientDataResponse = await updateClientData(step, {
+        updateClientDataResponse = await updateClientData(step + 1, {
           skipRanking: true,
           consented: true,
+          [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
         })
       }
       await HealthService.sendHealthData(
@@ -196,9 +199,9 @@ function SecondCommonConsentSection({
     }
   }
 
-  const handleNext = () => {
+  const handleNext = (pageId: string | undefined) => {
     setStep((current: number) => (current < maxSteps ? current + 1 : current))
-    updateClientData(step)
+    updateClientData(step + 1, { [PAGE_ID_FIELD_NAME]: pageId })
   }
   const handleBack = () =>
     setStep((current: number) => (current > 1 ? current - 1 : current))
@@ -223,7 +226,7 @@ function SecondCommonConsentSection({
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.NOT_MEDICAL_CARE)}
               preventBack
             />
           </div>
@@ -245,7 +248,10 @@ function SecondCommonConsentSection({
             <a href={t('form.secondCommonConsent.pageThree.link')}>
               {t('form.secondCommonConsent.pageThree.link')}
             </a>
-            <NavigationArrows onBack={handleBack} onNext={handleNext} />
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.STUDY_PURPOSE_QUIZ)}
+            />
           </div>
         </ResponsiveStepWrapper>
       )
@@ -297,8 +303,9 @@ function SecondCommonConsentSection({
                     )
                   } else {
                     setWhatIsThePurposeSelection(selectedOption)
-                    updateClientData(step, {
+                    updateClientData(step + 1, {
                       [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.LEAVING_STUDY,
                     })
                   }
                 }
@@ -322,7 +329,7 @@ function SecondCommonConsentSection({
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.LEAVING_STUDY_QUIZ)}
               preventBack
             />
           </div>
@@ -376,8 +383,9 @@ function SecondCommonConsentSection({
                     )
                   } else {
                     setWhichIsCorrectSelection(selectedOption)
-                    updateClientData(step, {
+                    updateClientData(step + 1, {
                       [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.CONTACT,
                     })
                   }
                 }
@@ -401,7 +409,7 @@ function SecondCommonConsentSection({
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.SUMMARY)}
               preventBack
             />
           </div>
@@ -420,7 +428,10 @@ function SecondCommonConsentSection({
             <div className="form-text-content">
               {t('form.secondCommonConsent.pageEight.description')}
             </div>
-            <NavigationArrows onBack={handleBack} onNext={handleNext} />
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.SIGNATURE)}
+            />
           </div>
         </ResponsiveStepWrapper>
       )
