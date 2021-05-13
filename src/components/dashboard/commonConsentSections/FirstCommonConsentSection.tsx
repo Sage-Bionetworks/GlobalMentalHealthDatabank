@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
+
+import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
+import NavigationArrows from '../../common/NavigationArrows'
+import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import ProgressBar from '../../progressBar/ProgressBar'
+import SageForm from '../../form/SageForm'
 import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as Questions } from '../../../assets/consent/questions.svg'
 import { ReactComponent as Network } from '../../../assets/consent/network.svg'
 import { ReactComponent as Padlock } from '../../../assets/consent/padlock.svg'
-import SageForm from '../../form/SageForm'
-import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
-import { useTranslation } from 'react-i18next'
-import NavigationArrows from '../../common/NavigationArrows'
-import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 
 type FirstCommonConsentProps = {
   step: number
@@ -156,17 +157,17 @@ function FirstCommonConsentSection({
             <ul>
               <li>
                 <Typography variant="body2">
-                  {t('form.firstCommonConsent.week1')}{' '}
+                  {t('form.firstCommonConsent.week1')}
                 </Typography>
               </li>
               <li>
                 <Typography variant="body2">
-                  {t('form.firstCommonConsent.week2')}{' '}
+                  {t('form.firstCommonConsent.week2')}
                 </Typography>
               </li>
               <li>
                 <Typography variant="body2">
-                  {t('form.firstCommonConsent.also')}{' '}
+                  {t('form.firstCommonConsent.also')}
                 </Typography>
               </li>
             </ul>
@@ -233,22 +234,46 @@ function FirstCommonConsentSection({
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
+
           <div className="text-step-wrapper">
-            <Padlock />
-            <div className="header-wrapper">
-              <h1>{t('form.firstCommonConsent.dataCollection')}</h1>
+            <div className="icon-wrapper">
+              <Padlock />
             </div>
-            <h2>{t('form.firstCommonConsent.yourData')}</h2>
+            <Typography variant="h3">
+              {t('form.firstCommonConsent.dataCollection')}
+            </Typography>
+
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.yourData')}
+            </Typography>
             <ul>
-              <li>{t('form.firstCommonConsent.yourDataApp')}</li>
-              <li>{t('form.firstCommonConsent.yourDataPhone')}</li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.yourDataApp')}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.yourDataPhone')}
+                </Typography>
+              </li>
             </ul>
             <div>
-              <p>{t('form.firstCommonConsent.weEncrypt')}</p>
-              <p>{t('form.firstCommonConsent.weTransfer')}</p>
-              <p>{t('form.firstCommonConsent.replaceName')} </p>
-              <p>{t('form.firstCommonConsent.combineData')}</p>
-              <p>{t('form.firstCommonConsent.storeCloud')}</p>
+              <Typography variant="body2" className="bottom-space">
+                {t('form.firstCommonConsent.weEncrypt')}
+              </Typography>
+              <Typography variant="body2" className=" bottom-space">
+                {t('form.firstCommonConsent.weTransfer')}
+              </Typography>
+              <Typography variant="body2" className="bottom-space">
+                {t('form.firstCommonConsent.replaceName')}
+              </Typography>
+              <Typography variant="body2" className="bottom-space">
+                {t('form.firstCommonConsent.combineData')}
+              </Typography>
+              <Typography variant="body2" className="bottom-space">
+                {t('form.firstCommonConsent.storeCloud')}
+              </Typography>
             </div>
             <NavigationArrows
               onBack={handleBack}
@@ -264,23 +289,43 @@ function FirstCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <Network />
-            <div className="header-wrapper">
-              <h1>{t('form.firstCommonConsent.transferAndRights')}</h1>
+            <div className="icon-wrapper">
+              <Network />
             </div>
-            <p>{t('form.firstCommonConsent.transferAway')}</p>{' '}
-            <p>{t('form.firstCommonConsent.transferToUS')}</p>
-            <h2>{t('form.firstCommonConsent.yourRights')}</h2>
+            <Typography variant="h3" className="common-title-spaced">
+              {t('form.firstCommonConsent.transferAndRights')}
+            </Typography>
+
+            <Typography variant="body2" className="bottom-space">
+              {t('form.firstCommonConsent.transferAway')}
+            </Typography>
+
+            <Typography variant="body2" className="bottom-space">
+              {t('form.firstCommonConsent.transferToUS')}
+            </Typography>
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.yourRights')}
+            </Typography>
             <ul>
-              <li>{t('form.firstCommonConsent.requestData')}</li>
-              <li>{t('form.firstCommonConsent.correctData')}</li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.requestData')}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.correctData')}{' '}
+                </Typography>
+              </li>
             </ul>
-            <div>
+
+            <Typography variant="body2">
               {t('form.firstCommonConsent.ifCitizenEU')}{' '}
               <a className="dashboard-link" href="/dashboard">
                 {t('form.firstCommonConsent.ifCitizenEULink')}
               </a>
-            </div>
+            </Typography>
+
             <NavigationArrows onBack={handleBack} onNext={handleNext} />
           </div>
         </ResponsiveStepWrapper>
