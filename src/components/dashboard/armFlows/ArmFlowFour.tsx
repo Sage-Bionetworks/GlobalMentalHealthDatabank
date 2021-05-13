@@ -65,7 +65,9 @@ function ArmFlowFour({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <Globe />
+            <div className="icon-wrapper">
+              <Globe />
+            </div>
             <div className="header-wrapper">
               <Typography variant="h3">
                 {t('form.armFour.pageOne.title')}
