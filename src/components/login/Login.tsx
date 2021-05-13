@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { Typography } from '@material-ui/core'
+import {
+  Typography,
+  CircularProgress,
+  Select,
+  MenuItem,
+} from '@material-ui/core'
 import {
   APP_ID,
   LoggedInUserData,
@@ -9,25 +14,18 @@ import {
   ENDPOINT,
 } from '../../types/types'
 import { callEndpoint, makePhone } from '../../helpers/utility'
-
 import Button from '@material-ui/core/Button'
 import SignInWithCode from './SignInWithCode'
 import TextField from '@material-ui/core/TextField/TextField'
-
 import { RouteComponentProps } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import Alert from '@material-ui/lab/Alert/Alert'
-import { CircularProgress } from '@material-ui/core'
-
 import uk from '../../assets/flags/uk.svg'
 import ind from '../../assets/flags/ind.svg'
 import za from '../../assets/flags/za.svg'
 import us from '../../assets/flags/us.svg'
-
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import { useTranslation } from 'react-i18next'
-import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
-import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
@@ -141,11 +139,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="login-wrapper">
-        {isLoading && (
-          <div className="text-center">
-            <CircularProgress color="primary" />
-          </div>
-        )}
         {!isLoading && (
           <div className="quiz-wrapper">
             {(!isCodeSent || error) && (
@@ -214,17 +207,23 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                       </div>
                     )}
                     <div className="text-center">
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        size="large"
-                        type="submit"
-                        disabled={!loginType}
-                        onSubmit={handleLogin}
-                        className="wide-button"
-                      >
-                        {t('common.logIn')}
-                      </Button>
+                      {isLoading ? (
+                        <div className="text-center">
+                          <CircularProgress color="primary" />
+                        </div>
+                      ) : (
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          size="large"
+                          type="submit"
+                          disabled={!loginType}
+                          onSubmit={handleLogin}
+                          className="wide-button"
+                        >
+                          {t('common.logIn')}
+                        </Button>
+                      )}
                     </div>
                   </div>
                   {error && <Alert severity="error">{error}</Alert>}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import ProgressBar from '../../progressBar/ProgressBar'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
@@ -25,19 +26,31 @@ function ArmFlowTwo({
       <div className="text-step-wrapper">
         <Globe />
         <div className="header-wrapper">
-          <h1>{t('form.armTwo.title')}</h1>
+          <Typography variant="h3">{t('form.armTwo.title')}</Typography>
         </div>
-        <h2>{t('form.armTwo.subTitle')}</h2>
+        <Typography variant="h6">{t('form.armTwo.subTitle')}</Typography>
         <ul>
-          <li>{t('form.armTwo.subText1')}</li>
-          <li>{t('form.armTwo.subText2')}</li>
-          <li>{t('form.armTwo.subText3')}</li>
+          <li>
+            <Typography variant="body2">{t('form.armTwo.subText1')}</Typography>
+          </li>
+          <li>
+            <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
+          </li>
+          <li>
+            <Typography variant="body2">{t('form.armTwo.subText3')}</Typography>
+          </li>
         </ul>
 
-        <h2>{t('form.armTwo.subText4')}</h2>
+        <h2>
+          <Typography variant="h6">{t('form.armTwo.subText4')}</Typography>
+        </h2>
         <ul>
-          <li>{t('form.armTwo.subText5')}</li>
-          <li>{t('form.armTwo.subText6')}</li>
+          <li>
+            <Typography variant="body2">{t('form.armTwo.subText5')}</Typography>
+          </li>
+          <li>
+            <Typography variant="body2">{t('form.armTwo.subText6')}</Typography>
+          </li>
         </ul>
 
         <NavigationArrows

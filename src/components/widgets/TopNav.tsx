@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
+import {
+  Typography,
+  ListItem,
+  List,
+  Divider,
+  Hidden,
+  Link,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Select,
+  MenuItem,
+} from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import Logout from '../login/Logout'
 import btnClose from '../../assets/btn_close_dark.svg'
-import { ListItem, List, Divider, Hidden, Link } from '@material-ui/core'
-import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Burger } from '../../assets/burger.svg'
 import { ReactComponent as ChevronDownLight } from '../../assets/chevron-down-light.svg'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
 
 type TopNavProps = {
   token: string | undefined
@@ -51,7 +57,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.home')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.home')}
+            </Typography>
           </ListItem>
         </NavLink>
         <Divider className="mobile-menu__separator" />
@@ -78,7 +86,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.aboutStudy')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.aboutStudy')}
+            </Typography>
           </ListItem>
         </NavLink>
         <NavLink
@@ -87,7 +97,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.researchTeam')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.researchTeam')}
+            </Typography>
           </ListItem>
         </NavLink>
         <NavLink
@@ -96,7 +108,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.ifInCrisis')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.ifInCrisis')}
+            </Typography>
           </ListItem>
         </NavLink>
 
@@ -107,7 +121,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="topnav__link"
           >
             <ListItem button className="mobile-menu__item">
-              {t('common.joinStudy')}
+              <Typography variant="h6" className="topnav__text">
+                {t('common.joinStudy')}
+              </Typography>
             </ListItem>
           </NavLink>
         )}
@@ -118,7 +134,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="topnav__link"
           >
             <ListItem button className="mobile-menu__item">
-              {t('topnav.login')}
+              <Typography variant="h6" className="topnav__text">
+                {t('topnav.login')}
+              </Typography>
             </ListItem>
           </NavLink>
         )}
@@ -129,7 +147,10 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.consent1')}
+            <Typography variant="h6" className="topnav__text">
+              {' '}
+              {t('topnav.consent1')}
+            </Typography>
           </ListItem>
         </NavLink>
         <NavLink
@@ -138,7 +159,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.consent2')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.consent2')}
+            </Typography>
           </ListItem>
         </NavLink>
         <NavLink
@@ -147,7 +170,10 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.consent3')}
+            <Typography variant="h6" className="topnav__text">
+              {' '}
+              {t('topnav.consent3')}
+            </Typography>
           </ListItem>
         </NavLink>
       </List>
@@ -158,16 +184,24 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
     <div>
       <div className="topnav-center-section">
         <NavLink to="/home" className="topnav__link--full centered">
-          {t('topnav.home')}
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.home')}
+          </Typography>
         </NavLink>
         <NavLink to="/home" className="topnav__link--full centered">
-          {t('topnav.about')}
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.about')}
+          </Typography>
         </NavLink>
         <NavLink to="/home" className="topnav__link--full centered">
-          {t('topnav.research')}
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.research')}
+          </Typography>
         </NavLink>
         <NavLink to="/contact" className="topnav__link--full centered">
-          {t('topnav.crisis')}
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.crisis')}
+          </Typography>
         </NavLink>
       </div>
       <div className="topnav-right-section">
@@ -179,24 +213,34 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           IconComponent={() => <ChevronDownLight />}
         >
           <MenuItem className="select-pdf" value={OPTIONS[0]}>
-            {t('topnav.english')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.english')}
+            </Typography>
           </MenuItem>
           <MenuItem className="select-pdf" value={OPTIONS[1]}>
-            {t('topnav.southAfrica')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.southAfrica')}
+            </Typography>
           </MenuItem>
           <MenuItem className="select-pdf" value={OPTIONS[2]}>
-            {t('topnav.india')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.india')}
+            </Typography>
           </MenuItem>
         </Select>
 
         {!props.token && (
           <NavLink to="/eligibility" className="topnav__link--full">
-            {t('common.joinStudy')}
+            <Typography variant="h6" className="topnav__text">
+              {t('common.joinStudy')}
+            </Typography>
           </NavLink>
         )}
         {!props.token && (
           <NavLink to="/login" className="topnav__link--full">
-            {t('topnav.login')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.login')}
+            </Typography>
           </NavLink>
         )}
 

@@ -9,6 +9,7 @@ export const uiSchemaAgeVerify = {
     return (
       <input
         type="number"
+        min="0"
         placeholder="Input Age..."
         className="custom-input age"
         value={props.value}

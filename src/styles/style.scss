@@ -140,7 +140,7 @@ ul {
 
 .header-wrapper {
   width: 90%;
-  margin-bottom: 20px;
+  margin-bottom: 45px;
 }
 
 .arrow-buttons-wrapper {
@@ -350,6 +350,11 @@ input[type='radio'] {
 
 .text-center {
   text-align: center;
+}
+
+.dashboard--loader {
+  text-align: center;
+  transform: translate(0, 100%);
 }
 
 .MuiDrawer-paper {
