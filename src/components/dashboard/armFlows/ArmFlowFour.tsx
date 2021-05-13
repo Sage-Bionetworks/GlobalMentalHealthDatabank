@@ -7,6 +7,7 @@ import { FORM_IDS } from '../../../components/form/types'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import NavigationArrows from '../../common/NavigationArrows'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type ArmFlowFourProps = {
   step: number
@@ -84,7 +85,9 @@ function ArmFlowFour({
                   setStep((current: number) =>
                     current < maxSteps ? current + 1 : current,
                   )
-                  updateClientData(step)
+                  updateClientData(step + 1, {
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_02,
+                  })
                 }}
               />
             </div>
@@ -108,9 +111,11 @@ function ArmFlowFour({
                   setErrorMessage(t('form.chooseAnOption'))
                   window.scrollTo(0, 0)
                 } else {
-                  updateClientData(step, {
+                  updateClientData(step + 1, {
                     [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_03,
                   })
+
                   setStep((current: number) =>
                     current < maxSteps ? current + 1 : current,
                   )
@@ -137,9 +142,10 @@ function ArmFlowFour({
                   setErrorMessage(t('form.chooseAnOption'))
                   window.scrollTo(0, 0)
                 } else {
-                  updateClientData(step, {
+                  updateClientData(step + 1, {
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.COMMUNITY_PANEL,
                   })
                   setStep((current: number) =>
                     current < maxSteps ? current + 1 : current,
@@ -165,8 +171,9 @@ function ArmFlowFour({
                 if (selectedOption === undefined)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  updateClientData(step, {
+                  updateClientData(step + 1, {
                     [FORM_IDS.WOULD_LIKE_TO_VOLUNTEER]: selectedOption,
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
                   })
                   setStep((current: number) =>
                     current < maxSteps ? current + 1 : current,

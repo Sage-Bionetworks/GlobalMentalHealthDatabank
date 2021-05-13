@@ -5,6 +5,7 @@ import useBreakpoint from '../../../helpers/hooks/useBreakpoint'
 import MobileRanking from './mobile/MobileRanking'
 import DesktopRanking from './desktop/DesktopRanking'
 import { useRankedChoice } from './context/RankedChoiceContext'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type Props = {
   step: number
@@ -20,14 +21,21 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
 
   useEffect(() => {
     const cardTitles = cards.map(card => card.title)
-    updateClientData(step - 1, { rankedChoiceInitial: cardTitles })
+    updateClientData(step, {
+      rankedChoiceInitial: cardTitles,
+      [PAGE_ID_FIELD_NAME]: PAGE_ID.RANKING_CHOICE,
+    })
   }, [])
 
   const handleNext = () => {
     setStep((current: number) => current + 1)
+    updateClientData(step + 1, {
+      [PAGE_ID_FIELD_NAME]: PAGE_ID.REVIEW_RANKING_CHOICE,
+    })
   }
 
   const handleBack = () => setStep((current: number) => current - 1)
+
   return (
     <div>
       <div className="rankingChoice">

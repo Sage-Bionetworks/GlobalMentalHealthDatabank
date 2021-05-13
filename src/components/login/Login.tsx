@@ -139,7 +139,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="login-wrapper">
-        {!isLoading && (
+        {
           <div className="quiz-wrapper">
             {(!isCodeSent || error) && (
               <div>
@@ -249,7 +249,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
               </div>
             )}
           </div>
-        )}
+        }
       </div>
     </ResponsiveStepWrapper>
   )

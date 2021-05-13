@@ -22,6 +22,7 @@ import {
 } from '../../helpers/RandomFlowGenerator'
 import { useTranslation } from 'react-i18next'
 import { useElegibility } from './context/ElegibilityContext'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -117,6 +118,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         age,
         gender,
         consented: false,
+        [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_ARE_WE_STUDYING,
+        checkpoint: 1,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],

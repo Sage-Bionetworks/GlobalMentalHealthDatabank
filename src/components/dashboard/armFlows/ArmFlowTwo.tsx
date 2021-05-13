@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import NavigationArrows from '../../common/NavigationArrows'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type ArmFlowTwoProps = {
   step: number
@@ -61,7 +62,9 @@ function ArmFlowTwo({
             setStep((current: number) =>
               current < maxSteps ? current + 1 : current,
             )
-            updateClientData(step)
+            updateClientData(step + 1, {
+              [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
+            })
           }}
         />
       </div>
