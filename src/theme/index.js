@@ -23,7 +23,7 @@ export const theme = responsiveFontSizes(
         fontSize: '5.5rem',
       },
       h3: {
-        fontSize: '4rem',
+        fontSize: '3rem',
         marginBottom: '20px',
       },
       h4: {

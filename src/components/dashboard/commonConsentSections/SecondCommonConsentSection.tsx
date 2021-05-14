@@ -214,11 +214,11 @@ function SecondCommonConsentSection({
             <div className="icon-wrapper">
               <RisksBenefits width="75" />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.secondCommonConsent.pageOne.risks&benefit')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageOne.risks&benefit')}
+            </Typography>
+
             <Typography variant="h6">
               {t('form.secondCommonConsent.pageOne.risks')}
             </Typography>
@@ -522,10 +522,10 @@ function SecondCommonConsentSection({
             />
 
             <Button
-              type="button"
-              variant="contained"
               fullWidth
+              className="wide-button"
               color="primary"
+              variant="contained"
               onClick={() => signConsent()}
               disabled={!consented || signatureName.length < 5}
             >

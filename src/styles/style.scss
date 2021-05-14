@@ -43,15 +43,11 @@ a {
   margin-top: 20px;
 }
 
-#root .margin-bottom-std {
-  margin-bottom: 50px;
-}
-
 #root .wide-button {
   padding: 0px 45px;
   font-weight: bold;
+  font-size: 1.6rem;
   letter-spacing: 0.04em;
-  margin-bottom: 10px;
   width: 100%;
   text-transform: none;
 }
@@ -311,7 +307,7 @@ input[type='radio'] {
 
 .form-message {
   font-size: 1.6rem;
-  padding-top: 30px;
+  margin-bottom: 20px;
   display: flex;
   svg {
     margin-right: 10px;
@@ -319,10 +315,6 @@ input[type='radio'] {
   &.error {
     color: #f36e68;
   }
-}
-
-.rejection-text {
-  padding-bottom: 150px;
 }
 
 .text-left {
@@ -399,4 +391,7 @@ input[type='radio'] {
 }
 .bottom-fifty-wrapper {
   margin-bottom: 50px;
+}
+.buttom-all-wrapper {
+  margin-bottom: 240px;
 }

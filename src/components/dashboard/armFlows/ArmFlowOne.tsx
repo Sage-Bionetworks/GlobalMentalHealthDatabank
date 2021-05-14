@@ -28,9 +28,9 @@ function ArmFlowOne({
         <div className="icon-wrapper">
           <Globe />
         </div>
-        <div className="header-wrapper">
-          <Typography variant="h3">{t('form.armOne.title')}</Typography>
-        </div>
+
+        <Typography variant="h3">{t('form.armOne.title')}</Typography>
+
         <Typography variant="h6">{t('form.armOne.subTitle')}</Typography>
         <ul>
           <li>

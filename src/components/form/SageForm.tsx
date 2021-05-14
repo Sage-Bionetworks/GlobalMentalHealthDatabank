@@ -212,11 +212,11 @@ export default function SageForm({
         >
           <div className="text-center">
             <Button
+              className="wide-button"
               color="primary"
               variant="contained"
               size="large"
               type="submit"
-              className="wide-button"
             >
               {buttonText || t('form.submit')}
             </Button>

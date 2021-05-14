@@ -196,7 +196,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                           id="outlined-basic"
                           variant="outlined"
                           autoComplete="phone"
-                          placeholder="Phone #"
                           label="Phone #"
                           fullWidth
                           name="phone"

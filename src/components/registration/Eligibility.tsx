@@ -97,7 +97,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               </Typography>
             </div>
 
-            <div className="rejection-text">
+            <div className="buttom-all-wrapper">
               <Separator />
             </div>
             <Button
@@ -418,16 +418,18 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     return (
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
-          <div className="header-wrapper">
-            <Typography variant="h3">{t('eligibility.thanks')}</Typography>
-          </div>
+          <Typography variant="h3">{t('eligibility.thanks')}</Typography>
 
-          <div className="rejection-text">
+          <div className="bottom-twenty-wrapper">
             <Typography variant="body2">
               {t('eligibility.notElegible')}
             </Typography>
           </div>
-          <Separator />
+
+          <div className="buttom-all-wrapper">
+            <Separator />
+          </div>
+
           <NavLink to="/home">
             <Button
               color="primary"

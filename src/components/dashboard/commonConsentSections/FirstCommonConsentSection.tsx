@@ -28,9 +28,8 @@ function FirstCommonConsentSection({
   updateClientData,
   consentModel,
 }: FirstCommonConsentProps) {
-  const [howToParticipateSelection, setHowToParticipateSelection] = useState(
-    undefined,
-  )
+  const [howToParticipateSelection, setHowToParticipateSelection] =
+    useState(undefined)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
@@ -312,11 +311,10 @@ function FirstCommonConsentSection({
             <div className="icon-wrapper">
               <Network />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.firstCommonConsent.transferAndRights')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.firstCommonConsent.transferAndRights')}
+            </Typography>
 
             <Typography variant="body2" className="bottom-space">
               {t('form.firstCommonConsent.transferAway')}

@@ -68,11 +68,11 @@ function ArmFlowFour({
             <div className="icon-wrapper">
               <Globe />
             </div>
-            <div className="header-wrapper">
-              <Typography variant="h3">
-                {t('form.armFour.pageOne.title')}
-              </Typography>
-            </div>
+
+            <Typography variant="h3">
+              {t('form.armFour.pageOne.title')}
+            </Typography>
+
             <div>
               <Typography variant="body2">
                 {t('form.armFour.pageOne.subText1')}
