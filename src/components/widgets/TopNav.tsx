@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Logout from '../login/Logout'
-import btnClose from '../../assets/btn_close_dark.svg'
 import {
+  Typography,
   ListItem,
   List,
   Divider,
   Hidden,
-  Button,
   Link,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Select,
+  MenuItem,
 } from '@material-ui/core'
-import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import { useSessionDataState } from '../../AuthContext'
-import { ReactComponent as MindKindLogo } from '../../assets/MindKindLogo.svg'
-import i18n from '../../i18n'
+import { NavLink } from 'react-router-dom'
+import Logout from '../login/Logout'
+import btnClose from '../../assets/btn_close_dark.svg'
+import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as Burger } from '../../assets/burger.svg'
+import { ReactComponent as ChevronDownLight } from '../../assets/chevron-down-light.svg'
 
 type TopNavProps = {
   token: string | undefined
@@ -28,11 +27,17 @@ type TopNavProps = {
 }
 
 export const TopNav: React.FunctionComponent<TopNavProps> = props => {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const { language } = i18n
-  const sessionData = useSessionDataState()
-
   const { t } = useTranslation()
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const OPTIONS = [
+    t('topnav.english'),
+    t('topnav.southAfrica'),
+    t('topnav.india'),
+  ]
+  const [
+    selectedPDFLanguageDownload,
+    setSelectedPDFLanguageDownload,
+  ] = useState(OPTIONS[0] || '')
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -42,7 +47,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
     <div>
       <div className="drawer__header">
         <Link onClick={handleDrawerToggle} className="drawer__close-button">
-          <img className="drawer__close-icon " src={btnClose} alt="close"></img>
+          <img className="drawer__close-icon" src={btnClose} alt="close" />
         </Link>
       </div>
       <List>
@@ -52,21 +57,13 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           className="topnav__link"
         >
           <ListItem button className="mobile-menu__item">
-            {t('topnav.home')}
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.home')}
+            </Typography>
           </ListItem>
         </NavLink>
         <Divider className="mobile-menu__separator" />
-        {props.token && sessionData.consented && (
-          <NavLink
-            to="/dashboard"
-            onClick={handleDrawerToggle}
-            className="topnav__link"
-          >
-            <ListItem button className="mobile-menu__item">
-              {t('topnav.dashboard')}
-            </ListItem>
-          </NavLink>
-        )}
+
         {props.token && (
           <NavLink
             to="/logout"
@@ -82,6 +79,41 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </ListItem>
           </NavLink>
         )}
+
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.aboutStudy')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.researchTeam')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/contact"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.ifInCrisis')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+
         {!props.token && (
           <NavLink
             to="/eligibility"
@@ -89,7 +121,9 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="topnav__link"
           >
             <ListItem button className="mobile-menu__item">
-              {t('common.joinUs')}
+              <Typography variant="h6" className="topnav__text">
+                {t('common.joinStudy')}
+              </Typography>
             </ListItem>
           </NavLink>
         )}
@@ -100,87 +134,140 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             className="topnav__link"
           >
             <ListItem button className="mobile-menu__item">
-              {t('topnav.login')}
+              <Typography variant="h6" className="topnav__text">
+                {t('topnav.login')}
+              </Typography>
             </ListItem>
           </NavLink>
         )}
+        <Divider className="mobile-menu__separator" />
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {' '}
+              {t('topnav.consent1')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.consent2')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/home"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {' '}
+              {t('topnav.consent3')}
+            </Typography>
+          </ListItem>
+        </NavLink>
       </List>
     </div>
   )
 
   const fullScreenNavBar = (
-    <div style={{ display: language === 'es' ? 'flex' : 'block' }}>
-      <NavLink
-        to="/home"
-        className="topnav__link--full"
-        style={{ whiteSpace: 'nowrap' }}
-        activeClassName="topnav__link--active"
-      >
-        {t('topnav.home')}
-      </NavLink>
-      {props.token && sessionData.consented && (
-        <NavLink
-          to="/dashboard"
-          className="topnav__link--full"
-          activeClassName="topnav__link--active"
+    <div>
+      <div className="topnav-center-section">
+        <NavLink to="/home" className="topnav__link--full centered">
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.home')}
+          </Typography>
+        </NavLink>
+        <NavLink to="/home" className="topnav__link--full centered">
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.about')}
+          </Typography>
+        </NavLink>
+        <NavLink to="/home" className="topnav__link--full centered">
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.research')}
+          </Typography>
+        </NavLink>
+        <NavLink to="/contact" className="topnav__link--full centered">
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.crisis')}
+          </Typography>
+        </NavLink>
+      </div>
+      <div className="topnav-right-section">
+        <Select
+          className="select-pdf"
+          value={selectedPDFLanguageDownload}
+          onChange={(e: any) => setSelectedPDFLanguageDownload(e.target.value)}
+          disableUnderline
+          IconComponent={() => <ChevronDownLight />}
         >
-          {t('topnav.dashboard')}
-        </NavLink>
-      )}
-      {props.token && (
-        <NavLink
-          to="/logout"
-          className="topnav__link--full"
-          activeClassName="topnav__link--active"
-        >
-          <Logout
-            onLogout={() => {
-              props.logoutCallbackFn(undefined, '', false)
-            }}
-          ></Logout>
-        </NavLink>
-      )}
-      {!props.token && (
-        <NavLink to="/eligibility" className="topnav__link--full">
-          <Button
-            style={{ marginLeft: '60px' }}
-            color="primary"
-            variant="outlined"
-            className="topnav__button--full"
-          >
-            {t('common.joinUs')}
-          </Button>
-        </NavLink>
-      )}
-      {!props.token && (
-        <NavLink to="/login" className="topnav__link--full">
-          <Button
-            style={{ marginLeft: '60px' }}
-            color="primary"
-            variant="outlined"
-            className="topnav__link"
-          >
-            {t('topnav.login')}
-          </Button>
-        </NavLink>
-      )}
+          <MenuItem className="select-pdf" value={OPTIONS[0]}>
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.english')}
+            </Typography>
+          </MenuItem>
+          <MenuItem className="select-pdf" value={OPTIONS[1]}>
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.southAfrica')}
+            </Typography>
+          </MenuItem>
+          <MenuItem className="select-pdf" value={OPTIONS[2]}>
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.india')}
+            </Typography>
+          </MenuItem>
+        </Select>
+
+        {!props.token && (
+          <NavLink to="/eligibility" className="topnav__link--full">
+            <Typography variant="h6" className="topnav__text">
+              {t('common.joinStudy')}
+            </Typography>
+          </NavLink>
+        )}
+        {!props.token && (
+          <NavLink to="/login" className="topnav__link--full">
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.login')}
+            </Typography>
+          </NavLink>
+        )}
+
+        {props.token && (
+          <NavLink to="/logout" className="topnav__link--full logout">
+            <Logout
+              onLogout={() => {
+                props.logoutCallbackFn(undefined, '', false)
+              }}
+            ></Logout>
+          </NavLink>
+        )}
+      </div>
     </div>
   )
+
   return (
     <div>
       {props.showTopNavigator ? (
         <div>
           <div className="no-print">
-            <Toolbar className="tool-bar" style={{ minHeight: '80px' }}>
-              <div>
-                <Typography variant="h6" noWrap className="topnav__title">
-                  <NavLink to="/home">
-                    <MindKindLogo />
-                  </NavLink>
-                </Typography>
-              </div>
-
-              {/* show hamburger menu on xs and sm, but full nav bar on md and up */}
+            <Toolbar className="tool-bar">
+              <Typography variant="h6" noWrap className="topnav__title">
+                <NavLink to="/home">
+                  <MindKindLogoDark />
+                </NavLink>
+              </Typography>
               <Hidden lgUp>
                 <IconButton
                   color="inherit"
@@ -189,7 +276,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
                   onClick={handleDrawerToggle}
                   className="menu__button"
                 >
-                  <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+                  <Burger />
                 </IconButton>
               </Hidden>
               <Hidden mdDown>{fullScreenNavBar}</Hidden>

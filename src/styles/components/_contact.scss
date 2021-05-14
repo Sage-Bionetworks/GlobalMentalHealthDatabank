@@ -1,0 +1,89 @@
+.contact {
+  .contact__in-crisis {
+    position: relative;
+    // background: linear-gradient(103.71deg, #F1A86D 14.67%, #F18D6D 90.67%);
+    background-image: url('../../assets/orange-gradient-mobile.svg');
+    background-size: cover;
+    background-position: bottom center;
+    height: 300px;
+    padding: 25px;
+  }
+  .plus-signs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: url('../../assets/plus-signs-2.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.2;
+    width: 200px;
+    height: 300px;
+  }
+  .contact__get-help {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    h4 {
+      margin-bottom: 8px;
+    }
+  }
+  .contact__local-resource {
+    padding: 32px 25px;
+  }
+  button {
+    width: 270px;
+    height: 52px;
+    background: #343f56;
+    border-radius: 100px;
+    margin-top: 8px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    border: none;
+    color: $secondary-font-color;
+  }
+  button.small {
+    width: 135px;
+    height: 35px;
+    font-size: 16px;
+  }
+  h2 {
+    margin-bottom: 30px;
+  }
+  p {
+    color: #2a2a2a;
+    margin-bottom: 20px;
+  }
+  @include breakpoint('md') {
+    .contact__in-crisis {
+      background-image: url('../../assets/orange-gradient-desktop.svg');
+      padding: 80px;
+      min-height: 450px;
+    }
+    .plus-signs {
+      width: 300px;
+      height: 450px;
+    }
+    .contact__get-help {
+      margin: 80px 80px 30px 80px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .contact__local-resource {
+      padding: 35px 80px;
+    }
+    h2 {
+      margin-bottom: 40px;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}

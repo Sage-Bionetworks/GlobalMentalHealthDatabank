@@ -1,9 +1,12 @@
 import React from 'react'
-import NavigationArrows from '../common/NavigationArrows'
-import { useRankedChoice } from './RankedChoice/context/RankedChoiceContext'
+import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
-import { useSessionDataState } from '../../AuthContext'
-import { HealthService } from '../../services/health.service'
+
+import NavigationArrows from '../../common/NavigationArrows'
+import { useRankedChoice } from '../RankedChoice/context/RankedChoiceContext'
+import { useSessionDataState } from '../../../AuthContext'
+import { HealthService } from '../../../services/health.service'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type Props = {
   step: number
@@ -24,9 +27,10 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
     if (token) {
       setStep((current: number) => current + 1)
       const cardTitles = cards.map(card => card.title)
-      const response = await updateClientData(step, {
+      const response = await updateClientData(step + 1, {
         rankedChoiceFinal: cardTitles,
         skipRanking: true,
+        [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
       })
       const { clientData } = response.data
       await HealthService.sendHealthData(token, {
@@ -38,8 +42,12 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
 
   return (
     <div className="ranking-summary">
-      <h1>{t('form.secondCommonConsent.ranking.confirmation')}</h1>
-      <p>{t('form.secondCommonConsent.ranking.review')}</p>
+      <Typography variant="h3">
+        {t('form.secondCommonConsent.ranking.confirmation')}
+      </Typography>
+      <Typography variant="body2" className="review-text">
+        {t('form.secondCommonConsent.ranking.review')}
+      </Typography>
       {cards.map(card => (
         <p className="option" key={`card-id-${card.id}`}>
           &gt; {card.title}

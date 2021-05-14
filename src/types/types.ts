@@ -122,3 +122,33 @@ export interface HealhDataResponse {
   studyId: string
   type: string
 }
+
+export const PAGE_ID_FIELD_NAME = 'page_id'
+export const PAGE_ID = {
+  WHAT_ARE_WE_STUDYING: 'C01_StudyIntro',
+  WHAT_WILL_YOU_ASK: 'C02_StudyAsk',
+  WHAT_WILL_YOU_ASK_QUIZ: 'C03_StudyAsk-Quiz',
+  DATA_COLLECTION: 'C04_Data',
+  DATA_RIGHTS: 'C05_DataRights',
+
+  RESEARCH_NORMS: 'SG1_ResearchNorms',
+  YOUTH_INFORMED: 'SG2_YouthInformed',
+  HYBRID: 'SG3_Hybrid',
+  PARTICIPANT_CHOICE_01: 'SG4-01_ParticipantChoice',
+  PARTICIPANT_CHOICE_02: 'SG4-02_ResearcherAccess',
+  PARTICIPANT_CHOICE_03: 'SG4-03_DataControl',
+
+  RISKS_AND_BENEFITS: 'C06_RisksBenefits',
+  NOT_MEDICAL_CARE: 'C07_NotMedicalCare',
+  STUDY_PURPOSE_QUIZ: 'C08_StudyPurpose-Quiz',
+  LEAVING_STUDY: 'C09_LeavingStudy',
+  LEAVING_STUDY_QUIZ: 'C10_LeavingStudy-Quiz',
+  CONTACT: 'C11_Contact',
+  SUMMARY: 'C12_Summary',
+  SIGNATURE: 'C13_Signature',
+
+  RANKING_CHOICE: 'Ranking_Choice_Initial',
+  REVIEW_RANKING_CHOICE: 'Ranking_Choice_Final',
+  COMMUNITY_PANEL: 'Community_Panel',
+  APP_DOWNLOAD: 'App_Download',
+}

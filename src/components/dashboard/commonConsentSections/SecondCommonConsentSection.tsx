@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import ProgressBar from '../../progressBar/ProgressBar'
-import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
-import Button from '@material-ui/core/Button/Button'
 import moment from 'moment'
 import i18next from 'i18next'
+import { Button, Typography, TextField } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
+
 import SageForm from '../../form/SageForm'
+import ProgressBar from '../../progressBar/ProgressBar'
 import {
   WHAT_IS_THE_PURPOSE_OPTIONS,
   WHICH_IS_CORRECT_OPTIONS,
@@ -13,19 +13,21 @@ import {
   FORM_IDS,
 } from '../../form/types'
 import RankedChoice from '../RankedChoice/RankedChoice'
-import RankedChoiceSummary from '../RankedChoiceSummary'
+import RankedChoiceSummary from '../RankedChoice/RankedChoiceSummary'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
 import { useSessionDataState } from '../../../AuthContext'
 import NavigationArrows from '../../common/NavigationArrows'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
+import { ReactComponent as LogoNoText } from '../../../assets/logo-no-text.svg'
 import { ReactComponent as RisksBenefits } from '../../../assets/consent/risksBenefits.svg'
 import { ReactComponent as Summary } from '../../../assets/consent/summary.svg'
 import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg'
 import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
 import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
 import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -42,12 +44,10 @@ function SecondCommonConsentSection({
   maxSteps,
   updateClientData,
 }: SecondCommonConsentProps) {
-  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState(
-    undefined,
-  )
-  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState(
-    undefined,
-  )
+  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] =
+    useState(undefined)
+  const [whichIsCorrectSelection, setWhichIsCorrectSelection] =
+    useState(undefined)
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -176,14 +176,16 @@ function SecondCommonConsentSection({
           clientData.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.DEMOCRACY)
       ) {
         //go to steps after consent (ranking)
-        updateClientDataResponse = await updateClientData(step, {
+        updateClientDataResponse = await updateClientData(step + 1, {
           skipRanking: false,
           consented: true,
+          [PAGE_ID_FIELD_NAME]: PAGE_ID.RANKING_CHOICE,
         })
       } else {
-        updateClientDataResponse = await updateClientData(step, {
+        updateClientDataResponse = await updateClientData(step + 1, {
           skipRanking: true,
           consented: true,
+          [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
         })
       }
       await HealthService.sendHealthData(
@@ -196,9 +198,9 @@ function SecondCommonConsentSection({
     }
   }
 
-  const handleNext = () => {
+  const handleNext = (pageId: string | undefined) => {
     setStep((current: number) => (current < maxSteps ? current + 1 : current))
-    updateClientData(step)
+    updateClientData(step + 1, { [PAGE_ID_FIELD_NAME]: pageId })
   }
   const handleBack = () =>
     setStep((current: number) => (current > 1 ? current - 1 : current))
@@ -209,21 +211,33 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <RisksBenefits width="75" />
-            <div className="header-wrapper">
-              <h1>{t('form.secondCommonConsent.pageOne.risks&benefit')}</h1>
+            <div className="icon-wrapper">
+              <RisksBenefits width="75" />
             </div>
-            <h2>{t('form.secondCommonConsent.pageOne.risks')}</h2>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageOne.risks&benefit')}
+            </Typography>
+
+            <Typography variant="h6">
+              {t('form.secondCommonConsent.pageOne.risks')}
+            </Typography>
             <div className="form-text-content">
-              {t('form.secondCommonConsent.pageOne.riskDescription')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageOne.riskDescription')}
+              </Typography>
             </div>
-            <h2>{t('form.secondCommonConsent.pageOne.benefits')}</h2>
+            <Typography variant="h6">
+              {t('form.secondCommonConsent.pageOne.benefits')}
+            </Typography>
             <div className="form-text-content">
-              {t('form.secondCommonConsent.pageOne.benefitDescription')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageOne.benefitDescription')}
+              </Typography>
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.NOT_MEDICAL_CARE)}
               preventBack
             />
           </div>
@@ -235,17 +249,28 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <NotMedical />
-            <div className="header-wrapper">
-              <h1>{t('form.secondCommonConsent.pageThree.notMedicalCare')}</h1>
+            <div className="icon-wrapper">
+              <NotMedical width="75" />
             </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageThree.notMedicalCare')}
+            </Typography>
+
             <div className="form-text-content">
-              {t('form.secondCommonConsent.pageThree.description')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageThree.description')}
+              </Typography>
             </div>
             <a href={t('form.secondCommonConsent.pageThree.link')}>
-              {t('form.secondCommonConsent.pageThree.link')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageThree.link')}
+              </Typography>
             </a>
-            <NavigationArrows onBack={handleBack} onNext={handleNext} />
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.STUDY_PURPOSE_QUIZ)}
+            />
           </div>
         </ResponsiveStepWrapper>
       )
@@ -297,8 +322,9 @@ function SecondCommonConsentSection({
                     )
                   } else {
                     setWhatIsThePurposeSelection(selectedOption)
-                    updateClientData(step, {
+                    updateClientData(step + 1, {
                       [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.LEAVING_STUDY,
                     })
                   }
                 }
@@ -313,16 +339,22 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <Exit />
-            <div className="header-wrapper">
-              <h1>{t('form.secondCommonConsent.pageFive.leaving')}</h1>
+            <div className="icon-wrapper">
+              <Exit />
             </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageFive.leaving')}
+            </Typography>
+
             <div className="form-text-content">
-              {t('form.secondCommonConsent.pageFive.description')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageFive.description')}
+              </Typography>
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.LEAVING_STUDY_QUIZ)}
               preventBack
             />
           </div>
@@ -376,8 +408,9 @@ function SecondCommonConsentSection({
                     )
                   } else {
                     setWhichIsCorrectSelection(selectedOption)
-                    updateClientData(step, {
+                    updateClientData(step + 1, {
                       [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.CONTACT,
                     })
                   }
                 }
@@ -392,16 +425,22 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <Envelope />
-            <div className="header-wrapper">
-              <h1>{t('form.secondCommonConsent.pageSeven.contact')}</h1>
+            <div className="icon-wrapper">
+              <Envelope />
             </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageSeven.contact')}
+            </Typography>
+
             <div className="form-text-content">
-              {t('form.secondCommonConsent.pageSeven.description')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageSeven.description')}
+              </Typography>
             </div>
             <NavigationArrows
               onBack={handleBack}
-              onNext={handleNext}
+              onNext={() => handleNext(PAGE_ID.SUMMARY)}
               preventBack
             />
           </div>
@@ -413,14 +452,23 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <Summary />
-            <div className="header-wrapper">
-              <h1>{t('form.secondCommonConsent.pageEight.summary')}</h1>
+            <div className="icon-wrapper">
+              <Summary />
             </div>
+
+            <Typography variant="h3">
+              {t('form.secondCommonConsent.pageEight.summary')}
+            </Typography>
+
             <div className="form-text-content">
-              {t('form.secondCommonConsent.pageEight.description')}
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description')}
+              </Typography>
             </div>
-            <NavigationArrows onBack={handleBack} onNext={handleNext} />
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.SIGNATURE)}
+            />
           </div>
         </ResponsiveStepWrapper>
       )
@@ -431,17 +479,22 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <LogoNoText />
-            <div className="header-wrapper">
-              <h1>{t('form.consentSignature.title')}</h1>
+            <div className="icon-wrapper">
+              <LogoNoText />
             </div>
-            <h3>
+
+            <Typography variant="h3">
+              {t('form.consentSignature.title')}
+            </Typography>
+
+            <Typography variant="body2">
               {t('form.consentSignature.pleaseCheck.text1')}{' '}
-              <b>{t('form.consentSignature.pleaseCheck.check')}</b>
+              <b>{t('form.consentSignature.pleaseCheck.check')}</b>{' '}
               {t('form.consentSignature.pleaseCheck.if')}{' '}
               <b>{t('form.consentSignature.pleaseCheck.agree')}</b>{' '}
               {t('form.consentSignature.pleaseCheck.takePart')}
-            </h3>
+            </Typography>
+
             <span className="consent-wrapper">
               <input
                 type="checkbox"
@@ -450,28 +503,29 @@ function SecondCommonConsentSection({
                 onClick={() => setConsented(prev => !prev)}
               />
               <div>
-                <b>{t('form.consentSignature.agreement')}</b>
+                <Typography variant="h6">
+                  {t('form.consentSignature.agreement')}
+                </Typography>
               </div>
             </span>
 
-            <h2>{moment().locale(i18next.language).format('MMMM Do, YYYY')}</h2>
+            <Typography variant="h6">
+              {moment().locale(i18next.language).format('MMMM Do, YYYY')}
+            </Typography>
 
-            <fieldset className="consent-signature">
-              <legend>{t('form.consentSignature.fullName')}</legend>
-              <input
-                type="text"
-                value={signatureName}
-                onChange={e => {
-                  setSignatureName(e.target.value)
-                }}
-              ></input>
-            </fieldset>
+            <TextField
+              className="custom-input signature"
+              variant="outlined"
+              placeholder={t('form.consentSignature.fullName')}
+              value={signatureName}
+              onChange={e => setSignatureName(e.target.value)}
+            />
 
             <Button
-              type="button"
-              variant="contained"
               fullWidth
+              className="wide-button"
               color="primary"
+              variant="contained"
               onClick={() => signConsent()}
               disabled={!consented || signatureName.length < 5}
             >

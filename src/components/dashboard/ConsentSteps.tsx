@@ -97,10 +97,10 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
       if (token) {
         const userInfoResponse = await UserService.getUserInfo(token)
         const data = userInfoResponse?.data as any
-        const previousQuizStep = data.clientData.checkpoint
+        const { checkpoint } = data.clientData
         setUserClientData(data.clientData)
-        if (previousQuizStep > 1) {
-          setStep(previousQuizStep + 1)
+        if (checkpoint > 1) {
+          setStep(checkpoint)
         }
       }
     }
@@ -135,6 +135,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
         setStep={setStep}
         maxSteps={maxSteps}
         updateClientData={updateClientData}
+        consentModel={userClientData.consentModel}
       />
     )
   }

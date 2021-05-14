@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 import { default as Form } from 'react-jsonschema-form'
 import Button from '@material-ui/core/Button'
 import Separator from '../static/Separator'
@@ -179,11 +180,13 @@ export default function SageForm({
 
   return (
     <>
-      <div className="header-wrapper">
-        <h1>{title}</h1>
-      </div>
-      {subTitle && <h2>{subTitle}</h2>}
+      <Typography variant="h3">{title}</Typography>
 
+      {subTitle && (
+        <div className="form-subtitle">
+          <Typography variant="h6">{subTitle}</Typography>
+        </div>
+      )}
       {errorMessage && (
         <div className="form-message error">
           <ErrorMessageIcon />
@@ -209,11 +212,11 @@ export default function SageForm({
         >
           <div className="text-center">
             <Button
+              className="wide-button"
               color="primary"
               variant="contained"
               size="large"
               type="submit"
-              className="wide-button"
             >
               {buttonText || t('form.submit')}
             </Button>

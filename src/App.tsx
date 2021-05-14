@@ -8,6 +8,7 @@ import {
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
 import { ThemeProvider, Typography } from '@material-ui/core'
 import Home from './components/static/Home'
+import Contact from './components/static/Contact'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
 import Login from './components/login/Login'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
@@ -20,6 +21,7 @@ import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPage
 import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
+import DataRegulation from './components/static/DataRegulation'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
@@ -157,18 +159,24 @@ function App() {
                       <Route path="/privacypolicy">
                         <PrivacyPolicy />
                       </Route>
+                      <Route path="/dataregulation">
+                        <DataRegulation />
+                      </Route>
                       <Route path="/download">
                         <DownloadApp />
                       </Route>
+                      <Route path="/contact">
+                        <Contact />
+                      </Route>
                       <Route path="/home">
-                        <Home token={token || null}></Home>
+                        <Home />
                       </Route>
                       <Route path="/">
-                        <Home token={token || null}></Home>
+                        <Home />
                       </Route>
                     </Switch>
                   </TopNav>
-                  <Footer token={token} />
+                  <Footer />
                 </div>
               </Router>
             </div>

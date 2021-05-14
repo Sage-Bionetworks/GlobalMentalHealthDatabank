@@ -1,12 +1,16 @@
 .form-group {
-  margin-bottom: 4.5rem;
+  margin-top: -1rem;
+  margin-bottom: 2.2rem;
   label {
     margin-bottom: 10px;
+  }
+  .checkboxes {
+    margin-top: 20px;
   }
 }
 
 .input--padded {
-  padding: 15px 0 20px 0;
+  margin-bottom: 50px;
 }
 
 .buttons--action {
@@ -58,8 +62,8 @@ label.block--dark {
 .input--padded--flags {
   padding: 20px 0 40px 0;
   display: flex;
-  .MuiTextField-root {
-    height: 56px;
+  .MuiInputBase-root {
+    height: 63px;
   }
 }
 
@@ -67,7 +71,7 @@ label.block--dark {
   &.MuiOutlinedInput-root {
     border-radius: 0;
     right: -1px;
-    height: 56px;
+    height: 63px;
     div {
       margin-bottom: -2px;
     }
@@ -76,7 +80,8 @@ label.block--dark {
 
 .phone-input {
   .MuiOutlinedInput-root {
-    border-radius: 0;
+    background: $primary-bg-color;
+    font-size: 16px;
   }
 }
 
@@ -84,12 +89,24 @@ label.block--dark {
   width: 25px;
 }
 
-.age-input {
+.custom-input {
   width: 100%;
-  background: #ffffff;
-  border: 1px solid #343f56;
+  background: $primary-bg-color;
+  border: 1px solid $button-bg-color;
   box-sizing: border-box;
   padding: 14px;
-  font-size: 14px;
-  margin-bottom: 270px;
+  font-size: 16px;
+  &.age {
+    margin-bottom: 93px;
+    .MuiInputBase-input {
+      padding: 20px 15px;
+      border: 1px solid $button-bg-color;
+    }
+  }
+  &.signature {
+    margin-bottom: 50px;
+    .MuiOutlinedInput-input {
+      padding: 20px 15px;
+    }
+  }
 }

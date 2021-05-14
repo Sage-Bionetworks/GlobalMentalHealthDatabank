@@ -39,11 +39,6 @@
   .MuiTab-root {
     min-width: 110px;
   }
-
-  .MuiTab-textColorPrimary {
-    &.Mui-selected {
-    }
-  }
 }
 
 // material ui "lab" component override is challenging: https://github.com/mui-org/material-ui/issues/19427
@@ -61,4 +56,15 @@
   background-color: #0084ff;
   padding: 20px 30px;
   border-bottom: 1px rgb(46, 46, 46) solid;
+}
+
+/* Font overrides */
+@media (max-width: 767px) {
+  .MuiTypography-root .MuiTypography-h1 {
+    font-size: 3rem;
+  }
+  .MuiTypography-root .MuiTypography-h2,
+  .MuiTypography-root .MuiTypography-h3 {
+    font-size: 2.4rem;
+  }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Separator from '../static/Separator'
+import { Typography } from '@material-ui/core'
+
 import useForm from '../useForm'
 import {
   APP_ID,
@@ -21,6 +22,7 @@ import {
 } from '../../helpers/RandomFlowGenerator'
 import { useTranslation } from 'react-i18next'
 import { useElegibility } from './context/ElegibilityContext'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -28,6 +30,8 @@ type RegistrationProps = {
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
+const LIVED_EXPERIENCE_YES = 'lived_experience_yes'
+const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
@@ -93,6 +97,13 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         dataGroups.push(FLOW_OPTIONS.FOUR as UserDataGroup)
         break
     }
+
+    if (everBenefitedFromTreatment)
+      dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
+    else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
+
+    dataGroups.push(whereDoYouLive as UserDataGroup)
+
     const data: RegistrationData = {
       phone: state.phone.value
         ? makePhone(state.phone.value, state.countryCode.value)
@@ -107,10 +118,12 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         age,
         gender,
         consented: false,
+        [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_ARE_WE_STUDYING,
+        checkpoint: 1,
       },
       appId: APP_ID,
       substudyIds: ['wellcome-study'],
-      dataGroups: dataGroups,
+      dataGroups,
     }
     const endPoint = {
       PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
@@ -153,60 +166,66 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   return (
     <div className="quiz-wrapper">
       <div className="media-wrapper text-left">
-        <TextSent />
+        <div className="icon-wrapper">
+          <TextSent width="75" />
+        </div>
       </div>
-      <div className="text-left">{t('eligibility.askPhone')}</div>
-      <Separator />
-      <div className="text-left">{t('eligibility.whyAsk')}</div>
 
-      {
-        <form className="demoForm" onSubmit={handleOnSubmit}>
-          <div className="form-group" style={{ marginBottom: 0 }}>
-            <div>
-              <label htmlFor="phone" className="block--dark">
-                {t('eligibility.myPhone')}
-              </label>
-              <div className="input--padded">
-                <TextField
-                  name="phone"
-                  type="phone"
-                  value={state.phone.value}
-                  placeholder={'Phone #'}
-                  aria-label={'Phone #'}
-                  variant="outlined"
-                  fullWidth
-                  onChange={handleOnChange}
-                  className="phone-input"
-                />
-              </div>
-              {Object.keys(state).map(
-                key =>
-                  state[key].error && (
-                    <p
-                      className="error"
-                      style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
-                    >
-                      {state[key].error}
-                    </p>
-                  ),
-              )}
-              <p className="error-message">{error}</p>
-              <div className="text-center">
-                <Button
-                  fullWidth
-                  color="primary"
-                  variant="contained"
-                  size="large"
-                  type="submit"
-                  disabled={!state.phone.value}
-                >
-                  {t('eligibility.createAccount')}
-                </Button>
-              </div>
+      <div className="bottom-twenty-wrapper">
+        <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
+      </div>
+
+      <div className="bottom-forty-wrapper">
+        <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
+      </div>
+
+      <form className="demoForm" onSubmit={handleOnSubmit}>
+        <div className="form-group" style={{ marginBottom: 0 }}>
+          <div>
+            <label htmlFor="phone" className="block--dark">
+              <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
+            </label>
+            <div className="input--padded">
+              <TextField
+                fullWidth
+                className="phone-input"
+                variant="outlined"
+                name="phone"
+                type="phone"
+                value={state.phone.value}
+                placeholder="Phone #"
+                aria-label="Phone #"
+                onChange={handleOnChange}
+              />
+            </div>
+            {Object.keys(state).map(
+              key =>
+                state[key].error && (
+                  <p
+                    className="error"
+                    style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
+                  >
+                    {state[key].error}
+                  </p>
+                ),
+            )}
+            <p className="error-message">{error}</p>
+            <div className="text-center">
+              <Button
+                fullWidth
+                color="primary"
+                variant="contained"
+                size="large"
+                type="submit"
+                className="wide-button"
+                disabled={!state.phone.value}
+              >
+                {t('eligibility.createAccount')}
+              </Button>
             </div>
           </div>
-        </form>
-      }
+        </div>
+      </form>
     </div>
   )
 }

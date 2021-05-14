@@ -4,7 +4,7 @@ import { ReactComponent as ArrowButtonRight } from '../../assets/arrow_button_ri
 
 type Props = {
   preventBack?: boolean
-  onNext?: () => void
+  onNext?: any
   onBack?: () => void
 }
 

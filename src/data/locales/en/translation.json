@@ -11,9 +11,9 @@
     "email": "Email",
     "emailAddress": "Email address",
     "joinUs": "Join Us",
-    "joinStudy": "Join The Study",
+    "joinStudy": "Join the Study",
     "learnMore": "Learn More",
-    "logIn": "Sign in",
+    "logIn": "Log-in",
     "logOut": "Sign Out",
     "moreInfoVisit": "For more information, please visit",
     "phone": "Phone",
@@ -46,7 +46,7 @@
     "askPhone": "Before we get started, could we have your number?",
     "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
     "myPhone": "My phone number is: ",
-    "createAccount": "Create account"
+    "createAccount": "Sign Up"
   },
   "form": {
     "firstCommonConsent": {
@@ -71,8 +71,8 @@
       "answer": "This study will only require you to answer weekly survey questions.",
       "dataCollection": "Data Collection, Storage & Privacy",
       "yourData": "Your study data is:",
-      "yourDataApp": "the data you share with us in the MindKind Study App and",
-      "yourDataPhone": "the data you give us permission to collect from your phone.",
+      "yourDataApp": "The data you share with us in the MindKind Study App and",
+      "yourDataPhone": "The data you give us permission to collect from your phone.",
       "weEncrypt": "We will encrypt your study data.",
       "weTransfer": "We will transfer it to our server.",
       "replaceName": "Once we get your study data, we will replace your name with a random code.",
@@ -133,9 +133,9 @@
       "pageOne": {
         "risks&benefit": "Potential Risks & Benefits",
         "risks": "Potential Risks",
-        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \n\nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \n\nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
+        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
         "benefits": "Potential Benefits",
-        "benefitDescription": "You may not personally benefit from taking part in this study. \n\nYou may be contributing to valuable research. \n\nYou may help researchers better understand how young adults can manage their mental health."
+        "benefitDescription": "You may not personally benefit from taking part in this study. \nYou may be contributing to valuable research. \nYou may help researchers better understand how young adults can manage their mental health."
       },
       "pageTwo": {
         "costs&payment": "Costs & Payment",
@@ -155,7 +155,7 @@
       },
       "pageFive": {
         "leaving": "Leaving the Study",
-        "description": "Joining this study is voluntary.\n\n If you join, you may leave this study (withdraw) at any time and for any reason. \n\nIf you withdraw, you can ask us to delete all your study data. \n\nIf you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
+        "description": "Joining this study is voluntary.\n If you join, you may leave this study (withdraw) at any time and for any reason.\n If you withdraw, you can ask us to delete all your study data.\n If you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
       },
       "pageSix": {
         "title": "Which is correct?",
@@ -187,39 +187,45 @@
       "title": "Consent Signature",
       "pleaseCheck": {
         "text1": "Please",
-        "check": "check the box below ",
-        "if": "if you",
+        "check": "check the box",
+        "if": "below if you",
         "agree": "agree",
         "takePart": "to take part:"
       },
       "agreement": "I have read and understand the information presented in this consent process. All of my questions have been answered. I freely and willingly choose to participate in the MindKind Study. By signing this consent, I have not given up any of my legal rights.",
-      "fullName": "Full Name of adult participant:"
+      "fullName": "Full name of participant or adult..."
     },
     "youAreInStep": "You are in step",
     "submit": "Submit",
     "chooseAnOption": "You must choose an option"
   },
   "footer": {
-    "copyright": "Copyright Mindkind 2021",
+    "copyright": "Copyright © 2021, Sage Bionetworks",
     "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
     "dashboard": "Dashboard",
-    "about": "About",
+    "about": "About the Study",
     "home": "Home",
     "team": "Research team",
     "faq": "FAQs",
-    "contact": " Contact",
-    "privacy": "Privacy Policies",
+    "contact": "Contact",
+    "crisis": "If you are in a Crisis",
+    "privacy": "Privacy Policy",
+    "dataRights": "Data Rights",
     "settings": "Account Settings",
     "login": "Sign in",
-    "join": "Join Us",
+    "join": "Join the Study",
+    "consent1": "Consent: Language 1",
+    "consent2": "Consent: Language 2",
+    "consent3": "Consent: Language 3",
     "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
   },
   "home": {
     "title1": "A Mental Health Study",
-    "title2": "From Youth, For Emotional Health",
+    "title2-from-youth": "From Youth,",
+    "title2-for-health": "For Emotional Health",
     "text1": "Your personal experiences with emotional health are real.",
     "text2": "What if you could help other young people by sharing your story?",
-    "text3": "Want to make a difference? Join the MindKind Study",
+    "text3": "Want to make a difference?",
     "text31": "In partnership with:",
     "text4": "Our mission in this study is to understand how people recover from COVID-19 and the impacts of the disease on health, both today and in the future. By sharing your recovery experience, you can help researchers unlock the mysteries behind this disease and provide important new information for you, your loved ones, and thousands of others affected by the virus.",
     "text41": "Minority communities have been disproportionately affected by COVID-19. We are committed to engaging a diverse and representative group of participants so that the research can help those most impacted by this disease.",
@@ -236,6 +242,48 @@
     "text16": "Learn with us along the way",
     "text17": "If you are asked to provide a sample, we will test the sample for antibodies related to COVID-19 infection, using an antibody test approved by the New York State Department of Health. We will share your test results with you, along with information about what those results may mean. As we learn more about the impact of COVID-19 across study participants, we will share regular updates with the broader scientific and patient community. We may also ask if you are interested in joining other related studies. For instance, some participants may choose to be notified of opportunities to donate plasma and help those still fighting for survival from COVID-19.",
     "text18": "Together, we can fight COVID-19."
+  },
+  "contact": {
+    "title1": "If you are in a crisis",
+    "subtitle1": "If you are in crisis, or feel that you are going to hurt yourself or others, please contact your healthcare provider. Additional resources provided below.",
+    "help": {
+      "get": "Get help in your region",
+      "find": "Find Help"
+    },
+    "localResources": {
+      "india": {
+        "title": "Local Resources in India",
+        "text1": "iCallHelpline provides free counseling.",
+        "text2": "The iCallHelpline is available Monday-Saturday, 10am-8pm. Call 022-25521111",
+        "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
+        "link": {
+          "text": "Visit Website",
+          "url": ""
+        }
+      },
+      "southAfrica": {
+        "title": "Local Resources in South Africa",
+        "text1": "SADAG is available for emotional support.",
+        "text2": "The SADAG hotline is available 24/7 to provide assistance.",
+        "text3": "Call 0800456789",
+        "text4": "You can also email SADAG at Zane@sadag.org for information about counseling.",
+        "link": {
+          "text": "Visit Website",
+          "url": ""
+        }
+      },
+      "unitedKingdom": {
+        "title": "Local Resources in the UK",
+        "text1": " Samaritans UK is available for emotional support.",
+        "text2": "The Samaritans UK hotline is available 24/7.",
+        "text3": " For English, call 116 123 For Welsh, call l 0808 164 0123",
+        "text4": " You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
+        "link": {
+          "text": "Visit Website",
+          "url": ""
+        }
+      }
+    }
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -262,6 +310,19 @@
     "text21": "We may update our Privacy Policy from time to time to clarify how we collect, process, store, use and disclose information. We want to be as transparent as possible about the changes we make to our Privacy Policy.",
     "text22": "COVID Recovery Corps. Appendix C_V2.0. 17.June.2020"
   },
+  "dataRegulation": {
+    "title": "EEA - General Data Protection Regulation Addendum",
+    "text1": "As required by the law of the European Union, and its member countries, additional information is being provided to you as a research participant.",
+    "text2": "For the purpose of EU law, particularly the General Data Protection Regulation (GDPR), the legal basis for the collection and use of your data is your consent as well as the public interest in the research being conducted.",
+    "text3": "If you are habitually located in the EEA, you have certain rights related to the processing of the information we collect from you.  While some of these rights apply generally, certain rights apply only in certain limited circumstances.  We will comply with your request to exercise your rights unless we have compelling legitimate grounds to deny your request or we cannot comply with your request for legal reasons. We will respond to your request within 1 month of receiving it.",
+    "text4": "You have the right to access your data. You can write to us at any time asking to know what personal information is being held where and for what purpose.",
+    "text5": "You have the right to rectification. If there is an error in the information we collect from you, you have the right to make a request to have it fixed. You can write to us to ask for any incorrect personal data about you to be corrected.",
+    "text6": "You have the right to erasure. You may ask us to delete or remove some or all of your personal data at any time.",
+    "text7": "You have the right to restrict processing. At any time, you can withdraw your consent to our processing of your Personal Data.",
+    "text8": "You have the right to data portability. You can request a copy of your data in usable format. ",
+    "text9": "You have the right to object. You can withdraw from providing data to the App at any time.",
+    "text10": "If you have questions about your rights and choices or would like more information about your rights and choices, you can email privacyofficer@sagebionetworks.org."
+  },
   "registration": {
     "text1": "Create account",
     "text2": "I don't have an email account",
@@ -282,10 +343,21 @@
     "linkSent": "We just sent a link to: "
   },
   "topnav": {
+    "aboutStudy": "About the Study",
     "about": "About",
+    "researchTeam": "Research Team",
+    "research": "Research",
+    "ifInCrisis": "If You are in Crisis",
+    "crisis": "Crisis",
     "policy": "Privacy Policy",
     "dashboard": "Dashboard",
     "login": "Sign in",
-    "home": "Home"
+    "home": "Home",
+    "consent1": "Consent: Language Name",
+    "consent2": "Consent: Language Name",
+    "consent3": "Consent: Language Name",
+    "english": "English",
+    "southAfrica": "South Africa",
+    "india": "India"
   }
 }
