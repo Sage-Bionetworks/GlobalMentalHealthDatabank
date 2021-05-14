@@ -65,24 +65,25 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             </label>
             <div className="input--padded">
               <TextField
+                fullWidth
+                variant="outlined"
                 name="code"
                 type="code"
                 value={code}
                 placeholder={t('signIn.code')}
                 aria-label={t('signIn.code')}
-                variant="outlined"
-                fullWidth
                 onChange={e => setCode(e.currentTarget.value)}
                 autoComplete="off"
               />
             </div>
           </div>
           <Button
-            type="submit"
-            disabled={!code || code.replace('-', '').length < 6}
+            fullWidth
+            className="wide-button"
             variant="contained"
             color="primary"
-            fullWidth
+            type="submit"
+            disabled={!code || code.replace('-', '').length < 6}
           >
             {t('common.logIn')}
           </Button>

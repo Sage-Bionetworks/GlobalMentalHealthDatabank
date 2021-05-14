@@ -217,6 +217,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 variant="contained"
                 size="large"
                 type="submit"
+                className="wide-button"
                 disabled={!state.phone.value}
               >
                 {t('eligibility.createAccount')}
