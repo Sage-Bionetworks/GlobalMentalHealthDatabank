@@ -9,6 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
 import { ThemeProvider, Typography } from '@material-ui/core'
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
+import About from './components/static/About'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
 import Login from './components/login/Login'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
@@ -167,6 +168,9 @@ function App() {
                       </Route>
                       <Route path="/contact">
                         <Contact />
+                      </Route>
+                      <Route path="/about">
+                        <About />
                       </Route>
                       <Route path="/home">
                         <Home />

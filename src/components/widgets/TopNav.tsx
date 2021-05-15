@@ -148,7 +148,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         >
           <ListItem button className="mobile-menu__item">
             <Typography variant="h6" className="topnav__text">
-              {' '}
               {t('topnav.consent1')}
             </Typography>
           </ListItem>
@@ -171,7 +170,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         >
           <ListItem button className="mobile-menu__item">
             <Typography variant="h6" className="topnav__text">
-              {' '}
               {t('topnav.consent3')}
             </Typography>
           </ListItem>
@@ -188,7 +186,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             {t('topnav.home')}
           </Typography>
         </NavLink>
-        <NavLink to="/home" className="topnav__link--full centered">
+        <NavLink to="/about" className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.about')}
           </Typography>

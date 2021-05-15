@@ -1,0 +1,144 @@
+.about {
+  button {
+    width: 270px;
+    height: 52px;
+    background: #343f56;
+    border-radius: 100px;
+    margin-top: 8px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    border: none;
+    color: $secondary-font-color;
+    cursor: pointer;
+  }
+  .about-the-study {
+    position: relative;
+    background-image: url('../../assets/about/yellow-bg-mobile.svg');
+    background-size: cover;
+    background-position: bottom center;
+    min-height: 300px;
+    padding: 40px 25px 100px 25px;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+  .make-difference {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 25px 50px 25px;
+  }
+  .ten-things {
+    margin: 0 25px;
+    .ten-things__title {
+      margin-bottom: 40px;
+    }
+    .things__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .thing {
+      width: 100%;
+      margin-bottom: 60px;
+      .thing__header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        h4 {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+  .ready-to-join {
+    position: relative;
+    background-color: $button-bg-color;
+    color: $primary-bg-color;
+    padding: 45px 25px 55px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    .text-section {
+      width: 100%;
+    }
+    .button-section {
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    p {
+      margin-bottom: 25px;
+    }
+    button {
+      background-color: $primary-bg-color;
+      color: $font-color;
+      display: block;
+      margin: auto;
+    }
+    .butterfly {
+      position: absolute;
+      top: -24px;
+      right: 24px;
+      width: 75px;
+      height: 75px;
+      background-image: url('../../assets/about/butterfly-orange.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  @include breakpoint('md') {
+    .about-the-study {
+      padding: 100px 75px;
+      background-image: url('../../assets/about/yellow-bg-desktop.svg');
+      h2 {
+        margin-bottom: 40px;
+      }
+    }
+    .make-difference {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 65px 75px 100px 75px;
+    }
+    .ten-things {
+      .ten-things__title {
+        margin-bottom: 70px;
+      }
+      .things__wrapper {
+        justify-content: space-between;
+      }
+      .thing {
+        width: 30%;
+      }
+    }
+    .ready-to-join {
+      background-color: white;
+      background-image: url('../../assets/about/blue-bg-desktop.svg');
+      background-size: cover;
+      min-height: 500px;
+      align-items: center;
+      padding-top: 100px;
+      .text-section {
+        width: 60%;
+      }
+      .button-section {
+        width: 40%;
+      }
+      h2 {
+        color: #f9cc7d;
+        margin-bottom: 35px;
+      }
+      .butterfly {
+        display: none;
+      }
+    }
+  }
+}
