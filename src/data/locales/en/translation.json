@@ -252,6 +252,269 @@
     "text17": "If you are asked to provide a sample, we will test the sample for antibodies related to COVID-19 infection, using an antibody test approved by the New York State Department of Health. We will share your test results with you, along with information about what those results may mean. As we learn more about the impact of COVID-19 across study participants, we will share regular updates with the broader scientific and patient community. We may also ask if you are interested in joining other related studies. For instance, some participants may choose to be notified of opportunities to donate plasma and help those still fighting for survival from COVID-19.",
     "text18": "Together, we can fight COVID-19."
   },
+  "research": {
+    "title1": "Research Team",
+    "subtitle1": "The team doing this research is from India, South Africa, the UK, and USA. A non-profit called Sage Bionetworks (USA) is leading the study. The Wellcome Trust (UK) is funding the study.",
+    "makeDifference": "Want to make a difference?",
+    "yourExperience": "Your experience can make a difference.",
+    "join": "Join the Study",
+    "youthAdvisor": {
+      "title": "Professional Youth Advisor",
+      "name1": "Refiloe Sibisi",
+      "job1": "Professional Youth Advisor, South Africa",
+      "description1": "Refiloe is an undergraduate student at the University of South Africa (UNISA) studying Information Science. She works with the team at Higher Health as the Professional Youth Advisor for the MindKind study in South Africa. She is passionate about mental health being prioritized in all structures as she has experienced and lived with anxiety during her full-time studies at the University of Johannesburg and hopes that her current studies and occupation will enable her to be an effective leader in the ethical use, organization, and management of mental health information from young people. ",
+      "name2": "Swetha Ranganathan, MS",
+      "job2": "Professional Youth Advisor, India",
+      "description2": "Swetha works with the team at the Centre for Mental Health Law and Policy as the Professional Youth Advisor for the MindKind Study in India. She holds a Masters in the Psychology of Mental Health from the University of Edinburgh. Swetha is deeply passionate about providing accessible mental health care to vulnerable and marginalised communities and would like to grow and expand her knowledge about stigma and discrimination as barriers of the same. ",
+      "name3": "Emily Bampton",
+      "job3": "Professional Youth Advisor, UK",
+      "description3": "Emily works with the Child and Adolescent Psychiatry team at the University of Oxford as the Professional Youth Advisor for the MindKind Study in the UK. Her passion for mental health originated from personal experiences of anxiety since school. Because of these experiences, she is keen to bridge the gap between researchers and young people – both to improve research, but also so that she can use her experience in this role as a non-academic to make research more accessible to the demographics it effects. "
+    },
+    "indiaTeam": {
+      "title": "The India Team",
+      "himaniShah": {
+        "name": "Himani Shah, MSW",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "jasmineKalha": {
+        "name": "Jasmine Kalha, M.Phil, MSW",
+        "role": "Research Associate",
+        "position": "Scientific Project Coordination, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "meeraDamji": {
+        "name": "Meera Damji, PgD",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "minalKarani": {
+        "name": "Minal Karani, MSW",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "soumitraPathare": {
+        "name": "Soumitra Pathare, MD, MRCPsych, PhD",
+        "role": "Consultant Psychiatrist and Director of the Centre for Mental Health Law and Policy",
+        "position": "Site Lead, India",
+        "location": "Indian Law Society (ILS)"
+      },
+      "sushmitaSumant": {
+        "name": "Sushmita Sumant, MS, MA (Clin Psych)",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      }
+    },
+    "southAfricaTeam": {
+      "title": "The South Africa Team",
+      "gillianFinchilescu": {
+        "name": "Gillian Finchilescu, D.Phil",
+        "role": "Professor Emeritus",
+        "position": "Scientific Project Coordination, South Africa",
+        "location": "University of Witwatersand, South Africa"
+      },
+      "melvynFreeman": {
+        "name": "Melvyn Freeman, MA (Clin Psych)",
+        "role": "Consultant in Public Health",
+        "position": "Site Lead, South Africa",
+        "location": "World Health Organization and Higher Health, South Africa"
+      },
+      "zukiswaZingela": {
+        "name": "Zukiswa Zingela, MMed Psych, FCPsych",
+        "role": "Associate Professor and Head of the Department of Psychiatry and Human Behavioral Sciences",
+        "position": "Site Lead, South Africa",
+        "location": "Walter Sisulu University "
+      }
+    },
+    "ukTeam": {
+      "title": "The UK Team",
+      "annMarieBurn": {
+        "name": "Anne-Marie Burn, PhD, MSc",
+        "role": "Senior Research Associate",
+        "position": "Scientific Collaborator, UK",
+        "location": "University of Cambridge"
+      },
+      "blossomFernandes": {
+        "name": "Blossom Fernandes, PhD, MSc",
+        "role": "Research Project Manager",
+        "position": "Scientific Project Coordination, UK",
+        "location": "University of Oxford"
+      },
+      "emmaCarey": {
+        "name": "Emma Carey, BA",
+        "role": "Research Assistant",
+        "position": "Scientific Collaborator, UK",
+        "location": "University of Cambridge"
+      },
+      "lakshmiNeelakantan": {
+        "name": "Lakshmi Neelakantan, PhD",
+        "role": "Postdoctoral Researcher",
+        "position": "Scientific Project Coordination, UK",
+        "location": "University of Oxford"
+      },
+      "minaFazel": {
+        "name": "Mina Fazel, DM MRCPsych",
+        "role": "Assoc. Professor of Child and Adolescent Psychiatry and Consultant Child and Adolescent Psychiatrist",
+        "position": "Site Lead, UK",
+        "location": "University of Oxford and Oxford University Hospitals"
+      },
+      "tamsinFord": {
+        "name": "Tamsin Ford, CBE, FRCPsych, FMedSci",
+        "role": "Professor of Child and Adolescent Psychiatry",
+        "position": "Site Lead, UK",
+        "location": "University of Cambridge"
+      }
+    },
+    "usTeam": {
+      "title": "The US Team",
+      "christopherKemp": {
+        "name": "Christopher Kemp, PhD",
+        "role": "Acting Assistant Professor",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "feliciaMataGreve": {
+        "name": "Felicia Mata-Greve, PhD",
+        "role": "Postdoctoral Scholar-Fellow",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "isabellGriffith": {
+        "name": "Isabell Griffith Fillipo , BA",
+        "role": "Research Coordinator",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "jenniferVelloza": {
+        "name": "Jennifer Velloza, PhD, MPH",
+        "role": "Senior Fellow",
+        "position": "Lead, Youth Advisory Panels",
+        "location": "University of Washington, United States"
+      },
+      "nicholeSams": {
+        "name": "Nichole Sams, BA",
+        "role": "Research Coordinator",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "pamelaCollins": {
+        "name": "Pamela Collins, MD, MPH",
+        "role": "Executive Director, International Training and Education Center for Health (I-TECH), Director, UW Global Mental Health Program",
+        "position": "Lead, Advisory Panels",
+        "location": "University of Washington, United States"
+      },
+      "patArean": {
+        "name": "Patricia Areán, PhD",
+        "role": "Director, ALACRITY Center and CREATIV Lab",
+        "position": "Lead, Youth Engagement ",
+        "location": "University of Washington, United States"
+      },
+      "tessaConcepcion": {
+        "name": "Tessa Concepcion, MSGH",
+        "role": "Scientific Project Coordination, Advisory Panels",
+        "position": "Research Coordinator",
+        "location": "University of Washington, United States"
+      }
+    },
+    "sageTeam": {
+      "title": "The Sage Team",
+
+      "carlyMarten": {
+        "name": "Carly Marten, BA",
+        "role": "Scientific Collaborator, Research Governance",
+        "position": "Associate Governance Analyst, ELSI Research",
+        "location": "Sage Bionetworks, United States"
+      },
+      "christineSuver": {
+        "name": "Christine Suver, PhD, PMP",
+        "role": "Lead, Research Governance",
+        "position": "Vice President of Research Governance",
+        "location": "Sage Bionetworks, United States"
+      },
+      "emilyMoore": {
+        "name": "Emily Moore, BA",
+        "role": "Project Coordination, Research Governance",
+        "position": "Governance Intern",
+        "location": "Sage Bionetworks, United States"
+      },
+      "erinMounts": {
+        "name": "Erin Mounts",
+        "role": "Technology Team, Mobile Engineering",
+        "position": "Director of Mobile Engineering",
+        "location": "Sage Bionetworks, United States"
+      },
+      "erinScanlan": {
+        "name": "Erin Scanlan, BS",
+        "role": "Overall Project Coordination",
+        "position": "Executive Business Partner",
+        "location": "Sage Bionetworks, United States"
+      },
+      "jayHodgson": {
+        "name": "Jay Hodgson",
+        "role": "Technology Team, Web Engineering",
+        "position": "Director of Web Engineering",
+        "location": "Sage Bionetworks, United States"
+      },
+      "laraMangravite": {
+        "name": "Lara Mangravite, PhD",
+        "role": "Head Scientist",
+        "position": "President",
+        "location": "Sage Bionetworks, United States"
+      },
+      "larssonOmberg": {
+        "name": "Larsson Omberg, PhD",
+        "role": "Scientific collaborator",
+        "position": "Vice President of Systems Biology",
+        "location": "Sage Bionetworks, United States"
+      },
+      "lisaPasquale": {
+        "name": "Lisa Pasquale, BA",
+        "role": "Project Coordination, Research Governance",
+        "position": "Governance Intern",
+        "location": "Sage Bionetworks, United States"
+      },
+      "ljuboBradic": {
+        "name": "Ljubomir Bradic",
+        "role": "Technology Team, Design",
+        "position": "Director of Design",
+        "location": "Sage Bionetworks, United States"
+      },
+      "megDoerr": {
+        "name": "Megan Doerr, MS, LGC",
+        "role": "Scientific Lead, MindKind Community Sessions, Qualitative Research",
+        "position": "Assoc. Director of Research Governance, Applied ELSI Research",
+        "location": "Sage Bionetworks, United States"
+      },
+      "mikeKellen": {
+        "name": "Michael Kellen",
+        "role": "Lead, Technology Team",
+        "position": "Chief Technology Officer",
+        "location": "Sage Bionetworks, United States"
+      },
+      "sollySieberts": {
+        "name": "Solveig Sieberts, PhD",
+        "role": "Scientific Lead, MindKind Study, Quantitative Research",
+        "position": "Principal Scientist, Digital Health",
+        "location": "Sage Bionetworks, United States"
+      },
+      "soniaCarlson": {
+        "name": "Sonia Carlson, MS",
+        "role": "Lead, Technical Project Management",
+        "position": "Principal Program Manager",
+        "location": "Sage Bionetworks, United States"
+      },
+      "stockardSimon": {
+        "name": "Stockard Simon",
+        "role": "Technology Team, Design",
+        "position": "Senior Designer",
+        "location": "Sage Bionetworks, United States"
+      }
+    }
+  },
   "contact": {
     "title1": "If you are in a crisis",
     "subtitle1": "If you are in crisis, or feel that you are going to hurt yourself or others, please contact your healthcare provider. Additional resources provided below.",

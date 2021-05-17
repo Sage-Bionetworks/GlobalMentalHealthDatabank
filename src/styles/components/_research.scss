@@ -1,0 +1,196 @@
+.research {
+  .research__hero {
+    padding: 25px;
+    overflow: hidden;
+    position: relative;
+    background-image: url('../../assets/researchTeam/green-gradient-mobile.svg');
+    background-size: cover;
+    background-position: bottom center;
+    height: 300px;
+    margin-bottom: 50px;
+    @include breakpoint('md') {
+      height: 450px;
+      padding: 35px 80px;
+    }
+    .research__hero-title {
+      position: relative;
+      z-index: 2;
+      @include breakpoint('md') {
+        width: 60%;
+      }
+    }
+  }
+  .butterflies {
+    top: -95px;
+    left: 10%;
+    position: absolute;
+  }
+  .circle {
+    position: relative;
+    top: -90px;
+    left: 30%;
+    transform: scale(-1, 1);
+    z-index: 1;
+  }
+  .research__join-the-study {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    h4 {
+      margin-bottom: 8px;
+    }
+    @include breakpoint('md') {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 25px 80px;
+    }
+  }
+  .research__make-a-difference {
+    z-index: 2;
+    &.mobile {
+      display: block;
+      @include breakpoint('md') {
+        display: none;
+      }
+    }
+    &.desktop {
+      display: none;
+      @include breakpoint('md') {
+        display: block;
+      }
+    }
+  }
+  .research__section {
+    padding: 25px;
+    text-align: left;
+    @include breakpoint('md') {
+      padding: 35px 80px;
+    }
+  }
+  .research__section-images {
+    margin-bottom: 50px;
+    line-height: 0;
+    @include breakpoint('md') {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  .research__section-images-youth {
+    margin-bottom: 50px;
+    @include breakpoint('md') {
+      width: 33.33%;
+      margin-right: 80px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .research__youth-container {
+    @include breakpoint('md') {
+      display: inline-flex;
+    }
+  }
+  .research__photo-youth {
+    width: 100%;
+    margin-bottom: 25px;
+    height: 270px;
+    object-fit: contain;
+  }
+  .research__photo-container {
+    position: relative;
+    display: inline-block;
+    @include breakpoint('md') {
+      width: 33.33%;
+      height: 33.33vw;
+      padding: 0 10px 20px;
+    }
+    .research__photo-team {
+      object-fit: cover;
+      width: calc(50vw - 25px);
+      height: calc(50vw - 25px);
+      @include breakpoint('md') {
+        width: 100%;
+        height: 100%;
+      }
+      &.big {
+        transition: width 0.5s, height 0.5s;
+        width: calc(100vw - 50px);
+        height: calc(100vw - 50px);
+        & + .research__member-info {
+          display: block;
+          bottom: 2px;
+          left: 2px;
+          right: 2px;
+        }
+      }
+    }
+    .research__member-info {
+      position: absolute;
+      bottom: 22px;
+      left: 10px;
+      right: 10px;
+      color: $secondary-font-color;
+      background: #00000063;
+      padding: 25px 30px;
+      display: none;
+      transition: display 2s;
+    }
+    @include breakpoint('md') {
+      &:hover {
+        .research__member-info {
+          display: block;
+          bottom: 22px;
+          left: 10px;
+          right: 10px;
+        }
+      }
+    }
+  }
+
+  button {
+    z-index: 2;
+    width: 270px;
+    height: 52px;
+    background: $button-bg-color;
+    border-radius: 100px;
+    margin-bottom: 40px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    border: none;
+    color: $secondary-font-color;
+    cursor: pointer;
+  }
+  h2 {
+    margin-bottom: 30px;
+  }
+  p {
+    color: $font-color;
+    margin-bottom: 20px;
+  }
+  @include breakpoint('md') {
+    h2 {
+      margin-bottom: 40px;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+  }
+  .research__member-info-content {
+    color: $secondary-font-color;
+    margin-bottom: 5px;
+  }
+}
+
+.research__section-title {
+  text-align: left;
+}
