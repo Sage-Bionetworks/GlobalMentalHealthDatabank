@@ -182,9 +182,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 )
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  props.setCountryCode(
-                    Object.keys(COUNTRIES)[selectedCountry.your_country],
-                  )
                   GoogleService.sendEvent(
                     'quiz-accept',
                     'eligibility',
@@ -301,7 +298,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           search: '?step=ageRange',
         })
       document.title = 'MindKind > How old are you?'
-      console.log('errorMessage: ', errorMessage)
+
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -312,7 +309,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               formId={FORM_IDS.AGE_VERIFY}
               buttonText="Next"
               onSubmit={(event: any) => {
-                const selectedOption = event.formData
+                const selectedOption = event.formData.age
                 if (!selectedOption) setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(

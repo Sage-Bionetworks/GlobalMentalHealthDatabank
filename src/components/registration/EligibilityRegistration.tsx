@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 
 import Eligibility from './Eligibility'
 import Registration from './Registration'
@@ -19,52 +18,30 @@ export type EligibilityRegistrationProps = EligibilityRegistrationOwnProps &
 const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationProps> =
   ({ history, callbackFn }: EligibilityRegistrationProps) => {
     const [phoneNumber, setPhoneNumber] = useState('')
-    const [countryCode, setCountryCode] = useState('') // CARLOS: check is never used?
-    const [error, setError] = useState<object>({ status: 0, message: '' }) // CARLOS: check is never used?
-
     const { isEligible } = useElegibility()
-    const { t } = useTranslation()
 
     const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
-      const consented = loggedIn.status !== 412
-      if (loggedIn.ok || !consented) {
-        callbackFn(loggedIn.data.sessionToken, loggedIn.data.firstName)
-        if (consented) {
-          history.push('/dashboard')
-        } else {
-          history.push('/consent')
-        }
-      } else {
-        setError({
-          message: t('eligibility.loginError'),
-          status: loggedIn.status,
-        })
+      if (loggedIn.ok) {
+        callbackFn(loggedIn.data.sessionToken, loggedIn.data.firstName) // ser user session
+        history.push('/dashboard')
       }
     }
     return (
       <div>
-        {!isEligible && <Eligibility setCountryCode={setCountryCode} />}
+        {!isEligible && <Eligibility />}
 
+        {/* SignIn / SignUP */}
         {isEligible && !phoneNumber && (
           <ResponsiveStepWrapper variant="card">
             <Registration
-              onSuccessFn={(
-                status: number,
-                data: object,
-                phoneNumber: string,
-              ) => {
+              onSuccessFn={(phoneNumber: string) => {
                 setPhoneNumber(phoneNumber)
-              }}
-              onErrorFn={(status: number, message?: string) => {
-                setError({
-                  message: t('eligibility.registerError'),
-                  status: status,
-                })
               }}
             />
           </ResponsiveStepWrapper>
         )}
 
+        {/* LogIn */}
         {isEligible && phoneNumber && (
           <ResponsiveStepWrapper variant="card">
             <div className="quiz-wrapper">

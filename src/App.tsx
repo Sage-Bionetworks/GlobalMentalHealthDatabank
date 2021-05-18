@@ -129,16 +129,8 @@ function App() {
                       <Route
                         exact={true}
                         path="/login"
-                        render={props => {
-                          const searchParamsProps = getSearchParams(
-                            props.location.search,
-                          )
-                          return (
-                            <Login
-                              {...props}
-                              searchParams={searchParamsProps as any}
-                            />
-                          )
+                        render={() => {
+                          return <Login />
                         }}
                       ></Route>
                       <Route

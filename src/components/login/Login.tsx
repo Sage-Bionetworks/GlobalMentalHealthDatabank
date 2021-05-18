@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import {
   Typography,
   CircularProgress,
   Select,
   MenuItem,
+  Button,
+  TextField,
 } from '@material-ui/core'
+
 import {
   APP_ID,
   LoggedInUserData,
@@ -13,15 +18,11 @@ import {
   Response,
   ENDPOINT,
 } from '../../types/types'
+import { ReactComponent as ErrorMessageIcon } from '../../assets/error_message_icon.svg'
 import { callEndpoint, makePhone } from '../../helpers/utility'
-import Button from '@material-ui/core/Button'
 import SignInWithCode from './SignInWithCode'
-import TextField from '@material-ui/core/TextField/TextField'
-import { RouteComponentProps } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
-import Alert from '@material-ui/lab/Alert/Alert'
 import uk from '../../assets/flags/uk.svg'
 import ind from '../../assets/flags/ind.svg'
 import za from '../../assets/flags/za.svg'
@@ -29,10 +30,9 @@ import us from '../../assets/flags/us.svg'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
-  searchParams?: any
 }
 
-export type LoginProps = OwnLoginProps & RouteComponentProps
+export type LoginProps = OwnLoginProps
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 
@@ -43,31 +43,19 @@ const FLAGS = {
   unitedStates: 'US',
 }
 
-export const Login: React.FunctionComponent<LoginProps> = ({
-  searchParams,
-  history,
-}: LoginProps) => {
+export const Login: React.FunctionComponent = () => {
+  const { push } = useHistory()
+  const loginType = 'PHONE'
   const [phone, setPhone] = useState('')
   const [countryCode, setCountryCode] = useState(FLAGS.unitedKingdom)
   const [error, setError] = useState('')
   const [isCodeSent, setIsCodeSent] = useState(false)
-  const loginType = 'PHONE'
   const [isLoading, setIsLoading] = useState(false)
 
   const { t } = useTranslation()
 
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
-
-  //detect if they are bck on the page
-
-  const redirect = (isConsented: boolean) => {
-    if (isConsented) {
-      history.push('/dashboard')
-    } else {
-      history.push('/consent')
-    }
-  }
 
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -82,7 +70,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
           userDataGroup: loggedIn.data.dataGroups,
         },
       })
-      redirect(loggedIn.data.consented)
+      push('/dashboard')
     } else {
       setError('Error ' + loggedIn.status)
     }
@@ -141,7 +129,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
       <div className="login-wrapper">
         {
           <div className="quiz-wrapper">
-            {(!isCodeSent || error) && (
+            {!isCodeSent && (
               <div>
                 <Typography className="text-center" variant="h4">
                   {t('common.logIn')}
@@ -205,6 +193,14 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                         />
                       </div>
                     )}
+
+                    {error && (
+                      <div className="form-message error">
+                        <ErrorMessageIcon />
+                        {error}
+                      </div>
+                    )}
+
                     <div className="text-center">
                       {isLoading ? (
                         <div className="text-center">
@@ -225,7 +221,6 @@ export const Login: React.FunctionComponent<LoginProps> = ({
                       )}
                     </div>
                   </div>
-                  {error && <Alert severity="error">{error}</Alert>}
                 </form>
               </div>
             )}

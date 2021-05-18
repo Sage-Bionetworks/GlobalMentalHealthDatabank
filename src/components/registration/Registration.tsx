@@ -24,7 +24,6 @@ import {
 
 type RegistrationProps = {
   onSuccessFn: Function
-  onErrorFn: Function
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
@@ -33,7 +32,6 @@ const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
-  onErrorFn,
 }: RegistrationProps) => {
   const {
     howDidYouHear,
@@ -133,7 +131,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
     try {
       const result = await submitRegistration(data)
-
       if (result.status === 201) {
         setErrorMessage('')
         const sentSigninRequest = await sendSignInRequest(
@@ -141,19 +138,21 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
           state.countryCode.value,
           endPoint['PHONE'],
         )
-        onSuccessFn(
-          sentSigninRequest.status,
-          sentSigninRequest.data,
-          phoneNumber,
-        )
+        if (sentSigninRequest.status === 202) {
+          onSuccessFn(
+            phoneNumber,
+            sentSigninRequest.status,
+            sentSigninRequest.data,
+          )
+        } else {
+          setErrorMessage(t('eligibility.registerError'))
+        }
       } else {
         setErrorMessage(t('eligibility.registerError'))
-        onErrorFn(result.status)
       }
     } catch (e) {
       setErrorMessage(`${t('eligibility.registerError')} (${whereDoYouLive})`)
       setShowStartOverBtn(true)
-      onErrorFn(e.statusCode, e.message)
     }
   }
 
