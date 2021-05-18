@@ -258,7 +258,7 @@
         "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://icallhelpline.org/"
         }
       },
       "southAfrica": {
@@ -269,7 +269,7 @@
         "text4": "You can also email SADAG at Zane@sadag.org for information about counseling.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://www.sadag.org/"
         }
       },
       "unitedKingdom": {
@@ -280,7 +280,7 @@
         "text4": " You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://www.samaritans.org/"
         }
       }
     }

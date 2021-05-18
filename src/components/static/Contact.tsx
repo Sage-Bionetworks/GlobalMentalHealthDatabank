@@ -11,10 +11,6 @@ function Contact() {
         <Typography variant="h2">{t('contact.title1')}</Typography>
         <Typography variant="body1">{t('contact.subtitle1')}</Typography>
       </div>
-      <div className="contact__get-help">
-        <Typography variant="h4">{t('contact.help.get')}</Typography>
-        <button>{t('contact.help.find')}</button>
-      </div>
       <div className="contact__local-resource">
         <Typography variant="h2">
           {t('contact.localResources.india.title')}
@@ -28,9 +24,14 @@ function Contact() {
         <Typography variant="body1">
           {t('contact.localResources.india.text3')}
         </Typography>
-        <button className="small">
+        <a
+          className="button small"
+          href={t(t('contact.localResources.india.link.url'))}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {t('contact.localResources.india.link.text')}
-        </button>
+        </a>
       </div>
       <div className="contact__local-resource">
         <Typography variant="h2">
@@ -48,9 +49,14 @@ function Contact() {
         <Typography variant="body1">
           {t('contact.localResources.southAfrica.text4')}
         </Typography>
-        <button className="small">
+        <a
+          className="button small"
+          href={t(t('contact.localResources.southAfrica.link.url'))}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {t('contact.localResources.southAfrica.link.text')}
-        </button>
+        </a>
       </div>
       <div className="contact__local-resource">
         <Typography variant="h2">
@@ -68,9 +74,14 @@ function Contact() {
         <Typography variant="body1">
           {t('contact.localResources.unitedKingdom.text4')}
         </Typography>
-        <button className="small">
+        <a
+          className="button small"
+          href={t(t('contact.localResources.unitedKingdom.link.url'))}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {t('contact.localResources.unitedKingdom.link.text')}
-        </button>
+        </a>
       </div>
     </div>
   )
