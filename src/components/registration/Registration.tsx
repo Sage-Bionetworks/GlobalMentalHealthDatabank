@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
-import { Typography } from '@material-ui/core'
+import { Typography, Button, TextField } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
 
 import useForm from '../useForm'
+import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
+import {
+  getRandomFlowOption,
+  FLOW_OPTIONS,
+} from '../../helpers/RandomFlowGenerator'
+import { useElegibility } from './context/ElegibilityContext'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 import {
   APP_ID,
   ENDPOINT,
@@ -13,16 +21,6 @@ import {
   makePhone,
   sendSignInRequest,
 } from '../../helpers/utility'
-import Button from '@material-ui/core/Button/Button'
-import TextField from '@material-ui/core/TextField/TextField'
-import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import {
-  getRandomFlowOption,
-  FLOW_OPTIONS,
-} from '../../helpers/RandomFlowGenerator'
-import { useTranslation } from 'react-i18next'
-import { useElegibility } from './context/ElegibilityContext'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -69,6 +67,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   }
 
   const [error, setErrorMessage] = useState('')
+  const [startOverButton, setShowStartOverBtn] = useState(false)
 
   const submitRegistration = async (registrationData: RegistrationData) => {
     const result = await callEndpoint(
@@ -152,7 +151,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         onErrorFn(result.status)
       }
     } catch (e) {
-      setErrorMessage(t('eligibility.registerError'))
+      setErrorMessage(`${t('eligibility.registerError')} (${whereDoYouLive})`)
+      setShowStartOverBtn(true)
       onErrorFn(e.statusCode, e.message)
     }
   }
@@ -179,13 +179,13 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
       </div>
 
-      <form className="demoForm" onSubmit={handleOnSubmit}>
+      <form onSubmit={handleOnSubmit}>
         <div className="form-group" style={{ marginBottom: 0 }}>
           <div>
             <label htmlFor="phone" className="block--dark">
               <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
             </label>
-            <div className="input--padded">
+            <div className="bottom-fifty-wrapper">
               <TextField
                 fullWidth
                 className="phone-input"
@@ -201,15 +201,28 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
             {Object.keys(state).map(
               key =>
                 state[key].error && (
-                  <p
-                    className="error"
-                    style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
+                  <Typography
+                    className="error-message"
+                    // style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
                   >
-                    {state[key].error}
-                  </p>
+                    {state[key].error} THIS ONE ?
+                  </Typography>
                 ),
             )}
-            <p className="error-message">{error}</p>
+            {error && (
+              <Typography className="error-message">{error}</Typography>
+            )}
+            {startOverButton && (
+              <Button
+                className="wide-button"
+                variant="text"
+                color="primary"
+                onClick={() => console.log('start over')}
+              >
+                Start Over
+              </Button>
+            )}
+
             <div className="text-center">
               <Button
                 fullWidth

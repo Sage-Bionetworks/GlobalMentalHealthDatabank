@@ -86,6 +86,7 @@ div.btnVerticallySpaced {
 
 .error-message {
   color: #f36e68;
+  margin-bottom: 20px !important;
 }
 
 @media screen and (max-width: 480px) {
@@ -322,10 +323,6 @@ input[type='radio'] {
   &.padded {
     padding: 40px 0 10px 0;
   }
-}
-
-.demoForm {
-  padding-top: 15px;
 }
 
 .text-center {

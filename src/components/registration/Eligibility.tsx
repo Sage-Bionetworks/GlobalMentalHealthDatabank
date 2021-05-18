@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect, NavLink } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -7,7 +8,6 @@ import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
 import Separator from '../static/Separator'
-import { Redirect, NavLink } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { FORM_IDS } from '../form/types'
 import { GoogleService } from '../../services/google.service'
@@ -23,6 +23,7 @@ const INITIAL_QUIZ_CHOICES = {
   userLocation: '',
   hasAndroid: '',
   understandsEnglish: '',
+  gender: '',
   age: -1,
 }
 
@@ -300,6 +301,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           search: '?step=ageRange',
         })
       document.title = 'MindKind > How old are you?'
+      console.log('errorMessage: ', errorMessage)
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
