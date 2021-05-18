@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
+import { ReactComponent as ArrowDown } from '../../assets/arrowDown.svg'
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
@@ -15,7 +15,7 @@ import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
 
-const MAX_STEPS: number = 8
+const MAX_STEPS: number = 9
 
 const INITIAL_QUIZ_CHOICES = {
   howDidYouHear: '',
@@ -42,6 +42,10 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     setUnderstandEnglish,
     setAge,
     setGender,
+    whereDoYouLive,
+    doYouHaveAnAndroid,
+    understandEnglish,
+    age,
   } = useElegibility()
   const { t } = useTranslation()
 
@@ -413,7 +417,89 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
+
+    case 9:
+      const pepe = doYouHaveAnAndroid
+      debugger
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <div className="quiz-wrapper">
+            <Typography variant="h3">
+              {t('eligibility.pleaseReview')}
+            </Typography>
+            <div className="bottom-twenty-wrapper">
+              <div className="eligibility-summary-line">
+                <Typography
+                  variant="h6"
+                  className="eligibility-summary-line-title"
+                >
+                  {t('eligibility.where')}
+                </Typography>
+                <Typography variant="body2">{whereDoYouLive}</Typography>
+              </div>
+              <div className="eligibility-summary-line">
+                <Typography
+                  variant="h6"
+                  className="eligibility-summary-line-title"
+                >
+                  {t('eligibility.android')}
+                </Typography>
+                <Typography variant="body2">
+                  {doYouHaveAnAndroid ? 'Yes' : 'No'}
+                </Typography>
+              </div>
+              <div className="eligibility-summary-line">
+                <Typography
+                  variant="h6"
+                  className="eligibility-summary-line-title"
+                >
+                  {t('eligibility.english')}
+                </Typography>
+                <Typography variant="body2">
+                  {understandEnglish ? 'Yes' : 'No'}
+                </Typography>
+              </div>
+              <div className="eligibility-summary-line">
+                <Typography
+                  variant="h6"
+                  className="eligibility-summary-line-title"
+                >
+                  {t('eligibility.ageRange')}
+                </Typography>
+                <Typography variant="body2">{age}</Typography>
+              </div>
+            </div>
+
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button secondary"
+              onClick={() => setStep(1)}
+              style={{ marginBottom: '20px' }}
+            >
+              {t('eligibility.restart')}
+            </Button>
+
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button"
+              onClick={() =>
+                setStep((current: number) =>
+                  current <= MAX_STEPS ? current + 1 : current,
+                )
+              }
+            >
+              {t('common.submit')}
+            </Button>
+          </div>
+        </ResponsiveStepWrapper>
+      )
   }
+
   if (step > MAX_STEPS) {
     return (
       <ResponsiveStepWrapper variant="card">

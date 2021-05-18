@@ -50,6 +50,11 @@ a {
   letter-spacing: 0.04em;
   width: 100%;
   text-transform: none;
+  &.secondary {
+    background-color: $primary-bg-color;
+    color: $primary-color;
+    border: 1px solid;
+  }
 }
 
 // if a button is in a link, do not decorate the text on hover
@@ -394,4 +399,12 @@ input[type='radio'] {
 }
 .buttom-all-wrapper {
   margin-bottom: 240px;
+}
+
+.eligibility-summary-line {
+  margin-bottom: 20px;
+}
+
+h6.eligibility-summary-line-title {
+  margin-bottom: 0;
 }
