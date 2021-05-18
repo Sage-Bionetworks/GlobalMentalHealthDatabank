@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
+import { ThemeProvider, Typography } from '@material-ui/core'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom'
-import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
-import { ThemeProvider, Typography } from '@material-ui/core'
+
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'

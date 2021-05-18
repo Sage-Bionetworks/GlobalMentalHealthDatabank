@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 
 type ElegibilityState = {
   isEligible: boolean
@@ -19,7 +19,7 @@ type ElegibilityState = {
   setGender: (state: object) => void
 }
 
-const ElegibilityContext = React.createContext<ElegibilityState>({
+const ElegibilityContext = createContext<ElegibilityState>({
   isEligible: false,
   setIsEligible: (state: boolean) => {},
   howDidYouHear: '',
@@ -38,16 +38,15 @@ const ElegibilityContext = React.createContext<ElegibilityState>({
   setGender: (state: object) => {},
 })
 
-export const useElegibility = () => React.useContext(ElegibilityContext)
+export const useElegibility = () => useContext(ElegibilityContext)
 
 export function ElegibilityProvider(props: { children: React.ReactNode }) {
   const { children } = props
 
   const [isEligible, setIsEligible] = useState(false)
   const [howDidYouHear, setHowDidYouHear] = useState('')
-  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] = useState(
-    false,
-  )
+  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] =
+    useState(false)
   const [whereDoYouLive, setWhereDoYouLive] = useState('')
   const [doYouHaveAnAndroid, setDoYouHaveAnAndroid] = useState('')
   const [understandEnglish, setUnderstandEnglish] = useState(false)

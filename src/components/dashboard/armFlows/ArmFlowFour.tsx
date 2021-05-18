@@ -41,7 +41,7 @@ function ArmFlowFour({
             <input
               type="radio"
               id={option.value}
-              checked={value == option.value ? true : false}
+              checked={value === option.value ? true : false}
               onChange={_onChange as any}
             />
             <div
