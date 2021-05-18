@@ -401,10 +401,23 @@ input[type='radio'] {
   margin-bottom: 240px;
 }
 
+//Eligibility
+.eligibility-summary-line-container {
+  display: flex;
+  align-items: baseline;
+}
 .eligibility-summary-line {
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 h6.eligibility-summary-line-title {
   margin-bottom: 0;
+}
+
+.chevron {
+  margin-right: 8px;
+  &.down {
+    transform: rotate(90deg);
+  }
 }

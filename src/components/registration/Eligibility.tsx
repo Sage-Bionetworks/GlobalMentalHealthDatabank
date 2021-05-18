@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as ArrowDown } from '../../assets/arrowDown.svg'
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
@@ -32,6 +31,11 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
+
+  const [summaryLocationCollapse, setSummaryLocationCollapse] = useState(true)
+  const [summaryAndroidCollapse, setSummaryAndroidCollapse] = useState(true)
+  const [summaryEnglishCollapse, setSummaryEnglishCollapse] = useState(true)
+  const [summaryAgeCollapse, setSummaryAgeCollapse] = useState(true)
 
   const {
     setIsEligible,
@@ -84,7 +88,20 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     return true
   }
 
-  window.scrollTo(0, 0)
+  const getCountryNameFromCountryCode = (countryCode: string) => {
+    switch (countryCode) {
+      case 'UK':
+        return t('common.unitedKingdom')
+      case 'IN':
+        return t('common.southAfrica')
+      case 'ZA':
+        return t('common.india')
+      case 'US':
+        return t('common.unitedStates')
+      case 'Other':
+        return t('common.other')
+    }
+  }
 
   switch (step) {
     case 1:
@@ -419,8 +436,11 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       )
 
     case 9:
-      const pepe = doYouHaveAnAndroid
-      debugger
+      if (!props.history.location.search.includes('summary'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=summary',
+        })
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -429,46 +449,140 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               {t('eligibility.pleaseReview')}
             </Typography>
             <div className="bottom-twenty-wrapper">
-              <div className="eligibility-summary-line">
-                <Typography
-                  variant="h6"
-                  className="eligibility-summary-line-title"
-                >
-                  {t('eligibility.where')}
-                </Typography>
-                <Typography variant="body2">{whereDoYouLive}</Typography>
+              <div
+                className="eligibility-summary-line"
+                onClick={() =>
+                  setSummaryLocationCollapse(!summaryLocationCollapse)
+                }
+              >
+                {summaryLocationCollapse ? (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron down">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.where')}
+                      </Typography>
+                      <Typography variant="body2">
+                        {getCountryNameFromCountryCode(whereDoYouLive)}
+                      </Typography>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.where')}
+                      </Typography>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="eligibility-summary-line">
-                <Typography
-                  variant="h6"
-                  className="eligibility-summary-line-title"
-                >
-                  {t('eligibility.android')}
-                </Typography>
-                <Typography variant="body2">
-                  {doYouHaveAnAndroid ? 'Yes' : 'No'}
-                </Typography>
+              <div
+                className="eligibility-summary-line"
+                onClick={() =>
+                  setSummaryAndroidCollapse(!summaryAndroidCollapse)
+                }
+              >
+                {summaryAndroidCollapse ? (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron down">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.android')}
+                      </Typography>
+                      <Typography variant="body2">
+                        {doYouHaveAnAndroid ? 'Yes' : 'No'}
+                      </Typography>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.android')}
+                      </Typography>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="eligibility-summary-line">
-                <Typography
-                  variant="h6"
-                  className="eligibility-summary-line-title"
-                >
-                  {t('eligibility.english')}
-                </Typography>
-                <Typography variant="body2">
-                  {understandEnglish ? 'Yes' : 'No'}
-                </Typography>
-              </div>
-              <div className="eligibility-summary-line">
-                <Typography
-                  variant="h6"
-                  className="eligibility-summary-line-title"
-                >
-                  {t('eligibility.ageRange')}
-                </Typography>
-                <Typography variant="body2">{age}</Typography>
-              </div>
+            </div>
+            <div
+              className="eligibility-summary-line"
+              onClick={() => setSummaryEnglishCollapse(!summaryEnglishCollapse)}
+            >
+              {summaryEnglishCollapse ? (
+                <div className="eligibility-summary-line-container">
+                  <div className="chevron down">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.english')}
+                    </Typography>
+                    <Typography variant="body2">
+                      {understandEnglish ? 'Yes' : 'No'}
+                    </Typography>
+                  </div>
+                </div>
+              ) : (
+                <div className="eligibility-summary-line-container">
+                  <div className="chevron">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.english')}
+                    </Typography>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div
+              className="eligibility-summary-line"
+              onClick={() => setSummaryAgeCollapse(!summaryAgeCollapse)}
+            >
+              {summaryAgeCollapse ? (
+                <div className="eligibility-summary-line-container">
+                  <div className="chevron down">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.ageRange')}
+                    </Typography>
+                    <Typography variant="body2">{age}</Typography>
+                  </div>
+                </div>
+              ) : (
+                <div className="eligibility-summary-line-container">
+                  <div className="chevron">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.ageRange')}
+                    </Typography>
+                  </div>
+                </div>
+              )}
             </div>
 
             <Button
@@ -501,6 +615,11 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }
 
   if (step > MAX_STEPS) {
+    if (!props.history.location.search.includes('not-eligible'))
+      props.history.push({
+        pathname: '/eligibility',
+        search: '?step=not-eligible',
+      })
     return (
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">

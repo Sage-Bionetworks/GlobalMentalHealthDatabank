@@ -24,7 +24,12 @@
     "yes": "Yes",
     "noTakeBack": "No, take me back",
     "zipCode": "Zip code",
-    "continue": "Continue"
+    "continue": "Continue",
+    "unitedKingdom": "United Kingdom",
+    "unitedStates": "United States",
+    "southAfrica": "South Africa",
+    "india": "India",
+    "other": "Other"
   },
   "eligibility": {
     "begin": "Begin",
