@@ -171,11 +171,11 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         </div>
       </div>
 
-      <div className="bottom-twenty-wrapper">
+      <div className="btm-20">
         <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
       </div>
 
-      <div className="bottom-forty-wrapper">
+      <div className="btm-40">
         <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
       </div>
 
@@ -185,7 +185,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
             <label htmlFor="phone" className="block--dark">
               <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
             </label>
-            <div className="bottom-fifty-wrapper">
+            <div className="btm-50">
               <TextField
                 fullWidth
                 className="phone-input"
@@ -210,32 +210,34 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 ),
             )}
             {error && (
-              <Typography className="error-message">{error}</Typography>
+              <div className="tp-30-neg btm-10">
+                <Typography className="error-message">{error}</Typography>
+              </div>
             )}
             {startOverButton && (
-              <Button
-                className="wide-button"
-                variant="text"
-                color="primary"
-                onClick={() => console.log('start over')}
-              >
-                Start Over
-              </Button>
+              <div className="btm-20">
+                <Button
+                  className="wide-button"
+                  variant="text"
+                  color="primary"
+                  onClick={() => console.log('start over')}
+                >
+                  Start Over
+                </Button>
+              </div>
             )}
 
-            <div className="text-center">
-              <Button
-                fullWidth
-                color="primary"
-                variant="contained"
-                size="large"
-                type="submit"
-                className="wide-button"
-                disabled={!state.phone.value}
-              >
-                {t('eligibility.createAccount')}
-              </Button>
-            </div>
+            <Button
+              fullWidth
+              color="primary"
+              variant="contained"
+              size="large"
+              type="submit"
+              className="wide-button"
+              disabled={!state.phone.value}
+            >
+              {t('eligibility.createAccount')}
+            </Button>
           </div>
         </div>
       </form>

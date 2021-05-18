@@ -92,13 +92,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               {t('eligibility.thankYouForYourInterest')}
             </Typography>
 
-            <div className="bottom-twenty-wrapper ">
+            <div className="btm-20 ">
               <Typography variant="body2">
                 {t('eligibility.weHaveAFewQuestions')}
               </Typography>
             </div>
 
-            <div className="buttom-all-wrapper">
+            <div className="btm-240">
               <Separator />
             </div>
             <Button
@@ -422,13 +422,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         <div className="quiz-wrapper">
           <Typography variant="h3">{t('eligibility.thanks')}</Typography>
 
-          <div className="bottom-twenty-wrapper">
+          <div className="btm-20">
             <Typography variant="body2">
               {t('eligibility.notElegible')}
             </Typography>
           </div>
 
-          <div className="buttom-all-wrapper">
+          <div className="btm-240">
             <Separator />
           </div>
 

@@ -63,7 +63,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             <label htmlFor="smsCode">
               <Typography variant="h6">{t('signIn.enterCode')}</Typography>
             </label>
-            <div className="bottom-fifty-wrapper">
+            <div className="btm-50">
               <TextField
                 fullWidth
                 variant="outlined"

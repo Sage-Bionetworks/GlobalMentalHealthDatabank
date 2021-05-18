@@ -86,7 +86,6 @@ div.btnVerticallySpaced {
 
 .error-message {
   color: #f36e68;
-  margin-bottom: 20px !important;
 }
 
 @media screen and (max-width: 480px) {
@@ -380,15 +379,25 @@ input[type='radio'] {
   }
 }
 
-.bottom-twenty-wrapper {
+.tp-30-neg {
+  margin-top: -30px;
+}
+
+.btm-10 {
+  margin-bottom: 10px;
+}
+.btm-20 {
   margin-bottom: 20px;
 }
-.bottom-forty-wrapper {
+.btm-30 {
+  margin-bottom: 30px;
+}
+.btm-40 {
   margin-bottom: 40px;
 }
-.bottom-fifty-wrapper {
+.btm-50 {
   margin-bottom: 50px;
 }
-.buttom-all-wrapper {
+.btm-240 {
   margin-bottom: 240px;
 }
