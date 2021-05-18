@@ -1,11 +1,11 @@
 .form-group {
-  margin-top: -1rem;
-  margin-bottom: 2.2rem;
+  margin-top: -10px;
+  margin-bottom: 20px;
   label {
     margin-bottom: 10px;
   }
   .checkboxes {
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -56,7 +56,6 @@ label.block--dark {
 }
 
 .input--padded--flags {
-  padding: 20px 0 40px 0;
   display: flex;
   .MuiInputBase-root {
     height: 63px;
@@ -93,7 +92,6 @@ label.block--dark {
   padding: 14px;
   font-size: 16px;
   &.age {
-    margin-bottom: 93px;
     .MuiInputBase-input {
       padding: 20px 15px;
       border: 1px solid $button-bg-color;

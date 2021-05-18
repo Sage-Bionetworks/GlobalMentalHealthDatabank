@@ -8,20 +8,25 @@ export const schemaAgeVerify = {
 export const uiSchemaAgeVerify = {
   'ui:widget': props => {
     return (
-      <TextField
-        type="number"
-        min="0"
-        variant="outlined"
-        inputProps={{
-          type: 'number',
-          min: '0',
-        }}
-        placeholder="Input Age..."
-        className="custom-input age"
-        value={props.value}
-        required={props.required}
-        onChange={event => props.onChange(event.target.value)}
-      />
+      <div className="btm-custom-age-form">
+        <TextField
+          className="custom-input age"
+          variant="outlined"
+          InputProps={{
+            maxLength: 2,
+            type: 'number',
+            min: '0',
+          }}
+          placeholder="Input Age..."
+          value={props?.value}
+          onChange={event => {
+            let value = event?.target?.value
+            if (value.length > 2) value = value.slice(0, 2)
+            props.onChange(value)
+          }}
+          required={props.required}
+        />
+      </div>
     )
   },
 }

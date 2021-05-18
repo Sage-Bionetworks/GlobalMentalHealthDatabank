@@ -20,18 +20,15 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
     const [phoneNumber, setPhoneNumber] = useState('')
     const { isEligible } = useElegibility()
 
-    const handleLoggedIn = (loggedIn: Response<LoggedInUserData>) => {
-      if (loggedIn.ok) {
-        callbackFn(loggedIn.data.sessionToken, loggedIn.data.firstName) // ser user session
-        history.push('/dashboard')
-      }
-    }
+    const showEligibility = !isEligible
+    const showSignIn = isEligible && !phoneNumber
+    const showConfirmSMS = isEligible && phoneNumber
+
     return (
       <div>
-        {!isEligible && <Eligibility />}
+        {showEligibility && <Eligibility />}
 
-        {/* SignIn / SignUP */}
-        {isEligible && !phoneNumber && (
+        {showSignIn && (
           <ResponsiveStepWrapper variant="card">
             <Registration
               onSuccessFn={(phoneNumber: string) => {
@@ -41,14 +38,20 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
           </ResponsiveStepWrapper>
         )}
 
-        {/* LogIn */}
-        {isEligible && phoneNumber && (
+        {showConfirmSMS && (
           <ResponsiveStepWrapper variant="card">
             <div className="quiz-wrapper">
               <SignInWithCode
-                loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
-                  handleLoggedIn(result)
-                }
+                loggedInByPhoneFn={(loggedIn: Response<LoggedInUserData>) => {
+                  if (loggedIn.ok) {
+                    // Set User Session
+                    callbackFn(
+                      loggedIn.data.sessionToken,
+                      loggedIn.data.firstName,
+                    )
+                    history.push('/dashboard')
+                  }
+                }}
                 phoneNumber={phoneNumber}
               />
             </div>

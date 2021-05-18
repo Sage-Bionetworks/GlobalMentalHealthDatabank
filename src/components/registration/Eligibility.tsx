@@ -17,7 +17,7 @@ import { SessionData } from '../../types/types'
 
 const MAX_STEPS: number = 8
 
-const INITIAL_QUIZ_CHOICES = {
+const INITIAL_ELEGIBILITY_CHOICES = {
   howDidYouHear: '',
   accessToSupport: '',
   userLocation: '',
@@ -30,7 +30,9 @@ const INITIAL_QUIZ_CHOICES = {
 export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
-  const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
+  const [currentEligibilityChoices, setCurrentEligibilityChoices] = useState(
+    INITIAL_ELEGIBILITY_CHOICES,
+  )
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
 
@@ -50,10 +52,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     setErrorMessage('')
     if (step > MAX_STEPS) {
       if (
-        quizChoices.userLocation !== COUNTRIES.OTHER &&
-        quizChoices.hasAndroid &&
-        validateAgeRange(quizChoices.userLocation, quizChoices.age) &&
-        quizChoices.understandsEnglish
+        currentEligibilityChoices.userLocation !== COUNTRIES.OTHER &&
+        currentEligibilityChoices.hasAndroid &&
+        validateAgeRange(
+          currentEligibilityChoices.userLocation,
+          currentEligibilityChoices.age,
+        ) &&
+        currentEligibilityChoices.understandsEnglish
       ) {
         setIsEligible(true)
       }
@@ -70,12 +75,18 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     if (!location || !age) return false
     if (
       location === COUNTRIES.UK &&
-      !(quizChoices.age >= 16 && quizChoices.age <= 24)
+      !(
+        currentEligibilityChoices.age >= 16 &&
+        currentEligibilityChoices.age <= 24
+      )
     )
       return false
     if (
       location !== COUNTRIES.UK &&
-      !(quizChoices.age >= 18 && quizChoices.age <= 24)
+      !(
+        currentEligibilityChoices.age >= 18 &&
+        currentEligibilityChoices.age <= 24
+      )
     )
       return false
     return true
@@ -144,7 +155,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.howDidYouHear'),
                     selectedOption.how_options,
                   )
-                  setQuizChoices((prev: any) => ({
+                  setCurrentEligibilityChoices((prev: any) => ({
                     ...prev,
                     howDidYouHear: selectedOption.how_options,
                   }))
@@ -188,7 +199,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.where'),
                     selectedCountry.your_country,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return {
                       ...prev,
                       userLocation: selectedCountry.your_country,
@@ -231,7 +242,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.android'),
                     selectedOption.has_android,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, hasAndroid: selectedOption.has_android }
                   })
                   setDoYouHaveAnAndroid(selectedOption.has_android)
@@ -272,7 +283,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.english'),
                     selectedOption.understands_english_option,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return {
                       ...prev,
                       understandsEnglish:
@@ -309,7 +320,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               formId={FORM_IDS.AGE_VERIFY}
               buttonText="Next"
               onSubmit={(event: any) => {
-                const selectedOption = event.formData.age
+                const selectedOption = event.formData
                 if (!selectedOption) setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
@@ -318,7 +329,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.ageRange'),
                     selectedOption,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, age: selectedOption }
                   })
                   setAge(selectedOption)
@@ -359,7 +370,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.gender'),
                     selectedOption,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, gender: selectedOption }
                   })
                   setGender(selectedOption)
@@ -399,7 +410,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.benefit'),
                     selectedOption.accept,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, accessToSupport: selectedOption.accept }
                   })
                   setEverBenefitedFromTreatment(selectedOption.accept)

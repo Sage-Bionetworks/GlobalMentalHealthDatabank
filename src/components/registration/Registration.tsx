@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
-import { Typography, Button, TextField } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
+import { Typography, Button, TextField } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert/Alert'
 
-import useForm from '../useForm'
-import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import {
   getRandomFlowOption,
   FLOW_OPTIONS,
 } from '../../helpers/RandomFlowGenerator'
-import { useElegibility } from './context/ElegibilityContext'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 import {
   APP_ID,
+  SUB_STUDY_ID,
   ENDPOINT,
   RegistrationData,
   UserDataGroup,
@@ -21,6 +19,10 @@ import {
   makePhone,
   sendSignInRequest,
 } from '../../helpers/utility'
+import useForm from '../useForm'
+import { useElegibility } from './context/ElegibilityContext'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
+import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type RegistrationProps = {
   onSuccessFn: Function
@@ -65,7 +67,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   }
 
   const [error, setErrorMessage] = useState('')
-  const [startOverButton, setShowStartOverBtn] = useState(false)
+  const [showStartOverButton, setShowStartOverBtn] = useState(false)
 
   const submitRegistration = async (registrationData: RegistrationData) => {
     const result = await callEndpoint(
@@ -119,11 +121,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         checkpoint: 1,
       },
       appId: APP_ID,
-      substudyIds: ['wellcome-study'],
+      substudyIds: [SUB_STUDY_ID],
       dataGroups,
-    }
-    const endPoint = {
-      PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
     }
 
     //send signinRequest
@@ -136,7 +135,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         const sentSigninRequest = await sendSignInRequest(
           phoneNumber,
           state.countryCode.value,
-          endPoint['PHONE'],
+          `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
         if (sentSigninRequest.status === 202) {
           onSuccessFn(
@@ -151,8 +150,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         setErrorMessage(t('eligibility.registerError'))
       }
     } catch (e) {
-      setErrorMessage(`${t('eligibility.registerError')} (${whereDoYouLive})`)
-      setShowStartOverBtn(true)
+      setErrorMessage(`${t('eligibility.registerError')}`)
+      setShowStartOverBtn(false) // Carlos: toggle to show option
     }
   }
 
@@ -161,6 +160,10 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     validationStateSchema,
     onSubmitForm,
   )
+
+  const formErrors = Object.keys(state)
+    .filter(key => state[key].error)
+    .join(', ')
 
   return (
     <div className="quiz-wrapper">
@@ -197,23 +200,14 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 onChange={handleOnChange}
               />
             </div>
-            {Object.keys(state).map(
-              key =>
-                state[key].error && (
-                  <Typography
-                    className="error-message"
-                    // style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
-                  >
-                    {state[key].error} THIS ONE ?
-                  </Typography>
-                ),
-            )}
-            {error && (
-              <div className="tp-30-neg btm-10">
-                <Typography className="error-message">{error}</Typography>
+
+            {(error || formErrors) && (
+              <div className="tp-30-neg btm-20">
+                <Alert severity="error">{error || formErrors}</Alert>
               </div>
             )}
-            {startOverButton && (
+
+            {showStartOverButton && (
               <div className="btm-20">
                 <Button
                   className="wide-button"

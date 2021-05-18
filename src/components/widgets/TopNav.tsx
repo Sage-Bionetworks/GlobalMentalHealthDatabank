@@ -34,10 +34,8 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
     t('topnav.southAfrica'),
     t('topnav.india'),
   ]
-  const [
-    selectedPDFLanguageDownload,
-    setSelectedPDFLanguageDownload,
-  ] = useState(OPTIONS[0] || '')
+  const [selectedPDFLanguageDownload, setSelectedPDFLanguageDownload] =
+    useState(OPTIONS[0] || '')
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -129,7 +127,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         )}
         {!props.token && (
           <NavLink
-            to="/login"
+            to="/signin"
             onClick={handleDrawerToggle}
             className="topnav__link"
           >
@@ -237,7 +235,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </NavLink>
         )}
         {!props.token && (
-          <NavLink to="/login" className="topnav__link--full">
+          <NavLink to="/signin" className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('topnav.login')}
             </Typography>

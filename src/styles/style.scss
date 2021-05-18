@@ -177,7 +177,7 @@ fieldset {
 .checkbox > label > span,
 .radio > label > span {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   font-size: 1.6rem;
 }
 
@@ -379,8 +379,14 @@ input[type='radio'] {
   }
 }
 
+.tp-20-neg {
+  margin-top: -30px;
+}
 .tp-30-neg {
   margin-top: -30px;
+}
+.tp-40-neg {
+  margin-top: -40px;
 }
 
 .btm-10 {
@@ -400,4 +406,8 @@ input[type='radio'] {
 }
 .btm-240 {
   margin-bottom: 240px;
+}
+
+.btm-custom-age-form {
+  margin-bottom: 113px;
 }
