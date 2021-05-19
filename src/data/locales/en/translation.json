@@ -13,7 +13,7 @@
     "joinUs": "Join Us",
     "joinStudy": "Join the Study",
     "learnMore": "Learn More",
-    "logIn": "Log-in",
+    "signIn": "Sign In",
     "logOut": "Sign Out",
     "moreInfoVisit": "For more information, please visit",
     "phone": "Phone",
@@ -24,7 +24,12 @@
     "yes": "Yes",
     "noTakeBack": "No, take me back",
     "zipCode": "Zip code",
-    "continue": "Continue"
+    "continue": "Continue",
+    "unitedKingdom": "United Kingdom",
+    "unitedStates": "United States",
+    "southAfrica": "South Africa",
+    "india": "India",
+    "other": "Other"
   },
   "eligibility": {
     "begin": "Begin",
@@ -42,11 +47,13 @@
     "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
     "back": "Back to home",
     "loginError": "Error attempting login",
-    "registerError": "Error when registering, please verify your phone number and country selection",
+    "registerError": "Invalid phone number for your country selection",
     "askPhone": "Before we get started, could we have your number?",
     "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
     "myPhone": "My phone number is: ",
-    "createAccount": "Sign Up"
+    "createAccount": "Sign Up",
+    "pleaseReview": "Please review your answer to ensure they are correct.",
+    "restart": "Go back to the start"
   },
   "form": {
     "firstCommonConsent": {
@@ -181,6 +188,11 @@
         "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
         "confirmation": "Voting Confirmation",
         "review": "Review the list below to confirm this represents your choices."
+      },
+      "volunteer": {
+        "ifYouLike": "If you would like to volunteer as a reviewer for the community review panel email: ",
+        "email": "emailgoeshere@email.com Subject: MindKind Review Panel",
+        "note": "Note: Should you choose to email us your email will not be stored or associated with any study data."
       }
     },
     "consentSignature": {
@@ -214,10 +226,7 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "consent1": "Consent: Language 1",
-    "consent2": "Consent: Language 2",
-    "consent3": "Consent: Language 3",
-    "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
+    "yourRights": "Your rights"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -243,6 +252,269 @@
     "text17": "If you are asked to provide a sample, we will test the sample for antibodies related to COVID-19 infection, using an antibody test approved by the New York State Department of Health. We will share your test results with you, along with information about what those results may mean. As we learn more about the impact of COVID-19 across study participants, we will share regular updates with the broader scientific and patient community. We may also ask if you are interested in joining other related studies. For instance, some participants may choose to be notified of opportunities to donate plasma and help those still fighting for survival from COVID-19.",
     "text18": "Together, we can fight COVID-19."
   },
+  "research": {
+    "title1": "Research Team",
+    "subtitle1": "The team doing this research is from India, South Africa, the UK, and USA. A non-profit called Sage Bionetworks (USA) is leading the study. The Wellcome Trust (UK) is funding the study.",
+    "makeDifference": "Want to make a difference?",
+    "yourExperience": "Your experience can make a difference.",
+    "join": "Join the Study",
+    "youthAdvisor": {
+      "title": "Professional Youth Advisor",
+      "name1": "Refiloe Sibisi",
+      "job1": "Professional Youth Advisor, South Africa",
+      "description1": "Refiloe is an undergraduate student at the University of South Africa (UNISA) studying Information Science. She works with the team at Higher Health as the Professional Youth Advisor for the MindKind study in South Africa. She is passionate about mental health being prioritized in all structures as she has experienced and lived with anxiety during her full-time studies at the University of Johannesburg and hopes that her current studies and occupation will enable her to be an effective leader in the ethical use, organization, and management of mental health information from young people. ",
+      "name2": "Swetha Ranganathan, MS",
+      "job2": "Professional Youth Advisor, India",
+      "description2": "Swetha works with the team at the Centre for Mental Health Law and Policy as the Professional Youth Advisor for the MindKind Study in India. She holds a Masters in the Psychology of Mental Health from the University of Edinburgh. Swetha is deeply passionate about providing accessible mental health care to vulnerable and marginalised communities and would like to grow and expand her knowledge about stigma and discrimination as barriers of the same. ",
+      "name3": "Emily Bampton",
+      "job3": "Professional Youth Advisor, UK",
+      "description3": "Emily works with the Child and Adolescent Psychiatry team at the University of Oxford as the Professional Youth Advisor for the MindKind Study in the UK. Her passion for mental health originated from personal experiences of anxiety since school. Because of these experiences, she is keen to bridge the gap between researchers and young people – both to improve research, but also so that she can use her experience in this role as a non-academic to make research more accessible to the demographics it effects. "
+    },
+    "indiaTeam": {
+      "title": "The India Team",
+      "himaniShah": {
+        "name": "Himani Shah, MSW",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "jasmineKalha": {
+        "name": "Jasmine Kalha, M.Phil, MSW",
+        "role": "Research Associate",
+        "position": "Scientific Project Coordination, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "meeraDamji": {
+        "name": "Meera Damji, PgD",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "minalKarani": {
+        "name": "Minal Karani, MSW",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      },
+      "soumitraPathare": {
+        "name": "Soumitra Pathare, MD, MRCPsych, PhD",
+        "role": "Consultant Psychiatrist and Director of the Centre for Mental Health Law and Policy",
+        "position": "Site Lead, India",
+        "location": "Indian Law Society (ILS)"
+      },
+      "sushmitaSumant": {
+        "name": "Sushmita Sumant, MS, MA (Clin Psych)",
+        "role": "Research Associate",
+        "position": "Scientific Collaborator, India",
+        "location": "Centre for Mental Health Law and Policy (CMHLP) - Indian Law Society (ILS)"
+      }
+    },
+    "southAfricaTeam": {
+      "title": "The South Africa Team",
+      "gillianFinchilescu": {
+        "name": "Gillian Finchilescu, D.Phil",
+        "role": "Professor Emeritus",
+        "position": "Scientific Project Coordination, South Africa",
+        "location": "University of Witwatersand, South Africa"
+      },
+      "melvynFreeman": {
+        "name": "Melvyn Freeman, MA (Clin Psych)",
+        "role": "Consultant in Public Health",
+        "position": "Site Lead, South Africa",
+        "location": "World Health Organization and Higher Health, South Africa"
+      },
+      "zukiswaZingela": {
+        "name": "Zukiswa Zingela, MMed Psych, FCPsych",
+        "role": "Associate Professor and Head of the Department of Psychiatry and Human Behavioral Sciences",
+        "position": "Site Lead, South Africa",
+        "location": "Walter Sisulu University "
+      }
+    },
+    "ukTeam": {
+      "title": "The UK Team",
+      "annMarieBurn": {
+        "name": "Anne-Marie Burn, PhD, MSc",
+        "role": "Senior Research Associate",
+        "position": "Scientific Collaborator, UK",
+        "location": "University of Cambridge"
+      },
+      "blossomFernandes": {
+        "name": "Blossom Fernandes, PhD, MSc",
+        "role": "Research Project Manager",
+        "position": "Scientific Project Coordination, UK",
+        "location": "University of Oxford"
+      },
+      "emmaCarey": {
+        "name": "Emma Carey, BA",
+        "role": "Research Assistant",
+        "position": "Scientific Collaborator, UK",
+        "location": "University of Cambridge"
+      },
+      "lakshmiNeelakantan": {
+        "name": "Lakshmi Neelakantan, PhD",
+        "role": "Postdoctoral Researcher",
+        "position": "Scientific Project Coordination, UK",
+        "location": "University of Oxford"
+      },
+      "minaFazel": {
+        "name": "Mina Fazel, DM MRCPsych",
+        "role": "Assoc. Professor of Child and Adolescent Psychiatry and Consultant Child and Adolescent Psychiatrist",
+        "position": "Site Lead, UK",
+        "location": "University of Oxford and Oxford University Hospitals"
+      },
+      "tamsinFord": {
+        "name": "Tamsin Ford, CBE, FRCPsych, FMedSci",
+        "role": "Professor of Child and Adolescent Psychiatry",
+        "position": "Site Lead, UK",
+        "location": "University of Cambridge"
+      }
+    },
+    "usTeam": {
+      "title": "The US Team",
+      "christopherKemp": {
+        "name": "Christopher Kemp, PhD",
+        "role": "Acting Assistant Professor",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "feliciaMataGreve": {
+        "name": "Felicia Mata-Greve, PhD",
+        "role": "Postdoctoral Scholar-Fellow",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "isabellGriffith": {
+        "name": "Isabell Griffith Fillipo , BA",
+        "role": "Research Coordinator",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "jenniferVelloza": {
+        "name": "Jennifer Velloza, PhD, MPH",
+        "role": "Senior Fellow",
+        "position": "Lead, Youth Advisory Panels",
+        "location": "University of Washington, United States"
+      },
+      "nicholeSams": {
+        "name": "Nichole Sams, BA",
+        "role": "Research Coordinator",
+        "position": "Scientific Collaborator",
+        "location": "University of Washington, United States"
+      },
+      "pamelaCollins": {
+        "name": "Pamela Collins, MD, MPH",
+        "role": "Executive Director, International Training and Education Center for Health (I-TECH), Director, UW Global Mental Health Program",
+        "position": "Lead, Advisory Panels",
+        "location": "University of Washington, United States"
+      },
+      "patArean": {
+        "name": "Patricia Areán, PhD",
+        "role": "Director, ALACRITY Center and CREATIV Lab",
+        "position": "Lead, Youth Engagement ",
+        "location": "University of Washington, United States"
+      },
+      "tessaConcepcion": {
+        "name": "Tessa Concepcion, MSGH",
+        "role": "Scientific Project Coordination, Advisory Panels",
+        "position": "Research Coordinator",
+        "location": "University of Washington, United States"
+      }
+    },
+    "sageTeam": {
+      "title": "The Sage Team",
+
+      "carlyMarten": {
+        "name": "Carly Marten, BA",
+        "role": "Scientific Collaborator, Research Governance",
+        "position": "Associate Governance Analyst, ELSI Research",
+        "location": "Sage Bionetworks, United States"
+      },
+      "christineSuver": {
+        "name": "Christine Suver, PhD, PMP",
+        "role": "Lead, Research Governance",
+        "position": "Vice President of Research Governance",
+        "location": "Sage Bionetworks, United States"
+      },
+      "emilyMoore": {
+        "name": "Emily Moore, BA",
+        "role": "Project Coordination, Research Governance",
+        "position": "Governance Intern",
+        "location": "Sage Bionetworks, United States"
+      },
+      "erinMounts": {
+        "name": "Erin Mounts",
+        "role": "Technology Team, Mobile Engineering",
+        "position": "Director of Mobile Engineering",
+        "location": "Sage Bionetworks, United States"
+      },
+      "erinScanlan": {
+        "name": "Erin Scanlan, BS",
+        "role": "Overall Project Coordination",
+        "position": "Executive Business Partner",
+        "location": "Sage Bionetworks, United States"
+      },
+      "jayHodgson": {
+        "name": "Jay Hodgson",
+        "role": "Technology Team, Web Engineering",
+        "position": "Director of Web Engineering",
+        "location": "Sage Bionetworks, United States"
+      },
+      "laraMangravite": {
+        "name": "Lara Mangravite, PhD",
+        "role": "Head Scientist",
+        "position": "President",
+        "location": "Sage Bionetworks, United States"
+      },
+      "larssonOmberg": {
+        "name": "Larsson Omberg, PhD",
+        "role": "Scientific collaborator",
+        "position": "Vice President of Systems Biology",
+        "location": "Sage Bionetworks, United States"
+      },
+      "lisaPasquale": {
+        "name": "Lisa Pasquale, BA",
+        "role": "Project Coordination, Research Governance",
+        "position": "Governance Intern",
+        "location": "Sage Bionetworks, United States"
+      },
+      "ljuboBradic": {
+        "name": "Ljubomir Bradic",
+        "role": "Technology Team, Design",
+        "position": "Director of Design",
+        "location": "Sage Bionetworks, United States"
+      },
+      "megDoerr": {
+        "name": "Megan Doerr, MS, LGC",
+        "role": "Scientific Lead, MindKind Community Sessions, Qualitative Research",
+        "position": "Assoc. Director of Research Governance, Applied ELSI Research",
+        "location": "Sage Bionetworks, United States"
+      },
+      "mikeKellen": {
+        "name": "Michael Kellen",
+        "role": "Lead, Technology Team",
+        "position": "Chief Technology Officer",
+        "location": "Sage Bionetworks, United States"
+      },
+      "sollySieberts": {
+        "name": "Solveig Sieberts, PhD",
+        "role": "Scientific Lead, MindKind Study, Quantitative Research",
+        "position": "Principal Scientist, Digital Health",
+        "location": "Sage Bionetworks, United States"
+      },
+      "soniaCarlson": {
+        "name": "Sonia Carlson, MS",
+        "role": "Lead, Technical Project Management",
+        "position": "Principal Program Manager",
+        "location": "Sage Bionetworks, United States"
+      },
+      "stockardSimon": {
+        "name": "Stockard Simon",
+        "role": "Technology Team, Design",
+        "position": "Senior Designer",
+        "location": "Sage Bionetworks, United States"
+      }
+    }
+  },
   "contact": {
     "title1": "If you are in a crisis",
     "subtitle1": "If you are in crisis, or feel that you are going to hurt yourself or others, please contact your healthcare provider. Additional resources provided below.",
@@ -258,7 +530,7 @@
         "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://icallhelpline.org/"
         }
       },
       "southAfrica": {
@@ -269,7 +541,7 @@
         "text4": "You can also email SADAG at Zane@sadag.org for information about counseling.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://www.sadag.org/"
         }
       },
       "unitedKingdom": {
@@ -280,7 +552,7 @@
         "text4": " You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://www.samaritans.org/"
         }
       }
     }
@@ -350,14 +622,56 @@
     "ifInCrisis": "If You are in Crisis",
     "crisis": "Crisis",
     "policy": "Privacy Policy",
+    "yourRights": "Your rights",
     "dashboard": "Dashboard",
     "login": "Sign in",
-    "home": "Home",
-    "consent1": "Consent: Language Name",
-    "consent2": "Consent: Language Name",
-    "consent3": "Consent: Language Name",
-    "english": "English",
-    "southAfrica": "South Africa",
-    "india": "India"
+    "home": "Home"
+  },
+  "about": {
+    "title": "About the study",
+    "paragraph1": "Some of us know exactly what we need for emotional health. Others of us are still figuring it out. Wherever you are in that process, your experience could help others.",
+    "paragraph2": " We’d like your help to design a databank that will collect information about emotional health from young people. You would help us decide what types of information to collect, who controls the databank, and who gets to use it. We’re inviting people like you from around the world to share their knowledge.",
+    "makeDifference": "Want to make a difference?",
+    "tenThings": "10 Things You Need to Know",
+    "thing1": {
+      "title": "MindKind Study",
+      "text": "This is a research study and does not provide medical advice, diagnosis, or treatment. [Researchers - link to Research Team] from around the world lead the MindKind Study."
+    },
+    "thing2": {
+      "title": "Our Goal",
+      "text": "The goal of the study is to learn how best to design a databank – a pool of data – about emotional health experiences from youth from around the world."
+    },
+    "thing3": {
+      "title": "Why you?",
+      "text": "In this study, we will learn about what data youth do and don’t want to add to the databank. How would youth want the data they add to the pool to be shared and used by researchers? What keeps youth engaged?"
+    },
+    "thing4": {
+      "title": "Who can join?",
+      "text": " You can join the study if you meet ALL of the following: Are ages 16-23 from the UK or ages 18-23 from India and South Africa. Have an Android phone. Live in the UK, India, or South Africa. Can read English."
+    },
+    "thing5": {
+      "title": "MindKind Study App",
+      "text": " If you join, you will use a free app to answer questions about your emotional health. It will take about 15-20 minutes each week. We hope you will participate for 12 weeks."
+    },
+    "thing6": {
+      "title": "Your Phone Number",
+      "text": "We need your phone number to link your account on the MindKind Study App to your consent form. We will not use your phone number for any other purpose."
+    },
+    "thing7": {
+      "title": "Stop Any Time",
+      "text": " You can leave the MindKind Study at any time. Let us know. We will give you instructions about how to turn off the MindKind Study App. We will also ask you about why you are leaving, but you don’t have to tell us."
+    },
+    "thing8": {
+      "title": "Safety/Ethics",
+      "text": " We will use your data for research. We will remove your name andreplace it with a random code. This protects your identity. We will move your data to the USA. We will store it on secure servers. We may ask you if scientists who are not on this study team can use your data for research. You can say yes or no."
+    },
+    "thing9": {
+      "title": "Your Data",
+      "text": " You may request a copy of your study data and use it as you like."
+    },
+    "readyToJoin": {
+      "title": "Ready to join?",
+      "text": "Review the consent for the MindKind Study. If you want to join, sign the consent. Next, download the free study app, create an account, and start sharing your experience to help others."
+    }
   }
 }

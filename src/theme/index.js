@@ -103,6 +103,15 @@ export const theme = responsiveFontSizes(
           fontFamily: systemFonts,
         },
       },
+      MuiAlert: {
+        standardError: {
+          backgroundColor: '#ffffff',
+          marginBottom: '20px',
+          color: '#f36e68',
+          fontSize: '1.6rem',
+          padding: 0,
+        },
+      },
       MuiCard: {
         root: {
           backgroundColor: 'white',

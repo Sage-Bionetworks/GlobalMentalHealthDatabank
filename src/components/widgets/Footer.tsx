@@ -18,10 +18,10 @@ export const Footer: React.FunctionComponent = () => {
               <NavLink to="/home" className="footer__navlink">
                 {t('footer.home')}
               </NavLink>
-              <NavLink to="/home" className="footer__navlink">
+              <NavLink to="/about" className="footer__navlink">
                 {t('footer.about')}
               </NavLink>
-              <NavLink to="/home" className="footer__navlink">
+              <NavLink to="/research" className="footer__navlink">
                 {t('footer.team')}
               </NavLink>
               <NavLink to="/contact" className="footer__navlink">
@@ -29,15 +29,6 @@ export const Footer: React.FunctionComponent = () => {
               </NavLink>
               <NavLink to="/eligibility" className="footer__navlink">
                 {t('footer.join')}
-              </NavLink>
-              <NavLink to="/home" className="footer__navlink">
-                {t('footer.consent1')}
-              </NavLink>
-              <NavLink to="/home" className="footer__navlink">
-                {t('footer.consent2')}
-              </NavLink>
-              <NavLink to="/home" className="footer__navlink">
-                {t('footer.consent3')}
               </NavLink>
             </Toolbar>
           </div>
@@ -47,7 +38,7 @@ export const Footer: React.FunctionComponent = () => {
               <NavLink to="/home" className="footer__navlink">
                 {t('footer.home')}
               </NavLink>
-              <NavLink to="/home" className="footer__navlink">
+              <NavLink to="/about" className="footer__navlink">
                 {t('footer.about')}
               </NavLink>
               <NavLink to="/home" className="footer__navlink">
@@ -63,15 +54,6 @@ export const Footer: React.FunctionComponent = () => {
               <NavLink to="/eligibility" className="footer__navlink">
                 {t('footer.join')}
               </NavLink>
-              <NavLink to="/home" className="footer__navlink">
-                {t('footer.consent1')}
-              </NavLink>
-              <NavLink to="/home" className="footer__navlink">
-                {t('footer.consent2')}
-              </NavLink>
-              <NavLink to="/home" className="footer__navlink">
-                {t('footer.consent3')}
-              </NavLink>
             </Toolbar>
           </div>
 
@@ -79,14 +61,7 @@ export const Footer: React.FunctionComponent = () => {
             <div className="footer__column">{t('footer.copyright')}</div>
             <div className="footer__column">
               <NavLink to="/home" className="footer__navlink underlined bottom">
-                {t('footer.privacy')}
-              </NavLink>
-              <span className="separator">|</span>
-              <NavLink
-                to="/dataregulation"
-                className="footer__navlink underlined bottom"
-              >
-                {t('footer.dataRights')}
+                {t('footer.yourRights')}
               </NavLink>
             </div>
           </div>

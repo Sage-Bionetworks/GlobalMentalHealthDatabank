@@ -8,7 +8,7 @@ export const Separator: React.FunctionComponent = () => {
       direction="row"
       justify="flex-start"
       alignItems="center"
-      className="bottom-fifty-wrapper"
+      className="btm-50"
     >
       <svg
         width="100"

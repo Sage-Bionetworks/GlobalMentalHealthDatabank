@@ -11,6 +11,9 @@
 @import 'components/download-app';
 @import 'components/responsive-step';
 @import 'components/contact';
+@import 'components/about';
+@import 'components/accordion';
+@import 'components/research';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -50,6 +53,11 @@ a {
   letter-spacing: 0.04em;
   width: 100%;
   text-transform: none;
+  &.secondary {
+    background-color: $primary-bg-color;
+    color: $primary-color;
+    border: 1px solid;
+  }
 }
 
 // if a button is in a link, do not decorate the text on hover
@@ -177,7 +185,7 @@ fieldset {
 .checkbox > label > span,
 .radio > label > span {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   font-size: 1.6rem;
 }
 
@@ -197,14 +205,22 @@ input[type='checkbox'] {
   &:focus {
     outline: 0;
   }
+
   &:checked {
     background-color: $primary-bg-color;
     color: black;
     &:after {
       content: (url('../assets/checkmark.svg'));
       right: 3px;
-      bottom: 8px;
+      bottom: 9px;
       position: relative;
+    }
+  }
+}
+input[type='checkbox']#consented {
+  &:checked {
+    &:after {
+      bottom: 4px;
     }
   }
 }
@@ -324,10 +340,6 @@ input[type='radio'] {
   }
 }
 
-.demoForm {
-  padding-top: 15px;
-}
-
 .text-center {
   text-align: center;
 }
@@ -383,15 +395,56 @@ input[type='radio'] {
   }
 }
 
-.bottom-twenty-wrapper {
+.tp-20-neg {
+  margin-top: -30px;
+}
+.tp-30-neg {
+  margin-top: -30px;
+}
+.tp-40-neg {
+  margin-top: -40px;
+}
+
+.btm-10 {
+  margin-bottom: 10px;
+}
+.btm-20 {
   margin-bottom: 20px;
 }
-.bottom-forty-wrapper {
+.btm-30 {
+  margin-bottom: 30px;
+}
+.btm-40 {
   margin-bottom: 40px;
 }
-.bottom-fifty-wrapper {
+.btm-50 {
   margin-bottom: 50px;
 }
-.buttom-all-wrapper {
+.btm-240 {
   margin-bottom: 240px;
+}
+
+.btm-custom-age-form {
+  margin-bottom: 113px;
+}
+
+//Eligibility
+.eligibility-summary-line-container {
+  display: flex;
+  align-items: baseline;
+}
+.eligibility-summary-line {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+h6.eligibility-summary-line-title {
+  margin-bottom: 0;
+}
+
+.chevron {
+  margin-right: 8px;
+  &.down {
+    transform: rotate(90deg);
+  }
 }

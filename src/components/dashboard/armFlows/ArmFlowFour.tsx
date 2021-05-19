@@ -41,7 +41,7 @@ function ArmFlowFour({
             <input
               type="radio"
               id={option.value}
-              checked={value == option.value ? true : false}
+              checked={value === option.value ? true : false}
               onChange={_onChange as any}
             />
             <div
@@ -147,34 +147,6 @@ function ArmFlowFour({
                   updateClientData(step + 1, {
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.COMMUNITY_PANEL,
-                  })
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
-                }
-              }}
-            />
-          </div>
-        </ResponsiveStepWrapper>
-      )
-
-    case startingStep + 3:
-      return (
-        <ResponsiveStepWrapper variant="card">
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <div className="quiz-wrapper">
-            <SageForm
-              title={t('form.armFour.pageFour.title')}
-              errorMessage={errorMessage}
-              formId={FORM_IDS.WOULD_LIKE_TO_VOLUNTEER}
-              onSubmit={(event: any) => {
-                const selectedOption = event.formData.would_you_volunteer
-                if (selectedOption === undefined)
-                  setErrorMessage(t('form.chooseAnOption'))
-                else {
-                  updateClientData(step + 1, {
-                    [FORM_IDS.WOULD_LIKE_TO_VOLUNTEER]: selectedOption,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
                   })
                   setStep((current: number) =>

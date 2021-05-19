@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect, NavLink } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
 import Separator from '../static/Separator'
-import { Redirect, NavLink } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
 import { FORM_IDS } from '../form/types'
 import { GoogleService } from '../../services/google.service'
@@ -15,23 +14,31 @@ import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
 
-const MAX_STEPS: number = 8
+const MAX_STEPS: number = 9
 
-const INITIAL_QUIZ_CHOICES = {
+const INITIAL_ELEGIBILITY_CHOICES = {
   howDidYouHear: '',
   accessToSupport: '',
   userLocation: '',
   hasAndroid: '',
   understandsEnglish: '',
+  gender: '',
   age: -1,
 }
 
 export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
-  const [quizChoices, setQuizChoices] = useState(INITIAL_QUIZ_CHOICES)
+  const [currentEligibilityChoices, setCurrentEligibilityChoices] = useState(
+    INITIAL_ELEGIBILITY_CHOICES,
+  )
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
+
+  const [summaryLocationCollapse, setSummaryLocationCollapse] = useState(true)
+  const [summaryAndroidCollapse, setSummaryAndroidCollapse] = useState(true)
+  const [summaryEnglishCollapse, setSummaryEnglishCollapse] = useState(true)
+  const [summaryAgeCollapse, setSummaryAgeCollapse] = useState(true)
 
   const {
     setIsEligible,
@@ -42,6 +49,10 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     setUnderstandEnglish,
     setAge,
     setGender,
+    whereDoYouLive,
+    doYouHaveAnAndroid,
+    understandEnglish,
+    age,
   } = useElegibility()
   const { t } = useTranslation()
 
@@ -49,10 +60,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     setErrorMessage('')
     if (step > MAX_STEPS) {
       if (
-        quizChoices.userLocation !== COUNTRIES.OTHER &&
-        quizChoices.hasAndroid &&
-        validateAgeRange(quizChoices.userLocation, quizChoices.age) &&
-        quizChoices.understandsEnglish
+        currentEligibilityChoices.userLocation !== COUNTRIES.OTHER &&
+        currentEligibilityChoices.hasAndroid &&
+        validateAgeRange(
+          currentEligibilityChoices.userLocation,
+          currentEligibilityChoices.age,
+        ) &&
+        currentEligibilityChoices.understandsEnglish
       ) {
         setIsEligible(true)
       }
@@ -69,18 +83,37 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     if (!location || !age) return false
     if (
       location === COUNTRIES.UK &&
-      !(quizChoices.age >= 16 && quizChoices.age <= 24)
+      !(
+        currentEligibilityChoices.age >= 16 &&
+        currentEligibilityChoices.age <= 24
+      )
     )
       return false
     if (
       location !== COUNTRIES.UK &&
-      !(quizChoices.age >= 18 && quizChoices.age <= 24)
+      !(
+        currentEligibilityChoices.age >= 18 &&
+        currentEligibilityChoices.age <= 24
+      )
     )
       return false
     return true
   }
 
-  window.scrollTo(0, 0)
+  const getCountryNameFromCountryCode = (countryCode: string) => {
+    switch (countryCode) {
+      case 'UK':
+        return t('common.unitedKingdom')
+      case 'IN':
+        return t('common.southAfrica')
+      case 'ZA':
+        return t('common.india')
+      case 'US':
+        return t('common.unitedStates')
+      case 'Other':
+        return t('common.other')
+    }
+  }
 
   switch (step) {
     case 1:
@@ -91,13 +124,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               {t('eligibility.thankYouForYourInterest')}
             </Typography>
 
-            <div className="bottom-twenty-wrapper ">
+            <div className="btm-20 ">
               <Typography variant="body2">
                 {t('eligibility.weHaveAFewQuestions')}
               </Typography>
             </div>
 
-            <div className="buttom-all-wrapper">
+            <div className="btm-240">
               <Separator />
             </div>
             <Button
@@ -143,7 +176,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.howDidYouHear'),
                     selectedOption.how_options,
                   )
-                  setQuizChoices((prev: any) => ({
+                  setCurrentEligibilityChoices((prev: any) => ({
                     ...prev,
                     howDidYouHear: selectedOption.how_options,
                   }))
@@ -181,16 +214,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 )
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  props.setCountryCode(
-                    Object.keys(COUNTRIES)[selectedCountry.your_country],
-                  )
                   GoogleService.sendEvent(
                     'quiz-accept',
                     'eligibility',
                     t('eligibility.where'),
                     selectedCountry.your_country,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return {
                       ...prev,
                       userLocation: selectedCountry.your_country,
@@ -233,7 +263,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.android'),
                     selectedOption.has_android,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, hasAndroid: selectedOption.has_android }
                   })
                   setDoYouHaveAnAndroid(selectedOption.has_android)
@@ -274,7 +304,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.english'),
                     selectedOption.understands_english_option,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return {
                       ...prev,
                       understandsEnglish:
@@ -300,6 +330,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           search: '?step=ageRange',
         })
       document.title = 'MindKind > How old are you?'
+
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -319,7 +350,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.ageRange'),
                     selectedOption,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, age: selectedOption }
                   })
                   setAge(selectedOption)
@@ -360,7 +391,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.gender'),
                     selectedOption,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, gender: selectedOption }
                   })
                   setGender(selectedOption)
@@ -400,7 +431,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                     t('eligibility.benefit'),
                     selectedOption.accept,
                   )
-                  setQuizChoices(prev => {
+                  setCurrentEligibilityChoices(prev => {
                     return { ...prev, accessToSupport: selectedOption.accept }
                   })
                   setEverBenefitedFromTreatment(selectedOption.accept)
@@ -413,20 +444,204 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
+
+    case 9:
+      if (!props.history.location.search.includes('summary'))
+        props.history.push({
+          pathname: '/eligibility',
+          search: '?step=summary',
+        })
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <div className="quiz-wrapper">
+            <Typography variant="h3">
+              {t('eligibility.pleaseReview')}
+            </Typography>
+            <div className="bottom-twenty-wrapper">
+              <div
+                className="eligibility-summary-line"
+                onClick={() =>
+                  setSummaryLocationCollapse(!summaryLocationCollapse)
+                }
+              >
+                {summaryLocationCollapse ? (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron down">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.where')}
+                      </Typography>
+                      <Typography variant="body2">
+                        {getCountryNameFromCountryCode(whereDoYouLive)}
+                      </Typography>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.where')}
+                      </Typography>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div
+                className="eligibility-summary-line"
+                onClick={() =>
+                  setSummaryAndroidCollapse(!summaryAndroidCollapse)
+                }
+              >
+                {summaryAndroidCollapse ? (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron down">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.android')}
+                      </Typography>
+                      <Typography variant="body2">
+                        {doYouHaveAnAndroid ? 'Yes' : 'No'}
+                      </Typography>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="eligibility-summary-line-container">
+                    <div className="chevron">&gt;</div>
+                    <div>
+                      <Typography
+                        variant="h6"
+                        className="eligibility-summary-line-title"
+                      >
+                        {t('eligibility.android')}
+                      </Typography>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div
+              className="eligibility-summary-line"
+              onClick={() => setSummaryEnglishCollapse(!summaryEnglishCollapse)}
+            >
+              {summaryEnglishCollapse ? (
+                <div className="eligibility-summary-line-container">
+                  <div className="chevron down">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.english')}
+                    </Typography>
+                    <Typography variant="body2">
+                      {understandEnglish ? 'Yes' : 'No'}
+                    </Typography>
+                  </div>
+                </div>
+              ) : (
+                <div className="eligibility-summary-line-container">
+                  <div className="chevron">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.english')}
+                    </Typography>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div
+              className="eligibility-summary-line"
+              onClick={() => setSummaryAgeCollapse(!summaryAgeCollapse)}
+            >
+              {summaryAgeCollapse ? (
+                <div className="eligibility-summary-line-container btm-50">
+                  <div className="chevron down">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.ageRange')}
+                    </Typography>
+                    <Typography variant="body2">{age}</Typography>
+                  </div>
+                </div>
+              ) : (
+                <div className="eligibility-summary-line-container btm-50">
+                  <div className="chevron">&gt;</div>
+                  <div>
+                    <Typography
+                      variant="h6"
+                      className="eligibility-summary-line-title"
+                    >
+                      {t('eligibility.ageRange')}
+                    </Typography>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button secondary"
+              onClick={() => setStep(1)}
+              style={{ marginBottom: '20px' }}
+            >
+              {t('eligibility.restart')}
+            </Button>
+
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button"
+              onClick={() =>
+                setStep((current: number) =>
+                  current <= MAX_STEPS ? current + 1 : current,
+                )
+              }
+            >
+              {t('common.submit')}
+            </Button>
+          </div>
+        </ResponsiveStepWrapper>
+      )
   }
+
   if (step > MAX_STEPS) {
+    if (!props.history.location.search.includes('not-eligible'))
+      props.history.push({
+        pathname: '/eligibility',
+        search: '?step=not-eligible',
+      })
     return (
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
           <Typography variant="h3">{t('eligibility.thanks')}</Typography>
 
-          <div className="bottom-twenty-wrapper">
+          <div className="btm-20">
             <Typography variant="body2">
               {t('eligibility.notElegible')}
             </Typography>
           </div>
 
-          <div className="buttom-all-wrapper">
+          <div className="btm-240">
             <Separator />
           </div>
 

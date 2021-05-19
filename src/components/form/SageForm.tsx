@@ -1,9 +1,9 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { Typography, Button } from '@material-ui/core'
 import { default as Form } from 'react-jsonschema-form'
-import Button from '@material-ui/core/Button'
+import Alert from '@material-ui/lab/Alert/Alert'
+
 import Separator from '../static/Separator'
-import { ReactComponent as ErrorMessageIcon } from '../../assets/error_message_icon.svg'
 import { ReactComponent as InfoMessageIcon } from '../../assets/info_message_icon.svg'
 import { FORM_IDS } from '../../components/form/types'
 import {
@@ -38,10 +38,6 @@ import {
   schemaHowResearchersAccess,
   uiSchemaHowResearchersAccess,
 } from '../../data/schemas/howResearchersAccess'
-import {
-  schemaWouldYouLikeToVolunteer,
-  uiSchemaWouldYouLikeToVolunteer,
-} from '../../data/schemas/wouldYouLikeToVolunteer'
 import {
   schemaWhoControlsData,
   uiSchemaWhoControlsData,
@@ -132,8 +128,6 @@ export default function SageForm({
         schemaCopy.properties.who_controls_data.enum = shuffledEnum
         schemaCopy.properties.who_controls_data.enumNames = shuffledEnumNames
         return schemaCopy
-      case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
-        return schemaWouldYouLikeToVolunteer
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
         return schemaWhatIsThePurpose
       case FORM_IDS.WHICH_IS_CORRECT:
@@ -165,8 +159,6 @@ export default function SageForm({
         return uiSchemaHowResearchersAccess
       case FORM_IDS.WHO_CONTROLS_DATA:
         return uiSchemaWhoControlsData
-      case FORM_IDS.WOULD_LIKE_TO_VOLUNTEER:
-        return uiSchemaWouldYouLikeToVolunteer
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
         return uiSchemaWhatIsThePurpose
       case FORM_IDS.WHICH_IS_CORRECT:
@@ -187,12 +179,8 @@ export default function SageForm({
           <Typography variant="h6">{subTitle}</Typography>
         </div>
       )}
-      {errorMessage && (
-        <div className="form-message error">
-          <ErrorMessageIcon />
-          {errorMessage}
-        </div>
-      )}
+
+      {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
 
       {infoMessage && (
         <div className="form-message">

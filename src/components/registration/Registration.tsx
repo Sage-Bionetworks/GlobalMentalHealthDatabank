@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { Typography } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
+import { Typography, Button, TextField } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert/Alert'
 
-import useForm from '../useForm'
+import {
+  getRandomFlowOption,
+  FLOW_OPTIONS,
+} from '../../helpers/RandomFlowGenerator'
 import {
   APP_ID,
+  SUB_STUDY_ID,
   ENDPOINT,
   RegistrationData,
   UserDataGroup,
@@ -13,20 +19,13 @@ import {
   makePhone,
   sendSignInRequest,
 } from '../../helpers/utility'
-import Button from '@material-ui/core/Button/Button'
-import TextField from '@material-ui/core/TextField/TextField'
-import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import {
-  getRandomFlowOption,
-  FLOW_OPTIONS,
-} from '../../helpers/RandomFlowGenerator'
-import { useTranslation } from 'react-i18next'
+import useForm from '../useForm'
 import { useElegibility } from './context/ElegibilityContext'
 import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
+import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type RegistrationProps = {
   onSuccessFn: Function
-  onErrorFn: Function
 }
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
@@ -35,7 +34,6 @@ const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
 export const Registration: React.FunctionComponent<RegistrationProps> = ({
   onSuccessFn,
-  onErrorFn,
 }: RegistrationProps) => {
   const {
     howDidYouHear,
@@ -69,6 +67,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   }
 
   const [error, setErrorMessage] = useState('')
+  const [showStartOverButton, setShowStartOverBtn] = useState(false)
 
   const submitRegistration = async (registrationData: RegistrationData) => {
     const result = await callEndpoint(
@@ -122,11 +121,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         checkpoint: 1,
       },
       appId: APP_ID,
-      substudyIds: ['wellcome-study'],
+      substudyIds: [SUB_STUDY_ID],
       dataGroups,
-    }
-    const endPoint = {
-      PHONE: `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
     }
 
     //send signinRequest
@@ -134,26 +130,28 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 
     try {
       const result = await submitRegistration(data)
-
       if (result.status === 201) {
         setErrorMessage('')
         const sentSigninRequest = await sendSignInRequest(
           phoneNumber,
           state.countryCode.value,
-          endPoint['PHONE'],
+          `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
-        onSuccessFn(
-          sentSigninRequest.status,
-          sentSigninRequest.data,
-          phoneNumber,
-        )
+        if (sentSigninRequest.status === 202) {
+          onSuccessFn(
+            phoneNumber,
+            sentSigninRequest.status,
+            sentSigninRequest.data,
+          )
+        } else {
+          setErrorMessage(t('eligibility.registerError'))
+        }
       } else {
         setErrorMessage(t('eligibility.registerError'))
-        onErrorFn(result.status)
       }
     } catch (e) {
-      setErrorMessage(t('eligibility.registerError'))
-      onErrorFn(e.statusCode, e.message)
+      setErrorMessage(`${t('eligibility.registerError')}`)
+      setShowStartOverBtn(false) // Carlos: toggle to show option
     }
   }
 
@@ -163,6 +161,10 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     onSubmitForm,
   )
 
+  const formErrors = Object.keys(state)
+    .filter(key => state[key].error)
+    .join(', ')
+
   return (
     <div className="quiz-wrapper">
       <div className="media-wrapper text-left">
@@ -171,21 +173,21 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         </div>
       </div>
 
-      <div className="bottom-twenty-wrapper">
+      <div className="btm-20">
         <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
       </div>
 
-      <div className="bottom-forty-wrapper">
+      <div className="btm-40">
         <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
       </div>
 
-      <form className="demoForm" onSubmit={handleOnSubmit}>
+      <form onSubmit={handleOnSubmit}>
         <div className="form-group" style={{ marginBottom: 0 }}>
           <div>
             <label htmlFor="phone" className="block--dark">
               <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
             </label>
-            <div className="input--padded">
+            <div className="btm-50">
               <TextField
                 fullWidth
                 className="phone-input"
@@ -198,31 +200,37 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 onChange={handleOnChange}
               />
             </div>
-            {Object.keys(state).map(
-              key =>
-                state[key].error && (
-                  <p
-                    className="error"
-                    style={{ marginLeft: '2rem', fontSize: '1.4rem' }}
-                  >
-                    {state[key].error}
-                  </p>
-                ),
+
+            {(error || formErrors) && (
+              <div className="tp-30-neg btm-20">
+                <Alert severity="error">{error || formErrors}</Alert>
+              </div>
             )}
-            <p className="error-message">{error}</p>
-            <div className="text-center">
-              <Button
-                fullWidth
-                color="primary"
-                variant="contained"
-                size="large"
-                type="submit"
-                className="wide-button"
-                disabled={!state.phone.value}
-              >
-                {t('eligibility.createAccount')}
-              </Button>
-            </div>
+
+            {showStartOverButton && (
+              <div className="btm-20">
+                <Button
+                  className="wide-button"
+                  variant="text"
+                  color="primary"
+                  onClick={() => console.log('start over')}
+                >
+                  Start Over
+                </Button>
+              </div>
+            )}
+
+            <Button
+              fullWidth
+              color="primary"
+              variant="contained"
+              size="large"
+              type="submit"
+              className="wide-button"
+              disabled={!state.phone.value}
+            >
+              {t('eligibility.createAccount')}
+            </Button>
           </div>
         </div>
       </form>
