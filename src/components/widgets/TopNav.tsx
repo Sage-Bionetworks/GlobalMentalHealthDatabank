@@ -80,7 +80,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
         <NavLink
-          to="/home"
+          to="/research"
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -157,7 +157,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             {t('topnav.about')}
           </Typography>
         </NavLink>
-        <NavLink to="/home" className="topnav__link--full centered">
+        <NavLink to="/research" className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.research')}
           </Typography>

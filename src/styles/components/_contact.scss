@@ -25,7 +25,7 @@
   .button {
     width: 270px;
     height: 52px;
-    background: #343f56;
+    background: $button-bg-color;
     border-radius: 100px;
     margin-top: 8px;
     font-family: 'Lato';
@@ -51,7 +51,7 @@
     margin-bottom: 30px;
   }
   p {
-    color: #2a2a2a;
+    color: $font-color;
     margin-bottom: 20px;
   }
   @include breakpoint('md') {

@@ -11,6 +11,7 @@ import {
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
 import About from './components/static/About'
+import ResearchTeam from './components/static/ResearchTeam'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
@@ -163,6 +164,9 @@ function App() {
                       </Route>
                       <Route path="/about">
                         <About />
+                      </Route>
+                      <Route path="/research">
+                        <ResearchTeam />
                       </Route>
                       <Route path="/home">
                         <Home />
