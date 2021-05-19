@@ -499,6 +499,7 @@ function SecondCommonConsentSection({
               <input
                 type="checkbox"
                 id="consented"
+                className="signature-checkbox"
                 value="consented"
                 onClick={() => setConsented(prev => !prev)}
               />

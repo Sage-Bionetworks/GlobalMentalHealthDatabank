@@ -197,6 +197,7 @@ input[type='checkbox'] {
   &:focus {
     outline: 0;
   }
+
   &:checked {
     background-color: $primary-bg-color;
     color: black;
@@ -205,6 +206,13 @@ input[type='checkbox'] {
       right: 3px;
       bottom: 8px;
       position: relative;
+    }
+  }
+}
+input[type='checkbox']#consented {
+  &:checked {
+    &:after {
+      bottom: 4px;
     }
   }
 }
