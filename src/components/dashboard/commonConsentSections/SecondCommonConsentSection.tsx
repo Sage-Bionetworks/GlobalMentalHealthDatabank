@@ -54,6 +54,8 @@ function SecondCommonConsentSection({
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
+
+  const [showVolunteer, setShowVolunteer] = useState(false)
   const { t } = useTranslation()
 
   const CustomRadioWhatIsThePurpose = ({ options, value, onChange }: any) => {
@@ -157,6 +159,20 @@ function SecondCommonConsentSection({
   const sessionData = useSessionDataState()
   const { token } = sessionData
 
+  const getUserVolunteerAnswer = async () => {
+    if (!token) return
+    const userInfoResponse = await UserService.getUserInfo(token)
+    const { clientData } = userInfoResponse?.data as any
+    if (
+      clientData?.whoControlsData ===
+      WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
+    ) {
+      setShowVolunteer(true)
+    } else {
+      setShowVolunteer(false)
+    }
+  }
+
   const signConsent = async () => {
     if (!token) return
     try {
@@ -184,11 +200,23 @@ function SecondCommonConsentSection({
           [PAGE_ID_FIELD_NAME]: PAGE_ID.RANKING_CHOICE,
         })
       } else {
-        updateClientDataResponse = await updateClientData(step + 1, {
-          skipRanking: true,
-          consented: true,
-          [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
-        })
+        if (
+          clientData.consentModel === FLOW_OPTIONS.FOUR &&
+          clientData.whoControlsData ===
+            WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
+        ) {
+          updateClientDataResponse = await updateClientData(step + 1, {
+            skipRanking: false,
+            consented: true,
+            [PAGE_ID_FIELD_NAME]: PAGE_ID.COMMUNITY_PANEL,
+          })
+        } else {
+          updateClientDataResponse = await updateClientData(step + 1, {
+            skipRanking: true,
+            consented: true,
+            [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
+          })
+        }
       }
       await HealthService.sendHealthData(
         token,
@@ -539,15 +567,39 @@ function SecondCommonConsentSection({
       )
 
     case startingStep + 8: {
+      getUserVolunteerAnswer()
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <RankedChoice
-              step={step}
-              setStep={setStep}
-              updateClientData={updateClientData}
-            />
+            {showVolunteer ? (
+              <>
+                <Typography variant="h3">
+                  {t('form.secondCommonConsent.volunteer.ifYouLike')}
+                </Typography>
+                <Typography variant="body1" style={{ marginBottom: '20px' }}>
+                  {t('form.secondCommonConsent.volunteer.email')}
+                </Typography>
+                <Typography variant="body2">
+                  {t('form.secondCommonConsent.volunteer.note')}
+                </Typography>
+                <NavigationArrows
+                  preventBack
+                  onNext={() =>
+                    updateClientData(step + 1, {
+                      skipRanking: true,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
+                    })
+                  }
+                />
+              </>
+            ) : (
+              <RankedChoice
+                step={step}
+                setStep={setStep}
+                updateClientData={updateClientData}
+              />
+            )}
           </div>
         </ResponsiveStepWrapper>
       )

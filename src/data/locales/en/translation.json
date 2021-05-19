@@ -188,6 +188,11 @@
         "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
         "confirmation": "Voting Confirmation",
         "review": "Review the list below to confirm this represents your choices."
+      },
+      "volunteer": {
+        "ifYouLike": "If you would like to volunteer as a reviewer for the community review panel email: ",
+        "email": "emailgoeshere@email.com Subject: MindKind Review Panel",
+        "note": "Note: Should you choose to email us your email will not be stored or associated with any study data."
       }
     },
     "consentSignature": {
