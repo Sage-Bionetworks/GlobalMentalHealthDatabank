@@ -11,6 +11,7 @@
 @import 'components/download-app';
 @import 'components/responsive-step';
 @import 'components/contact';
+@import 'components/accordion';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -50,6 +51,11 @@ a {
   letter-spacing: 0.04em;
   width: 100%;
   text-transform: none;
+  &.secondary {
+    background-color: $primary-bg-color;
+    color: $primary-color;
+    border: 1px solid;
+  }
 }
 
 // if a button is in a link, do not decorate the text on hover
@@ -419,3 +425,25 @@ input[type='radio'] {
 .btm-custom-age-form {
   margin-bottom: 113px;
 }
+
+//Eligibility
+.eligibility-summary-line-container {
+  display: flex;
+  align-items: baseline;
+}
+.eligibility-summary-line {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+h6.eligibility-summary-line-title {
+  margin-bottom: 0;
+}
+
+.chevron {
+  margin-right: 8px;
+  &.down {
+    transform: rotate(90deg);
+  }
+}
+

@@ -24,7 +24,12 @@
     "yes": "Yes",
     "noTakeBack": "No, take me back",
     "zipCode": "Zip code",
-    "continue": "Continue"
+    "continue": "Continue",
+    "unitedKingdom": "United Kingdom",
+    "unitedStates": "United States",
+    "southAfrica": "South Africa",
+    "india": "India",
+    "other": "Other"
   },
   "eligibility": {
     "begin": "Begin",
@@ -46,7 +51,9 @@
     "askPhone": "Before we get started, could we have your number?",
     "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
     "myPhone": "My phone number is: ",
-    "createAccount": "Sign Up"
+    "createAccount": "Sign Up",
+    "pleaseReview": "Please review your answer to ensure they are correct.",
+    "restart": "Go back to the start"
   },
   "form": {
     "firstCommonConsent": {
@@ -214,10 +221,7 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "consent1": "Consent: Language 1",
-    "consent2": "Consent: Language 2",
-    "consent3": "Consent: Language 3",
-    "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
+    "yourRights": "Your rights"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -258,7 +262,7 @@
         "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://icallhelpline.org/"
         }
       },
       "southAfrica": {
@@ -269,7 +273,7 @@
         "text4": "You can also email SADAG at Zane@sadag.org for information about counseling.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://www.sadag.org/"
         }
       },
       "unitedKingdom": {
@@ -280,7 +284,7 @@
         "text4": " You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
-          "url": ""
+          "url": "https://www.samaritans.org/"
         }
       }
     }
@@ -350,14 +354,9 @@
     "ifInCrisis": "If You are in Crisis",
     "crisis": "Crisis",
     "policy": "Privacy Policy",
+    "yourRights": "Your rights",
     "dashboard": "Dashboard",
     "login": "Sign in",
-    "home": "Home",
-    "consent1": "Consent: Language Name",
-    "consent2": "Consent: Language Name",
-    "consent3": "Consent: Language Name",
-    "english": "English",
-    "southAfrica": "South Africa",
-    "india": "India"
+    "home": "Home"
   }
 }

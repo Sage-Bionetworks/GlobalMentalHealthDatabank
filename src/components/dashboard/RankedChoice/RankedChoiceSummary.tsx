@@ -1,8 +1,8 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
-
 import NavigationArrows from '../../common/NavigationArrows'
+import Accordion from '../../common/Accordion'
 import { useRankedChoice } from '../RankedChoice/context/RankedChoiceContext'
 import { useSessionDataState } from '../../../AuthContext'
 import { HealthService } from '../../../services/health.service'
@@ -49,9 +49,9 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
         {t('form.secondCommonConsent.ranking.review')}
       </Typography>
       {cards.map(card => (
-        <p className="option" key={`card-id-${card.id}`}>
-          &gt; {card.title}
-        </p>
+        <Accordion title={card.title}>
+          <Typography variant="body2">{card.text}</Typography>
+        </Accordion>
       ))}
       <NavigationArrows onBack={handleBack} onNext={handleNext} />
     </div>
