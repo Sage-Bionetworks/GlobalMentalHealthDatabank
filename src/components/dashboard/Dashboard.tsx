@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { CircularProgress } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert/Alert'
+
 import { LoggedInUserData } from '../../types/types'
 import { UserService } from '../../services/user.service'
-import Alert from '@material-ui/lab/Alert/Alert'
 import ConsentSteps from './ConsentSteps'
 
 type DashboardProps = {

@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import {
   Typography,
   CircularProgress,
   Select,
   MenuItem,
+  Button,
+  TextField,
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert/Alert'
+
 import {
   APP_ID,
   LoggedInUserData,
@@ -12,16 +18,13 @@ import {
   SignInDataPhone,
   Response,
   ENDPOINT,
+  SIGN_IN_METHOD,
 } from '../../types/types'
 import { callEndpoint, makePhone } from '../../helpers/utility'
-import Button from '@material-ui/core/Button'
 import SignInWithCode from './SignInWithCode'
-import TextField from '@material-ui/core/TextField/TextField'
-import { RouteComponentProps } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
-import Alert from '@material-ui/lab/Alert/Alert'
+import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import uk from '../../assets/flags/uk.svg'
 import ind from '../../assets/flags/ind.svg'
 import za from '../../assets/flags/za.svg'
@@ -29,10 +32,9 @@ import us from '../../assets/flags/us.svg'
 
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
-  searchParams?: any
 }
 
-export type LoginProps = OwnLoginProps & RouteComponentProps
+export type LoginProps = OwnLoginProps
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 
@@ -43,31 +45,18 @@ const FLAGS = {
   unitedStates: 'US',
 }
 
-export const Login: React.FunctionComponent<LoginProps> = ({
-  searchParams,
-  history,
-}: LoginProps) => {
-  const [phone, setPhone] = useState('')
+export const Login: React.FunctionComponent = () => {
+  const { push } = useHistory()
   const [countryCode, setCountryCode] = useState(FLAGS.unitedKingdom)
+  const [phone, setPhone] = useState('')
   const [error, setError] = useState('')
   const [isCodeSent, setIsCodeSent] = useState(false)
-  const loginType = 'PHONE'
   const [isLoading, setIsLoading] = useState(false)
 
   const { t } = useTranslation()
 
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
-
-  //detect if they are bck on the page
-
-  const redirect = (isConsented: boolean) => {
-    if (isConsented) {
-      history.push('/dashboard')
-    } else {
-      history.push('/consent')
-    }
-  }
 
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -82,7 +71,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
           userDataGroup: loggedIn.data.dataGroups,
         },
       })
-      redirect(loggedIn.data.consented)
+      push('/dashboard')
     } else {
       setError('Error ' + loggedIn.status)
     }
@@ -95,7 +84,7 @@ export const Login: React.FunctionComponent<LoginProps> = ({
    */
 
   const sendSignInRequest = async (
-    _loginType: 'PHONE',
+    _loginType: string,
     phoneNumber: string,
     countryCode: string,
     endpoint: string,
@@ -117,13 +106,13 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   const handleLogin = async (
     clickEvent: React.FormEvent<HTMLElement>,
   ): Promise<any> => {
-    clickEvent.preventDefault() // avoid page refresh
+    clickEvent.preventDefault()
 
     try {
       setIsLoading(true)
       setError('')
       await sendSignInRequest(
-        'PHONE',
+        SIGN_IN_METHOD,
         phone,
         countryCode,
         `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
@@ -139,116 +128,118 @@ export const Login: React.FunctionComponent<LoginProps> = ({
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="login-wrapper">
-        {
-          <div className="quiz-wrapper">
-            {(!isCodeSent || error) && (
-              <div>
-                <Typography className="text-center" variant="h4">
-                  {t('common.logIn')}
-                </Typography>
-                <form onSubmit={handleLogin}>
-                  <div>
-                    {loginType === 'PHONE' && (
-                      <div className="input--padded--flags">
-                        <Select
-                          labelId="flag-selector"
-                          id="flag-selector"
-                          value={countryCode}
-                          onChange={(
-                            event: React.ChangeEvent<{ value: unknown }>,
-                          ) => {
-                            setCountryCode(event.target.value as any)
-                          }}
-                          variant="outlined"
-                          className="phone-flag"
-                        >
-                          <MenuItem value={FLAGS.unitedKingdom}>
-                            <img
-                              src={uk}
-                              className={'flag-icon'}
-                              alt="United Kingdom"
-                            ></img>
-                          </MenuItem>
-                          <MenuItem value={FLAGS.india}>
-                            <img
-                              src={ind}
-                              className={'flag-icon'}
-                              alt="India"
-                            ></img>
-                          </MenuItem>
-                          <MenuItem value={FLAGS.southAfrica}>
-                            <img
-                              src={za}
-                              className={'flag-icon'}
-                              alt="South Africa"
-                            ></img>
-                          </MenuItem>
-                          <MenuItem value={FLAGS.unitedStates}>
-                            <img
-                              src={us}
-                              className={'flag-icon'}
-                              alt="United States"
-                            ></img>
-                          </MenuItem>
-                        </Select>
+        <div className="quiz-wrapper">
+          {!isCodeSent && (
+            <>
+              <div className="media-wrapper text-left">
+                <div className="icon-wrapper">
+                  <TextSent width="75" />
+                </div>
+              </div>
+              <div className="btm-20 text-center">
+                <Typography variant="h4">{t('common.signIn')}</Typography>
+              </div>
+              <form onSubmit={handleLogin}>
+                <div className="btm-50 input--padded--flags">
+                  <Select
+                    labelId="flag-selector"
+                    id="flag-selector"
+                    variant="outlined"
+                    className="phone-flag"
+                    value={countryCode}
+                    onChange={(
+                      event: React.ChangeEvent<{ value: unknown }>,
+                    ) => {
+                      setCountryCode(event.target.value as any)
+                    }}
+                  >
+                    <MenuItem value={FLAGS.unitedKingdom}>
+                      <img
+                        src={uk}
+                        className={'flag-icon'}
+                        alt="United Kingdom"
+                      />
+                    </MenuItem>
+                    <MenuItem value={FLAGS.india}>
+                      <img src={ind} className={'flag-icon'} alt="India" />
+                    </MenuItem>
+                    <MenuItem value={FLAGS.southAfrica}>
+                      <img
+                        src={za}
+                        className={'flag-icon'}
+                        alt="South Africa"
+                      />
+                    </MenuItem>
+                    <MenuItem value={FLAGS.unitedStates}>
+                      <img
+                        src={us}
+                        className={'flag-icon'}
+                        alt="United States"
+                      />
+                    </MenuItem>
+                  </Select>
 
-                        <TextField
-                          id="outlined-basic"
-                          variant="outlined"
-                          autoComplete="phone"
-                          label="Phone #"
-                          fullWidth
-                          name="phone"
-                          type="phone"
-                          value={phone}
-                          onChange={e => setPhone(e.currentTarget.value)}
-                        />
-                      </div>
-                    )}
-                    <div className="text-center">
-                      {isLoading ? (
-                        <div className="text-center">
-                          <CircularProgress color="primary" />
-                        </div>
-                      ) : (
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          size="large"
-                          type="submit"
-                          disabled={!loginType}
-                          onSubmit={handleLogin}
-                          className="wide-button"
-                        >
-                          {t('common.logIn')}
-                        </Button>
-                      )}
-                    </div>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    variant="outlined"
+                    autoComplete="phone"
+                    label="Phone # "
+                    name="phone"
+                    type="phone"
+                    value={phone}
+                    onChange={e => setPhone(e.currentTarget.value)}
+                  />
+                </div>
+
+                {error && (
+                  <div className="tp-40-neg btm-20">
+                    <Alert severity="error">{error}</Alert>
                   </div>
-                  {error && <Alert severity="error">{error}</Alert>}
-                </form>
-              </div>
-            )}
-            {isCodeSent && (
-              <SignInWithCode
-                loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
-                  handleLoggedIn(result)
-                }
-                phoneNumber={phone}
-              />
-            )}
-            {!isCodeSent && (
-              <div style={{ margin: '0px auto', textAlign: 'center' }}>
-                <Button
-                  variant="text"
-                  onClick={() => (window.location.href = 'eligibility')}
-                >
-                  {t('common.signUpForAccount')}
-                </Button>
-              </div>
-            )}
-          </div>
-        }
+                )}
+
+                <div className="text-center">
+                  {isLoading ? (
+                    <div className="text-center">
+                      <CircularProgress color="primary" />
+                    </div>
+                  ) : (
+                    <Button
+                      className="wide-button"
+                      color="primary"
+                      variant="contained"
+                      size="large"
+                      type="submit"
+                      onSubmit={handleLogin}
+                    >
+                      {t('common.signIn')}
+                    </Button>
+                  )}
+                </div>
+              </form>
+            </>
+          )}
+
+          {isCodeSent && (
+            <SignInWithCode
+              loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
+                handleLoggedIn(result)
+              }
+              phoneNumber={phone}
+            />
+          )}
+
+          {!isCodeSent && (
+            <div style={{ margin: '0px auto', textAlign: 'center' }}>
+              <Button
+                variant="text"
+                onClick={() => (window.location.href = 'eligibility')}
+              >
+                {t('common.signUpForAccount')}
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </ResponsiveStepWrapper>
   )

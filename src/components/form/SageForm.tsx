@@ -1,9 +1,9 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { Typography, Button } from '@material-ui/core'
 import { default as Form } from 'react-jsonschema-form'
-import Button from '@material-ui/core/Button'
+import Alert from '@material-ui/lab/Alert/Alert'
+
 import Separator from '../static/Separator'
-import { ReactComponent as ErrorMessageIcon } from '../../assets/error_message_icon.svg'
 import { ReactComponent as InfoMessageIcon } from '../../assets/info_message_icon.svg'
 import { FORM_IDS } from '../../components/form/types'
 import {
@@ -187,12 +187,8 @@ export default function SageForm({
           <Typography variant="h6">{subTitle}</Typography>
         </div>
       )}
-      {errorMessage && (
-        <div className="form-message error">
-          <ErrorMessageIcon />
-          {errorMessage}
-        </div>
-      )}
+
+      {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
 
       {infoMessage && (
         <div className="form-message">

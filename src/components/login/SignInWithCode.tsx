@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Typography, Button, TextField } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
+import { Typography, Button, TextField } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert/Alert'
 
-import { APP_ID, ENDPOINT } from '../../types/types'
+import { APP_ID, LOGIN_ENDPOINT } from '../../types/types'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useElegibility } from '../../components/registration/context/ElegibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
@@ -11,8 +12,6 @@ type SignInWithCodeProps = {
   loggedInByPhoneFn?: Function
   phoneNumber: string
 }
-
-const PHONE_SIGN_IN_ENDPOINT = '/v3/auth/phone/signIn'
 
 export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   loggedInByPhoneFn,
@@ -33,10 +32,9 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
       token: code,
     }
 
-    const endpoint = `${ENDPOINT}${PHONE_SIGN_IN_ENDPOINT}`
     try {
       setError('')
-      const loggedIn = await callEndpoint(endpoint, 'POST', postData)
+      const loggedIn = await callEndpoint(LOGIN_ENDPOINT, 'POST', postData)
       loggedInByPhoneFn!(loggedIn)
     } catch (e) {
       setError(e.message)
@@ -45,7 +43,6 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
 
   return (
     <div>
-      <div className="error-message">{error}</div>
       <div>
         <div className="text-left margin-top-std">
           <div className="icon-wrapper">
@@ -54,6 +51,13 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
           <div className="header-wrapper">
             <Typography variant="h4">{t('signIn.SMSSent')}</Typography>
           </div>
+
+          {error && (
+            <div className="tp-40-neg btm-20">
+              <Alert severity="error">{error}</Alert>
+            </div>
+          )}
+
           <div className="header-wrapper">
             <Typography variant="body2">{phoneNumber}</Typography>
           </div>
@@ -63,7 +67,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             <label htmlFor="smsCode">
               <Typography variant="h6">{t('signIn.enterCode')}</Typography>
             </label>
-            <div className="input--padded">
+            <div className="btm-50">
               <TextField
                 fullWidth
                 variant="outlined"
@@ -85,7 +89,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             type="submit"
             disabled={!code || code.replace('-', '').length < 6}
           >
-            {t('common.logIn')}
+            {t('common.signIn')}
           </Button>
         </form>
       </div>

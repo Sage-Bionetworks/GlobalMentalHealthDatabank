@@ -1,11 +1,3 @@
-export const APP_ID = 'wellcome'
-
-export const SESSION_NAME = 'bridge-session-mindkind'
-export const ENDPOINT = 'https://webservices.sagebridge.org'
-
-export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
-export const SURVEY_IDENTIFIER = 'mindkind'
-
 export interface StringDictionary {
   [key: string]: any
 }
@@ -123,7 +115,16 @@ export interface HealhDataResponse {
   type: string
 }
 
+export const APP_ID = 'wellcome'
+export const SUB_STUDY_ID = 'wellcome-study'
+export const SESSION_NAME = 'bridge-session-mindkind'
+export const ENDPOINT = 'https://webservices.sagebridge.org'
+export const PHONE_SIGN_IN_ENDPOINT = '/v3/auth/phone/signIn'
+export const LOGIN_ENDPOINT = `${ENDPOINT}${PHONE_SIGN_IN_ENDPOINT}`
+export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
+export const SURVEY_IDENTIFIER = 'mindkind'
 export const PAGE_ID_FIELD_NAME = 'page_id'
+export const SIGN_IN_METHOD = 'PHONE'
 export const PAGE_ID = {
   WHAT_ARE_WE_STUDYING: 'C01_StudyIntro',
   WHAT_WILL_YOU_ASK: 'C02_StudyAsk',

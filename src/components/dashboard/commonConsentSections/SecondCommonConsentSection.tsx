@@ -44,10 +44,12 @@ function SecondCommonConsentSection({
   maxSteps,
   updateClientData,
 }: SecondCommonConsentProps) {
-  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] =
-    useState(undefined)
-  const [whichIsCorrectSelection, setWhichIsCorrectSelection] =
-    useState(undefined)
+  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState(
+    undefined,
+  )
+  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState(
+    undefined,
+  )
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -499,6 +501,7 @@ function SecondCommonConsentSection({
               <input
                 type="checkbox"
                 id="consented"
+                className="signature-checkbox"
                 value="consented"
                 onClick={() => setConsented(prev => !prev)}
               />

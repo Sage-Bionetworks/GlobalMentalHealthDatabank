@@ -9,8 +9,6 @@ import {
   Drawer,
   IconButton,
   Toolbar,
-  Select,
-  MenuItem,
 } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import Logout from '../login/Logout'
@@ -18,7 +16,6 @@ import btnClose from '../../assets/btn_close_dark.svg'
 import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Burger } from '../../assets/burger.svg'
-import { ReactComponent as ChevronDownLight } from '../../assets/chevron-down-light.svg'
 
 type TopNavProps = {
   token: string | undefined
@@ -29,15 +26,6 @@ type TopNavProps = {
 export const TopNav: React.FunctionComponent<TopNavProps> = props => {
   const { t } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const OPTIONS = [
-    t('topnav.english'),
-    t('topnav.southAfrica'),
-    t('topnav.india'),
-  ]
-  const [
-    selectedPDFLanguageDownload,
-    setSelectedPDFLanguageDownload,
-  ] = useState(OPTIONS[0] || '')
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -114,6 +102,18 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
 
+        <NavLink
+          to="/your-rights"
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {t('topnav.yourRights')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+
         {!props.token && (
           <NavLink
             to="/eligibility"
@@ -129,7 +129,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         )}
         {!props.token && (
           <NavLink
-            to="/login"
+            to="/signin"
             onClick={handleDrawerToggle}
             className="topnav__link"
           >
@@ -140,40 +140,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </ListItem>
           </NavLink>
         )}
-        <Divider className="mobile-menu__separator" />
-        <NavLink
-          to="/home"
-          onClick={handleDrawerToggle}
-          className="topnav__link"
-        >
-          <ListItem button className="mobile-menu__item">
-            <Typography variant="h6" className="topnav__text">
-              {t('topnav.consent1')}
-            </Typography>
-          </ListItem>
-        </NavLink>
-        <NavLink
-          to="/home"
-          onClick={handleDrawerToggle}
-          className="topnav__link"
-        >
-          <ListItem button className="mobile-menu__item">
-            <Typography variant="h6" className="topnav__text">
-              {t('topnav.consent2')}
-            </Typography>
-          </ListItem>
-        </NavLink>
-        <NavLink
-          to="/home"
-          onClick={handleDrawerToggle}
-          className="topnav__link"
-        >
-          <ListItem button className="mobile-menu__item">
-            <Typography variant="h6" className="topnav__text">
-              {t('topnav.consent3')}
-            </Typography>
-          </ListItem>
-        </NavLink>
       </List>
     </div>
   )
@@ -201,32 +167,13 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             {t('topnav.crisis')}
           </Typography>
         </NavLink>
+        <NavLink to="/your-rights" className="topnav__link--full centered">
+          <Typography variant="h6" className="topnav__text">
+            {t('topnav.yourRights')}
+          </Typography>
+        </NavLink>
       </div>
       <div className="topnav-right-section">
-        <Select
-          className="select-pdf"
-          value={selectedPDFLanguageDownload}
-          onChange={(e: any) => setSelectedPDFLanguageDownload(e.target.value)}
-          disableUnderline
-          IconComponent={() => <ChevronDownLight />}
-        >
-          <MenuItem className="select-pdf" value={OPTIONS[0]}>
-            <Typography variant="h6" className="topnav__text">
-              {t('topnav.english')}
-            </Typography>
-          </MenuItem>
-          <MenuItem className="select-pdf" value={OPTIONS[1]}>
-            <Typography variant="h6" className="topnav__text">
-              {t('topnav.southAfrica')}
-            </Typography>
-          </MenuItem>
-          <MenuItem className="select-pdf" value={OPTIONS[2]}>
-            <Typography variant="h6" className="topnav__text">
-              {t('topnav.india')}
-            </Typography>
-          </MenuItem>
-        </Select>
-
         {!props.token && (
           <NavLink to="/eligibility" className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
@@ -235,7 +182,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </NavLink>
         )}
         {!props.token && (
-          <NavLink to="/login" className="topnav__link--full">
+          <NavLink to="/signin" className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('topnav.login')}
             </Typography>
