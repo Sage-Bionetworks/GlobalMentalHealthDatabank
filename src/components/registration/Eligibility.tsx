@@ -568,7 +568,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               onClick={() => setSummaryAgeCollapse(!summaryAgeCollapse)}
             >
               {summaryAgeCollapse ? (
-                <div className="eligibility-summary-line-container">
+                <div className="eligibility-summary-line-container btm-50">
                   <div className="chevron down">&gt;</div>
                   <div>
                     <Typography
@@ -581,7 +581,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                   </div>
                 </div>
               ) : (
-                <div className="eligibility-summary-line-container">
+                <div className="eligibility-summary-line-container btm-50">
                   <div className="chevron">&gt;</div>
                   <div>
                     <Typography

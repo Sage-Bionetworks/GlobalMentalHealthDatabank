@@ -210,7 +210,7 @@ input[type='checkbox'] {
     &:after {
       content: (url('../assets/checkmark.svg'));
       right: 3px;
-      bottom: 8px;
+      bottom: 9px;
       position: relative;
     }
   }
@@ -446,4 +446,3 @@ h6.eligibility-summary-line-title {
     transform: rotate(90deg);
   }
 }
-
