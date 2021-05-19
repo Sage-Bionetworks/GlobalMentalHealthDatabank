@@ -221,10 +221,7 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "consent1": "Consent: Language 1",
-    "consent2": "Consent: Language 2",
-    "consent3": "Consent: Language 3",
-    "text1": "For questions, comments, or requests regarding the privacy policy or our processing of your information, please contact: <1> privacypolicy@sagebionetworks.org. </1>"
+    "yourRights": "Your rights"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -357,14 +354,9 @@
     "ifInCrisis": "If You are in Crisis",
     "crisis": "Crisis",
     "policy": "Privacy Policy",
+    "yourRights": "Your rights",
     "dashboard": "Dashboard",
     "login": "Sign in",
-    "home": "Home",
-    "consent1": "Consent: Language Name",
-    "consent2": "Consent: Language Name",
-    "consent3": "Consent: Language Name",
-    "english": "English",
-    "southAfrica": "South Africa",
-    "india": "India"
+    "home": "Home"
   }
 }
