@@ -22,7 +22,7 @@ export const Logout: React.FunctionComponent<LogoutProps> = ({
     setNavigate(true)
   }
   if (navigate) {
-    return <Redirect to={redirectUrl || '/login'} push={true} />
+    return <Redirect to={redirectUrl || '/signin'} push={true} />
   } else {
     return (
       <span onClick={logout}>

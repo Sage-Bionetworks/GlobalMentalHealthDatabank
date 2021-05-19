@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
+import { ThemeProvider, Typography } from '@material-ui/core'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom'
-import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
-import { ThemeProvider, Typography } from '@material-ui/core'
+
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
 import Login from './components/login/Login'
-import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
-import { getSearchParams } from './helpers/utility'
 import Dashboard from './components/dashboard/Dashboard'
 import DownloadApp from './components/dashboard/DownloadApp'
 import { TopNav } from './components/widgets/TopNav'
-import { UserService } from './services/user.service'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
 import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
@@ -25,6 +23,8 @@ import DataRegulation from './components/static/DataRegulation'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
+import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
+import { UserService } from './services/user.service'
 import { theme } from './theme'
 import './styles/style.scss'
 
@@ -70,7 +70,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: '/signin',
                 state: { from: location },
               }}
             />
@@ -127,17 +127,9 @@ function App() {
                     <Switch>
                       <Route
                         exact={true}
-                        path="/login"
-                        render={props => {
-                          const searchParamsProps = getSearchParams(
-                            props.location.search,
-                          )
-                          return (
-                            <Login
-                              {...props}
-                              searchParams={searchParamsProps as any}
-                            />
-                          )
+                        path="/signin"
+                        render={() => {
+                          return <Login />
                         }}
                       ></Route>
                       <Route

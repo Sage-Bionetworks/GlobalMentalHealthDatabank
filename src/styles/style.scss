@@ -183,7 +183,7 @@ fieldset {
 .checkbox > label > span,
 .radio > label > span {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   font-size: 1.6rem;
 }
 
@@ -203,6 +203,7 @@ input[type='checkbox'] {
   &:focus {
     outline: 0;
   }
+
   &:checked {
     background-color: $primary-bg-color;
     color: black;
@@ -211,6 +212,13 @@ input[type='checkbox'] {
       right: 3px;
       bottom: 8px;
       position: relative;
+    }
+  }
+}
+input[type='checkbox']#consented {
+  &:checked {
+    &:after {
+      bottom: 4px;
     }
   }
 }
@@ -330,10 +338,6 @@ input[type='radio'] {
   }
 }
 
-.demoForm {
-  padding-top: 15px;
-}
-
 .text-center {
   text-align: center;
 }
@@ -389,17 +393,37 @@ input[type='radio'] {
   }
 }
 
-.bottom-twenty-wrapper {
+.tp-20-neg {
+  margin-top: -30px;
+}
+.tp-30-neg {
+  margin-top: -30px;
+}
+.tp-40-neg {
+  margin-top: -40px;
+}
+
+.btm-10 {
+  margin-bottom: 10px;
+}
+.btm-20 {
   margin-bottom: 20px;
 }
-.bottom-forty-wrapper {
+.btm-30 {
+  margin-bottom: 30px;
+}
+.btm-40 {
   margin-bottom: 40px;
 }
-.bottom-fifty-wrapper {
+.btm-50 {
   margin-bottom: 50px;
 }
-.buttom-all-wrapper {
+.btm-240 {
   margin-bottom: 240px;
+}
+
+.btm-custom-age-form {
+  margin-bottom: 113px;
 }
 
 //Eligibility
@@ -422,3 +446,4 @@ h6.eligibility-summary-line-title {
     transform: rotate(90deg);
   }
 }
+
