@@ -39,7 +39,6 @@ export const FORM_IDS = {
   UNDERSTANDS_ENGLISH: 'understandsEnglish',
   HOW_RESEARCHERS_ACCESS: 'howResearchersAccess',
   WHO_CONTROLS_DATA: 'whoControlsData',
-  WOULD_LIKE_TO_VOLUNTEER: 'wouldYouLikeToVolunteer',
   WHAT_IS_THE_PURPOSE: 'whatIsThePurpose',
   WHICH_IS_CORRECT: 'whichIsCorrect',
   GENDER: 'gender',
