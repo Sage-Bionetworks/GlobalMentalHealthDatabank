@@ -599,17 +599,17 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 </div>
               )}
             </div>
-
-            <Button
-              color="primary"
-              variant="contained"
-              size="large"
-              className="wide-button secondary"
-              onClick={() => setStep(1)}
-              style={{ marginBottom: '20px' }}
-            >
-              {t('eligibility.restart')}
-            </Button>
+            <div className="btm-20">
+              <Button
+                color="primary"
+                variant="text"
+                size="large"
+                className="wide-button"
+                onClick={() => setStep(1)}
+              >
+                {t('eligibility.restart')}
+              </Button>
+            </div>
 
             <Button
               color="primary"
