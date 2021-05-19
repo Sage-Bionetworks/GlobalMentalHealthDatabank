@@ -152,7 +152,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             {t('topnav.home')}
           </Typography>
         </NavLink>
-        <NavLink to="/home" className="topnav__link--full centered">
+        <NavLink to="/about" className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.about')}
           </Typography>

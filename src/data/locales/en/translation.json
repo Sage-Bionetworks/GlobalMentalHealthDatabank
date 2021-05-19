@@ -358,5 +358,52 @@
     "dashboard": "Dashboard",
     "login": "Sign in",
     "home": "Home"
+  },
+  "about": {
+    "title": "About the study",
+    "paragraph1": "Some of us know exactly what we need for emotional health. Others of us are still figuring it out. Wherever you are in that process, your experience could help others.",
+    "paragraph2": " We’d like your help to design a databank that will collect information about emotional health from young people. You would help us decide what types of information to collect, who controls the databank, and who gets to use it. We’re inviting people like you from around the world to share their knowledge.",
+    "makeDifference": "Want to make a difference?",
+    "tenThings": "10 Things You Need to Know",
+    "thing1": {
+      "title": "MindKind Study",
+      "text": "This is a research study and does not provide medical advice, diagnosis, or treatment. [Researchers - link to Research Team] from around the world lead the MindKind Study."
+    },
+    "thing2": {
+      "title": "Our Goal",
+      "text": "The goal of the study is to learn how best to design a databank – a pool of data – about emotional health experiences from youth from around the world."
+    },
+    "thing3": {
+      "title": "Why you?",
+      "text": "In this study, we will learn about what data youth do and don’t want to add to the databank. How would youth want the data they add to the pool to be shared and used by researchers? What keeps youth engaged?"
+    },
+    "thing4": {
+      "title": "Who can join?",
+      "text": " You can join the study if you meet ALL of the following: Are ages 16-23 from the UK or ages 18-23 from India and South Africa. Have an Android phone. Live in the UK, India, or South Africa. Can read English."
+    },
+    "thing5": {
+      "title": "MindKind Study App",
+      "text": " If you join, you will use a free app to answer questions about your emotional health. It will take about 15-20 minutes each week. We hope you will participate for 12 weeks."
+    },
+    "thing6": {
+      "title": "Your Phone Number",
+      "text": "We need your phone number to link your account on the MindKind Study App to your consent form. We will not use your phone number for any other purpose."
+    },
+    "thing7": {
+      "title": "Stop Any Time",
+      "text": " You can leave the MindKind Study at any time. Let us know. We will give you instructions about how to turn off the MindKind Study App. We will also ask you about why you are leaving, but you don’t have to tell us."
+    },
+    "thing8": {
+      "title": "Safety/Ethics",
+      "text": " We will use your data for research. We will remove your name andreplace it with a random code. This protects your identity. We will move your data to the USA. We will store it on secure servers. We may ask you if scientists who are not on this study team can use your data for research. You can say yes or no."
+    },
+    "thing9": {
+      "title": "Your Data",
+      "text": " You may request a copy of your study data and use it as you like."
+    },
+    "readyToJoin": {
+      "title": "Ready to join?",
+      "text": "Review the consent for the MindKind Study. If you want to join, sign the consent. Next, download the free study app, create an account, and start sharing your experience to help others."
+    }
   }
 }

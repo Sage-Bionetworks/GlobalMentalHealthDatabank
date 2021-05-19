@@ -45,8 +45,9 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
 
   const [isEligible, setIsEligible] = useState(false)
   const [howDidYouHear, setHowDidYouHear] = useState('')
-  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] =
-    useState(false)
+  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] = useState(
+    false,
+  )
   const [whereDoYouLive, setWhereDoYouLive] = useState('')
   const [doYouHaveAnAndroid, setDoYouHaveAnAndroid] = useState('')
   const [understandEnglish, setUnderstandEnglish] = useState(false)
