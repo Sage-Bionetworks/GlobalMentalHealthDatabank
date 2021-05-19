@@ -21,6 +21,8 @@ function About() {
   return (
     <div className="about">
       <div className="about-the-study">
+        <div className="striped-circle"></div>
+        <div className="butterflies"></div>
         <Typography variant="h2">{t('about.title')}</Typography>
         <Typography>{t('about.paragraph1')}</Typography>
         <Typography>{t('about.paragraph2')}</Typography>
@@ -106,6 +108,7 @@ function About() {
           <Typography>{t('about.readyToJoin.text')}</Typography>
         </div>
         <div className="button-section">
+          <div className="butterflies"></div>
           <button onClick={goToEligibility}>{t('common.joinStudy')}</button>
         </div>
       </div>

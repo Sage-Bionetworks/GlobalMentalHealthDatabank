@@ -23,6 +23,15 @@
     background-position: bottom center;
     min-height: 300px;
     padding: 40px 25px 100px 25px;
+    .butterflies {
+      position: absolute;
+      bottom: -25px;
+      right: 30px;
+      width: 100px;
+      height: 90px;
+      background-image: url('../../assets/about/butterflies2.svg');
+      background-size: cover;
+    }
     h2 {
       margin-bottom: 20px;
     }
@@ -99,7 +108,26 @@
     .about-the-study {
       padding: 100px 75px;
       background-image: url('../../assets/about/yellow-bg-desktop.svg');
+      .striped-circle {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 600px;
+        height: 300px;
+        background-image: url('../../assets/about/striped-circle.svg');
+        background-size: cover;
+      }
+      .butterflies {
+        bottom: -30px;
+        right: 50px;
+        width: 200px;
+        height: 180px;
+      }
       h2 {
+        margin-bottom: 40px;
+      }
+      p {
+        width: 75%;
         margin-bottom: 40px;
       }
     }
@@ -109,6 +137,7 @@
       padding: 65px 75px 100px 75px;
     }
     .ten-things {
+      margin: 0 75px;
       .ten-things__title {
         margin-bottom: 70px;
       }
@@ -125,12 +154,22 @@
       background-size: cover;
       min-height: 500px;
       align-items: center;
-      padding-top: 100px;
+      padding: 100px 75px 55px 75px;
       .text-section {
         width: 60%;
       }
       .button-section {
+        position: relative;
         width: 40%;
+        .butterflies {
+          position: absolute;
+          top: -150px;
+          left: 0;
+          width: 295px;
+          height: 300px;
+          background-image: url('../../assets/about/butterflies3.svg');
+          background-size: cover;
+        }
       }
       h2 {
         color: #f9cc7d;
@@ -138,6 +177,20 @@
       }
       .butterfly {
         display: none;
+      }
+    }
+  }
+  @include breakpoint('xl') {
+    .about-the-study {
+      .butterflies {
+        bottom: -15px;
+      }
+    }
+    .ready-to-join {
+      .button-section {
+        .butterflies {
+          left: 100px;
+        }
       }
     }
   }
