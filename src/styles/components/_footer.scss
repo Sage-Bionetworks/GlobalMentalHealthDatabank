@@ -12,10 +12,11 @@
   line-height: 14px;
   .footer__disclaimer {
     padding: 15px 25px;
+    font-size: 12px;
     border-bottom: 1px solid #535d71;
     width: 100%;
     @include breakpoint('md') {
-      padding: 10px 90px;
+      padding: 12px 90px;
     }
   }
   .footer__bottom {
