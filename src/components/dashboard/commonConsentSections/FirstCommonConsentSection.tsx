@@ -103,6 +103,8 @@ function FirstCommonConsentSection({
   const handleBack = () =>
     setStep((current: number) => (current > 1 ? current - 1 : current))
 
+  window.scrollTo(0, 0)
+
   switch (step) {
     case 1:
       return (

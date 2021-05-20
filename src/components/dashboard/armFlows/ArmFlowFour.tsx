@@ -31,6 +31,8 @@ function ArmFlowFour({
     setErrorMessage('')
   }, [step])
 
+  window.scrollTo(0, 0)
+
   const CustomRadio = ({ options, value, onChange }: any) => {
     const { enumOptions } = options
     const _onChange = (event: any) => onChange(event.currentTarget.id)
@@ -111,7 +113,6 @@ function ArmFlowFour({
                 const selectedOption = event.formData.how_researchers_access
                 if (!selectedOption) {
                   setErrorMessage(t('form.chooseAnOption'))
-                  window.scrollTo(0, 0)
                 } else {
                   updateClientData(step + 1, {
                     [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
@@ -142,7 +143,6 @@ function ArmFlowFour({
                 const selectedOption = event.formData
                 if (selectedOption.who_controls_data === undefined) {
                   setErrorMessage(t('form.chooseAnOption'))
-                  window.scrollTo(0, 0)
                 } else {
                   updateClientData(step + 1, {
                     [FORM_IDS.WHO_CONTROLS_DATA]:

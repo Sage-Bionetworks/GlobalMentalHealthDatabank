@@ -21,6 +21,7 @@ function ArmFlowThree({
   updateClientData,
 }: ArmFlowThreeProps) {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <ResponsiveStepWrapper>
       <ProgressBar step={step} maxSteps={maxSteps} />

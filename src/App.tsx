@@ -20,7 +20,6 @@ import { TopNav } from './components/widgets/TopNav'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
 import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
-import PrivacyPolicy from './components/static/PrivacyPolicy'
 import DataRegulation from './components/static/DataRegulation'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
@@ -150,9 +149,6 @@ function App() {
                       <PrivateRoute exact={true} path="/dashboard">
                         <Dashboard token={token || ''} />
                       </PrivateRoute>
-                      <Route path="/privacypolicy">
-                        <PrivacyPolicy />
-                      </Route>
                       <Route path="/dataregulation">
                         <DataRegulation />
                       </Route>
