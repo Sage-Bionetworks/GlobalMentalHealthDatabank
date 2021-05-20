@@ -2,6 +2,8 @@ import React, { useState, createContext, useContext } from 'react'
 
 type ElegibilityState = {
   isEligible: boolean
+  phoneNumber: string
+  setPhoneNumber: (state: string) => void
   setIsEligible: (state: boolean) => void
   howDidYouHear: string
   setHowDidYouHear: (state: string) => void
@@ -21,6 +23,8 @@ type ElegibilityState = {
 
 const ElegibilityContext = createContext<ElegibilityState>({
   isEligible: false,
+  phoneNumber: '',
+  setPhoneNumber: (state: string) => {},
   setIsEligible: (state: boolean) => {},
   howDidYouHear: '',
   setHowDidYouHear: (state: string) => {},
@@ -44,10 +48,10 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
   const { children } = props
 
   const [isEligible, setIsEligible] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState('')
   const [howDidYouHear, setHowDidYouHear] = useState('')
-  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] = useState(
-    false,
-  )
+  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] =
+    useState(false)
   const [whereDoYouLive, setWhereDoYouLive] = useState('')
   const [doYouHaveAnAndroid, setDoYouHaveAnAndroid] = useState('')
   const [understandEnglish, setUnderstandEnglish] = useState(false)
@@ -57,6 +61,8 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
   const value = {
     isEligible,
     setIsEligible,
+    phoneNumber,
+    setPhoneNumber,
     howDidYouHear,
     setHowDidYouHear,
     everBenefitedFromTreatment,

@@ -29,7 +29,7 @@ import uk from '../../assets/flags/uk.svg'
 import ind from '../../assets/flags/ind.svg'
 import za from '../../assets/flags/za.svg'
 import us from '../../assets/flags/us.svg'
-
+import { useElegibility } from '../registration/context/ElegibilityContext'
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
 }
@@ -47,8 +47,6 @@ const FLAGS = {
 
 export const Login: React.FunctionComponent = () => {
   const { push } = useHistory()
-  const [countryCode, setCountryCode] = useState(FLAGS.unitedKingdom)
-  const [phone, setPhone] = useState('')
   const [error, setError] = useState('')
   const [isCodeSent, setIsCodeSent] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -57,6 +55,14 @@ export const Login: React.FunctionComponent = () => {
 
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
+
+  const { phoneNumber, setPhoneNumber, whereDoYouLive, setWhereDoYouLive } =
+    useElegibility()
+
+  if (!whereDoYouLive || whereDoYouLive === 'Other') {
+    setWhereDoYouLive(FLAGS.unitedKingdom)
+    setPhoneNumber('')
+  }
 
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -86,13 +92,13 @@ export const Login: React.FunctionComponent = () => {
   const sendSignInRequest = async (
     _loginType: string,
     phoneNumber: string,
-    countryCode: string,
+    phoneCountryCode: string,
     endpoint: string,
   ): Promise<any> => {
     let postData: SignInData
     postData = {
       appId: APP_ID,
-      phone: makePhone(phoneNumber, countryCode),
+      phone: makePhone(phoneNumber, phoneCountryCode),
     } as SignInDataPhone
 
     try {
@@ -113,8 +119,8 @@ export const Login: React.FunctionComponent = () => {
       setError('')
       await sendSignInRequest(
         SIGN_IN_METHOD,
-        phone,
-        countryCode,
+        phoneNumber,
+        whereDoYouLive,
         `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
       )
       setIsCodeSent(true)
@@ -146,11 +152,11 @@ export const Login: React.FunctionComponent = () => {
                     id="flag-selector"
                     variant="outlined"
                     className="phone-flag"
-                    value={countryCode}
+                    value={whereDoYouLive}
                     onChange={(
                       event: React.ChangeEvent<{ value: unknown }>,
                     ) => {
-                      setCountryCode(event.target.value as any)
+                      setWhereDoYouLive(event.target.value as any)
                     }}
                   >
                     <MenuItem value={FLAGS.unitedKingdom}>
@@ -187,8 +193,12 @@ export const Login: React.FunctionComponent = () => {
                     label="Phone # "
                     name="phone"
                     type="phone"
-                    value={phone}
-                    onChange={e => setPhone(e.currentTarget.value)}
+                    value={phoneNumber}
+                    onChange={(
+                      event: React.ChangeEvent<{ value: unknown }>,
+                    ) => {
+                      setPhoneNumber(event.currentTarget.value as any)
+                    }}
                   />
                 </div>
 
@@ -225,7 +235,6 @@ export const Login: React.FunctionComponent = () => {
               loggedInByPhoneFn={(result: Response<LoggedInUserData>) =>
                 handleLoggedIn(result)
               }
-              phoneNumber={phone}
             />
           )}
 
