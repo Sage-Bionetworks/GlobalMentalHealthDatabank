@@ -191,7 +191,8 @@
       },
       "volunteer": {
         "ifYouLike": "If you would like to volunteer as a reviewer for the community review panel email: ",
-        "email": "emailgoeshere@email.com Subject: MindKind Review Panel",
+        "email": "MindKindSupport@sagebionetworks.org",
+        "subject": "Subject: MindKind Review Panel",
         "note": "Note: Should you choose to email us your email will not be stored or associated with any study data."
       }
     },

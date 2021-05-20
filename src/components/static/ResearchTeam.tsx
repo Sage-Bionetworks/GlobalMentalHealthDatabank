@@ -62,7 +62,7 @@ function ResearchTeam() {
   const history = useHistory()
 
   const breakpoint = useBreakpoint()
-  const isMobile = breakpoint < 768
+  const isMobile = breakpoint < 1024
 
   useEffect(() => {
     ;(document.activeElement as HTMLElement).blur()
@@ -103,7 +103,7 @@ function ResearchTeam() {
           <div className="research__section-images-youth">
             <img
               className="research__photo-youth"
-              src={EmilyBampton}
+              src={RefiloeSibisi}
               alt="team-member"
             />
             <div className="research__youth-info">
@@ -121,7 +121,7 @@ function ResearchTeam() {
           <div className="research__section-images-youth">
             <img
               className="research__photo-youth"
-              src={RefiloeSibisi}
+              src={SwethaRanganathan}
               alt="team-member"
             />
             <div className="research__youth-info">
@@ -139,7 +139,7 @@ function ResearchTeam() {
           <div className="research__section-images-youth">
             <img
               className="research__photo-youth"
-              src={SwethaRanganathan}
+              src={EmilyBampton}
               alt="team-member"
             />
             <div className="research__youth-info">

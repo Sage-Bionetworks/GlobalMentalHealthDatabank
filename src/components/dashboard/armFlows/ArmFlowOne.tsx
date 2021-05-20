@@ -21,6 +21,7 @@ function ArmFlowOne({
   updateClientData,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <ResponsiveStepWrapper>
       <ProgressBar step={step} maxSteps={maxSteps} />

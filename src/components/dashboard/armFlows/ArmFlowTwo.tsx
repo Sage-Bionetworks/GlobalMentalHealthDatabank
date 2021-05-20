@@ -21,6 +21,7 @@ function ArmFlowTwo({
   updateClientData,
 }: ArmFlowTwoProps) {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <ResponsiveStepWrapper>
       <ProgressBar step={step} maxSteps={maxSteps} />
