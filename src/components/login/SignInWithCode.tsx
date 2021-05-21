@@ -10,17 +10,15 @@ import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type SignInWithCodeProps = {
   loggedInByPhoneFn?: Function
-  phoneNumber: string
 }
 
 export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   loggedInByPhoneFn,
-  phoneNumber,
 }: SignInWithCodeProps) => {
   const [error, setError] = useState('')
   const [code, setCode] = useState('')
 
-  const { whereDoYouLive } = useElegibility()
+  const { phoneNumber, whereDoYouLive } = useElegibility()
   const { t } = useTranslation()
 
   async function handleOnSubmit(clickEvent: React.FormEvent<HTMLElement>) {

@@ -44,18 +44,16 @@ function SecondCommonConsentSection({
   maxSteps,
   updateClientData,
 }: SecondCommonConsentProps) {
-  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState(
-    undefined,
-  )
-  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState(
-    undefined,
-  )
+  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] =
+    useState(undefined)
+  const [whichIsCorrectSelection, setWhichIsCorrectSelection] =
+    useState(undefined)
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
-  const [showVolunteer, setShowVolunteer] = useState(false)
+  const [showVolunteer, setShowVolunteer] = useState(undefined as any)
   const { t } = useTranslation()
 
   const CustomRadioWhatIsThePurpose = ({ options, value, onChange }: any) => {
@@ -234,6 +232,8 @@ function SecondCommonConsentSection({
   }
   const handleBack = () =>
     setStep((current: number) => (current > 1 ? current - 1 : current))
+
+  window.scrollTo(0, 0)
 
   switch (step) {
     case startingStep: {
@@ -572,13 +572,16 @@ function SecondCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            {showVolunteer ? (
+            {showVolunteer === true && (
               <>
                 <Typography variant="h3">
                   {t('form.secondCommonConsent.volunteer.ifYouLike')}
                 </Typography>
-                <Typography variant="body1" style={{ marginBottom: '20px' }}>
+                <Typography variant="body1">
                   {t('form.secondCommonConsent.volunteer.email')}
+                </Typography>
+                <Typography variant="body1" style={{ marginBottom: '20px' }}>
+                  {t('form.secondCommonConsent.volunteer.subject')}
                 </Typography>
                 <Typography variant="body2">
                   {t('form.secondCommonConsent.volunteer.note')}
@@ -593,7 +596,8 @@ function SecondCommonConsentSection({
                   }
                 />
               </>
-            ) : (
+            )}{' '}
+            {showVolunteer === false && (
               <RankedChoice
                 step={step}
                 setStep={setStep}

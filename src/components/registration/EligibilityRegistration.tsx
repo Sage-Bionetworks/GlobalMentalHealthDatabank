@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import Eligibility from './Eligibility'
@@ -15,52 +15,48 @@ export type EligibilityRegistrationOwnProps = {
 export type EligibilityRegistrationProps = EligibilityRegistrationOwnProps &
   RouteComponentProps
 
-const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationProps> = ({
-  history,
-  callbackFn,
-}: EligibilityRegistrationProps) => {
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const { isEligible } = useElegibility()
+const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationProps> =
+  ({ history, callbackFn }: EligibilityRegistrationProps) => {
+    const { isEligible, phoneNumber, setPhoneNumber } = useElegibility()
 
-  const showEligibility = !isEligible
-  const showSignIn = isEligible && !phoneNumber
-  const showConfirmSMS = isEligible && phoneNumber
+    const showEligibility = !isEligible
+    const showSignIn = isEligible && !phoneNumber
+    const showConfirmSMS = isEligible && phoneNumber
 
-  return (
-    <div>
-      {showEligibility && <Eligibility />}
+    return (
+      <div>
+        {showEligibility && <Eligibility />}
 
-      {showSignIn && (
-        <ResponsiveStepWrapper variant="card">
-          <Registration
-            onSuccessFn={(phoneNumber: string) => {
-              setPhoneNumber(phoneNumber)
-            }}
-          />
-        </ResponsiveStepWrapper>
-      )}
-
-      {showConfirmSMS && (
-        <ResponsiveStepWrapper variant="card">
-          <div className="quiz-wrapper">
-            <SignInWithCode
-              loggedInByPhoneFn={(loggedIn: Response<LoggedInUserData>) => {
-                if (loggedIn.ok) {
-                  // Set User Session
-                  callbackFn(
-                    loggedIn.data.sessionToken,
-                    loggedIn.data.firstName,
-                  )
-                  history.push('/dashboard')
-                }
+        {showSignIn && (
+          <ResponsiveStepWrapper variant="card">
+            <Registration
+              onSuccessFn={(number: string) => {
+                setPhoneNumber(number)
               }}
-              phoneNumber={phoneNumber}
             />
-          </div>
-        </ResponsiveStepWrapper>
-      )}
-    </div>
-  )
-}
+          </ResponsiveStepWrapper>
+        )}
+
+        {showConfirmSMS && (
+          <ResponsiveStepWrapper variant="card">
+            <div className="quiz-wrapper">
+              <SignInWithCode
+                loggedInByPhoneFn={(loggedIn: Response<LoggedInUserData>) => {
+                  if (loggedIn.ok) {
+                    // Set User Session
+                    callbackFn(
+                      loggedIn.data.sessionToken,
+                      loggedIn.data.firstName,
+                    )
+                    history.push('/dashboard')
+                  }
+                }}
+              />
+            </div>
+          </ResponsiveStepWrapper>
+        )}
+      </div>
+    )
+  }
 
 export default EligibilityRegistration
