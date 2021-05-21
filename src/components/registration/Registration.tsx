@@ -197,7 +197,11 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 value={state.phone.value}
                 placeholder="Phone #"
                 aria-label="Phone #"
-                onChange={handleOnChange}
+                onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+                  const value = event.currentTarget.value as any
+                  const isValidPhoneNumber = /^(0|[0-9]\d*)$/.test(value)
+                  if (isValidPhoneNumber || !value) handleOnChange(event)
+                }}
               />
             </div>
 

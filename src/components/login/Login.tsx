@@ -197,7 +197,11 @@ export const Login: React.FunctionComponent = () => {
                     onChange={(
                       event: React.ChangeEvent<{ value: unknown }>,
                     ) => {
-                      setPhoneNumber(event.currentTarget.value as any)
+                      const value = event.currentTarget.value as any
+
+                      const isValidPhoneNumber = /^(0|[0-9]\d*)$/.test(value)
+                      if (isValidPhoneNumber || !value)
+                        setPhoneNumber(value as any)
                     }}
                   />
                 </div>

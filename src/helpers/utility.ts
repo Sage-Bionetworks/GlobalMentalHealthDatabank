@@ -8,8 +8,6 @@ import {
   StringDictionary,
   SESSION_NAME,
 } from '../types/types'
-
-import moment from 'moment'
 import i18n from 'i18next'
 import { useState } from 'react'
 import { SessionData } from '../types/types'
@@ -123,30 +121,6 @@ export const makePhone = (phone: string, regionCode?: string): Phone => {
   return { number: phone, regionCode: regionCode || '0' }
 }
 
-export const getMomentDate = (
-  year: string,
-  monthStart1: string,
-  day: string,
-): moment.Moment | undefined => {
-  let date = [Number(year), Number(monthStart1) - 1, Number(day)]
-  const anyNaN = date.find(item => isNaN(item))
-  if (anyNaN) {
-    return undefined
-  }
-
-  return moment(date)
-}
-
-export const getAge = (
-  year: string,
-  monthStart1: string,
-  day: string,
-): number => {
-  const birthday = getMomentDate(year, monthStart1, day)
-  const age = moment().diff(birthday, 'years')
-  return age
-}
-
 export const getSession = (): SessionData | undefined => {
   const item = sessionStorage.getItem(SESSION_NAME) || ''
   try {
@@ -185,16 +159,6 @@ export const sendSignInRequest = async (
   }
 }
 
-export const getSearchParams = (search: string): { [key: string]: string } => {
-  const searchParamsProps: any = {}
-  // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
-  const searchParams = new URLSearchParams(search)
-  searchParams.forEach((value, key) => {
-    searchParamsProps[key] = value
-  })
-  return searchParamsProps
-}
-
 // function to use session storage (react hooks)
 export const useSessionStorage = (
   key: string,
@@ -230,17 +194,6 @@ export const useSessionStorage = (
     }
   }
   return [storedValue, setValue]
-}
-
-export const bytesToSize = (bytes: number) => {
-  const sizes = ['bytes', 'kb', 'MB', 'GB', 'TB']
-  if (bytes === 0) return 'n/a'
-  const i = parseInt(
-    Math.floor(Math.log(bytes) / Math.log(1024)).toString(),
-    10,
-  )
-  if (i === 0) return `${bytes} ${sizes[i]})`
-  return `${(bytes / 1024 ** i).toFixed(1)}${sizes[i]}`
 }
 
 export const getNumberWithOrdinal = (n: number) => {
