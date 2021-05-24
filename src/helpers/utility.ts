@@ -201,3 +201,7 @@ export const getNumberWithOrdinal = (n: number) => {
   const v = n % 100
   return n + (s[(v - 20) % 10] || s[v] || s[0])
 }
+
+export const isValidPhoneNumber = (value: string) => {
+  return /^(0|[0-9]\d*)$/.test(value)
+}
