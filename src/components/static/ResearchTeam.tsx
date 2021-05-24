@@ -54,7 +54,7 @@ import SoniaCarlson from '../../assets/researchTeam/sageTeam/Sonia-Carlson.png'
 import StockardSimon from '../../assets/researchTeam/sageTeam/Stockard-Simon.png'
 
 function ResizableImageComponent({ ...rest }: any) {
-  return <img {...rest} />
+  return <img {...rest} alt="team-member" />
 }
 
 function ResearchTeam() {
