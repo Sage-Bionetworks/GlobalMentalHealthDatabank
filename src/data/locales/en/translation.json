@@ -227,7 +227,7 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "yourRights": "Your rights"
+    "consent": "Consents"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -423,7 +423,6 @@
     },
     "sageTeam": {
       "title": "The Sage Team",
-
       "carlyMarten": {
         "name": "Carly Marten, BA",
         "role": "Scientific Collaborator, Research Governance",
@@ -623,7 +622,7 @@
     "ifInCrisis": "If You are in Crisis",
     "crisis": "Crisis",
     "policy": "Privacy Policy",
-    "yourRights": "Your rights",
+    "consent": "Consents",
     "dashboard": "Dashboard",
     "login": "Sign in",
     "home": "Home"
