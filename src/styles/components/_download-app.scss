@@ -1,4 +1,7 @@
 .download-app {
+  min-height: calc(100vh - 275px);
+  background-color: $button-bg-color;
+  padding: 45px 25px 55px 25px;
   .download__button {
     width: 270px;
     padding: 10px;
@@ -13,78 +16,73 @@
     cursor: pointer;
     text-align: center;
   }
-  .download--not-installed {
-    background-color: $button-bg-color;
-    padding: 50px 25px;
-    h1,
-    p,
-    button {
-      color: $secondary-button-bg-color;
-    }
-    .download__content {
-      text-align: center;
-    }
-    .download__title {
-      color: #f9cc7d;
-    }
-    .download__button {
-      background: $tertiary-color;
-    }
+  h1,
+  p,
+  button {
+    color: $secondary-button-bg-color;
+  }
+  .download__content {
+    text-align: center;
+  }
+  .download__title {
+    color: #f9cc7d;
+    margin-top: 30px;
+    margin-bottom: 24px;
+  }
+  .download__button {
+    margin-top: 100px;
+    background: $tertiary-color;
   }
 
-  .download--already-installed {
-    padding: 50px 25px;
-    .download__button {
-      background: $button-bg-color;
-    }
-  }
   @include breakpoint('md') {
     position: relative;
     height: calc(100vh - 180px);
     .download__button {
       margin: 36px 0;
     }
-    .download--not-installed {
-      padding: 50px 70px;
-      height: 50%;
-      background-image: url('../../assets/download-bg.svg');
-      background-color: $primary-bg-color;
-      background-size: cover;
-      background-position: left bottom;
-      .download__title {
-        color: $secondary-button-bg-color;
-      }
-      .download__button {
-        background: $secondary-button-bg-color;
-        color: $font-color;
-      }
-      .logo {
-        display: none;
-      }
-      .plus-signs {
-        width: 280px;
-        height: 350px;
-        position: absolute;
-        top: 0;
-        right: 50px;
-        background-image: url('../../assets/plus-signs.png');
-        background-size: cover;
-      }
+    padding: 50px 70px;
+    .download__title {
+      color: $secondary-button-bg-color;
     }
-    .download--already-installed {
-      padding: 50px 70px;
-      height: 50%;
+    .download__button {
+      background: $secondary-button-bg-color;
+      color: $font-color;
+    }
+    .logo {
+      display: none;
+    }
+    .plus-signs {
+      width: 280px;
+      height: 350px;
+      position: absolute;
+      top: 0;
+      right: 30px;
+      background-image: url('../../assets/plus-signs.svg');
+      opacity: 0.1;
+      background-size: cover;
+    }
+    .orange-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background-image: url('../../assets/orange-bg-download.svg');
+      background-size: cover;
     }
     .phone {
-      width: 250px;
-      height: 300px;
       position: absolute;
-      bottom: -55px;
-      right: 70px;
+      bottom: 40px;
+      right: 50px;
+      width: 350px;
+      height: 460px;
+      background-image: url('../../assets/phone.svg');
       background-size: cover;
-      background-position: center;
-      background-image: url('../../assets/phone.png');
-      z-index: -1;
+    }
+  }
+  @include breakpoint('xl') {
+    .orange-bg {
+      height: 45%;
     }
   }
 }

@@ -81,19 +81,13 @@
       margin-right: 0;
     }
 
-    @include breakpoint('md') {
-      text-decoration: underline;
-    }
     &:hover {
-      text-decoration: none;
+      text-decoration: underline;
       color: $secondary-font-color;
     }
     &:focus {
       text-decoration: none;
       color: $secondary-font-color;
-    }
-    &.underlined {
-      text-decoration: underline;
     }
   }
   @include breakpoint('md') {
