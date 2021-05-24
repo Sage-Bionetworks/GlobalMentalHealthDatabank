@@ -227,7 +227,7 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "consent": "Consents"
+    "consent": "Consent"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -632,7 +632,7 @@
     "ifInCrisis": "If You are in Crisis",
     "crisis": "Crisis",
     "policy": "Privacy Policy",
-    "consent": "Consents",
+    "consent": "Consent",
     "dashboard": "Dashboard",
     "login": "Sign in",
     "home": "Home"
