@@ -64,11 +64,11 @@ export const Footer: React.FunctionComponent = () => {
                 {t('footer.consent')}
               </NavLink>
               <span className="separator">|</span>
-              <NavLink to="/dataregulation" className="footer__navlink bottom">
+              <NavLink to="/data-regulation" className="footer__navlink bottom">
                 {t('footer.dataRights')}
               </NavLink>
               <span className="separator">|</span>
-              <NavLink to="/privacy" className="footer__navlink bottom">
+              <NavLink to="/privacy-policy" className="footer__navlink bottom">
                 {t('footer.privacy')}
               </NavLink>
             </div>

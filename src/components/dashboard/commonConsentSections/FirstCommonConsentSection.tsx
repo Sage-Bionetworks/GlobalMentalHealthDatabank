@@ -136,7 +136,7 @@ function FirstCommonConsentSection({
             <div>
               <Typography variant="body2">
                 {t('form.firstCommonConsent.section3.section1')}{' '}
-                <a className="dashboard-link" href="/dashboard">
+                <a className="underlined-link" href="/dashboard">
                   {t('form.firstCommonConsent.section3.link')}
                 </a>{' '}
                 {t('form.firstCommonConsent.section3.section2')}
@@ -343,7 +343,7 @@ function FirstCommonConsentSection({
 
             <Typography variant="body2">
               {t('form.firstCommonConsent.ifCitizenEU')}{' '}
-              <a className="dashboard-link" href="/dashboard">
+              <a className="underlined-link" href="/dashboard">
                 {t('form.firstCommonConsent.ifCitizenEULink')}
               </a>
             </Typography>
