@@ -18,33 +18,32 @@
   }
   .consent-content {
     position: relative;
-    background-image: url('../../assets/consent-info/cyan-bg-mobile.svg');
+    background-image: url('../../assets/consent-info/cyan-bg-desktop.svg');
     background-size: cover;
     background-position: bottom center;
-    min-height: 400px;
+    min-height: 300px;
     padding: 40px 25px 100px 25px;
-    margin-bottom: 60px;
     h2 {
       margin-bottom: 20px;
     }
   }
   .plus-signs {
     position: absolute;
-    top: 0;
-    right: 0;
-    background-image: url('../../assets/plus-signs-2.svg');
+    top: -20px;
+    right: 70px;
+    background-image: url('../../assets/consent-info/plus-signs.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top right;
-    opacity: 0.2;
     width: 200px;
     height: 300px;
+    display: none;
   }
   .download-files {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 40px 25px 50px 25px;
+    padding: 100px 75px;
   }
   .ready-to-join {
     position: relative;
@@ -87,9 +86,11 @@
     .plus-signs {
       width: 300px;
       height: 450px;
+      display: initial;
     }
     .consent-content {
       padding: 100px 75px;
+      min-height: 400px;
       background-image: url('../../assets/consent-info/cyan-bg-desktop.svg');
       h2 {
         margin-bottom: 40px;

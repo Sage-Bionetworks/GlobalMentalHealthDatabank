@@ -14,7 +14,7 @@ function ConsentInfo() {
       <div className="consent-content">
         <div className="plus-signs" />
         <Typography variant="h2">{t('consent.title')}</Typography>
-        <Typography>{t('consent.description')}</Typography>
+        <Typography variant="h4">{t('consent.description')}</Typography>
       </div>
       <div>
         <div className="download-files">
@@ -22,13 +22,13 @@ function ConsentInfo() {
             <Typography variant="h2">{t('consent.download')}</Typography>
           </div>
           <div className="btm-40 underlined-link">
-            <Typography variant="h3">{t('consent.file1')}</Typography>
+            <Typography variant="h4">{t('consent.file1')}</Typography>
           </div>
           <div className="btm-40 underlined-link">
-            <Typography variant="h3">{t('consent.file2')}</Typography>
+            <Typography variant="h4">{t('consent.file2')}</Typography>
           </div>
           <div className="btm-40 underlined-link">
-            <Typography variant="h3">{t('consent.file3')}</Typography>
+            <Typography variant="h4">{t('consent.file3')}</Typography>
           </div>
         </div>
       </div>
