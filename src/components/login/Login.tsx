@@ -20,7 +20,11 @@ import {
   ENDPOINT,
   SIGN_IN_METHOD,
 } from '../../types/types'
-import { callEndpoint, makePhone } from '../../helpers/utility'
+import {
+  callEndpoint,
+  makePhone,
+  isValidPhoneNumber,
+} from '../../helpers/utility'
 import SignInWithCode from './SignInWithCode'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
@@ -197,7 +201,9 @@ export const Login: React.FunctionComponent = () => {
                     onChange={(
                       event: React.ChangeEvent<{ value: unknown }>,
                     ) => {
-                      setPhoneNumber(event.currentTarget.value as any)
+                      const value = event.currentTarget.value as any
+                      if (isValidPhoneNumber(value) || !value)
+                        setPhoneNumber(value as any)
                     }}
                   />
                 </div>

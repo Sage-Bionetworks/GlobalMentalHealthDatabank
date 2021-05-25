@@ -42,7 +42,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
             <div className="quiz-wrapper">
               <SignInWithCode
                 loggedInByPhoneFn={(loggedIn: Response<LoggedInUserData>) => {
-                  if (loggedIn.ok) {
+                  if (loggedIn.ok || !loggedIn.data.consented) {
                     // Set User Session
                     callbackFn(
                       loggedIn.data.sessionToken,

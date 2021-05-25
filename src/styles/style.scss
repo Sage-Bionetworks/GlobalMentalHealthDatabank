@@ -152,7 +152,7 @@ ul {
   }
 }
 
-.dashboard-link {
+.underlined-link {
   text-decoration: underline;
   color: black;
 }
@@ -353,12 +353,16 @@ input[type='radio'] {
   width: 90%;
 }
 
-.data-regulation-wrapper {
-  background-color: #f5f5f5;
+.legislation-wrapper {
+  background-color: $primary-bg-color;
   h2 {
     padding: 40px 0 25px;
   }
   padding: 20px;
+  @include breakpoint('md') {
+    background-color: #fcfcfc;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .data-regulation-butterflies {
@@ -446,5 +450,21 @@ h6.eligibility-summary-line-title {
   margin-right: 8px;
   &.down {
     transform: rotate(90deg);
+  }
+}
+
+.dropdown-select-language {
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  &.MuiFormControl-root {
+    border: 1px solid #343f56;
+    padding: 5px 15px;
+    width: 75%;
+  }
+
+  select.MuiNativeSelect-root.MuiNativeSelect-select.MuiInputBase-input.MuiInput-input {
+    background-color: $primary-bg-color;
   }
 }

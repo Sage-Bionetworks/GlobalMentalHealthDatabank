@@ -53,8 +53,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     doYouHaveAnAndroid,
     understandEnglish,
     age,
+    setPhoneNumber,
   } = useElegibility()
   const { t } = useTranslation()
+
+  useEffect(() => {
+    setPhoneNumber('')
+  }, [])
 
   useEffect(() => {
     setErrorMessage('')

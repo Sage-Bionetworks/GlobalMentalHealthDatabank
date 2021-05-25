@@ -42,8 +42,17 @@ function useForm(
   const handleOnChange = useCallback(
     event => {
       setIsDirty(true)
-      const name = event.target.name
-      const value = event.target.value
+      let name: any
+      let value: any
+      try {
+        name = event.target.name
+        value = event.target.value
+      } catch (e) {
+        setState((prevState: any) => ({
+          ...prevState,
+          [name]: { value, error },
+        }))
+      }
 
       let error = ''
       if (validationSchema[name].required) {

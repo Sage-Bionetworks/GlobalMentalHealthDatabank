@@ -227,7 +227,7 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "yourRights": "Your rights"
+    "consent": "Consent"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -423,7 +423,6 @@
     },
     "sageTeam": {
       "title": "The Sage Team",
-
       "carlyMarten": {
         "name": "Carly Marten, BA",
         "role": "Scientific Collaborator, Research Governance",
@@ -594,7 +593,17 @@
     "text7": "You have the right to restrict processing. At any time, you can withdraw your consent to our processing of your Personal Data.",
     "text8": "You have the right to data portability. You can request a copy of your data in usable format. ",
     "text9": "You have the right to object. You can withdraw from providing data to the App at any time.",
-    "text10": "If you have questions about your rights and choices or would like more information about your rights and choices, you can email privacyofficer@sagebionetworks.org."
+    "text10": "If you have questions about your rights and choices or would like more information about your rights and choices, you can email:",
+    "email": "privacyofficer@sagebionetworks.org"
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "text1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "download": "Download the PDF",
+    "language": "Language",
+    "english": "English",
+    "xhosa": "Xhosa",
+    "seSotho": "seSotho"
   },
   "registration": {
     "text1": "Create account",
@@ -623,7 +632,7 @@
     "ifInCrisis": "If You are in Crisis",
     "crisis": "Crisis",
     "policy": "Privacy Policy",
-    "yourRights": "Your rights",
+    "consent": "Consent",
     "dashboard": "Dashboard",
     "login": "Sign in",
     "home": "Home"
