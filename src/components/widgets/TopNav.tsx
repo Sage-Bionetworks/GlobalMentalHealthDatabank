@@ -103,7 +103,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         </NavLink>
 
         <NavLink
-          to="/your-rights"
+          to="/consent-info"
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -167,7 +167,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             {t('topnav.crisis')}
           </Typography>
         </NavLink>
-        <NavLink to="/your-rights" className="topnav__link--full centered">
+        <NavLink to="/consent-info" className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.consent')}
           </Typography>
