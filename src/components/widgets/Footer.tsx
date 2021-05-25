@@ -60,7 +60,7 @@ export const Footer: React.FunctionComponent = () => {
           <div className="footer__bottom">
             <div className="footer__column">{t('footer.copyright')}</div>
             <div className="footer__column">
-              <NavLink to="/home" className="footer__navlink bottom">
+              <NavLink to="/consent-info" className="footer__navlink bottom">
                 {t('footer.consent')}
               </NavLink>
               <span className="separator">|</span>

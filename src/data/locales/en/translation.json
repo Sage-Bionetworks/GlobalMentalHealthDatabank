@@ -637,6 +637,14 @@
     "login": "Sign in",
     "home": "Home"
   },
+  "consent": {
+    "title": "Consent",
+    "description": "The consent documents below are available in multiple languages, and can help provide additional context to the study consent.",
+    "download": "Download consent documents: ",
+    "file1": "Consent document: English",
+    "file2": "Consent document: Xhosa",
+    "file3": "Consent document: seSotho"
+  },
   "about": {
     "title": "About the study",
     "paragraph1": "Some of us know exactly what we need for emotional health. Others of us are still figuring it out. Wherever you are in that process, your experience could help others.",
