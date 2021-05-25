@@ -1,0 +1,143 @@
+.consent-info {
+  button {
+    width: 270px;
+    height: 52px;
+    background: #343f56;
+    border-radius: 100px;
+    margin-top: 8px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    border: none;
+    color: $secondary-font-color;
+    cursor: pointer;
+  }
+  .consent-content {
+    position: relative;
+    background-image: url('../../assets/consent-info/cyan-bg-mobile.svg');
+    background-size: cover;
+    background-position: bottom center;
+    min-height: 400px;
+    padding: 40px 25px 100px 25px;
+    margin-bottom: 60px;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+  .plus-signs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: url('../../assets/plus-signs-2.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.2;
+    width: 200px;
+    height: 300px;
+  }
+  .download-files {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 25px 50px 25px;
+  }
+  .ready-to-join {
+    position: relative;
+    background-color: $button-bg-color;
+    color: $primary-bg-color;
+    padding: 45px 25px 55px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    .text-section {
+      width: 100%;
+    }
+    .button-section {
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    p {
+      margin-bottom: 25px;
+    }
+    button {
+      background-color: $primary-bg-color;
+      color: $font-color;
+      display: block;
+      margin: auto;
+    }
+    .butterfly {
+      position: absolute;
+      top: -24px;
+      right: 24px;
+      width: 75px;
+      height: 75px;
+      background-image: url('../../assets/about/butterfly-orange.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  @include breakpoint('md') {
+    .plus-signs {
+      width: 300px;
+      height: 450px;
+    }
+    .consent-content {
+      padding: 100px 75px;
+      background-image: url('../../assets/consent-info/cyan-bg-desktop.svg');
+      h2 {
+        margin-bottom: 40px;
+      }
+      p {
+        width: 75%;
+        margin-bottom: 40px;
+      }
+    }
+    .ready-to-join {
+      background-color: white;
+      background-image: url('../../assets/about/blue-bg-desktop.svg');
+      background-size: cover;
+      min-height: 500px;
+      align-items: center;
+      padding: 100px 75px 55px 75px;
+      .text-section {
+        width: 60%;
+      }
+      .button-section {
+        position: relative;
+        width: 40%;
+        .butterflies {
+          position: absolute;
+          top: -150px;
+          left: 0;
+          width: 295px;
+          height: 300px;
+          background-image: url('../../assets/about/butterflies3.svg');
+          background-size: cover;
+        }
+      }
+      h2 {
+        color: #f9cc7d;
+        margin-bottom: 35px;
+      }
+      .butterfly {
+        display: none;
+      }
+    }
+  }
+  @include breakpoint('xl') {
+    .ready-to-join {
+      .button-section {
+        .butterflies {
+          left: 100px;
+        }
+      }
+    }
+  }
+}
