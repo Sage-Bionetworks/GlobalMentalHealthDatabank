@@ -176,7 +176,7 @@ export const useSessionStorage = (
       return value
     } catch (error) {
       // If error also return initialValue
-      console.log(error)
+      console.error(error)
       return initialValue
     }
   })
@@ -190,7 +190,7 @@ export const useSessionStorage = (
         window.sessionStorage.removeItem(key)
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
   return [storedValue, setValue]

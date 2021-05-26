@@ -170,7 +170,6 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
       />
     )
   }
-  console.log('return null ?')
   return null
 }
 
