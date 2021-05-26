@@ -57,7 +57,6 @@ export interface LoggedInUserData extends UserData {
 export interface RegistrationData {
   appId: string
   substudyIds: string[]
-
   email?: string
   phone?: Phone
   clientData: object

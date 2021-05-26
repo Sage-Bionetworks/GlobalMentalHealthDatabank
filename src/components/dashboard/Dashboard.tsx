@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { CircularProgress } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert/Alert'
 
 import { LoggedInUserData } from '../../types/types'
@@ -15,9 +16,9 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
 }: DashboardProps) => {
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  const [userInfo, setUserInfo] = useState<LoggedInUserData | undefined>(
-    undefined,
-  )
+  const [userInfo, setUserInfo] =
+    useState<LoggedInUserData | undefined>(undefined)
+  const { push } = useHistory()
 
   useEffect(() => {
     let isSubscribed = true
@@ -25,12 +26,20 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
       if (token && isSubscribed) {
         try {
           setIsLoading(true)
-          const userInfoResponse = await UserService.getUserInfo(token)
+          const userInfoResponse = (await UserService.getUserInfo(token)) as any
+          if (
+            userInfoResponse?.data &&
+            userInfoResponse?.data?.clientData?.consented &&
+            userInfoResponse?.data?.clientData?.skipRanking
+          ) {
+            push('/download')
+          }
           if (isSubscribed) {
-            setUserInfo(_old => userInfoResponse.data)
+            setUserInfo(userInfoResponse?.data)
           }
         } catch (e) {
-          isSubscribed && setError(e)
+          console.error(e)
+          isSubscribed && setError(e?.message)
         } finally {
           isSubscribed && setIsLoading(false)
         }
@@ -42,25 +51,28 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
     return () => {
       isSubscribed = false
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token])
 
-  if ((isLoading || !userInfo) && !error) {
-    return (
-      <div className="dashboard--loader">
-        <CircularProgress color="primary" />
-      </div>
-    )
-  } else {
-    if (error !== undefined) {
-      return <Alert severity="error">{error!['message'] || error}</Alert>
-    }
+  return (
+    <div className="dashboard" data-cy="page-dashboard">
+      {(isLoading || !userInfo) && !error && (
+        <div className="dashboard--loader">
+          <CircularProgress color="primary" />
+        </div>
+      )}
 
-    return (
-      <div className="dashboard" data-cy="page-dashboard">
+      {error && (
+        <div className="dashboard--error">
+          <Alert severity="error">{error}</Alert>
+        </div>
+      )}
+
+      {userInfo && !error && (
         <ConsentSteps dataGroups={userInfo?.dataGroups || []} />
-      </div>
-    )
-  }
+      )}
+    </div>
+  )
 }
 
 export default Dashboard

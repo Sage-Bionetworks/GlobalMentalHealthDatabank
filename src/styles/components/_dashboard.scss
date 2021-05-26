@@ -1,4 +1,16 @@
 .dashboard {
+  .dashboard--loader {
+    position: absolute;
+    left: calc(50% - 20px);
+    top: 240px;
+  }
+
+  .dashboard--error {
+    transform: translate(0, 100%);
+    display: flex;
+    justify-content: center;
+  }
+
   background-color: $primary-bg-color;
   &.card-mode {
     margin: 10px;

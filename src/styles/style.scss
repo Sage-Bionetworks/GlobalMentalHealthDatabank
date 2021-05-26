@@ -163,7 +163,7 @@ ul {
   padding: 0 10px;
 
   .loading-icon {
-    position: fixed;
+    position: absolute;
     left: calc(50% - 20px);
     margin-top: -70px;
   }
@@ -349,11 +349,6 @@ input[type='radio'] {
 
 .text-center {
   text-align: center;
-}
-
-.dashboard--loader {
-  text-align: center;
-  transform: translate(0, 100%);
 }
 
 .MuiDrawer-paper {
