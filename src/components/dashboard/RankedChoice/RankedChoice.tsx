@@ -26,6 +26,7 @@ function RankChoice({ step, setStep, updateClientData }: Props) {
       rankedChoiceInitial: cardTitles,
       [PAGE_ID_FIELD_NAME]: PAGE_ID.RANKING_CHOICE,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleNext = () => {

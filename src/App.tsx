@@ -61,6 +61,7 @@ function App() {
     return () => {
       isSubscribed = false
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token])
 
   function PrivateRoute({ children, ...rest }: any) {

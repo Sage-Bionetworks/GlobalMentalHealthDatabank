@@ -3,6 +3,7 @@ import { Redirect, NavLink } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
@@ -59,6 +60,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   useEffect(() => {
     setPhoneNumber('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -129,7 +131,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               {t('eligibility.thankYouForYourInterest')}
             </Typography>
 
-            <div className="btm-20 ">
+            <div className="btm-20">
               <Typography variant="body2">
                 {t('eligibility.weHaveAFewQuestions')}
               </Typography>
@@ -599,17 +601,17 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 </div>
               )}
             </div>
-
-            <Button
-              color="primary"
-              variant="contained"
-              size="large"
-              className="wide-button secondary"
-              onClick={() => setStep(1)}
-              style={{ marginBottom: '20px' }}
-            >
-              {t('eligibility.restart')}
-            </Button>
+            <div className="btm-20">
+              <Button
+                color="primary"
+                variant="text"
+                size="large"
+                className="wide-button"
+                onClick={() => setStep(1)}
+              >
+                {t('eligibility.restart')}
+              </Button>
+            </div>
 
             <Button
               color="primary"
