@@ -18,7 +18,7 @@ export const uiSchemaAgeVerify = {
             min: '0',
           }}
           placeholder="Input Age..."
-          value={props?.value}
+          value={props?.value || ''}
           onChange={event => {
             let value = event?.target?.value
             if (value.length > 2) value = value.slice(0, 2)

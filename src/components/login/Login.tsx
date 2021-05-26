@@ -141,19 +141,21 @@ export const Login: React.FunctionComponent = () => {
         <div className="quiz-wrapper">
           {!isCodeSent && (
             <>
-              <div className="media-wrapper text-left">
-                <div className="icon-wrapper">
-                  <TextSent width="75" />
-                </div>
+              <div className="icon-wrapper">
+                <TextSent width="75" />
               </div>
-              <div className="btm-20 text-center">
+              {isLoading && (
+                <div className="loading-icon">
+                  <CircularProgress color="primary" />
+                </div>
+              )}
+
+              <div className="btm-50 text-center">
                 <Typography variant="h4">{t('common.signIn')}</Typography>
               </div>
               <form onSubmit={handleLogin}>
                 <div className="btm-50 input--padded--flags">
                   <Select
-                    labelId="flag-selector"
-                    id="flag-selector"
                     variant="outlined"
                     className="phone-flag"
                     value={whereDoYouLive}
@@ -191,11 +193,9 @@ export const Login: React.FunctionComponent = () => {
 
                   <TextField
                     fullWidth
-                    id="outlined-basic"
                     variant="outlined"
                     autoComplete="phone"
-                    label="Phone # "
-                    name="phone"
+                    label="Phone #"
                     type="phone"
                     value={phoneNumber}
                     onChange={(
@@ -209,29 +209,21 @@ export const Login: React.FunctionComponent = () => {
                 </div>
 
                 {error && (
-                  <div className="tp-40-neg btm-20">
+                  <div className="tp-40-neg">
                     <Alert severity="error">{error}</Alert>
                   </div>
                 )}
 
-                <div className="text-center">
-                  {isLoading ? (
-                    <div className="text-center">
-                      <CircularProgress color="primary" />
-                    </div>
-                  ) : (
-                    <Button
-                      className="wide-button"
-                      color="primary"
-                      variant="contained"
-                      size="large"
-                      type="submit"
-                      onSubmit={handleLogin}
-                    >
-                      {t('common.signIn')}
-                    </Button>
-                  )}
-                </div>
+                <Button
+                  className="wide-button"
+                  color="primary"
+                  variant="contained"
+                  size="large"
+                  type="submit"
+                  onSubmit={handleLogin}
+                >
+                  {t('common.signIn')}
+                </Button>
               </form>
             </>
           )}
@@ -245,14 +237,12 @@ export const Login: React.FunctionComponent = () => {
           )}
 
           {!isCodeSent && (
-            <div style={{ margin: '0px auto', textAlign: 'center' }}>
-              <Button
-                variant="text"
-                onClick={() => (window.location.href = 'eligibility')}
-              >
-                {t('common.signUpForAccount')}
-              </Button>
-            </div>
+            <Button
+              variant="text"
+              onClick={() => (window.location.href = 'eligibility')}
+            >
+              {t('common.signUpForAccount')}
+            </Button>
           )}
         </div>
       </div>
