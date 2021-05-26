@@ -19,39 +19,30 @@ export const DataRegulation: React.FunctionComponent = () => {
           <Typography variant="body2">{t('dataRegulation.text2')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text3')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text4')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text5')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text6')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text7')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text8')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text9')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.text10')}</Typography>
         </div>
         <div className="btm-20">
-          {' '}
           <Typography variant="body2">{t('dataRegulation.email')}</Typography>
         </div>
         <Butterflies className="data-regulation-butterflies" />
