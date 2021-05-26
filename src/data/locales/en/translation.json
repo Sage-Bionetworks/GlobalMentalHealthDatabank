@@ -80,7 +80,7 @@
     "loginError": "Error attempting login",
     "registerError": "Invalid phone number for your country selection",
     "askPhone": "Before we get started, could we have your number?",
-    "whyAsk": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone.",
+    "whyAsk": "We are asking you for your mobile number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone. To confirm your number we will send you an SMS. Message and data rates may apply.",
     "myPhone": "My phone number is: ",
     "createAccount": "Sign Up",
     "pleaseReview": "Please review your answer to ensure they are correct.",
@@ -249,13 +249,13 @@
     "title2-for-health": "For Emotional Health",
     "text1": "Your personal experiences with emotional health are real.",
     "text2": "What if you could help other young people by sharing your story?",
-    "text3": "Want to make a difference?"
+    "text3": "Want to start your MindKind journey?"
   },
   "research": {
     "title1": "Research Team",
     "subtitle1": "The team doing this research is from India, South Africa, the UK, and USA. A non-profit called Sage Bionetworks (USA) is leading the study. The Wellcome Trust (UK) is funding the study.",
-    "makeDifference": "Want to make a difference?",
-    "yourExperience": "Your experience can make a difference.",
+    "makeDifference": "Want to start your MindKind journey?",
+    "yourExperience": "Want to start your MindKind journey?",
     "join": "Join the Study",
     "youthAdvisor": {
       "title": "Professional Youth Advisor",
@@ -624,18 +624,6 @@
       }
     }
   },
-  "registration": {
-    "text1": "Create account",
-    "text2": "I don't have an email account",
-    "text3": "Create account",
-    "text4": "Sign up with email",
-    "text5": "Invalid Phone",
-    "intro1": "<0>Before we get started, could we have your number?</0> <1> We are asking you for your phone number to make this consent process easier and faster for you.</1> <2>We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity.</2> <3>We will not share your number with anyone. </3>",
-    "intro2": "<0>Getting Started</0> <1> To access the consent and surveys, you will need to create an account. </1> <2> You will use your email to log into your account in the future.</2>",
-    "phoneIntroTitle": "Before we get started, could we have your number?",
-    "phoneIntroBody": "We are asking you for your phone number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone. ",
-    "myPhone": "My Phone number is:"
-  },
   "signIn": {
     "SMSSent": "We just sent an SMS to: ",
     "enterCode": "Please enter your code: ",
@@ -655,7 +643,7 @@
     "title": "About the study",
     "paragraph1": "Some of us know exactly what we need for emotional health. Others of us are still figuring it out. Wherever you are in that process, your experience could help others.",
     "paragraph2": " We’d like your help to design a databank that will collect information about emotional health from young people. You would help us decide what types of information to collect, who controls the databank, and who gets to use it. We’re inviting people like you from around the world to share their knowledge.",
-    "makeDifference": "Want to make a difference?",
+    "makeDifference": "Want to start your MindKind journey?",
     "tenThings": "10 Things You Need to Know",
     "thing1": {
       "title": "MindKind Study",
