@@ -68,7 +68,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
   }
 
   const [error, setErrorMessage] = useState('')
-  const [showStartOverButton, setShowStartOverBtn] = useState(false)
 
   const submitRegistration = async (registrationData: RegistrationData) => {
     const result = await callEndpoint(
@@ -152,7 +151,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       }
     } catch (e) {
       setErrorMessage(`${t('eligibility.registerError')}`)
-      setShowStartOverBtn(false) // Carlos: toggle to show option
     }
   }
 
@@ -208,19 +206,6 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
             {(error || formErrors) && (
               <div className="tp-30-neg btm-20">
                 <Alert severity="error">{error || formErrors}</Alert>
-              </div>
-            )}
-
-            {showStartOverButton && (
-              <div className="btm-20">
-                <Button
-                  className="wide-button"
-                  variant="text"
-                  color="primary"
-                  onClick={() => console.log('start over')}
-                >
-                  Start Over
-                </Button>
               </div>
             )}
 
