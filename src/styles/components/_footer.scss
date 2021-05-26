@@ -95,6 +95,7 @@
   .footer__bottom {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     padding: 0 25px 15px;
     width: 100%;
     div:last-child {
@@ -108,7 +109,10 @@
       }
     }
     @include breakpoint('lg') {
-      width: 65%;
+      width: 55%;
+    }
+    @include breakpoint('xl') {
+      width: 45%;
     }
   }
 }
