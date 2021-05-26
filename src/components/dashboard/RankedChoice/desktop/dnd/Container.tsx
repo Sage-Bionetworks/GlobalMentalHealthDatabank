@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react'
-import { Card } from './Card'
 import update from 'immutability-helper'
+import { Card } from './Card'
 
 export interface Item {
   id: number
@@ -27,7 +27,7 @@ export const Container: FC<any> = (params: any) => {
           }),
         )
       },
-      [data],
+      [data, setData],
     )
 
     const renderCard = (
