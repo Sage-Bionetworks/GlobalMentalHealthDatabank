@@ -31,6 +31,37 @@
     "india": "India",
     "other": "Other"
   },
+  "topnav": {
+    "aboutStudy": "About the Study",
+    "about": "About",
+    "researchTeam": "Research Team",
+    "research": "Research",
+    "ifInCrisis": "If You are in Crisis",
+    "crisis": "Crisis",
+    "policy": "Privacy Policy",
+    "consent": "Consent",
+    "dashboard": "Dashboard",
+    "login": "Sign in",
+    "home": "Home"
+  },
+  "footer": {
+    "copyright": "Copyright © 2021, Sage Bionetworks",
+    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
+    "dashboard": "Dashboard",
+    "about": "About the Study",
+    "home": "Home",
+    "team": "Research team",
+    "faq": "FAQs",
+    "contact": "Contact",
+    "crisis": "If you are in Crisis",
+    "privacy": "Privacy Policy",
+    "dataRights": "Data Rights",
+    "terms": "Terms of Service",
+    "settings": "Account Settings",
+    "login": "Sign in",
+    "join": "Join the Study",
+    "consent": "Consent"
+  },
   "eligibility": {
     "begin": "Begin",
     "thankYouForYourInterest": "Thank you for your interest in the MindKind Study!",
@@ -211,23 +242,6 @@
     "youAreInStep": "You are in step",
     "submit": "Submit",
     "chooseAnOption": "You must choose an option"
-  },
-  "footer": {
-    "copyright": "Copyright © 2021, Sage Bionetworks",
-    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
-    "dashboard": "Dashboard",
-    "about": "About the Study",
-    "home": "Home",
-    "team": "Research team",
-    "faq": "FAQs",
-    "contact": "Contact",
-    "crisis": "If you are in a Crisis",
-    "privacy": "Privacy Policy",
-    "dataRights": "Data Rights",
-    "settings": "Account Settings",
-    "login": "Sign in",
-    "join": "Join the Study",
-    "consent": "Consent"
   },
   "home": {
     "title1": "A Mental Health Study",
@@ -623,19 +637,6 @@
     "code": "Code from SMS",
     "phone": "phone",
     "linkSent": "We just sent a link to: "
-  },
-  "topnav": {
-    "aboutStudy": "About the Study",
-    "about": "About",
-    "researchTeam": "Research Team",
-    "research": "Research",
-    "ifInCrisis": "If You are in Crisis",
-    "crisis": "Crisis",
-    "policy": "Privacy Policy",
-    "consent": "Consent",
-    "dashboard": "Dashboard",
-    "login": "Sign in",
-    "home": "Home"
   },
   "consent": {
     "title": "Consent",
