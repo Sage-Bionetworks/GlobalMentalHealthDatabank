@@ -35,7 +35,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
             push('/download')
           }
           if (isSubscribed) {
-            setUserInfo(userInfoResponse?.data)
+            setUserInfo(_old => userInfoResponse.data)
           }
         } catch (e) {
           console.error(e)
