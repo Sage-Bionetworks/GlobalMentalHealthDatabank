@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
-import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
+import { useHistory } from 'react-router-dom'
+
 import ArmFlowOne from './armFlows/ArmFlowOne'
 import ArmFlowTwo from './armFlows/ArmFlowTwo'
 import ArmFlowThree from './armFlows/ArmFlowThree'
@@ -9,7 +9,8 @@ import { FLOW_OPTIONS } from '../../helpers/RandomFlowGenerator'
 import { UserDataGroup } from '../../types/types'
 import { useSessionDataState } from '../../AuthContext'
 import { UserService } from '../../services/user.service'
-import { Redirect } from 'react-router'
+import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
+import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
 
 const FIRST_CONSENT_STEPS: number = 5
 const SECOND_CONSENT_STEPS: number = 10
@@ -23,8 +24,11 @@ type ConsentStepsProps = {
 const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   dataGroups,
 }: ConsentStepsProps) => {
+  const { push } = useHistory()
   const [step, setStep] = useState(1)
   const [userClientData, setUserClientData] = useState({} as any)
+  const sessionData = useSessionDataState()
+  const { token } = sessionData
 
   const findMaxSteps = () => {
     let steps = FIRST_CONSENT_STEPS + SECOND_CONSENT_STEPS
@@ -89,28 +93,6 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     return null
   }
 
-  const sessionData = useSessionDataState()
-  const { token } = sessionData
-
-  useEffect(() => {
-    const getInfo = async () => {
-      if (token) {
-        const userInfoResponse = await UserService.getUserInfo(token)
-        const data = userInfoResponse?.data as any
-        const { checkpoint } = data.clientData
-        setUserClientData(data.clientData)
-        if (checkpoint > 1) {
-          setStep(checkpoint)
-        }
-      }
-    }
-    getInfo()
-  }, [token])
-
-  if (userClientData.consented && userClientData.skipRanking) {
-    return <Redirect to={'/download'} push={true} />
-  }
-
   const updateClientData = async (step: number, fields?: object) => {
     let newData = {}
 
@@ -127,6 +109,29 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
       return response
     }
   }
+
+  useEffect(() => {
+    const getInfo = async () => {
+      if (token) {
+        const userInfoResponse = await UserService.getUserInfo(token)
+        const data = userInfoResponse?.data as any
+        if (
+          data?.clientData &&
+          data?.clientData?.consented &&
+          data?.clientData?.skipRanking
+        ) {
+          push('/download')
+        }
+        setUserClientData(data.clientData)
+        const { checkpoint } = data.clientData
+        if (checkpoint > 1) {
+          setStep(checkpoint)
+        }
+      }
+    }
+    getInfo()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token])
 
   if (step <= FIRST_CONSENT_STEPS) {
     return (

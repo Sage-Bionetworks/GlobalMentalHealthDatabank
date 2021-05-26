@@ -161,6 +161,12 @@ ul {
 .login-wrapper {
   margin-top: 20px;
   padding: 0 10px;
+
+  .loading-icon {
+    position: absolute;
+    left: calc(50% - 20px);
+    margin-top: -70px;
+  }
 }
 
 fieldset {
@@ -221,7 +227,7 @@ input[type='checkbox'] {
 input[type='checkbox']#consented {
   &:checked {
     &:after {
-      bottom: 4px;
+      bottom: 5px;
     }
   }
 }
@@ -345,11 +351,6 @@ input[type='radio'] {
   text-align: center;
 }
 
-.dashboard--loader {
-  text-align: center;
-  transform: translate(0, 100%);
-}
-
 .MuiDrawer-paper {
   width: 90%;
 }
@@ -409,7 +410,16 @@ input[type='radio'] {
 .tp-40-neg {
   margin-top: -40px;
 }
+.tp-50-neg {
+  margin-top: -50px;
+}
+.tp-70-neg {
+  margin-top: -70px;
+}
 
+.btm-0 {
+  margin-bottom: 0;
+}
 .btm-10 {
   margin-bottom: 10px;
 }
@@ -424,6 +434,9 @@ input[type='radio'] {
 }
 .btm-50 {
   margin-bottom: 50px;
+}
+.btm-60 {
+  margin-bottom: 60px;
 }
 .btm-240 {
   margin-bottom: 240px;
@@ -468,4 +481,13 @@ h6.eligibility-summary-line-title {
   select.MuiNativeSelect-root.MuiNativeSelect-select.MuiInputBase-input.MuiInput-input {
     background-color: $primary-bg-color;
   }
+}
+
+.button-join-study {
+  position: relative;
+  z-index: 10;
+}
+
+.italic {
+  font-style: italic;
 }
