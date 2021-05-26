@@ -30,6 +30,39 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   const sessionData = useSessionDataState()
   const { token } = sessionData
 
+  const checkRedirectToDownload = (clientData: {
+    consented: boolean
+    skipRanking: boolean
+  }) => {
+    if (clientData && clientData?.consented && clientData?.skipRanking) {
+      push('/download')
+    }
+  }
+
+  useEffect(() => {
+    const getInfo = async () => {
+      if (token) {
+        const userInfoResponse = await UserService.getUserInfo(token)
+        const data = userInfoResponse?.data as any
+        checkRedirectToDownload(data?.clientData)
+        setUserClientData(data?.clientData)
+        const { checkpoint } = data?.clientData
+        if (checkpoint > 1) {
+          setStep(checkpoint)
+        }
+      }
+    }
+    getInfo()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token])
+
+  useEffect(() => {
+    if (userClientData) {
+      checkRedirectToDownload(userClientData)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userClientData])
+
   const findMaxSteps = () => {
     let steps = FIRST_CONSENT_STEPS + SECOND_CONSENT_STEPS
     if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup)) steps++
@@ -47,6 +80,23 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
         ? FOURTH_ARM_FLOW_LENGTH
         : OTHER_ARM_FLOW_LENGTH)
     )
+  }
+
+  const updateClientData = async (step: number, fields?: object) => {
+    let newData = {}
+
+    if (fields)
+      newData = {
+        ...userClientData,
+        ...fields,
+        checkpoint: step,
+      }
+    else newData = { ...userClientData, checkpoint: step }
+    if (token) {
+      const response = await UserService.updateUserClientData(token, newData)
+      setUserClientData(response.data.clientData)
+      return response
+    }
   }
 
   const maxSteps = findMaxSteps()
@@ -93,46 +143,6 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     return null
   }
 
-  const updateClientData = async (step: number, fields?: object) => {
-    let newData = {}
-
-    if (fields)
-      newData = {
-        ...userClientData,
-        ...fields,
-        checkpoint: step,
-      }
-    else newData = { ...userClientData, checkpoint: step }
-    if (token) {
-      const response = await UserService.updateUserClientData(token, newData)
-      setUserClientData(response.data.clientData)
-      return response
-    }
-  }
-
-  useEffect(() => {
-    const getInfo = async () => {
-      if (token) {
-        const userInfoResponse = await UserService.getUserInfo(token)
-        const data = userInfoResponse?.data as any
-        if (
-          data?.clientData &&
-          data?.clientData?.consented &&
-          data?.clientData?.skipRanking
-        ) {
-          push('/download')
-        }
-        setUserClientData(data.clientData)
-        const { checkpoint } = data.clientData
-        if (checkpoint > 1) {
-          setStep(checkpoint)
-        }
-      }
-    }
-    getInfo()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token])
-
   if (step <= FIRST_CONSENT_STEPS) {
     return (
       <FirstCommonConsentSection
@@ -160,7 +170,6 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
       />
     )
   }
-
   return null
 }
 

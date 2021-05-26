@@ -57,7 +57,6 @@ export const PrivacyPolicy: FunctionComponent = () => {
         </div>
 
         <a href={DOWNLOAD_PATH} target="_blank" rel="noopener noreferrer">
-          {' '}
           <div className="btm-40 underlined-link">
             <Typography variant="body2">
               {t('privacyPolicy.download')}

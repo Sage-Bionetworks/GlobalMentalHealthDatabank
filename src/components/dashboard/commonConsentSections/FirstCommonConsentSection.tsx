@@ -336,7 +336,7 @@ function FirstCommonConsentSection({
               </li>
               <li>
                 <Typography variant="body2">
-                  {t('form.firstCommonConsent.correctData')}{' '}
+                  {t('form.firstCommonConsent.correctData')}
                 </Typography>
               </li>
             </ul>

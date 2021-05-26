@@ -596,7 +596,7 @@ function SecondCommonConsentSection({
                   }
                 />
               </>
-            )}{' '}
+            )}
             {showVolunteer === false && (
               <RankedChoice
                 step={step}
