@@ -69,7 +69,9 @@ function ConsentInfo() {
         </div>
         <div className="button-section">
           <div className="butterflies"></div>
-          <button onClick={goToEligibility}>{t('common.joinStudy')}</button>
+          <button onClick={goToEligibility} className="button-join-study">
+            {t('common.joinStudy')}
+          </button>
         </div>
       </div>
     </div>
