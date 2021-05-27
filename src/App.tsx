@@ -22,6 +22,7 @@ import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteCha
 import Footer from './components/widgets/Footer'
 import DataRegulation from './components/static/DataRegulation'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
+import Terms from './components/static/Terms'
 import ConsentInfo from './components/static/ConsentInfo'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
@@ -160,6 +161,9 @@ function App() {
                       </Route>
                       <Route path="/privacy-policy">
                         <PrivacyPolicy />
+                      </Route>
+                      <Route path="/terms">
+                        <Terms />
                       </Route>
                       <Route path="/download">
                         <DownloadApp />
