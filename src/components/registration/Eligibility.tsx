@@ -3,7 +3,6 @@ import { Redirect, NavLink } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { COUNTRIES } from '../form/types'
