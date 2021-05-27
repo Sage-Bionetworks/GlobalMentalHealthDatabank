@@ -33,7 +33,13 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
     try {
       setError('')
       const loggedIn = await callEndpoint(LOGIN_ENDPOINT, 'POST', postData)
-      loggedInByPhoneFn!(loggedIn)
+
+      const consented = loggedIn.status !== 412
+      if (loggedIn.ok || !consented) {
+        loggedInByPhoneFn!(loggedIn)
+      } else {
+        setError(t('eligibility.loginError'))
+      }
     } catch (e) {
       setError(e.message)
     }
