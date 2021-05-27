@@ -51,7 +51,7 @@ export const callEndpoint = async <T>(
     delete config.body
   }
 
-  const response = await fetchTimeout(endpoint, 10000, config)
+  const response = await fetchTimeout(endpoint, 15000, config)
   const result = await response.json()
   if (!response.ok && response.status !== 412) {
     throw result
