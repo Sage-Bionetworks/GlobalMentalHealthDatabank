@@ -43,36 +43,32 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     }
   }
 
+  const setLocalState = (clientData: { checkpoint: number }) => {
+    checkRedirectToDownload(clientData as any)
+    setUserClientData(clientData)
+    const { checkpoint } = clientData
+    if (checkpoint > 1) {
+      setStep(checkpoint)
+    }
+  }
+
   useEffect(() => {
     const getInfo = async () => {
       if (token) {
         try {
           const userInfoResponse = await UserService.getUserInfo(token)
           const data = userInfoResponse?.data as any
-          checkRedirectToDownload(data?.clientData)
-          setUserClientData(data?.clientData)
-          const { checkpoint } = data?.clientData
-          if (checkpoint > 1) {
-            setStep(checkpoint)
-          }
+          setLocalState(data?.clientData)
         } catch (e) {
           console.error(e)
           handleError()
         }
       }
     }
-    console.log('clientData: ', clientData)
     if (!clientData) {
-      console.log('getInfo: ')
       getInfo()
     } else {
-      console.log('play with clientData')
-      checkRedirectToDownload(clientData)
-      setUserClientData(clientData)
-      const { checkpoint } = clientData
-      if (checkpoint > 1) {
-        setStep(checkpoint)
-      }
+      setLocalState(clientData)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientData, token])
