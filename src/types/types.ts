@@ -29,22 +29,16 @@ export interface UserData {
 }
 
 export type UserDataGroup =
-  | 'enrolled'
-  | 'declined'
-  | 'selected'
-  | 'tests_requested'
-  | 'tests_scheduled'
-  | 'tests_cancelled'
-  | 'tests_collected'
-  | 'tests_available'
-  | 'tests_notified'
-  | 'hipaa_consented'
   | 'test_user'
-  | 'within_nyc'
   | 'researcher_norms'
   | 'youth_informed'
   | 'hybrid'
   | 'participant_choice'
+  | 'UK'
+  | 'ZA'
+  | 'IN'
+  | 'lived_experience_yes'
+  | 'lived_experience_no'
 
 export interface LoggedInUserData extends UserData {
   sessionToken: string
@@ -86,11 +80,6 @@ export type SessionData = {
   consented?: boolean
   alert?: string
   userDataGroup: UserDataGroup[]
-}
-
-export enum SurveysCompletionStatusEnum {
-  'NOT_DONE',
-  'ALL_DONE',
 }
 
 export interface HealhDataResponse {

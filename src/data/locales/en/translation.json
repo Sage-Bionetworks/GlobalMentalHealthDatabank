@@ -29,7 +29,8 @@
     "unitedStates": "United States",
     "southAfrica": "South Africa",
     "india": "India",
-    "other": "Other"
+    "other": "Other",
+    "connectionProblem": "There was a problem connecting with the server"
   },
   "topnav": {
     "aboutStudy": "About the Study",
