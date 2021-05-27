@@ -52,22 +52,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         </NavLink>
         <Divider className="mobile-menu__separator" />
 
-        {props.token && (
-          <NavLink
-            to="/logout"
-            onClick={handleDrawerToggle}
-            className="topnav__link"
-          >
-            <ListItem button className="mobile-menu__item">
-              <Logout
-                onLogout={() => {
-                  props.logoutCallbackFn(undefined, '', false)
-                }}
-              ></Logout>
-            </ListItem>
-          </NavLink>
-        )}
-
         <NavLink
           to="/about"
           onClick={handleDrawerToggle}
@@ -97,7 +81,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         >
           <ListItem button className="mobile-menu__item">
             <Typography variant="h6" className="topnav__text">
-              {t('topnav.ifInCrisis')}
+              {t('topnav.crisis')}
             </Typography>
           </ListItem>
         </NavLink>
@@ -137,6 +121,21 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
               <Typography variant="h6" className="topnav__text">
                 {t('topnav.login')}
               </Typography>
+            </ListItem>
+          </NavLink>
+        )}
+        {props.token && (
+          <NavLink
+            to="/logout"
+            onClick={handleDrawerToggle}
+            className="topnav__link"
+          >
+            <ListItem button className="mobile-menu__item">
+              <Logout
+                onLogout={() => {
+                  props.logoutCallbackFn(undefined, '', false)
+                }}
+              ></Logout>
             </ListItem>
           </NavLink>
         )}

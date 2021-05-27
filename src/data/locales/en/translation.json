@@ -37,8 +37,7 @@
     "about": "About",
     "researchTeam": "Research Team",
     "research": "Research",
-    "ifInCrisis": "If You are in Crisis",
-    "crisis": "Crisis",
+    "crisis": "Mental Health Resources",
     "policy": "Privacy Policy",
     "consent": "Consent",
     "dashboard": "Dashboard",
@@ -54,7 +53,7 @@
     "team": "Research team",
     "faq": "FAQs",
     "contact": "Contact",
-    "crisis": "If you are in Crisis",
+    "crisis": "Mental Health Resources",
     "privacy": "Privacy Policy",
     "dataRights": "Data Rights",
     "terms": "Terms of Service",
@@ -645,10 +644,12 @@
     "paragraph1": "Some of us know exactly what we need for emotional health. Others of us are still figuring it out. Wherever you are in that process, your experience could help others.",
     "paragraph2": " We’d like your help to design a databank that will collect information about emotional health from young people. You would help us decide what types of information to collect, who controls the databank, and who gets to use it. We’re inviting people like you from around the world to share their knowledge.",
     "makeDifference": "Want to start your MindKind journey?",
-    "tenThings": "10 Things You Need to Know",
+    "tenThings": "9 Things You Need to Know",
     "thing1": {
       "title": "MindKind Study",
-      "text": "This is a research study and does not provide medical advice, diagnosis, or treatment. [Researchers - link to Research Team] from around the world lead the MindKind Study."
+      "text": "This is a research study and does not provide medical advice, diagnosis, or treatment. ",
+      "link": "Researchers",
+      "text2": " from around the world lead the MindKind Study."
     },
     "thing2": {
       "title": "Our Goal",

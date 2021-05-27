@@ -41,7 +41,11 @@ function About() {
               <MagnifyingGlass />
               <Typography variant="h4">{t('about.thing1.title')}</Typography>
             </div>
-            <Typography>{t('about.thing1.text')}</Typography>
+            <Typography>
+              {t('about.thing1.text')}
+              <a href="/research">{t('about.thing1.link')}</a>
+              {t('about.thing1.text2')}
+            </Typography>
           </div>
           <div className="thing">
             <div className="thing__header">
