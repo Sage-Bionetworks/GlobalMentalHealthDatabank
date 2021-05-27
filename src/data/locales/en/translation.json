@@ -30,7 +30,7 @@
     "southAfrica": "South Africa",
     "india": "India",
     "other": "Other",
-    "connectionProblem": "There was a problem connecting with the server"
+    "connectionProblem": "There was a problem with the network. Please try again"
   },
   "topnav": {
     "aboutStudy": "About the Study",

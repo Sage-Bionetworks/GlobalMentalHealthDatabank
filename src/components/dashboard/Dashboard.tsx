@@ -21,6 +21,10 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
   const { push } = useHistory()
   const { t } = useTranslation()
 
+  const setHandlingError = () => {
+    setError(t('common.connectionProblem'))
+  }
+
   useEffect(() => {
     let isSubscribed = true
     const getInfo = async () => {
@@ -28,9 +32,6 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
         try {
           setIsLoading(true)
           const userInfoResponse = (await UserService.getUserInfo(token)) as any
-          if (userInfoResponse.status === 408)
-            throw new Error(t('common.connectionProblem'))
-
           if (
             userInfoResponse?.data &&
             userInfoResponse?.data?.clientData?.consented &&
@@ -73,7 +74,10 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
       )}
 
       {userInfo && !error && (
-        <ConsentSteps dataGroups={userInfo?.dataGroups || []} />
+        <ConsentSteps
+          dataGroups={userInfo?.dataGroups || []}
+          handleError={setHandlingError}
+        />
       )}
     </div>
   )

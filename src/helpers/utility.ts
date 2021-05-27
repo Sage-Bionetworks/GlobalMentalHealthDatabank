@@ -50,16 +50,13 @@ export const callEndpoint = async <T>(
     endpoint = queryString ? `${endpoint}?${queryString}` : endpoint
     delete config.body
   }
-  try {
-    const response = await fetchTimeout(endpoint, 30000, config)
-    const result = await response.json()
-    if (!response.ok && response.status !== 412) {
-      throw result
-    }
-    return { status: response.status, data: result, ok: response.ok }
-  } catch (e) {
-    return { status: 408, data: {} as any, ok: false }
+
+  const response = await fetchTimeout(endpoint, 10000, config)
+  const result = await response.json()
+  if (!response.ok && response.status !== 412) {
+    throw result
   }
+  return { status: response.status, data: result, ok: response.ok }
 }
 
 export const makePhone = (phone: string, regionCode?: string): Phone => {
