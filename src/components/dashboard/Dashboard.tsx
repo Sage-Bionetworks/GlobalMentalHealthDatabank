@@ -77,6 +77,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
       {userInfo && !error && (
         <ConsentSteps
           dataGroups={userInfo?.dataGroups || []}
+          clientData={userInfo?.clientData}
           handleError={setHandlingError}
         />
       )}
