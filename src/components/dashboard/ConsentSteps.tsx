@@ -19,10 +19,12 @@ const OTHER_ARM_FLOW_LENGTH: number = 1
 
 type ConsentStepsProps = {
   dataGroups: Array<string>
+  handleError: Function
 }
 
 const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   dataGroups,
+  handleError,
 }: ConsentStepsProps) => {
   const { push } = useHistory()
   const [step, setStep] = useState(1)
@@ -42,13 +44,18 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   useEffect(() => {
     const getInfo = async () => {
       if (token) {
-        const userInfoResponse = await UserService.getUserInfo(token)
-        const data = userInfoResponse?.data as any
-        checkRedirectToDownload(data?.clientData)
-        setUserClientData(data?.clientData)
-        const { checkpoint } = data?.clientData
-        if (checkpoint > 1) {
-          setStep(checkpoint)
+        try {
+          const userInfoResponse = await UserService.getUserInfo(token)
+          const data = userInfoResponse?.data as any
+          checkRedirectToDownload(data?.clientData)
+          setUserClientData(data?.clientData)
+          const { checkpoint } = data?.clientData
+          if (checkpoint > 1) {
+            setStep(checkpoint)
+          }
+        } catch (e) {
+          console.error(e)
+          handleError()
         }
       }
     }
@@ -93,9 +100,14 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
       }
     else newData = { ...userClientData, checkpoint: step }
     if (token) {
-      const response = await UserService.updateUserClientData(token, newData)
-      setUserClientData(response.data.clientData)
-      return response
+      try {
+        const response = await UserService.updateUserClientData(token, newData)
+        setUserClientData(response.data.clientData)
+        return response
+      } catch (e) {
+        console.error(e)
+        handleError()
+      }
     }
   }
 

@@ -9,8 +9,12 @@ const LANGUAGES = {
   SESOTHO: 'seSotho',
 }
 
-const DOWNLOAD_PATH =
+const DOWNLOAD_PATH_ENGLISH =
   'https://drive.google.com/file/d/1n7AnFob1qtBI7Fupsg2oOin5SMI4DAI_/view?usp=sharing'
+const DOWNLOAD_PATH_SESOTHO =
+  'https://drive.google.com/file/d/1MSuleQM0BR9DRzwlP8rdEaTAEXu1Wn4X/view?usp=sharing'
+const DOWNLOAD_PATH_XHOSA =
+  'https://drive.google.com/file/d/1E3PrsGNEpTemns_of-QFb08LWzd6L5Oe/view?usp=sharing'
 
 export const PrivacyPolicy: FunctionComponent = () => {
   const { t } = useTranslation()
@@ -56,10 +60,32 @@ export const PrivacyPolicy: FunctionComponent = () => {
           </div>
         </div>
 
-        <a href={DOWNLOAD_PATH} target="_blank" rel="noopener noreferrer">
+        <a
+          href={DOWNLOAD_PATH_ENGLISH}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="btm-40 underlined-link">
             <Typography variant="body2">
-              {t('privacyPolicy.download')}
+              {t('privacyPolicy.download') + ' - ' + t('privacyPolicy.english')}
+            </Typography>
+          </div>
+        </a>
+        <a
+          href={DOWNLOAD_PATH_SESOTHO}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="btm-40 underlined-link">
+            <Typography variant="body2">
+              {t('privacyPolicy.download') + ' - ' + t('privacyPolicy.sesotho')}
+            </Typography>
+          </div>
+        </a>
+        <a href={DOWNLOAD_PATH_XHOSA} target="_blank" rel="noopener noreferrer">
+          <div className="btm-40 underlined-link">
+            <Typography variant="body2">
+              {t('privacyPolicy.download') + ' - ' + t('privacyPolicy.xhosa')}
             </Typography>
           </div>
         </a>
