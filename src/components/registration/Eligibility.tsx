@@ -5,14 +5,13 @@ import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
-import { COUNTRIES } from '../form/types'
+import { COUNTRIES, FORM_IDS } from '../form/types'
 import Separator from '../static/Separator'
 import { useElegibility } from './context/ElegibilityContext'
-import { FORM_IDS } from '../form/types'
 import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
-import { SessionData } from '../../types/types'
+import { SessionData, GENDERS } from '../../types/types'
 
 const MAX_STEPS: number = 9
 
@@ -170,7 +169,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.howDidYouHear')}
               errorMessage={errorMessage}
               formId={FORM_IDS.HOW_DID_YOU_HEAR}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.how_did_you_hear
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -211,7 +210,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.where')}
               errorMessage={errorMessage}
               formId={FORM_IDS.COUNTRY_SELECTOR}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedCountry = event.formData.country_chooser
                 if (
@@ -257,7 +256,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.android')}
               errorMessage={errorMessage}
               formId={FORM_IDS.ANDROID_VERIFY}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.android_verify
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -298,7 +297,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.english')}
               errorMessage={errorMessage}
               formId={FORM_IDS.UNDERSTANDS_ENGLISH}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.understands_english
                 if (selectedOption && Object.keys(selectedOption).length === 0)
@@ -345,7 +344,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.ageRange')}
               errorMessage={errorMessage}
               formId={FORM_IDS.AGE_VERIFY}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData
                 if (!selectedOption) setErrorMessage(t('form.chooseAnOption'))
@@ -385,7 +384,33 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               subTitle={t('eligibility.selectAll')}
               errorMessage={errorMessage}
               formId={FORM_IDS.GENDER}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
+              onChange={(event: any) => {
+                const inputs = document.getElementsByTagName('input')
+                if (
+                  event.formData.gender?.find(
+                    (g: any) => g === GENDERS.PREFER_NOT_TO_SAY,
+                  )
+                ) {
+                  event.formData.gender = [GENDERS.PREFER_NOT_TO_SAY]
+                  for (let i = 0; i < inputs.length; i++) {
+                    if (
+                      inputs[i].type.toLowerCase() === 'checkbox' &&
+                      inputs[i].id !== 'root_gender_5'
+                    ) {
+                      inputs[i].setAttribute('class', 'hide-input')
+                      inputs[i].setAttribute('disabled', 'true')
+                    }
+                  }
+                } else {
+                  for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].type.toLowerCase() === 'checkbox') {
+                      inputs[i].setAttribute('class', '')
+                      inputs[i].disabled = false
+                    }
+                  }
+                }
+              }}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.gender
                 if (!selectedOption || selectedOption.length === 0)
@@ -425,7 +450,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               title={t('eligibility.benefit')}
               errorMessage={errorMessage}
               formId={FORM_IDS.SUPPORT_VERIFY}
-              buttonText="Next"
+              buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.support_verify
                 if (selectedOption && Object.keys(selectedOption).length === 0)

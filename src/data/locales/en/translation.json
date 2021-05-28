@@ -85,7 +85,8 @@
     "myPhone": "My phone number is: ",
     "createAccount": "Sign Up",
     "pleaseReview": "Please review your answer to ensure they are correct.",
-    "restart": "Start over"
+    "restart": "Start over",
+    "next": "Next"
   },
   "form": {
     "firstCommonConsent": {

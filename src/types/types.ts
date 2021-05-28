@@ -141,3 +141,12 @@ export const PAGE_ID = {
   COMMUNITY_PANEL: 'Community_Panel',
   APP_DOWNLOAD: 'App_Download',
 }
+
+export const GENDERS = {
+  WOMAN: 'Woman',
+  MAN: 'Man',
+  THIRDS_GENDER_NON_BINARY: 'Third gender / Non-Binary',
+  TRANSGENDER: 'Transgender',
+  OTHER: 'Other',
+  PREFER_NOT_TO_SAY: 'Prefer not to say',
+}

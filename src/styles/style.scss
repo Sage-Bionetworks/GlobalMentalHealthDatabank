@@ -495,3 +495,10 @@ h6.eligibility-summary-line-title {
 .italic {
   font-style: italic;
 }
+
+.hide-input {
+  opacity: 0.1;
+  & + span {
+    opacity: 0.15;
+  }
+}

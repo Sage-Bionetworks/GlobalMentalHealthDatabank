@@ -68,6 +68,7 @@ type SageFormProps = {
   infoMessage?: string
   buttonText?: string
   widgets?: any
+  onChange?: any
 }
 
 export default function SageForm({
@@ -79,6 +80,7 @@ export default function SageForm({
   infoMessage,
   buttonText,
   widgets,
+  onChange,
 }: SageFormProps) {
   const { t } = useTranslation()
 
@@ -197,6 +199,7 @@ export default function SageForm({
           schema={getSchemaFromId(formId) as FormSchema}
           uiSchema={getUISchemaFromId(formId) as FormSchema}
           widgets={widgets || undefined}
+          onChange={onChange || undefined}
         >
           <div className="text-center">
             <Button
