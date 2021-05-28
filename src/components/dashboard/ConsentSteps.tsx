@@ -10,7 +10,7 @@ import { useSessionDataState } from '../../AuthContext'
 import { UserService } from '../../services/user.service'
 import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
 import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 const FIRST_CONSENT_STEPS: number = 4
 const SECOND_CONSENT_STEPS: number = 10

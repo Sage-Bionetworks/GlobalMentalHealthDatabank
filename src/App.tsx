@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
 import { ThemeProvider, Typography } from '@material-ui/core'
 import {
@@ -17,7 +17,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import DownloadApp from './components/dashboard/DownloadApp'
 import { TopNav } from './components/widgets/TopNav'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
-import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
 import DataRegulation from './components/static/DataRegulation'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
@@ -30,16 +29,12 @@ import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
 import { UserService } from './services/user.service'
 import { theme } from './theme'
 import './styles/style.scss'
-import { ROUTES } from './types/types'
+import { ROUTES } from './constants/constants'
 
 function App() {
   const sessionData: SessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
   const { token } = sessionData
-
-  const [currentLocation, setCurrentLocation] = useState(
-    window.location.pathname,
-  )
 
   useEffect(() => {
     let isSubscribed = true
@@ -117,11 +112,6 @@ function App() {
               <Router>
                 <div>
                   <GoogleAnalyticsPageTracker />
-                  <ScrollToTopOnRouteChange
-                    onRouteChangeFn={(location: string) =>
-                      setCurrentLocation(location)
-                    }
-                  />
                   <TopNav
                     token={token}
                     logoutCallbackFn={() =>

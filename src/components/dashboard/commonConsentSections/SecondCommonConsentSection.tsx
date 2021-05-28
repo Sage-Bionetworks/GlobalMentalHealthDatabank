@@ -27,7 +27,7 @@ import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg
 import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
 import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
 import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
 
 type SecondCommonConsentProps = {
   startingStep: number

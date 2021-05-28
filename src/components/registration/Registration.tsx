@@ -10,9 +10,10 @@ import {
   APP_ID,
   SUB_STUDY_ID,
   ENDPOINT,
-  RegistrationData,
-  UserDataGroup,
-} from '../../types/types'
+  PAGE_ID_FIELD_NAME,
+  PAGE_ID,
+} from '../../constants/constants'
+import { RegistrationData, UserDataGroup } from '../../types/types'
 import {
   callEndpoint,
   makePhone,
@@ -21,7 +22,6 @@ import {
 } from '../../helpers/utility'
 import useForm from '../useForm'
 import { useElegibility } from './context/ElegibilityContext'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type RegistrationProps = {

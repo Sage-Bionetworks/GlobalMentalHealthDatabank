@@ -53,7 +53,7 @@ import SollySieberts from '../../assets/researchTeam/sageTeam/Solly-Sieberts.png
 import SoniaCarlson from '../../assets/researchTeam/sageTeam/Sonia-Carlson.png'
 import StockardSimon from '../../assets/researchTeam/sageTeam/Stockard-Simon.png'
 
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 function ResizableImageComponent({ ...rest }: any) {
   return <img {...rest} alt="team-member" />

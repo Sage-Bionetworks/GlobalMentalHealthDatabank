@@ -11,7 +11,8 @@ import { useElegibility } from './context/ElegibilityContext'
 import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
-import { SessionData, GENDERS, ROUTES } from '../../types/types'
+import { SessionData } from '../../types/types'
+import { GENDERS, ROUTES } from '../../constants/constants'
 
 const MAX_STEPS: number = 9
 

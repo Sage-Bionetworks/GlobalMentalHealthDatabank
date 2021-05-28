@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 function ConsentInfo() {
   const { t } = useTranslation()

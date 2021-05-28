@@ -11,7 +11,7 @@ import { ReactComponent as Book } from '../../assets/home/book.svg'
 import { ReactComponent as Lifesaver } from '../../assets/home/lifesaver.svg'
 import { ReactComponent as Circle } from '../../assets/home/circle.svg'
 import { ReactComponent as PlusSigns } from '../../assets/home/plus-signs.svg'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 export const Home: React.FunctionComponent = () => {
   const { t } = useTranslation()

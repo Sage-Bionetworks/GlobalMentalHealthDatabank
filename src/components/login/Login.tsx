@@ -17,15 +17,17 @@ import {
   TextField,
 } from '@material-ui/core'
 import {
-  APP_ID,
   LoggedInUserData,
   SignInData,
   SignInDataPhone,
   Response,
+} from '../../types/types'
+import {
+  APP_ID,
   ENDPOINT,
   SIGN_IN_METHOD,
   ROUTES,
-} from '../../types/types'
+} from '../../constants/constants'
 import {
   callEndpoint,
   makePhone,

@@ -4,13 +4,12 @@ import {
   SignInData,
   LoggedInUserData,
   SignInDataPhone,
-  APP_ID,
   StringDictionary,
-  SESSION_NAME,
+  SessionData,
 } from '../types/types'
+import { APP_ID, SESSION_NAME } from '../constants/constants'
 import i18n from 'i18next'
 import { useState } from 'react'
-import { SessionData } from '../types/types'
 
 const fetchTimeout = (
   url: string,

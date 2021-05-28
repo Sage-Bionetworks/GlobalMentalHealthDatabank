@@ -1,4 +1,5 @@
-import { ENDPOINT, Response, HealhDataResponse } from '../types/types'
+import { Response, HealhDataResponse } from '../types/types'
+import { ENDPOINT } from '../constants/constants'
 import { callEndpoint } from '../helpers/utility'
 import moment from 'moment'
 

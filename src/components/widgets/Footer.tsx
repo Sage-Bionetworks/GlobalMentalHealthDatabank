@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Toolbar } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import useBreakpoint from '../../helpers/hooks/useBreakpoint'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 export const Footer: React.FunctionComponent = () => {
   const { t } = useTranslation()

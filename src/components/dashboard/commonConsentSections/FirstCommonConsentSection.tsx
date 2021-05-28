@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import { PARTICIPATE_OPTIONS, FORM_IDS } from '../../form/types'
-import { PAGE_ID_FIELD_NAME, PAGE_ID, ROUTES } from '../../../types/types'
+import {
+  PAGE_ID_FIELD_NAME,
+  PAGE_ID,
+  ROUTES,
+} from '../../../constants/constants'
 import NavigationArrows from '../../common/NavigationArrows'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import ProgressBar from '../../progressBar/ProgressBar'

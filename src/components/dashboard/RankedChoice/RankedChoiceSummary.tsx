@@ -6,7 +6,7 @@ import Accordion from '../../common/Accordion'
 import { useRankedChoice } from '../RankedChoice/context/RankedChoiceContext'
 import { useSessionDataState } from '../../../AuthContext'
 import { HealthService } from '../../../services/health.service'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
 
 type Props = {
   step: number

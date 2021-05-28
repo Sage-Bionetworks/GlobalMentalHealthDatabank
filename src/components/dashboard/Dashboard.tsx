@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LoggedInUserData } from '../../types/types'
 import { UserService } from '../../services/user.service'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 type DashboardProps = {
   token: string

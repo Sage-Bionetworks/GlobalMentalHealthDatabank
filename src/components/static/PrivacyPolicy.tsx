@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 export const PrivacyPolicy: FunctionComponent = () => {
   const { t } = useTranslation()

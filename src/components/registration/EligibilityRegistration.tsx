@@ -5,7 +5,8 @@ import Eligibility from './Eligibility'
 import Registration from './Registration'
 import { RouteComponentProps } from 'react-router-dom'
 import { useElegibility } from './context/ElegibilityContext'
-import { Response, LoggedInUserData, ROUTES } from '../../types/types'
+import { Response, LoggedInUserData } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function

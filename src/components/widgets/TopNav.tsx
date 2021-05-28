@@ -16,7 +16,7 @@ import { NavLink } from 'react-router-dom'
 import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Burger } from '../../assets/burger.svg'
-import { ROUTES } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 type TopNavProps = {
   token: string | undefined
