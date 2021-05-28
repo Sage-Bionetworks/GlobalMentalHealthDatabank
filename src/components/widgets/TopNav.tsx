@@ -244,7 +244,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         </nav>
         <div className="topnav__content">{props.children}</div>
       </div>
-      )
     </div>
   )
 }

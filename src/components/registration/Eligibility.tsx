@@ -110,9 +110,9 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     switch (countryCode) {
       case 'UK':
         return t('common.unitedKingdom')
-      case 'IN':
-        return t('common.southAfrica')
       case 'ZA':
+        return t('common.southAfrica')
+      case 'IN':
         return t('common.india')
       case 'US':
         return t('common.unitedStates')
@@ -247,6 +247,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                       userLocation: selectedCountry.your_country,
                     }
                   })
+
                   setWhereDoYouLive(selectedCountry.your_country)
                   setStep((current: number) =>
                     current < MAX_STEPS ? current + 1 : current,
