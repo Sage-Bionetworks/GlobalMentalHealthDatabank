@@ -53,13 +53,15 @@ import SollySieberts from '../../assets/researchTeam/sageTeam/Solly-Sieberts.png
 import SoniaCarlson from '../../assets/researchTeam/sageTeam/Sonia-Carlson.png'
 import StockardSimon from '../../assets/researchTeam/sageTeam/Stockard-Simon.png'
 
+import { ROUTES } from '../../types/types'
+
 function ResizableImageComponent({ ...rest }: any) {
   return <img {...rest} alt="team-member" />
 }
 
 function ResearchTeam() {
   const { t } = useTranslation()
-  const history = useHistory()
+  const { push } = useHistory()
 
   const breakpoint = useBreakpoint()
   const isMobile = breakpoint < 1024
@@ -89,7 +91,7 @@ function ResearchTeam() {
           {t('research.yourExperience')}
         </Typography>
 
-        <button onClick={() => history.push('/eligibility')}>
+        <button onClick={() => push(ROUTES.ELIGIBILITY)}>
           {t('research.join')}
         </button>
       </div>

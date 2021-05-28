@@ -7,7 +7,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
 import About from './components/static/About'
@@ -31,6 +30,7 @@ import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
 import { UserService } from './services/user.service'
 import { theme } from './theme'
 import './styles/style.scss'
+import { ROUTES } from './types/types'
 
 function App() {
   const sessionData: SessionData = useSessionDataState()
@@ -75,7 +75,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: '/signin',
+                pathname: ROUTES.SIGNIN,
                 state: { from: location },
               }}
             />
@@ -127,18 +127,17 @@ function App() {
                     logoutCallbackFn={() =>
                       setUserSession(undefined, '', false, [])
                     }
-                    showTopNavigator={currentLocation !== '/testkit'}
                   >
                     <Switch>
                       <Route
                         exact={true}
-                        path="/signin"
+                        path={ROUTES.SIGNIN}
                         render={() => {
                           return <Login />
                         }}
                       ></Route>
                       <Route
-                        path="/eligibility"
+                        path={ROUTES.ELIGIBILITY}
                         render={props => {
                           return (
                             <EligibilityRegistration
@@ -150,34 +149,34 @@ function App() {
                           )
                         }}
                       ></Route>
-                      <PrivateRoute exact={true} path="/dashboard">
+                      <PrivateRoute exact={true} path={ROUTES.CONSENT_STEPS}>
                         <Dashboard token={token || ''} />
                       </PrivateRoute>
-                      <Route path="/data-regulation">
+                      <Route path={ROUTES.DATA_REGULATION}>
                         <DataRegulation />
                       </Route>
-                      <Route path="/consent-info">
+                      <Route path={ROUTES.CONSENT_INFO}>
                         <ConsentInfo />
                       </Route>
-                      <Route path="/privacy-policy">
+                      <Route path={ROUTES.PRIVACY_POLICY}>
                         <PrivacyPolicy />
                       </Route>
-                      <Route path="/terms">
+                      <Route path={ROUTES.TERMS}>
                         <Terms />
                       </Route>
-                      <Route path="/download">
+                      <Route path={ROUTES.DOWNLOAD}>
                         <DownloadApp />
                       </Route>
-                      <Route path="/contact">
+                      <Route path={ROUTES.CONTACT}>
                         <Contact />
                       </Route>
-                      <Route path="/about">
+                      <Route path={ROUTES.ABOUT}>
                         <About />
                       </Route>
-                      <Route path="/research">
+                      <Route path={ROUTES.RESEARCH}>
                         <ResearchTeam />
                       </Route>
-                      <Route path="/home">
+                      <Route path={ROUTES.HOME}>
                         <Home />
                       </Route>
                       <Route path="/">

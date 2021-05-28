@@ -11,7 +11,7 @@ import { useElegibility } from './context/ElegibilityContext'
 import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
-import { SessionData, GENDERS } from '../../types/types'
+import { SessionData, GENDERS, ROUTES } from '../../types/types'
 
 const MAX_STEPS: number = 9
 
@@ -80,7 +80,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }, [step])
 
   if (token) {
-    return <Redirect to={'/dashboard'} push={true} />
+    return <Redirect to={ROUTES.CONSENT_STEPS} push={true} />
   }
 
   const validateAgeRange = (location: string, age: number) => {
@@ -129,14 +129,29 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               {t('eligibility.thankYouForYourInterest')}
             </Typography>
 
-            <div className="btm-20">
-              <Typography variant="body2">
-                {t('eligibility.weHaveAFewQuestions')}
-              </Typography>
-            </div>
-
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.getAnswers')}
+            </Typography>
+            <ul>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.section1')}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body2">
+                  {t('form.firstCommonConsent.section2')}
+                </Typography>
+              </li>
+            </ul>
             <div className="btm-240">
-              <Separator />
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.section3.section1')}{' '}
+                <a className="underlined-link" href={ROUTES.RESEARCH}>
+                  {t('form.firstCommonConsent.section3.link')}
+                </a>{' '}
+                {t('form.firstCommonConsent.section3.section2')}
+              </Typography>
             </div>
             <Button
               color="primary"
@@ -157,7 +172,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 2:
       if (!props.history.location.search.includes('howDidYouHear'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=howDidYouHear',
         })
       document.title = 'MindKind > How did you hear about us?'
@@ -198,7 +213,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 3:
       if (!props.history.location.search.includes('where'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=where',
         })
       document.title = 'MindKind > Where do you live?'
@@ -244,7 +259,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 4:
       if (!props.history.location.search.includes('android'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=android',
         })
       document.title = 'MindKind > Do you have an android?'
@@ -285,7 +300,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 5:
       if (!props.history.location.search.includes('english'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=english',
         })
       document.title = 'MindKind > Do you speak english?'
@@ -331,7 +346,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 6:
       if (!props.history.location.search.includes('ageRange'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=ageRange',
         })
       document.title = 'MindKind > How old are you?'
@@ -371,7 +386,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 7:
       if (!props.history.location.search.includes('gender'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=gender',
         })
       document.title = 'MindKind > What is your current gender/gender identity?'
@@ -438,7 +453,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 8:
       if (!props.history.location.search.includes('benefit'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=benefit',
         })
       document.title = 'MindKind > Benefits of health support'
@@ -479,7 +494,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     case 9:
       if (!props.history.location.search.includes('summary'))
         props.history.push({
-          pathname: '/eligibility',
+          pathname: ROUTES.ELIGIBILITY,
           search: '?step=summary',
         })
       return (
@@ -658,7 +673,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   if (step > MAX_STEPS) {
     if (!props.history.location.search.includes('not-eligible'))
       props.history.push({
-        pathname: '/eligibility',
+        pathname: ROUTES.ELIGIBILITY,
         search: '?step=not-eligible',
       })
     return (
@@ -676,13 +691,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
             <Separator />
           </div>
 
-          <NavLink to="/home">
+          <NavLink to={ROUTES.HOME}>
             <Button
               color="primary"
               variant="contained"
               size="large"
               className="wide-button"
-              onClick={() => <Redirect to="/home" />}
+              onClick={() => <Redirect to={ROUTES.HOME} />}
             >
               {t('eligibility.back')}
             </Button>

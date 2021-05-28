@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Logout from '../login/Logout'
+import btnClose from '../../assets/btn_close_dark.svg'
 import {
   Typography,
   ListItem,
@@ -11,16 +13,14 @@ import {
   Toolbar,
 } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
-import Logout from '../login/Logout'
-import btnClose from '../../assets/btn_close_dark.svg'
 import { ReactComponent as MindKindLogoDark } from '../../assets/MindKindLogoDark.svg'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as Burger } from '../../assets/burger.svg'
+import { ROUTES } from '../../types/types'
 
 type TopNavProps = {
   token: string | undefined
   logoutCallbackFn: Function
-  showTopNavigator: boolean
 }
 
 export const TopNav: React.FunctionComponent<TopNavProps> = props => {
@@ -40,7 +40,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
       </div>
       <List>
         <NavLink
-          to="/home"
+          to={ROUTES.HOME}
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -53,7 +53,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         <Divider className="mobile-menu__separator" />
 
         <NavLink
-          to="/about"
+          to={ROUTES.ABOUT}
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -64,7 +64,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
         <NavLink
-          to="/research"
+          to={ROUTES.RESEARCH}
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -75,7 +75,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
         <NavLink
-          to="/contact"
+          to={ROUTES.CONTACT}
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -87,7 +87,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         </NavLink>
 
         <NavLink
-          to="/consent-info"
+          to={ROUTES.CONSENT_INFO}
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -100,7 +100,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
 
         {!props.token && (
           <NavLink
-            to="/eligibility"
+            to={ROUTES.ELIGIBILITY}
             onClick={handleDrawerToggle}
             className="topnav__link"
           >
@@ -113,7 +113,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         )}
         {!props.token && (
           <NavLink
-            to="/signin"
+            to={ROUTES.SIGNIN}
             onClick={handleDrawerToggle}
             className="topnav__link"
           >
@@ -126,7 +126,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         )}
         {props.token && (
           <NavLink
-            to="/logout"
+            to={ROUTES.LOGOUT}
             onClick={handleDrawerToggle}
             className="topnav__link"
           >
@@ -146,27 +146,30 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
   const fullScreenNavBar = (
     <div>
       <div className="topnav-center-section">
-        <NavLink to="/home" className="topnav__link--full centered">
+        <NavLink to={ROUTES.HOME} className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.home')}
           </Typography>
         </NavLink>
-        <NavLink to="/about" className="topnav__link--full centered">
+        <NavLink to={ROUTES.ABOUT} className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.about')}
           </Typography>
         </NavLink>
-        <NavLink to="/research" className="topnav__link--full centered">
+        <NavLink to={ROUTES.RESEARCH} className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.research')}
           </Typography>
         </NavLink>
-        <NavLink to="/contact" className="topnav__link--full centered">
+        <NavLink to={ROUTES.CONTACT} className="topnav__link--full centered">
           <Typography variant="h6" className="topnav__text">
             {t('topnav.crisis')}
           </Typography>
         </NavLink>
-        <NavLink to="/consent-info" className="topnav__link--full centered">
+        <NavLink
+          to={ROUTES.CONSENT_INFO}
+          className="topnav__link--full centered"
+        >
           <Typography variant="h6" className="topnav__text">
             {t('topnav.consent')}
           </Typography>
@@ -174,14 +177,14 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
       </div>
       <div className="topnav-right-section">
         {!props.token && (
-          <NavLink to="/eligibility" className="topnav__link--full">
+          <NavLink to={ROUTES.ELIGIBILITY} className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('common.joinStudy')}
             </Typography>
           </NavLink>
         )}
         {!props.token && (
-          <NavLink to="/signin" className="topnav__link--full">
+          <NavLink to={ROUTES.SIGNIN} className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('topnav.login')}
             </Typography>
@@ -189,7 +192,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         )}
 
         {props.token && (
-          <NavLink to="/logout" className="topnav__link--full logout">
+          <NavLink to={ROUTES.LOGOUT} className="topnav__link--full logout">
             <Logout
               onLogout={() => {
                 props.logoutCallbackFn(undefined, '', false)
@@ -203,48 +206,45 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
 
   return (
     <div>
-      {props.showTopNavigator ? (
-        <div>
-          <div className="no-print">
-            <Toolbar className="tool-bar">
-              <Typography variant="h6" noWrap className="topnav__title">
-                <NavLink to="/home">
-                  <MindKindLogoDark />
-                </NavLink>
-              </Typography>
-              <Hidden lgUp>
-                <IconButton
-                  color="inherit"
-                  aria-label="Open drawer"
-                  edge="end"
-                  onClick={handleDrawerToggle}
-                  className="menu__button"
-                >
-                  <Burger />
-                </IconButton>
-              </Hidden>
-              <Hidden mdDown>{fullScreenNavBar}</Hidden>
-            </Toolbar>
-          </div>
-          <nav className="drawer">
-            <Drawer
-              variant="temporary"
-              anchor="right"
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              className="drawer__paper"
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </nav>
-          <div className="topnav__content">{props.children}</div>
+      <div>
+        <div className="no-print">
+          <Toolbar className="tool-bar">
+            <Typography variant="h6" noWrap className="topnav__title">
+              <NavLink to={ROUTES.HOME}>
+                <MindKindLogoDark />
+              </NavLink>
+            </Typography>
+            <Hidden lgUp>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                edge="end"
+                onClick={handleDrawerToggle}
+                className="menu__button"
+              >
+                <Burger />
+              </IconButton>
+            </Hidden>
+            <Hidden mdDown>{fullScreenNavBar}</Hidden>
+          </Toolbar>
         </div>
-      ) : (
+        <nav className="drawer">
+          <Drawer
+            variant="temporary"
+            anchor="right"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            className="drawer__paper"
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </nav>
         <div className="topnav__content">{props.children}</div>
-      )}
+      </div>
+      )
     </div>
   )
 }

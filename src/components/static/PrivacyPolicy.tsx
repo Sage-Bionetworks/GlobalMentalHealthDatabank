@@ -1,27 +1,12 @@
-import React, { FunctionComponent, useState, ChangeEvent } from 'react'
+import React, { FunctionComponent } from 'react'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useTranslation } from 'react-i18next'
-import { Typography, FormControl, NativeSelect } from '@material-ui/core'
-
-const LANGUAGES = {
-  ENGLISH: 'English',
-  XHOSA: 'Xhosa',
-  SESOTHO: 'seSotho',
-}
-
-const DOWNLOAD_PATH_ENGLISH =
-  'https://drive.google.com/file/d/1n7AnFob1qtBI7Fupsg2oOin5SMI4DAI_/view?usp=sharing'
-const DOWNLOAD_PATH_SESOTHO =
-  'https://drive.google.com/file/d/1MSuleQM0BR9DRzwlP8rdEaTAEXu1Wn4X/view?usp=sharing'
-const DOWNLOAD_PATH_XHOSA =
-  'https://drive.google.com/file/d/1E3PrsGNEpTemns_of-QFb08LWzd6L5Oe/view?usp=sharing'
+import { Typography } from '@material-ui/core'
+import { ROUTES } from '../../types/types'
 
 export const PrivacyPolicy: FunctionComponent = () => {
   const { t } = useTranslation()
-  const [language, setLanguage] = useState(LANGUAGES.ENGLISH)
-  const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
-    setLanguage(event.target.value as string)
-  }
+
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="legislation-wrapper">
@@ -29,27 +14,6 @@ export const PrivacyPolicy: FunctionComponent = () => {
           <div className="btm-30">
             <Typography variant="h3">{t('privacyPolicy.title')}</Typography>
           </div>
-          <FormControl
-            className="dropdown-select-language"
-            style={{ display: 'none' }}
-          >
-            <NativeSelect
-              value={language}
-              onChange={handleChange}
-              disableUnderline={true}
-            >
-              <option aria-label="None" value="" />
-              <option value={LANGUAGES.ENGLISH}>
-                {t('privacyPolicy.english')}
-              </option>
-              <option value={LANGUAGES.XHOSA}>
-                {t('privacyPolicy.xhosa')}
-              </option>
-              <option value={LANGUAGES.SESOTHO}>
-                {t('privacyPolicy.seSotho')}
-              </option>
-            </NativeSelect>
-          </FormControl>
         </div>
         <div className="btm-40">
           <div className="btm-20">
@@ -61,31 +25,35 @@ export const PrivacyPolicy: FunctionComponent = () => {
         </div>
 
         <a
-          href={DOWNLOAD_PATH_ENGLISH}
+          href={ROUTES.PRIVACY_POLICY_PDF_ENGLISH}
           target="_blank"
           rel="noopener noreferrer"
         >
           <div className="btm-40 underlined-link">
             <Typography variant="body2">
-              {t('privacyPolicy.download') + ' - ' + t('privacyPolicy.english')}
+              {`${t('privacyPolicy.download')} - ${t('privacyPolicy.english')}`}
             </Typography>
           </div>
         </a>
         <a
-          href={DOWNLOAD_PATH_SESOTHO}
+          href={ROUTES.PRIVACY_POLICY_PDF_SESOTHO}
           target="_blank"
           rel="noopener noreferrer"
         >
           <div className="btm-40 underlined-link">
             <Typography variant="body2">
-              {t('privacyPolicy.download') + ' - ' + t('privacyPolicy.sesotho')}
+              {`${t('privacyPolicy.download')} - ${t('privacyPolicy.seSotho')}`}
             </Typography>
           </div>
         </a>
-        <a href={DOWNLOAD_PATH_XHOSA} target="_blank" rel="noopener noreferrer">
+        <a
+          href={ROUTES.PRIVACY_POLICY_PDF_XHOSA}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="btm-40 underlined-link">
             <Typography variant="body2">
-              {t('privacyPolicy.download') + ' - ' + t('privacyPolicy.xhosa')}
+              {`${t('privacyPolicy.download')} - ${t('privacyPolicy.xhosa')}`}
             </Typography>
           </div>
         </a>

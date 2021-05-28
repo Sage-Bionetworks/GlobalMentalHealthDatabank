@@ -2,19 +2,13 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
-
-const CONSENT_PDF_DOWNLOAD_ENGLISH =
-  'https://drive.google.com/file/d/1tSoOhxep0FSyL1fUdsfb0OGYCtmR1wQo/view?usp=sharing'
-const CONSENT_PDF_DOWNLOAD_SESOTHO =
-  'https://drive.google.com/file/d/1sgoT5RsaNBoxdWY98rpXLq1-rGDEvWzl/view?usp=sharing'
-const CONSENT_PDF_DOWNLOAD_XHOSA =
-  'https://drive.google.com/file/d/1H0ZELFv_TnOdJbaoP8TBd-qLqZq-Vcr-/view?usp=sharing'
+import { ROUTES } from '../../types/types'
 
 function ConsentInfo() {
   const { t } = useTranslation()
   const { push } = useHistory()
   const goToEligibility = () => {
-    push('/eligibility')
+    push(ROUTES.ELIGIBILITY)
   }
   return (
     <div className="consent-info">
@@ -30,7 +24,7 @@ function ConsentInfo() {
           </div>
           <div className="btm-40 underlined-link">
             <a
-              href={CONSENT_PDF_DOWNLOAD_ENGLISH}
+              href={ROUTES.CONSENT_PDF_DOWNLOAD_ENGLISH}
               target="_blank"
               rel="noopener noreferrer"
               className="underlined-link"
@@ -40,7 +34,7 @@ function ConsentInfo() {
           </div>
           <div className="btm-40 underlined-link">
             <a
-              href={CONSENT_PDF_DOWNLOAD_XHOSA}
+              href={ROUTES.CONSENT_PDF_DOWNLOAD_XHOSA}
               target="_blank"
               rel="noopener noreferrer"
               className="underlined-link"
@@ -50,7 +44,7 @@ function ConsentInfo() {
           </div>
           <div className="btm-40 underlined-link">
             <a
-              href={CONSENT_PDF_DOWNLOAD_SESOTHO}
+              href={ROUTES.CONSENT_PDF_DOWNLOAD_SESOTHO}
               target="_blank"
               rel="noopener noreferrer"
               className="underlined-link"

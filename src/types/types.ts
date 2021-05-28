@@ -113,6 +113,7 @@ export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
 export const SURVEY_IDENTIFIER = 'mindkind'
 export const PAGE_ID_FIELD_NAME = 'page_id'
 export const SIGN_IN_METHOD = 'PHONE'
+
 export const PAGE_ID = {
   WHAT_ARE_WE_STUDYING: 'C01_StudyIntro',
   WHAT_WILL_YOU_ASK: 'C02_StudyAsk',
@@ -149,4 +150,32 @@ export const GENDERS = {
   TRANSGENDER: 'Transgender',
   OTHER: 'Other',
   PREFER_NOT_TO_SAY: 'Prefer not to say',
+}
+
+export const ROUTES = {
+  SIGNIN: '/signin',
+  DOWNLOAD: '/download',
+  CONSENT_STEPS: '/consent-steps',
+  ELIGIBILITY: '/eligibility',
+  CONSENT_INFO: '/consent-info',
+  PRIVACY_POLICY: '/privacy-policy',
+  TERMS: '/terms',
+  CONTACT: '/contact',
+  ABOUT: '/about',
+  RESEARCH: '/research',
+  HOME: '/home',
+  DATA_REGULATION: '/data-regulation',
+  LOGOUT: '/logout',
+  CONSENT_PDF_DOWNLOAD_ENGLISH:
+    'https://drive.google.com/file/d/1tSoOhxep0FSyL1fUdsfb0OGYCtmR1wQo/view?usp=sharing',
+  CONSENT_PDF_DOWNLOAD_SESOTHO:
+    'https://drive.google.com/file/d/1sgoT5RsaNBoxdWY98rpXLq1-rGDEvWzl/view?usp=sharing',
+  CONSENT_PDF_DOWNLOAD_XHOSA:
+    'https://drive.google.com/file/d/1H0ZELFv_TnOdJbaoP8TBd-qLqZq-Vcr-/view?usp=sharing',
+  PRIVACY_POLICY_PDF_ENGLISH:
+    'https://drive.google.com/file/d/1n7AnFob1qtBI7Fupsg2oOin5SMI4DAI_/view?usp=sharing',
+  PRIVACY_POLICY_PDF_SESOTHO:
+    'https://drive.google.com/file/d/1MSuleQM0BR9DRzwlP8rdEaTAEXu1Wn4X/view?usp=sharing',
+  PRIVACY_POLICY_PDF_XHOSA:
+    'https://drive.google.com/file/d/1E3PrsGNEpTemns_of-QFb08LWzd6L5Oe/view?usp=sharing',
 }

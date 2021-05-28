@@ -11,12 +11,13 @@ import { ReactComponent as Phone } from '../../assets/about/phone.svg'
 import { ReactComponent as Door } from '../../assets/about/door.svg'
 import { ReactComponent as Lock } from '../../assets/about/lock.svg'
 import { ReactComponent as DB } from '../../assets/about/db.svg'
+import { ROUTES } from '../../types/types'
 
 function About() {
   const { t } = useTranslation()
   const { push } = useHistory()
   const goToEligibility = () => {
-    push('/eligibility')
+    push(ROUTES.ELIGIBILITY)
   }
   return (
     <div className="about">
@@ -43,7 +44,7 @@ function About() {
             </div>
             <Typography>
               {t('about.thing1.text')}
-              <a href="/research">{t('about.thing1.link')}</a>
+              <a href={ROUTES.RESEARCH}>{t('about.thing1.link')}</a>
               {t('about.thing1.text2')}
             </Typography>
           </div>

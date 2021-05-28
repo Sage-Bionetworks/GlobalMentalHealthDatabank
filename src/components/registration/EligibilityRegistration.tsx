@@ -1,12 +1,11 @@
 import React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
-
-import Eligibility from './Eligibility'
-import Registration from './Registration'
-import { useElegibility } from './context/ElegibilityContext'
 import SignInWithCode from '../login/SignInWithCode'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
-import { Response, LoggedInUserData } from '../../types/types'
+import Eligibility from './Eligibility'
+import Registration from './Registration'
+import { RouteComponentProps } from 'react-router-dom'
+import { useElegibility } from './context/ElegibilityContext'
+import { Response, LoggedInUserData, ROUTES } from '../../types/types'
 
 export type EligibilityRegistrationOwnProps = {
   callbackFn: Function
@@ -48,7 +47,7 @@ const EligibilityRegistration: React.FunctionComponent<EligibilityRegistrationPr
                       loggedIn.data.sessionToken,
                       loggedIn.data.firstName,
                     )
-                    history.push('/dashboard')
+                    history.push(ROUTES.CONSENT_STEPS)
                   }
                 }}
               />
