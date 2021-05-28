@@ -89,12 +89,11 @@
   },
   "form": {
     "firstCommonConsent": {
-      "whatAreWeStudying": "What are we studying?",
       "getAnswers": "We are trying to answer these questions:",
       "section1": "Are young people willing to use an app to collect information (data) about their mental health? If so, will they use it for 3 months?",
       "section2": "Are young people willing to share that data for health research? If so, under what conditions?",
       "section3": {
-        "section1": "This study is funded by The Wellcome Foundation, and led by Dr. Lara Mangravite in the United States. It is being conducted under the supervision of scientists in South Africa, India, and the United Kingdom. You can",
+        "section1": "This study is being conducted by a team of scientists in South Africa, India, the United Kingdom and the United States.  It is funded by Wellcome and led by Dr. Lara Mangravite in the United States.  You can ",
         "link": "learn more about our team",
         "section2": "of researchers on the study website"
       },

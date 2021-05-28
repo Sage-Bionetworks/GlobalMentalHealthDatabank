@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import ConsentSteps from './ConsentSteps'
+import Alert from '@material-ui/lab/Alert/Alert'
 import { CircularProgress } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
-import Alert from '@material-ui/lab/Alert/Alert'
 import { useTranslation } from 'react-i18next'
 import { LoggedInUserData } from '../../types/types'
 import { UserService } from '../../services/user.service'
-import ConsentSteps from './ConsentSteps'
+import { ROUTES } from '../../constants/constants'
 
 type DashboardProps = {
   token: string
@@ -37,7 +38,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
             userInfoResponse?.data?.clientData?.consented &&
             userInfoResponse?.data?.clientData?.skipRanking
           ) {
-            push('/download')
+            push(ROUTES.DOWNLOAD)
           }
           if (isSubscribed) {
             setUserInfo(userInfoResponse?.data)

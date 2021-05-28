@@ -11,6 +11,7 @@ import { ReactComponent as Book } from '../../assets/home/book.svg'
 import { ReactComponent as Lifesaver } from '../../assets/home/lifesaver.svg'
 import { ReactComponent as Circle } from '../../assets/home/circle.svg'
 import { ReactComponent as PlusSigns } from '../../assets/home/plus-signs.svg'
+import { ROUTES } from '../../constants/constants'
 
 export const Home: React.FunctionComponent = () => {
   const { t } = useTranslation()
@@ -70,7 +71,7 @@ export const Home: React.FunctionComponent = () => {
               </Typography>
             </div>
             <Grid container justify="center" alignItems="center">
-              <NavLink to="/eligibility" className="home__nav-link">
+              <NavLink to={ROUTES.ELIGIBILITY} className="home__nav-link">
                 <Button
                   color="primary"
                   variant="contained"

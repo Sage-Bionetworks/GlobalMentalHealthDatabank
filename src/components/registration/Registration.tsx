@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
-
 import {
   getRandomFlowOption,
   FLOW_OPTIONS,
@@ -11,9 +10,10 @@ import {
   APP_ID,
   SUB_STUDY_ID,
   ENDPOINT,
-  RegistrationData,
-  UserDataGroup,
-} from '../../types/types'
+  PAGE_ID_FIELD_NAME,
+  PAGE_ID,
+} from '../../constants/constants'
+import { RegistrationData, UserDataGroup } from '../../types/types'
 import {
   callEndpoint,
   makePhone,
@@ -22,7 +22,6 @@ import {
 } from '../../helpers/utility'
 import useForm from '../useForm'
 import { useElegibility } from './context/ElegibilityContext'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../types/types'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type RegistrationProps = {
@@ -117,7 +116,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         age,
         gender,
         consented: false,
-        [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_ARE_WE_STUDYING,
+        [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_WILL_YOU_ASK,
         checkpoint: 1,
       },
       appId: APP_ID,
