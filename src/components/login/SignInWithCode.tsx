@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
 
-import { APP_ID, LOGIN_ENDPOINT } from '../../types/types'
+import { APP_ID, LOGIN_ENDPOINT } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useElegibility } from '../../components/registration/context/ElegibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'

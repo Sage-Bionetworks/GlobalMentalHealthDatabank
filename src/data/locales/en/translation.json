@@ -37,8 +37,7 @@
     "about": "About",
     "researchTeam": "Research Team",
     "research": "Research",
-    "ifInCrisis": "If You are in Crisis",
-    "crisis": "Crisis",
+    "crisis": "Mental Health Resources",
     "policy": "Privacy Policy",
     "consent": "Consent",
     "dashboard": "Dashboard",
@@ -54,7 +53,7 @@
     "team": "Research team",
     "faq": "FAQs",
     "contact": "Contact",
-    "crisis": "If you are in Crisis",
+    "crisis": "Mental Health Resources",
     "privacy": "Privacy Policy",
     "dataRights": "Data Rights",
     "terms": "Terms of Service",
@@ -85,16 +84,16 @@
     "myPhone": "My phone number is: ",
     "createAccount": "Sign Up",
     "pleaseReview": "Please review your answer to ensure they are correct.",
-    "restart": "Start over"
+    "restart": "Start over",
+    "next": "Next"
   },
   "form": {
     "firstCommonConsent": {
-      "whatAreWeStudying": "What are we studying?",
       "getAnswers": "We are trying to answer these questions:",
       "section1": "Are young people willing to use an app to collect information (data) about their mental health? If so, will they use it for 3 months?",
       "section2": "Are young people willing to share that data for health research? If so, under what conditions?",
       "section3": {
-        "section1": "This study is funded by The Wellcome Foundation, and led by Dr. Lara Mangravite in the United States. It is being conducted under the supervision of scientists in South Africa, India, and the United Kingdom. You can",
+        "section1": "This study is being conducted by a team of scientists in South Africa, India, the United Kingdom and the United States.  It is funded by Wellcome and led by Dr. Lara Mangravite in the United States.  You can ",
         "link": "learn more about our team",
         "section2": "of researchers on the study website"
       },
@@ -645,10 +644,12 @@
     "paragraph1": "Some of us know exactly what we need for emotional health. Others of us are still figuring it out. Wherever you are in that process, your experience could help others.",
     "paragraph2": " We’d like your help to design a databank that will collect information about emotional health from young people. You would help us decide what types of information to collect, who controls the databank, and who gets to use it. We’re inviting people like you from around the world to share their knowledge.",
     "makeDifference": "Want to start your MindKind journey?",
-    "tenThings": "10 Things You Need to Know",
+    "tenThings": "9 Things You Need to Know",
     "thing1": {
       "title": "MindKind Study",
-      "text": "This is a research study and does not provide medical advice, diagnosis, or treatment. [Researchers - link to Research Team] from around the world lead the MindKind Study."
+      "text": "This is a research study and does not provide medical advice, diagnosis, or treatment. ",
+      "link": "Researchers",
+      "text2": " from around the world lead the MindKind Study."
     },
     "thing2": {
       "title": "Our Goal",

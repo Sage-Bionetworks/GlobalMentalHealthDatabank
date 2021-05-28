@@ -1,4 +1,11 @@
 import React, { useState } from 'react'
+import Alert from '@material-ui/lab/Alert/Alert'
+import SignInWithCode from './SignInWithCode'
+import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
+import uk from '../../assets/flags/uk.svg'
+import ind from '../../assets/flags/ind.svg'
+import za from '../../assets/flags/za.svg'
+import us from '../../assets/flags/us.svg'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
@@ -9,30 +16,25 @@ import {
   Button,
   TextField,
 } from '@material-ui/core'
-import Alert from '@material-ui/lab/Alert/Alert'
-
 import {
-  APP_ID,
   LoggedInUserData,
   SignInData,
   SignInDataPhone,
   Response,
+} from '../../types/types'
+import {
+  APP_ID,
   ENDPOINT,
   SIGN_IN_METHOD,
-} from '../../types/types'
+  ROUTES,
+} from '../../constants/constants'
 import {
   callEndpoint,
   makePhone,
   isValidPhoneNumber,
 } from '../../helpers/utility'
-import SignInWithCode from './SignInWithCode'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
-import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import uk from '../../assets/flags/uk.svg'
-import ind from '../../assets/flags/ind.svg'
-import za from '../../assets/flags/za.svg'
-import us from '../../assets/flags/us.svg'
 import { useElegibility } from '../registration/context/ElegibilityContext'
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
@@ -81,7 +83,7 @@ export const Login: React.FunctionComponent = () => {
           userDataGroup: loggedIn.data.dataGroups,
         },
       })
-      push('/dashboard')
+      push(ROUTES.CONSENT_STEPS)
     } else {
       setError('Error ' + loggedIn.status)
     }

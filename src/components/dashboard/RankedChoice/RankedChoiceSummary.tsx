@@ -6,7 +6,7 @@ import Accordion from '../../common/Accordion'
 import { useRankedChoice } from '../RankedChoice/context/RankedChoiceContext'
 import { useSessionDataState } from '../../../AuthContext'
 import { HealthService } from '../../../services/health.service'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
 
 type Props = {
   step: number
@@ -49,7 +49,7 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
         {t('form.secondCommonConsent.ranking.review')}
       </Typography>
       {cards.map(card => (
-        <Accordion title={card.title}>
+        <Accordion key={card.id} title={card.title}>
           <Typography variant="body2">{card.text}</Typography>
         </Accordion>
       ))}

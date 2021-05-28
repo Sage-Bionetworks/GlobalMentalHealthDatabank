@@ -6,7 +6,7 @@ import useBreakpoint from '../../../helpers/hooks/useBreakpoint'
 import MobileRanking from './mobile/MobileRanking'
 import DesktopRanking from './desktop/DesktopRanking'
 import { useRankedChoice } from './context/RankedChoiceContext'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../types/types'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
 
 type Props = {
   step: number

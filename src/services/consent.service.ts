@@ -1,12 +1,13 @@
-import { ENDPOINT, LoggedInUserData } from '../types/types'
-import { Response } from '../types/types'
+import { ENDPOINT } from '../constants/constants'
+import { Response, LoggedInUserData } from '../types/types'
+import {
+  SHARE_SCOPE_PARTNERS,
+  SHARE_SCOPE_ALL,
+  SUBPOP_GUID,
+  HIPAA_SUBPOP_GUID,
+} from '../constants/constants'
 import { callEndpoint } from '../helpers/utility'
 import moment from 'moment'
-
-const SHARE_SCOPE_PARTNERS = 'sponsors_and_partners'
-const SHARE_SCOPE_ALL = 'all_qualified_researchers'
-const SUBPOP_GUID = 'wellcome'
-const HIPAA_SUBPOP_GUID = 'g2mW_YdW70k9lJ4PZQboJD3n'
 
 export const ConsentService = {
   updateMySharingScope,

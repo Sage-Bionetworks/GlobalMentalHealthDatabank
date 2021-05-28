@@ -1,5 +1,5 @@
-import { ENDPOINT, LoggedInUserData, Response } from '../types/types'
-
+import { ENDPOINT } from '../constants/constants'
+import { LoggedInUserData, Response } from '../types/types'
 import { callEndpoint } from '../helpers/utility'
 
 export const UserService = {

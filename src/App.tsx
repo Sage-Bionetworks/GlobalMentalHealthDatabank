@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
 import { ThemeProvider, Typography } from '@material-ui/core'
 import {
@@ -7,7 +7,6 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
 import About from './components/static/About'
@@ -18,7 +17,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import DownloadApp from './components/dashboard/DownloadApp'
 import { TopNav } from './components/widgets/TopNav'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
-import ScrollToTopOnRouteChange from './components/widgets/ScrollToTopOnRouteChange'
 import Footer from './components/widgets/Footer'
 import DataRegulation from './components/static/DataRegulation'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
@@ -31,15 +29,12 @@ import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
 import { UserService } from './services/user.service'
 import { theme } from './theme'
 import './styles/style.scss'
+import { ROUTES } from './constants/constants'
 
 function App() {
   const sessionData: SessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
   const { token } = sessionData
-
-  const [currentLocation, setCurrentLocation] = useState(
-    window.location.pathname,
-  )
 
   useEffect(() => {
     let isSubscribed = true
@@ -75,7 +70,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: '/signin',
+                pathname: ROUTES.SIGNIN,
                 state: { from: location },
               }}
             />
@@ -117,28 +112,22 @@ function App() {
               <Router>
                 <div>
                   <GoogleAnalyticsPageTracker />
-                  <ScrollToTopOnRouteChange
-                    onRouteChangeFn={(location: string) =>
-                      setCurrentLocation(location)
-                    }
-                  />
                   <TopNav
                     token={token}
                     logoutCallbackFn={() =>
                       setUserSession(undefined, '', false, [])
                     }
-                    showTopNavigator={currentLocation !== '/testkit'}
                   >
                     <Switch>
                       <Route
                         exact={true}
-                        path="/signin"
+                        path={ROUTES.SIGNIN}
                         render={() => {
                           return <Login />
                         }}
                       ></Route>
                       <Route
-                        path="/eligibility"
+                        path={ROUTES.ELIGIBILITY}
                         render={props => {
                           return (
                             <EligibilityRegistration
@@ -150,34 +139,34 @@ function App() {
                           )
                         }}
                       ></Route>
-                      <PrivateRoute exact={true} path="/dashboard">
+                      <PrivateRoute exact={true} path={ROUTES.CONSENT_STEPS}>
                         <Dashboard token={token || ''} />
                       </PrivateRoute>
-                      <Route path="/data-regulation">
+                      <Route path={ROUTES.DATA_REGULATION}>
                         <DataRegulation />
                       </Route>
-                      <Route path="/consent-info">
+                      <Route path={ROUTES.CONSENT_INFO}>
                         <ConsentInfo />
                       </Route>
-                      <Route path="/privacy-policy">
+                      <Route path={ROUTES.PRIVACY_POLICY}>
                         <PrivacyPolicy />
                       </Route>
-                      <Route path="/terms">
+                      <Route path={ROUTES.TERMS}>
                         <Terms />
                       </Route>
-                      <Route path="/download">
+                      <Route path={ROUTES.DOWNLOAD}>
                         <DownloadApp />
                       </Route>
-                      <Route path="/contact">
+                      <Route path={ROUTES.CONTACT}>
                         <Contact />
                       </Route>
-                      <Route path="/about">
+                      <Route path={ROUTES.ABOUT}>
                         <About />
                       </Route>
-                      <Route path="/research">
+                      <Route path={ROUTES.RESEARCH}>
                         <ResearchTeam />
                       </Route>
-                      <Route path="/home">
+                      <Route path={ROUTES.HOME}>
                         <Home />
                       </Route>
                       <Route path="/">
