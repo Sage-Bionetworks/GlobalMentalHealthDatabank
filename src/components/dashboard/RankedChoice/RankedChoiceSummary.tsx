@@ -49,7 +49,7 @@ function RankedChoiceSummary({ step, setStep, updateClientData }: Props) {
         {t('form.secondCommonConsent.ranking.review')}
       </Typography>
       {cards.map(card => (
-        <Accordion title={card.title}>
+        <Accordion key={card.id} title={card.title}>
           <Typography variant="body2">{card.text}</Typography>
         </Accordion>
       ))}

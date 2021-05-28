@@ -15,7 +15,7 @@ i18n.use(initReactI18next).init({
   lng: savedLanguage,
   fallbackLng: 'en',
   whitelist: ['en'],
-  debug: true,
+  debug: false,
   keySeparator: '.', // we do not use keys in form messages.welcome
 
   interpolation: {
