@@ -12,6 +12,7 @@ import { ReactComponent as Door } from '../../assets/about/door.svg'
 import { ReactComponent as Lock } from '../../assets/about/lock.svg'
 import { ReactComponent as DB } from '../../assets/about/db.svg'
 import { ROUTES } from '../../constants/constants'
+import Disclaimer from '../common/Disclaimer'
 
 function About() {
   const { t } = useTranslation()
@@ -22,6 +23,7 @@ function About() {
   return (
     <div className="about">
       <div className="about-the-study">
+        <Disclaimer />
         <div className="striped-circle"></div>
         <div className="butterflies"></div>
         <Typography variant="h2">{t('about.title')}</Typography>

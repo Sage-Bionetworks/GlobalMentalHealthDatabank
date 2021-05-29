@@ -3,6 +3,10 @@ import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
 import { ROUTES } from '../../constants/constants'
+import Disclaimer from '../common/Disclaimer'
+import ConsentEnglish from '../../assets/consent_docs/consent_english.pdf'
+import ConsentXhosa from '../../assets/consent_docs/consent_xhosa.pdf'
+import ConsentSesotho from '../../assets/consent_docs/consent_sesotho.pdf'
 
 function ConsentInfo() {
   const { t } = useTranslation()
@@ -13,9 +17,13 @@ function ConsentInfo() {
   return (
     <div className="consent-info">
       <div className="consent-content">
+        <Disclaimer />
         <div className="plus-signs" />
         <Typography variant="h2">{t('consent.title')}</Typography>
-        <Typography variant="h4">{t('consent.description')}</Typography>
+        <div className="btm-20">
+          <Typography>{t('consent.description')}</Typography>
+        </div>
+        <Typography>{t('consent.description2')}</Typography>
       </div>
       <div>
         <div className="download-files">
@@ -24,7 +32,7 @@ function ConsentInfo() {
           </div>
           <div className="btm-40 underlined-link">
             <a
-              href={ROUTES.CONSENT_PDF_DOWNLOAD_ENGLISH}
+              href={ConsentEnglish}
               target="_blank"
               rel="noopener noreferrer"
               className="underlined-link"
@@ -34,7 +42,7 @@ function ConsentInfo() {
           </div>
           <div className="btm-40 underlined-link">
             <a
-              href={ROUTES.CONSENT_PDF_DOWNLOAD_XHOSA}
+              href={ConsentXhosa}
               target="_blank"
               rel="noopener noreferrer"
               className="underlined-link"
@@ -44,7 +52,7 @@ function ConsentInfo() {
           </div>
           <div className="btm-40 underlined-link">
             <a
-              href={ROUTES.CONSENT_PDF_DOWNLOAD_SESOTHO}
+              href={ConsentSesotho}
               target="_blank"
               rel="noopener noreferrer"
               className="underlined-link"
