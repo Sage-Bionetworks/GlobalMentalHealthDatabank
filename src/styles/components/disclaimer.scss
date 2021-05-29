@@ -1,0 +1,18 @@
+.disclaimer {
+  width: 100%;
+  height: 70px;
+  padding: 15px 25px;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include breakpoint('md') {
+    height: 50px;
+    padding: 15px 75px;
+  }
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
+  .disclaimer__text {
+    font-style: italic;
+    margin: auto 0;
+  }
+}

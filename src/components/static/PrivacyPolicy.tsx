@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
-import { ROUTES } from '../../constants/constants'
+import PolicyEnglish from '../../assets/privacy_policy_docs/privacy_policy_english.pdf'
+import PolicyXhosa from '../../assets/privacy_policy_docs/privacy_policy_xhosa.pdf'
+import PolicySesotho from '../../assets/privacy_policy_docs/privacy_policy_sesotho.pdf'
 
 export const PrivacyPolicy: FunctionComponent = () => {
   const { t } = useTranslation()
@@ -23,40 +25,6 @@ export const PrivacyPolicy: FunctionComponent = () => {
             <Typography variant="body2">{t('privacyPolicy.text2')}</Typography>
           </div>
         </div>
-
-        <a
-          href={ROUTES.PRIVACY_POLICY_PDF_ENGLISH}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className="btm-40 underlined-link">
-            <Typography variant="body2">
-              {`${t('privacyPolicy.download')} - ${t('privacyPolicy.english')}`}
-            </Typography>
-          </div>
-        </a>
-        <a
-          href={ROUTES.PRIVACY_POLICY_PDF_SESOTHO}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className="btm-40 underlined-link">
-            <Typography variant="body2">
-              {`${t('privacyPolicy.download')} - ${t('privacyPolicy.seSotho')}`}
-            </Typography>
-          </div>
-        </a>
-        <a
-          href={ROUTES.PRIVACY_POLICY_PDF_XHOSA}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className="btm-40 underlined-link">
-            <Typography variant="body2">
-              {`${t('privacyPolicy.download')} - ${t('privacyPolicy.xhosa')}`}
-            </Typography>
-          </div>
-        </a>
 
         <div className="btm-40">
           <div className="btm-30">
@@ -271,6 +239,27 @@ export const PrivacyPolicy: FunctionComponent = () => {
             </Typography>
           </div>
         </div>
+        <a href={PolicyEnglish} target="_blank" rel="noopener noreferrer">
+          <div className="btm-20 underlined-link">
+            <Typography variant="body2">
+              {`${t('privacyPolicy.download')}: ${t('privacyPolicy.english')}`}
+            </Typography>
+          </div>
+        </a>
+        <a href={PolicySesotho} target="_blank" rel="noopener noreferrer">
+          <div className="btm-20 underlined-link">
+            <Typography variant="body2">
+              {`${t('privacyPolicy.download')}: ${t('privacyPolicy.seSotho')}`}
+            </Typography>
+          </div>
+        </a>
+        <a href={PolicyXhosa} target="_blank" rel="noopener noreferrer">
+          <div className="btm-20 underlined-link">
+            <Typography variant="body2">
+              {`${t('privacyPolicy.download')}: ${t('privacyPolicy.xhosa')}`}
+            </Typography>
+          </div>
+        </a>
       </div>
     </ResponsiveStepWrapper>
   )

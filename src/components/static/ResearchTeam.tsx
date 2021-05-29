@@ -54,6 +54,7 @@ import SoniaCarlson from '../../assets/researchTeam/sageTeam/Sonia-Carlson.png'
 import StockardSimon from '../../assets/researchTeam/sageTeam/Stockard-Simon.png'
 
 import { ROUTES } from '../../constants/constants'
+import Disclaimer from '../common/Disclaimer'
 
 function ResizableImageComponent({ ...rest }: any) {
   return <img {...rest} alt="team-member" />
@@ -73,6 +74,7 @@ function ResearchTeam() {
   return (
     <div className="research">
       <div className="research__hero">
+        <Disclaimer />
         <Typography variant="h2">{t('research.title1')}</Typography>
         <Typography variant="body1" className="research__hero-title">
           {t('research.subtitle1')}
