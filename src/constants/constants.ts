@@ -66,16 +66,4 @@ export const ROUTES = {
   HOME: '/home',
   DATA_REGULATION: '/data-regulation',
   LOGOUT: '/logout',
-  CONSENT_PDF_DOWNLOAD_ENGLISH:
-    'https://drive.google.com/file/d/1tSoOhxep0FSyL1fUdsfb0OGYCtmR1wQo/view?usp=sharing',
-  CONSENT_PDF_DOWNLOAD_SESOTHO:
-    'https://drive.google.com/file/d/1sgoT5RsaNBoxdWY98rpXLq1-rGDEvWzl/view?usp=sharing',
-  CONSENT_PDF_DOWNLOAD_XHOSA:
-    'https://drive.google.com/file/d/1H0ZELFv_TnOdJbaoP8TBd-qLqZq-Vcr-/view?usp=sharing',
-  PRIVACY_POLICY_PDF_ENGLISH:
-    'https://drive.google.com/file/d/1n7AnFob1qtBI7Fupsg2oOin5SMI4DAI_/view?usp=sharing',
-  PRIVACY_POLICY_PDF_SESOTHO:
-    'https://drive.google.com/file/d/1MSuleQM0BR9DRzwlP8rdEaTAEXu1Wn4X/view?usp=sharing',
-  PRIVACY_POLICY_PDF_XHOSA:
-    'https://drive.google.com/file/d/1E3PrsGNEpTemns_of-QFb08LWzd6L5Oe/view?usp=sharing',
 }

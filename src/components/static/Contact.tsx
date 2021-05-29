@@ -1,12 +1,14 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
+import Disclaimer from '../common/Disclaimer'
 
 function Contact() {
   const { t } = useTranslation()
   return (
     <div className="contact">
       <div className="contact__in-crisis">
+        <Disclaimer />
         <div className="plus-signs" />
         <Typography variant="h2">{t('contact.title1')}</Typography>
         <Typography variant="body1">{t('contact.subtitle1')}</Typography>

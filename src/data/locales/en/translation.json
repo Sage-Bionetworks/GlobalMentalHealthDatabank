@@ -514,7 +514,7 @@
     }
   },
   "contact": {
-    "title1": "If you are in a crisis",
+    "title1": "Mental Health Resources",
     "subtitle1": "If you are in crisis, or feel that you are going to hurt yourself or others, please contact your healthcare provider. Additional resources provided below.",
     "help": {
       "get": "Get help in your region",
@@ -574,7 +574,7 @@
     "text1": "Sage Bionetworks (“Sage Bionetworks, “we,” or “us”) is a 501(c)(3) nonprofit biomedical research organization in the United States, created to enhance how researchers approach the complexity of human biological information and the treatment of disease. We have developed a website and mobile application (the “MindKind website” and “MindKind Study App”) to facilitate our MindKind research study (the “Study”). We want to find out if young adults are willing to use a mobile application (the MindKind Study App) to record their mental health. We also want to find out what data youth are willing to share for research and how. This information will help us determine whether data collected via the MindKind Study App can be used to create a global research databank about Mental Health. The Study and the MindKind Study App are designed for users who’ve reached legal age (set between 16 and 21 depending on local laws) and live in a country where the MindKind Study App is available. ",
     "text2": "Your privacy is important to us. The Privacy Label gives you an overview of Sage’s privacy practices within the MindKind Website and MindKind Study App. To learn more, read the detailed policy linked below.",
     "text3": "",
-    "download": "Download the detailed Privacy Policy PDF",
+    "download": "Download Privacy Policy",
     "language": "Language",
     "english": "English",
     "xhosa": "Xhosa",
@@ -633,7 +633,8 @@
   },
   "consent": {
     "title": "Consent",
-    "description": "The consent documents below are available in multiple languages, and can help provide additional context to the study consent.",
+    "description": "Before joining the MindKind Study, we will ask for your consent. We want you to understand the study, your role, and the protection and use of your data.  Once you know more about the study you can decide whether you want to participate. You may change your mind at any time.",
+    "description2": "You can learn more about the study from the consent documents provided below.",
     "download": "Download consent documents: ",
     "file1": "Consent document: English",
     "file2": "Consent document: Xhosa",
