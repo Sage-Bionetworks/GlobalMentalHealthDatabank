@@ -20,11 +20,13 @@ const OTHER_ARM_FLOW_LENGTH: number = 1
 type ConsentStepsProps = {
   dataGroups: Array<string>
   handleError: Function
+  clientData: any
 }
 
 const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   dataGroups,
   handleError,
+  clientData,
 }: ConsentStepsProps) => {
   const { push } = useHistory()
   const [step, setStep] = useState(1)
@@ -41,27 +43,35 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     }
   }
 
+  const setLocalState = (clientData: { checkpoint: number }) => {
+    checkRedirectToDownload(clientData as any)
+    setUserClientData(clientData)
+    const { checkpoint } = clientData
+    if (checkpoint > 1) {
+      setStep(checkpoint)
+    }
+  }
+
   useEffect(() => {
     const getInfo = async () => {
       if (token) {
         try {
           const userInfoResponse = await UserService.getUserInfo(token)
           const data = userInfoResponse?.data as any
-          checkRedirectToDownload(data?.clientData)
-          setUserClientData(data?.clientData)
-          const { checkpoint } = data?.clientData
-          if (checkpoint > 1) {
-            setStep(checkpoint)
-          }
+          setLocalState(data?.clientData)
         } catch (e) {
           console.error(e)
           handleError()
         }
       }
     }
-    getInfo()
+    if (!clientData) {
+      getInfo()
+    } else {
+      setLocalState(clientData)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token])
+  }, [clientData, token])
 
   useEffect(() => {
     if (userClientData) {
