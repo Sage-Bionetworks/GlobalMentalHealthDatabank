@@ -40,7 +40,7 @@ function FirstCommonConsentSection({
   const CustomRadio = ({ options, onChange }: any) => {
     const { enumOptions } = options
     const _onChange = (event: any) => onChange(event.currentTarget.id)
-    return enumOptions.map((option: any) => {
+    return enumOptions.map((option: any, index: number) => {
       return (
         <div
           className={
@@ -49,6 +49,7 @@ function FirstCommonConsentSection({
               ? 'radio correct'
               : '')
           }
+          key={`quiz-radio-wrapper-${index}`}
         >
           <input
             type="radio"

@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
-import { ThemeProvider, Typography } from '@material-ui/core'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import './styles/style.scss'
 import Home from './components/static/Home'
 import Contact from './components/static/Contact'
 import About from './components/static/About'
@@ -15,20 +9,26 @@ import EligibilityRegistration from './components/registration/EligibilityRegist
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
 import DownloadApp from './components/dashboard/DownloadApp'
-import { TopNav } from './components/widgets/TopNav'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
 import Footer from './components/widgets/Footer'
 import DataRegulation from './components/static/DataRegulation'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
 import Terms from './components/static/Terms'
 import ConsentInfo from './components/static/ConsentInfo'
+import { ThemeProvider, Typography } from '@material-ui/core'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 import { UserDataGroup, SessionData } from './types/types'
 import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
 import { UserService } from './services/user.service'
 import { theme } from './theme'
-import './styles/style.scss'
+import { TopNav } from './components/widgets/TopNav'
 import { ROUTES } from './constants/constants'
 
 function App() {

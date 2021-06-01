@@ -36,9 +36,12 @@ function ArmFlowFour({
   const CustomRadio = ({ options, value, onChange }: any) => {
     const { enumOptions } = options
     const _onChange = (event: any) => onChange(event.currentTarget.id)
-    return enumOptions.map((option: any) => {
+    return enumOptions.map((option: any, index: number) => {
       return (
-        <div className={'quiz-radio-wrapper'}>
+        <div
+          className={'quiz-radio-wrapper'}
+          key={`quiz-radio-wrapper-${index}`}
+        >
           <label>
             <input
               type="radio"
