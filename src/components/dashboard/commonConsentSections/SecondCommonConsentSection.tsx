@@ -59,7 +59,7 @@ function SecondCommonConsentSection({
   const CustomRadioWhatIsThePurpose = ({ options, value, onChange }: any) => {
     const { enumOptions } = options
     const _onChange = (event: any) => onChange(event.currentTarget.id)
-    return enumOptions.map((option: any) => {
+    return enumOptions.map((option: any, index: number) => {
       return (
         <div
           className={
@@ -69,6 +69,7 @@ function SecondCommonConsentSection({
               ? 'radio correct'
               : '')
           }
+          key={`quiz-radio-wrapper-${index}`}
         >
           <input
             type="radio"
@@ -106,7 +107,7 @@ function SecondCommonConsentSection({
   const CustomRadioWhichIsCorrect = ({ options, value, onChange }: any) => {
     const { enumOptions } = options
     const _onChange = (event: any) => onChange(event.currentTarget.id)
-    return enumOptions.map((option: any) => {
+    return enumOptions.map((option: any, index: number) => {
       return (
         <div
           className={
@@ -115,6 +116,7 @@ function SecondCommonConsentSection({
               ? 'radio correct'
               : '')
           }
+          key={`quiz-radio-wrapper-${index}`}
         >
           <input
             type="radio"
@@ -292,7 +294,7 @@ function SecondCommonConsentSection({
                 {t('form.secondCommonConsent.pageThree.description')}
               </Typography>
             </div>
-            <a href={t('form.secondCommonConsent.pageThree.link')}>
+            <a href={`mailto: ${t('form.secondCommonConsent.pageThree.link')}`}>
               <Typography variant="body2">
                 {t('form.secondCommonConsent.pageThree.link')}
               </Typography>
