@@ -8,6 +8,8 @@ export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
 export const SURVEY_IDENTIFIER = 'mindkind'
 export const PAGE_ID_FIELD_NAME = 'page_id'
 export const SIGN_IN_METHOD = 'PHONE'
+export const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
+export const SMS_RESEND_TRIGGER_ENDPOINT = '/v3/auth/resendPhoneVerification'
 
 export const SHARE_SCOPE_PARTNERS = 'sponsors_and_partners'
 export const SHARE_SCOPE_ALL = 'all_qualified_researchers'

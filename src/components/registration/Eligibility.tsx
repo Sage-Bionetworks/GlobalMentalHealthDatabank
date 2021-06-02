@@ -121,6 +121,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     }
   }
 
+  window.scrollTo(0, 0)
+
   switch (step) {
     case 1:
       return (
