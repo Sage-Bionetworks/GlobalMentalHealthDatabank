@@ -15,7 +15,7 @@ export const schemaCountrySelector = {
             'Other',
             'US (Testing only)',
           ],
-          enum: ['UK', 'IN', 'ZA', 'Other', 'US'],
+          enum: ['UK', 'IN', 'ZA', 'OTHER', 'US'],
         },
       },
     },
