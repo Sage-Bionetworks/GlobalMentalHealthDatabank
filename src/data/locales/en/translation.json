@@ -23,7 +23,6 @@
     "submit": "Submit",
     "yes": "Yes",
     "noTakeBack": "No, take me back",
-    "zipCode": "Zip code",
     "continue": "Continue",
     "unitedKingdom": "United Kingdom",
     "unitedStates": "United States",
@@ -629,7 +628,8 @@
     "enterCode": "Please enter your code: ",
     "code": "Code from SMS",
     "phone": "phone",
-    "linkSent": "We just sent a link to: "
+    "linkSent": "We just sent a link to: ",
+    "resendCode": "Resend code"
   },
   "consent": {
     "title": "Consent",

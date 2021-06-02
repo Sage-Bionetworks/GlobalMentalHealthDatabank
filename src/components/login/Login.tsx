@@ -27,6 +27,7 @@ import {
   ENDPOINT,
   SIGN_IN_METHOD,
   ROUTES,
+  PHONE_SIGN_IN_TRIGGER_ENDPOINT,
 } from '../../constants/constants'
 import {
   callEndpoint,
@@ -42,13 +43,36 @@ export interface OwnLoginProps {
 
 export type LoginProps = OwnLoginProps
 
-const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
-
 const FLAGS = {
   unitedKingdom: 'UK',
   india: 'IN',
   southAfrica: 'ZA',
   unitedStates: 'US',
+}
+
+/**
+ * Handle user login on click
+ *
+ * @param {*} clickEvent Userclick event
+ */
+
+export const sendSignInRequest = async (
+  _loginType: string,
+  phoneNumber: string,
+  phoneCountryCode: string,
+  endpoint: string,
+): Promise<any> => {
+  let postData: SignInData
+  postData = {
+    appId: APP_ID,
+    phone: makePhone(phoneNumber, phoneCountryCode),
+  } as SignInDataPhone
+
+  try {
+    return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
+  } catch (e) {
+    throw e
+  }
 }
 
 export const Login: React.FunctionComponent = () => {
@@ -86,32 +110,6 @@ export const Login: React.FunctionComponent = () => {
       push(ROUTES.CONSENT_STEPS)
     } else {
       setError('Error ' + loggedIn.status)
-    }
-  }
-
-  /**
-   * Handle user login on click
-   *
-   * @param {*} clickEvent Userclick event
-   */
-
-  const sendSignInRequest = async (
-    _loginType: string,
-    phoneNumber: string,
-    phoneCountryCode: string,
-    endpoint: string,
-  ): Promise<any> => {
-    let postData: SignInData
-    postData = {
-      appId: APP_ID,
-      phone: makePhone(phoneNumber, phoneCountryCode),
-    } as SignInDataPhone
-
-    try {
-      setError('')
-      return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
-    } catch (e) {
-      throw e
     }
   }
 
