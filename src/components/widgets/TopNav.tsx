@@ -98,19 +98,18 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
 
-        {!props.token && (
-          <NavLink
-            to={ROUTES.ELIGIBILITY}
-            onClick={handleDrawerToggle}
-            className="topnav__link"
-          >
-            <ListItem button className="mobile-menu__item">
-              <Typography variant="h6" className="topnav__text">
-                {t('common.joinStudy')}
-              </Typography>
-            </ListItem>
-          </NavLink>
-        )}
+        <NavLink
+          to={ROUTES.ELIGIBILITY}
+          onClick={handleDrawerToggle}
+          className="topnav__link"
+        >
+          <ListItem button className="mobile-menu__item">
+            <Typography variant="h6" className="topnav__text">
+              {t('common.joinStudy')}
+            </Typography>
+          </ListItem>
+        </NavLink>
+
         {!props.token && (
           <NavLink
             to={ROUTES.SIGNIN}
