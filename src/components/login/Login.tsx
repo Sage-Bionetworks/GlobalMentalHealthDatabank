@@ -27,12 +27,9 @@ import {
   ENDPOINT,
   SIGN_IN_METHOD,
   ROUTES,
+  PHONE_SIGN_IN_TRIGGER_ENDPOINT,
 } from '../../constants/constants'
-import {
-  callEndpoint,
-  makePhone,
-  isValidPhoneNumber,
-} from '../../helpers/utility'
+import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import { useElegibility } from '../registration/context/ElegibilityContext'
@@ -42,13 +39,36 @@ export interface OwnLoginProps {
 
 export type LoginProps = OwnLoginProps
 
-const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
-
 const FLAGS = {
   unitedKingdom: 'UK',
   india: 'IN',
   southAfrica: 'ZA',
   unitedStates: 'US',
+}
+
+/**
+ * Handle user login on click
+ *
+ * @param {*} clickEvent Userclick event
+ */
+
+export const sendSignInRequest = async (
+  _loginType: string,
+  phoneNumber: string,
+  phoneCountryCode: string,
+  endpoint: string,
+): Promise<any> => {
+  let postData: SignInData
+  postData = {
+    appId: APP_ID,
+    phone: makePhone(phoneNumber, phoneCountryCode),
+  } as SignInDataPhone
+
+  try {
+    return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
+  } catch (e) {
+    throw e
+  }
 }
 
 export const Login: React.FunctionComponent = () => {
@@ -86,32 +106,6 @@ export const Login: React.FunctionComponent = () => {
       push(ROUTES.CONSENT_STEPS)
     } else {
       setError('Error ' + loggedIn.status)
-    }
-  }
-
-  /**
-   * Handle user login on click
-   *
-   * @param {*} clickEvent Userclick event
-   */
-
-  const sendSignInRequest = async (
-    _loginType: string,
-    phoneNumber: string,
-    phoneCountryCode: string,
-    endpoint: string,
-  ): Promise<any> => {
-    let postData: SignInData
-    postData = {
-      appId: APP_ID,
-      phone: makePhone(phoneNumber, phoneCountryCode),
-    } as SignInDataPhone
-
-    try {
-      setError('')
-      return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
-    } catch (e) {
-      throw e
     }
   }
 
@@ -204,8 +198,7 @@ export const Login: React.FunctionComponent = () => {
                       event: React.ChangeEvent<{ value: unknown }>,
                     ) => {
                       const value = event.currentTarget.value as any
-                      if (isValidPhoneNumber(value) || !value)
-                        setPhoneNumber(value as any)
+                      setPhoneNumber(value as any)
                     }}
                   />
                 </div>

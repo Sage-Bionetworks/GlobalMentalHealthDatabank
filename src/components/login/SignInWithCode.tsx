@@ -52,6 +52,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
           <div className="icon-wrapper">
             <TextSent width="75" />
           </div>
+
           <div className="header-wrapper">
             <Typography variant="h4">{t('signIn.SMSSent')}</Typography>
           </div>
@@ -66,7 +67,8 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             <Typography variant="body2">{phoneNumber}</Typography>
           </div>
         </div>
-        <form onSubmit={handleOnSubmit}>
+
+        <form onSubmit={handleOnSubmit} className="btm-10">
           <div className="form-group">
             <label htmlFor="smsCode">
               <Typography variant="h6">{t('signIn.enterCode')}</Typography>

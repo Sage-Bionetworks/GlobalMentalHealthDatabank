@@ -167,6 +167,10 @@ ul {
     position: absolute;
     left: calc(50% - 20px);
     margin-top: -70px;
+    .centered {
+      text-align: center;
+      padding: 10px 0;
+    }
   }
 }
 

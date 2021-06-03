@@ -116,10 +116,12 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         return t('common.india')
       case 'US':
         return t('common.unitedStates')
-      case 'Other':
+      case 'OTHER':
         return t('common.other')
     }
   }
+
+  window.scrollTo(0, 0)
 
   switch (step) {
     case 1:
