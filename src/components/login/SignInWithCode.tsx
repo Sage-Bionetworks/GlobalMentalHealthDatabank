@@ -1,24 +1,12 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  Typography,
-  Button,
-  TextField,
-  CircularProgress,
-} from '@material-ui/core'
+import { Typography, Button, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
 
-import {
-  APP_ID,
-  LOGIN_ENDPOINT,
-  ENDPOINT,
-  SIGN_IN_METHOD,
-  SMS_RESEND_TRIGGER_ENDPOINT,
-} from '../../constants/constants'
+import { APP_ID, LOGIN_ENDPOINT } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useElegibility } from '../../components/registration/context/ElegibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import { sendSignInRequest } from './Login'
 
 type SignInWithCodeProps = {
   loggedInByPhoneFn?: Function
@@ -29,7 +17,6 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
 }: SignInWithCodeProps) => {
   const [error, setError] = useState('')
   const [code, setCode] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
 
   const { phoneNumber, whereDoYouLive } = useElegibility()
   const { t } = useTranslation()
@@ -58,22 +45,6 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
     }
   }
 
-  const resendCode = async () => {
-    try {
-      setIsLoading(true)
-      await sendSignInRequest(
-        SIGN_IN_METHOD,
-        phoneNumber,
-        whereDoYouLive,
-        `${ENDPOINT}${SMS_RESEND_TRIGGER_ENDPOINT}`,
-      )
-    } catch (e) {
-      setError(t('eligibility.loginError'))
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   return (
     <div>
       <div>
@@ -96,12 +67,6 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             <Typography variant="body2">{phoneNumber}</Typography>
           </div>
         </div>
-
-        {isLoading && (
-          <div className="loading-icon centered">
-            <CircularProgress color="primary" />
-          </div>
-        )}
 
         <form onSubmit={handleOnSubmit} className="btm-10">
           <div className="form-group">
@@ -133,17 +98,6 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             {t('common.signIn')}
           </Button>
         </form>
-
-        <Button
-          color="primary"
-          variant="text"
-          size="large"
-          className="wide-button"
-          onClick={() => resendCode()}
-          disabled={isLoading}
-        >
-          {t('signIn.resendCode')}
-        </Button>
       </div>
     </div>
   )

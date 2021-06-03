@@ -29,11 +29,7 @@ import {
   ROUTES,
   PHONE_SIGN_IN_TRIGGER_ENDPOINT,
 } from '../../constants/constants'
-import {
-  callEndpoint,
-  makePhone,
-  isValidPhoneNumber,
-} from '../../helpers/utility'
+import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import { useElegibility } from '../registration/context/ElegibilityContext'
@@ -202,8 +198,7 @@ export const Login: React.FunctionComponent = () => {
                       event: React.ChangeEvent<{ value: unknown }>,
                     ) => {
                       const value = event.currentTarget.value as any
-                      if (isValidPhoneNumber(value) || !value)
-                        setPhoneNumber(value as any)
+                      setPhoneNumber(value as any)
                     }}
                   />
                 </div>
