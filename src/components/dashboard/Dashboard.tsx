@@ -16,7 +16,7 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
   token,
 }: DashboardProps) => {
   const [error, setError] = useState()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [userInfo, setUserInfo] =
     useState<LoggedInUserData | undefined>(undefined)
   const { push } = useHistory()
@@ -27,9 +27,8 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
   }
 
   useEffect(() => {
-    let isSubscribed = true
     const getInfo = async () => {
-      if (token && isSubscribed) {
+      if (token) {
         try {
           setIsLoading(true)
           const userInfoResponse = (await UserService.getUserInfo(token)) as any
@@ -40,9 +39,8 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
           ) {
             push(ROUTES.DOWNLOAD)
           }
-          if (isSubscribed) {
-            setUserInfo(userInfoResponse?.data)
-          }
+
+          setUserInfo(userInfoResponse?.data)
         } catch (e) {
           console.error(e)
           setError(e?.message)
@@ -53,16 +51,12 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
     }
 
     getInfo()
-
-    return () => {
-      isSubscribed = false
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token])
 
   return (
     <div className="dashboard" data-cy="page-dashboard">
-      {(isLoading || !userInfo) && !error && (
+      {isLoading && !error && (
         <div className="dashboard--loader">
           <CircularProgress color="primary" />
         </div>
@@ -71,6 +65,12 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
       {error && (
         <div className="dashboard--error">
           <Alert severity="error">{error}</Alert>
+        </div>
+      )}
+
+      {!error && !isLoading && !userInfo && (
+        <div className="dashboard--error">
+          <Alert severity="error">{t('common.connectionProblem')}</Alert>
         </div>
       )}
 

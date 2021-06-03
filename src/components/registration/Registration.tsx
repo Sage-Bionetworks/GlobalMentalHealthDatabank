@@ -18,7 +18,6 @@ import {
   callEndpoint,
   makePhone,
   sendSignInRequest,
-  isValidPhoneNumber,
 } from '../../helpers/utility'
 import useForm from '../useForm'
 import { useElegibility } from './context/ElegibilityContext'
@@ -196,8 +195,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 placeholder="Phone #"
                 aria-label="Phone #"
                 onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                  const value = event.currentTarget.value as any
-                  if (isValidPhoneNumber(value) || !value) handleOnChange(event)
+                  handleOnChange(event)
                 }}
               />
             </div>
