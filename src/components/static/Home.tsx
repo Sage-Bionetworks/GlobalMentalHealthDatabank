@@ -15,6 +15,7 @@ import { ROUTES } from '../../constants/constants'
 
 export const Home: React.FunctionComponent = () => {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <div className="home">
       <div className="home__container">

@@ -3,14 +3,20 @@ import { useTranslation } from 'react-i18next'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
 import { Redirect } from 'react-router-dom'
-
-import { APP_ID, LOGIN_ENDPOINT } from '../../constants/constants'
+import {
+  APP_ID,
+  ROUTES,
+  LOGIN_ENDPOINT,
+  ENDPOINT,
+  SIGN_IN_METHOD,
+  PHONE_SIGN_IN_TRIGGER_ENDPOINT,
+} from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useElegibility } from '../../components/registration/context/ElegibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
-import { ROUTES } from '../../constants/constants'
+import { sendSignInRequest } from './Login'
 
 type SignInWithCodeProps = {
   loggedInByPhoneFn?: Function
@@ -27,6 +33,19 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
 
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
+
+  const resendCode = async () => {
+    try {
+      await sendSignInRequest(
+        SIGN_IN_METHOD,
+        phoneNumber,
+        whereDoYouLive,
+        `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
+      )
+    } catch (e) {
+      setError(t('eligibility.loginError'))
+    }
+  }
 
   async function handleOnSubmit(clickEvent: React.FormEvent<HTMLElement>) {
     clickEvent.preventDefault()
@@ -79,7 +98,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
           </div>
         </div>
 
-        <form onSubmit={handleOnSubmit} className="btm-10">
+        <form onSubmit={handleOnSubmit} className="btm-30">
           <div className="form-group">
             <label htmlFor="smsCode">
               <Typography variant="h6">{t('signIn.enterCode')}</Typography>
@@ -109,6 +128,17 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
             {t('common.signIn')}
           </Button>
         </form>
+
+        <Typography variant="body2">{t('signIn.tryAgain')}</Typography>
+        <Button
+          color="primary"
+          variant="text"
+          size="large"
+          className="wide-button"
+          onClick={() => resendCode()}
+        >
+          {t('signIn.resendCode')}
+        </Button>
       </div>
     </div>
   )

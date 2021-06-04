@@ -633,7 +633,9 @@
     "code": "Code from SMS",
     "phone": "phone",
     "linkSent": "We just sent a link to: ",
-    "haveYouSignedIn": "Have you already signed up for the study?"
+    "haveYouSignedIn": "Have you already signed up for the study?",
+    "resendCode": "Resend code",
+    "tryAgain": "Try again in 5 minutes if you did not receive a code or need a new code."
   },
   "consent": {
     "title": "Consent",
@@ -758,8 +760,10 @@
     "text53": "The MindKind Study Privacy Policy says what information we will collect through the website and participant app. It also says what we will do with this data. You can read it here (Link to privacy policy)."
   },
   "download": {
-    "title": "Download the MindKind app",
-    "description": "The MindKind Study App helps young adults record their daily mental and emotional health. It does not provide medical advice, diagnosis, or treatment.",
+    "title": "Get started with the MindKind App",
+    "description1": "The MindKind Study App helps young adults record their daily mental and emotional health.",
+    "description2": "If you already have the MindKind Study App on your phone you can leave this page and open the App to get started.",
+    "description3": "If you need the App, you can download it to get started",
     "cta": "Download the app"
   }
 }

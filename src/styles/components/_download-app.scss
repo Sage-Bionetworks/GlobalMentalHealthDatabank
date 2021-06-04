@@ -34,7 +34,7 @@
     background: $tertiary-color;
   }
 
-  @include breakpoint('md') {
+  @include breakpoint('xl') {
     position: relative;
     height: calc(100vh - 180px);
     .download__button {

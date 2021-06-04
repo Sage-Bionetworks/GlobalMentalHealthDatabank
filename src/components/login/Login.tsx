@@ -154,13 +154,13 @@ export const Login: React.FunctionComponent = () => {
               <div className="btm-50 text-center">
                 {!didSignUp && (
                   <>
-                    <div className=" btm-20">
+                    <div className=" btm-50">
                       <Typography variant="h4">
                         {t('signIn.haveYouSignedIn')}
                       </Typography>
                     </div>
 
-                    <div className=" btm-20">
+                    <div className=" btm-50">
                       <Button
                         fullWidth
                         color="primary"
@@ -180,7 +180,7 @@ export const Login: React.FunctionComponent = () => {
                       size="large"
                       type="submit"
                       className="wide-button"
-                      onClick={() => (window.location.href = 'eligibility')}
+                      onClick={() => (window.location.href = 'about')}
                     >
                       {t('common.no')}
                     </Button>
