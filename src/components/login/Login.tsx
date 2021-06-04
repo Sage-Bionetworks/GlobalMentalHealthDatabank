@@ -28,12 +28,12 @@ import {
   SIGN_IN_METHOD,
   ROUTES,
   PHONE_SIGN_IN_TRIGGER_ENDPOINT,
+  STAGING,
 } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import { useElegibility } from '../registration/context/ElegibilityContext'
-import { STAGING } from '../../constants/constants'
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
 }
