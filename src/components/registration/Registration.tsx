@@ -196,13 +196,13 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 aria-label="Phone #"
                 onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
                   const { value } = event.target as any
-                  if (value.includes('+')) {
+                  if (!value) {
                     handleOnChange(event)
                   } else {
-                    if (!value) {
+                    if (value.includes('+')) {
                       handleOnChange(event)
                     } else {
-                      event.target.value = `+${event.target.value}`
+                      event.target.value = `+${value}`
                       handleOnChange(event)
                     }
                   }
