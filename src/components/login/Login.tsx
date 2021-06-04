@@ -145,7 +145,6 @@ export const Login: React.FunctionComponent = () => {
                   <CircularProgress color="primary" />
                 </div>
               )}
-
               <div className="btm-50 text-center">
                 <Typography variant="h4">{t('common.signIn')}</Typography>
               </div>
@@ -197,8 +196,16 @@ export const Login: React.FunctionComponent = () => {
                     onChange={(
                       event: React.ChangeEvent<{ value: unknown }>,
                     ) => {
-                      const value = event.currentTarget.value as any
-                      setPhoneNumber(value as any)
+                      const value = event.currentTarget.value as string
+                      if (value.includes('+')) {
+                        setPhoneNumber(value)
+                      } else {
+                        if (!value) {
+                          setPhoneNumber('')
+                        } else {
+                          setPhoneNumber(`+${value}`)
+                        }
+                      }
                     }}
                   />
                 </div>

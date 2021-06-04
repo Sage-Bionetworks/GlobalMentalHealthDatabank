@@ -74,7 +74,8 @@
     "gender": "What is your current gender/gender identity?",
     "selectAll": "(select all that apply)",
     "thanks": "Thank you for your time!",
-    "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
+    "notEligible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
+    "seekingHelp": "If you are seeking help, you can find local resources at this link",
     "back": "Back to home",
     "loginError": "Error attempting login",
     "registerError": "Invalid phone number for your country selection",
@@ -754,7 +755,7 @@
   },
   "download": {
     "title": "Download the MindKind app",
-    "description": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
+    "description": "The MindKind Study App helps young adults record their daily mental and emotional health. It does not provide medical advice, diagnosis, or treatment.",
     "cta": "Download the app"
   }
 }

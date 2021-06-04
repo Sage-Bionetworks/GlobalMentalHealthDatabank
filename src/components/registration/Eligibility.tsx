@@ -687,8 +687,16 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
           <div className="btm-20">
             <Typography variant="body2">
-              {t('eligibility.notElegible')}
+              {t('eligibility.notEligible')}
             </Typography>
+          </div>
+
+          <div className="btm-20">
+            <NavLink to={ROUTES.CONTACT}>
+              <Typography variant="body2">
+                {t('eligibility.seekingHelp')}
+              </Typography>
+            </NavLink>
           </div>
 
           <div className="btm-240">
