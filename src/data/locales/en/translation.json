@@ -22,6 +22,7 @@
     "signUpForAccount": "Sign up for an account",
     "submit": "Submit",
     "yes": "Yes",
+    "no": "No",
     "noTakeBack": "No, take me back",
     "continue": "Continue",
     "unitedKingdom": "United Kingdom",
@@ -29,7 +30,8 @@
     "southAfrica": "South Africa",
     "india": "India",
     "other": "Other",
-    "connectionProblem": "There was a problem with the network. Please try again"
+    "connectionProblem": "There was a problem with the network. Please try again",
+    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment."
   },
   "topnav": {
     "aboutStudy": "About the Study",
@@ -74,7 +76,9 @@
     "gender": "What is your current gender/gender identity?",
     "selectAll": "(select all that apply)",
     "thanks": "Thank you for your time!",
-    "notElegible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
+    "notEligible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
+    "seekingHelp": "If you experience a mental health crisis, contact a doctor or mental health care provider directly. Resources are available on the study website. ",
+    "seekingHelpLink": "Follow this link",
     "back": "Back to home",
     "loginError": "Error attempting login",
     "registerError": "Invalid phone number for your country selection",
@@ -628,7 +632,10 @@
     "enterCode": "Please enter your code: ",
     "code": "Code from SMS",
     "phone": "phone",
-    "linkSent": "We just sent a link to: "
+    "linkSent": "We just sent a link to: ",
+    "haveYouSignedIn": "Have you already signed up for the study?",
+    "resendCode": "Resend code",
+    "tryAgain": "Try again in 5 minutes if you did not receive a code or need a new code."
   },
   "consent": {
     "title": "Consent",
@@ -753,8 +760,10 @@
     "text53": "The MindKind Study Privacy Policy says what information we will collect through the website and participant app. It also says what we will do with this data. You can read it here (Link to privacy policy)."
   },
   "download": {
-    "title": "Download the MindKind app",
-    "description": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
+    "title": "Get started with the MindKind App",
+    "description1": "The MindKind Study App helps young adults record their daily mental and emotional health.",
+    "description2": "If you already have the MindKind Study App on your phone you can leave this page and open the App to get started.",
+    "description3": "If you need the App, you can download it to get started",
     "cta": "Download the app"
   }
 }

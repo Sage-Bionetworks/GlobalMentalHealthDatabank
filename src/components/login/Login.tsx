@@ -28,6 +28,7 @@ import {
   SIGN_IN_METHOD,
   ROUTES,
   PHONE_SIGN_IN_TRIGGER_ENDPOINT,
+  STAGING,
 } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
@@ -76,8 +77,13 @@ export const Login: React.FunctionComponent = () => {
   const [error, setError] = useState('')
   const [isCodeSent, setIsCodeSent] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [didSignUp, setDidSignUp] = useState(false)
 
   const { t } = useTranslation()
+
+  const isTesting =
+    window.location.href.includes('localhost') ||
+    window.location.href.includes(STAGING)
 
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
@@ -145,81 +151,131 @@ export const Login: React.FunctionComponent = () => {
                   <CircularProgress color="primary" />
                 </div>
               )}
-
               <div className="btm-50 text-center">
-                <Typography variant="h4">{t('common.signIn')}</Typography>
-              </div>
-              <form onSubmit={handleLogin}>
-                <div className="btm-50 input--padded--flags">
-                  <Select
-                    variant="outlined"
-                    className="phone-flag"
-                    value={whereDoYouLive}
-                    onChange={(
-                      event: React.ChangeEvent<{ value: unknown }>,
-                    ) => {
-                      setWhereDoYouLive(event.target.value as any)
-                    }}
-                  >
-                    <MenuItem value={FLAGS.unitedKingdom}>
-                      <img
-                        src={uk}
-                        className={'flag-icon'}
-                        alt="United Kingdom"
-                      />
-                    </MenuItem>
-                    <MenuItem value={FLAGS.india}>
-                      <img src={ind} className={'flag-icon'} alt="India" />
-                    </MenuItem>
-                    <MenuItem value={FLAGS.southAfrica}>
-                      <img
-                        src={za}
-                        className={'flag-icon'}
-                        alt="South Africa"
-                      />
-                    </MenuItem>
-                    <MenuItem value={FLAGS.unitedStates}>
-                      <img
-                        src={us}
-                        className={'flag-icon'}
-                        alt="United States"
-                      />
-                    </MenuItem>
-                  </Select>
+                {!didSignUp && (
+                  <>
+                    <div className=" btm-50">
+                      <Typography variant="h4">
+                        {t('signIn.haveYouSignedIn')}
+                      </Typography>
+                    </div>
 
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    autoComplete="phone"
-                    label="Phone #"
-                    type="phone"
-                    value={phoneNumber}
-                    onChange={(
-                      event: React.ChangeEvent<{ value: unknown }>,
-                    ) => {
-                      const value = event.currentTarget.value as any
-                      setPhoneNumber(value as any)
-                    }}
-                  />
-                </div>
-
-                {error && (
-                  <div className="tp-40-neg">
-                    <Alert severity="error">{error}</Alert>
-                  </div>
+                    <div className=" btm-50">
+                      <Button
+                        fullWidth
+                        color="primary"
+                        variant="contained"
+                        size="large"
+                        type="submit"
+                        className="wide-button"
+                        onClick={() => setDidSignUp(true)}
+                      >
+                        {t('common.yes')}
+                      </Button>
+                    </div>
+                    <Button
+                      fullWidth
+                      color="primary"
+                      variant="contained"
+                      size="large"
+                      type="submit"
+                      className="wide-button"
+                      onClick={() => (window.location.href = 'about')}
+                    >
+                      {t('common.no')}
+                    </Button>
+                  </>
                 )}
+              </div>
 
-                <Button
-                  className="wide-button"
-                  color="primary"
-                  variant="contained"
-                  size="large"
-                  type="submit"
-                  onSubmit={handleLogin}
-                >
-                  {t('common.signIn')}
-                </Button>
-              </form>
+              {didSignUp && (
+                <>
+                  <div className="btm-50 text-center">
+                    <Typography variant="h4">{t('common.signIn')}</Typography>
+                  </div>
+                  <form onSubmit={handleLogin}>
+                    <div className="btm-50 input--padded--flags">
+                      <Select
+                        variant="outlined"
+                        className="phone-flag"
+                        value={whereDoYouLive}
+                        onChange={(
+                          event: React.ChangeEvent<{ value: unknown }>,
+                        ) => {
+                          setWhereDoYouLive(event.target.value as any)
+                        }}
+                      >
+                        <MenuItem value={FLAGS.unitedKingdom}>
+                          <img
+                            src={uk}
+                            className={'flag-icon'}
+                            alt="United Kingdom"
+                          />
+                        </MenuItem>
+                        <MenuItem value={FLAGS.india}>
+                          <img src={ind} className={'flag-icon'} alt="India" />
+                        </MenuItem>
+                        <MenuItem value={FLAGS.southAfrica}>
+                          <img
+                            src={za}
+                            className={'flag-icon'}
+                            alt="South Africa"
+                          />
+                        </MenuItem>
+                        {isTesting && (
+                          <MenuItem value={FLAGS.unitedStates}>
+                            <img
+                              src={us}
+                              className={'flag-icon'}
+                              alt="United States"
+                            />
+                          </MenuItem>
+                        )}
+                      </Select>
+
+                      <TextField
+                        fullWidth
+                        variant="outlined"
+                        autoComplete="phone"
+                        label="Phone #"
+                        type="phone"
+                        value={phoneNumber}
+                        onChange={(
+                          event: React.ChangeEvent<{ value: unknown }>,
+                        ) => {
+                          const { value } = event.currentTarget as any
+                          if (!value) {
+                            setPhoneNumber('')
+                          } else {
+                            if (value.includes('+')) {
+                              setPhoneNumber(value)
+                            } else {
+                              setPhoneNumber(`+${value}`)
+                            }
+                          }
+                        }}
+                      />
+                    </div>
+
+                    {error && (
+                      <div className="tp-40-neg">
+                        <Alert severity="error">{error}</Alert>
+                      </div>
+                    )}
+
+                    <Button
+                      className="wide-button"
+                      color="primary"
+                      variant="contained"
+                      size="large"
+                      type="submit"
+                      onSubmit={handleLogin}
+                    >
+                      {t('common.signIn')}
+                    </Button>
+                  </form>
+                </>
+              )}
             </>
           )}
 

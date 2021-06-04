@@ -195,7 +195,17 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
                 placeholder="Phone #"
                 aria-label="Phone #"
                 onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-                  handleOnChange(event)
+                  const { value } = event.target as any
+                  if (!value) {
+                    handleOnChange(event)
+                  } else {
+                    if (value.includes('+')) {
+                      handleOnChange(event)
+                    } else {
+                      event.target.value = `+${value}`
+                      handleOnChange(event)
+                    }
+                  }
                 }}
               />
             </div>

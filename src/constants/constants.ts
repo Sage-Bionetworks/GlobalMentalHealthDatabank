@@ -15,6 +15,8 @@ export const SHARE_SCOPE_ALL = 'all_qualified_researchers'
 export const SUBPOP_GUID = 'wellcome'
 export const HIPAA_SUBPOP_GUID = 'g2mW_YdW70k9lJ4PZQboJD3n'
 
+export const STAGING = 'staging.wtgmhdc.synapse.org'
+
 export const PAGE_ID = {
   WHAT_ARE_WE_STUDYING: 'C01_StudyIntro',
   WHAT_WILL_YOU_ASK: 'C02_StudyAsk',
