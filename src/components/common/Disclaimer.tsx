@@ -1,12 +1,14 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
 
 function Disclaimer() {
+  const { t } = useTranslation()
+
   return (
     <div className="disclaimer">
       <Typography className="disclaimer__text" variant="body2">
-        The MindKind Study is a research study and does not provide medical
-        advice, diagnosis or treatment.
+        {t('common.disclaimer')}
       </Typography>
     </div>
   )
