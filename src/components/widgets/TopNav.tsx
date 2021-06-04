@@ -175,13 +175,13 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         </NavLink>
       </div>
       <div className="topnav-right-section">
-        {!props.token && (
+        {
           <NavLink to={ROUTES.ELIGIBILITY} className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('common.joinStudy')}
             </Typography>
           </NavLink>
-        )}
+        }
         {!props.token && (
           <NavLink to={ROUTES.SIGNIN} className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">

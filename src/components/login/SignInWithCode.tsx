@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
+import { Redirect } from 'react-router-dom'
 
 import { APP_ID, LOGIN_ENDPOINT } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useElegibility } from '../../components/registration/context/ElegibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
+import { useSessionDataState } from '../../AuthContext'
+import { SessionData } from '../../types/types'
+import { ROUTES } from '../../constants/constants'
 
 type SignInWithCodeProps = {
   loggedInByPhoneFn?: Function
@@ -20,6 +24,9 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
 
   const { phoneNumber, whereDoYouLive } = useElegibility()
   const { t } = useTranslation()
+
+  const sessionData: SessionData = useSessionDataState()
+  const { token } = sessionData
 
   async function handleOnSubmit(clickEvent: React.FormEvent<HTMLElement>) {
     clickEvent.preventDefault()
@@ -43,6 +50,10 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
     } catch (e) {
       setError(e.message)
     }
+  }
+
+  if (token) {
+    return <Redirect to={ROUTES.CONSENT_STEPS} push={true} />
   }
 
   return (

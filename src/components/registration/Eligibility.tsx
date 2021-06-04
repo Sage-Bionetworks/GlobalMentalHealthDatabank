@@ -40,6 +40,9 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [summaryEnglishCollapse, setSummaryEnglishCollapse] = useState(true)
   const [summaryAgeCollapse, setSummaryAgeCollapse] = useState(true)
 
+  const { history } = props
+  const { search } = history.location
+
   const {
     setIsEligible,
     setHowDidYouHear,
@@ -173,8 +176,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 2:
-      if (!props.history.location.search.includes('howDidYouHear'))
-        props.history.push({
+      if (!search.includes('howDidYouHear'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=howDidYouHear',
         })
@@ -214,8 +217,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 3:
-      if (!props.history.location.search.includes('where'))
-        props.history.push({
+      if (!search.includes('where'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=where',
         })
@@ -261,8 +264,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 4:
-      if (!props.history.location.search.includes('android'))
-        props.history.push({
+      if (!search.includes('android'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=android',
         })
@@ -302,8 +305,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       )
 
     case 5:
-      if (!props.history.location.search.includes('english'))
-        props.history.push({
+      if (!search.includes('english'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=english',
         })
@@ -348,8 +351,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 6:
-      if (!props.history.location.search.includes('ageRange'))
-        props.history.push({
+      if (!search.includes('ageRange'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=ageRange',
         })
@@ -388,8 +391,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 7:
-      if (!props.history.location.search.includes('gender'))
-        props.history.push({
+      if (!search.includes('gender'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=gender',
         })
@@ -455,8 +458,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 8:
-      if (!props.history.location.search.includes('benefit'))
-        props.history.push({
+      if (!search.includes('benefit'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=benefit',
         })
@@ -496,8 +499,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       )
 
     case 9:
-      if (!props.history.location.search.includes('summary'))
-        props.history.push({
+      if (!search.includes('summary'))
+        history.push({
           pathname: ROUTES.ELIGIBILITY,
           search: '?step=summary',
         })
@@ -675,8 +678,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }
 
   if (step > MAX_STEPS) {
-    if (!props.history.location.search.includes('not-eligible'))
-      props.history.push({
+    if (!search.includes('not-eligible'))
+      history.push({
         pathname: ROUTES.ELIGIBILITY,
         search: '?step=not-eligible',
       })
@@ -692,11 +695,12 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
 
           <div className="btm-20">
-            <NavLink to={ROUTES.CONTACT}>
-              <Typography variant="body2">
-                {t('eligibility.seekingHelp')}
-              </Typography>
-            </NavLink>
+            <Typography variant="body2">
+              {t('eligibility.seekingHelp')}
+              <NavLink to={ROUTES.CONTACT}>
+                {t('eligibility.seekingHelpLink')}
+              </NavLink>
+            </Typography>
           </div>
 
           <div className="btm-240">
