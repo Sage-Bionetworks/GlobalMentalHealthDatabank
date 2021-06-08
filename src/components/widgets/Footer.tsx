@@ -51,7 +51,7 @@ export const Footer: React.FunctionComponent = () => {
               {t('footer.disclaimer')}
             </div>
             <div className="footer__column">{t('footer.copyright')}</div>
-            <div className="footer__column">
+            <div className="footer__column padleft">
               <NavLink
                 to={ROUTES.DATA_REGULATION}
                 className="footer__navlink bottom"
@@ -72,6 +72,7 @@ export const Footer: React.FunctionComponent = () => {
                 {isMobile ? t('footer.terms').split(' ')[0] : t('footer.terms')}
               </NavLink>
             </div>
+            <div className="footer__column">{t('terms.text33')}</div>
           </div>
         </div>
       </div>

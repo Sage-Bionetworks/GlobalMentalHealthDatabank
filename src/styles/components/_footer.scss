@@ -99,13 +99,13 @@
     justify-content: space-between;
     padding: 0 25px 15px;
     width: 100%;
-    div:last-child {
+    .padleft {
       padding-left: 25px;
     }
     @include breakpoint('md') {
       width: 60%;
       align-content: space-between;
-      div:last-child {
+      .padleft {
         padding-left: 0;
       }
     }
