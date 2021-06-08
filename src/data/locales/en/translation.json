@@ -77,7 +77,7 @@
     "selectAll": "(select all that apply)",
     "thanks": "Thank you for your time!",
     "notEligible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
-    "seekingHelp": "If you experience a mental health crisis, contact a doctor or mental health care provider directly. Resources are available on the study website. ",
+    "seekingHelp": "If you have concerns about your mental health or wellbeing, contact a doctor or mental health care provider directly. Resources are available on the study website.",
     "seekingHelpLink": "Follow this link",
     "back": "Back to home",
     "loginError": "Error attempting login",
@@ -668,7 +668,7 @@
     },
     "thing4": {
       "title": "Who can join?",
-      "text": " You can join the study if you meet ALL of the following: Are ages 16-23 from the UK or ages 18-23 from India and South Africa. Have an Android phone. Live in the UK, India, or South Africa. Can read English."
+      "text": " You can join the study if you meet ALL of the following: Are ages 16-24 from the UK or ages 18-24 from India and South Africa. Have an Android phone. Live in the UK, India, or South Africa. Can read English."
     },
     "thing5": {
       "title": "MindKind Study App",
