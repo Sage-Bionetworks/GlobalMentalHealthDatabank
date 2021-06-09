@@ -61,7 +61,8 @@
     "settings": "Account Settings",
     "login": "Sign in",
     "join": "Join the Study",
-    "consent": "Consent"
+    "consent": "Consent",
+    "contactEmail": "Contact: MindKindSupport@sagebionetworks.org"
   },
   "eligibility": {
     "begin": "Begin",
@@ -546,11 +547,11 @@
         }
       },
       "unitedKingdom": {
-        "title": "Local Resources in the UK",
-        "text1": " Samaritans UK is available for emotional support.",
-        "text2": "The Samaritans UK hotline is available 24/7.",
-        "text3": " For English, call 116 123 For Welsh, call l 0808 164 0123",
-        "text4": " You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
+        "title": "Local Resources in the United Kingdom",
+        "text1": "Young Minds provides support to young people in crisis in the UK.",
+        "text2": "If you need urgent help, text YM to 85258.",
+        "text3": "All texts are answered by trained volunteers, with support from experienced clinical supervisors.",
+        "text4": "Texts are free from EE, O2, Vodafone, 3, Virgin Mobile, BT Mobile, GiffGaff, Tesco Mobile and Telecom Plus.",
         "link": {
           "text": "Visit Website",
           "url": "https://www.samaritans.org/"

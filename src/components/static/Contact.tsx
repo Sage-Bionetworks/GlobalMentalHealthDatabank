@@ -77,7 +77,7 @@ function Contact() {
           {t('contact.localResources.unitedKingdom.text4')}
         </Typography>
         <a
-          className="button small mb-150"
+          className="button small btm-50"
           href={t(t('contact.localResources.unitedKingdom.link.url'))}
           target="_blank"
           rel="noopener noreferrer"

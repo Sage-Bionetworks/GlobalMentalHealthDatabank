@@ -31,8 +31,8 @@ export const Footer: React.FunctionComponent = () => {
                 </NavLink>
               </Toolbar>
             </div>
-            <div className="footer__column">
-              <Toolbar className="footer__toolbar">
+            <div className="footer__column right-column">
+              <Toolbar className="footer__toolbar right-column">
                 <NavLink to={ROUTES.ELIGIBILITY} className="footer__navlink">
                   {t('footer.join')}
                 </NavLink>
@@ -50,8 +50,8 @@ export const Footer: React.FunctionComponent = () => {
             <div className="footer__disclaimer__desktop">
               {t('footer.disclaimer')}
             </div>
-            <div className="footer__column">{t('footer.copyright')}</div>
-            <div className="footer__column padleft">
+            <div className="footer__column btm-10">{t('footer.copyright')}</div>
+            <div className="footer__column">
               <NavLink
                 to={ROUTES.DATA_REGULATION}
                 className="footer__navlink bottom"
@@ -68,11 +68,11 @@ export const Footer: React.FunctionComponent = () => {
                   : t('footer.privacy')}
               </NavLink>
               <span className="separator">|</span>
-              <NavLink to={ROUTES.TERMS} className="footer__navlink bottom">
+              <NavLink className="footer__navlink bottom" to={ROUTES.TERMS}>
                 {isMobile ? t('footer.terms').split(' ')[0] : t('footer.terms')}
               </NavLink>
             </div>
-            <div className="footer__column">{t('terms.text33')}</div>
+            <div className="footer__column">{t('footer.contactEmail')}</div>
           </div>
         </div>
       </div>
