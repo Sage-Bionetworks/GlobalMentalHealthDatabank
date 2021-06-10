@@ -154,13 +154,13 @@ export const Login: React.FunctionComponent = () => {
               <div className="btm-50 text-center">
                 {!didSignUp && (
                   <>
-                    <div className=" btm-50">
+                    <div className="btm-50">
                       <Typography variant="h4">
                         {t('signIn.haveYouSignedIn')}
                       </Typography>
                     </div>
 
-                    <div className=" btm-50">
+                    <div className="btm-30">
                       <Button
                         fullWidth
                         color="primary"
