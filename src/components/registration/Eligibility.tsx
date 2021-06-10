@@ -111,7 +111,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   const getCountryNameFromCountryCode = (countryCode: string) => {
     switch (countryCode) {
-      case 'UK':
+      case 'GB':
         return t('common.unitedKingdom')
       case 'ZA':
         return t('common.southAfrica')
