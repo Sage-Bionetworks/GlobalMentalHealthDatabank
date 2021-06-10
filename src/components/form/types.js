@@ -1,5 +1,5 @@
 export const COUNTRIES = {
-  UK: 'GB',
+  UK: 'UK',
   IN: 'IN',
   SOUTH_AFRICA: 'ZA',
   OTHER: 'OTHER',

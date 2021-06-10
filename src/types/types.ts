@@ -34,7 +34,7 @@ export type UserDataGroup =
   | 'youth_informed'
   | 'hybrid'
   | 'participant_choice'
-  | 'GB'
+  | 'UK'
   | 'ZA'
   | 'IN'
   | 'lived_experience_yes'
