@@ -7,7 +7,7 @@ import {
   StringDictionary,
   SessionData,
 } from '../types/types'
-import { APP_ID, SESSION_NAME } from '../constants/constants'
+import { APP_ID, SESSION_NAME, COUNTRY_CODES } from '../constants/constants'
 import i18n from 'i18next'
 import { useState } from 'react'
 
@@ -58,8 +58,17 @@ export const callEndpoint = async <T>(
   return { status: response.status, data: result, ok: response.ok }
 }
 
+const validateRegionCodeForUkOnBridge = (regionCode?: string) => {
+  if (!regionCode) return '0'
+  if (regionCode === COUNTRY_CODES.UK) return 'GB'
+  return regionCode
+}
+
 export const makePhone = (phone: string, regionCode?: string): Phone => {
-  return { number: phone, regionCode: regionCode || '0' }
+  return {
+    number: phone,
+    regionCode: validateRegionCodeForUkOnBridge(regionCode),
+  }
 }
 
 export const getSession = (): SessionData | undefined => {
