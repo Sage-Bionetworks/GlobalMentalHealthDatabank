@@ -70,3 +70,11 @@ export const ROUTES = {
   DATA_REGULATION: '/data-regulation',
   LOGOUT: '/logout',
 }
+
+export const COUNTRY_CODES = {
+  UK: 'UK',
+  IN: 'IN',
+  SOUTH_AFRICA: 'ZA',
+  OTHER: 'OTHER',
+  US: 'US',
+}

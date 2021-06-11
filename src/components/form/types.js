@@ -1,11 +1,3 @@
-export const COUNTRIES = {
-  UK: 'GB',
-  IN: 'IN',
-  SOUTH_AFRICA: 'ZA',
-  OTHER: 'OTHER',
-  US: 'US',
-}
-
 export const PARTICIPATE_OPTIONS = {
   ANSWER_SURVEY_QUESTIONS: 'Answer survey questions',
   IN_PERSON_VISITS: 'Complete in-person visits',

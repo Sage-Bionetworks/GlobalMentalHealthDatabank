@@ -5,14 +5,14 @@ import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
-import { COUNTRIES, FORM_IDS } from '../form/types'
+import { FORM_IDS } from '../form/types'
 import Separator from '../static/Separator'
 import { useElegibility } from './context/ElegibilityContext'
 import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
-import { GENDERS, ROUTES } from '../../constants/constants'
+import { GENDERS, ROUTES, COUNTRY_CODES } from '../../constants/constants'
 
 const MAX_STEPS: number = 9
 
@@ -69,7 +69,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     setErrorMessage('')
     if (step > MAX_STEPS) {
       if (
-        currentEligibilityChoices.userLocation !== COUNTRIES.OTHER &&
+        currentEligibilityChoices.userLocation !== COUNTRY_CODES.OTHER &&
         currentEligibilityChoices.hasAndroid &&
         validateAgeRange(
           currentEligibilityChoices.userLocation,
@@ -91,7 +91,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     //Check if age is 18 to 24 years old, or 16-24 years old if it's in the United Kingdom
     if (!location || !age) return false
     if (
-      location === COUNTRIES.UK &&
+      location === COUNTRY_CODES.UK &&
       !(
         currentEligibilityChoices.age >= 16 &&
         currentEligibilityChoices.age <= 24
@@ -99,7 +99,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     )
       return false
     if (
-      location !== COUNTRIES.UK &&
+      location !== COUNTRY_CODES.UK &&
       !(
         currentEligibilityChoices.age >= 18 &&
         currentEligibilityChoices.age <= 24
@@ -111,7 +111,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   const getCountryNameFromCountryCode = (countryCode: string) => {
     switch (countryCode) {
-      case 'GB':
+      case 'UK':
         return t('common.unitedKingdom')
       case 'ZA':
         return t('common.southAfrica')
