@@ -66,10 +66,11 @@
   },
   "eligibility": {
     "begin": "Begin",
-    "thankYouForYourInterest": "Thank you for your interest in the MindKind Study!",
+    "welcomeToMindKind": "Welcome to MindKind!",
     "weHaveAFewQuestions": "We have a few questions for you to help get us started.",
     "howDidYouHear": "How did you hear about us?",
     "benefit": "Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?",
+    "letsMakeSure": "First, let's make sure you are eligible to join the study.",
     "where": "Where do you currently live?",
     "android": "Do you have access to an Android smart phone?",
     "english": "Are you comfortable reading and writing in English?",
@@ -93,13 +94,13 @@
   },
   "form": {
     "firstCommonConsent": {
-      "getAnswers": "We are trying to answer these questions:",
-      "section1": "Are young people willing to use an app to collect information (data) about their mental health? If so, will they use it for 3 months?",
-      "section2": "Are young people willing to share that data for health research? If so, under what conditions?",
+      "weWantToLearn": "Together, we will learn how young people want to share information with researchers on their emotional health. We want to learn from you:",
+      "section1": "What information are you willing to share with researchers about your emotional health?",
+      "section2": "How much control do you want over how your information is collected, managed, or used by researchers?",
       "section3": {
-        "section1": "This study is being conducted by a team of scientists in South Africa, India, the United Kingdom and the United States.  It is funded by Wellcome and led by Dr. Lara Mangravite in the United States.  You can ",
-        "link": "learn more about our team",
-        "section2": "of researchers on the study website"
+        "section1": "We  will gather this information from thousands of young people across the world. We will use it to build a program where young people can learn from each other how  to manage their emotional health. This study is being conducted by a team of scientists in South Africa, India, the United Kingdom, and the United States. You can learn more about our",
+        "link": "research team",
+        "section2": "on the study website."
       },
       "whatWillYouAsk": "What will you ask me to do?",
       "step1": "1. Finish reading this consent. Ask any questions you have. Sign up.",
