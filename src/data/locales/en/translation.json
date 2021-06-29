@@ -102,24 +102,16 @@
         "section2": "of researchers on the study website"
       },
       "whatWillYouAsk": "What will you ask me to do?",
-      "step1": "1. Finish reading this consent. Ask any questions you have. Sign up.",
-      "step2": "2. Install the MindKind Study App on your phone.",
-      "step3": "3. Open the MindKind Study App to take part.",
-      "week1": "Week 1: answer questions about your health and background. It should take about 15 minutes. You can skip any questions you do not wish to answer.",
-      "week2": "Week 2 - Week 12: answer one or two surveys about your wellbeing. They should take less than 10 minutes each. You can skip any questions you do not wish to answer.",
-      "also": "Also! We will ask for your permission to collect data directly from your phone, like screen-time and step count. We will NEVER collect your exact location. We will NEVER collect what you say or type outside of the app (voice memos, text messages, emails, etc.). If you don’t want to share data from your phone with us that’s okay -- you can still participate in the rest of study.",
+      "step1": "1. Download and install the free MindKind Study App on your phone.",
+      "step2": "2. Use the app to answer general questions about yourself - this should take about 15 minutes.",
+      "step3": "3. Use the app to record your mental and emotional wellbeing for 3 months - less than 10 minutes a day.",
       "quiz": "Which of the following will you be asked to do?",
       "next": "Next",
       "answer": "This study will only require you to answer weekly survey questions.",
       "dataCollection": "Data Collection, Storage & Privacy",
-      "yourData": "Your study data is:",
-      "yourDataApp": "The data you share with us in the MindKind Study App and",
-      "yourDataPhone": "The data you give us permission to collect from your phone.",
-      "weEncrypt": "We will encrypt your study data.",
-      "weTransfer": "We will transfer it to our server.",
-      "replaceName": "Once we get your study data, we will replace your name with a random code.",
-      "combineData": "We will combine your coded study data with coded data from the other people in the study.",
-      "storeCloud": "We store all of the coded study data on a secure cloud server.",
+      "dataCollectionEncrypted": "Your data will be encrypted and trasferred to a secure cloud server in the U.S.",
+      "dataCollectionIdentity": "Your identity will not be stored with your data.",
+      "dataCollectionCombined": "Your study data, without your name, will be combined with data from other people in the study.",
       "transferAndRights": "Transfer of Data & your data rights.",
       "transferAway": "We will transfer your study data out of your home country.",
       "transferToUS": "We may transfer your study data anywhere in the world, including to the United States.",
@@ -175,9 +167,13 @@
       "pageOne": {
         "risks&benefit": "Potential Risks & Benefits",
         "risks": "Potential Risks",
-        "riskDescription": "Answering questions about your mental health could be tiring, frustrating, boring or may make you feel uncomfortable. \nWe will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens. \nThere may be other risks to participating that we do not know about yet. We will tell you if we learn of any risks that might change your mind about taking part in this study. ",
+        "risk1": "Answering mental health questions could be tiring, frustrating, boring, or make you feel uncomfortable",
+        "risk2": " We will do our best to keep your information safe, but your data could be hacked. We will tell you if this happens.",
+        "risk3": "If we learn of any risks that might change your mind about taking part in this study we will tell you.",
         "benefits": "Potential Benefits",
-        "benefitDescription": "You may not personally benefit from taking part in this study. \nYou may be contributing to valuable research. \nYou may help researchers better understand how young adults can manage their mental health."
+        "benefit1": "You may not personally benefit from taking part in this study.",
+        "benefit2": "Thinking about your mental health may help you better understand yourself.",
+        "benefit3": "You may help researchers better understand how young adults can manage their mental health."
       },
       "pageTwo": {
         "costs&payment": "Costs & Payment",
@@ -185,8 +181,10 @@
       },
       "pageThree": {
         "notMedicalCare": "Not Medical Care",
-        "description": "This is a research study. It is NOT treatment for mental health. \n\n We will not monitor the MindKind Study App in real time. \n\nIf you experience a mental health crisis, contact a doctor or mental health care provider directly. Resources are available on the study website (Link to Resources page on study website) \n\nIf you have questions about the study, you can reach us by email at: ",
-        "link": "MindKindSupport@sagebionetworks.org"
+        "description1": "This is a research study. It is NOT treatment for mental health. \n\n We will not monitor the MindKind Study App in real time. \n\nIf you experience a mental health crisis, contact a doctor or mental health care provider directly.",
+        "description2": "are available on the study website. \n\nIf you have questions about the study, you can reach us by email at:",
+        "email": "MindKindSupport@sagebionetworks.org",
+        "link": "Resources"
       },
       "pageFour": {
         "title": "What is the purpose of this study?",
@@ -197,7 +195,10 @@
       },
       "pageFive": {
         "leaving": "Leaving the Study",
-        "description": "Joining this study is voluntary.\n If you join, you may leave this study (withdraw) at any time and for any reason.\n If you withdraw, you can ask us to delete all your study data.\n If you withdraw without asking us to delete your data, then we will continue to use the data we have already collected but we will not collect any new data from you."
+        "description1": "Joining this study is voluntary.",
+        "description2": " You may leave this study at any time for any reason.",
+        "description3": "If you withdraw, you can ask us to delete all of your study data.",
+        "description4": "If you withdraw without asking us to delete your data, we will continue to use data already collected but will not collect any new data from you."
       },
       "pageSix": {
         "title": "Which is correct?",

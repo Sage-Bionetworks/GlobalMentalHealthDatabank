@@ -130,23 +130,6 @@ function FirstCommonConsentSection({
             <Typography variant="h6">
               {t('form.firstCommonConsent.step3')}
             </Typography>
-            <ul>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.week1')}
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.week2')}
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.also')}
-                </Typography>
-              </li>
-            </ul>
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK_QUIZ)}
@@ -223,36 +206,19 @@ function FirstCommonConsentSection({
               {t('form.firstCommonConsent.dataCollection')}
             </Typography>
 
-            <Typography variant="h6">
-              {t('form.firstCommonConsent.yourData')}
-            </Typography>
-            <ul>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.yourDataApp')}
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.yourDataPhone')}
-                </Typography>
-              </li>
-            </ul>
-            <div>
+            <div className="btm-10">
               <Typography variant="body2" className="bottom-space">
-                {t('form.firstCommonConsent.weEncrypt')}
+                {t('form.firstCommonConsent.dataCollectionEncrypted')}
               </Typography>
+            </div>
+            <div className="btm-10">
               <Typography variant="body2" className=" bottom-space">
-                {t('form.firstCommonConsent.weTransfer')}
+                {t('form.firstCommonConsent.dataCollectionIdentity')}
               </Typography>
+            </div>
+            <div className="btm-10">
               <Typography variant="body2" className="bottom-space">
-                {t('form.firstCommonConsent.replaceName')}
-              </Typography>
-              <Typography variant="body2" className="bottom-space">
-                {t('form.firstCommonConsent.combineData')}
-              </Typography>
-              <Typography variant="body2" className="bottom-space">
-                {t('form.firstCommonConsent.storeCloud')}
+                {t('form.firstCommonConsent.dataCollectionCombined')}
               </Typography>
             </div>
             <NavigationArrows
