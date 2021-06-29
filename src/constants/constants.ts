@@ -71,6 +71,15 @@ export const ROUTES = {
   LOGOUT: '/logout',
 }
 
+export const MENTAL_HEALTH_EXPERIENCE = {
+  HAS_INTERFERED: 'My mental health has interfered with my daily life',
+  RECEIVED_SUPPORT:
+    'I have received support (outside my friends and family) for my mental health',
+  COULD_BENEFIT: 'I could have benefited from support for my mental health.',
+  NOT_EXPERIENCED:
+    'I have not experienced any significant mental health challenges',
+}
+
 export const COUNTRY_CODES = {
   UK: 'UK',
   IN: 'IN',

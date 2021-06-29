@@ -7,8 +7,8 @@ type ElegibilityState = {
   setIsEligible: (state: boolean) => void
   howDidYouHear: string
   setHowDidYouHear: (state: string) => void
-  everBenefitedFromTreatment: boolean
-  setEverBenefitedFromTreatment: (state: boolean) => void
+  mentalHealthExperience: object
+  setMentalHealthExperience: (state: object) => void
   whereDoYouLive: string
   setWhereDoYouLive: (state: string) => void
   doYouHaveAnAndroid: string
@@ -28,8 +28,8 @@ const ElegibilityContext = createContext<ElegibilityState>({
   setIsEligible: (state: boolean) => {},
   howDidYouHear: '',
   setHowDidYouHear: (state: string) => {},
-  everBenefitedFromTreatment: false,
-  setEverBenefitedFromTreatment: (state: boolean) => {},
+  mentalHealthExperience: {},
+  setMentalHealthExperience: (state: object) => {},
   whereDoYouLive: '',
   setWhereDoYouLive: (state: string) => {},
   doYouHaveAnAndroid: '',
@@ -50,8 +50,7 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
   const [isEligible, setIsEligible] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState('')
   const [howDidYouHear, setHowDidYouHear] = useState('')
-  const [everBenefitedFromTreatment, setEverBenefitedFromTreatment] =
-    useState(false)
+  const [mentalHealthExperience, setMentalHealthExperience] = useState({})
   const [whereDoYouLive, setWhereDoYouLive] = useState('')
   const [doYouHaveAnAndroid, setDoYouHaveAnAndroid] = useState('')
   const [understandEnglish, setUnderstandEnglish] = useState(false)
@@ -65,8 +64,8 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
     setPhoneNumber,
     howDidYouHear,
     setHowDidYouHear,
-    everBenefitedFromTreatment,
-    setEverBenefitedFromTreatment,
+    mentalHealthExperience,
+    setMentalHealthExperience,
     whereDoYouLive,
     setWhereDoYouLive,
     doYouHaveAnAndroid,

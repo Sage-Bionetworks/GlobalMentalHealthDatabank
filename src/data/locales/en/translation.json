@@ -69,7 +69,7 @@
     "thankYouForYourInterest": "Thank you for your interest in the MindKind Study!",
     "weHaveAFewQuestions": "We have a few questions for you to help get us started.",
     "howDidYouHear": "How did you hear about us?",
-    "benefit": "Have you ever felt you could have benefited / did benefit from access to support for anxiety or depression?",
+    "mentalHealthExperience": "Which of these statements best describe your experiences with mental health?",
     "where": "Where do you currently live?",
     "android": "Do you have access to an Android smart phone?",
     "english": "Are you comfortable reading and writing in English?",
@@ -87,7 +87,7 @@
     "whyAsk": "We are asking you for your mobile number to make this consent process easier and faster for you. We will not keep your number if you decide not to join MindKind. If you do join, we will store your phone number securely. It will be kept separately from your data to protect your identity. We will not share your number with anyone. To confirm your number we will send you an SMS. Message and data rates may apply.",
     "myPhone": "My phone number is: ",
     "createAccount": "Sign Up",
-    "pleaseReview": "Please review your answer to ensure they are correct.",
+    "pleaseReview": "Please review your answers to ensure they are correct.",
     "restart": "Start over",
     "next": "Next"
   },

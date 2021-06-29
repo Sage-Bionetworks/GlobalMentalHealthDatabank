@@ -36,7 +36,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 }: RegistrationProps) => {
   const {
     howDidYouHear,
-    everBenefitedFromTreatment,
+    mentalHealthExperience,
     whereDoYouLive,
     doYouHaveAnAndroid,
     understandEnglish,
@@ -95,9 +95,9 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         break
     }
 
-    if (everBenefitedFromTreatment)
-      dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
-    else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
+    // if (mentalHealthExperience)
+    //   dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
+    // else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
 
     dataGroups.push(whereDoYouLive as UserDataGroup)
 
@@ -108,7 +108,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       clientData: {
         consentModel,
         howDidYouHear,
-        everBenefitedFromTreatment,
+        mentalHealthExperience,
         whereDoYouLive,
         doYouHaveAnAndroid,
         understandEnglish,

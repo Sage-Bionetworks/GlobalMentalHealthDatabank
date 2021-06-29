@@ -26,7 +26,6 @@ export const FORM_IDS = {
   AGE_VERIFY: 'ageVerify',
   COUNTRY_SELECTOR: 'countrySelector',
   ANDROID_VERIFY: 'androidVerify',
-  SUPPORT_VERIFY: 'supportVerify',
   HOW_DID_YOU_HEAR: 'howDidYouHear',
   UNDERSTANDS_ENGLISH: 'understandsEnglish',
   HOW_RESEARCHERS_ACCESS: 'howResearchersAccess',
@@ -34,4 +33,5 @@ export const FORM_IDS = {
   WHAT_IS_THE_PURPOSE: 'whatIsThePurpose',
   WHICH_IS_CORRECT: 'whichIsCorrect',
   GENDER: 'gender',
+  MENTAL_HEALTH_EXPERIENCE: 'mentalHealthExperience',
 }
