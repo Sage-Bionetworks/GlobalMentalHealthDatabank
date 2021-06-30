@@ -95,9 +95,13 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         break
     }
 
-    // if (mentalHealthExperience)
-    //   dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
-    // else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
+    if (
+      !mentalHealthExperience.includes(
+        'I have not experienced any significant mental health challenges',
+      )
+    )
+      dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
+    else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
 
     dataGroups.push(whereDoYouLive as UserDataGroup)
 

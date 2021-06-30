@@ -509,7 +509,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 }
               }}
               onSubmit={(event: any) => {
-                console.log('Event', event)
                 const selectedOption = event.formData.mentalHealthExperience
                 if (selectedOption && selectedOption.length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
