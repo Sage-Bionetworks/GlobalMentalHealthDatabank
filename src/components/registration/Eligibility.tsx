@@ -13,6 +13,7 @@ import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
 import { GENDERS, ROUTES, COUNTRY_CODES } from '../../constants/constants'
+import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
 import { type } from 'os'
 
 const MAX_STEPS: number = 9
@@ -132,9 +133,12 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ResponsiveStepWrapper variant="card">
           <div className="quiz-wrapper">
-            <Typography variant="h3">
-              {t('eligibility.welcomeToMindKind')}
-            </Typography>
+            <LogoNoText className="logo btm-20" />
+            <div className="btm-30">
+              <Typography variant="h3">
+                {t('eligibility.welcomeToMindKind')}
+              </Typography>
+            </div>
 
             <div className="btm-20">
               <Typography variant="h6">
@@ -142,7 +146,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               </Typography>
             </div>
 
-            <div className="ml-20">
+            <div className="ml-20 btm-20">
               <ul>
                 <li>
                   <Typography variant="body2">
@@ -160,7 +164,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
             <div className="btm-240">
               <Typography variant="body2">
                 {t('form.firstCommonConsent.section3.section1')}{' '}
-                <a className="underlined-link" href={ROUTES.RESEARCH}>
+                <a href={ROUTES.RESEARCH}>
                   {t('form.firstCommonConsent.section3.link')}
                 </a>{' '}
                 {t('form.firstCommonConsent.section3.section2')}
