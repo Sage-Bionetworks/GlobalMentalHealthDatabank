@@ -1,3 +1,5 @@
+import { MENTAL_HEALTH_EXPERIENCE } from '../../constants/constants'
+
 export const schemaMentalHealthExperience = {
   type: 'object',
   properties: {
@@ -7,10 +9,10 @@ export const schemaMentalHealthExperience = {
       items: {
         type: 'string',
         enum: [
-          'My mental health has interfered with my daily life',
-          'I have received support (outside my friends and family) for my mental health',
-          'I could have benefited from support for my mental health.',
-          'I have not experienced any significant mental health challenges',
+          MENTAL_HEALTH_EXPERIENCE.HAS_INTERFERED,
+          MENTAL_HEALTH_EXPERIENCE.RECEIVED_SUPPORT,
+          MENTAL_HEALTH_EXPERIENCE.COULD_BENEFIT,
+          MENTAL_HEALTH_EXPERIENCE.NOT_EXPERIENCED,
         ],
       },
       uniqueItems: true,

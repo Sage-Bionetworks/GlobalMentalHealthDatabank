@@ -12,6 +12,7 @@ import {
   ENDPOINT,
   PAGE_ID_FIELD_NAME,
   PAGE_ID,
+  MENTAL_HEALTH_EXPERIENCE,
 } from '../../constants/constants'
 import { RegistrationData, UserDataGroup } from '../../types/types'
 import {
@@ -96,9 +97,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     }
 
     if (
-      !mentalHealthExperience.includes(
-        'I have not experienced any significant mental health challenges',
-      )
+      !mentalHealthExperience.includes(MENTAL_HEALTH_EXPERIENCE.NOT_EXPERIENCED)
     )
       dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
     else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
