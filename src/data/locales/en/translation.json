@@ -214,7 +214,14 @@
       "pageEight": {
         "summary": "Summary",
         "description1": "The purpose of the MindKind Study is to understand whether, and how, young adults are willing to use a mobile App to self-manage and share their data regarding their mental health.",
-        "description2": 
+        "description2": "I can choose whether or not to participate. If I choose to participate, I can change my mind at any time.",
+        "description3": "This is a research study, not medical care. My responses will not be monitored in real time.",
+        "description4": "I am not expected to personally benefit from the study.",
+        "description5": "I will use the MindKind Study App to respond to questions about my mental health and wellbeing and can contribute data directly from my phone.",
+        "description6": "My information will be transferred to the United States and stored securely.",
+        "description7": "Researchers will use my information for research. If I give my permission, they may share data with other researchers for future research.",
+        "description8": "I have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.",
+        "description9": "I can contact the study team with any questions or concerns related to the MindKind Study."
       },
       "ranking": {
         "title": "Voting Screen",
