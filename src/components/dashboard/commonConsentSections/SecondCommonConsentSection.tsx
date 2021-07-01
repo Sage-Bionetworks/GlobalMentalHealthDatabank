@@ -494,7 +494,7 @@ function SecondCommonConsentSection({
 
             <div className="form-text-content">
               <Typography variant="body2">
-                {t('form.secondCommonConsent.pageEight.description')}
+                {t('form.secondCommonConsent.pageEight.description1')}
               </Typography>
             </div>
             <NavigationArrows
