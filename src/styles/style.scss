@@ -507,3 +507,25 @@ h6.eligibility-summary-line-title {
     opacity: 0.15;
   }
 }
+
+.bullets {
+  p {
+    display: flex;
+    align-items: stretch;
+    &::before {
+      content: '\2022';
+      margin-right: 8px;
+    }
+  }
+}
+
+.phone-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .country-code {
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 10px;
+  }
+}

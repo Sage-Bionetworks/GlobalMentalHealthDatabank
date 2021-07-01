@@ -19,6 +19,7 @@ import {
   callEndpoint,
   makePhone,
   sendSignInRequest,
+  getCountryCode,
 } from '../../helpers/utility'
 import useForm from '../useForm'
 import { useElegibility } from './context/ElegibilityContext'
@@ -126,21 +127,17 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       dataGroups,
     }
 
-    //send signinRequest
-    const phoneNumber = data.phone?.number || ''
-
     try {
       const result = await submitRegistration(data)
       if (result.status === 201) {
         setErrorMessage('')
         const sentSigninRequest = await sendSignInRequest(
-          phoneNumber,
-          state.countryCode.value,
+          data.phone,
           `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
         if (sentSigninRequest.status === 202) {
           onSuccessFn(
-            phoneNumber,
+            data.phone?.number,
             sentSigninRequest.status,
             sentSigninRequest.data,
           )
@@ -174,11 +171,11 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       </div>
 
       <div className="btm-20">
-        <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
+        <Typography variant="h4">{t('eligibility.letsRegister')}</Typography>
       </div>
 
       <div className="btm-40">
-        <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
+        <Typography variant="body2">{t('eligibility.enterNumber')}</Typography>
       </div>
 
       <form onSubmit={handleOnSubmit}>
@@ -187,30 +184,33 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
             <label htmlFor="phone" className="block--dark">
               <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
             </label>
-            <div className="btm-50">
+            <div className="btm-40 phone-input">
+              <div className="country-code">
+                <Typography variant="body2">
+                  {getCountryCode(whereDoYouLive)}
+                </Typography>
+              </div>
               <TextField
                 fullWidth
                 className="phone-input"
                 variant="outlined"
                 name="phone"
-                type="phone"
+                type="number"
                 value={state.phone.value}
                 placeholder="Phone #"
                 aria-label="Phone #"
                 onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
                   const { value } = event.target as any
-                  if (!value) {
-                    handleOnChange(event)
-                  } else {
-                    if (value.includes('+')) {
-                      handleOnChange(event)
-                    } else {
-                      event.target.value = `+${value}`
-                      handleOnChange(event)
-                    }
-                  }
+                  event.target.value = value.replace(/[^\d]/, '')
+                  handleOnChange(event)
                 }}
               />
+            </div>
+
+            <div className="btm-50">
+              <Typography variant="body2">
+                {t('eligibility.numberDisclaimer')}
+              </Typography>
             </div>
 
             {(error || formErrors) && (

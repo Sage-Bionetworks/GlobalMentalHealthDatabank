@@ -27,7 +27,11 @@ import { ReactComponent as Envelope } from '../../../assets/consent/envelope.svg
 import { ReactComponent as Exit } from '../../../assets/consent/exit.svg'
 import { ReactComponent as NotMedical } from '../../../assets/consent/notMedical.svg'
 import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
+import {
+  PAGE_ID_FIELD_NAME,
+  PAGE_ID,
+  ROUTES,
+} from '../../../constants/constants'
 
 type SecondCommonConsentProps = {
   startingStep: number
@@ -247,24 +251,38 @@ function SecondCommonConsentSection({
               <RisksBenefits width="75" />
             </div>
 
-            <Typography variant="h3">
-              {t('form.secondCommonConsent.pageOne.risks&benefit')}
-            </Typography>
+            <div className="btm-60">
+              <Typography variant="h3">
+                {t('form.secondCommonConsent.pageOne.risks&benefit')}
+              </Typography>
+            </div>
 
             <Typography variant="h6">
               {t('form.secondCommonConsent.pageOne.risks')}
             </Typography>
-            <div className="form-text-content">
+            <div className="form-text-content ml-20 bullets">
               <Typography variant="body2">
-                {t('form.secondCommonConsent.pageOne.riskDescription')}
+                {t('form.secondCommonConsent.pageOne.risk1')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageOne.risk2')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageOne.risk3')}
               </Typography>
             </div>
             <Typography variant="h6">
               {t('form.secondCommonConsent.pageOne.benefits')}
             </Typography>
-            <div className="form-text-content">
+            <div className="form-text-content ml-20 bullets">
               <Typography variant="body2">
-                {t('form.secondCommonConsent.pageOne.benefitDescription')}
+                {t('form.secondCommonConsent.pageOne.benefit1')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageOne.benefit2')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageOne.benefit3')}
               </Typography>
             </div>
             <NavigationArrows
@@ -291,14 +309,22 @@ function SecondCommonConsentSection({
 
             <div className="form-text-content">
               <Typography variant="body2">
-                {t('form.secondCommonConsent.pageThree.description')}
+                {t('form.secondCommonConsent.pageThree.description1')}{' '}
+                <a href={ROUTES.CONTACT}>
+                  {t('form.secondCommonConsent.pageThree.link')}
+                </a>{' '}
+                {t('form.secondCommonConsent.pageThree.description2')}
+              </Typography>
+              <Typography variant="body2">
+                <a
+                  href={`mailto: ${t(
+                    'form.secondCommonConsent.pageThree.email',
+                  )}`}
+                >
+                  {t('form.secondCommonConsent.pageThree.email')}
+                </a>
               </Typography>
             </div>
-            <a href={`mailto: ${t('form.secondCommonConsent.pageThree.link')}`}>
-              <Typography variant="body2">
-                {t('form.secondCommonConsent.pageThree.link')}
-              </Typography>
-            </a>
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(PAGE_ID.STUDY_PURPOSE_QUIZ)}
@@ -375,15 +401,27 @@ function SecondCommonConsentSection({
               <Exit />
             </div>
 
-            <Typography variant="h3">
-              {t('form.secondCommonConsent.pageFive.leaving')}
-            </Typography>
-
-            <div className="form-text-content">
-              <Typography variant="body2">
-                {t('form.secondCommonConsent.pageFive.description')}
+            <div className="btm-30">
+              <Typography variant="h3">
+                {t('form.secondCommonConsent.pageFive.leaving')}
               </Typography>
             </div>
+
+            <div className="form-text-content ml-20 bullets">
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageFive.description1')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageFive.description2')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageFive.description3')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageFive.description4')}
+              </Typography>
+            </div>
+
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(PAGE_ID.LEAVING_STUDY_QUIZ)}
