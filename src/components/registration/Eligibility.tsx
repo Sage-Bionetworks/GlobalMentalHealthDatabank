@@ -18,6 +18,7 @@ import {
   COUNTRY_CODES,
   MENTAL_HEALTH_EXPERIENCE,
 } from '../../constants/constants'
+import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
 
 const MAX_STEPS: number = 9
 
@@ -136,29 +137,38 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       return (
         <ResponsiveStepWrapper variant="card">
           <div className="quiz-wrapper">
-            <Typography variant="h3">
-              {t('eligibility.thankYouForYourInterest')}
-            </Typography>
+            <LogoNoText className="logo btm-20" />
+            <div className="btm-30">
+              <Typography variant="h3">
+                {t('eligibility.welcomeToMindKind')}
+              </Typography>
+            </div>
 
-            <Typography variant="h6">
-              {t('form.firstCommonConsent.getAnswers')}
-            </Typography>
-            <ul>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.section1')}
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body2">
-                  {t('form.firstCommonConsent.section2')}
-                </Typography>
-              </li>
-            </ul>
+            <div className="btm-20">
+              <Typography variant="h6">
+                {t('form.firstCommonConsent.weWantToLearn')}
+              </Typography>
+            </div>
+
+            <div className="ml-20 btm-20">
+              <ul>
+                <li>
+                  <Typography variant="body2">
+                    {t('form.firstCommonConsent.section1')}
+                  </Typography>
+                </li>
+                <li>
+                  <Typography variant="body2">
+                    {t('form.firstCommonConsent.section2')}
+                  </Typography>
+                </li>
+              </ul>
+            </div>
+
             <div className="btm-240">
               <Typography variant="body2">
                 {t('form.firstCommonConsent.section3.section1')}{' '}
-                <a className="underlined-link" href={ROUTES.RESEARCH}>
+                <a href={ROUTES.RESEARCH}>
                   {t('form.firstCommonConsent.section3.link')}
                 </a>{' '}
                 {t('form.firstCommonConsent.section3.section2')}
@@ -232,6 +242,9 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
+            <Typography variant="h6">
+              {t('eligibility.letsMakeSure')}
+            </Typography>
             <SageForm
               title={t('eligibility.where')}
               errorMessage={errorMessage}
