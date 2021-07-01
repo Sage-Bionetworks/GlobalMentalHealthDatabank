@@ -66,7 +66,7 @@ const validateRegionCodeForUkOnBridge = (regionCode?: string) => {
 
 export const makePhone = (phone: string, regionCode?: string): Phone => {
   return {
-    number: phone,
+    number: `${getCountryCode(regionCode)}${phone}`,
     regionCode: validateRegionCodeForUkOnBridge(regionCode),
   }
 }
@@ -91,15 +91,14 @@ export const setSession = (data: SessionData) => {
 }
 
 export const sendSignInRequest = async (
-  phoneNumber: string,
-  countryCode: string,
+  phoneNumber: object = {},
   endpoint: string,
 ): Promise<any> => {
   let postData: SignInData
 
   postData = {
     appId: APP_ID,
-    phone: makePhone(phoneNumber, countryCode),
+    phone: phoneNumber,
   } as SignInDataPhone
 
   try {
@@ -154,4 +153,19 @@ export const getNumberWithOrdinal = (n: number) => {
 
 export const isValidPhoneNumber = (value: string) => {
   return /^(0|[0-9]\d*)$/.test(value)
+}
+
+export const getCountryCode = (country: string = '') => {
+  switch (country) {
+    case COUNTRY_CODES.UK:
+      return '+44'
+    case COUNTRY_CODES.SOUTH_AFRICA:
+      return '+27'
+    case COUNTRY_CODES.US:
+      return '+1'
+    case COUNTRY_CODES.IN:
+      return '+91'
+    default:
+      return ''
+  }
 }

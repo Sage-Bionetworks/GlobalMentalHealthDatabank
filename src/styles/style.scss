@@ -518,3 +518,14 @@ h6.eligibility-summary-line-title {
     }
   }
 }
+
+.phone-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .country-code {
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 10px;
+  }
+}
