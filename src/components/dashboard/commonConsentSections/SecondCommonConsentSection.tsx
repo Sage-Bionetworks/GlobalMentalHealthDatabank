@@ -530,11 +530,39 @@ function SecondCommonConsentSection({
               {t('form.secondCommonConsent.pageEight.summary')}
             </Typography>
 
-            <div className="form-text-content">
+            <div className="btm-10">
               <Typography variant="body2">
-                {t('form.secondCommonConsent.pageEight.description')}
+                {t('form.secondCommonConsent.pageEight.description1')}
               </Typography>
             </div>
+
+            <div className="bullets ml-10">
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description2')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description3')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description4')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description5')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description6')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description7')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description8')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.pageEight.description9')}
+              </Typography>
+            </div>
+
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(PAGE_ID.SIGNATURE)}
