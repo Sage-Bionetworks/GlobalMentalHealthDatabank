@@ -132,29 +132,20 @@
     },
     "armOne": {
       "title": "How will your study data be used?",
-      "subTitle": "Your study data will be part of a global databank for researchers.",
-      "subText1": "Researchers will be able to download a copy of the data from the databank. They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
-      "subText2": "The researchers who access this data will be from all over the world, and are investigating all kinds of topics. Researchers will use your data to make discoveries. If any of their studies lead to new tests, drugs, or other commercial products, you will not get any profits. These inventions will be the property of the researchers who develop them."
+      "subTitle": "Your study data will be part of a global databank for researchers. Researchers will download study data from the databank.",
+      "subText1": "Researchers from all over the world will be using this study data to investigate all kinds of topics and make discoveries. If new tests, drugs, or other commercial products result from these studies, you will not get any profits."
     },
     "armTwo": {
       "title": "How will your study data be used?",
-      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
-      "subText1": "You get to choose how researchers access and use your data. We will ask you to make those choices now.",
-      "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
-      "subText3": "Is it okay for researchers to make a profit from using the data?",
-      "subText4": "No matter what the result of the vote is, researchers will only be able to access the data in a secure server.",
-      "subText5": "They will not be able to download the study data. Also, they will have to sign an agreement saying they will not try to find out who you are.",
-      "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
+      "subTitle": "You and other participants get to vote how researchers can access and use your data.",
+      "subText1": "Researchers will only view your data on a secure server - they cannot download your data.",
+      "subText2": "Before researchers can use the data, we will tell you the voting results."
     },
     "armThree": {
       "title": "How will your study data be used?",
-      "subTitle": "All of the people who join the study will get to vote on how the data is used. The vote takes place after you join the study. We will ask for you to vote on questions like:",
-      "subText1": "What topics should researchers using the study data be allowed to study? (Mental health only? Health generally? Any topic?)",
-      "subText2": "Who reviews requests to use the data? (Participants like you? A special panel?)",
-      "subText3": "Is it okay for researchers to make a profit from using the data?",
-      "subText4": "No matter what the result of the vote is, researchers will be able to download a copy of the data from the databank.",
-      "subText5": "They will have to agree to follow strict data security rules. They will have to sign an agreement saying they will not try to find out who you are.",
-      "subText6": "We will tell you the results of the vote before we let any researchers use the data. If you disagree with the vote, you can quit (withdraw) from the study. We will delete any information that directly identifies you. We will not delete any coded study data."
+      "subTitle": "You and other participants get to vote how researchers can use your data.",
+      "subText1": "Researchers will download study data from the databank.",
+      "subText2": "Before researchers can use the data, we will tell you the voting results."
     },
     "armFour": {
       "pageOne": {
@@ -226,10 +217,10 @@
         "review": "Review the list below to confirm this represents your choices."
       },
       "volunteer": {
-        "ifYouLike": "If you would like to volunteer as a reviewer for the community review panel email: ",
-        "email": "MindKindSupport@sagebionetworks.org",
+        "ifYouLike": "If you would like to be a volunteer reviewer for the community review panel, please email us:",
+        "email": "mindkindsupport@sagebionetworks.com",
         "subject": "Subject: MindKind Review Panel",
-        "note": "Note: Should you choose to email us your email will not be stored or associated with any study data."
+        "note": "Note: If you email us, your email address will not be stored or associated with any study data."
       }
     },
     "consentSignature": {

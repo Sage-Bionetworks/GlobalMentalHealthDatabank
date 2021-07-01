@@ -33,14 +33,9 @@ function ArmFlowOne({
         <Typography variant="h3">{t('form.armOne.title')}</Typography>
 
         <Typography variant="h6">{t('form.armOne.subTitle')}</Typography>
-        <ul>
-          <li>
-            <Typography variant="body2">{t('form.armOne.subText1')}</Typography>
-          </li>
-          <li>
-            <Typography variant="body2">{t('form.armOne.subText2')}</Typography>
-          </li>
-        </ul>
+
+        <Typography variant="body2">{t('form.armOne.subText1')}</Typography>
+
         <NavigationArrows
           onBack={() =>
             setStep((current: number) => (current > 1 ? current - 1 : current))

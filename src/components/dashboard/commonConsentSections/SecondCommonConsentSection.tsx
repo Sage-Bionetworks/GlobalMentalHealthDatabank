@@ -576,12 +576,21 @@ function SecondCommonConsentSection({
           <div className="text-step-wrapper">
             {showVolunteer === true && (
               <>
-                <Typography variant="h3">
-                  {t('form.secondCommonConsent.volunteer.ifYouLike')}
-                </Typography>
-                <Typography variant="body1">
-                  {t('form.secondCommonConsent.volunteer.email')}
-                </Typography>
+                <div className="btm-50">
+                  <Typography variant="h3">
+                    {t('form.secondCommonConsent.volunteer.ifYouLike')}
+                  </Typography>
+                </div>
+                <a
+                  href={`mailto: ${t(
+                    'form.secondCommonConsent.volunteer.email',
+                  )}`}
+                >
+                  <Typography variant="body1">
+                    {t('form.secondCommonConsent.volunteer.email')}
+                  </Typography>
+                </a>
+
                 <Typography variant="body1" style={{ marginBottom: '20px' }}>
                   {t('form.secondCommonConsent.volunteer.subject')}
                 </Typography>

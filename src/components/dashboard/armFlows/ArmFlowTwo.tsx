@@ -33,29 +33,12 @@ function ArmFlowTwo({
         <Typography variant="h3">{t('form.armTwo.title')}</Typography>
 
         <Typography variant="h6">{t('form.armTwo.subTitle')}</Typography>
-        <ul>
-          <li>
-            <Typography variant="body2">{t('form.armTwo.subText1')}</Typography>
-          </li>
-          <li>
-            <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
-          </li>
-          <li>
-            <Typography variant="body2">{t('form.armTwo.subText3')}</Typography>
-          </li>
-        </ul>
 
-        <h2>
-          <Typography variant="h6">{t('form.armTwo.subText4')}</Typography>
-        </h2>
-        <ul>
-          <li>
-            <Typography variant="body2">{t('form.armTwo.subText5')}</Typography>
-          </li>
-          <li>
-            <Typography variant="body2">{t('form.armTwo.subText6')}</Typography>
-          </li>
-        </ul>
+        <div className="btm-20">
+          <Typography variant="h6">{t('form.armTwo.subText1')}</Typography>
+        </div>
+
+        <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
 
         <NavigationArrows
           onBack={() =>

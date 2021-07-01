@@ -33,36 +33,13 @@ function ArmFlowThree({
         <Typography variant="h3">{t('form.armThree.title')}</Typography>
 
         <Typography variant="h6">{t('form.armThree.subTitle')}</Typography>
-        <ul>
-          <li>
-            <Typography variant="body2">
-              {t('form.armThree.subText1')}
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body2">
-              {t('form.armThree.subText2')}
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body2">
-              {t('form.armThree.subText3')}
-            </Typography>
-          </li>
-        </ul>
-        <Typography variant="h6">{t('form.armThree.subText4')}</Typography>
-        <ul>
-          <li>
-            <Typography variant="body2">
-              {t('form.armThree.subText5')}
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body2">
-              {t('form.armThree.subText6')}
-            </Typography>
-          </li>
-        </ul>
+
+        <div className="btm-20">
+          <Typography variant="h6">{t('form.armThree.subText1')}</Typography>
+        </div>
+
+        <Typography variant="body2">{t('form.armThree.subText2')}</Typography>
+
         <NavigationArrows
           onBack={() =>
             setStep((current: number) => (current > 1 ? current - 1 : current))
