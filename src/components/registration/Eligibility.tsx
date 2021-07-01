@@ -12,15 +12,19 @@ import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
-import { GENDERS, ROUTES, COUNTRY_CODES } from '../../constants/constants'
+import {
+  GENDERS,
+  ROUTES,
+  COUNTRY_CODES,
+  MENTAL_HEALTH_EXPERIENCE,
+} from '../../constants/constants'
 import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
-import { type } from 'os'
 
 const MAX_STEPS: number = 9
 
 const INITIAL_ELEGIBILITY_CHOICES = {
   howDidYouHear: '',
-  accessToSupport: '',
+  mentalHealthExperience: '',
   userLocation: '',
   hasAndroid: '',
   understandsEnglish: '',
@@ -48,7 +52,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const {
     setIsEligible,
     setHowDidYouHear,
-    setEverBenefitedFromTreatment,
+    setMentalHealthExperience,
     setWhereDoYouLive,
     setDoYouHaveAnAndroid,
     setUnderstandEnglish,
@@ -472,36 +476,66 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
     case 8:
-      if (!search.includes('benefit'))
+      if (!search.includes('mhExperience'))
         history.push({
           pathname: ROUTES.ELIGIBILITY,
-          search: '?step=benefit',
+          search: '?step=mhExperience',
         })
-      document.title = 'MindKind > Benefits of health support'
+      document.title = 'MindKind > Mental Health Experience'
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
           <div className="quiz-wrapper">
             <SageForm
-              title={t('eligibility.benefit')}
+              title={t('eligibility.mentalHealthExperience')}
+              subTitle={t('eligibility.selectAll')}
               errorMessage={errorMessage}
-              formId={FORM_IDS.SUPPORT_VERIFY}
+              formId={FORM_IDS.MENTAL_HEALTH_EXPERIENCE}
               buttonText={t('eligibility.next')}
+              onChange={(event: any) => {
+                const inputs = document.getElementsByTagName('input')
+                if (
+                  event.formData.mentalHealthExperience?.find(
+                    (mh: any) =>
+                      mh === MENTAL_HEALTH_EXPERIENCE.NOT_EXPERIENCED,
+                  )
+                ) {
+                  event.formData.mentalHealthExperience = [
+                    MENTAL_HEALTH_EXPERIENCE.NOT_EXPERIENCED,
+                  ]
+                  for (let i = 0; i < inputs.length; i++) {
+                    if (
+                      inputs[i].type.toLowerCase() === 'checkbox' &&
+                      inputs[i].id !== 'root_mentalHealthExperience_3'
+                    ) {
+                      inputs[i].setAttribute('class', 'hide-input')
+                      inputs[i].setAttribute('disabled', 'true')
+                    }
+                  }
+                } else {
+                  for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].type.toLowerCase() === 'checkbox') {
+                      inputs[i].setAttribute('class', '')
+                      inputs[i].disabled = false
+                    }
+                  }
+                }
+              }}
               onSubmit={(event: any) => {
-                const selectedOption = event.formData.support_verify
-                if (selectedOption && Object.keys(selectedOption).length === 0)
+                const selectedOption = event.formData.mentalHealthExperience
+                if (selectedOption && selectedOption.length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
                     'quiz-accept',
                     'eligibility',
-                    t('eligibility.benefit'),
-                    selectedOption.accept,
+                    t('eligibility.mentalHealthExperience'),
+                    selectedOption,
                   )
                   setCurrentEligibilityChoices(prev => {
-                    return { ...prev, accessToSupport: selectedOption.accept }
+                    return { ...prev, mentalHealthExperience: selectedOption }
                   })
-                  setEverBenefitedFromTreatment(selectedOption.accept)
+                  setMentalHealthExperience(selectedOption)
                   setStep((current: number) =>
                     current <= MAX_STEPS ? current + 1 : current,
                   )

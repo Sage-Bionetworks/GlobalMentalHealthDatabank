@@ -23,10 +23,6 @@ import {
   uiSchemaAndroidVerify,
 } from '../../data/schemas/androidVerify'
 import {
-  schemaSupportVerify,
-  uiSchemaSupportVerify,
-} from '../../data/schemas/supportVerify'
-import {
   schemaHowDidYouHear,
   uiSchemaHowDidYouHear,
 } from '../../data/schemas/howDidYouHear'
@@ -50,6 +46,12 @@ import {
   schemaWhichIsCorrect,
   uiSchemaWhichIsCorrect,
 } from '../../data/schemas/whichIsCorrect'
+
+import {
+  schemaMentalHealthExperience,
+  uiSchemaMentalHealthExperience,
+} from '../../data/schemas/mentalHealthExperience'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -96,8 +98,6 @@ export default function SageForm({
         return schemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
         return schemaAndroidVerify
-      case FORM_IDS.SUPPORT_VERIFY:
-        return schemaSupportVerify
       case FORM_IDS.HOW_DID_YOU_HEAR:
         return schemaHowDidYouHear
       case FORM_IDS.UNDERSTANDS_ENGLISH:
@@ -136,6 +136,8 @@ export default function SageForm({
         return schemaWhichIsCorrect
       case FORM_IDS.GENDER:
         return schemaGender
+      case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
+        return schemaMentalHealthExperience
       default:
         return null
     }
@@ -151,8 +153,6 @@ export default function SageForm({
         return uiSchemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
         return uiSchemaAndroidVerify
-      case FORM_IDS.SUPPORT_VERIFY:
-        return uiSchemaSupportVerify
       case FORM_IDS.HOW_DID_YOU_HEAR:
         return uiSchemaHowDidYouHear
       case FORM_IDS.UNDERSTANDS_ENGLISH:
@@ -167,6 +167,8 @@ export default function SageForm({
         return uiSchemaWhichIsCorrect
       case FORM_IDS.GENDER:
         return uiSchemaGender
+      case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
+        return uiSchemaMentalHealthExperience
       default:
         return null
     }
@@ -178,7 +180,7 @@ export default function SageForm({
 
       {subTitle && (
         <div className="form-subtitle">
-          <Typography variant="h6">{subTitle}</Typography>
+          <Typography variant="body2">{subTitle}</Typography>
         </div>
       )}
 

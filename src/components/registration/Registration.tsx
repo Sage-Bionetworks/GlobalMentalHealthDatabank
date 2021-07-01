@@ -12,6 +12,7 @@ import {
   ENDPOINT,
   PAGE_ID_FIELD_NAME,
   PAGE_ID,
+  MENTAL_HEALTH_EXPERIENCE,
 } from '../../constants/constants'
 import { RegistrationData, UserDataGroup } from '../../types/types'
 import {
@@ -36,7 +37,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
 }: RegistrationProps) => {
   const {
     howDidYouHear,
-    everBenefitedFromTreatment,
+    mentalHealthExperience,
     whereDoYouLive,
     doYouHaveAnAndroid,
     understandEnglish,
@@ -95,7 +96,9 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         break
     }
 
-    if (everBenefitedFromTreatment)
+    if (
+      !mentalHealthExperience.includes(MENTAL_HEALTH_EXPERIENCE.NOT_EXPERIENCED)
+    )
       dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
     else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
 
@@ -108,7 +111,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       clientData: {
         consentModel,
         howDidYouHear,
-        everBenefitedFromTreatment,
+        mentalHealthExperience,
         whereDoYouLive,
         doYouHaveAnAndroid,
         understandEnglish,
