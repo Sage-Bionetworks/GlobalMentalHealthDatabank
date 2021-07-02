@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
 import { UserDataGroup, SessionData } from './types/types'
-import { ElegibilityProvider } from './components/registration/context/ElegibilityContext'
+import { EligibilityProvider } from './components/eligibility/context/EligibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
 import { UserService } from './services/user.service'
@@ -22,7 +22,8 @@ import ResearchTeam from './components/static/ResearchTeam'
 import EligibilityRegistration from './components/registration/EligibilityRegistration'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
-import DownloadApp from './components/dashboard/DownloadApp'
+import Hub from './components/dashboard/Hub'
+import DownloadApp from './components/static/DownloadApp'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
 import Footer from './components/widgets/Footer'
 import DataRegulation from './components/static/DataRegulation'
@@ -104,7 +105,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ElegibilityProvider>
+      <EligibilityProvider>
         <RankedChoiceProvider>
           <Typography component={'div'}>
             <div style={{ height: '100%' }}>
@@ -126,19 +127,9 @@ function App() {
                           return <Login />
                         }}
                       ></Route>
-                      <Route
-                        path={ROUTES.ELIGIBILITY}
-                        render={props => {
-                          return (
-                            <EligibilityRegistration
-                              {...props}
-                              callbackFn={(token: string, name: string) =>
-                                setUserSession(token, name, false, [])
-                              }
-                            />
-                          )
-                        }}
-                      ></Route>
+                      <Route path={ROUTES.HUB}>
+                        <Hub />
+                      </Route>
                       <PrivateRoute exact={true} path={ROUTES.CONSENT_STEPS}>
                         <Dashboard token={token || ''} />
                       </PrivateRoute>
@@ -180,7 +171,7 @@ function App() {
             </div>
           </Typography>
         </RankedChoiceProvider>
-      </ElegibilityProvider>
+      </EligibilityProvider>
     </ThemeProvider>
   )
 }

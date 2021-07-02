@@ -69,6 +69,7 @@ export const ROUTES = {
   HOME: '/home',
   DATA_REGULATION: '/data-regulation',
   LOGOUT: '/logout',
+  HUB: '/hub',
 }
 
 export const MENTAL_HEALTH_EXPERIENCE = {
