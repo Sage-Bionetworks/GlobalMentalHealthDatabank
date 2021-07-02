@@ -12,7 +12,7 @@ import {
   PHONE_SIGN_IN_TRIGGER_ENDPOINT,
 } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
-import { useElegibility } from '../../components/registration/context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
@@ -28,7 +28,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   const [error, setError] = useState('')
   const [code, setCode] = useState('')
 
-  const { phoneNumber, whereDoYouLive } = useElegibility()
+  const { phoneNumber, whereDoYouLive } = useEligibility()
   const { t } = useTranslation()
 
   const sessionData: SessionData = useSessionDataState()

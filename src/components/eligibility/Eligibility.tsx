@@ -7,7 +7,7 @@ import ProgressBar from '../progressBar/ProgressBar'
 import SageForm from '../form/SageForm'
 import { FORM_IDS } from '../form/types'
 import Separator from '../static/Separator'
-import { useElegibility } from './context/ElegibilityContext'
+import { useEligibility } from './context/EligibilityContext'
 import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
@@ -22,7 +22,7 @@ import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
 
 const MAX_STEPS: number = 9
 
-const INITIAL_ELEGIBILITY_CHOICES = {
+const INITIAL_ELIGIBILITY_CHOICES = {
   howDidYouHear: '',
   mentalHealthExperience: '',
   userLocation: '',
@@ -36,7 +36,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
   const [currentEligibilityChoices, setCurrentEligibilityChoices] = useState(
-    INITIAL_ELEGIBILITY_CHOICES,
+    INITIAL_ELIGIBILITY_CHOICES,
   )
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
@@ -63,7 +63,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     understandEnglish,
     age,
     setPhoneNumber,
-  } = useElegibility()
+  } = useEligibility()
   const { t } = useTranslation()
 
   useEffect(() => {

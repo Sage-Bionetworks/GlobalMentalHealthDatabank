@@ -33,7 +33,7 @@ import {
 import { callEndpoint, makePhone } from '../../helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import { useElegibility } from '../registration/context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
 }
@@ -88,8 +88,12 @@ export const Login: React.FunctionComponent = () => {
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
 
-  const { phoneNumber, setPhoneNumber, whereDoYouLive, setWhereDoYouLive } =
-    useElegibility()
+  const {
+    phoneNumber,
+    setPhoneNumber,
+    whereDoYouLive,
+    setWhereDoYouLive,
+  } = useEligibility()
 
   if (!whereDoYouLive || whereDoYouLive === 'Other') {
     setWhereDoYouLive(FLAGS.unitedKingdom)

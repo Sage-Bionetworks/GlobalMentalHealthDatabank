@@ -22,7 +22,7 @@ import {
   getCountryCode,
 } from '../../helpers/utility'
 import useForm from '../useForm'
-import { useElegibility } from './context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
 type RegistrationProps = {
@@ -44,7 +44,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     understandEnglish,
     age,
     gender,
-  } = useElegibility()
+  } = useEligibility()
   const { t } = useTranslation()
 
   const stateSchema = {
