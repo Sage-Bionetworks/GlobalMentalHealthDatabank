@@ -42,7 +42,7 @@ function Welcome({ onClick }: Props) {
           </ul>
         </div>
 
-        <div className="btm-240">
+        <div className="btm-60">
           <Typography variant="body2">
             {t('form.firstCommonConsent.section3.section1')}{' '}
             <a href={ROUTES.RESEARCH}>

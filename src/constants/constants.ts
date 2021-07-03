@@ -59,7 +59,7 @@ export const ROUTES = {
   SIGNIN: '/signin',
   DOWNLOAD: '/download',
   CONSENT_STEPS: '/consent-steps',
-  ELIGIBILITY: '/eligibility',
+  ELIGIBILITY: '/hub/eligibility',
   CONSENT_INFO: '/consent-info',
   PRIVACY_POLICY: '/privacy-policy',
   TERMS: '/terms',
