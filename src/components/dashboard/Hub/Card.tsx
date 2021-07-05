@@ -1,9 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
-import { ReactComponent as ChevronRight } from '../../../assets/hub/chevron-right-slim.svg'
-import { ReactComponent as Lock } from '../../../assets/hub/lock.svg'
-import { ReactComponent as CircledCheck } from '../../../assets/hub/circled-check.svg'
+import { ReactComponent as ChevronRight } from 'assets/hub/chevron-right-slim.svg'
+import { ReactComponent as Lock } from 'assets/hub/lock.svg'
+import { ReactComponent as CircledCheck } from 'assets/hub/circled-check.svg'
 
 export type HubCardProps = {
   title: string
