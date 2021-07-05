@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react'
 import { ThemeProvider, Typography } from '@material-ui/core'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline'
-import { UserDataGroup, SessionData } from './types/types'
+import { SessionData } from './types/types'
 import { EligibilityProvider } from './components/eligibility/context/EligibilityContext'
 import { RankedChoiceProvider } from './components/dashboard/RankedChoice/context/RankedChoiceContext'
 import { useSessionDataState, useSessionDataDispatch } from './AuthContext'
@@ -29,11 +24,12 @@ import DataRegulation from './components/static/DataRegulation'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
 import Terms from './components/static/Terms'
 import ConsentInfo from './components/static/ConsentInfo'
+import PrivateRoute from 'components/common/PrivateRoute'
 import './styles/style.scss'
 
 function App() {
   const sessionData: SessionData = useSessionDataState()
-  const sessionUpdateFn = useSessionDataDispatch()
+  const sessionDispatch = useSessionDataDispatch()
   const { token } = sessionData
 
   useEffect(() => {
@@ -42,14 +38,21 @@ function App() {
       if (token && isSubscribed) {
         try {
           const userInfo = await UserService.getUserInfo(token)
-          setUserSession(
+          const newSessionData = {
             token,
-            userInfo.data.firstName,
-            userInfo.data.consented,
-            userInfo.data.dataGroups,
-          )
+            name: userInfo.data.firstName,
+            consented: userInfo.data.consented,
+            userDataGroup: userInfo.data.dataGroups,
+          }
+          sessionDispatch({
+            type: 'LOGIN',
+            payload: {
+              ...sessionData,
+              ...newSessionData,
+            },
+          })
         } catch (e) {
-          setUserSession(undefined, '', false, [])
+          sessionDispatch({ type: 'LOGOUT' })
         }
       }
     }
@@ -59,48 +62,6 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token])
-
-  function PrivateRoute({ children, ...rest }: any) {
-    return (
-      <Route
-        {...rest}
-        render={({ location }) =>
-          token ? (
-            children
-          ) : (
-            <Redirect
-              to={{
-                pathname: ROUTES.SIGNIN,
-                state: { from: location },
-              }}
-            />
-          )
-        }
-      />
-    )
-  }
-
-  const setUserSession = (
-    token: string | undefined,
-    name: string,
-    consented: boolean,
-    dataGroup: UserDataGroup[],
-  ) => {
-    if (!token) {
-      sessionUpdateFn({ type: 'LOGOUT' })
-    } else {
-      sessionUpdateFn({
-        type: 'LOGIN',
-        payload: {
-          ...sessionData,
-          token,
-          name,
-          consented,
-          userDataGroup: dataGroup,
-        },
-      })
-    }
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -114,9 +75,7 @@ function App() {
                   <GoogleAnalyticsPageTracker />
                   <TopNav
                     token={token}
-                    logoutCallbackFn={() =>
-                      setUserSession(undefined, '', false, [])
-                    }
+                    logoutCallbackFn={() => sessionDispatch({ type: 'LOGOUT' })}
                   >
                     <Switch>
                       <Route
