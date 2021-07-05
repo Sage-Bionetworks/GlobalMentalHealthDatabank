@@ -235,24 +235,18 @@ export const Login: React.FunctionComponent = () => {
 
                       <TextField
                         fullWidth
+                        className="phone-input"
                         variant="outlined"
                         autoComplete="phone"
                         label="Phone #"
-                        type="phone"
+                        type="number"
                         value={phoneNumber}
                         onChange={(
                           event: React.ChangeEvent<{ value: unknown }>,
                         ) => {
-                          const { value } = event.currentTarget as any
-                          if (!value) {
-                            setPhoneNumber('')
-                          } else {
-                            if (value.includes('+')) {
-                              setPhoneNumber(value)
-                            } else {
-                              setPhoneNumber(`+${value}`)
-                            }
-                          }
+                          const { value } = event.target as any
+                          event.target.value = value.replace(/[^\d]/, '')
+                          setPhoneNumber(value)
                         }}
                       />
                     </div>
