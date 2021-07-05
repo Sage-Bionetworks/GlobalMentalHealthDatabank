@@ -2,24 +2,28 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import Card, { HubCardProps } from './Card'
+import { useEligibility } from 'components/eligibility/context/EligibilityContext'
 
 function Hub() {
   const hubCards: HubCardProps[] = [
     {
+      id: 1,
       title: 'Eligibility',
       subtitle: 'Are you eligible for the study?',
       time: 'Approx. 2 minutes',
-      status: 'active',
+      status: 'complete',
       route: '/hub/eligibility',
     },
     {
+      id: 2,
       title: 'Registration',
       subtitle: 'Enter your phone number to create an account',
       time: 'Approx. 2 minutes',
-      status: 'disabled',
+      status: 'active',
       route: '/hub/registration',
     },
     {
+      id: 3,
       title: 'About the study',
       subtitle: 'Learn about the study and the risks and benefits of joining',
       time: 'Approx. 7 minutes',
@@ -27,6 +31,7 @@ function Hub() {
       route: '/hub/about-the-study',
     },
     {
+      id: 4,
       title: 'About data sharing',
       subtitle: 'Learn how your data will be used.',
       time: 'Approx. 7 minutes',
@@ -34,6 +39,7 @@ function Hub() {
       route: '/hub/about-data-sharing',
     },
     {
+      id: 5,
       title: 'Summary and signature',
       subtitle: 'Review and confirm',
       time: 'Approx. 3 minutes',
@@ -41,6 +47,11 @@ function Hub() {
       route: '/hub/summary-and-signature',
     },
   ]
+  const { isEligible } = useEligibility()
+  if (isEligible) {
+    hubCards[0].status = 'complete'
+    hubCards[1].status = 'active'
+  }
   return (
     <div className="hub">
       <ResponsiveStepWrapper variant="card">
@@ -53,6 +64,7 @@ function Hub() {
           <div className="hub__cards">
             {hubCards.map(card => (
               <Card
+                key={card.id}
                 title={card.title}
                 subtitle={card.subtitle}
                 time={card.time}

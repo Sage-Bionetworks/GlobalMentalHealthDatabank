@@ -6,6 +6,7 @@ import { ReactComponent as Lock } from 'assets/hub/lock.svg'
 import { ReactComponent as CircledCheck } from 'assets/hub/circled-check.svg'
 
 export type HubCardProps = {
+  id?: number
   title: string
   subtitle: string
   time: string

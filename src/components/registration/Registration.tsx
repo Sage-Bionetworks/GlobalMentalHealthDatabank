@@ -25,17 +25,11 @@ import useForm from '../useForm'
 import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 
-type RegistrationProps = {
-  onSuccessFn: Function
-}
-
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 const LIVED_EXPERIENCE_YES = 'lived_experience_yes'
 const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
-export const Registration: React.FunctionComponent<RegistrationProps> = ({
-  onSuccessFn,
-}: RegistrationProps) => {
+export const Registration: React.FunctionComponent = () => {
   const {
     howDidYouHear,
     mentalHealthExperience,
@@ -44,6 +38,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     understandEnglish,
     age,
     gender,
+    setPhoneNumber,
   } = useEligibility()
   const { t } = useTranslation()
 
@@ -136,7 +131,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
           `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
         if (sentSigninRequest.status === 202) {
-          onSuccessFn(state.phone.value)
+          setPhoneNumber(state.phone.value)
         } else {
           setErrorMessage(t('eligibility.registerError'))
         }

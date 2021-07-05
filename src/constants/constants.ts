@@ -59,7 +59,6 @@ export const ROUTES = {
   SIGNIN: '/signin',
   DOWNLOAD: '/download',
   CONSENT_STEPS: '/consent-steps',
-  ELIGIBILITY: '/hub/eligibility',
   CONSENT_INFO: '/consent-info',
   PRIVACY_POLICY: '/privacy-policy',
   TERMS: '/terms',
@@ -70,6 +69,8 @@ export const ROUTES = {
   DATA_REGULATION: '/data-regulation',
   LOGOUT: '/logout',
   HUB: '/hub',
+  ELIGIBILITY: '/hub/eligibility',
+  REGISTRATION: '/hub/registration',
 }
 
 export const MENTAL_HEALTH_EXPERIENCE = {
