@@ -78,7 +78,6 @@ export type SessionData = {
   token: string | undefined
   name?: string
   consented?: boolean
-  alert?: string
   userDataGroup: UserDataGroup[]
 }
 
