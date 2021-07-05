@@ -115,20 +115,16 @@ function FirstCommonConsentSection({
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            <div className="icon-wrapper">
-              <Questions />
-            </div>
             <Typography variant="h3">
-              {t('form.firstCommonConsent.whatWillYouAsk')}
+              {t('form.firstCommonConsent.aboutTheStudy')}
             </Typography>
+            <div className="btm-20">
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.toJoinTheStudy')}
+              </Typography>
+            </div>
             <Typography variant="h6">
-              {t('form.firstCommonConsent.step1')}
-            </Typography>
-            <Typography variant="h6">
-              {t('form.firstCommonConsent.step2')}
-            </Typography>
-            <Typography variant="h6">
-              {t('form.firstCommonConsent.step3')}
+              {t('form.firstCommonConsent.weWillAskYou')}
             </Typography>
             <NavigationArrows
               onBack={handleBack}
