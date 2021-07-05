@@ -720,6 +720,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       </ResponsiveStepWrapper>
     )
   }
+
   if (step > MAX_STEPS && eligible) {
     if (!search.includes('is-eligible'))
       history.push({
@@ -728,7 +729,31 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       })
     return (
       <ResponsiveStepWrapper variant="card">
-        <h1>Eligible screen here</h1>
+        <div className="quiz-wrapper">
+          <div className="btm-40">
+            <Typography variant="h1">{t('eligibility.fantastic')}</Typography>
+          </div>
+
+          <div className="btm-30">
+            <Typography variant="body2">{t('eligibility.eligible')}</Typography>
+          </div>
+
+          <div className="btm-240">
+            <Separator />
+          </div>
+
+          <NavLink to={ROUTES.HUB}>
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button"
+              onClick={() => <Redirect to={ROUTES.HUB} />}
+            >
+              {t('common.continue')}
+            </Button>
+          </NavLink>
+        </div>
       </ResponsiveStepWrapper>
     )
   }
