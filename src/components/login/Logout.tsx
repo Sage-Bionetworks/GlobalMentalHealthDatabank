@@ -17,11 +17,12 @@ export const Logout: React.FunctionComponent<LogoutProps> = ({
   const [navigate, setNavigate] = useState(false)
   const { t } = useTranslation()
   const sessionUpdateFn = useSessionDataDispatch()
-  const { setIsEligible } = useEligibility()
+  const { setIsEligible, setPhoneNumber } = useEligibility()
 
   const logout = () => {
     setIsEligible(false)
     sessionUpdateFn({ type: 'LOGOUT' })
+    setPhoneNumber('')
     onLogout()
     setNavigate(true)
   }

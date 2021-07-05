@@ -30,6 +30,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
 
   const { phoneNumber, whereDoYouLive } = useEligibility()
   const { t } = useTranslation()
+  const displayPhoneNumber = makePhone(phoneNumber, whereDoYouLive)
 
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
@@ -94,7 +95,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
           )}
 
           <div className="header-wrapper">
-            <Typography variant="body2">{phoneNumber}</Typography>
+            <Typography variant="body2">{displayPhoneNumber.number}</Typography>
           </div>
         </div>
 

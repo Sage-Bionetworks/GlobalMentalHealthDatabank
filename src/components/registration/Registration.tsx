@@ -136,11 +136,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
           `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
         if (sentSigninRequest.status === 202) {
-          onSuccessFn(
-            data.phone?.number,
-            sentSigninRequest.status,
-            sentSigninRequest.data,
-          )
+          onSuccessFn(state.phone.value)
         } else {
           setErrorMessage(t('eligibility.registerError'))
         }
