@@ -136,7 +136,7 @@
       "pageOne": {
         "title": "How will researchers view your data?",
         "correctAnswer": "Correct! Researchers will download the study data which includes a copy of your data.",
-        "incorrectAnswer": "(!) Researchers will download the study data which includes a copy of your data."
+        "incorrectAnswer": "Researchers will download the study data which includes a copy of your data."
       },
       "pageTwo": {
         "title": "What kind of research can be done with my study data?",
