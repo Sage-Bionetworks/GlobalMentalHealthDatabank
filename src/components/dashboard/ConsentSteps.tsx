@@ -15,6 +15,7 @@ import { ROUTES } from '../../constants/constants'
 const FIRST_CONSENT_STEPS: number = 4
 const SECOND_CONSENT_STEPS: number = 10
 const FOURTH_ARM_FLOW_LENGTH: number = 3
+const FIRST_ARM_FLOW_LENGTH: number = 3
 const OTHER_ARM_FLOW_LENGTH: number = 1
 
 type ConsentStepsProps = {
@@ -82,7 +83,8 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
 
   const findMaxSteps = () => {
     let steps = FIRST_CONSENT_STEPS + SECOND_CONSENT_STEPS
-    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup)) steps++
+    if (dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup))
+      steps += FIRST_ARM_FLOW_LENGTH
     if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup)) steps++
     if (dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup)) steps++
     if (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup))
@@ -91,12 +93,14 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
   }
 
   const findSecondCommonStepsStart = () => {
-    return (
-      FIRST_CONSENT_STEPS +
-      (dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup)
-        ? FOURTH_ARM_FLOW_LENGTH
-        : OTHER_ARM_FLOW_LENGTH)
-    )
+    if (
+      dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup) ||
+      dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup)
+    ) {
+      return FIRST_CONSENT_STEPS + FOURTH_ARM_FLOW_LENGTH
+    } else {
+      return FIRST_CONSENT_STEPS + OTHER_ARM_FLOW_LENGTH
+    }
   }
 
   const updateClientData = async (step: number, fields?: object) => {
@@ -132,6 +136,7 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
           setStep={setStep}
           maxSteps={maxSteps}
           updateClientData={updateClientData}
+          startingStep={FIRST_CONSENT_STEPS + 1}
         />
       )
     if (dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup))

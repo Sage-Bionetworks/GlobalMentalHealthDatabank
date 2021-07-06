@@ -694,10 +694,11 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
           <div className="btm-20">
             <Typography variant="body2">
-              {t('eligibility.seekingHelp')}
+              {t('eligibility.seekingHelp1')}{' '}
               <NavLink to={ROUTES.CONTACT}>
                 {t('eligibility.seekingHelpLink')}
-              </NavLink>
+              </NavLink>{' '}
+              {t('eligibility.seekingHelp2')}
             </Typography>
           </div>
 
