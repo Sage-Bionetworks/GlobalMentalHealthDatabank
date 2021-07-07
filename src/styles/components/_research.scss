@@ -190,6 +190,16 @@
     color: $secondary-font-color;
     margin-bottom: 5px;
   }
+  .research__member-info {
+    & h4 {
+      font-size: 16px;
+      font-weight: 800;
+    }
+    & p {
+      line-height: 14px;
+      font-size: 12px;
+    }
+  }
 }
 
 .research__section-title {
