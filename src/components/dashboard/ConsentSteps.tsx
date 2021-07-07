@@ -8,8 +8,6 @@ import { FLOW_OPTIONS } from '../../helpers/RandomFlowGenerator'
 import { UserDataGroup } from '../../types/types'
 import { useSessionDataState } from '../../AuthContext'
 import { UserService } from '../../services/user.service'
-import FirstCommonConsentSection from './commonConsentSections/FirstCommonConsentSection'
-import SecondCommonConsentSection from './commonConsentSections/SecondCommonConsentSection'
 import { ROUTES } from '../../constants/constants'
 
 const FIRST_CONSENT_STEPS: number = 4
@@ -170,33 +168,10 @@ const ConsentSteps: React.FunctionComponent<ConsentStepsProps> = ({
     return null
   }
 
-  if (step <= FIRST_CONSENT_STEPS) {
-    return (
-      <FirstCommonConsentSection
-        step={step}
-        setStep={setStep}
-        maxSteps={maxSteps}
-        updateClientData={updateClientData}
-        consentModel={userClientData.consentModel}
-      />
-    )
-  }
-
   if (step > FIRST_CONSENT_STEPS && step <= secondCommonStepsStart) {
     return renderArmFlow()
   }
 
-  if (step > secondCommonStepsStart) {
-    return (
-      <SecondCommonConsentSection
-        step={step}
-        setStep={setStep}
-        maxSteps={maxSteps}
-        startingStep={secondCommonStepsStart + 1}
-        updateClientData={updateClientData}
-      />
-    )
-  }
   return null
 }
 
