@@ -52,6 +52,16 @@ import {
   uiSchemaMentalHealthExperience,
 } from '../../data/schemas/mentalHealthExperience'
 
+import {
+  schemaResearchersDataAccess,
+  uiSchemaResearchersDataAccess,
+} from '../../data/schemas/researchersDataAccess'
+
+import {
+  schemaDataResearchType,
+  uiSchemaDataResearchType,
+} from '../../data/schemas/dataResearchType'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -138,6 +148,10 @@ export default function SageForm({
         return schemaGender
       case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
         return schemaMentalHealthExperience
+      case FORM_IDS.RESEARCHERS_DATA_ACCESS:
+        return schemaResearchersDataAccess
+      case FORM_IDS.DATA_RESEARCH_TYPE:
+        return schemaDataResearchType
       default:
         return null
     }
@@ -169,6 +183,10 @@ export default function SageForm({
         return uiSchemaGender
       case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
         return uiSchemaMentalHealthExperience
+      case FORM_IDS.RESEARCHERS_DATA_ACCESS:
+        return uiSchemaResearchersDataAccess
+      case FORM_IDS.DATA_RESEARCH_TYPE:
+        return uiSchemaDataResearchType
       default:
         return null
     }

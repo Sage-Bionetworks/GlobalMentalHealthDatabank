@@ -132,7 +132,17 @@
     "armOne": {
       "title": "How will your study data be used?",
       "subTitle": "Your study data will be part of a global databank for researchers. Researchers will download study data from the databank.",
-      "subText1": "Researchers from all over the world will be using this study data to investigate all kinds of topics and make discoveries. If new tests, drugs, or other commercial products result from these studies, you will not get any profits."
+      "subText1": "Researchers from all over the world will be using this study data to investigate all kinds of topics and make discoveries. If new tests, drugs, or other commercial products result from these studies, you will not get any profits.",
+      "pageOne": {
+        "title": "How will researchers view your data?",
+        "correctAnswer": "Correct! Researchers will download the study data which includes a copy of your data.",
+        "incorrectAnswer": "Researchers will download the study data which includes a copy of your data."
+      },
+      "pageTwo": {
+        "title": "What kind of research can be done with my study data?",
+        "correctAnswer": "Correct! Your study data can be used for all kinds of research, including commercial (for profit) research.",
+        "incorrectAnswer": "Your study data can be used for all kinds of research, including commercial (for profit) research."
+      }
     },
     "armTwo": {
       "title": "How will your study data be used?",

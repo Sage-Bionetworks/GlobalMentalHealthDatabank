@@ -17,8 +17,9 @@ export const Dashboard: React.FunctionComponent<DashboardProps> = ({
 }: DashboardProps) => {
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  const [userInfo, setUserInfo] =
-    useState<LoggedInUserData | undefined>(undefined)
+  const [userInfo, setUserInfo] = useState<LoggedInUserData | undefined>(
+    undefined,
+  )
   const { push } = useHistory()
   const { t } = useTranslation()
 

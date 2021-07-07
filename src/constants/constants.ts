@@ -25,11 +25,22 @@ export const PAGE_ID = {
   DATA_RIGHTS: 'C05_DataRights',
 
   RESEARCH_NORMS: 'SG1_ResearchNorms',
+  RESEARCH_NORMS_02: 'SG1_02_ResearchersDataAccess',
+  RESEARCH_NORMS_03: 'SG1_03_DataResearchType',
   YOUTH_INFORMED: 'SG2_YouthInformed',
+  YOUTH_INFORMED_02: 'SG2_02_ResearchersDataAccess',
+  YOUTH_INFORMED_03: 'SG2_03_ResearchersDataUsage',
   HYBRID: 'SG3_Hybrid',
   PARTICIPANT_CHOICE_01: 'SG4-01_ParticipantChoice',
   PARTICIPANT_CHOICE_02: 'SG4-02_ResearcherAccess',
   PARTICIPANT_CHOICE_03: 'SG4-03_DataControl',
+
+  VOTING_01: 'V01_VotingIntro',
+  VOTING_02: 'V02_ResearchersDataProfit',
+  VOTING_03: 'V03_DataPayment',
+  VOTING_04: 'V04_DataUsage',
+  VOTING_05: 'V05_DataSharing',
+  VOTING_06: 'V06_VotingConfirmation',
 
   RISKS_AND_BENEFITS: 'C06_RisksBenefits',
   NOT_MEDICAL_CARE: 'C07_NotMedicalCare',
@@ -80,6 +91,21 @@ export const MENTAL_HEALTH_EXPERIENCE = {
   COULD_BENEFIT: 'I could have benefited from support for my mental health.',
   NOT_EXPERIENCED:
     'I have not experienced any significant mental health challenges',
+}
+
+export const RESEARCHERS_DATA_ACCESS = {
+  DOWNLOAD_THE_STUDY:
+    'They will download the study data which includes a copy of my data.',
+  WILL_ONLY_VIEW_DATA:
+    'They will only view my data on a secure server. They cannot download my data.',
+  WILL_RECEIVE_A_PRINT: 'They will receive a print out of my data by mail.',
+}
+
+export const DATA_RESEARCH_TYPE = {
+  HEALTH_RESEARCH: 'Only health research',
+  MENTAL_HEALTH_RESEARCH: 'Only mental health research',
+  ALL_KIND_RESEARCH:
+    'All kinds of research, including commercial (for profit) research.',
 }
 
 export const COUNTRY_CODES = {
