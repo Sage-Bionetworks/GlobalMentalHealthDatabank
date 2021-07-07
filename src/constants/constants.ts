@@ -82,6 +82,9 @@ export const ROUTES = {
   HUB: '/hub',
   ELIGIBILITY: '/hub/eligibility',
   REGISTRATION: '/hub/registration',
+  ABOUT_THE_STUDY: '/hub/about-the-study',
+  ABOUT_DATA_SHARING: '/hub/about-data-sharing',
+  SUMMARY_AND_SIGNATURE: '/hub/summary-and-signature',
 }
 
 export const MENTAL_HEALTH_EXPERIENCE = {
@@ -114,4 +117,12 @@ export const COUNTRY_CODES = {
   SOUTH_AFRICA: 'ZA',
   OTHER: 'OTHER',
   US: 'US',
+}
+
+export const HUB_STEPS = {
+  ELEGIBILITY: 1,
+  REGISTRATION: 2,
+  ABOUT_THE_STUDY: 3,
+  ABOUT_DATA_SHARING: 4,
+  SUMMARY_AND_SIGNATURE: 5,
 }

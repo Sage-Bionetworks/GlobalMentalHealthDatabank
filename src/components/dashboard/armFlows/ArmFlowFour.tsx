@@ -163,6 +163,43 @@ function ArmFlowFour({
           </div>
         </ResponsiveStepWrapper>
       )
+    case startingStep + 3:
+      // if (clientData?.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL)
+      return (
+        <ResponsiveStepWrapper>
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="text-step-wrapper">
+            <div className="btm-50">
+              <Typography variant="h3">
+                {t('form.secondCommonConsent.volunteer.ifYouLike')}
+              </Typography>
+            </div>
+            <a
+              href={`mailto: ${t('form.secondCommonConsent.volunteer.email')}`}
+            >
+              <Typography variant="body1">
+                {t('form.secondCommonConsent.volunteer.email')}
+              </Typography>
+            </a>
+
+            <Typography variant="body1" style={{ marginBottom: '20px' }}>
+              {t('form.secondCommonConsent.volunteer.subject')}
+            </Typography>
+            <Typography variant="body2">
+              {t('form.secondCommonConsent.volunteer.note')}
+            </Typography>
+            <NavigationArrows
+              preventBack
+              onNext={() =>
+                updateClientData(step + 1, {
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
+                })
+              }
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
+
     default:
       return null
   }
