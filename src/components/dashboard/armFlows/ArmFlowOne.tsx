@@ -31,13 +31,10 @@ function ArmFlowOne({
   startingStep,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
-  const [
-    researchersDataAccessSelection,
-    setResearchersDataAccessSelection,
-  ] = useState(undefined)
-  const [dataResearchTypeSelection, setDataResearchTypeSelection] = useState(
-    undefined,
-  )
+  const [researchersDataAccessSelection, setResearchersDataAccessSelection] =
+    useState(undefined)
+  const [dataResearchTypeSelection, setDataResearchTypeSelection] =
+    useState(undefined)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 

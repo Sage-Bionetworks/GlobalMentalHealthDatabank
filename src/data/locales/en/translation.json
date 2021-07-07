@@ -172,6 +172,21 @@
         "title": "Would you like to volunteer for the community review panel?"
       }
     },
+    "ranking": {
+      "pageOne": {
+        "title": "Now let’s vote!",
+        "subText1": "It’s time for you to tell us how you feel the study data should be used.",
+        "subText2": "Think about your data and then choose your favorite option for each question."
+      },
+      "title": "Voting Screen",
+      "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
+      "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
+      "paragraph3": "Based on how all the people in the study vote, the top items will be the rules for the databank.",
+      "paragraph4": "If there is disagreement between two items, only the top-most will be used. For example, if the second highest voted item is: “No one can use this data to make a profit” and the third highest voted item is: “Anyone can use this data and make a profit” we will not let researchers use the data to make a profit.",
+      "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
+      "confirmation": "Voting Confirmation",
+      "review": "Review the list below to confirm this represents your choices."
+    },
     "secondCommonConsent": {
       "pageOne": {
         "risks&benefit": "Potential Risks & Benefits",
@@ -231,16 +246,6 @@
         "description7": "Researchers will use my information for research. If I give my permission, they may share data with other researchers for future research.",
         "description8": "I have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.",
         "description9": "I can contact the study team with any questions or concerns related to the MindKind Study."
-      },
-      "ranking": {
-        "title": "Voting Screen",
-        "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
-        "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
-        "paragraph3": "Based on how all the people in the study vote, the top items will be the rules for the databank.",
-        "paragraph4": "If there is disagreement between two items, only the top-most will be used. For example, if the second highest voted item is: “No one can use this data to make a profit” and the third highest voted item is: “Anyone can use this data and make a profit” we will not let researchers use the data to make a profit.",
-        "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
-        "confirmation": "Voting Confirmation",
-        "review": "Review the list below to confirm this represents your choices."
       },
       "volunteer": {
         "ifYouLike": "If you would like to be a volunteer reviewer for the community review panel, please email us:",
