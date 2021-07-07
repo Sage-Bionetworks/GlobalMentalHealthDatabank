@@ -154,9 +154,13 @@ ul {
   }
 }
 
-.underlined-link {
+.underlined-link,
+.underlined-link-inline {
   text-decoration: underline;
   color: black;
+}
+.underlined-link-inline {
+  display: inline-flex;
 }
 
 .login-wrapper {

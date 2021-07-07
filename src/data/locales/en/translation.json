@@ -114,13 +114,13 @@
       "dataCollectionEncrypted": "Your data will be encrypted and trasferred to a secure cloud server in the U.S.",
       "dataCollectionIdentity": "Your identity will not be stored with your data.",
       "dataCollectionCombined": "Your study data, without your name, will be combined with data from other people in the study.",
-      "transferAndRights": "Transfer of Data & your data rights.",
-      "transferAway": "We will transfer your study data out of your home country.",
-      "transferToUS": "We may transfer your study data anywhere in the world, including to the United States.",
+      "yourDataRights": "Your Data Rights",
       "yourRights": "You have rights when it comes to your data:",
-      "requestData": "You can request a copy of the data you have provided.",
+      "requestData": "You can request a copy of your study data.",
       "correctData": "You can ask us to correct information about you that is incorrect.",
-      "ifCitizenEU": "If you are a citizen or resident of the European Union, click here to",
+      "privacyPolicyText": "Check the ",
+      "privacyPolicyLink": "Privacy Policy",
+      "ifCitizenEU": "If you are a resident of a nation that abides by the General Data Protection Regulations, click here to ",
       "ifCitizenEULink": "learn more about your data rights."
     },
     "armOne": {
@@ -585,6 +585,10 @@
         "text3": "All texts are answered by trained volunteers, with support from experienced clinical supervisors.",
         "text4": "Texts are free from EE, O2, Vodafone, 3, Virgin Mobile, BT Mobile, GiffGaff, Tesco Mobile and Telecom Plus.",
         "link": {
+          "text": "Visit Website",
+          "url": "https://www.samaritans.org/"
+        },
+        "resources": {
           "text": "Visit Website",
           "url": "https://www.samaritans.org/"
         }
