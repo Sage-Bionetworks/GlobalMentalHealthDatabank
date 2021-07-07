@@ -38,7 +38,7 @@ function RegistrationContainer() {
                     name: loggedIn.data.firstName,
                   },
                 })
-                history.push(ROUTES.CONSENT_STEPS)
+                history.push(ROUTES.HUB)
               }
             }}
           />
