@@ -1,11 +1,13 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
-import ProgressBar from '../../progressBar/ProgressBar'
+import {
+  NavigationArrows,
+  ProgressBar,
+  ResponsiveStepWrapper,
+} from 'components/common'
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
-import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import NavigationArrows from '../../common/NavigationArrows'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
+import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowThreeProps = {
   step: number

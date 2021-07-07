@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
+import {
+  NavigationArrows,
+  ProgressBar,
+  ResponsiveStepWrapper,
+} from 'components/common'
 import {
   FORM_IDS,
   RESEARCHERS_DATA_ACCESS_OPTIONS,
   DATA_RESEARCH_TYPE_OPTIONS,
-} from '../../../components/form/types'
-import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import NavigationArrows from '../../common/NavigationArrows'
-import ProgressBar from '../../progressBar/ProgressBar'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
+} from 'components/form/types'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 import SageForm from 'components/form/SageForm'
+import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowOneProps = {
   step: number
@@ -29,10 +31,13 @@ function ArmFlowOne({
   startingStep,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
-  const [researchersDataAccessSelection, setResearchersDataAccessSelection] =
-    useState(undefined)
-  const [dataResearchTypeSelection, setDataResearchTypeSelection] =
-    useState(undefined)
+  const [
+    researchersDataAccessSelection,
+    setResearchersDataAccessSelection,
+  ] = useState(undefined)
+  const [dataResearchTypeSelection, setDataResearchTypeSelection] = useState(
+    undefined,
+  )
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 

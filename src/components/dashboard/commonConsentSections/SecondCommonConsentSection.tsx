@@ -5,7 +5,7 @@ import { Button, Typography, TextField } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 
 import SageForm from '../../form/SageForm'
-import ProgressBar from '../../progressBar/ProgressBar'
+import ProgressBar from '../../common/ProgressBar'
 import {
   WHAT_IS_THE_PURPOSE_OPTIONS,
   WHICH_IS_CORRECT_OPTIONS,
@@ -48,10 +48,12 @@ function SecondCommonConsentSection({
   maxSteps,
   updateClientData,
 }: SecondCommonConsentProps) {
-  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] =
-    useState(undefined)
-  const [whichIsCorrectSelection, setWhichIsCorrectSelection] =
-    useState(undefined)
+  const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState(
+    undefined,
+  )
+  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState(
+    undefined,
+  )
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
   const [errorMessage, setErrorMessage] = useState('')

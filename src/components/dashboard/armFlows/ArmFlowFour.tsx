@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Typography } from '@material-ui/core'
-import ProgressBar from '../../progressBar/ProgressBar'
 import { useTranslation } from 'react-i18next'
-import SageForm from '../../form/SageForm'
-import { FORM_IDS } from '../../../components/form/types'
-import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
-import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import NavigationArrows from '../../common/NavigationArrows'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
+import {
+  NavigationArrows,
+  ProgressBar,
+  ResponsiveStepWrapper,
+} from 'components/common'
+import SageForm from 'components/form/SageForm'
+import { FORM_IDS } from 'components/form/types'
+import { ReactComponent as Globe } from 'assets/consent/globe.svg'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 
 type ArmFlowFourProps = {
   step: number
