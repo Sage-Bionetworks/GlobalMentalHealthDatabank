@@ -20,7 +20,7 @@ import SushmitaSumant from '../../assets/researchTeam/indiaTeam/Sushmita-Sumant.
 import GillianFinchilescu from '../../assets/researchTeam/southAfricaTeam/Gillian-Finchilescu.png'
 import MelvynFreeman from '../../assets/researchTeam/southAfricaTeam/Melvyn-Freeman.png'
 import ZukiswaZingela from '../../assets/researchTeam/southAfricaTeam/Zukiswa-Zingela.png'
-import SimthembileLindani from '../../assets/researchTeam/southAfricaTeam/Simthembile-Lindani.png'
+import SimthembileLindani from '../../assets/researchTeam/southAfricaTeam/Simthembile-Lindani.jpg'
 import SotiriosShort from '../../assets/researchTeam/southAfricaTeam/Sotirios-Short.jpg'
 import ChandreVanVught from '../../assets/researchTeam/southAfricaTeam/Chandre-VanVught.jpg'
 
@@ -537,6 +537,129 @@ function ResearchTeam() {
                 className="research__member-info-content"
               >
                 {t('research.southAfricaTeam.zukiswaZingela.location')}
+              </Typography>
+            </div>
+          </div>
+
+          <div className="research__photo-container">
+            <ResizableImageComponent
+              className="research__photo-team"
+              src={SimthembileLindani}
+              alt="team-member"
+              tabIndex="8"
+              onFocus={(e: any) => {
+                isMobile && e.target.classList.add('big')
+              }}
+              onBlur={(e: any) => {
+                e.target.classList.remove('big')
+              }}
+            />
+            <div className="research__member-info">
+              <Typography
+                variant="h4"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.simthembileLindani.name')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.simthembileLindani.role')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.simthembileLindani.position')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.simthembileLindani.location')}
+              </Typography>
+            </div>
+          </div>
+
+          <div className="research__photo-container">
+            <ResizableImageComponent
+              className="research__photo-team"
+              src={SotiriosShort}
+              alt="team-member"
+              tabIndex="8"
+              onFocus={(e: any) => {
+                isMobile && e.target.classList.add('big')
+              }}
+              onBlur={(e: any) => {
+                e.target.classList.remove('big')
+              }}
+            />
+            <div className="research__member-info">
+              <Typography
+                variant="h4"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.sotiriosShort.name')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.sotiriosShort.role')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.sotiriosShort.position')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.sotiriosShort.location')}
+              </Typography>
+            </div>
+          </div>
+
+          <div className="research__photo-container">
+            <ResizableImageComponent
+              className="research__photo-team"
+              src={ChandreVanVught}
+              alt="team-member"
+              tabIndex="8"
+              onFocus={(e: any) => {
+                isMobile && e.target.classList.add('big')
+              }}
+              onBlur={(e: any) => {
+                e.target.classList.remove('big')
+              }}
+            />
+            <div className="research__member-info">
+              <Typography
+                variant="h4"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.chandreVanVught.name')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.chandreVanVught.role')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.chandreVanVught.position')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.southAfricaTeam.chandreVanVught.location')}
               </Typography>
             </div>
           </div>
