@@ -20,7 +20,6 @@ type ArmFlowOneProps = {
   setStep: Function
   maxSteps: number
   updateClientData: Function
-  startingStep: number
 }
 
 function ArmFlowOne({
@@ -28,7 +27,6 @@ function ArmFlowOne({
   setStep,
   maxSteps,
   updateClientData,
-  startingStep,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
   const [
@@ -145,7 +143,7 @@ function ArmFlowOne({
   }, [step])
 
   switch (step) {
-    case startingStep:
+    case 1:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -179,7 +177,7 @@ function ArmFlowOne({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 1:
+    case 2:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -231,7 +229,7 @@ function ArmFlowOne({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 2:
+    case 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />

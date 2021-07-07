@@ -16,7 +16,6 @@ type ArmFlowFourProps = {
   setStep: Function
   maxSteps: number
   updateClientData: Function
-  startingStep: number
 }
 
 function ArmFlowFour({
@@ -24,7 +23,6 @@ function ArmFlowFour({
   setStep,
   maxSteps,
   updateClientData,
-  startingStep,
 }: ArmFlowFourProps) {
   const { t } = useTranslation()
   const [errorMessage, setErrorMessage] = useState('')
@@ -67,7 +65,7 @@ function ArmFlowFour({
   }
 
   switch (step) {
-    case startingStep:
+    case 1:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -104,7 +102,7 @@ function ArmFlowFour({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 1:
+    case 2:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -134,7 +132,7 @@ function ArmFlowFour({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 2:
+    case 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -163,7 +161,7 @@ function ArmFlowFour({
           </div>
         </ResponsiveStepWrapper>
       )
-    case startingStep + 3:
+    case 4:
       // if (clientData?.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL)
       return (
         <ResponsiveStepWrapper>

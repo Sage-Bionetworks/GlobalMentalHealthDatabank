@@ -1,21 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Typography } from '@material-ui/core'
-import { cloneDeep } from 'lodash'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import Card from './Card'
-import { useEligibility } from 'components/eligibility/context/EligibilityContext'
-import { hubSteps } from 'data/hub/hub'
-import { HUB_STEPS } from 'constants/constants'
+import Card, { HubCardProps } from './Card'
 
-function Hub() {
-  const [hubCards, setHubCards] = useState(hubSteps)
-  const { isEligible } = useEligibility()
-  if (isEligible) {
-    const newCards = cloneDeep(hubCards)
-    newCards[HUB_STEPS.ELEGIBILITY - 1].status = 'complete'
-    newCards[HUB_STEPS.REGISTRATION - 1].status = 'active'
-    setHubCards(newCards)
-  }
+type Props = {
+  cards: HubCardProps[]
+}
+
+function Hub({ cards }: Props) {
   return (
     <div className="hub">
       <ResponsiveStepWrapper variant="card">
@@ -26,7 +18,7 @@ function Hub() {
             Study.
           </Typography>
           <div className="hub__cards">
-            {hubCards.map(card => (
+            {cards.map(card => (
               <Card
                 key={card.id}
                 title={card.title}
