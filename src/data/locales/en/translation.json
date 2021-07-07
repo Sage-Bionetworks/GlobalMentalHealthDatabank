@@ -178,6 +178,9 @@
         "subText1": "It’s time for you to tell us how you feel the study data should be used.",
         "subText2": "Think about your data and then choose your favorite option for each question."
       },
+      "pageTwo": {
+        "title": "Can my data be used by researchers to make a profit?"
+      },
       "title": "Voting Screen",
       "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
       "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",

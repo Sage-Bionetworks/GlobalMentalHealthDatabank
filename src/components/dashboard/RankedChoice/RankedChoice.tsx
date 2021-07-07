@@ -9,7 +9,7 @@ import {
 import { FORM_IDS } from 'components/form/types'
 import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 import SageForm from 'components/form/SageForm'
-
+import { INITIAL_RANKED_CHOICES } from './helpers'
 type RankedChoiceProps = {
   step: number
   setStep: Function
@@ -17,7 +17,6 @@ type RankedChoiceProps = {
   updateClientData: Function
   startingStep: number
 }
-
 function RankedChoice({
   step,
   setStep,
@@ -28,14 +27,15 @@ function RankedChoice({
   const { t } = useTranslation()
   const [researchersDataProfitSelection, setResearchersDataProfitSelection] =
     useState(undefined)
+  const [currentEligibilityChoices, setCurrentEligibilityChoices] = useState(
+    INITIAL_RANKED_CHOICES,
+  )
   const [dataPaymentSelection, setDataPaymentSelection] = useState(undefined)
-  const [dataUsageelection, setDataUsageSelection] = useState(undefined)
+  const [dataUsageSelection, setDataUsageSelection] = useState(undefined)
   const [dataSharingSelection, setDataSharingSelection] = useState(undefined)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
-
   window.scrollTo(0, 0)
-
   const CustomRadioResearchersDataProfit = ({
     options,
     value,
@@ -66,14 +66,12 @@ function RankedChoice({
       )
     })
   }
-
   useEffect(() => {
     setErrorMessage('')
     setSuccessMessage('')
   }, [step])
-
   switch (step) {
-    case step:
+    case startingStep:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -81,15 +79,14 @@ function RankedChoice({
             <Typography variant="h3">
               {t('form.ranking.pageOne.title')}
             </Typography>
-
-            <Typography variant="h6">
-              {t('form.ranking.pageOne.subText1')}
-            </Typography>
-
+            <div className="btm-30">
+              <Typography variant="body2">
+                {t('form.ranking.pageOne.subText1')}
+              </Typography>
+            </div>
             <Typography variant="body2">
               {t('form.ranking.pageOne.subText2')}
             </Typography>
-
             <NavigationArrows
               onBack={() =>
                 setStep((current: number) =>
@@ -101,8 +98,36 @@ function RankedChoice({
                   current < maxSteps ? current + 1 : current,
                 )
                 updateClientData(step + 1, {
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
                 })
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
+
+    case startingStep + 1:
+      document.title =
+        'MindKind > Can my data be used by researchers to make a profit??'
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.ranking.pageTwo.title')}
+              errorMessage={errorMessage}
+              formId={FORM_IDS.RESEARCHERS_DATA_PROFIT}
+              buttonText={t('common.submit')}
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.researchersDataProfit
+                if (selectedOption && Object.keys(selectedOption).length === 0)
+                  setErrorMessage(t('form.chooseAnOption'))
+                else {
+                  setCurrentEligibilityChoices((prev: any) => ({
+                    ...prev,
+                    howDidYouHear: selectedOption.how_options,
+                  }))
+                }
               }}
             />
           </div>
@@ -113,5 +138,4 @@ function RankedChoice({
       return null
   }
 }
-
 export default RankedChoice

@@ -62,6 +62,11 @@ import {
   uiSchemaDataResearchType,
 } from '../../data/schemas/dataResearchType'
 
+import {
+  schemaResearchersDataProfit,
+  uiSchemaResearchersDataProfit,
+} from '../../data/schemas/researchersDataProfit'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -152,6 +157,8 @@ export default function SageForm({
         return schemaResearchersDataAccess
       case FORM_IDS.DATA_RESEARCH_TYPE:
         return schemaDataResearchType
+      case FORM_IDS.RESEARCHERS_DATA_PROFIT:
+        return schemaResearchersDataProfit
       default:
         return null
     }
@@ -187,6 +194,8 @@ export default function SageForm({
         return uiSchemaResearchersDataAccess
       case FORM_IDS.DATA_RESEARCH_TYPE:
         return uiSchemaDataResearchType
+      case FORM_IDS.RESEARCHERS_DATA_PROFIT:
+        return uiSchemaResearchersDataProfit
       default:
         return null
     }
