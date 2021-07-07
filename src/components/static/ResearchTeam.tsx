@@ -68,7 +68,6 @@ function ResizableImageComponent({ ...rest }: any) {
 function ResearchTeam() {
   const { t } = useTranslation()
   const { push } = useHistory()
-
   const breakpoint = useBreakpoint()
   const isMobile = breakpoint < 1024
 
@@ -76,6 +75,12 @@ function ResearchTeam() {
     ;(document.activeElement as HTMLElement).blur()
   }, [breakpoint])
 
+  const expandImage = (e: any) => {
+    isMobile && e.target.classList.add('big')
+  }
+  const shrinkImage = (e: any) => {
+    e.target.classList.remove('big')
+  }
   return (
     <div className="research">
       <div className="research__hero">
@@ -174,12 +179,8 @@ function ResearchTeam() {
               src={HimaniShah}
               alt="team-member"
               tabIndex="0"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -215,12 +216,8 @@ function ResearchTeam() {
               src={JasmineKalha}
               alt="team-member"
               tabIndex="1"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -256,12 +253,8 @@ function ResearchTeam() {
               src={MeeraDamji}
               alt="team-member"
               tabIndex="2"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -297,12 +290,8 @@ function ResearchTeam() {
               src={Minal}
               alt="team-member"
               tabIndex="3"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -338,12 +327,8 @@ function ResearchTeam() {
               src={SoumitraPathare}
               alt="team-member"
               tabIndex="4"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -379,12 +364,8 @@ function ResearchTeam() {
               src={SushmitaSumant}
               alt="team-member"
               tabIndex="5"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -424,12 +405,8 @@ function ResearchTeam() {
               src={GillianFinchilescu}
               alt="team-member"
               tabIndex="6"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -465,12 +442,8 @@ function ResearchTeam() {
               src={MelvynFreeman}
               alt="team-member"
               tabIndex="7"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -506,12 +479,8 @@ function ResearchTeam() {
               src={ZukiswaZingela}
               alt="team-member"
               tabIndex="8"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -547,12 +516,8 @@ function ResearchTeam() {
               src={SimthembileLindani}
               alt="team-member"
               tabIndex="9"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -588,12 +553,8 @@ function ResearchTeam() {
               src={SotiriosShort}
               alt="team-member"
               tabIndex="10"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -629,12 +590,8 @@ function ResearchTeam() {
               src={ChandreVanVught}
               alt="team-member"
               tabIndex="11"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -675,12 +632,8 @@ function ResearchTeam() {
               src={AnneMarieBurn}
               alt="team-member"
               tabIndex="12"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -716,12 +669,8 @@ function ResearchTeam() {
               src={BlossomFernandes}
               alt="team-member"
               tabIndex="13"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -757,12 +706,8 @@ function ResearchTeam() {
               src={EmmaCarey}
               alt="team-member"
               tabIndex="14"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -798,12 +743,8 @@ function ResearchTeam() {
               src={Lakshmi}
               alt="team-member"
               tabIndex="15"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -839,12 +780,8 @@ function ResearchTeam() {
               src={MinaFazel}
               alt="team-member"
               tabIndex="16"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -880,12 +817,8 @@ function ResearchTeam() {
               src={TamsinFord}
               alt="team-member"
               tabIndex="17"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -921,12 +854,8 @@ function ResearchTeam() {
               src={FaithAdeyemi}
               alt="team-member"
               tabIndex="18"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -967,12 +896,8 @@ function ResearchTeam() {
               src={ChristopherKemp}
               alt="team-member"
               tabIndex="19"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1008,12 +933,8 @@ function ResearchTeam() {
               src={FeliciaMataGreve}
               alt="team-member"
               tabIndex="20"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1049,12 +970,8 @@ function ResearchTeam() {
               src={IsabellGriffithFillipo}
               alt="team-member"
               tabIndex="21"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1090,12 +1007,8 @@ function ResearchTeam() {
               src={JenniferVelloza}
               alt="team-member"
               tabIndex="22"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1131,12 +1044,8 @@ function ResearchTeam() {
               src={NicholeSams}
               alt="team-member"
               tabIndex="23"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1171,12 +1080,8 @@ function ResearchTeam() {
               src={JuliaDunbar}
               alt="team-member"
               tabIndex="24"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1211,12 +1116,8 @@ function ResearchTeam() {
               src={PamelaCollins}
               alt="team-member"
               tabIndex="25"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1252,12 +1153,8 @@ function ResearchTeam() {
               src={PatArean}
               alt="team-member"
               tabIndex="26"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1293,12 +1190,8 @@ function ResearchTeam() {
               src={TessaConcepcion}
               alt="team-member"
               tabIndex="27"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1338,12 +1231,8 @@ function ResearchTeam() {
               src={CarlyMarten}
               alt="team-member"
               tabIndex="28"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1379,12 +1268,8 @@ function ResearchTeam() {
               src={ChristineSuver}
               alt="team-member"
               tabIndex="29"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1420,12 +1305,8 @@ function ResearchTeam() {
               src={EmilyMoore}
               alt="team-member"
               tabIndex="30"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1461,12 +1342,8 @@ function ResearchTeam() {
               src={ErinMounts}
               alt="team-member"
               tabIndex="31"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1502,12 +1379,8 @@ function ResearchTeam() {
               src={ErinScanlan}
               alt="team-member"
               tabIndex="32"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1543,12 +1416,8 @@ function ResearchTeam() {
               src={JayHodgson}
               alt="team-member"
               tabIndex="33"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1584,12 +1453,8 @@ function ResearchTeam() {
               src={LaraMangravite}
               alt="team-member"
               tabIndex="34"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1625,12 +1490,8 @@ function ResearchTeam() {
               src={LarssonOmberg}
               alt="team-member"
               tabIndex="35"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1666,12 +1527,8 @@ function ResearchTeam() {
               src={LisaPasquale}
               alt="team-member"
               tabIndex="36"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1707,12 +1564,8 @@ function ResearchTeam() {
               src={LjuboBradic}
               alt="team-member"
               tabIndex="37"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1748,12 +1601,8 @@ function ResearchTeam() {
               src={MegDoerr}
               alt="team-member"
               tabIndex="38"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1789,12 +1638,8 @@ function ResearchTeam() {
               src={MikeKellen}
               alt="team-member"
               tabIndex="39"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1830,12 +1675,8 @@ function ResearchTeam() {
               src={SollySieberts}
               alt="team-member"
               tabIndex="40"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1871,12 +1712,8 @@ function ResearchTeam() {
               src={SoniaCarlson}
               alt="team-member"
               tabIndex="41"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
@@ -1912,12 +1749,8 @@ function ResearchTeam() {
               src={StockardSimon}
               alt="team-member"
               tabIndex="42"
-              onFocus={(e: any) => {
-                isMobile && e.target.classList.add('big')
-              }}
-              onBlur={(e: any) => {
-                e.target.classList.remove('big')
-              }}
+              onFocus={expandImage}
+              onBlur={shrinkImage}
             />
             <div className="research__member-info">
               <Typography
