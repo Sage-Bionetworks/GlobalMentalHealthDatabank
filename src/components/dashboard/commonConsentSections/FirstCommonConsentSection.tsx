@@ -9,7 +9,7 @@ import {
 } from '../../../constants/constants'
 import NavigationArrows from '../../common/NavigationArrows'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import ProgressBar from '../../progressBar/ProgressBar'
+import { ProgressBar } from 'components/common'
 import SageForm from '../../form/SageForm'
 import { ReactComponent as Questions } from '../../../assets/consent/questions.svg'
 import { ReactComponent as Network } from '../../../assets/consent/network.svg'
@@ -31,8 +31,7 @@ function FirstCommonConsentSection({
   updateClientData,
   consentModel,
 }: FirstCommonConsentProps) {
-  const [howToParticipateSelection, setHowToParticipateSelection] =
-    useState(undefined)
+  const [howToParticipateSelection, setHowToParticipateSelection] = useState()
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
