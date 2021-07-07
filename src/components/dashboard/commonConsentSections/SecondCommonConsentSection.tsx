@@ -12,8 +12,6 @@ import {
   WHO_CONTROLS_DATA_OPTIONS,
   FORM_IDS,
 } from '../../form/types'
-import RankedChoice from '../RankedChoice/RankedChoice'
-import RankedChoiceSummary from '../RankedChoice/RankedChoiceSummary'
 import { ConsentService } from '../../../services/consent.service'
 import { HealthService } from '../../../services/health.service'
 import { UserService } from '../../../services/user.service'
@@ -634,67 +632,39 @@ function SecondCommonConsentSection({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 8: {
+    case maxSteps: {
       getUserVolunteerAnswer()
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="text-step-wrapper">
-            {showVolunteer === true && (
-              <>
-                <div className="btm-50">
-                  <Typography variant="h3">
-                    {t('form.secondCommonConsent.volunteer.ifYouLike')}
-                  </Typography>
-                </div>
-                <a
-                  href={`mailto: ${t(
-                    'form.secondCommonConsent.volunteer.email',
-                  )}`}
-                >
-                  <Typography variant="body1">
-                    {t('form.secondCommonConsent.volunteer.email')}
-                  </Typography>
-                </a>
+            <div className="btm-50">
+              <Typography variant="h3">
+                {t('form.secondCommonConsent.volunteer.ifYouLike')}
+              </Typography>
+            </div>
+            <a
+              href={`mailto: ${t('form.secondCommonConsent.volunteer.email')}`}
+            >
+              <Typography variant="body1">
+                {t('form.secondCommonConsent.volunteer.email')}
+              </Typography>
+            </a>
 
-                <Typography variant="body1" style={{ marginBottom: '20px' }}>
-                  {t('form.secondCommonConsent.volunteer.subject')}
-                </Typography>
-                <Typography variant="body2">
-                  {t('form.secondCommonConsent.volunteer.note')}
-                </Typography>
-                <NavigationArrows
-                  preventBack
-                  onNext={() =>
-                    updateClientData(step + 1, {
-                      skipRanking: true,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
-                    })
-                  }
-                />
-              </>
-            )}
-            {showVolunteer === false && (
-              <RankedChoice
-                step={step}
-                setStep={setStep}
-                updateClientData={updateClientData}
-              />
-            )}
-          </div>
-        </ResponsiveStepWrapper>
-      )
-    }
-
-    case maxSteps: {
-      return (
-        <ResponsiveStepWrapper>
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <div className="text-step-wrapper">
-            <RankedChoiceSummary
-              step={step}
-              setStep={setStep}
-              updateClientData={updateClientData}
+            <Typography variant="body1" style={{ marginBottom: '20px' }}>
+              {t('form.secondCommonConsent.volunteer.subject')}
+            </Typography>
+            <Typography variant="body2">
+              {t('form.secondCommonConsent.volunteer.note')}
+            </Typography>
+            <NavigationArrows
+              preventBack
+              onNext={() =>
+                updateClientData(step + 1, {
+                  skipRanking: false,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
+                })
+              }
             />
           </div>
         </ResponsiveStepWrapper>

@@ -13,7 +13,7 @@ import SecondCommonConsentSection from './commonConsentSections/SecondCommonCons
 import { ROUTES } from '../../constants/constants'
 
 const FIRST_CONSENT_STEPS: number = 4
-const SECOND_CONSENT_STEPS: number = 10
+const SECOND_CONSENT_STEPS: number = 9
 const FOURTH_ARM_FLOW_LENGTH: number = 3
 const FIRST_ARM_FLOW_LENGTH: number = 3
 const OTHER_ARM_FLOW_LENGTH: number = 1
