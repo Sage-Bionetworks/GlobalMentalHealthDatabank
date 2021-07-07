@@ -316,6 +316,12 @@
     },
     "southAfricaTeam": {
       "title": "The South Africa Team",
+      "chandreVanVught": {
+        "name": "Chandre Van Vught, MA",
+        "role": "Counselling Psychologist",
+        "position": "Scientific Collaborator, South Africa",
+        "location": "Higher Health"
+      },
       "gillianFinchilescu": {
         "name": "Gillian Finchilescu, D.Phil",
         "role": "Professor Emeritus",
@@ -332,7 +338,19 @@
         "name": "Zukiswa Zingela, MMed Psych, FCPsych",
         "role": "Associate Professor and Head of the Department of Psychiatry and Human Behavioral Sciences",
         "position": "Site Lead, South Africa",
-        "location": "Walter Sisulu University "
+        "location": "Walter Sisulu University"
+      },
+      "simthembileLindani": {
+        "name": "Simthembile Lindani, BS",
+        "role": "Research Assistant",
+        "position": "Scientific Collaborator, South Africa",
+        "location": "Walter Sisulu University"
+      },
+      "sotiriosShort": {
+        "name": "Sotirios Short, MA",
+        "role": "Clinical Psychologist",
+        "position": "Scientific Collaborator, South Africa",
+        "location": "Higher Health"
       }
     },
     "ukTeam": {
@@ -355,6 +373,12 @@
         "position": "Scientific Collaborator, UK",
         "location": "University of Cambridge"
       },
+      "faithAdeyemi": {
+        "name": "Faith Adeyemi",
+        "role": "Research Assistant",
+        "position": "Scientific Collaborator, UK",
+        "location": "University of Cambridge"
+      },
       "lakshmiNeelakantan": {
         "name": "Lakshmi Neelakantan, PhD",
         "role": "Postdoctoral Researcher",
@@ -362,13 +386,13 @@
         "location": "University of Oxford"
       },
       "minaFazel": {
-        "name": "Mina Fazel, DM MRCPsych",
+        "name": "Mina Fazel, DM MRCPsych",
         "role": "Assoc. Professor of Child and Adolescent Psychiatry and Consultant Child and Adolescent Psychiatrist",
         "position": "Site Lead, UK",
         "location": "University of Oxford and Oxford University Hospitals"
       },
       "tamsinFord": {
-        "name": "Tamsin Ford, CBE, FRCPsych, FMedSci",
+        "name": "Tamsin Ford, CBE, FRCPsych, FMedSci",
         "role": "Professor of Child and Adolescent Psychiatry",
         "position": "Site Lead, UK",
         "location": "University of Cambridge"
@@ -463,6 +487,12 @@
         "position": "Director of Web Engineering",
         "location": "Sage Bionetworks, United States"
       },
+      "juliaDunbar": {
+        "name": "Julia Dunbar, MS, BS",
+        "role": "Health Informatics and Human Computer Interaction (HCI) Researcher",
+        "position": "Governance Intern",
+        "location": "Sage Bionetworks, United States"
+      },
       "laraMangravite": {
         "name": "Lara Mangravite, PhD",
         "role": "Head Scientist",
@@ -471,14 +501,14 @@
       },
       "larssonOmberg": {
         "name": "Larsson Omberg, PhD",
-        "role": "Scientific collaborator",
+        "role": "Scientific Collaborator",
         "position": "Vice President of Systems Biology",
         "location": "Sage Bionetworks, United States"
       },
       "lisaPasquale": {
         "name": "Lisa Pasquale, BA",
         "role": "Project Coordination, Research Governance",
-        "position": "Governance Intern",
+        "position": "Associate Governance Analyst",
         "location": "Sage Bionetworks, United States"
       },
       "ljuboBradic": {
