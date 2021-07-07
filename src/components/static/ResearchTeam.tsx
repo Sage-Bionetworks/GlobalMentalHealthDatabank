@@ -546,7 +546,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={SimthembileLindani}
               alt="team-member"
-              tabIndex="8"
+              tabIndex="9"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -587,7 +587,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={SotiriosShort}
               alt="team-member"
-              tabIndex="8"
+              tabIndex="10"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -628,7 +628,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={ChandreVanVught}
               alt="team-member"
-              tabIndex="8"
+              tabIndex="11"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -674,7 +674,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={AnneMarieBurn}
               alt="team-member"
-              tabIndex="9"
+              tabIndex="12"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -715,7 +715,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={BlossomFernandes}
               alt="team-member"
-              tabIndex="10"
+              tabIndex="13"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -756,7 +756,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={EmmaCarey}
               alt="team-member"
-              tabIndex="11"
+              tabIndex="14"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -797,7 +797,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={Lakshmi}
               alt="team-member"
-              tabIndex="12"
+              tabIndex="15"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -838,7 +838,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={MinaFazel}
               alt="team-member"
-              tabIndex="13"
+              tabIndex="16"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -879,7 +879,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={TamsinFord}
               alt="team-member"
-              tabIndex="14"
+              tabIndex="17"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -920,7 +920,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={FaithAdeyemi}
               alt="team-member"
-              tabIndex="14"
+              tabIndex="18"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -966,7 +966,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={ChristopherKemp}
               alt="team-member"
-              tabIndex="15"
+              tabIndex="19"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1007,7 +1007,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={FeliciaMataGreve}
               alt="team-member"
-              tabIndex="16"
+              tabIndex="20"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1048,7 +1048,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={IsabellGriffithFillipo}
               alt="team-member"
-              tabIndex="17"
+              tabIndex="21"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1089,7 +1089,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={JenniferVelloza}
               alt="team-member"
-              tabIndex="18"
+              tabIndex="22"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1130,7 +1130,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={NicholeSams}
               alt="team-member"
-              tabIndex="19"
+              tabIndex="23"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1170,7 +1170,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={JuliaDunbar}
               alt="team-member"
-              tabIndex="20"
+              tabIndex="24"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1210,7 +1210,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={PamelaCollins}
               alt="team-member"
-              tabIndex="20"
+              tabIndex="25"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1251,7 +1251,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={PatArean}
               alt="team-member"
-              tabIndex="21"
+              tabIndex="26"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1292,7 +1292,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={TessaConcepcion}
               alt="team-member"
-              tabIndex="22"
+              tabIndex="27"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1337,7 +1337,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={CarlyMarten}
               alt="team-member"
-              tabIndex="23"
+              tabIndex="28"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1378,7 +1378,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={ChristineSuver}
               alt="team-member"
-              tabIndex="24"
+              tabIndex="29"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1419,7 +1419,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={EmilyMoore}
               alt="team-member"
-              tabIndex="25"
+              tabIndex="30"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1460,7 +1460,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={ErinMounts}
               alt="team-member"
-              tabIndex="26"
+              tabIndex="31"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1501,7 +1501,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={ErinScanlan}
               alt="team-member"
-              tabIndex="27"
+              tabIndex="32"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1542,7 +1542,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={JayHodgson}
               alt="team-member"
-              tabIndex="28"
+              tabIndex="33"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1583,7 +1583,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={LaraMangravite}
               alt="team-member"
-              tabIndex="29"
+              tabIndex="34"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1624,7 +1624,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={LarssonOmberg}
               alt="team-member"
-              tabIndex="30"
+              tabIndex="35"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1665,7 +1665,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={LisaPasquale}
               alt="team-member"
-              tabIndex="31"
+              tabIndex="36"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1706,7 +1706,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={LjuboBradic}
               alt="team-member"
-              tabIndex="32"
+              tabIndex="37"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1747,7 +1747,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={MegDoerr}
               alt="team-member"
-              tabIndex="33"
+              tabIndex="38"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1788,7 +1788,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={MikeKellen}
               alt="team-member"
-              tabIndex="34"
+              tabIndex="39"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1829,7 +1829,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={SollySieberts}
               alt="team-member"
-              tabIndex="35"
+              tabIndex="40"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1870,7 +1870,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={SoniaCarlson}
               alt="team-member"
-              tabIndex="36"
+              tabIndex="41"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
@@ -1911,7 +1911,7 @@ function ResearchTeam() {
               className="research__photo-team"
               src={StockardSimon}
               alt="team-member"
-              tabIndex="37"
+              tabIndex="42"
               onFocus={(e: any) => {
                 isMobile && e.target.classList.add('big')
               }}
