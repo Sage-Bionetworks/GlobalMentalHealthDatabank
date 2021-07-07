@@ -24,8 +24,13 @@ export interface UserData {
   lastName: string
   email?: string
   phone?: Phone
-  clientData: object
+  clientData: ClientData
   attributes?: UserAttributes
+}
+
+export type ClientData = {
+  consentModel: UserDataGroup
+  consented: boolean
 }
 
 export type UserDataGroup =

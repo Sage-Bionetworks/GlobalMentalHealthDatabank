@@ -14,7 +14,6 @@ import Contact from './components/static/Contact'
 import About from './components/static/About'
 import ResearchTeam from './components/static/ResearchTeam'
 import Login from './components/login/Login'
-import Dashboard from './components/dashboard/Dashboard'
 import Hub from './components/dashboard/Hub/'
 import DownloadApp from './components/static/DownloadApp'
 import GoogleAnalyticsPageTracker from './components/widgets/GoogleAnalyticsPageTracker'
@@ -23,7 +22,6 @@ import DataRegulation from './components/static/DataRegulation'
 import PrivacyPolicy from './components/static/PrivacyPolicy'
 import Terms from './components/static/Terms'
 import ConsentInfo from './components/static/ConsentInfo'
-import PrivateRoute from 'components/common/PrivateRoute'
 import './styles/style.scss'
 
 function App() {
@@ -86,9 +84,6 @@ function App() {
                     <Route path={ROUTES.HUB}>
                       <Hub />
                     </Route>
-                    <PrivateRoute exact={true} path={ROUTES.CONSENT_STEPS}>
-                      <Dashboard token={token || ''} />
-                    </PrivateRoute>
                     <Route path={ROUTES.DATA_REGULATION}>
                       <DataRegulation />
                     </Route>

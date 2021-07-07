@@ -22,7 +22,7 @@ export const hubSteps: HubCardProps[] = [
     title: 'About the study',
     subtitle: 'Learn about the study and the risks and benefits of joining',
     time: 'Approx. 7 minutes',
-    status: 'active',
+    status: 'disabled',
     route: ROUTES.ABOUT_THE_STUDY,
   },
   {
@@ -38,7 +38,7 @@ export const hubSteps: HubCardProps[] = [
     title: 'Summary and signature',
     subtitle: 'Review and confirm',
     time: 'Approx. 3 minutes',
-    status: 'active',
+    status: 'disabled',
     route: ROUTES.SUMMARY_AND_SIGNATURE,
   },
 ]
