@@ -791,7 +791,49 @@ function ResearchTeam() {
               </Typography>
             </div>
           </div>
+
+          <div className="research__photo-container">
+            <ResizableImageComponent
+              className="research__photo-team"
+              src={FaithAdeyemi}
+              alt="team-member"
+              tabIndex="14"
+              onFocus={(e: any) => {
+                isMobile && e.target.classList.add('big')
+              }}
+              onBlur={(e: any) => {
+                e.target.classList.remove('big')
+              }}
+            />
+            <div className="research__member-info">
+              <Typography
+                variant="h4"
+                className="research__member-info-content"
+              >
+                {t('research.ukTeam.faithAdeyemi.name')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.ukTeam.faithAdeyemi.role')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.ukTeam.faithAdeyemi.position')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.ukTeam.faithAdeyemi.location')}
+              </Typography>
+            </div>
+          </div>
         </div>
+
         <Typography variant="h2" className="research__section-title">
           {t('research.usTeam.title')}
         </Typography>
