@@ -13,15 +13,19 @@ import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 
 type ArmFlowFourProps = {
   step: number
-  setStep: Function
   maxSteps: number
+  handleNext: (pageId?: string) => void
+  handleBack: () => void
+  handleComplete: (pageId?: string) => void
   updateClientData: Function
 }
 
 function ArmFlowFour({
   step,
-  setStep,
   maxSteps,
+  handleNext,
+  handleBack,
+  handleComplete,
   updateClientData,
 }: ArmFlowFourProps) {
   const { t } = useTranslation()
@@ -83,19 +87,8 @@ function ArmFlowFour({
                 {t('form.armFour.pageOne.subText1')}
               </Typography>
               <NavigationArrows
-                onBack={() =>
-                  setStep((current: number) =>
-                    current > 1 ? current - 1 : current,
-                  )
-                }
-                onNext={() => {
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
-                  updateClientData(step + 1, {
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_02,
-                  })
-                }}
+                onBack={handleBack}
+                onNext={() => handleNext(PAGE_ID.PARTICIPANT_CHOICE_02)}
               />
             </div>
           </div>
@@ -117,14 +110,11 @@ function ArmFlowFour({
                 if (!selectedOption) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  updateClientData(step + 1, {
+                  handleNext()
+                  updateClientData({
                     [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_03,
                   })
-
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
                 }
               }}
             />
@@ -147,14 +137,12 @@ function ArmFlowFour({
                 if (selectedOption.who_controls_data === undefined) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  updateClientData(step + 1, {
+                  handleNext()
+                  updateClientData({
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
                   })
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
                 }
               }}
             />
@@ -188,11 +176,7 @@ function ArmFlowFour({
             </Typography>
             <NavigationArrows
               preventBack
-              onNext={() =>
-                updateClientData(step + 1, {
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.APP_DOWNLOAD,
-                })
-              }
+              onNext={() => handleNext(PAGE_ID.APP_DOWNLOAD)}
             />
           </div>
         </ResponsiveStepWrapper>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
+import { cloneDeep } from 'lodash'
 import {
   PARTICIPATE_OPTIONS,
   FORM_IDS,
@@ -20,29 +22,29 @@ import { ReactComponent as RisksBenefits } from 'assets/consent/risksBenefits.sv
 import { ReactComponent as NotMedical } from 'assets/consent/notMedical.svg'
 import { ReactComponent as Exit } from 'assets/consent/exit.svg'
 import { FLOW_OPTIONS } from 'helpers/RandomFlowGenerator'
+import { Checkpoint } from 'types/types'
 
 type AboutTheStudyProps = {
-  step?: number
-  setStep?: Function
+  checkpoint?: Checkpoint
   maxSteps?: number
-  updateClientData?: Function
+  updateClientData: Function
   consentModel?: string
 }
 
 function AboutTheStudy({
-  // step,
-  // setStep,
+  checkpoint,
   maxSteps = 11,
-  updateClientData = console.log,
+  updateClientData,
   consentModel,
 }: AboutTheStudyProps) {
-  const [step, setStep] = useState(9)
+  const history = useHistory()
   const [howToParticipateSelection, setHowToParticipateSelection] = useState()
   const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState()
   const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState()
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
+  const step = checkpoint?.aboutTheStudy?.step || 1
 
   const CustomRadioParticipate = createCustomRadio(
     PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS,
@@ -87,14 +89,44 @@ function AboutTheStudy({
   useEffect(() => {
     setErrorMessage('')
     setSuccessMessage('')
-  }, [step])
+  }, [checkpoint])
 
   const handleNext = (pageId: string | undefined) => {
-    setStep((current: number) => (current < maxSteps ? current + 1 : current))
-    updateClientData(step + 1, { [PAGE_ID_FIELD_NAME]: pageId })
+    if (checkpoint) {
+      const nextStep = step < maxSteps ? step + 1 : step
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.aboutTheStudy.step = nextStep
+      updateClientData({
+        [PAGE_ID_FIELD_NAME]: pageId,
+        checkpoint: newCheckpoint,
+      })
+    }
   }
-  const handleBack = () =>
-    setStep((current: number) => (current > 1 ? current - 1 : current))
+  const handleBack = () => {
+    if (checkpoint) {
+      const prevStep = step > 1 ? step - 1 : step
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.aboutTheStudy.step = prevStep
+      updateClientData({
+        checkpoint: newCheckpoint,
+      })
+    }
+  }
+
+  const handleComplete = (pageId: string | undefined) => {
+    if (checkpoint) {
+      const nextStep = step < maxSteps ? step + 1 : step
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.aboutTheStudy.step = nextStep
+      newCheckpoint.aboutTheStudy.status = 'complete'
+      newCheckpoint.aboutDataSharing.status = 'started'
+      updateClientData({
+        [PAGE_ID_FIELD_NAME]: pageId,
+        checkpoint: newCheckpoint,
+      })
+      history.push(ROUTES.HUB)
+    }
+  }
 
   window.scrollTo(0, 0)
 
@@ -171,9 +203,7 @@ function AboutTheStudy({
                 const selectedOption = event.formData.how_to_participate
 
                 if (successMessage || howToParticipateSelection) {
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
+                  handleNext(undefined)
                 }
 
                 if (
@@ -196,7 +226,7 @@ function AboutTheStudy({
                   setHowToParticipateSelection(
                     selectedOption.participate_option,
                   )
-                  updateClientData(step + 1, {
+                  updateClientData({
                     [FORM_IDS.HOW_TO_PARTICIPATE]:
                       selectedOption.participate_option,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.DATA_COLLECTION,
@@ -340,12 +370,10 @@ function AboutTheStudy({
                     setSuccessMessage('')
                   }
                   if (successMessage || whatIsThePurposeSelection) {
-                    setStep((current: number) =>
-                      current < maxSteps ? current + 1 : current,
-                    )
+                    handleNext(undefined)
                   } else {
                     setWhatIsThePurposeSelection(selectedOption)
-                    updateClientData(step + 1, {
+                    updateClientData({
                       [FORM_IDS.WHAT_IS_THE_PURPOSE]: selectedOption,
                       [PAGE_ID_FIELD_NAME]: PAGE_ID.LEAVING_STUDY,
                     })
@@ -438,12 +466,10 @@ function AboutTheStudy({
                   }
 
                   if (successMessage || whichIsCorrectSelection) {
-                    setStep((current: number) =>
-                      current < maxSteps ? current + 1 : current,
-                    )
+                    handleNext(undefined)
                   } else {
                     setWhichIsCorrectSelection(selectedOption)
-                    updateClientData(step + 1, {
+                    updateClientData({
                       [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
                       [PAGE_ID_FIELD_NAME]: PAGE_ID.CONTACT,
                     })
@@ -548,7 +574,7 @@ function AboutTheStudy({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(getNextPageName())}
+              onNext={() => handleComplete(getNextPageName())}
             />
           </div>
         </ResponsiveStepWrapper>

@@ -17,15 +17,19 @@ import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowOneProps = {
   step: number
-  setStep: Function
   maxSteps: number
+  handleNext: (pageId?: string) => void
+  handleBack: () => void
+  handleComplete: (pageId?: string) => void
   updateClientData: Function
 }
 
 function ArmFlowOne({
   step,
-  setStep,
   maxSteps,
+  handleNext,
+  handleBack,
+  handleComplete,
   updateClientData,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
@@ -159,19 +163,8 @@ function ArmFlowOne({
             <Typography variant="body2">{t('form.armOne.subText1')}</Typography>
 
             <NavigationArrows
-              onBack={() =>
-                setStep((current: number) =>
-                  current > 1 ? current - 1 : current,
-                )
-              }
-              onNext={() => {
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
-                )
-                updateClientData(step + 1, {
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS,
-                })
-              }}
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.RESEARCH_NORMS)}
             />
           </div>
         </ResponsiveStepWrapper>
@@ -212,12 +205,10 @@ function ArmFlowOne({
                     setSuccessMessage('')
                   }
                   if (successMessage || researchersDataAccessSelection) {
-                    setStep((current: number) =>
-                      current < maxSteps ? current + 1 : current,
-                    )
+                    handleNext()
                   } else {
                     setResearchersDataAccessSelection(selectedOption)
-                    updateClientData(step + 1, {
+                    updateClientData({
                       [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
                       [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_02,
                     })
@@ -262,12 +253,10 @@ function ArmFlowOne({
                     setSuccessMessage('')
                   }
                   if (successMessage || dataResearchTypeSelection) {
-                    setStep((current: number) =>
-                      current < maxSteps ? current + 1 : current,
-                    )
+                    handleNext()
                   } else {
                     setDataResearchTypeSelection(selectedOption)
-                    updateClientData(step + 1, {
+                    updateClientData({
                       [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
                       [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_03,
                     })

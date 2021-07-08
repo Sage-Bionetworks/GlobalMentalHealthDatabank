@@ -115,7 +115,20 @@ export const Registration: React.FunctionComponent = () => {
         gender,
         consented: false,
         [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_WILL_YOU_ASK,
-        checkpoint: 1,
+        checkpoint: {
+          aboutTheStudy: {
+            step: 1,
+            status: 'started',
+          },
+          aboutDataSharing: {
+            step: 1,
+            status: 'unstarted',
+          },
+          summaryAndSignature: {
+            step: 1,
+            status: 'unstarted',
+          },
+        },
       },
       appId: APP_ID,
       substudyIds: [SUB_STUDY_ID],
