@@ -77,7 +77,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }, [step])
 
   if (token) {
-    return <Redirect to={ROUTES.CONSENT_STEPS} push={true} />
+    return <Redirect to={ROUTES.HUB} push={true} />
   }
 
   window.scrollTo(0, 0)

@@ -161,7 +161,7 @@ function ArmFlowOne({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.RESEARCH_NORMS)}
+              onNext={() => handleNext(PAGE_ID.RESEARCH_NORMS_01)}
             />
           </div>
         </ResponsiveStepWrapper>

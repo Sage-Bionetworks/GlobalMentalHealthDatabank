@@ -76,9 +76,9 @@ function AboutTheStudy({
   const getNextPageName = () => {
     switch (consentModel) {
       case FLOW_OPTIONS.ONE:
-        return PAGE_ID.RESEARCH_NORMS
+        return PAGE_ID.RESEARCH_NORMS_01
       case FLOW_OPTIONS.TWO:
-        return PAGE_ID.YOUTH_INFORMED
+        return PAGE_ID.YOUTH_INFORMED_01
       case FLOW_OPTIONS.THREE:
         return PAGE_ID.HYBRID
       case FLOW_OPTIONS.FOUR:
@@ -149,7 +149,7 @@ function AboutTheStudy({
             </Typography>
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK_QUIZ)}
+              onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK)}
             />
           </div>
         </ResponsiveStepWrapper>
@@ -203,7 +203,7 @@ function AboutTheStudy({
                 const selectedOption = event.formData.how_to_participate
 
                 if (successMessage || howToParticipateSelection) {
-                  handleNext(undefined)
+                  handleNext(PAGE_ID.RISKS_AND_BENEFITS)
                 }
 
                 if (
@@ -229,7 +229,7 @@ function AboutTheStudy({
                   updateClientData({
                     [FORM_IDS.HOW_TO_PARTICIPATE]:
                       selectedOption.participate_option,
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.DATA_COLLECTION,
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
                   })
                 }
               }}
@@ -370,7 +370,7 @@ function AboutTheStudy({
                     setSuccessMessage('')
                   }
                   if (successMessage || whatIsThePurposeSelection) {
-                    handleNext(undefined)
+                    handleNext(PAGE_ID.LEAVING_STUDY)
                   } else {
                     setWhatIsThePurposeSelection(selectedOption)
                     updateClientData({
@@ -466,12 +466,12 @@ function AboutTheStudy({
                   }
 
                   if (successMessage || whichIsCorrectSelection) {
-                    handleNext(undefined)
+                    handleNext(PAGE_ID.YOUR_STUDY_DATA)
                   } else {
                     setWhichIsCorrectSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.CONTACT,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUR_STUDY_DATA,
                     })
                   }
                 }
