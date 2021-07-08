@@ -37,41 +37,39 @@ function ConsentInfo() {
         <Typography>{t('consent.approval4')}</Typography>
       </div>
 
-      <div>
-        <div className="download-files">
-          <div className="btm-50">
-            <Typography variant="h2">{t('consent.download')}</Typography>
-          </div>
-          <div className="btm-40 underlined-link">
-            <a
-              href={ConsentEnglish}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underlined-link"
-            >
-              <Typography variant="h4">{t('consent.file1')}</Typography>
-            </a>
-          </div>
-          <div className="btm-40 underlined-link">
-            <a
-              href={ConsentXhosa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underlined-link"
-            >
-              <Typography variant="h4">{t('consent.file2')}</Typography>
-            </a>
-          </div>
-          <div className="btm-40 underlined-link">
-            <a
-              href={ConsentSesotho}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underlined-link"
-            >
-              <Typography variant="h4">{t('consent.file3')}</Typography>
-            </a>
-          </div>
+      <div className="download-files">
+        <div className="btm-30">
+          <Typography variant="h2">{t('consent.download')}</Typography>
+        </div>
+        <div className="btm-20 underlined-link">
+          <a
+            href={ConsentEnglish}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underlined-link"
+          >
+            <Typography variant="h4">{t('consent.file1')}</Typography>
+          </a>
+        </div>
+        <div className="btm-20 underlined-link">
+          <a
+            href={ConsentXhosa}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underlined-link"
+          >
+            <Typography variant="h4">{t('consent.file2')}</Typography>
+          </a>
+        </div>
+        <div className="btm-20 underlined-link">
+          <a
+            href={ConsentSesotho}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underlined-link"
+          >
+            <Typography variant="h4">{t('consent.file3')}</Typography>
+          </a>
         </div>
       </div>
 
