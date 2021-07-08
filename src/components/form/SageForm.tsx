@@ -67,6 +67,21 @@ import {
   uiSchemaResearchersDataProfit,
 } from '../../data/schemas/researchersDataProfit'
 
+import {
+  schemaDataPayment,
+  uiSchemaDataPayment,
+} from '../../data/schemas/dataPayment'
+
+import {
+  schemaDataUsage,
+  uiSchemaDataUsage,
+} from '../../data/schemas/dataUsage'
+
+import {
+  schemaDataSharing,
+  uiSchemaDataSharing,
+} from '../../data/schemas/dataSharing'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -159,6 +174,12 @@ export default function SageForm({
         return schemaDataResearchType
       case FORM_IDS.RESEARCHERS_DATA_PROFIT:
         return schemaResearchersDataProfit
+      case FORM_IDS.DATA_PAYMENT:
+        return schemaDataPayment
+      case FORM_IDS.DATA_USAGE:
+        return schemaDataUsage
+      case FORM_IDS.DATA_SHARING:
+        return schemaDataSharing
       default:
         return null
     }
@@ -196,6 +217,12 @@ export default function SageForm({
         return uiSchemaDataResearchType
       case FORM_IDS.RESEARCHERS_DATA_PROFIT:
         return uiSchemaResearchersDataProfit
+      case FORM_IDS.DATA_PAYMENT:
+        return uiSchemaDataPayment
+      case FORM_IDS.DATA_USAGE:
+        return uiSchemaDataUsage
+      case FORM_IDS.DATA_SHARING:
+        return uiSchemaDataSharing
       default:
         return null
     }

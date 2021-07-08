@@ -52,4 +52,7 @@ export const FORM_IDS = {
   RESEARCHERS_DATA_ACCESS: 'researchersDataAccess',
   DATA_RESEARCH_TYPE: 'dataResearchType',
   RESEARCHERS_DATA_PROFIT: 'researchersDataProfit',
+  DATA_PAYMENT: 'dataPayment',
+  DATA_USAGE: 'dataUsage',
+  DATA_SHARING: 'dataSharing',
 }

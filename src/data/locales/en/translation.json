@@ -181,6 +181,19 @@
       "pageTwo": {
         "title": "Can my data be used by researchers to make a profit?"
       },
+      "pageThree": {
+        "title": "Do people have to pay to use my data?"
+      },
+      "pageFour": {
+        "title": "How can my data be used?"
+      },
+      "pageFive": {
+        "title": "How can results be shared with participants?"
+      },
+      "pageSix": {
+        "title": "Voting Confirmation",
+        "subTtitle": "Review the list below to confirm this represents your choices."
+      },
       "title": "Voting Screen",
       "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
       "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
