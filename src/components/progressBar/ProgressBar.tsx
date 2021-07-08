@@ -9,7 +9,7 @@ type ProgressBarProps = {
 const ProgressBar = ({ step, maxSteps }: ProgressBarProps) => {
   return (
     <>
-      <div className="progressBarHeader">{`STEP ${step} OF ${maxSteps}`}</div>
+      <div className="progressBarHeader">{`PROGRESS`}</div>
       <div className="progressBarWrapper">
         <LinearProgress variant="determinate" value={(step * 100) / maxSteps} />
       </div>

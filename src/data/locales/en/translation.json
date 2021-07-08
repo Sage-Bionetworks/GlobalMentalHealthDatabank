@@ -111,7 +111,7 @@
       "next": "Next",
       "answer": "This study will only require you to answer weekly survey questions.",
       "dataCollection": "Data Collection, Storage & Privacy",
-      "dataCollectionEncrypted": "Your data will be encrypted and trasferred to a secure cloud server in the U.S.",
+      "dataCollectionEncrypted": "Your data will be encrypted and transferred to a secure cloud server in the U.S.",
       "dataCollectionIdentity": "Your identity will not be stored with your data.",
       "dataCollectionCombined": "Your study data, without your name, will be combined with data from other people in the study.",
       "yourDataRights": "Your Data Rights",
@@ -560,8 +560,9 @@
       "india": {
         "title": "Local Resources in India",
         "text1": "iCallHelpline provides free counseling.",
-        "text2": "The iCallHelpline is available Monday-Saturday, 10am-8pm. Call 022-25521111",
-        "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
+        "text2": "The iCallHelpline is available Monday-Saturday, 10am-8pm.",
+        "text3": "Call 022-25521111",
+        "text4": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
           "url": "https://icallhelpline.org/"
@@ -580,17 +581,16 @@
       },
       "unitedKingdom": {
         "title": "Local Resources in the United Kingdom",
-        "text1": "Young Minds provides support to young people in crisis in the UK.",
-        "text2": "If you need urgent help, text YM to 85258.",
-        "text3": "All texts are answered by trained volunteers, with support from experienced clinical supervisors.",
-        "text4": "Texts are free from EE, O2, Vodafone, 3, Virgin Mobile, BT Mobile, GiffGaff, Tesco Mobile and Telecom Plus.",
-        "link": {
-          "text": "Visit Website",
-          "url": "https://www.samaritans.org/"
+        "text1": "Samaritans UK is available for emotional support.",
+        "text2": "The Samaritans UK hotline is available 24/7.",
+        "text3": "For English, call 116 123\n For Welsh, call 1 0808 164 0123",
+        "text4": "You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
+        "link1": {
+          "text1": "Visit Website",
+          "url1": "https://www.samaritans.org/"
         },
-        "resources": {
-          "text": "Visit Website",
-          "url": "https://www.samaritans.org/"
+        "link2": {
+          "text2": "Resources"
         }
       }
     }
@@ -678,6 +678,15 @@
     "title": "Consent",
     "description": "Before joining the MindKind Study, we will ask for your consent. We want you to understand the study, your role, and the protection and use of your data.  Once you know more about the study you can decide whether you want to participate. You may change your mind at any time.",
     "description2": "You can learn more about the study from the consent documents provided below.",
+    "approvals": "This study has been reviewed and approved by the research ethics committees of the participating institutions.",
+    "region1": "India",
+    "approval1": "India Law Society\n deepapaturkar@ilslaw.in\n Approval #ILS/242/2021\n (Apr 6, 2021)",
+    "region2": "South Africa",
+    "approval2": "Walter Sisulu University\n dkayongo@rtc.utr.ac.za\n Approval #029/2021\n (Jun 2, 2021)",
+    "region3": "UK",
+    "approval3": "University of Cambridge\n researchintegrity@admin.cam.ac.uk\n Approval #PRE.2021.031\n (Jun 21, 2021)",
+    "region4": "US",
+    "approval4": "WCG IRB\n help@WIRB.com\n Approval #20212067\n (May 17, 2021)",
     "download": "Download consent documents: ",
     "file1": "Consent document: English",
     "file2": "Consent document: Xhosa",
@@ -797,10 +806,8 @@
     "text53": "The MindKind Study Privacy Policy says what information we will collect through the website and participant app. It also says what we will do with this data. You can read it here (Link to privacy policy)."
   },
   "download": {
-    "title": "Get started with the MindKind App",
-    "description1": "The MindKind Study App helps young adults record their daily mental and emotional health.",
-    "description2": "If you already have the MindKind Study App on your phone you can leave this page and open the App to get started.",
-    "description3": "If you need the App, you can download it to get started",
+    "title": "Thank you for joining!",
+    "description1": "Now that you are enrolled you can start using the MindKind Study App to record your daily mental and emotional health.",
     "cta": "Download the app"
   }
 }
