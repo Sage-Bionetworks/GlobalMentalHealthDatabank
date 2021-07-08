@@ -73,7 +73,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   }
 
   if (token) {
-    return <Redirect to={ROUTES.CONSENT_STEPS} push={true} />
+    return <Redirect to={ROUTES.HUB} push={true} />
   }
 
   return (

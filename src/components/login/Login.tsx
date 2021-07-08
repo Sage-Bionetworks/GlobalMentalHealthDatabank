@@ -113,7 +113,7 @@ export const Login: React.FunctionComponent = () => {
           userDataGroup: loggedIn.data.dataGroups,
         },
       })
-      push(ROUTES.CONSENT_STEPS)
+      push(ROUTES.HUB)
     } else {
       setError('Error ' + loggedIn.status)
     }
