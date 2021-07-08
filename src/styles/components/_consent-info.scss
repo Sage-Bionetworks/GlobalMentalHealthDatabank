@@ -27,6 +27,14 @@
       margin-bottom: 20px;
     }
   }
+  .approvals {
+    position: relative;
+    padding: 50px 25px 100px 25px;
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 0 !important;
+    }
+  }
   .plus-signs {
     position: absolute;
     top: -20px;
@@ -98,6 +106,13 @@
       p {
         width: 75%;
         margin-bottom: 40px;
+      }
+    }
+    .approvals {
+      padding: 50px 75px 100px 75px;
+      h3 {
+        margin-top: 20px;
+        margin-bottom: 0 !important;
       }
     }
     .ready-to-join {

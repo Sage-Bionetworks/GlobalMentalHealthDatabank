@@ -25,6 +25,18 @@ function ConsentInfo() {
         </div>
         <Typography>{t('consent.description2')}</Typography>
       </div>
+      <div className="approvals">
+        <Typography>{t('consent.approvals')}</Typography>
+        <Typography variant="h3">{t('consent.region1')}</Typography>
+        <Typography>{t('consent.approval1')}</Typography>
+        <Typography variant="h3">{t('consent.region2')}</Typography>
+        <Typography>{t('consent.approval2')}</Typography>
+        <Typography variant="h3">{t('consent.region3')}</Typography>
+        <Typography>{t('consent.approval3')}</Typography>
+        <Typography variant="h3">{t('consent.region4')}</Typography>
+        <Typography>{t('consent.approval4')}</Typography>
+      </div>
+
       <div>
         <div className="download-files">
           <div className="btm-50">
