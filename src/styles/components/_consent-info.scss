@@ -30,6 +30,9 @@
   .approvals {
     position: relative;
     padding: 50px 25px 100px 25px;
+    p {
+      white-space: pre-line;
+    }
     h3 {
       margin-top: 20px;
       margin-bottom: 0 !important;
@@ -113,6 +116,9 @@
       h3 {
         margin-top: 20px;
         margin-bottom: 0 !important;
+      }
+      p {
+        white-space: pre;
       }
     }
     .ready-to-join {
