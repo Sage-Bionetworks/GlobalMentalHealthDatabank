@@ -16,7 +16,6 @@ type ArmFlowThreeProps = {
   handleBack: () => void
   handleComplete: (pageId?: string) => void
   updateClientData: Function
-  startingStep: number
   RankedChoice: any
 }
 
@@ -27,14 +26,13 @@ function ArmFlowThree({
   handleBack,
   handleComplete,
   updateClientData,
-  startingStep,
   RankedChoice,
 }: ArmFlowThreeProps) {
   const { t } = useTranslation()
   window.scrollTo(0, 0)
 
   switch (step) {
-    case startingStep:
+    case 1:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -59,20 +57,26 @@ function ArmFlowThree({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.RISKS_AND_BENEFITS)}
+              onNext={() => handleNext(PAGE_ID.VOTING_01)}
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
       return (
         <RankedChoice
           step={step}
-          setStep={setStep}
           maxSteps={maxSteps}
           updateClientData={updateClientData}
-          startingStep={startingStep + 1}
+          handleBack={handleBack}
+          handleNext={handleNext}
+          handleComplete={handleComplete}
         />
       )
 

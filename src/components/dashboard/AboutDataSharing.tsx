@@ -14,12 +14,14 @@ type Props = {
   checkpoint?: Checkpoint
   dataGroups?: Array<string>
   updateClientData: Function
+  clientData: any
 }
 
 function AboutDataSharing({
   checkpoint,
   dataGroups = [],
   updateClientData,
+  clientData,
 }: Props) {
   const step = checkpoint?.aboutDataSharing?.step || 1
   const maxSteps = 4
@@ -82,6 +84,7 @@ function AboutDataSharing({
           handleComplete={handleComplete}
           maxSteps={maxSteps}
           updateClientData={updateClientData}
+          RankedChoice={RankedChoice}
         />
       )}
       {dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup) && (
@@ -92,7 +95,6 @@ function AboutDataSharing({
           handleComplete={handleComplete}
           maxSteps={maxSteps}
           updateClientData={updateClientData}
-          startingStep={5 + 1}
           RankedChoice={RankedChoice}
         />
       )}
@@ -102,8 +104,9 @@ function AboutDataSharing({
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
-          maxSteps={maxSteps}
           updateClientData={updateClientData}
+          RankedChoice={RankedChoice}
+          clientData={clientData}
         />
       )}
     </>

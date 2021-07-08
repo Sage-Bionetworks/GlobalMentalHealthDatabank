@@ -16,6 +16,7 @@ type ArmFlowTwoProps = {
   handleBack: () => void
   handleComplete: (pageId?: string) => void
   updateClientData: Function
+  RankedChoice: any
 }
 
 function ArmFlowTwo({
@@ -25,34 +26,59 @@ function ArmFlowTwo({
   handleComplete,
   maxSteps,
   updateClientData,
+  RankedChoice,
 }: ArmFlowTwoProps) {
   const { t } = useTranslation()
   window.scrollTo(0, 0)
-  return (
-    <ResponsiveStepWrapper>
-      <ProgressBar step={step} maxSteps={maxSteps} />
-      <div className="text-step-wrapper">
-        <div className="icon-wrapper">
-          <Globe />
-        </div>
 
-        <Typography variant="h3">{t('form.armTwo.title')}</Typography>
+  switch (step) {
+    case 1:
+      return (
+        <ResponsiveStepWrapper>
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="text-step-wrapper">
+            <div className="icon-wrapper">
+              <Globe />
+            </div>
 
-        <Typography variant="h6">{t('form.armTwo.subTitle')}</Typography>
+            <Typography variant="h3">{t('form.armTwo.title')}</Typography>
 
-        <div className="btm-20">
-          <Typography variant="h6">{t('form.armTwo.subText1')}</Typography>
-        </div>
+            <Typography variant="h6">{t('form.armTwo.subTitle')}</Typography>
 
-        <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
+            <div className="btm-20">
+              <Typography variant="h6">{t('form.armTwo.subText1')}</Typography>
+            </div>
 
-        <NavigationArrows
-          onBack={handleBack}
-          onNext={() => handleNext(PAGE_ID.RISKS_AND_BENEFITS)}
+            <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
+
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.RISKS_AND_BENEFITS)}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+      return (
+        <RankedChoice
+          step={step}
+          maxSteps={maxSteps}
+          updateClientData={updateClientData}
+          handleBack={handleBack}
+          handleNext={handleNext}
+          handleComplete={handleComplete}
         />
-      </div>
-    </ResponsiveStepWrapper>
-  )
+      )
+
+    default:
+      return null
+  }
 }
 
 export default ArmFlowTwo

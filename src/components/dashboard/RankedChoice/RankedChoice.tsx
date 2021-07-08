@@ -8,29 +8,26 @@ import {
 } from 'components/common'
 import { useRankedChoice } from './context/RankedChoiceContext'
 import { FORM_IDS } from 'components/form/types'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
+import { PAGE_ID, RANKED_CHOICE } from 'constants/constants'
 import SageForm from 'components/form/SageForm'
-import { INITIAL_RANKED_CHOICES } from './helpers'
 
 type RankedChoiceProps = {
   step: number
-  setStep: Function
   maxSteps: number
   updateClientData: Function
-  startingStep: number
+  handleBack: () => void
+  handleNext: (pageId?: string) => void
+  handleComplete: (pageId?: string) => void
 }
 function RankedChoice({
   step,
-  setStep,
   maxSteps,
   updateClientData,
-  startingStep,
+  handleBack,
+  handleNext,
+  handleComplete,
 }: RankedChoiceProps) {
   const { t } = useTranslation()
-
-  const [currentRankedChoices, setCurrentRankedChoices] = useState(
-    INITIAL_RANKED_CHOICES,
-  )
 
   const [
     summaryResearchersDataProfitCollapse,
@@ -62,7 +59,7 @@ function RankedChoice({
   }, [step])
 
   switch (step) {
-    case startingStep:
+    case 2:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -79,25 +76,14 @@ function RankedChoice({
               {t('form.ranking.pageOne.subText2')}
             </Typography>
             <NavigationArrows
-              onBack={() =>
-                setStep((current: number) =>
-                  current > 1 ? current - 1 : current,
-                )
-              }
-              onNext={() => {
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
-                )
-                updateClientData(step + 1, {
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
-                })
-              }}
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.VOTING_02)}
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 1:
+    case 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -112,17 +98,10 @@ function RankedChoice({
                 if (selectedOption && Object.keys(selectedOption).length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  setCurrentRankedChoices((prev: any) => ({
-                    ...prev,
-                    researchersDataProfit:
-                      selectedOption.researchersDataProfitOptions,
-                  }))
                   setResearchersDataProfit(
                     selectedOption.researchersDataProfitOptions,
                   )
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
+                  handleNext(PAGE_ID.VOTING_03)
                 }
               }}
             />
@@ -130,7 +109,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 2:
+    case 4:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -145,14 +124,8 @@ function RankedChoice({
                 if (selectedOption && Object.keys(selectedOption).length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  setCurrentRankedChoices((prev: any) => ({
-                    ...prev,
-                    dataPayment: selectedOption.dataPaymentOptions,
-                  }))
                   setDataPayment(selectedOption.dataPaymentOptions)
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
+                  handleNext(PAGE_ID.VOTING_04)
                 }
               }}
             />
@@ -160,7 +133,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 3:
+    case 5:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -175,14 +148,8 @@ function RankedChoice({
                 if (selectedOption && Object.keys(selectedOption).length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  setCurrentRankedChoices((prev: any) => ({
-                    ...prev,
-                    dataUsage: selectedOption.dataUsageOptions,
-                  }))
                   setDataUsage(selectedOption.dataUsageOptions)
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
+                  handleNext(PAGE_ID.VOTING_05)
                 }
               }}
             />
@@ -190,7 +157,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 4:
+    case 6:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -205,14 +172,8 @@ function RankedChoice({
                 if (selectedOption && Object.keys(selectedOption).length === 0)
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
-                  setCurrentRankedChoices((prev: any) => ({
-                    ...prev,
-                    dataSharing: selectedOption.dataSharingOptions,
-                  }))
                   setDataSharing(selectedOption.dataSharingOptions)
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
+                  handleNext(PAGE_ID.VOTING_06)
                 }
               }}
             />
@@ -220,7 +181,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case 9:
+    case 7:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -351,7 +312,7 @@ function RankedChoice({
                       variant="h6"
                       className="eligibility-summary-line-title"
                     >
-                      {t('form.ranking.pageFour.title')}
+                      {t('form.ranking.pageFive.title')}
                     </Typography>
                     <Typography variant="body2">{dataSharing}</Typography>
                   </div>
@@ -364,36 +325,30 @@ function RankedChoice({
                       variant="h6"
                       className="eligibility-summary-line-title"
                     >
-                      {t('form.ranking.pageFour.title')}
+                      {t('form.ranking.pageFive.title')}
                     </Typography>
                   </div>
                 </div>
               )}
             </div>
-            <div className="btm-20">
-              <Button
-                color="primary"
-                variant="text"
-                size="large"
-                className="wide-button"
-                onClick={() => setStep(1)}
-              >
-                {t('eligibility.restart')}
-              </Button>
-            </div>
-
             <Button
               color="primary"
               variant="contained"
               size="large"
               className="wide-button"
-              onClick={() =>
-                setStep((current: number) =>
-                  current <= maxSteps ? current + 1 : current,
-                )
-              }
+              onClick={() => {
+                updateClientData({
+                  [RANKED_CHOICE.CAN_RESEARCHERS_MAKE_PROFIT]:
+                    researchersDataProfit,
+                  [RANKED_CHOICE.DO_PEOPLE_HAVE_TO_PAY]: dataPayment,
+                  [RANKED_CHOICE.HOW_CAN_DATA_BE_USED]: dataUsage,
+                  [RANKED_CHOICE.HOW_CAN_RESULTS_BE_SHARED]: dataSharing,
+                })
+
+                handleComplete(PAGE_ID.SUMMARY)
+              }}
             >
-              {t('common.submit')}
+              {t('common.continue')}
             </Button>
           </div>
         </ResponsiveStepWrapper>

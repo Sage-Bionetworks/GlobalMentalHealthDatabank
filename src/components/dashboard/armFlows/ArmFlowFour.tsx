@@ -7,26 +7,30 @@ import {
   ResponsiveStepWrapper,
 } from 'components/common'
 import SageForm from 'components/form/SageForm'
-import { FORM_IDS } from 'components/form/types'
+import { FORM_IDS, WHO_CONTROLS_DATA_OPTIONS } from 'components/form/types'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 
 type ArmFlowFourProps = {
   step: number
-  maxSteps: number
   handleNext: (pageId?: string) => void
   handleBack: () => void
   handleComplete: (pageId?: string) => void
   updateClientData: Function
+  RankedChoice: any
+  clientData: any
 }
+
+const maxSteps = 10
 
 function ArmFlowFour({
   step,
-  maxSteps,
   handleNext,
   handleBack,
   handleComplete,
   updateClientData,
+  RankedChoice,
+  clientData,
 }: ArmFlowFourProps) {
   const { t } = useTranslation()
   const [errorMessage, setErrorMessage] = useState('')
@@ -105,16 +109,16 @@ function ArmFlowFour({
               subTitle={t('form.armFour.pageTwo.subTitle')}
               errorMessage={errorMessage}
               formId={FORM_IDS.HOW_RESEARCHERS_ACCESS}
-              onSubmit={(event: any) => {
+              onSubmit={async (event: any) => {
                 const selectedOption = event.formData.how_researchers_access
                 if (!selectedOption) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  handleNext()
-                  updateClientData({
+                  await updateClientData({
                     [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_03,
                   })
+                  handleNext()
                 }
               }}
             />
@@ -132,17 +136,17 @@ function ArmFlowFour({
               errorMessage={errorMessage}
               formId={FORM_IDS.WHO_CONTROLS_DATA}
               widgets={widgets}
-              onSubmit={(event: any) => {
+              onSubmit={async (event: any) => {
                 const selectedOption = event.formData
                 if (selectedOption.who_controls_data === undefined) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  handleNext()
-                  updateClientData({
+                  await updateClientData({
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
                   })
+                  handleNext()
                 }
               }}
             />
@@ -150,37 +154,68 @@ function ArmFlowFour({
         </ResponsiveStepWrapper>
       )
     case 4:
-      // if (clientData?.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL)
-      return (
-        <ResponsiveStepWrapper>
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <div className="text-step-wrapper">
-            <div className="btm-50">
-              <Typography variant="h3">
-                {t('form.secondCommonConsent.volunteer.ifYouLike')}
-              </Typography>
-            </div>
-            <a
-              href={`mailto: ${t('form.secondCommonConsent.volunteer.email')}`}
-            >
-              <Typography variant="body1">
-                {t('form.secondCommonConsent.volunteer.email')}
-              </Typography>
-            </a>
+      if (
+        clientData?.whoControlsData ===
+        WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
+      ) {
+        return (
+          <ResponsiveStepWrapper>
+            <ProgressBar step={step} maxSteps={maxSteps} />
+            <div className="text-step-wrapper">
+              <div className="btm-50">
+                <Typography variant="h3">
+                  {t('form.secondCommonConsent.volunteer.ifYouLike')}
+                </Typography>
+              </div>
+              <a
+                href={`mailto: ${t(
+                  'form.secondCommonConsent.volunteer.email',
+                )}`}
+              >
+                <Typography variant="body1">
+                  {t('form.secondCommonConsent.volunteer.email')}
+                </Typography>
+              </a>
 
-            <Typography variant="body1" style={{ marginBottom: '20px' }}>
-              {t('form.secondCommonConsent.volunteer.subject')}
-            </Typography>
-            <Typography variant="body2">
-              {t('form.secondCommonConsent.volunteer.note')}
-            </Typography>
-            <NavigationArrows
-              preventBack
-              onNext={() => handleNext(PAGE_ID.APP_DOWNLOAD)}
-            />
-          </div>
-        </ResponsiveStepWrapper>
-      )
+              <Typography variant="body1" style={{ marginBottom: '20px' }}>
+                {t('form.secondCommonConsent.volunteer.subject')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.secondCommonConsent.volunteer.note')}
+              </Typography>
+              <NavigationArrows
+                preventBack
+                onNext={() => handleNext(PAGE_ID.VOTING_01)}
+              />
+            </div>
+          </ResponsiveStepWrapper>
+        )
+      } else {
+        handleNext(PAGE_ID.VOTING_01)
+        return null
+      }
+
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+      if (clientData?.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.DEMOCRACY) {
+        return (
+          <RankedChoice
+            step={step}
+            maxSteps={maxSteps}
+            updateClientData={updateClientData}
+            handleBack={handleBack}
+            handleNext={handleNext}
+            handleComplete={handleComplete}
+          />
+        )
+      } else {
+        handleComplete(PAGE_ID.SUMMARY)
+        return null
+      }
 
     default:
       return null
