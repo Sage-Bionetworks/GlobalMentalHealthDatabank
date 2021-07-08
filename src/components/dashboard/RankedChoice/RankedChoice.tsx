@@ -8,16 +8,18 @@ import {
 } from 'components/common'
 import { useRankedChoice } from './context/RankedChoiceContext'
 import { FORM_IDS } from 'components/form/types'
-import { PAGE_ID, RANKED_CHOICE } from 'constants/constants'
+import { PAGE_ID, PAGE_ID_FIELD_NAME, RANKED_CHOICE } from 'constants/constants'
 import SageForm from 'components/form/SageForm'
 
 type RankedChoiceProps = {
   step: number
   maxSteps: number
   updateClientData: Function
-  handleBack: () => void
-  handleNext: (pageId?: string) => void
-  handleComplete: (pageId?: string) => void
+  handleBack: (steps?: number) => void
+  handleNext: (fields?: object) => void
+  handleComplete: (fields?: object) => void
+  startingStep: number
+  isArmFlowFour?: boolean
 }
 function RankedChoice({
   step,
@@ -26,6 +28,8 @@ function RankedChoice({
   handleBack,
   handleNext,
   handleComplete,
+  startingStep,
+  isArmFlowFour,
 }: RankedChoiceProps) {
   const { t } = useTranslation()
 
@@ -59,7 +63,7 @@ function RankedChoice({
   }, [step])
 
   switch (step) {
-    case 2:
+    case startingStep:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -76,14 +80,20 @@ function RankedChoice({
               {t('form.ranking.pageOne.subText2')}
             </Typography>
             <NavigationArrows
-              onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.VOTING_02)}
+              onBack={() => {
+                isArmFlowFour ? handleBack(2) : handleBack()
+              }}
+              onNext={() =>
+                handleNext({
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_02,
+                })
+              }
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case 3:
+    case startingStep + 1:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -101,7 +111,9 @@ function RankedChoice({
                   setResearchersDataProfit(
                     selectedOption.researchersDataProfitOptions,
                   )
-                  handleNext(PAGE_ID.VOTING_03)
+                  handleNext({
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_03,
+                  })
                 }
               }}
             />
@@ -109,7 +121,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case 4:
+    case startingStep + 2:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -125,7 +137,9 @@ function RankedChoice({
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   setDataPayment(selectedOption.dataPaymentOptions)
-                  handleNext(PAGE_ID.VOTING_04)
+                  handleNext({
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_04,
+                  })
                 }
               }}
             />
@@ -133,7 +147,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case 5:
+    case startingStep + 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -149,7 +163,9 @@ function RankedChoice({
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   setDataUsage(selectedOption.dataUsageOptions)
-                  handleNext(PAGE_ID.VOTING_05)
+                  handleNext({
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_05,
+                  })
                 }
               }}
             />
@@ -157,7 +173,7 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case 6:
+    case startingStep + 4:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -173,7 +189,9 @@ function RankedChoice({
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   setDataSharing(selectedOption.dataSharingOptions)
-                  handleNext(PAGE_ID.VOTING_06)
+                  handleNext({
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_06,
+                  })
                 }
               }}
             />
@@ -181,18 +199,20 @@ function RankedChoice({
         </ResponsiveStepWrapper>
       )
 
-    case 7:
+    case startingStep + 5:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
           <div className="quiz-wrapper">
-            <Typography variant="h6">
+            <Typography variant="h3">
               {t('form.ranking.pageSix.title')}
             </Typography>
 
-            <Typography variant="h6">
-              {t('form.ranking.pageSix.subTitle')}
-            </Typography>
+            <div className="btm-30">
+              <Typography variant="body2">
+                {t('form.ranking.pageSix.subTitle')}
+              </Typography>
+            </div>
             <div className="bottom-twenty-wrapper">
               <div
                 className="eligibility-summary-line"
@@ -337,15 +357,14 @@ function RankedChoice({
               size="large"
               className="wide-button"
               onClick={() => {
-                updateClientData({
+                handleComplete({
                   [RANKED_CHOICE.CAN_RESEARCHERS_MAKE_PROFIT]:
                     researchersDataProfit,
                   [RANKED_CHOICE.DO_PEOPLE_HAVE_TO_PAY]: dataPayment,
                   [RANKED_CHOICE.HOW_CAN_DATA_BE_USED]: dataUsage,
                   [RANKED_CHOICE.HOW_CAN_RESULTS_BE_SHARED]: dataSharing,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
                 })
-
-                handleComplete(PAGE_ID.SUMMARY)
               }}
             >
               {t('common.continue')}

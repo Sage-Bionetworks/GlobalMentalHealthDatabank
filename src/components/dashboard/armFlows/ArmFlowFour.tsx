@@ -13,9 +13,9 @@ import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 
 type ArmFlowFourProps = {
   step: number
-  handleNext: (pageId?: string) => void
+  handleNext: (fields?: object) => void
   handleBack: () => void
-  handleComplete: (pageId?: string) => void
+  handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
   clientData: any
@@ -92,7 +92,11 @@ function ArmFlowFour({
               </Typography>
               <NavigationArrows
                 onBack={handleBack}
-                onNext={() => handleNext(PAGE_ID.PARTICIPANT_CHOICE_02)}
+                onNext={() =>
+                  handleNext({
+                    [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_02,
+                  })
+                }
               />
             </div>
           </div>
@@ -114,11 +118,10 @@ function ArmFlowFour({
                 if (!selectedOption) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  await updateClientData({
+                  handleNext({
                     [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_03,
                   })
-                  handleNext()
                 }
               }}
             />
@@ -136,17 +139,16 @@ function ArmFlowFour({
               errorMessage={errorMessage}
               formId={FORM_IDS.WHO_CONTROLS_DATA}
               widgets={widgets}
-              onSubmit={async (event: any) => {
+              onSubmit={(event: any) => {
                 const selectedOption = event.formData
                 if (selectedOption.who_controls_data === undefined) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  await updateClientData({
+                  handleNext({
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
                   })
-                  handleNext()
                 }
               }}
             />
@@ -154,46 +156,51 @@ function ArmFlowFour({
         </ResponsiveStepWrapper>
       )
     case 4:
-      if (
-        clientData?.whoControlsData ===
-        WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
-      ) {
-        return (
-          <ResponsiveStepWrapper>
-            <ProgressBar step={step} maxSteps={maxSteps} />
-            <div className="text-step-wrapper">
-              <div className="btm-50">
-                <Typography variant="h3">
-                  {t('form.secondCommonConsent.volunteer.ifYouLike')}
-                </Typography>
-              </div>
-              <a
-                href={`mailto: ${t(
-                  'form.secondCommonConsent.volunteer.email',
-                )}`}
-              >
-                <Typography variant="body1">
-                  {t('form.secondCommonConsent.volunteer.email')}
-                </Typography>
-              </a>
+      return (
+        <>
+          {clientData?.whoControlsData ===
+          WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL ? (
+            <ResponsiveStepWrapper>
+              <ProgressBar step={step} maxSteps={maxSteps} />
+              <div className="text-step-wrapper">
+                <div className="btm-50">
+                  <Typography variant="h3">
+                    {t('form.secondCommonConsent.volunteer.ifYouLike')}
+                  </Typography>
+                </div>
+                <a
+                  href={`mailto: ${t(
+                    'form.secondCommonConsent.volunteer.email',
+                  )}`}
+                >
+                  <Typography variant="body1">
+                    {t('form.secondCommonConsent.volunteer.email')}
+                  </Typography>
+                </a>
 
-              <Typography variant="body1" style={{ marginBottom: '20px' }}>
-                {t('form.secondCommonConsent.volunteer.subject')}
-              </Typography>
-              <Typography variant="body2">
-                {t('form.secondCommonConsent.volunteer.note')}
-              </Typography>
-              <NavigationArrows
-                preventBack
-                onNext={() => handleNext(PAGE_ID.VOTING_01)}
-              />
-            </div>
-          </ResponsiveStepWrapper>
-        )
-      } else {
-        handleNext(PAGE_ID.VOTING_01)
-        return null
-      }
+                <Typography variant="body1" style={{ marginBottom: '20px' }}>
+                  {t('form.secondCommonConsent.volunteer.subject')}
+                </Typography>
+                <Typography variant="body2">
+                  {t('form.secondCommonConsent.volunteer.note')}
+                </Typography>
+                <NavigationArrows
+                  preventBack
+                  onNext={() =>
+                    handleNext({
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                    })
+                  }
+                />
+              </div>
+            </ResponsiveStepWrapper>
+          ) : (
+            handleNext({
+              [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+            })
+          )}
+        </>
+      )
 
     case 5:
     case 6:
@@ -210,10 +217,14 @@ function ArmFlowFour({
             handleBack={handleBack}
             handleNext={handleNext}
             handleComplete={handleComplete}
+            startingStep={5}
+            isArmFlowFour={true}
           />
         )
       } else {
-        handleComplete(PAGE_ID.SUMMARY)
+        handleComplete({
+          [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
+        })
         return null
       }
 

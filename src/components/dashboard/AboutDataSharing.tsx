@@ -24,23 +24,35 @@ function AboutDataSharing({
   clientData,
 }: Props) {
   const step = checkpoint?.aboutDataSharing?.step || 1
-  const maxSteps = 4
+
   const history = useHistory()
 
-  const handleNext = (pageId: string | undefined) => {
+  const getArmFlowMaxSteps = () => {
+    const MAX_STEPS = {
+      [FLOW_OPTIONS.ONE]: 3,
+      [FLOW_OPTIONS.TWO]: 9,
+      [FLOW_OPTIONS.THREE]: 9,
+      [FLOW_OPTIONS.FOUR]: 10,
+    }
+
+    const armFlow = clientData.consentModel as UserDataGroup
+    return MAX_STEPS[armFlow]
+  }
+
+  const handleNext = (fields: object = {}) => {
     if (checkpoint) {
-      const nextStep = step < maxSteps ? step + 1 : step
+      const nextStep = step < getArmFlowMaxSteps() ? step + 1 : step
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.aboutDataSharing.step = nextStep
       updateClientData({
-        [PAGE_ID_FIELD_NAME]: pageId,
+        ...fields,
         checkpoint: newCheckpoint,
       })
     }
   }
-  const handleBack = () => {
+  const handleBack = (steps: number = 1) => {
     if (checkpoint) {
-      const prevStep = step > 1 ? step - 1 : step
+      const prevStep = step - steps > 1 ? step - steps : step
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.aboutDataSharing.step = prevStep
       updateClientData({
@@ -49,15 +61,15 @@ function AboutDataSharing({
     }
   }
 
-  const handleComplete = (pageId: string | undefined) => {
+  const handleComplete = (fields: object = {}) => {
     if (checkpoint) {
-      const nextStep = step < maxSteps ? step + 1 : step
+      const nextStep = step < getArmFlowMaxSteps() ? step + 1 : step
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.aboutDataSharing.step = nextStep
       newCheckpoint.aboutDataSharing.status = 'complete'
       newCheckpoint.summaryAndSignature.status = 'started'
       updateClientData({
-        [PAGE_ID_FIELD_NAME]: pageId,
+        ...fields,
         checkpoint: newCheckpoint,
       })
       history.push(ROUTES.HUB)
@@ -72,7 +84,6 @@ function AboutDataSharing({
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
-          maxSteps={maxSteps}
           updateClientData={updateClientData}
         />
       )}
@@ -82,7 +93,6 @@ function AboutDataSharing({
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
-          maxSteps={maxSteps}
           updateClientData={updateClientData}
           RankedChoice={RankedChoice}
         />
@@ -93,7 +103,6 @@ function AboutDataSharing({
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
-          maxSteps={maxSteps}
           updateClientData={updateClientData}
           RankedChoice={RankedChoice}
         />

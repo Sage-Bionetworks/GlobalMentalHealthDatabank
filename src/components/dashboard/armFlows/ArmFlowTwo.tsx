@@ -6,25 +6,25 @@ import {
   ProgressBar,
   ResponsiveStepWrapper,
 } from 'components/common'
-import { PAGE_ID } from 'constants/constants'
+import { PAGE_ID, PAGE_ID_FIELD_NAME } from 'constants/constants'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowTwoProps = {
   step: number
-  maxSteps: number
-  handleNext: (pageId?: string) => void
+  handleNext: (fields?: object) => void
   handleBack: () => void
-  handleComplete: (pageId?: string) => void
+  handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
 }
+
+const maxSteps = 9
 
 function ArmFlowTwo({
   step,
   handleNext,
   handleBack,
   handleComplete,
-  maxSteps,
   updateClientData,
   RankedChoice,
 }: ArmFlowTwoProps) {
@@ -53,7 +53,11 @@ function ArmFlowTwo({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.RISKS_AND_BENEFITS)}
+              onNext={() =>
+                handleNext({
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                })
+              }
             />
           </div>
         </ResponsiveStepWrapper>
@@ -73,6 +77,7 @@ function ArmFlowTwo({
           handleBack={handleBack}
           handleNext={handleNext}
           handleComplete={handleComplete}
+          startingStep={2}
         />
       )
 

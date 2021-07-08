@@ -6,22 +6,22 @@ import {
   ResponsiveStepWrapper,
 } from 'components/common'
 import { useTranslation } from 'react-i18next'
-import { PAGE_ID } from 'constants/constants'
+import { PAGE_ID, PAGE_ID_FIELD_NAME } from 'constants/constants'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowThreeProps = {
   step: number
-  maxSteps: number
-  handleNext: (pageId?: string) => void
+  handleNext: (fields?: object) => void
   handleBack: () => void
-  handleComplete: (pageId?: string) => void
+  handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
 }
 
+const maxSteps = 9
+
 function ArmFlowThree({
   step,
-  maxSteps,
   handleNext,
   handleBack,
   handleComplete,
@@ -57,7 +57,11 @@ function ArmFlowThree({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.VOTING_01)}
+              onNext={() =>
+                handleNext({
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                })
+              }
             />
           </div>
         </ResponsiveStepWrapper>
@@ -77,6 +81,7 @@ function ArmFlowThree({
           handleBack={handleBack}
           handleNext={handleNext}
           handleComplete={handleComplete}
+          startingStep={2}
         />
       )
 

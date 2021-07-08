@@ -17,16 +17,16 @@ import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowOneProps = {
   step: number
-  maxSteps: number
-  handleNext: (pageId?: string) => void
+  handleNext: (fields?: object) => void
   handleBack: () => void
-  handleComplete: (pageId?: string) => void
+  handleComplete: (fields?: object) => void
   updateClientData: Function
 }
 
+const maxSteps = 3
+
 function ArmFlowOne({
   step,
-  maxSteps,
   handleNext,
   handleBack,
   handleComplete,
@@ -161,7 +161,11 @@ function ArmFlowOne({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.RESEARCH_NORMS_01)}
+              onNext={() =>
+                handleNext({
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_01,
+                })
+              }
             />
           </div>
         </ResponsiveStepWrapper>
@@ -250,7 +254,9 @@ function ArmFlowOne({
                     setSuccessMessage('')
                   }
                   if (successMessage || dataResearchTypeSelection) {
-                    handleNext()
+                    handleComplete({
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
+                    })
                   } else {
                     setDataResearchTypeSelection(selectedOption)
                     updateClientData({
