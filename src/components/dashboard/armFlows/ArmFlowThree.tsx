@@ -6,13 +6,15 @@ import {
   ResponsiveStepWrapper,
 } from 'components/common'
 import { useTranslation } from 'react-i18next'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
+import { PAGE_ID } from 'constants/constants'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowThreeProps = {
   step: number
-  setStep: Function
   maxSteps: number
+  handleNext: (pageId?: string) => void
+  handleBack: () => void
+  handleComplete: (pageId?: string) => void
   updateClientData: Function
   startingStep: number
   RankedChoice: any
@@ -20,8 +22,10 @@ type ArmFlowThreeProps = {
 
 function ArmFlowThree({
   step,
-  setStep,
   maxSteps,
+  handleNext,
+  handleBack,
+  handleComplete,
   updateClientData,
   startingStep,
   RankedChoice,
@@ -54,19 +58,8 @@ function ArmFlowThree({
             </Typography>
 
             <NavigationArrows
-              onBack={() =>
-                setStep((current: number) =>
-                  current > 1 ? current - 1 : current,
-                )
-              }
-              onNext={() => {
-                setStep((current: number) =>
-                  current < maxSteps ? current + 1 : current,
-                )
-                updateClientData(step + 1, {
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
-                })
-              }}
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.RISKS_AND_BENEFITS)}
             />
           </div>
         </ResponsiveStepWrapper>

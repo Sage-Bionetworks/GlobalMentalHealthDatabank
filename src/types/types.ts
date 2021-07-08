@@ -31,6 +31,18 @@ export interface UserData {
 export type ClientData = {
   consentModel: UserDataGroup
   consented: boolean
+  checkpoint: Checkpoint
+}
+
+export type Checkpoint = {
+  aboutTheStudy: CheckpointData
+  aboutDataSharing: CheckpointData
+  summaryAndSignature: CheckpointData
+}
+
+export type CheckpointData = {
+  step: number
+  status: 'unstarted' | 'started' | 'complete'
 }
 
 export type UserDataGroup =

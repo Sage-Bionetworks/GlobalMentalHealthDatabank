@@ -1,54 +1,81 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Button, Typography, TextField } from '@material-ui/core'
 import moment from 'moment'
 import i18next from 'i18next'
 import { useTranslation } from 'react-i18next'
+import { cloneDeep } from 'lodash'
 import {
   NavigationArrows,
   ProgressBar,
   ResponsiveStepWrapper,
 } from 'components/common'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
+import { PAGE_ID_FIELD_NAME, PAGE_ID, ROUTES } from 'constants/constants'
 import { ConsentService } from 'services/consent.service'
 import { HealthService } from 'services/health.service'
 import { UserService } from 'services/user.service'
 import { useSessionDataState } from 'AuthContext'
+import { Checkpoint } from 'types/types'
 import { ReactComponent as Summary } from 'assets/consent/summary.svg'
 import { ReactComponent as Envelope } from 'assets/consent/envelope.svg'
 import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
 
 type Props = {
-  startingStep?: number
-  step?: number
-  setStep?: Function
+  checkpoint?: Checkpoint
   maxSteps?: number
-  updateClientData?: Function
+  updateClientData: Function
 }
 
 function SummaryAndSignature({
-  startingStep = 11,
-  // step,
-  // setStep,
-  maxSteps = 14,
-  updateClientData = console.log,
+  checkpoint,
+  maxSteps = 4,
+  updateClientData,
 }: Props) {
+  const history = useHistory()
   const { t } = useTranslation()
-  const [step, setStep] = useState(12)
   const { token } = useSessionDataState()
   const [consented, setConsented] = useState(false)
   const [signatureName, setSignatureName] = useState('')
-
+  const step = checkpoint?.summaryAndSignature?.step || 1
   useEffect(() => {
     setSignatureName('')
     setConsented(false)
-  }, [step])
+  }, [checkpoint])
 
   const handleNext = (pageId: string | undefined) => {
-    setStep((current: number) => (current < maxSteps ? current + 1 : current))
-    updateClientData(step + 1, { [PAGE_ID_FIELD_NAME]: pageId })
+    if (checkpoint) {
+      const nextStep = step < maxSteps ? step + 1 : step
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.summaryAndSignature.step = nextStep
+      updateClientData({
+        [PAGE_ID_FIELD_NAME]: pageId,
+        checkpoint: newCheckpoint,
+      })
+    }
   }
-  const handleBack = () =>
-    setStep((current: number) => (current > 1 ? current - 1 : current))
+  const handleBack = () => {
+    if (checkpoint) {
+      const prevStep = step > 1 ? step - 1 : step
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.summaryAndSignature.step = prevStep
+      updateClientData({
+        checkpoint: newCheckpoint,
+      })
+    }
+  }
+
+  const handleComplete = () => {
+    if (checkpoint) {
+      const nextStep = step < maxSteps ? step + 1 : step
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.summaryAndSignature.step = nextStep
+      newCheckpoint.summaryAndSignature.status = 'complete'
+      updateClientData({
+        checkpoint: newCheckpoint,
+      })
+      history.push(ROUTES.DOWNLOAD)
+    }
+  }
 
   const signConsent = async () => {
     if (!token) return
@@ -63,7 +90,7 @@ function SummaryAndSignature({
       const { clientData } = userInfoResponse?.data as any
 
       await HealthService.sendHealthData(token, clientData)
-      setStep((current: number) => (current < maxSteps ? current + 1 : current))
+      handleComplete()
     } catch (e) {
       console.log(e.message)
     }
@@ -72,7 +99,7 @@ function SummaryAndSignature({
   window.scrollTo(0, 0)
 
   switch (step) {
-    case startingStep + 1:
+    case 1:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -126,7 +153,7 @@ function SummaryAndSignature({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 2:
+    case 2:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -153,7 +180,7 @@ function SummaryAndSignature({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 3:
+    case 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -206,7 +233,7 @@ function SummaryAndSignature({
               className="wide-button"
               color="primary"
               variant="contained"
-              onClick={() => signConsent()}
+              onClick={signConsent}
               disabled={!consented || signatureName.length < 5}
             >
               {t('form.submit')}

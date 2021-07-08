@@ -12,10 +12,25 @@ import SummaryAndSignature from '../SummaryAndSignature'
 import { HUB_STEPS, ROUTES } from 'constants/constants'
 import { useSessionDataState } from 'AuthContext'
 import { UserService } from 'services/user.service'
-import { LoggedInUserData } from 'types/types'
+import { CheckpointData, ClientData, LoggedInUserData } from 'types/types'
 import { PrivateRoute } from 'components/common'
 import { useEligibility } from 'components/eligibility/context/EligibilityContext'
 import { hubSteps } from 'data/hub/hub'
+
+type CardStatus = 'disabled' | 'active' | 'complete'
+
+const getStatus = (checkpoint: CheckpointData): CardStatus => {
+  switch (checkpoint?.status) {
+    case 'unstarted':
+      return 'disabled'
+    case 'started':
+      return 'active'
+    case 'complete':
+      return 'complete'
+    default:
+      return 'disabled'
+  }
+}
 
 function HubRouter() {
   const { token } = useSessionDataState()
@@ -26,13 +41,7 @@ function HubRouter() {
   const { push } = useHistory()
   const { t } = useTranslation()
   const [userInfo, setUserInfo] = useState<LoggedInUserData | undefined>()
-
-  if (isEligible) {
-    const newCards = cloneDeep(hubCards)
-    newCards[HUB_STEPS.ELEGIBILITY - 1].status = 'complete'
-    newCards[HUB_STEPS.REGISTRATION - 1].status = 'active'
-    setHubCards(newCards)
-  }
+  const { checkpoint } = userInfo?.clientData || {}
 
   useEffect(() => {
     const getInfo = async () => {
@@ -62,8 +71,34 @@ function HubRouter() {
         newCards[HUB_STEPS.REGISTRATION - 1].status = 'complete'
         return newCards
       })
+    } else if (isEligible) {
+      setHubCards(cards => {
+        const newCards = cloneDeep(cards)
+        newCards[HUB_STEPS.ELEGIBILITY - 1].status = 'complete'
+        newCards[HUB_STEPS.REGISTRATION - 1].status = 'active'
+        return newCards
+      })
     }
-  }, [token])
+  }, [token, isEligible])
+
+  useEffect(() => {
+    if (userInfo) {
+      setHubCards(cards => {
+        const newCards = cloneDeep(cards)
+        const { checkpoint } = userInfo.clientData
+        newCards[HUB_STEPS.ABOUT_THE_STUDY - 1].status = getStatus(
+          checkpoint.aboutTheStudy,
+        )
+        newCards[HUB_STEPS.ABOUT_DATA_SHARING - 1].status = getStatus(
+          checkpoint.aboutDataSharing,
+        )
+        newCards[HUB_STEPS.SUMMARY_AND_SIGNATURE - 1].status = getStatus(
+          checkpoint.summaryAndSignature,
+        )
+        return newCards
+      })
+    }
+  }, [userInfo])
 
   useEffect(() => {
     const checkRedirectToDownload = () => {
@@ -76,16 +111,20 @@ function HubRouter() {
   }, [userInfo, push])
 
   const updateClientData = async (fields: object = {}) => {
-    let newData = {}
-
-    newData = {
+    const newClientData = {
       ...userInfo?.clientData,
       ...fields,
+    } as ClientData
+    // update local state at this point
+    if (userInfo) {
+      setUserInfo({ ...userInfo, clientData: newClientData })
     }
     if (token) {
       try {
-        const response = await UserService.updateUserClientData(token, newData)
-        setUserInfo(response.data)
+        const response = await UserService.updateUserClientData(
+          token,
+          newClientData,
+        )
         return response
       } catch (e) {
         console.error(e)
@@ -103,16 +142,23 @@ function HubRouter() {
         <Registration />
       </Route>
       <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
-        <AboutTheStudy />
+        <AboutTheStudy
+          checkpoint={checkpoint}
+          updateClientData={updateClientData}
+        />
       </PrivateRoute>
       <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
         <AboutDataSharing
+          checkpoint={checkpoint}
           dataGroups={userInfo?.dataGroups}
           updateClientData={updateClientData}
         />
       </PrivateRoute>
       <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
-        <SummaryAndSignature />
+        <SummaryAndSignature
+          checkpoint={checkpoint}
+          updateClientData={updateClientData}
+        />
       </PrivateRoute>
       <Route exact path="/hub">
         <Hub cards={hubCards} />

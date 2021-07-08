@@ -13,14 +13,13 @@ function RegistrationContainer() {
   const history = useHistory()
   const sessionData = useSessionDataState()
   const sessionDispatch = useSessionDataDispatch()
-  console.log(isEligible, phoneNumber)
 
   useEffect(() => {
     if (!isEligible) {
       console.log('redirecting to hub...')
       history.push(ROUTES.HUB)
     }
-  }, [])
+  })
 
   return (
     <ResponsiveStepWrapper variant="card">
