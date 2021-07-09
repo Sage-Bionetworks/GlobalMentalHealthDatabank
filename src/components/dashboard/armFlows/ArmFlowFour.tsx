@@ -113,7 +113,7 @@ function ArmFlowFour({
               subTitle={t('form.armFour.pageTwo.subTitle')}
               errorMessage={errorMessage}
               formId={FORM_IDS.HOW_RESEARCHERS_ACCESS}
-              onSubmit={async (event: any) => {
+              onSubmit={(event: any) => {
                 const selectedOption = event.formData.how_researchers_access
                 if (!selectedOption) {
                   setErrorMessage(t('form.chooseAnOption'))
