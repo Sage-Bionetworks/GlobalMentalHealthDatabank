@@ -81,7 +81,7 @@ function AboutTheStudy({
       case FLOW_OPTIONS.TWO:
         return PAGE_ID.YOUTH_INFORMED_01
       case FLOW_OPTIONS.THREE:
-        return PAGE_ID.HYBRID
+        return PAGE_ID.HYBRID_01
       case FLOW_OPTIONS.FOUR:
         return PAGE_ID.PARTICIPANT_CHOICE_01
     }
