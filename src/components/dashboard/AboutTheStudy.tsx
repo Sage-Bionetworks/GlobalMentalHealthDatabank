@@ -485,11 +485,38 @@ function AboutTheStudy({
     case 9:
       return (
         <ResponsiveStepWrapper>
-          <h1>Your study data page</h1>
-          <NavigationArrows
-            onBack={handleBack}
-            onNext={() => handleNext(PAGE_ID.DATA_COLLECTION)}
-          />
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="text-step-wrapper">
+            <div className="icon-wrapper">
+              <Questions />
+            </div>
+            <Typography variant="h3">
+              {t('form.firstCommonConsent.yourStudyData')}
+            </Typography>
+            <Typography variant="h6">
+              {t('form.firstCommonConsent.yourStudyDataIs')}
+            </Typography>
+            <div className="bullets ml-10 btm-30">
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.shareDatawithMindKind')}
+              </Typography>
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.dataPermission')}
+              </Typography>
+            </div>
+            <div className="btm-30">
+              <Typography variant="body2">
+                {t('form.firstCommonConsent.notSharePhoneData')}
+              </Typography>
+            </div>
+            <Typography variant="body2">
+              {t('form.firstCommonConsent.dataDisclaimer')}
+            </Typography>
+            <NavigationArrows
+              onBack={handleBack}
+              onNext={() => handleNext(PAGE_ID.DATA_COLLECTION)}
+            />
+          </div>
         </ResponsiveStepWrapper>
       )
 

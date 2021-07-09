@@ -127,7 +127,13 @@
       "privacyPolicyText": "Check the ",
       "privacyPolicyLink": "Privacy Policy",
       "ifCitizenEU": "If you are a resident of a nation that abides by the General Data Protection Regulations, click here to ",
-      "ifCitizenEULink": "learn more about your data rights."
+      "ifCitizenEULink": "learn more about your data rights.",
+      "yourStudyData": "Your Study Data",
+      "yourStudyDataIs": "Your study data is:",
+      "shareDatawithMindKind": "Data you share with us when you use the MindKind Study app.",
+      "dataPermission": "Data you give us permission to collect directly from your phone, like screen time and step count.",
+      "notSharePhoneData": "If you don’t want to share data from your phone with us that’s okay - you can still participate in the study.",
+      "dataDisclaimer": "We will NEVER collect your exact location, your photos, emails, texts, calls, or what you say or type outside of the app."
     },
     "armOne": {
       "title": "How will your study data be used?",
