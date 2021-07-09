@@ -16,6 +16,7 @@ import {
   RESEARCHERS_DATA_USAGE,
 } from 'constants/constants'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
+import { createCustomRadio } from 'components/form/CustomRadio'
 import SageForm from 'components/form/SageForm'
 
 type ArmFlowTwoProps = {
@@ -46,102 +47,19 @@ function ArmFlowTwo({
   const [successMessage, setSuccessMessage] = useState('')
   window.scrollTo(0, 0)
 
-  const CustomRadioResearchersDataAccess = ({
-    options,
-    value,
-    onChange,
-  }: any) => {
-    const { enumOptions } = options
-    const _onChange = (event: any) => onChange(event.currentTarget.id)
-    return enumOptions.map((option: any, index: number) => {
-      return (
-        <div
-          className={
-            'quiz-radio-wrapper ' +
-            (option.value ===
-            RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
-              ? 'radio correct'
-              : '')
-          }
-          key={`quiz-radio-wrapper-${index}`}
-        >
-          <input
-            type="radio"
-            id={option.value}
-            checked={
-              option.value === researchersDataAccessSelection ||
-              option.value ===
-                RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
-                ? true
-                : false
-            }
-            onChange={_onChange as any}
-          />
-          <div
-            id={`label-${option.value}`}
-            dangerouslySetInnerHTML={{ __html: option.label }}
-            className={
-              'radio-button-label' +
-              (option.value === researchersDataAccessSelection &&
-              option.value !==
-                RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
-                ? ' error-message wrong-opt'
-                : ' correct-opt')
-            }
-          />
-        </div>
-      )
-    })
-  }
+  const CustomRadioResearchersDataAccess = createCustomRadio(
+    RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA,
+    researchersDataAccessSelection,
+  )
 
   const widgetsResearchersDataAccess = {
     RadioWidget: CustomRadioResearchersDataAccess,
   }
 
-  const CustomRadioResearchersDataUsage = ({
-    options,
-    value,
-    onChange,
-  }: any) => {
-    const { enumOptions } = options
-    const _onChange = (event: any) => onChange(event.currentTarget.id)
-    return enumOptions.map((option: any, index: number) => {
-      return (
-        <div
-          className={
-            'quiz-radio-wrapper ' +
-            (option.value === RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
-              ? 'radio correct'
-              : '')
-          }
-          key={`quiz-radio-wrapper-${index}`}
-        >
-          <input
-            type="radio"
-            id={option.value}
-            checked={
-              option.value === researchersDataUsageSelection ||
-              option.value === RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
-                ? true
-                : false
-            }
-            onChange={_onChange as any}
-          />
-          <div
-            id={`label-${option.value}`}
-            dangerouslySetInnerHTML={{ __html: option.label }}
-            className={
-              'radio-button-label' +
-              (option.value === researchersDataUsageSelection &&
-              option.value !== RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
-                ? ' error-message wrong-opt'
-                : ' correct-opt')
-            }
-          />
-        </div>
-      )
-    })
-  }
+  const CustomRadioResearchersDataUsage = createCustomRadio(
+    RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE,
+    researchersDataUsageSelection,
+  )
 
   const widgetsResearchersDataUsage = {
     RadioWidget: CustomRadioResearchersDataUsage,
