@@ -3,12 +3,7 @@ import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
-import {
-  PARTICIPATE_OPTIONS,
-  FORM_IDS,
-  WHAT_IS_THE_PURPOSE_OPTIONS,
-  WHICH_IS_CORRECT_OPTIONS,
-} from 'components/form/types'
+import { FORM_IDS, WHAT_IS_THE_PURPOSE_OPTIONS } from 'components/form/types'
 import { PAGE_ID_FIELD_NAME, PAGE_ID, ROUTES } from 'constants/constants'
 import NavigationArrows from 'components/common/NavigationArrows'
 import ResponsiveStepWrapper from 'components/common/ResponsiveStepWrapper'
@@ -39,7 +34,6 @@ function AboutTheStudy({
   consentModel,
 }: AboutTheStudyProps) {
   const history = useHistory()
-  const [howToParticipateSelection, setHowToParticipateSelection] = useState()
   const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState()
   const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState()
   const [errorMessage, setErrorMessage] = useState('')
@@ -47,31 +41,13 @@ function AboutTheStudy({
   const { t } = useTranslation()
   const step = checkpoint?.aboutTheStudy?.step || 1
 
-  const CustomRadioParticipate = createCustomRadio(
-    PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS,
-    howToParticipateSelection,
-  )
-
   const CustomRadioWhatIsThePurpose = createCustomRadio(
     WHAT_IS_THE_PURPOSE_OPTIONS.TO_PARTICIPATE_IN_RESEARCH,
     whatIsThePurposeSelection,
   )
 
-  const CustomRadioWhichIsCorrect = createCustomRadio(
-    WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME,
-    whichIsCorrectSelection,
-  )
-
-  const widgetsParticipate = {
-    RadioWidget: CustomRadioParticipate,
-  }
-
   const widgetsWhatIsThePurpose = {
     RadioWidget: CustomRadioWhatIsThePurpose,
-  }
-
-  const widgetsWhichIsCorrect = {
-    RadioWidget: CustomRadioWhichIsCorrect,
   }
 
   const getNextPageName = () => {
@@ -178,68 +154,13 @@ function AboutTheStudy({
             </Typography>
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK_QUIZ)}
+              onNext={() => handleNext(PAGE_ID.RISKS_AND_BENEFITS)}
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
     case 3:
-      return (
-        <ResponsiveStepWrapper variant="card">
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <div className="quiz-wrapper">
-            <SageForm
-              title={t('form.firstCommonConsent.quiz')}
-              errorMessage={errorMessage}
-              infoMessage={successMessage}
-              formId={FORM_IDS.HOW_TO_PARTICIPATE}
-              buttonText={
-                successMessage ? t('form.firstCommonConsent.next') : undefined
-              }
-              widgets={
-                howToParticipateSelection ? widgetsParticipate : undefined
-              }
-              onSubmit={(event: any) => {
-                const selectedOption = event.formData.how_to_participate
-
-                if (successMessage || howToParticipateSelection) {
-                  handleNext(PAGE_ID.RISKS_AND_BENEFITS)
-                }
-
-                if (
-                  selectedOption &&
-                  Object.keys(selectedOption).length === 0
-                ) {
-                  setErrorMessage(t('form.chooseAnOption'))
-                  setSuccessMessage('')
-                } else {
-                  if (
-                    selectedOption.participate_option ===
-                    PARTICIPATE_OPTIONS.ANSWER_SURVEY_QUESTIONS
-                  ) {
-                    setSuccessMessage(t('form.firstCommonConsent.answer'))
-                    setErrorMessage('')
-                  } else {
-                    setErrorMessage(t('form.firstCommonConsent.answer'))
-                    setSuccessMessage('')
-                  }
-                  setHowToParticipateSelection(
-                    selectedOption.participate_option,
-                  )
-                  updateClientData({
-                    [FORM_IDS.HOW_TO_PARTICIPATE]:
-                      selectedOption.participate_option,
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
-                  })
-                }
-              }}
-            />
-          </div>
-        </ResponsiveStepWrapper>
-      )
-
-    case 4:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -285,13 +206,12 @@ function AboutTheStudy({
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(PAGE_ID.NOT_MEDICAL_CARE)}
-              preventBack
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case 5:
+    case 4:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -330,7 +250,7 @@ function AboutTheStudy({
         </ResponsiveStepWrapper>
       )
 
-    case 6:
+    case 5:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -386,7 +306,7 @@ function AboutTheStudy({
         </ResponsiveStepWrapper>
       )
 
-    case 7:
+    case 6:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -418,71 +338,13 @@ function AboutTheStudy({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.LEAVING_STUDY_QUIZ)}
-              preventBack
+              onNext={() => handleNext(PAGE_ID.YOUR_STUDY_DATA)}
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case 8:
-      return (
-        <ResponsiveStepWrapper variant="card">
-          <ProgressBar step={step} maxSteps={maxSteps} />
-          <div className="quiz-wrapper">
-            <SageForm
-              title={t('form.secondCommonConsent.pageSix.title')}
-              errorMessage={errorMessage}
-              infoMessage={successMessage}
-              formId={FORM_IDS.WHICH_IS_CORRECT}
-              buttonText={
-                successMessage ? t('form.firstCommonConsent.next') : undefined
-              }
-              widgets={
-                whichIsCorrectSelection ? widgetsWhichIsCorrect : undefined
-              }
-              onSubmit={(event: any) => {
-                const selectedOption = event.formData.which_is_correct
-
-                if (
-                  selectedOption &&
-                  Object.keys(selectedOption).length === 0
-                ) {
-                  setErrorMessage(t('form.chooseAnOption'))
-                  setSuccessMessage('')
-                } else {
-                  if (
-                    selectedOption ===
-                    WHICH_IS_CORRECT_OPTIONS.I_CAN_STOP_AT_ANY_TIME
-                  ) {
-                    setSuccessMessage(
-                      t('form.secondCommonConsent.pageSix.answer'),
-                    )
-                    setErrorMessage('')
-                  } else {
-                    setErrorMessage(
-                      t('form.secondCommonConsent.pageSix.answer'),
-                    )
-                    setSuccessMessage('')
-                  }
-
-                  if (successMessage || whichIsCorrectSelection) {
-                    handleNext(PAGE_ID.YOUR_STUDY_DATA)
-                  } else {
-                    setWhichIsCorrectSelection(selectedOption)
-                    updateClientData({
-                      [FORM_IDS.WHICH_IS_CORRECT]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUR_STUDY_DATA,
-                    })
-                  }
-                }
-              }}
-            />
-          </div>
-        </ResponsiveStepWrapper>
-      )
-
-    case 9:
+    case 7:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -520,7 +382,7 @@ function AboutTheStudy({
         </ResponsiveStepWrapper>
       )
 
-    case 10:
+    case 8:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -551,13 +413,12 @@ function AboutTheStudy({
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(PAGE_ID.DATA_RIGHTS)}
-              preventBack
             />
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case 11:
+    case 9:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -591,9 +452,9 @@ function AboutTheStudy({
                 rel="noopener noreferrer"
                 className="underlined-link-inline"
               >
-                <div className="btm-20 underlined-link-inline">
+                <span className="btm-20 underlined-link-inline">
                   {t('form.firstCommonConsent.privacyPolicyLink')}
-                </div>
+                </span>
               </a>
             </Typography>
             <Typography variant="body2">
