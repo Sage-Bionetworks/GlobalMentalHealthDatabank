@@ -64,6 +64,19 @@ function SummaryAndSignature({
     }
   }
 
+  const handleBackToHub = (fields: object = {}) => {
+    if (checkpoint) {
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.summaryAndSignature.status = 'started'
+      newCheckpoint.summaryAndSignature.step = 1
+      updateClientData({
+        ...fields,
+        checkpoint: newCheckpoint,
+      })
+      history.push(ROUTES.HUB)
+    }
+  }
+
   const handleComplete = () => {
     if (checkpoint) {
       const nextStep = step < maxSteps ? step + 1 : step
@@ -146,7 +159,7 @@ function SummaryAndSignature({
             </div>
 
             <NavigationArrows
-              onBack={handleBack}
+              onBack={handleBackToHub}
               onNext={() => handleNext(PAGE_ID.CONTACT)}
             />
           </div>

@@ -23,7 +23,6 @@ function RegistrationContainer() {
 
   return (
     <ResponsiveStepWrapper variant="card">
-      <h1>Registration</h1>
       {phoneNumber ? (
         <div className="quiz-wrapper">
           <SignInWithCode
