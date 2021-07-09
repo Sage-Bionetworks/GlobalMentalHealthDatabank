@@ -29,13 +29,12 @@ type AboutTheStudyProps = {
 
 function AboutTheStudy({
   checkpoint,
-  maxSteps = 11,
+  maxSteps = 9,
   updateClientData,
   consentModel,
 }: AboutTheStudyProps) {
   const history = useHistory()
   const [whatIsThePurposeSelection, setWhatIsThePurposeSelection] = useState()
-  const [whichIsCorrectSelection, setWhichIsCorrectSelection] = useState()
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const { t } = useTranslation()
