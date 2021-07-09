@@ -163,7 +163,7 @@ function ArmFlowOne({
               onBack={handleBack}
               onNext={() =>
                 handleNext({
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_01,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_02,
                 })
               }
             />
@@ -211,7 +211,7 @@ function ArmFlowOne({
                     setResearchersDataAccessSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_02,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_03,
                     })
                   }
                 }
@@ -261,7 +261,7 @@ function ArmFlowOne({
                     setDataResearchTypeSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_03,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
                     })
                   }
                 }

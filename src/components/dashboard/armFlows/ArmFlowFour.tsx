@@ -147,7 +147,11 @@ function ArmFlowFour({
                   handleNext({
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
+                    [PAGE_ID_FIELD_NAME]:
+                      clientData?.who_controls_data ===
+                      WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
+                        ? PAGE_ID.PARTICIPANT_CHOICE_04
+                        : PAGE_ID.VOTING_01,
                   })
                 }
               }}
@@ -187,8 +191,8 @@ function ArmFlowFour({
                 <NavigationArrows
                   preventBack
                   onNext={() =>
-                    handleNext({
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                    handleComplete({
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
                     })
                   }
                 />

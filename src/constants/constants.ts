@@ -42,6 +42,7 @@ export const PAGE_ID = {
   PARTICIPANT_CHOICE_01: 'SG4-01_ParticipantChoice',
   PARTICIPANT_CHOICE_02: 'SG4-02_ResearcherAccess',
   PARTICIPANT_CHOICE_03: 'SG4-03_DataControl',
+  PARTICIPANT_CHOICE_04: 'SG4_04_VolunteerPage',
 
   VOTING_01: 'V01_VotingIntro',
   VOTING_02: 'V02_ResearchersDataProfit',

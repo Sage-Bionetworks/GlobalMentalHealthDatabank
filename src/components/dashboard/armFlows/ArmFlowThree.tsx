@@ -98,7 +98,7 @@ function ArmFlowThree({
               onBack={handleBack}
               onNext={() =>
                 handleNext({
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_01,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_02,
                 })
               }
             />
@@ -146,7 +146,7 @@ function ArmFlowThree({
                     setResearchersDataAccessSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_02,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_03,
                     })
                   }
                 }
@@ -195,7 +195,7 @@ function ArmFlowThree({
                     setResearchersDataUsageSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_03,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
                     })
                   }
                 }
