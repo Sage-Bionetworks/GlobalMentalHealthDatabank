@@ -113,9 +113,7 @@
       "step1": "1. Download and install the free MindKind Study App on your phone.",
       "step2": "2. Use the app to answer general questions about yourself - this should take about 15 minutes.",
       "step3": "3. Use the app to record your mental and emotional wellbeing for 3 months - less than 10 minutes a day.",
-      "quiz": "Which of the following will you be asked to do?",
       "next": "Next",
-      "answer": "This study will only require you to answer weekly survey questions.",
       "dataCollection": "Data Collection, Storage & Privacy",
       "dataCollectionEncrypted": "Your data will be encrypted and transferred to a secure cloud server in the U.S.",
       "dataCollectionIdentity": "Your identity will not be stored with your data.",
@@ -254,13 +252,6 @@
         "description2": " You may leave this study at any time for any reason.",
         "description3": "If you withdraw, you can ask us to delete all of your study data.",
         "description4": "If you withdraw without asking us to delete your data, we will continue to use data already collected but will not collect any new data from you."
-      },
-      "pageSix": {
-        "title": "Which is correct?",
-        "ifParticipate": "If I start participating, I have to continue until the end.",
-        "iCanStop": "I can stop at any time.",
-        "penalty": "I will get a penalty if I leave the study.",
-        "answer": "You can stop participating in the study at any time."
       },
       "pageSeven": {
         "contact": "Contact",

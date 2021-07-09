@@ -11,10 +11,6 @@ import {
   uiSchemaCountrySelector,
 } from '../../data/schemas/countrySelector'
 import {
-  schemaHowToParticipate,
-  uiSchemaHowToParticipate,
-} from '../../data/schemas/howToParticipate'
-import {
   schemaAgeVerify,
   uiSchemaAgeVerify,
 } from '../../data/schemas/ageVerify'
@@ -42,10 +38,6 @@ import {
   schemaWhatIsThePurpose,
   uiSchemaWhatIsThePurpose,
 } from '../../data/schemas/whatIsThePurpose'
-import {
-  schemaWhichIsCorrect,
-  uiSchemaWhichIsCorrect,
-} from '../../data/schemas/whichIsCorrect'
 
 import {
   schemaMentalHealthExperience,
@@ -127,8 +119,6 @@ export default function SageForm({
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
         return schemaCountrySelector
-      case FORM_IDS.HOW_TO_PARTICIPATE:
-        return schemaHowToParticipate
       case FORM_IDS.AGE_VERIFY:
         return schemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
@@ -167,8 +157,6 @@ export default function SageForm({
         return schemaCopy
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
         return schemaWhatIsThePurpose
-      case FORM_IDS.WHICH_IS_CORRECT:
-        return schemaWhichIsCorrect
       case FORM_IDS.GENDER:
         return schemaGender
       case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
@@ -196,8 +184,6 @@ export default function SageForm({
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
         return uiSchemaCountrySelector
-      case FORM_IDS.HOW_TO_PARTICIPATE:
-        return uiSchemaHowToParticipate
       case FORM_IDS.AGE_VERIFY:
         return uiSchemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
@@ -212,8 +198,6 @@ export default function SageForm({
         return uiSchemaWhoControlsData
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
         return uiSchemaWhatIsThePurpose
-      case FORM_IDS.WHICH_IS_CORRECT:
-        return uiSchemaWhichIsCorrect
       case FORM_IDS.GENDER:
         return uiSchemaGender
       case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:

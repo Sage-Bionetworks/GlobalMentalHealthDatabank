@@ -1,18 +1,7 @@
-export const PARTICIPATE_OPTIONS = {
-  ANSWER_SURVEY_QUESTIONS: 'Answer survey questions',
-  IN_PERSON_VISITS: 'Complete in-person visits',
-  PHONE_CALLS: 'Make Phone Calls',
-}
 export const WHAT_IS_THE_PURPOSE_OPTIONS = {
   TO_PARTICIPATE_IN_RESEARCH: 'To participate in research',
   TO_RECEIVE_MEDICAL_CARE: 'To receive medical care',
   TO_OBTAIN_MEDICAL_INSURANCE: 'To obtain medical insurance',
-}
-export const WHICH_IS_CORRECT_OPTIONS = {
-  CONTINUE_UNTIL_THE_END:
-    'If I start participating, I have to continue until the end.',
-  I_CAN_STOP_AT_ANY_TIME: 'I can stop at any time.',
-  I_WILL_GET_A_PENALTY: 'I will get a penalty if I leave the study.',
 }
 
 export const WHO_CONTROLS_DATA_OPTIONS = {
@@ -37,7 +26,6 @@ export const DATA_RESEARCH_TYPE_OPTIONS = {
 }
 
 export const FORM_IDS = {
-  HOW_TO_PARTICIPATE: 'howToParticipate',
   AGE_VERIFY: 'ageVerify',
   COUNTRY_SELECTOR: 'countrySelector',
   ANDROID_VERIFY: 'androidVerify',
@@ -46,7 +34,6 @@ export const FORM_IDS = {
   HOW_RESEARCHERS_ACCESS: 'howResearchersAccess',
   WHO_CONTROLS_DATA: 'whoControlsData',
   WHAT_IS_THE_PURPOSE: 'whatIsThePurpose',
-  WHICH_IS_CORRECT: 'whichIsCorrect',
   GENDER: 'gender',
   MENTAL_HEALTH_EXPERIENCE: 'mentalHealthExperience',
   RESEARCHERS_DATA_ACCESS: 'researchersDataAccess',
