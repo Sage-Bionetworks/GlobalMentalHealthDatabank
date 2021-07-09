@@ -598,7 +598,12 @@ function AboutTheStudy({
             </Typography>
             <Typography variant="body2">
               {t('form.firstCommonConsent.ifCitizenEU')}{' '}
-              <a className="underlined-link" href={ROUTES.DATA_REGULATION}>
+              <a
+                className="underlined-link"
+                href={ROUTES.DATA_REGULATION}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {t('form.firstCommonConsent.ifCitizenEULink')}
               </a>
             </Typography>
