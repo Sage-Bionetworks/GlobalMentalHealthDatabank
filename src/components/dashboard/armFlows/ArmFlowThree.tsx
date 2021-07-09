@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
 import {
   NavigationArrows,
   ProgressBar,
   ResponsiveStepWrapper,
 } from 'components/common'
+import {
+  FORM_IDS,
+  RESEARCHERS_DATA_ACCESS_OPTIONS,
+} from 'components/form/types'
 import { useTranslation } from 'react-i18next'
-import { PAGE_ID, PAGE_ID_FIELD_NAME } from 'constants/constants'
+import { createCustomRadio } from 'components/form/CustomRadio'
+import {
+  PAGE_ID,
+  PAGE_ID_FIELD_NAME,
+  RESEARCHERS_DATA_USAGE,
+} from 'constants/constants'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
+import SageForm from 'components/form/SageForm'
 
 type ArmFlowThreeProps = {
   step: number
@@ -29,7 +39,36 @@ function ArmFlowThree({
   RankedChoice,
 }: ArmFlowThreeProps) {
   const { t } = useTranslation()
+  const [researchersDataAccessSelection, setResearchersDataAccessSelection] =
+    useState('')
+  const [researchersDataUsageSelection, setResearchersDataUsageSelection] =
+    useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
   window.scrollTo(0, 0)
+
+  const CustomRadioResearchersDataAccess = createCustomRadio(
+    RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA,
+    researchersDataAccessSelection,
+  )
+
+  const widgetsResearchersDataAccess = {
+    RadioWidget: CustomRadioResearchersDataAccess,
+  }
+
+  const CustomRadioResearchersDataUsage = createCustomRadio(
+    RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE,
+    researchersDataUsageSelection,
+  )
+
+  const widgetsResearchersDataUsage = {
+    RadioWidget: CustomRadioResearchersDataUsage,
+  }
+
+  useEffect(() => {
+    setErrorMessage('')
+    setSuccessMessage('')
+  }, [step])
 
   switch (step) {
     case 1:
@@ -59,7 +98,7 @@ function ArmFlowThree({
               onBack={handleBack}
               onNext={() =>
                 handleNext({
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_01,
                 })
               }
             />
@@ -68,11 +107,109 @@ function ArmFlowThree({
       )
 
     case 2:
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.armOne.pageOne.title')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.RESEARCHERS_DATA_ACCESS}
+              widgets={
+                researchersDataAccessSelection
+                  ? widgetsResearchersDataAccess
+                  : undefined
+              }
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.researchersDataAccess
+                if (
+                  selectedOption === undefined &&
+                  researchersDataAccessSelection === ''
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption ===
+                    RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
+                  ) {
+                    setSuccessMessage(t('form.armTwo.pageTwo.correctAnswer'))
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(t('form.armTwo.pageTwo.incorrectAnswer'))
+                    setSuccessMessage('')
+                  }
+                  if (successMessage || researchersDataAccessSelection) {
+                    handleNext()
+                  } else {
+                    setResearchersDataAccessSelection(selectedOption)
+                    updateClientData({
+                      [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_02,
+                    })
+                  }
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
     case 3:
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.armTwo.pageThree.title')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.RESEARCHERS_DATA_USAGE}
+              widgets={
+                researchersDataUsageSelection
+                  ? widgetsResearchersDataUsage
+                  : undefined
+              }
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.researchersDataUsage
+                if (
+                  selectedOption === undefined &&
+                  researchersDataUsageSelection === ''
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption ===
+                    RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
+                  ) {
+                    setSuccessMessage(t('form.armTwo.pageThree.correctAnswer'))
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(t('form.armTwo.pageThree.incorrectAnswer'))
+                    setSuccessMessage('')
+                  }
+                  if (successMessage || researchersDataUsageSelection) {
+                    handleNext()
+                  } else {
+                    setResearchersDataUsageSelection(selectedOption)
+                    updateClientData({
+                      [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_03,
+                    })
+                  }
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
     case 4:
     case 5:
     case 6:
     case 7:
+    case 8:
+    case 9:
       return (
         <RankedChoice
           step={step}
@@ -81,7 +218,7 @@ function ArmFlowThree({
           handleBack={handleBack}
           handleNext={handleNext}
           handleComplete={handleComplete}
-          startingStep={2}
+          startingStep={4}
         />
       )
 
