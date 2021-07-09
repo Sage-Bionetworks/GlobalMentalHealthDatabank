@@ -851,6 +851,8 @@
   "download": {
     "title": "Thank you for joining!",
     "description1": "Now that you are enrolled you can start using the MindKind Study App to record your daily mental and emotional health.",
-    "cta": "Download the app"
+    "cta": "Download the app",
+    "compensationText": "If you would like to receive compensation for this study",
+    "compensationUrl": "email@email.com"
   }
 }
