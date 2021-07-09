@@ -50,6 +50,20 @@ function AboutDataSharing({
       })
     }
   }
+
+  const handleBackToHub = (fields: object = {}) => {
+    if (checkpoint) {
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.aboutDataSharing.status = 'started'
+      newCheckpoint.aboutDataSharing.step = 1
+      updateClientData({
+        ...fields,
+        checkpoint: newCheckpoint,
+      })
+      history.push(ROUTES.HUB)
+    }
+  }
+
   const handleBack = (steps: number = 1) => {
     if (checkpoint) {
       const prevStep = step - steps >= 1 ? step - steps : step
@@ -86,6 +100,7 @@ function AboutDataSharing({
           handleBack={handleBack}
           handleComplete={handleComplete}
           updateClientData={updateClientData}
+          handleBackToHub={handleBackToHub}
         />
       )}
       {dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup) && (
@@ -97,6 +112,7 @@ function AboutDataSharing({
           handleComplete={handleComplete}
           updateClientData={updateClientData}
           RankedChoice={RankedChoice}
+          handleBackToHub={handleBackToHub}
         />
       )}
       {dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup) && (
@@ -108,6 +124,7 @@ function AboutDataSharing({
           handleComplete={handleComplete}
           updateClientData={updateClientData}
           RankedChoice={RankedChoice}
+          handleBackToHub={handleBackToHub}
         />
       )}
       {dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup) && (
@@ -120,6 +137,7 @@ function AboutDataSharing({
           updateClientData={updateClientData}
           RankedChoice={RankedChoice}
           clientData={clientData}
+          handleBackToHub={handleBackToHub}
         />
       )}
     </>

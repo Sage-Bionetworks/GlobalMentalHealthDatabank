@@ -16,6 +16,7 @@ type ArmFlowFourProps = {
   maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
+  handleBackToHub: () => void
   handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
@@ -28,6 +29,7 @@ function ArmFlowFour({
   handleNext,
   handleBack,
   handleComplete,
+  handleBackToHub,
   updateClientData,
   RankedChoice,
   clientData,
@@ -91,7 +93,7 @@ function ArmFlowFour({
                 {t('form.armFour.pageOne.subText1')}
               </Typography>
               <NavigationArrows
-                onBack={handleBack}
+                onBack={handleBackToHub}
                 onNext={() =>
                   handleNext({
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_02,
@@ -147,7 +149,11 @@ function ArmFlowFour({
                   handleNext({
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
+                    [PAGE_ID_FIELD_NAME]:
+                      clientData?.who_controls_data ===
+                      WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
+                        ? PAGE_ID.PARTICIPANT_CHOICE_04
+                        : PAGE_ID.VOTING_01,
                   })
                 }
               }}
@@ -187,8 +193,8 @@ function ArmFlowFour({
                 <NavigationArrows
                   preventBack
                   onNext={() =>
-                    handleNext({
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                    handleComplete({
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
                     })
                   }
                 />

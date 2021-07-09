@@ -22,6 +22,7 @@ type ArmFlowOneProps = {
   handleBack: () => void
   handleComplete: (fields?: object) => void
   updateClientData: Function
+  handleBackToHub: () => void
 }
 
 function ArmFlowOne({
@@ -31,6 +32,7 @@ function ArmFlowOne({
   handleBack,
   handleComplete,
   updateClientData,
+  handleBackToHub,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
   const [researchersDataAccessSelection, setResearchersDataAccessSelection] =
@@ -160,10 +162,10 @@ function ArmFlowOne({
             <Typography variant="body2">{t('form.armOne.subText1')}</Typography>
 
             <NavigationArrows
-              onBack={handleBack}
+              onBack={handleBackToHub}
               onNext={() =>
                 handleNext({
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_01,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_02,
                 })
               }
             />
@@ -211,7 +213,7 @@ function ArmFlowOne({
                     setResearchersDataAccessSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_02,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_03,
                     })
                   }
                 }
@@ -261,7 +263,7 @@ function ArmFlowOne({
                     setDataResearchTypeSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_03,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
                     })
                   }
                 }

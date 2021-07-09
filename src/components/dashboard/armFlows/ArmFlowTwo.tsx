@@ -24,6 +24,7 @@ type ArmFlowTwoProps = {
   maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
+  handleBackToHub: () => void
   handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
@@ -35,6 +36,7 @@ function ArmFlowTwo({
   handleNext,
   handleBack,
   handleComplete,
+  handleBackToHub,
   updateClientData,
   RankedChoice,
 }: ArmFlowTwoProps) {
@@ -91,10 +93,10 @@ function ArmFlowTwo({
             <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
 
             <NavigationArrows
-              onBack={handleBack}
+              onBack={handleBackToHub}
               onNext={() =>
                 handleNext({
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_01,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_02,
                 })
               }
             />
@@ -142,7 +144,7 @@ function ArmFlowTwo({
                     setResearchersDataAccessSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_02,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_03,
                     })
                   }
                 }
@@ -192,7 +194,7 @@ function ArmFlowTwo({
                     setResearchersDataUsageSelection(selectedOption)
                     updateClientData({
                       [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
-                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_03,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
                     })
                   }
                 }
