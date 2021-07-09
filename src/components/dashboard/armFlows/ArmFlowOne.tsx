@@ -18,9 +18,9 @@ import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 type ArmFlowOneProps = {
   step: number
   maxSteps: number
-  handleNext: (pageId?: string) => void
+  handleNext: (fields?: object) => void
   handleBack: () => void
-  handleComplete: (pageId?: string) => void
+  handleComplete: (fields?: object) => void
   updateClientData: Function
 }
 
@@ -33,13 +33,10 @@ function ArmFlowOne({
   updateClientData,
 }: ArmFlowOneProps) {
   const { t } = useTranslation()
-  const [
-    researchersDataAccessSelection,
-    setResearchersDataAccessSelection,
-  ] = useState(undefined)
-  const [dataResearchTypeSelection, setDataResearchTypeSelection] = useState(
-    undefined,
-  )
+  const [researchersDataAccessSelection, setResearchersDataAccessSelection] =
+    useState(undefined)
+  const [dataResearchTypeSelection, setDataResearchTypeSelection] =
+    useState(undefined)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
@@ -104,7 +101,7 @@ function ArmFlowOne({
         <div
           className={
             'quiz-radio-wrapper ' +
-            (option.value === DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+            (option.value === DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
               ? 'radio correct'
               : '')
           }
@@ -115,7 +112,7 @@ function ArmFlowOne({
             id={option.value}
             checked={
               option.value === dataResearchTypeSelection ||
-              option.value === DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+              option.value === DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
                 ? true
                 : false
             }
@@ -127,7 +124,7 @@ function ArmFlowOne({
             className={
               'radio-button-label' +
               (option.value === dataResearchTypeSelection &&
-              option.value !== DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+              option.value !== DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
                 ? ' error-message wrong-opt'
                 : ' correct-opt')
             }
@@ -164,7 +161,11 @@ function ArmFlowOne({
 
             <NavigationArrows
               onBack={handleBack}
-              onNext={() => handleNext(PAGE_ID.RESEARCH_NORMS_01)}
+              onNext={() =>
+                handleNext({
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.RESEARCH_NORMS_01,
+                })
+              }
             />
           </div>
         </ResponsiveStepWrapper>
@@ -244,7 +245,7 @@ function ArmFlowOne({
                 } else {
                   if (
                     selectedOption ===
-                    DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+                    DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
                   ) {
                     setSuccessMessage(t('form.armOne.pageTwo.correctAnswer'))
                     setErrorMessage('')
@@ -253,7 +254,9 @@ function ArmFlowOne({
                     setSuccessMessage('')
                   }
                   if (successMessage || dataResearchTypeSelection) {
-                    handleNext()
+                    handleComplete({
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
+                    })
                   } else {
                     setDataResearchTypeSelection(selectedOption)
                     updateClientData({

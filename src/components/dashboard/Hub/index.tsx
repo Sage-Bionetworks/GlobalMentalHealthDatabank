@@ -152,6 +152,7 @@ function HubRouter() {
           checkpoint={checkpoint}
           dataGroups={userInfo?.dataGroups}
           updateClientData={updateClientData}
+          clientData={userInfo?.clientData}
         />
       </PrivateRoute>
       <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>

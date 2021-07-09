@@ -58,6 +58,13 @@ export const PAGE_ID = {
   APP_DOWNLOAD: 'App_Download',
 }
 
+export const RANKED_CHOICE = {
+  CAN_RESEARCHERS_MAKE_PROFIT: 'canResearchersMakeProfit',
+  DO_PEOPLE_HAVE_TO_PAY: 'doPeopleHaveToPay',
+  HOW_CAN_DATA_BE_USED: 'howCanDataBeUsed',
+  HOW_CAN_RESULTS_BE_SHARED: 'howCanResultsBeShared',
+}
+
 export const GENDERS = {
   WOMAN: 'Woman',
   MAN: 'Man',
