@@ -114,6 +114,19 @@ function AboutTheStudy({
     }
   }
 
+  const handleBackToHub = (fields: object = {}) => {
+    if (checkpoint) {
+      const newCheckpoint = cloneDeep(checkpoint)
+      newCheckpoint.aboutTheStudy.status = 'started'
+      newCheckpoint.aboutTheStudy.step = 1
+      updateClientData({
+        ...fields,
+        checkpoint: newCheckpoint,
+      })
+      history.push(ROUTES.HUB)
+    }
+  }
+
   const handleComplete = (pageId: string | undefined) => {
     if (checkpoint) {
       const nextStep = step < maxSteps ? step + 1 : step
@@ -149,7 +162,7 @@ function AboutTheStudy({
               {t('form.firstCommonConsent.weWillAskYou')}
             </Typography>
             <NavigationArrows
-              onBack={handleBack}
+              onBack={handleBackToHub}
               onNext={() => handleNext(PAGE_ID.WHAT_WILL_YOU_ASK)}
             />
           </div>
