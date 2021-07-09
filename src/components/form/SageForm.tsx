@@ -82,6 +82,11 @@ import {
   uiSchemaDataSharing,
 } from '../../data/schemas/dataSharing'
 
+import {
+  schemaResearchersDataUsage,
+  uiSchemaResearchersDataUsage,
+} from '../../data/schemas/researchersDataUsage'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -180,6 +185,8 @@ export default function SageForm({
         return schemaDataUsage
       case FORM_IDS.DATA_SHARING:
         return schemaDataSharing
+      case FORM_IDS.RESEARCHERS_DATA_USAGE:
+        return schemaResearchersDataUsage
       default:
         return null
     }
@@ -223,6 +230,8 @@ export default function SageForm({
         return uiSchemaDataUsage
       case FORM_IDS.DATA_SHARING:
         return uiSchemaDataSharing
+      case FORM_IDS.RESEARCHERS_DATA_USAGE:
+        return uiSchemaResearchersDataUsage
       default:
         return null
     }

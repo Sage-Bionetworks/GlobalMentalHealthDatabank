@@ -118,6 +118,13 @@ export const DATA_RESEARCH_TYPE = {
     'All kinds of research, including commercial (for profit) research.',
 }
 
+export const RESEARCHERS_DATA_USAGE = {
+  RESEARCHERS_WILL_DECIDE: 'Researchers will decide how study data is used.',
+  STUDY_PARTICIPANTS_DECIDE:
+    'Study participants vote to decide how study data is used.',
+  GOVERMENT_DECIDE: 'The government will decide how study data is used.',
+}
+
 export const COUNTRY_CODES = {
   UK: 'UK',
   IN: 'IN',
