@@ -17,16 +17,16 @@ import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowOneProps = {
   step: number
+  maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
   handleComplete: (fields?: object) => void
   updateClientData: Function
 }
 
-const maxSteps = 3
-
 function ArmFlowOne({
   step,
+  maxSteps,
   handleNext,
   handleBack,
   handleComplete,

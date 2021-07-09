@@ -81,6 +81,7 @@ function AboutDataSharing({
       {dataGroups.includes(FLOW_OPTIONS.ONE as UserDataGroup) && (
         <ArmFlowOne
           step={step}
+          maxSteps={getArmFlowMaxSteps()}
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
@@ -90,6 +91,7 @@ function AboutDataSharing({
       {dataGroups.includes(FLOW_OPTIONS.TWO as UserDataGroup) && (
         <ArmFlowTwo
           step={step}
+          maxSteps={getArmFlowMaxSteps()}
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
@@ -100,6 +102,7 @@ function AboutDataSharing({
       {dataGroups.includes(FLOW_OPTIONS.THREE as UserDataGroup) && (
         <ArmFlowThree
           step={step}
+          maxSteps={getArmFlowMaxSteps()}
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}
@@ -110,6 +113,7 @@ function AboutDataSharing({
       {dataGroups.includes(FLOW_OPTIONS.FOUR as UserDataGroup) && (
         <ArmFlowFour
           step={step}
+          maxSteps={getArmFlowMaxSteps()}
           handleNext={handleNext}
           handleBack={handleBack}
           handleComplete={handleComplete}

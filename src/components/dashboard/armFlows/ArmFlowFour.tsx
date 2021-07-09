@@ -13,6 +13,7 @@ import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 
 type ArmFlowFourProps = {
   step: number
+  maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
   handleComplete: (fields?: object) => void
@@ -21,10 +22,9 @@ type ArmFlowFourProps = {
   clientData: any
 }
 
-const maxSteps = 10
-
 function ArmFlowFour({
   step,
+  maxSteps,
   handleNext,
   handleBack,
   handleComplete,

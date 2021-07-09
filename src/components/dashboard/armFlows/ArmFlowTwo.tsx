@@ -11,6 +11,7 @@ import { ReactComponent as Globe } from 'assets/consent/globe.svg'
 
 type ArmFlowTwoProps = {
   step: number
+  maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
   handleComplete: (fields?: object) => void
@@ -18,10 +19,9 @@ type ArmFlowTwoProps = {
   RankedChoice: any
 }
 
-const maxSteps = 9
-
 function ArmFlowTwo({
   step,
+  maxSteps,
   handleNext,
   handleBack,
   handleComplete,
