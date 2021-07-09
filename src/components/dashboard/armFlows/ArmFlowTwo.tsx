@@ -24,6 +24,7 @@ type ArmFlowTwoProps = {
   maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
+  handleBackToHub: () => void
   handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
@@ -35,6 +36,7 @@ function ArmFlowTwo({
   handleNext,
   handleBack,
   handleComplete,
+  handleBackToHub,
   updateClientData,
   RankedChoice,
 }: ArmFlowTwoProps) {
@@ -91,7 +93,7 @@ function ArmFlowTwo({
             <Typography variant="body2">{t('form.armTwo.subText2')}</Typography>
 
             <NavigationArrows
-              onBack={handleBack}
+              onBack={handleBackToHub}
               onNext={() =>
                 handleNext({
                   [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_02,

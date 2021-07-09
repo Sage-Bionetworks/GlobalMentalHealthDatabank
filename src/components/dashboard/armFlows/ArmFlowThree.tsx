@@ -24,6 +24,7 @@ type ArmFlowThreeProps = {
   maxSteps: number
   handleNext: (fields?: object) => void
   handleBack: () => void
+  handleBackToHub: () => void
   handleComplete: (fields?: object) => void
   updateClientData: Function
   RankedChoice: any
@@ -34,6 +35,7 @@ function ArmFlowThree({
   maxSteps,
   handleNext,
   handleBack,
+  handleBackToHub,
   handleComplete,
   updateClientData,
   RankedChoice,
@@ -95,7 +97,7 @@ function ArmFlowThree({
             </Typography>
 
             <NavigationArrows
-              onBack={handleBack}
+              onBack={handleBackToHub}
               onNext={() =>
                 handleNext({
                   [PAGE_ID_FIELD_NAME]: PAGE_ID.HYBRID_02,
