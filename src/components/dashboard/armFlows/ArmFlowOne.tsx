@@ -101,7 +101,7 @@ function ArmFlowOne({
         <div
           className={
             'quiz-radio-wrapper ' +
-            (option.value === DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+            (option.value === DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
               ? 'radio correct'
               : '')
           }
@@ -112,7 +112,7 @@ function ArmFlowOne({
             id={option.value}
             checked={
               option.value === dataResearchTypeSelection ||
-              option.value === DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+              option.value === DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
                 ? true
                 : false
             }
@@ -124,7 +124,7 @@ function ArmFlowOne({
             className={
               'radio-button-label' +
               (option.value === dataResearchTypeSelection &&
-              option.value !== DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+              option.value !== DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
                 ? ' error-message wrong-opt'
                 : ' correct-opt')
             }
@@ -245,7 +245,7 @@ function ArmFlowOne({
                 } else {
                   if (
                     selectedOption ===
-                    DATA_RESEARCH_TYPE_OPTIONS.HEALTH_RESEARCH
+                    DATA_RESEARCH_TYPE_OPTIONS.ALL_KIND_RESEARCH
                   ) {
                     setSuccessMessage(t('form.armOne.pageTwo.correctAnswer'))
                     setErrorMessage('')
