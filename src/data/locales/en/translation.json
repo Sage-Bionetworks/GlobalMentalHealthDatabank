@@ -148,7 +148,16 @@
       "title": "How will your study data be used?",
       "subTitle": "You and other participants get to vote how researchers can access and use your data.",
       "subText1": "Researchers will only view your data on a secure server - they cannot download your data.",
-      "subText2": "Before researchers can use the data, we will tell you the voting results."
+      "subText2": "Before researchers can use the data, we will tell you the voting results.",
+      "pageTwo": {
+        "correctAnswer": "Correct! Researchers will only view your data on a secure server. They cannot download your data.",
+        "incorrectAnswer": "Researchers will only view your data on a secure server. They cannot download your data."
+      },
+      "pageThree": {
+        "title": "How will researchers use your data?",
+        "correctAnswer": "Correct! Study participants vote to decide how study data is used.",
+        "incorrectAnswer": "Study participants vote to decide how study data is used."
+      }
     },
     "armThree": {
       "title": "How will your study data be used?",

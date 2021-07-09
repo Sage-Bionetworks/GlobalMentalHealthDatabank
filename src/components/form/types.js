@@ -55,4 +55,5 @@ export const FORM_IDS = {
   DATA_PAYMENT: 'dataPayment',
   DATA_USAGE: 'dataUsage',
   DATA_SHARING: 'dataSharing',
+  RESEARCHERS_DATA_USAGE: 'researchersDataUsage',
 }

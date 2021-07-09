@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import {
@@ -6,8 +6,17 @@ import {
   ProgressBar,
   ResponsiveStepWrapper,
 } from 'components/common'
-import { PAGE_ID, PAGE_ID_FIELD_NAME } from 'constants/constants'
+import {
+  FORM_IDS,
+  RESEARCHERS_DATA_ACCESS_OPTIONS,
+} from 'components/form/types'
+import {
+  PAGE_ID,
+  PAGE_ID_FIELD_NAME,
+  RESEARCHERS_DATA_USAGE,
+} from 'constants/constants'
 import { ReactComponent as Globe } from 'assets/consent/globe.svg'
+import SageForm from 'components/form/SageForm'
 
 type ArmFlowTwoProps = {
   step: number
@@ -29,7 +38,119 @@ function ArmFlowTwo({
   RankedChoice,
 }: ArmFlowTwoProps) {
   const { t } = useTranslation()
+  const [researchersDataAccessSelection, setResearchersDataAccessSelection] =
+    useState('')
+  const [researchersDataUsageSelection, setResearchersDataUsageSelection] =
+    useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
   window.scrollTo(0, 0)
+
+  const CustomRadioResearchersDataAccess = ({
+    options,
+    value,
+    onChange,
+  }: any) => {
+    const { enumOptions } = options
+    const _onChange = (event: any) => onChange(event.currentTarget.id)
+    return enumOptions.map((option: any, index: number) => {
+      return (
+        <div
+          className={
+            'quiz-radio-wrapper ' +
+            (option.value ===
+            RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
+              ? 'radio correct'
+              : '')
+          }
+          key={`quiz-radio-wrapper-${index}`}
+        >
+          <input
+            type="radio"
+            id={option.value}
+            checked={
+              option.value === researchersDataAccessSelection ||
+              option.value ===
+                RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
+                ? true
+                : false
+            }
+            onChange={_onChange as any}
+          />
+          <div
+            id={`label-${option.value}`}
+            dangerouslySetInnerHTML={{ __html: option.label }}
+            className={
+              'radio-button-label' +
+              (option.value === researchersDataAccessSelection &&
+              option.value !==
+                RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
+                ? ' error-message wrong-opt'
+                : ' correct-opt')
+            }
+          />
+        </div>
+      )
+    })
+  }
+
+  const widgetsResearchersDataAccess = {
+    RadioWidget: CustomRadioResearchersDataAccess,
+  }
+
+  const CustomRadioResearchersDataUsage = ({
+    options,
+    value,
+    onChange,
+  }: any) => {
+    const { enumOptions } = options
+    const _onChange = (event: any) => onChange(event.currentTarget.id)
+    return enumOptions.map((option: any, index: number) => {
+      return (
+        <div
+          className={
+            'quiz-radio-wrapper ' +
+            (option.value === RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
+              ? 'radio correct'
+              : '')
+          }
+          key={`quiz-radio-wrapper-${index}`}
+        >
+          <input
+            type="radio"
+            id={option.value}
+            checked={
+              option.value === researchersDataUsageSelection ||
+              option.value === RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
+                ? true
+                : false
+            }
+            onChange={_onChange as any}
+          />
+          <div
+            id={`label-${option.value}`}
+            dangerouslySetInnerHTML={{ __html: option.label }}
+            className={
+              'radio-button-label' +
+              (option.value === researchersDataUsageSelection &&
+              option.value !== RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
+                ? ' error-message wrong-opt'
+                : ' correct-opt')
+            }
+          />
+        </div>
+      )
+    })
+  }
+
+  const widgetsResearchersDataUsage = {
+    RadioWidget: CustomRadioResearchersDataUsage,
+  }
+
+  useEffect(() => {
+    setErrorMessage('')
+    setSuccessMessage('')
+  }, [step])
 
   switch (step) {
     case 1:
@@ -55,7 +176,7 @@ function ArmFlowTwo({
               onBack={handleBack}
               onNext={() =>
                 handleNext({
-                  [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+                  [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_01,
                 })
               }
             />
@@ -64,11 +185,110 @@ function ArmFlowTwo({
       )
 
     case 2:
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.armOne.pageOne.title')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.RESEARCHERS_DATA_ACCESS}
+              widgets={
+                researchersDataAccessSelection
+                  ? widgetsResearchersDataAccess
+                  : undefined
+              }
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.researchersDataAccess
+                if (
+                  selectedOption === undefined &&
+                  researchersDataAccessSelection === ''
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption ===
+                    RESEARCHERS_DATA_ACCESS_OPTIONS.WILL_ONLY_VIEW_DATA
+                  ) {
+                    setSuccessMessage(t('form.armTwo.pageTwo.correctAnswer'))
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(t('form.armTwo.pageTwo.incorrectAnswer'))
+                    setSuccessMessage('')
+                  }
+                  if (successMessage || researchersDataAccessSelection) {
+                    handleNext()
+                  } else {
+                    setResearchersDataAccessSelection(selectedOption)
+                    updateClientData({
+                      [FORM_IDS.RESEARCHERS_DATA_ACCESS]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_02,
+                    })
+                  }
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
+
     case 3:
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={maxSteps} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('form.armTwo.pageThree.title')}
+              errorMessage={errorMessage}
+              infoMessage={successMessage}
+              formId={FORM_IDS.RESEARCHERS_DATA_USAGE}
+              widgets={
+                researchersDataUsageSelection
+                  ? widgetsResearchersDataUsage
+                  : undefined
+              }
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.researchersDataUsage
+                if (
+                  selectedOption === undefined &&
+                  researchersDataUsageSelection === ''
+                ) {
+                  setErrorMessage(t('form.chooseAnOption'))
+                  setSuccessMessage('')
+                } else {
+                  if (
+                    selectedOption ===
+                    RESEARCHERS_DATA_USAGE.STUDY_PARTICIPANTS_DECIDE
+                  ) {
+                    setSuccessMessage(t('form.armTwo.pageThree.correctAnswer'))
+                    setErrorMessage('')
+                  } else {
+                    setErrorMessage(t('form.armTwo.pageThree.incorrectAnswer'))
+                    setSuccessMessage('')
+                  }
+                  if (successMessage || researchersDataUsageSelection) {
+                    handleNext()
+                  } else {
+                    setResearchersDataUsageSelection(selectedOption)
+                    updateClientData({
+                      [FORM_IDS.DATA_RESEARCH_TYPE]: selectedOption,
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.YOUTH_INFORMED_03,
+                    })
+                  }
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
     case 4:
     case 5:
     case 6:
     case 7:
+    case 8:
+    case 9:
       return (
         <RankedChoice
           step={step}
@@ -77,7 +297,7 @@ function ArmFlowTwo({
           handleBack={handleBack}
           handleNext={handleNext}
           handleComplete={handleComplete}
-          startingStep={2}
+          startingStep={4}
         />
       )
 
