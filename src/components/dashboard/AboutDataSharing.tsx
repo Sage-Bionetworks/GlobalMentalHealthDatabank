@@ -54,8 +54,7 @@ function AboutDataSharing({
   const handleBackToHub = (fields: object = {}) => {
     if (checkpoint) {
       const newCheckpoint = cloneDeep(checkpoint)
-      console.log(newCheckpoint)
-      newCheckpoint.aboutDataSharing.status = 'complete'
+      newCheckpoint.aboutDataSharing.status = 'started'
       newCheckpoint.aboutDataSharing.step = 1
       updateClientData({
         ...fields,
