@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect, NavLink } from 'react-router-dom'
+import { Redirect, NavLink, useHistory } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import ProgressBar from '../common/ProgressBar'
+import { get } from 'lodash'
+import { ProgressBar, ResponsiveStepWrapper } from 'components/common'
 import SageForm from '../form/SageForm'
 import { FORM_IDS } from '../form/types'
 import Separator from '../static/Separator'
 import { useEligibility } from './context/EligibilityContext'
-import { GoogleService } from '../../services/google.service'
-import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
-import { useSessionDataState } from '../../AuthContext'
-import { SessionData } from '../../types/types'
+import { GoogleService } from 'services/google.service'
+import { useSessionDataState } from 'AuthContext'
 import {
   GENDERS,
   ROUTES,
   MENTAL_HEALTH_EXPERIENCE,
-} from '../../constants/constants'
-import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
+  ELIGIBILITY_STEPS,
+} from 'constants/constants'
 import {
   INITIAL_ELIGIBILITY_CHOICES,
   getCountryNameFromCountryCode,
   isEligible,
 } from './helpers'
 
-const MAX_STEPS: number = 9
+const MAX_STEPS: number = 8
 
 export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
@@ -32,16 +30,13 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [currentEligibilityChoices, setCurrentEligibilityChoices] = useState(
     INITIAL_ELIGIBILITY_CHOICES,
   )
-  const sessionData: SessionData = useSessionDataState()
-  const { token } = sessionData
-
+  const { token } = useSessionDataState()
   const [summaryLocationCollapse, setSummaryLocationCollapse] = useState(true)
   const [summaryAndroidCollapse, setSummaryAndroidCollapse] = useState(true)
   const [summaryEnglishCollapse, setSummaryEnglishCollapse] = useState(true)
   const [summaryAgeCollapse, setSummaryAgeCollapse] = useState(true)
 
-  const { history } = props
-  const { search } = history.location
+  const history = useHistory()
 
   const {
     setIsEligible,
@@ -76,6 +71,28 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step])
 
+  useEffect(() => {
+    const { search } = history.location
+
+    if (step < MAX_STEPS) {
+      const stepInfo = get(ELIGIBILITY_STEPS, step)
+      if (stepInfo && !search.includes(stepInfo.param)) {
+        history.push({
+          pathname: ROUTES.ELIGIBILITY,
+          search: `?step=${stepInfo.param}`,
+        })
+        document.title = stepInfo.title
+      }
+    } else {
+      const eligibleParam = eligible ? 'is-eligible' : 'not-eligible'
+      if (!search.includes(eligibleParam))
+        history.push({
+          pathname: ROUTES.ELIGIBILITY,
+          search: `?step=${eligibleParam}`,
+        })
+    }
+  }, [eligible, history, step])
+
   if (token) {
     return <Redirect to={ROUTES.HUB} push={true} />
   }
@@ -84,110 +101,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
   switch (step) {
     case 1:
-      return (
-        <ResponsiveStepWrapper variant="card">
-          <div className="quiz-wrapper">
-            <LogoNoText className="logo btm-20" />
-            <div className="btm-30">
-              <Typography variant="h3">
-                {t('eligibility.welcomeToMindKind')}
-              </Typography>
-            </div>
-
-            <div className="btm-20">
-              <Typography variant="h6">
-                {t('form.firstCommonConsent.weWantToLearn')}
-              </Typography>
-            </div>
-
-            <div className="ml-20 btm-20">
-              <ul>
-                <li>
-                  <Typography variant="body2">
-                    {t('form.firstCommonConsent.section1')}
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant="body2">
-                    {t('form.firstCommonConsent.section2')}
-                  </Typography>
-                </li>
-              </ul>
-            </div>
-
-            <div className="btm-60">
-              <Typography variant="body2">
-                {t('form.firstCommonConsent.section3.section1')}{' '}
-                <a href={ROUTES.RESEARCH}>
-                  {t('form.firstCommonConsent.section3.link')}
-                </a>{' '}
-                {t('form.firstCommonConsent.section3.section2')}
-              </Typography>
-            </div>
-            <Button
-              color="primary"
-              variant="contained"
-              size="large"
-              className="wide-button"
-              onClick={() =>
-                setStep((current: number) =>
-                  current < MAX_STEPS ? current + 1 : current,
-                )
-              }
-            >
-              {t('eligibility.begin')}
-            </Button>
-          </div>
-        </ResponsiveStepWrapper>
-      )
-    case 2:
-      if (!search.includes('howDidYouHear'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=howDidYouHear',
-        })
-      document.title = 'MindKind > How did you hear about us?'
-      return (
-        <ResponsiveStepWrapper variant="card">
-          <ProgressBar step={step} maxSteps={MAX_STEPS} />
-          <div className="quiz-wrapper">
-            <SageForm
-              title={t('eligibility.howDidYouHear')}
-              errorMessage={errorMessage}
-              formId={FORM_IDS.HOW_DID_YOU_HEAR}
-              buttonText={t('eligibility.next')}
-              onSubmit={(event: any) => {
-                const selectedOption = event.formData.how_did_you_hear
-                if (selectedOption && Object.keys(selectedOption).length === 0)
-                  setErrorMessage(t('form.chooseAnOption'))
-                else {
-                  GoogleService.sendEvent(
-                    'quiz-accept',
-                    'eligibility',
-                    t('eligibility.howDidYouHear'),
-                    selectedOption.how_options,
-                  )
-                  setCurrentEligibilityChoices((prev: any) => ({
-                    ...prev,
-                    howDidYouHear: selectedOption.how_options,
-                  }))
-                  setHowDidYouHear(selectedOption.how_options)
-                  setStep((current: number) =>
-                    current < MAX_STEPS ? current + 1 : current,
-                  )
-                }
-              }}
-            />
-          </div>
-        </ResponsiveStepWrapper>
-      )
-    case 3:
-      if (!search.includes('where'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=where',
-        })
-      document.title = 'MindKind > Where do you live?'
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -231,13 +144,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
-    case 4:
-      if (!search.includes('android'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=android',
-        })
-      document.title = 'MindKind > Do you have an android?'
+    case 2:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -272,13 +179,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
         </ResponsiveStepWrapper>
       )
 
-    case 5:
-      if (!search.includes('english'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=english',
-        })
-      document.title = 'MindKind > Do you speak english?'
+    case 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -318,14 +219,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
-    case 6:
-      if (!search.includes('ageRange'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=ageRange',
-        })
-      document.title = 'MindKind > How old are you?'
-
+    case 4:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -358,13 +252,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
-    case 7:
-      if (!search.includes('gender'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=gender',
-        })
-      document.title = 'MindKind > What is your current gender/gender identity?'
+    case 5:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -425,13 +313,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
-    case 8:
-      if (!search.includes('mhExperience'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=mhExperience',
-        })
-      document.title = 'MindKind > Mental Health Experience'
+    case 6:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -495,13 +377,43 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
           </div>
         </ResponsiveStepWrapper>
       )
+    case 7:
+      return (
+        <ResponsiveStepWrapper variant="card">
+          <ProgressBar step={step} maxSteps={MAX_STEPS} />
+          <div className="quiz-wrapper">
+            <SageForm
+              title={t('eligibility.howDidYouHear')}
+              errorMessage={errorMessage}
+              formId={FORM_IDS.HOW_DID_YOU_HEAR}
+              buttonText={t('eligibility.next')}
+              onSubmit={(event: any) => {
+                const selectedOption = event.formData.how_did_you_hear
+                if (selectedOption && Object.keys(selectedOption).length === 0)
+                  setErrorMessage(t('form.chooseAnOption'))
+                else {
+                  GoogleService.sendEvent(
+                    'quiz-accept',
+                    'eligibility',
+                    t('eligibility.howDidYouHear'),
+                    selectedOption.how_options,
+                  )
+                  setCurrentEligibilityChoices((prev: any) => ({
+                    ...prev,
+                    howDidYouHear: selectedOption.how_options,
+                  }))
+                  setHowDidYouHear(selectedOption.how_options)
+                  setStep((current: number) =>
+                    current < MAX_STEPS ? current + 1 : current,
+                  )
+                }
+              }}
+            />
+          </div>
+        </ResponsiveStepWrapper>
+      )
 
-    case 9:
-      if (!search.includes('summary'))
-        history.push({
-          pathname: ROUTES.ELIGIBILITY,
-          search: '?step=summary',
-        })
+    case 8:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={MAX_STEPS} />
@@ -676,11 +588,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }
 
   if (step > MAX_STEPS && !eligible) {
-    if (!search.includes('not-eligible'))
-      history.push({
-        pathname: ROUTES.ELIGIBILITY,
-        search: '?step=not-eligible',
-      })
     return (
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
@@ -723,11 +630,6 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }
 
   if (step > MAX_STEPS && eligible) {
-    if (!search.includes('is-eligible'))
-      history.push({
-        pathname: ROUTES.ELIGIBILITY,
-        search: '?step=is-eligible',
-      })
     return (
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
@@ -761,4 +663,4 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   return null
 }
 
-export default withRouter(Eligibility)
+export default Eligibility
