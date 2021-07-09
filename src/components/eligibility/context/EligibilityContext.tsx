@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
 
-type ElegibilityState = {
+type EligibilityState = {
   isEligible: boolean
   phoneNumber: string
   setPhoneNumber: (state: string) => void
@@ -21,7 +21,7 @@ type ElegibilityState = {
   setGender: (state: object) => void
 }
 
-const ElegibilityContext = createContext<ElegibilityState>({
+const EligibilityContext = createContext<EligibilityState>({
   isEligible: false,
   phoneNumber: '',
   setPhoneNumber: (state: string) => {},
@@ -42,9 +42,9 @@ const ElegibilityContext = createContext<ElegibilityState>({
   setGender: (state: object) => {},
 })
 
-export const useElegibility = () => useContext(ElegibilityContext)
+export const useEligibility = () => useContext(EligibilityContext)
 
-export function ElegibilityProvider(props: { children: React.ReactNode }) {
+export function EligibilityProvider(props: { children: React.ReactNode }) {
   const { children } = props
 
   const [isEligible, setIsEligible] = useState(false)
@@ -81,8 +81,8 @@ export function ElegibilityProvider(props: { children: React.ReactNode }) {
   }
 
   return (
-    <ElegibilityContext.Provider value={value}>
+    <EligibilityContext.Provider value={value}>
       {children}
-    </ElegibilityContext.Provider>
+    </EligibilityContext.Provider>
   )
 }

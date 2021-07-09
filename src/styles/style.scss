@@ -6,7 +6,6 @@
 @import 'components/sage-form';
 @import 'material-overrides';
 @import 'forms';
-@import 'components/ranking-choice';
 @import 'components/topnav';
 @import 'components/download-app';
 @import 'components/responsive-step';
@@ -16,6 +15,7 @@
 @import 'components/research';
 @import 'components/consent-info';
 @import 'components/disclaimer';
+@import 'components/hub.scss';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -154,9 +154,13 @@ ul {
   }
 }
 
-.underlined-link {
+.underlined-link,
+.underlined-link-inline {
   text-decoration: underline;
   color: black;
+}
+.underlined-link-inline {
+  display: inline-flex;
 }
 
 .login-wrapper {

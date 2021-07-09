@@ -6,7 +6,7 @@ type Props = {
   variant?: 'default' | 'card'
 }
 
-function ElegibilityStepWrapper({ children, variant }: Props) {
+function ResponsiveStepWrapper({ children, variant }: Props) {
   return (
     <div className={`responsive-step ${variant === 'card' ? 'card' : ''}`}>
       <div className="responsive-step__top-bg"></div>
@@ -21,4 +21,4 @@ function ElegibilityStepWrapper({ children, variant }: Props) {
   )
 }
 
-export default ElegibilityStepWrapper
+export default ResponsiveStepWrapper

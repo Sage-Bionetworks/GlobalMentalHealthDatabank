@@ -1,28 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import { Typography } from '@material-ui/core'
-import ProgressBar from '../../progressBar/ProgressBar'
 import { useTranslation } from 'react-i18next'
-import SageForm from '../../form/SageForm'
-import { FORM_IDS } from '../../../components/form/types'
-import { ReactComponent as Globe } from '../../../assets/consent/globe.svg'
-import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import NavigationArrows from '../../common/NavigationArrows'
-import { PAGE_ID_FIELD_NAME, PAGE_ID } from '../../../constants/constants'
+import {
+  NavigationArrows,
+  ProgressBar,
+  ResponsiveStepWrapper,
+} from 'components/common'
+import SageForm from 'components/form/SageForm'
+import { FORM_IDS, WHO_CONTROLS_DATA_OPTIONS } from 'components/form/types'
+import { ReactComponent as Globe } from 'assets/consent/globe.svg'
+import { PAGE_ID_FIELD_NAME, PAGE_ID } from 'constants/constants'
 
 type ArmFlowFourProps = {
   step: number
-  setStep: Function
   maxSteps: number
+  handleNext: (fields?: object) => void
+  handleBack: () => void
+  handleBackToHub: () => void
+  handleComplete: (fields?: object) => void
   updateClientData: Function
-  startingStep: number
+  RankedChoice: any
+  clientData: any
 }
 
 function ArmFlowFour({
   step,
-  setStep,
   maxSteps,
+  handleNext,
+  handleBack,
+  handleComplete,
+  handleBackToHub,
   updateClientData,
-  startingStep,
+  RankedChoice,
+  clientData,
 }: ArmFlowFourProps) {
   const { t } = useTranslation()
   const [errorMessage, setErrorMessage] = useState('')
@@ -65,7 +75,7 @@ function ArmFlowFour({
   }
 
   switch (step) {
-    case startingStep:
+    case 1:
       return (
         <ResponsiveStepWrapper>
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -83,26 +93,19 @@ function ArmFlowFour({
                 {t('form.armFour.pageOne.subText1')}
               </Typography>
               <NavigationArrows
-                onBack={() =>
-                  setStep((current: number) =>
-                    current > 1 ? current - 1 : current,
-                  )
-                }
-                onNext={() => {
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
-                  updateClientData(step + 1, {
+                onBack={handleBackToHub}
+                onNext={() =>
+                  handleNext({
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_02,
                   })
-                }}
+                }
               />
             </div>
           </div>
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 1:
+    case 2:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -117,14 +120,10 @@ function ArmFlowFour({
                 if (!selectedOption) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  updateClientData(step + 1, {
+                  handleNext({
                     [FORM_IDS.HOW_RESEARCHERS_ACCESS]: selectedOption,
                     [PAGE_ID_FIELD_NAME]: PAGE_ID.PARTICIPANT_CHOICE_03,
                   })
-
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
                 }
               }}
             />
@@ -132,7 +131,7 @@ function ArmFlowFour({
         </ResponsiveStepWrapper>
       )
 
-    case startingStep + 2:
+    case 3:
       return (
         <ResponsiveStepWrapper variant="card">
           <ProgressBar step={step} maxSteps={maxSteps} />
@@ -147,20 +146,94 @@ function ArmFlowFour({
                 if (selectedOption.who_controls_data === undefined) {
                   setErrorMessage(t('form.chooseAnOption'))
                 } else {
-                  updateClientData(step + 1, {
+                  handleNext({
                     [FORM_IDS.WHO_CONTROLS_DATA]:
                       selectedOption.who_controls_data,
-                    [PAGE_ID_FIELD_NAME]: PAGE_ID.RISKS_AND_BENEFITS,
+                    [PAGE_ID_FIELD_NAME]:
+                      clientData?.who_controls_data ===
+                      WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL
+                        ? PAGE_ID.PARTICIPANT_CHOICE_04
+                        : PAGE_ID.VOTING_01,
                   })
-                  setStep((current: number) =>
-                    current < maxSteps ? current + 1 : current,
-                  )
                 }
               }}
             />
           </div>
         </ResponsiveStepWrapper>
       )
+    case 4:
+      return (
+        <>
+          {clientData?.whoControlsData ===
+          WHO_CONTROLS_DATA_OPTIONS.VOLUNTEER_COMMUNITY_REVIEW_PANEL ? (
+            <ResponsiveStepWrapper>
+              <ProgressBar step={step} maxSteps={maxSteps} />
+              <div className="text-step-wrapper">
+                <div className="btm-50">
+                  <Typography variant="h3">
+                    {t('form.secondCommonConsent.volunteer.ifYouLike')}
+                  </Typography>
+                </div>
+                <a
+                  href={`mailto: ${t(
+                    'form.secondCommonConsent.volunteer.email',
+                  )}`}
+                >
+                  <Typography variant="body1">
+                    {t('form.secondCommonConsent.volunteer.email')}
+                  </Typography>
+                </a>
+
+                <Typography variant="body1" style={{ marginBottom: '20px' }}>
+                  {t('form.secondCommonConsent.volunteer.subject')}
+                </Typography>
+                <Typography variant="body2">
+                  {t('form.secondCommonConsent.volunteer.note')}
+                </Typography>
+                <NavigationArrows
+                  preventBack
+                  onNext={() =>
+                    handleComplete({
+                      [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
+                    })
+                  }
+                />
+              </div>
+            </ResponsiveStepWrapper>
+          ) : (
+            handleNext({
+              [PAGE_ID_FIELD_NAME]: PAGE_ID.VOTING_01,
+            })
+          )}
+        </>
+      )
+
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+      if (clientData?.whoControlsData === WHO_CONTROLS_DATA_OPTIONS.DEMOCRACY) {
+        return (
+          <RankedChoice
+            step={step}
+            maxSteps={maxSteps}
+            updateClientData={updateClientData}
+            handleBack={handleBack}
+            handleNext={handleNext}
+            handleComplete={handleComplete}
+            startingStep={5}
+            isArmFlowFour={true}
+          />
+        )
+      } else {
+        handleComplete({
+          [PAGE_ID_FIELD_NAME]: PAGE_ID.SUMMARY,
+        })
+        return null
+      }
+
     default:
       return null
   }

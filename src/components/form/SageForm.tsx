@@ -52,6 +52,41 @@ import {
   uiSchemaMentalHealthExperience,
 } from '../../data/schemas/mentalHealthExperience'
 
+import {
+  schemaResearchersDataAccess,
+  uiSchemaResearchersDataAccess,
+} from '../../data/schemas/researchersDataAccess'
+
+import {
+  schemaDataResearchType,
+  uiSchemaDataResearchType,
+} from '../../data/schemas/dataResearchType'
+
+import {
+  schemaResearchersDataProfit,
+  uiSchemaResearchersDataProfit,
+} from '../../data/schemas/researchersDataProfit'
+
+import {
+  schemaDataPayment,
+  uiSchemaDataPayment,
+} from '../../data/schemas/dataPayment'
+
+import {
+  schemaDataUsage,
+  uiSchemaDataUsage,
+} from '../../data/schemas/dataUsage'
+
+import {
+  schemaDataSharing,
+  uiSchemaDataSharing,
+} from '../../data/schemas/dataSharing'
+
+import {
+  schemaResearchersDataUsage,
+  uiSchemaResearchersDataUsage,
+} from '../../data/schemas/researchersDataUsage'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -138,6 +173,20 @@ export default function SageForm({
         return schemaGender
       case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
         return schemaMentalHealthExperience
+      case FORM_IDS.RESEARCHERS_DATA_ACCESS:
+        return schemaResearchersDataAccess
+      case FORM_IDS.DATA_RESEARCH_TYPE:
+        return schemaDataResearchType
+      case FORM_IDS.RESEARCHERS_DATA_PROFIT:
+        return schemaResearchersDataProfit
+      case FORM_IDS.DATA_PAYMENT:
+        return schemaDataPayment
+      case FORM_IDS.DATA_USAGE:
+        return schemaDataUsage
+      case FORM_IDS.DATA_SHARING:
+        return schemaDataSharing
+      case FORM_IDS.RESEARCHERS_DATA_USAGE:
+        return schemaResearchersDataUsage
       default:
         return null
     }
@@ -169,6 +218,20 @@ export default function SageForm({
         return uiSchemaGender
       case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
         return uiSchemaMentalHealthExperience
+      case FORM_IDS.RESEARCHERS_DATA_ACCESS:
+        return uiSchemaResearchersDataAccess
+      case FORM_IDS.DATA_RESEARCH_TYPE:
+        return uiSchemaDataResearchType
+      case FORM_IDS.RESEARCHERS_DATA_PROFIT:
+        return uiSchemaResearchersDataProfit
+      case FORM_IDS.DATA_PAYMENT:
+        return uiSchemaDataPayment
+      case FORM_IDS.DATA_USAGE:
+        return uiSchemaDataUsage
+      case FORM_IDS.DATA_SHARING:
+        return uiSchemaDataSharing
+      case FORM_IDS.RESEARCHERS_DATA_USAGE:
+        return uiSchemaResearchersDataUsage
       default:
         return null
     }

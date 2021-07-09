@@ -22,20 +22,14 @@ import {
   getCountryCode,
 } from '../../helpers/utility'
 import useForm from '../useForm'
-import { useElegibility } from './context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-
-type RegistrationProps = {
-  onSuccessFn: Function
-}
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 const LIVED_EXPERIENCE_YES = 'lived_experience_yes'
 const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
-export const Registration: React.FunctionComponent<RegistrationProps> = ({
-  onSuccessFn,
-}: RegistrationProps) => {
+export const Registration: React.FunctionComponent = () => {
   const {
     howDidYouHear,
     mentalHealthExperience,
@@ -44,7 +38,8 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
     understandEnglish,
     age,
     gender,
-  } = useElegibility()
+    setPhoneNumber,
+  } = useEligibility()
   const { t } = useTranslation()
 
   const stateSchema = {
@@ -120,7 +115,20 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         gender,
         consented: false,
         [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_WILL_YOU_ASK,
-        checkpoint: 1,
+        checkpoint: {
+          aboutTheStudy: {
+            step: 1,
+            status: 'started',
+          },
+          aboutDataSharing: {
+            step: 1,
+            status: 'unstarted',
+          },
+          summaryAndSignature: {
+            step: 1,
+            status: 'unstarted',
+          },
+        },
       },
       appId: APP_ID,
       substudyIds: [SUB_STUDY_ID],
@@ -136,7 +144,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
           `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
         if (sentSigninRequest.status === 202) {
-          onSuccessFn(state.phone.value)
+          setPhoneNumber(state.phone.value)
         } else {
           setErrorMessage(t('eligibility.registerError'))
         }
