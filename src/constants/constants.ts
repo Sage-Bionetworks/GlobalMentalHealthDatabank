@@ -142,3 +142,23 @@ export const HUB_STEPS = {
   ABOUT_DATA_SHARING: 4,
   SUMMARY_AND_SIGNATURE: 5,
 }
+
+export const ELIGIBILITY_STEPS = {
+  1: { param: 'where', title: 'MindKind > Where do you live?' },
+  2: { param: 'android', title: 'MindKind > Do you have an android?' },
+  3: { param: 'english', title: 'MindKind > Do you speak english?' },
+  4: { param: 'ageRange', title: 'MindKind > How old are you?' },
+  5: {
+    param: 'gender',
+    title: 'MindKind > What is your current gender/gender identity?',
+  },
+  6: {
+    param: 'mhExperience',
+    title: 'MindKind > Mental Health Experience',
+  },
+  7: {
+    param: 'howDidYouHear',
+    title: 'MindKind > How did you hear about us?',
+  },
+  8: { param: 'summary', title: 'MindKind > Summary' },
+}

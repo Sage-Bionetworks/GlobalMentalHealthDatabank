@@ -10,7 +10,12 @@ import Separator from '../static/Separator'
 import { useEligibility } from './context/EligibilityContext'
 import { GoogleService } from 'services/google.service'
 import { useSessionDataState } from 'AuthContext'
-import { GENDERS, ROUTES, MENTAL_HEALTH_EXPERIENCE } from 'constants/constants'
+import {
+  GENDERS,
+  ROUTES,
+  MENTAL_HEALTH_EXPERIENCE,
+  ELIGIBILITY_STEPS,
+} from 'constants/constants'
 import {
   INITIAL_ELIGIBILITY_CHOICES,
   getCountryNameFromCountryCode,
@@ -67,29 +72,10 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }, [step])
 
   useEffect(() => {
-    const steps = {
-      1: { param: 'where', title: 'MindKind > Where do you live?' },
-      2: { param: 'android', title: 'MindKind > Do you have an android?' },
-      3: { param: 'english', title: 'MindKind > Do you speak english?' },
-      4: { param: 'ageRange', title: 'MindKind > How old are you?' },
-      5: {
-        param: 'gender',
-        title: 'MindKind > What is your current gender/gender identity?',
-      },
-      6: {
-        param: 'mhExperience',
-        title: 'MindKind > Mental Health Experience',
-      },
-      7: {
-        param: 'howDidYouHear',
-        title: 'MindKind > How did you hear about us?',
-      },
-      8: { param: 'summary', title: 'MindKind > Summary' },
-    }
     const { search } = history.location
 
     if (step < MAX_STEPS) {
-      const stepInfo = get(steps, step)
+      const stepInfo = get(ELIGIBILITY_STEPS, step)
       if (stepInfo && !search.includes(stepInfo.param)) {
         history.push({
           pathname: ROUTES.ELIGIBILITY,
