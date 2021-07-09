@@ -351,6 +351,17 @@ function RankedChoice({
                 </div>
               )}
             </div>
+            <div className="btm-20">
+              <Button
+                color="primary"
+                variant="text"
+                size="large"
+                className="wide-button"
+                onClick={() => handleBack(4)}
+              >
+                {t('common.changeAnswers')}
+              </Button>
+            </div>
             <Button
               color="primary"
               variant="contained"
