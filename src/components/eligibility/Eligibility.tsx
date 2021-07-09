@@ -565,7 +565,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                 className="wide-button"
                 onClick={() => setStep(1)}
               >
-                {t('eligibility.restart')}
+                {t('common.changeAnswers')}
               </Button>
             </div>
 

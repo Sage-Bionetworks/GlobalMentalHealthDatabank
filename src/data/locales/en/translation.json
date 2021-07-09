@@ -6,6 +6,7 @@
       "day": "day"
     },
     "cancel": "Cancel",
+    "changeAnswers": "Change Answers",
     "done": "Done",
     "edit": "Edit",
     "email": "Email",
@@ -93,7 +94,6 @@
     "numberDisclaimer": "Your number will be stored securely and separate from your data. It will not be shared with anyone. We will not keep your number if you decide not to join the study.",
     "createAccount": "Sign Up",
     "pleaseReview": "Please review your answers to ensure they are correct.",
-    "restart": "Start over",
     "next": "Next"
   },
   "form": {
