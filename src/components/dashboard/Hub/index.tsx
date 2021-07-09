@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router'
 import { useHistory } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import { cloneDeep } from 'lodash'
 import Hub from './Hub'
 import Eligibility from '../../eligibility/Eligibility'
@@ -16,6 +15,7 @@ import { CheckpointData, ClientData, LoggedInUserData } from 'types/types'
 import { PrivateRoute } from 'components/common'
 import { useEligibility } from 'components/eligibility/context/EligibilityContext'
 import { hubSteps } from 'data/hub/hub'
+import Welcome from '../Welcome'
 
 type CardStatus = 'disabled' | 'active' | 'complete'
 
@@ -36,26 +36,18 @@ function HubRouter() {
   const { token } = useSessionDataState()
   const [hubCards, setHubCards] = useState(hubSteps)
   const { isEligible } = useEligibility()
-  const [error, setError] = useState()
-  const [isLoading, setIsLoading] = useState(false)
   const { push } = useHistory()
-  const { t } = useTranslation()
   const [userInfo, setUserInfo] = useState<LoggedInUserData | undefined>()
   const { checkpoint } = userInfo?.clientData || {}
-
+  const [showWelcome, setShowWelcome] = useState(!token)
   useEffect(() => {
     const getInfo = async () => {
       if (token) {
         try {
-          setIsLoading(true)
           const userInfoResponse = (await UserService.getUserInfo(token)) as any
-
           setUserInfo(userInfoResponse?.data)
         } catch (e) {
           console.error(e)
-          setError(e?.message)
-        } finally {
-          setIsLoading(false)
         }
       }
     }
@@ -128,42 +120,47 @@ function HubRouter() {
         return response
       } catch (e) {
         console.error(e)
-        setError(e?.message || t('common.connectionProblem'))
       }
     }
   }
 
   return (
     <>
-      <Route path={ROUTES.ELIGIBILITY}>
-        <Eligibility />
-      </Route>
-      <Route path={ROUTES.REGISTRATION}>
-        <Registration />
-      </Route>
-      <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
-        <AboutTheStudy
-          checkpoint={checkpoint}
-          updateClientData={updateClientData}
-        />
-      </PrivateRoute>
-      <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
-        <AboutDataSharing
-          checkpoint={checkpoint}
-          dataGroups={userInfo?.dataGroups}
-          updateClientData={updateClientData}
-          clientData={userInfo?.clientData}
-        />
-      </PrivateRoute>
-      <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
-        <SummaryAndSignature
-          checkpoint={checkpoint}
-          updateClientData={updateClientData}
-        />
-      </PrivateRoute>
-      <Route exact path="/hub">
-        <Hub cards={hubCards} />
-      </Route>
+      {showWelcome ? (
+        <Welcome onClick={() => setShowWelcome(false)} />
+      ) : (
+        <>
+          <Route path={ROUTES.ELIGIBILITY}>
+            <Eligibility />
+          </Route>
+          <Route path={ROUTES.REGISTRATION}>
+            <Registration />
+          </Route>
+          <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
+            <AboutTheStudy
+              checkpoint={checkpoint}
+              updateClientData={updateClientData}
+            />
+          </PrivateRoute>
+          <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
+            <AboutDataSharing
+              checkpoint={checkpoint}
+              dataGroups={userInfo?.dataGroups}
+              updateClientData={updateClientData}
+              clientData={userInfo?.clientData}
+            />
+          </PrivateRoute>
+          <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
+            <SummaryAndSignature
+              checkpoint={checkpoint}
+              updateClientData={updateClientData}
+            />
+          </PrivateRoute>
+          <Route exact path="/hub">
+            <Hub cards={hubCards} />
+          </Route>
+        </>
+      )}
     </>
   )
 }
