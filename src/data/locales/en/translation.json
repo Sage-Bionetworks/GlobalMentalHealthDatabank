@@ -79,8 +79,11 @@
     "selectAll": "(select all that apply)",
     "thanks": "Thank you for your time!",
     "notEligible": "It looks like this is not the right study for you, but we really appreciate your interest in helping us out!",
-    "seekingHelp": "If you have concerns about your mental health or wellbeing, contact a doctor or mental health care provider directly. Resources are available on the study website.",
-    "seekingHelpLink": "Follow this link",
+    "fantastic": "Fantastic!",
+    "eligible": " You are eligible to join the study. Now let’s create your account.",
+    "seekingHelp1": "If you have concerns about your mental health or wellbeing, contact a doctor or mental health care provider directly.",
+    "seekingHelpLink": "Resources",
+    "seekingHelp2": "are available on the study website.",
     "back": "Back to home",
     "loginError": "Error attempting login",
     "registerError": "Invalid phone number for your country selection",
@@ -95,6 +98,9 @@
   },
   "form": {
     "firstCommonConsent": {
+      "aboutTheStudy": "About the study",
+      "toJoinTheStudy": "To join the study you need to give your consent. The next screens will explain the study and help you decide if you want to join.",
+      "weWillAskYou": "We will ask you questions as you go to make sure that we do a good job telling you about the study.",
       "weWantToLearn": "Together, we will learn how young people want to share information with researchers on their emotional health. We want to learn from you:",
       "section1": "What information are you willing to share with researchers about your emotional health?",
       "section2": "How much control do you want over how your information is collected, managed, or used by researchers?",
@@ -126,7 +132,17 @@
     "armOne": {
       "title": "How will your study data be used?",
       "subTitle": "Your study data will be part of a global databank for researchers. Researchers will download study data from the databank.",
-      "subText1": "Researchers from all over the world will be using this study data to investigate all kinds of topics and make discoveries. If new tests, drugs, or other commercial products result from these studies, you will not get any profits."
+      "subText1": "Researchers from all over the world will be using this study data to investigate all kinds of topics and make discoveries. If new tests, drugs, or other commercial products result from these studies, you will not get any profits.",
+      "pageOne": {
+        "title": "How will researchers view your data?",
+        "correctAnswer": "Correct! Researchers will download the study data which includes a copy of your data.",
+        "incorrectAnswer": "Researchers will download the study data which includes a copy of your data."
+      },
+      "pageTwo": {
+        "title": "What kind of research can be done with my study data?",
+        "correctAnswer": "Correct! Your study data can be used for all kinds of research, including commercial (for profit) research.",
+        "incorrectAnswer": "Your study data can be used for all kinds of research, including commercial (for profit) research."
+      }
     },
     "armTwo": {
       "title": "How will your study data be used?",
@@ -155,6 +171,37 @@
       "pageFour": {
         "title": "Would you like to volunteer for the community review panel?"
       }
+    },
+    "ranking": {
+      "pageOne": {
+        "title": "Now let’s vote!",
+        "subText1": "It’s time for you to tell us how you feel the study data should be used.",
+        "subText2": "Think about your data and then choose your favorite option for each question."
+      },
+      "pageTwo": {
+        "title": "Can my data be used by researchers to make a profit?"
+      },
+      "pageThree": {
+        "title": "Do people have to pay to use my data?"
+      },
+      "pageFour": {
+        "title": "How can my data be used?"
+      },
+      "pageFive": {
+        "title": "How can results be shared with participants?"
+      },
+      "pageSix": {
+        "title": "Voting Confirmation",
+        "subTitle": "Review the list below to confirm this represents your choices."
+      },
+      "title": "Voting Screen",
+      "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
+      "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
+      "paragraph3": "Based on how all the people in the study vote, the top items will be the rules for the databank.",
+      "paragraph4": "If there is disagreement between two items, only the top-most will be used. For example, if the second highest voted item is: “No one can use this data to make a profit” and the third highest voted item is: “Anyone can use this data and make a profit” we will not let researchers use the data to make a profit.",
+      "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
+      "confirmation": "Voting Confirmation",
+      "review": "Review the list below to confirm this represents your choices."
     },
     "secondCommonConsent": {
       "pageOne": {
@@ -215,16 +262,6 @@
         "description7": "Researchers will use my information for research. If I give my permission, they may share data with other researchers for future research.",
         "description8": "I have read and considered the risks of participating in this study. The Research Institution may contact me to update my research record or to invite me to participate in other studies.",
         "description9": "I can contact the study team with any questions or concerns related to the MindKind Study."
-      },
-      "ranking": {
-        "title": "Voting Screen",
-        "paragraph1": "All of the people who join the study will get to vote on how the data is used. Now is the time for you to cast your ballot.",
-        "paragraph2": "We are asking you to do rank choice voting. This means ordering the statements below from your top choice (most preferred) to your bottom choice (least preferred).",
-        "paragraph3": "Based on how all the people in the study vote, the top items will be the rules for the databank.",
-        "paragraph4": "If there is disagreement between two items, only the top-most will be used. For example, if the second highest voted item is: “No one can use this data to make a profit” and the third highest voted item is: “Anyone can use this data and make a profit” we will not let researchers use the data to make a profit.",
-        "paragraph5": "Order the statements below from most preferred (top) to least preferred (bottom) Tap an item to select it and use the arrow buttons to move.",
-        "confirmation": "Voting Confirmation",
-        "review": "Review the list below to confirm this represents your choices."
       },
       "volunteer": {
         "ifYouLike": "If you would like to be a volunteer reviewer for the community review panel, please email us:",

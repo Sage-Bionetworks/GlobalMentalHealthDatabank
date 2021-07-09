@@ -3,11 +3,11 @@ import { Redirect, NavLink } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import ProgressBar from '../progressBar/ProgressBar'
+import ProgressBar from '../common/ProgressBar'
 import SageForm from '../form/SageForm'
 import { FORM_IDS } from '../form/types'
 import Separator from '../static/Separator'
-import { useElegibility } from './context/ElegibilityContext'
+import { useEligibility } from './context/EligibilityContext'
 import { GoogleService } from '../../services/google.service'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 import { useSessionDataState } from '../../AuthContext'
@@ -15,28 +15,22 @@ import { SessionData } from '../../types/types'
 import {
   GENDERS,
   ROUTES,
-  COUNTRY_CODES,
   MENTAL_HEALTH_EXPERIENCE,
 } from '../../constants/constants'
-import { ReactComponent as LogoNoText } from '../../assets/logo-no-text.svg'
+import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
+import {
+  INITIAL_ELIGIBILITY_CHOICES,
+  getCountryNameFromCountryCode,
+  isEligible,
+} from './helpers'
 
 const MAX_STEPS: number = 9
-
-const INITIAL_ELEGIBILITY_CHOICES = {
-  howDidYouHear: '',
-  mentalHealthExperience: '',
-  userLocation: '',
-  hasAndroid: '',
-  understandsEnglish: '',
-  gender: '',
-  age: -1,
-}
 
 export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   const [step, setStep] = useState(1)
   const [errorMessage, setErrorMessage] = useState('')
   const [currentEligibilityChoices, setCurrentEligibilityChoices] = useState(
-    INITIAL_ELEGIBILITY_CHOICES,
+    INITIAL_ELIGIBILITY_CHOICES,
   )
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
@@ -63,7 +57,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     understandEnglish,
     age,
     setPhoneNumber,
-  } = useElegibility()
+    isEligible: eligible,
+  } = useEligibility()
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -74,15 +69,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   useEffect(() => {
     setErrorMessage('')
     if (step > MAX_STEPS) {
-      if (
-        currentEligibilityChoices.userLocation !== COUNTRY_CODES.OTHER &&
-        currentEligibilityChoices.hasAndroid &&
-        validateAgeRange(
-          currentEligibilityChoices.userLocation,
-          currentEligibilityChoices.age,
-        ) &&
-        currentEligibilityChoices.understandsEnglish
-      ) {
+      if (isEligible(currentEligibilityChoices)) {
         setIsEligible(true)
       }
     }
@@ -90,44 +77,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
   }, [step])
 
   if (token) {
-    return <Redirect to={ROUTES.CONSENT_STEPS} push={true} />
-  }
-
-  const validateAgeRange = (location: string, age: number) => {
-    //Check if age is 18 to 24 years old, or 16-24 years old if it's in the United Kingdom
-    if (!location || !age) return false
-    if (
-      location === COUNTRY_CODES.UK &&
-      !(
-        currentEligibilityChoices.age >= 16 &&
-        currentEligibilityChoices.age <= 24
-      )
-    )
-      return false
-    if (
-      location !== COUNTRY_CODES.UK &&
-      !(
-        currentEligibilityChoices.age >= 18 &&
-        currentEligibilityChoices.age <= 24
-      )
-    )
-      return false
-    return true
-  }
-
-  const getCountryNameFromCountryCode = (countryCode: string) => {
-    switch (countryCode) {
-      case 'UK':
-        return t('common.unitedKingdom')
-      case 'ZA':
-        return t('common.southAfrica')
-      case 'IN':
-        return t('common.india')
-      case 'US':
-        return t('common.unitedStates')
-      case 'OTHER':
-        return t('common.other')
-    }
+    return <Redirect to={ROUTES.HUB} push={true} />
   }
 
   window.scrollTo(0, 0)
@@ -165,7 +115,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               </ul>
             </div>
 
-            <div className="btm-240">
+            <div className="btm-60">
               <Typography variant="body2">
                 {t('form.firstCommonConsent.section3.section1')}{' '}
                 <a href={ROUTES.RESEARCH}>
@@ -577,7 +527,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
                         {t('eligibility.where')}
                       </Typography>
                       <Typography variant="body2">
-                        {getCountryNameFromCountryCode(whereDoYouLive)}
+                        {getCountryNameFromCountryCode(whereDoYouLive, t)}
                       </Typography>
                     </div>
                   </div>
@@ -725,7 +675,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
       )
   }
 
-  if (step > MAX_STEPS) {
+  if (step > MAX_STEPS && !eligible) {
     if (!search.includes('not-eligible'))
       history.push({
         pathname: ROUTES.ELIGIBILITY,
@@ -744,14 +694,15 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
 
           <div className="btm-20">
             <Typography variant="body2">
-              {t('eligibility.seekingHelp')}
+              {t('eligibility.seekingHelp1')}{' '}
               <NavLink to={ROUTES.CONTACT}>
                 {t('eligibility.seekingHelpLink')}
-              </NavLink>
+              </NavLink>{' '}
+              {t('eligibility.seekingHelp2')}
             </Typography>
           </div>
 
-          <div className="btm-240">
+          <div className="btm-60">
             <Separator />
           </div>
 
@@ -764,6 +715,43 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               onClick={() => <Redirect to={ROUTES.HOME} />}
             >
               {t('eligibility.back')}
+            </Button>
+          </NavLink>
+        </div>
+      </ResponsiveStepWrapper>
+    )
+  }
+
+  if (step > MAX_STEPS && eligible) {
+    if (!search.includes('is-eligible'))
+      history.push({
+        pathname: ROUTES.ELIGIBILITY,
+        search: '?step=is-eligible',
+      })
+    return (
+      <ResponsiveStepWrapper variant="card">
+        <div className="quiz-wrapper">
+          <div className="btm-40">
+            <Typography variant="h1">{t('eligibility.fantastic')}</Typography>
+          </div>
+
+          <div className="btm-30">
+            <Typography variant="body2">{t('eligibility.eligible')}</Typography>
+          </div>
+
+          <div className="btm-240">
+            <Separator />
+          </div>
+
+          <NavLink to={ROUTES.HUB}>
+            <Button
+              color="primary"
+              variant="contained"
+              size="large"
+              className="wide-button"
+              onClick={() => <Redirect to={ROUTES.HUB} />}
+            >
+              {t('common.continue')}
             </Button>
           </NavLink>
         </div>

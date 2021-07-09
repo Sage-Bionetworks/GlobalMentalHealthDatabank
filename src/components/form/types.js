@@ -21,6 +21,21 @@ export const WHO_CONTROLS_DATA_OPTIONS = {
   PROFESSIONAL_REVIEW_PANEL: 'Professional review panel',
 }
 
+export const RESEARCHERS_DATA_ACCESS_OPTIONS = {
+  DOWNLOAD_THE_STUDY:
+    'They will download the study data which includes a copy of my data.',
+  WILL_ONLY_VIEW_DATA:
+    'They will only view my data on a secure server. They cannot download my data.',
+  WILL_RECEIVE_A_PRINT: 'They will receive a print out of my data by mail.',
+}
+
+export const DATA_RESEARCH_TYPE_OPTIONS = {
+  HEALTH_RESEARCH: 'Only health research',
+  MENTAL_HEALTH_RESEARCH: 'Only mental health research',
+  ALL_KIND_RESEARCH:
+    'All kinds of research, including commercial (for profit) research.',
+}
+
 export const FORM_IDS = {
   HOW_TO_PARTICIPATE: 'howToParticipate',
   AGE_VERIFY: 'ageVerify',
@@ -34,4 +49,10 @@ export const FORM_IDS = {
   WHICH_IS_CORRECT: 'whichIsCorrect',
   GENDER: 'gender',
   MENTAL_HEALTH_EXPERIENCE: 'mentalHealthExperience',
+  RESEARCHERS_DATA_ACCESS: 'researchersDataAccess',
+  DATA_RESEARCH_TYPE: 'dataResearchType',
+  RESEARCHERS_DATA_PROFIT: 'researchersDataProfit',
+  DATA_PAYMENT: 'dataPayment',
+  DATA_USAGE: 'dataUsage',
+  DATA_SHARING: 'dataSharing',
 }

@@ -1,40 +1,46 @@
-import React, { useState } from 'react'
-import { shuffle } from 'lodash'
-import { rankOptions } from '../../../../data/ranking/options'
-
-type Card = {
-  id: number
-  title: string
-  text: string
-}
+import React, { useState, createContext, useContext } from 'react'
 
 type RankedChoiceState = {
-  cards: Card[]
-  setCards: (state: Card[]) => void
-  activeCard?: number
-  setActiveCard: (state: number | undefined) => void
+  researchersDataProfit: string
+  setResearchersDataProfit: (state: string) => void
+  dataPayment: string
+  setDataPayment: (state: string) => void
+  dataUsage: string
+  setDataUsage: (state: string) => void
+  dataSharing: string
+  setDataSharing: (state: string) => void
 }
 
-const RankedChoiceContext = React.createContext<RankedChoiceState>({
-  cards: [],
-  setCards: (state: Card[]) => {},
-  activeCard: undefined,
-  setActiveCard: (state: number | undefined) => {},
+const RankedChoiceContext = createContext<RankedChoiceState>({
+  researchersDataProfit: '',
+  setResearchersDataProfit: (state: string) => {},
+  dataPayment: '',
+  setDataPayment: (state: string) => {},
+  dataUsage: '',
+  setDataUsage: (state: string) => {},
+  dataSharing: '',
+  setDataSharing: (state: string) => {},
 })
 
-export const useRankedChoice = () => React.useContext(RankedChoiceContext)
+export const useRankedChoice = () => useContext(RankedChoiceContext)
 
 export function RankedChoiceProvider(props: { children: React.ReactNode }) {
   const { children } = props
 
-  const [cards, setCards] = useState(shuffle(rankOptions))
-  const [activeCard, setActiveCard] = useState<number | undefined>()
+  const [researchersDataProfit, setResearchersDataProfit] = useState('')
+  const [dataPayment, setDataPayment] = useState('')
+  const [dataUsage, setDataUsage] = useState('')
+  const [dataSharing, setDataSharing] = useState('')
 
   const value = {
-    cards,
-    setCards,
-    activeCard,
-    setActiveCard,
+    researchersDataProfit,
+    setResearchersDataProfit,
+    dataPayment,
+    setDataPayment,
+    dataUsage,
+    setDataUsage,
+    dataSharing,
+    setDataSharing,
   }
 
   return (
