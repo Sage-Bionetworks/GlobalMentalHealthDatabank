@@ -52,7 +52,7 @@ function AboutDataSharing({
   }
   const handleBack = (steps: number = 1) => {
     if (checkpoint) {
-      const prevStep = step - steps > 1 ? step - steps : step
+      const prevStep = step - steps >= 1 ? step - steps : step
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.aboutDataSharing.step = prevStep
       updateClientData({
