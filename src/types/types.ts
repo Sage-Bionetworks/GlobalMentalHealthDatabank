@@ -56,6 +56,8 @@ export type UserDataGroup =
   | 'IN'
   | 'lived_experience_yes'
   | 'lived_experience_no'
+  | 'ARM1_choice'
+  | 'ARM2_assigned'
 
 export interface LoggedInUserData extends UserData {
   sessionToken: string

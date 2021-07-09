@@ -5,6 +5,8 @@ import Alert from '@material-ui/lab/Alert/Alert'
 import {
   getRandomFlowOption,
   FLOW_OPTIONS,
+  getRandomArm,
+  ARM_OPTIONS,
 } from '../../helpers/RandomFlowGenerator'
 import {
   APP_ID,
@@ -99,6 +101,16 @@ export const Registration: React.FunctionComponent = () => {
     else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
 
     dataGroups.push(whereDoYouLive as UserDataGroup)
+
+    const arm: string = getRandomArm()
+    switch (arm) {
+      case ARM_OPTIONS.ONE:
+        dataGroups.push(ARM_OPTIONS.ONE as UserDataGroup)
+        break
+      case ARM_OPTIONS.TWO:
+        dataGroups.push(ARM_OPTIONS.TWO as UserDataGroup)
+        break
+    }
 
     const data: RegistrationData = {
       phone: state.phone.value
