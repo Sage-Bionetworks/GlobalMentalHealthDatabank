@@ -15,6 +15,7 @@ import { ReactComponent as Questions } from '../../../assets/consent/questions.s
 import { ReactComponent as Network } from '../../../assets/consent/network.svg'
 import { ReactComponent as Padlock } from '../../../assets/consent/padlock.svg'
 import { FLOW_OPTIONS } from '../../../helpers/RandomFlowGenerator'
+import PolicyEnglish from '../../../assets/privacy_policy_docs/privacy_policy_english.pdf'
 
 type FirstCommonConsentProps = {
   step: number
@@ -238,22 +239,13 @@ function FirstCommonConsentSection({
             <div className="icon-wrapper">
               <Network />
             </div>
-
             <Typography variant="h3">
-              {t('form.firstCommonConsent.transferAndRights')}
-            </Typography>
-
-            <Typography variant="body2" className="bottom-space">
-              {t('form.firstCommonConsent.transferAway')}
-            </Typography>
-
-            <Typography variant="body2" className="bottom-space">
-              {t('form.firstCommonConsent.transferToUS')}
+              {t('form.firstCommonConsent.yourDataRights')}
             </Typography>
             <Typography variant="h6">
               {t('form.firstCommonConsent.yourRights')}
             </Typography>
-            <ul>
+            <ul className="bullets">
               <li>
                 <Typography variant="body2">
                   {t('form.firstCommonConsent.requestData')}
@@ -265,14 +257,25 @@ function FirstCommonConsentSection({
                 </Typography>
               </li>
             </ul>
-
+            <Typography variant="body2">
+              {t('form.firstCommonConsent.privacyPolicyText')}
+              <a
+                href={PolicyEnglish}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underlined-link-inline"
+              >
+                <div className="btm-20 underlined-link-inline">
+                  {t('form.firstCommonConsent.privacyPolicyLink')}
+                </div>
+              </a>
+            </Typography>
             <Typography variant="body2">
               {t('form.firstCommonConsent.ifCitizenEU')}{' '}
               <a className="underlined-link" href={ROUTES.DATA_REGULATION}>
                 {t('form.firstCommonConsent.ifCitizenEULink')}
               </a>
             </Typography>
-
             <NavigationArrows
               onBack={handleBack}
               onNext={() => handleNext(getStepName())}
