@@ -154,9 +154,13 @@ ul {
   }
 }
 
-.underlined-link {
+.underlined-link,
+.underlined-link-inline {
   text-decoration: underline;
   color: black;
+}
+.underlined-link-inline {
+  display: inline-flex;
 }
 
 .login-wrapper {
@@ -406,8 +410,11 @@ input[type='radio'] {
   }
 }
 
+.tp-10-neg {
+  margin-top: -10px;
+}
 .tp-20-neg {
-  margin-top: -30px;
+  margin-top: -20px;
 }
 .tp-30-neg {
   margin-top: -30px;

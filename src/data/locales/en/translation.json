@@ -117,16 +117,16 @@
       "next": "Next",
       "answer": "This study will only require you to answer weekly survey questions.",
       "dataCollection": "Data Collection, Storage & Privacy",
-      "dataCollectionEncrypted": "Your data will be encrypted and trasferred to a secure cloud server in the U.S.",
+      "dataCollectionEncrypted": "Your data will be encrypted and transferred to a secure cloud server in the U.S.",
       "dataCollectionIdentity": "Your identity will not be stored with your data.",
       "dataCollectionCombined": "Your study data, without your name, will be combined with data from other people in the study.",
-      "transferAndRights": "Transfer of Data & your data rights.",
-      "transferAway": "We will transfer your study data out of your home country.",
-      "transferToUS": "We may transfer your study data anywhere in the world, including to the United States.",
+      "yourDataRights": "Your Data Rights",
       "yourRights": "You have rights when it comes to your data:",
-      "requestData": "You can request a copy of the data you have provided.",
+      "requestData": "You can request a copy of your study data.",
       "correctData": "You can ask us to correct information about you that is incorrect.",
-      "ifCitizenEU": "If you are a citizen or resident of the European Union, click here to",
+      "privacyPolicyText": "Check the ",
+      "privacyPolicyLink": "Privacy Policy",
+      "ifCitizenEU": "If you are a resident of a nation that abides by the General Data Protection Regulations, click here to ",
       "ifCitizenEULink": "learn more about your data rights."
     },
     "armOne": {
@@ -353,6 +353,12 @@
     },
     "southAfricaTeam": {
       "title": "The South Africa Team",
+      "chandreVanVught": {
+        "name": "Chandre Van Vught, MA",
+        "role": "Counselling Psychologist",
+        "position": "Scientific Collaborator, South Africa",
+        "location": "Higher Health"
+      },
       "gillianFinchilescu": {
         "name": "Gillian Finchilescu, D.Phil",
         "role": "Professor Emeritus",
@@ -369,7 +375,19 @@
         "name": "Zukiswa Zingela, MMed Psych, FCPsych",
         "role": "Associate Professor and Head of the Department of Psychiatry and Human Behavioral Sciences",
         "position": "Site Lead, South Africa",
-        "location": "Walter Sisulu University "
+        "location": "Walter Sisulu University"
+      },
+      "simthembileLindani": {
+        "name": "Simthembile Lindani, BS",
+        "role": "Research Assistant",
+        "position": "Scientific Collaborator, South Africa",
+        "location": "Walter Sisulu University"
+      },
+      "sotiriosShort": {
+        "name": "Sotirios Short, MA",
+        "role": "Clinical Psychologist",
+        "position": "Scientific Collaborator, South Africa",
+        "location": "Higher Health"
       }
     },
     "ukTeam": {
@@ -392,6 +410,12 @@
         "position": "Scientific Collaborator, UK",
         "location": "University of Cambridge"
       },
+      "faithAdeyemi": {
+        "name": "Faith Adeyemi",
+        "role": "Research Assistant",
+        "position": "Scientific Collaborator, UK",
+        "location": "University of Cambridge"
+      },
       "lakshmiNeelakantan": {
         "name": "Lakshmi Neelakantan, PhD",
         "role": "Postdoctoral Researcher",
@@ -399,13 +423,13 @@
         "location": "University of Oxford"
       },
       "minaFazel": {
-        "name": "Mina Fazel, DM MRCPsych",
+        "name": "Mina Fazel, DM MRCPsych",
         "role": "Assoc. Professor of Child and Adolescent Psychiatry and Consultant Child and Adolescent Psychiatrist",
         "position": "Site Lead, UK",
         "location": "University of Oxford and Oxford University Hospitals"
       },
       "tamsinFord": {
-        "name": "Tamsin Ford, CBE, FRCPsych, FMedSci",
+        "name": "Tamsin Ford, CBE, FRCPsych, FMedSci",
         "role": "Professor of Child and Adolescent Psychiatry",
         "position": "Site Lead, UK",
         "location": "University of Cambridge"
@@ -500,6 +524,12 @@
         "position": "Director of Web Engineering",
         "location": "Sage Bionetworks, United States"
       },
+      "juliaDunbar": {
+        "name": "Julia Dunbar, MS, BS",
+        "role": "Health Informatics and Human Computer Interaction (HCI) Researcher",
+        "position": "Governance Intern",
+        "location": "Sage Bionetworks, United States"
+      },
       "laraMangravite": {
         "name": "Lara Mangravite, PhD",
         "role": "Head Scientist",
@@ -508,14 +538,14 @@
       },
       "larssonOmberg": {
         "name": "Larsson Omberg, PhD",
-        "role": "Scientific collaborator",
+        "role": "Scientific Collaborator",
         "position": "Vice President of Systems Biology",
         "location": "Sage Bionetworks, United States"
       },
       "lisaPasquale": {
         "name": "Lisa Pasquale, BA",
         "role": "Project Coordination, Research Governance",
-        "position": "Governance Intern",
+        "position": "Associate Governance Analyst",
         "location": "Sage Bionetworks, United States"
       },
       "ljuboBradic": {
@@ -567,8 +597,9 @@
       "india": {
         "title": "Local Resources in India",
         "text1": "iCallHelpline provides free counseling.",
-        "text2": "The iCallHelpline is available Monday-Saturday, 10am-8pm. Call 022-25521111",
-        "text3": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
+        "text2": "The iCallHelpline is available Monday-Saturday, 10am-8pm.",
+        "text3": "Call 022-25521111",
+        "text4": "You can also email iCallHelpline at icall@tiss.edu for a response from a counselor within 24 hours.",
         "link": {
           "text": "Visit Website",
           "url": "https://icallhelpline.org/"
@@ -587,29 +618,32 @@
       },
       "unitedKingdom": {
         "title": "Local Resources in the United Kingdom",
-        "text1": "Young Minds provides support to young people in crisis in the UK.",
-        "text2": "If you need urgent help, text YM to 85258.",
-        "text3": "All texts are answered by trained volunteers, with support from experienced clinical supervisors.",
-        "text4": "Texts are free from EE, O2, Vodafone, 3, Virgin Mobile, BT Mobile, GiffGaff, Tesco Mobile and Telecom Plus.",
-        "link": {
-          "text": "Visit Website",
-          "url": "https://www.samaritans.org/"
+        "text1": "Samaritans UK is available for emotional support.",
+        "text2": "The Samaritans UK hotline is available 24/7.",
+        "text3": "For English, call 116 123\n For Welsh, call 1 0808 164 0123",
+        "text4": "You can also email Samaritans UK at jo@samaritans.org for a response from a counselor within 24 hours.",
+        "link1": {
+          "text1": "Visit Website",
+          "url1": "https://www.samaritans.org/"
+        },
+        "link2": {
+          "text2": "Resources"
         }
       }
     }
   },
   "dataRegulation": {
-    "title": "EEA - General Data Protection Regulation Addendum",
-    "text1": "As required by the law of the European Union, and its member countries, additional information is being provided to you as a research participant.",
-    "text2": "For the purpose of EU law, particularly the General Data Protection Regulation (GDPR), the legal basis for the collection and use of your data is your consent as well as the public interest in the research being conducted.",
-    "text3": "If you are habitually located in the EEA, you have certain rights related to the processing of the information we collect from you.  While some of these rights apply generally, certain rights apply only in certain limited circumstances.  We will comply with your request to exercise your rights unless we have compelling legitimate grounds to deny your request or we cannot comply with your request for legal reasons. We will respond to your request within 1 month of receiving it.",
-    "text4": "You have the right to access your data. You can write to us at any time asking to know what personal information is being held where and for what purpose.",
-    "text5": "You have the right to rectification. If there is an error in the information we collect from you, you have the right to make a request to have it fixed. You can write to us to ask for any incorrect personal data about you to be corrected.",
-    "text6": "You have the right to erasure. You may ask us to delete or remove some or all of your personal data at any time.",
-    "text7": "You have the right to restrict processing. At any time, you can withdraw your consent to our processing of your Personal Data.",
-    "text8": "You have the right to data portability. You can request a copy of your data in usable format. ",
-    "text9": "You have the right to object. You can withdraw from providing data to the App at any time.",
-    "text10": "If you have questions about your rights and choices or would like more information about your rights and choices, you can email:",
+    "title": "General Data Protection Regulation Addendum",
+    "gdpr1": "As required by law under the General Data Protection Regulation, additional information is being provided to you as a research participant.",
+    "gdpr2": "For the purpose of the law in your region, particularly the General Data Protection Regulation (GDPR), the legal basis for the collection and use of your data is your consent as well as the public interest in the research being conducted.",
+    "gdpr3": "If you are habitually located in an area that abides by the General Data Protection Regulation, you have certain rights related to the processing of the information we collect from you.  While some of these rights apply generally, certain rights apply only in certain limited circumstances.  We will comply with your request to exercise your rights unless we have compelling legitimate grounds to deny your request or we cannot comply with your request for legal reasons. We will respond to your request within 1 month of receiving it.",
+    "rights1": "You have the right to access your data. You can write to us at any time asking to know what personal information is being held where and for what purpose.",
+    "rights2": "You have the right to rectification. If there is an error in the information we collect from you, you have the right to make a request to have it fixed. You can write to us to ask for any incorrect personal data about you to be corrected.",
+    "rights3": "You have the right to erasure. You may ask us to delete or remove some or all of your personal data at any time.",
+    "rights4": "You have the right to restrict processing. At any time, you can withdraw your consent to our processing of your Personal Data.",
+    "rights5": "You have the right to data portability. You can request a copy of your data in usable format.",
+    "rights6": "You have the right to object. You can withdraw from providing data to the App at any time.",
+    "emailText": "If you have questions about your rights and choices or would like more information about your rights and choices, you can email: ",
     "email": "privacyofficer@sagebionetworks.org"
   },
   "privacyPolicy": {
@@ -681,6 +715,15 @@
     "title": "Consent",
     "description": "Before joining the MindKind Study, we will ask for your consent. We want you to understand the study, your role, and the protection and use of your data.  Once you know more about the study you can decide whether you want to participate. You may change your mind at any time.",
     "description2": "You can learn more about the study from the consent documents provided below.",
+    "approvals": "This study has been reviewed and approved by the research ethics committees of the participating institutions.",
+    "region1": "India",
+    "approval1": "India Law Society\n deepapaturkar@ilslaw.in\n Approval #ILS/242/2021\n (Apr 6, 2021)",
+    "region2": "South Africa",
+    "approval2": "Walter Sisulu University\n dkayongo@rtc.utr.ac.za\n Approval #029/2021\n (Jun 2, 2021)",
+    "region3": "UK",
+    "approval3": "University of Cambridge\n researchintegrity@admin.cam.ac.uk\n Approval #PRE.2021.031\n (Jun 21, 2021)",
+    "region4": "US",
+    "approval4": "WCG IRB\n help@WIRB.com\n Approval #20212067\n (May 17, 2021)",
     "download": "Download consent documents: ",
     "file1": "Consent document: English",
     "file2": "Consent document: Xhosa",
@@ -800,10 +843,8 @@
     "text53": "The MindKind Study Privacy Policy says what information we will collect through the website and participant app. It also says what we will do with this data. You can read it here (Link to privacy policy)."
   },
   "download": {
-    "title": "Get started with the MindKind App",
-    "description1": "The MindKind Study App helps young adults record their daily mental and emotional health.",
-    "description2": "If you already have the MindKind Study App on your phone you can leave this page and open the App to get started.",
-    "description3": "If you need the App, you can download it to get started",
+    "title": "Thank you for joining!",
+    "description1": "Now that you are enrolled you can start using the MindKind Study App to record your daily mental and emotional health.",
     "cta": "Download the app"
   }
 }

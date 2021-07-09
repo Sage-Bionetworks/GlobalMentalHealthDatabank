@@ -8,7 +8,7 @@ import ArmFlowFour from './armFlows/ArmFlowFour'
 import RankedChoice from './RankedChoice/RankedChoice'
 import { FLOW_OPTIONS } from 'helpers/RandomFlowGenerator'
 import { UserDataGroup, Checkpoint } from 'types/types'
-import { PAGE_ID_FIELD_NAME, ROUTES } from 'constants/constants'
+import { ROUTES } from 'constants/constants'
 
 type Props = {
   checkpoint?: Checkpoint

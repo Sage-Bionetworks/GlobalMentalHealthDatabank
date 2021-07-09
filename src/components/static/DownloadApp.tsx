@@ -17,8 +17,6 @@ function DownloadApp() {
         {t('download.title')}
       </Typography>
       <Typography>{t('download.description1')}</Typography>
-      <Typography>{t('download.description2')}</Typography>
-      <Typography>{t('download.description3')}</Typography>
       <a
         className="download__button"
         href={playStoreLink}
