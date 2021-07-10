@@ -14,6 +14,7 @@ function ConsentInfo() {
   const goToEligibility = () => {
     push(ROUTES.ELIGIBILITY)
   }
+  window.scrollTo(0, 0)
   return (
     <div className="consent-info">
       <div className="consent-content">

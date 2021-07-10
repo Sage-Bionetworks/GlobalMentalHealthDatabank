@@ -6,6 +6,7 @@ import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
 
 export const DataRegulation: React.FunctionComponent = () => {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="legislation-wrapper">
