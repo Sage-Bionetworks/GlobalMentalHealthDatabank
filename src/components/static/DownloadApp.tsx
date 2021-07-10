@@ -20,7 +20,7 @@ function DownloadApp() {
       <Typography variant="h2" className="download__title">
         {t('download.title')}
       </Typography>
-      <div className="btm-20">
+      <div className="download__description btm-20">
         <Typography>{t('download.description1')}</Typography>
       </div>
 
