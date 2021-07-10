@@ -85,6 +85,7 @@ function SummaryAndSignature({
       newCheckpoint.summaryAndSignature.status = 'complete'
       updateClientData({
         checkpoint: newCheckpoint,
+        consented: true,
       })
       history.push(ROUTES.DOWNLOAD)
     }

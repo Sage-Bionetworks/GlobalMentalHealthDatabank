@@ -94,7 +94,7 @@ function HubRouter() {
 
   useEffect(() => {
     const checkRedirectToDownload = () => {
-      if (userInfo?.consented) {
+      if (userInfo?.clientData?.consented) {
         push(ROUTES.DOWNLOAD)
       }
     }
