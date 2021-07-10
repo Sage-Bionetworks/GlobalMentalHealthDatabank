@@ -2,9 +2,11 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import Disclaimer from '../common/Disclaimer'
+import AdditionalUKResources from '../../assets/resources/additional_uk_mental_health_crisis_lines.pdf'
 
 function Contact() {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <div className="contact">
       <div className="contact__in-crisis">
@@ -25,6 +27,9 @@ function Contact() {
         </Typography>
         <Typography variant="body1">
           {t('contact.localResources.india.text3')}
+        </Typography>
+        <Typography variant="body1">
+          {t('contact.localResources.india.text4')}
         </Typography>
         <a
           className="button small"
@@ -77,12 +82,20 @@ function Contact() {
           {t('contact.localResources.unitedKingdom.text4')}
         </Typography>
         <a
-          className="button small btm-50"
-          href={t(t('contact.localResources.unitedKingdom.link.url'))}
+          className="button small btm-10"
+          href={t(t('contact.localResources.unitedKingdom.link1.url1'))}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {t('contact.localResources.unitedKingdom.link.text')}
+          {t('contact.localResources.unitedKingdom.link1.text1')}
+        </a>
+        <a
+          className="button small btm-30"
+          href={AdditionalUKResources}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t('contact.localResources.unitedKingdom.link2.text2')}
         </a>
       </div>
     </div>

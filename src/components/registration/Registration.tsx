@@ -5,6 +5,8 @@ import Alert from '@material-ui/lab/Alert/Alert'
 import {
   getRandomFlowOption,
   FLOW_OPTIONS,
+  getRandomArm,
+  ARM_OPTIONS,
 } from '../../helpers/RandomFlowGenerator'
 import {
   APP_ID,
@@ -12,37 +14,34 @@ import {
   ENDPOINT,
   PAGE_ID_FIELD_NAME,
   PAGE_ID,
+  MENTAL_HEALTH_EXPERIENCE,
 } from '../../constants/constants'
 import { RegistrationData, UserDataGroup } from '../../types/types'
 import {
   callEndpoint,
   makePhone,
   sendSignInRequest,
+  getCountryCode,
 } from '../../helpers/utility'
 import useForm from '../useForm'
-import { useElegibility } from './context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-
-type RegistrationProps = {
-  onSuccessFn: Function
-}
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 const LIVED_EXPERIENCE_YES = 'lived_experience_yes'
 const LIVED_EXPERIENCE_NO = 'lived_experience_no'
 
-export const Registration: React.FunctionComponent<RegistrationProps> = ({
-  onSuccessFn,
-}: RegistrationProps) => {
+export const Registration: React.FunctionComponent = () => {
   const {
     howDidYouHear,
-    everBenefitedFromTreatment,
+    mentalHealthExperience,
     whereDoYouLive,
     doYouHaveAnAndroid,
     understandEnglish,
     age,
     gender,
-  } = useElegibility()
+    setPhoneNumber,
+  } = useEligibility()
   const { t } = useTranslation()
 
   const stateSchema = {
@@ -95,11 +94,23 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         break
     }
 
-    if (everBenefitedFromTreatment)
+    if (
+      !mentalHealthExperience.includes(MENTAL_HEALTH_EXPERIENCE.NOT_EXPERIENCED)
+    )
       dataGroups.push(LIVED_EXPERIENCE_YES as UserDataGroup)
     else dataGroups.push(LIVED_EXPERIENCE_NO as UserDataGroup)
 
     dataGroups.push(whereDoYouLive as UserDataGroup)
+
+    const arm: string = getRandomArm()
+    switch (arm) {
+      case ARM_OPTIONS.ONE:
+        dataGroups.push(ARM_OPTIONS.ONE as UserDataGroup)
+        break
+      case ARM_OPTIONS.TWO:
+        dataGroups.push(ARM_OPTIONS.TWO as UserDataGroup)
+        break
+    }
 
     const data: RegistrationData = {
       phone: state.phone.value
@@ -108,7 +119,7 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       clientData: {
         consentModel,
         howDidYouHear,
-        everBenefitedFromTreatment,
+        mentalHealthExperience,
         whereDoYouLive,
         doYouHaveAnAndroid,
         understandEnglish,
@@ -116,31 +127,36 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
         gender,
         consented: false,
         [PAGE_ID_FIELD_NAME]: PAGE_ID.WHAT_WILL_YOU_ASK,
-        checkpoint: 1,
+        checkpoint: {
+          aboutTheStudy: {
+            step: 1,
+            status: 'started',
+          },
+          aboutDataSharing: {
+            step: 1,
+            status: 'unstarted',
+          },
+          summaryAndSignature: {
+            step: 1,
+            status: 'unstarted',
+          },
+        },
       },
       appId: APP_ID,
       substudyIds: [SUB_STUDY_ID],
       dataGroups,
     }
 
-    //send signinRequest
-    const phoneNumber = data.phone?.number || ''
-
     try {
       const result = await submitRegistration(data)
       if (result.status === 201) {
         setErrorMessage('')
         const sentSigninRequest = await sendSignInRequest(
-          phoneNumber,
-          state.countryCode.value,
+          data.phone,
           `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
         )
         if (sentSigninRequest.status === 202) {
-          onSuccessFn(
-            phoneNumber,
-            sentSigninRequest.status,
-            sentSigninRequest.data,
-          )
+          setPhoneNumber(state.phone.value)
         } else {
           setErrorMessage(t('eligibility.registerError'))
         }
@@ -171,11 +187,11 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
       </div>
 
       <div className="btm-20">
-        <Typography variant="h4">{t('eligibility.askPhone')}</Typography>
+        <Typography variant="h4">{t('eligibility.letsRegister')}</Typography>
       </div>
 
       <div className="btm-40">
-        <Typography variant="body2">{t('eligibility.whyAsk')}</Typography>
+        <Typography variant="body2">{t('eligibility.enterNumber')}</Typography>
       </div>
 
       <form onSubmit={handleOnSubmit}>
@@ -184,30 +200,33 @@ export const Registration: React.FunctionComponent<RegistrationProps> = ({
             <label htmlFor="phone" className="block--dark">
               <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
             </label>
-            <div className="btm-50">
+            <div className="btm-40 phone-input">
+              <div className="country-code">
+                <Typography variant="body2">
+                  {getCountryCode(whereDoYouLive)}
+                </Typography>
+              </div>
               <TextField
                 fullWidth
                 className="phone-input"
                 variant="outlined"
                 name="phone"
-                type="phone"
+                type="number"
                 value={state.phone.value}
                 placeholder="Phone #"
                 aria-label="Phone #"
                 onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
                   const { value } = event.target as any
-                  if (!value) {
-                    handleOnChange(event)
-                  } else {
-                    if (value.includes('+')) {
-                      handleOnChange(event)
-                    } else {
-                      event.target.value = `+${value}`
-                      handleOnChange(event)
-                    }
-                  }
+                  event.target.value = value.replace(/[^\d]/, '')
+                  handleOnChange(event)
                 }}
               />
+            </div>
+
+            <div className="btm-50">
+              <Typography variant="body2">
+                {t('eligibility.numberDisclaimer')}
+              </Typography>
             </div>
 
             {(error || formErrors) && (

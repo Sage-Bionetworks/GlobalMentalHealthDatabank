@@ -24,8 +24,25 @@ export interface UserData {
   lastName: string
   email?: string
   phone?: Phone
-  clientData: object
+  clientData: ClientData
   attributes?: UserAttributes
+}
+
+export type ClientData = {
+  consentModel: UserDataGroup
+  consented: boolean
+  checkpoint: Checkpoint
+}
+
+export type Checkpoint = {
+  aboutTheStudy: CheckpointData
+  aboutDataSharing: CheckpointData
+  summaryAndSignature: CheckpointData
+}
+
+export type CheckpointData = {
+  step: number
+  status: 'unstarted' | 'started' | 'complete'
 }
 
 export type UserDataGroup =
@@ -39,6 +56,8 @@ export type UserDataGroup =
   | 'IN'
   | 'lived_experience_yes'
   | 'lived_experience_no'
+  | 'ARM1_choice'
+  | 'ARM2_assigned'
 
 export interface LoggedInUserData extends UserData {
   sessionToken: string
@@ -78,7 +97,6 @@ export type SessionData = {
   token: string | undefined
   name?: string
   consented?: boolean
-  alert?: string
   userDataGroup: UserDataGroup[]
 }
 

@@ -2,18 +2,12 @@ import * as React from 'react'
 import { setSession, getSession, clearSession } from './helpers/utility'
 import { SessionData } from './types/types'
 
-type ActionType =
-  | 'LOGIN'
-  | 'LOGOUT'
-  | 'SET_ALERT'
-  | 'CLEAR_ALERT'
-  | 'CONSENT'
-  | 'WITHDRAW'
+type ActionType = 'LOGIN' | 'LOGOUT'
 type Action = { type: ActionType; payload?: SessionData }
 type Dispatch = (action: Action) => void
 type SessionDataProviderProps = { children: React.ReactNode }
 
-const initialState = {
+const initialState: SessionData = {
   token: undefined,
   userDataGroup: [],
 }
@@ -25,42 +19,8 @@ const SessionDataDispatchContext = React.createContext<Dispatch | undefined>(
   undefined,
 )
 
-function countReducer(state: SessionData, action: Action): SessionData {
+function sessionReducer(state: SessionData, action: Action): SessionData {
   switch (action.type) {
-    case 'SET_ALERT': {
-      const newState = {
-        ...state,
-        alert: action.payload!.alert!,
-      }
-      setSession(newState)
-      return newState
-    }
-
-    case 'CLEAR_ALERT': {
-      const newState = {
-        ...state,
-        alert: undefined,
-      }
-      setSession(newState)
-      return newState
-    }
-    case 'CONSENT': {
-      const newState = {
-        ...state,
-        consented: true,
-        alert: undefined,
-      }
-      setSession(newState)
-      return newState
-    }
-    case 'WITHDRAW': {
-      const newState = {
-        ...state,
-        consented: false,
-      }
-      setSession(newState)
-      return newState
-    }
     case 'LOGIN':
       const newState = {
         ...state,
@@ -77,8 +37,8 @@ function countReducer(state: SessionData, action: Action): SessionData {
       return {
         ...state,
         token: undefined,
+        name: '',
         consented: undefined,
-        alert: undefined,
         userDataGroup: [],
       }
     default: {
@@ -89,7 +49,7 @@ function countReducer(state: SessionData, action: Action): SessionData {
 
 function SessionDataProvider({ children }: SessionDataProviderProps) {
   const [state, dispatch] = React.useReducer(
-    countReducer,
+    sessionReducer,
     getSession() || initialState,
   )
   return (
@@ -104,7 +64,7 @@ function SessionDataProvider({ children }: SessionDataProviderProps) {
 function useSessionDataState() {
   const context = React.useContext(SessionDataStateContext)
   if (context === undefined) {
-    throw new Error('useSessionDataState must be used within a CountProvider')
+    throw new Error('useSessionDataState must be used within a SessionProvider')
   }
   return context
 }
@@ -113,7 +73,7 @@ function useSessionDataDispatch() {
   const context = React.useContext(SessionDataDispatchContext)
   if (context === undefined) {
     throw new Error(
-      'useSessionDataDispatch must be used within a CountProvider',
+      'useSessionDataDispatch must be used within a SessionProvider',
     )
   }
   return context

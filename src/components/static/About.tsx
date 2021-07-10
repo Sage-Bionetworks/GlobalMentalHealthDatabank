@@ -17,9 +17,12 @@ import Disclaimer from '../common/Disclaimer'
 function About() {
   const { t } = useTranslation()
   const { push } = useHistory()
-  const goToEligibility = () => {
-    push(ROUTES.ELIGIBILITY)
+  const goToHub = () => {
+    push(ROUTES.HUB)
   }
+
+  window.scrollTo(0, 0)
+
   return (
     <div className="about">
       <div className="about-the-study">
@@ -32,7 +35,7 @@ function About() {
       </div>
       <div className="make-difference">
         <Typography variant="h4">{t('about.makeDifference')}</Typography>
-        <button onClick={goToEligibility}>{t('common.joinStudy')}</button>
+        <button onClick={goToHub}>{t('common.joinStudy')}</button>
       </div>
       <div className="ten-things">
         <Typography variant="h2" className="ten-things__title">
@@ -116,7 +119,7 @@ function About() {
         </div>
         <div className="button-section">
           <div className="butterflies"></div>
-          <button onClick={goToEligibility} className="button-join-study">
+          <button onClick={goToHub} className="button-join-study">
             {t('common.joinStudy')}
           </button>
         </div>

@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core'
 import { Redirect } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { useSessionDataDispatch } from '../../AuthContext'
-import { useElegibility } from '../registration/context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 
 type LogoutProps = {
   redirectUrl?: string
@@ -17,11 +17,12 @@ export const Logout: React.FunctionComponent<LogoutProps> = ({
   const [navigate, setNavigate] = useState(false)
   const { t } = useTranslation()
   const sessionUpdateFn = useSessionDataDispatch()
-  const { setIsEligible } = useElegibility()
+  const { setIsEligible, setPhoneNumber } = useEligibility()
 
   const logout = () => {
     setIsEligible(false)
     sessionUpdateFn({ type: 'LOGOUT' })
+    setPhoneNumber('')
     onLogout()
     setNavigate(true)
   }

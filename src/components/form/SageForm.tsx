@@ -11,10 +11,6 @@ import {
   uiSchemaCountrySelector,
 } from '../../data/schemas/countrySelector'
 import {
-  schemaHowToParticipate,
-  uiSchemaHowToParticipate,
-} from '../../data/schemas/howToParticipate'
-import {
   schemaAgeVerify,
   uiSchemaAgeVerify,
 } from '../../data/schemas/ageVerify'
@@ -22,10 +18,6 @@ import {
   schemaAndroidVerify,
   uiSchemaAndroidVerify,
 } from '../../data/schemas/androidVerify'
-import {
-  schemaSupportVerify,
-  uiSchemaSupportVerify,
-} from '../../data/schemas/supportVerify'
 import {
   schemaHowDidYouHear,
   uiSchemaHowDidYouHear,
@@ -46,10 +38,47 @@ import {
   schemaWhatIsThePurpose,
   uiSchemaWhatIsThePurpose,
 } from '../../data/schemas/whatIsThePurpose'
+
 import {
-  schemaWhichIsCorrect,
-  uiSchemaWhichIsCorrect,
-} from '../../data/schemas/whichIsCorrect'
+  schemaMentalHealthExperience,
+  uiSchemaMentalHealthExperience,
+} from '../../data/schemas/mentalHealthExperience'
+
+import {
+  schemaResearchersDataAccess,
+  uiSchemaResearchersDataAccess,
+} from '../../data/schemas/researchersDataAccess'
+
+import {
+  schemaDataResearchType,
+  uiSchemaDataResearchType,
+} from '../../data/schemas/dataResearchType'
+
+import {
+  schemaResearchersDataProfit,
+  uiSchemaResearchersDataProfit,
+} from '../../data/schemas/researchersDataProfit'
+
+import {
+  schemaDataPayment,
+  uiSchemaDataPayment,
+} from '../../data/schemas/dataPayment'
+
+import {
+  schemaDataUsage,
+  uiSchemaDataUsage,
+} from '../../data/schemas/dataUsage'
+
+import {
+  schemaDataSharing,
+  uiSchemaDataSharing,
+} from '../../data/schemas/dataSharing'
+
+import {
+  schemaResearchersDataUsage,
+  uiSchemaResearchersDataUsage,
+} from '../../data/schemas/researchersDataUsage'
+
 import { schemaGender, uiSchemaGender } from '../../data/schemas/gender'
 import { cloneDeep, shuffle } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -90,14 +119,10 @@ export default function SageForm({
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
         return schemaCountrySelector
-      case FORM_IDS.HOW_TO_PARTICIPATE:
-        return schemaHowToParticipate
       case FORM_IDS.AGE_VERIFY:
         return schemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
         return schemaAndroidVerify
-      case FORM_IDS.SUPPORT_VERIFY:
-        return schemaSupportVerify
       case FORM_IDS.HOW_DID_YOU_HEAR:
         return schemaHowDidYouHear
       case FORM_IDS.UNDERSTANDS_ENGLISH:
@@ -132,10 +157,24 @@ export default function SageForm({
         return schemaCopy
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
         return schemaWhatIsThePurpose
-      case FORM_IDS.WHICH_IS_CORRECT:
-        return schemaWhichIsCorrect
       case FORM_IDS.GENDER:
         return schemaGender
+      case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
+        return schemaMentalHealthExperience
+      case FORM_IDS.RESEARCHERS_DATA_ACCESS:
+        return schemaResearchersDataAccess
+      case FORM_IDS.DATA_RESEARCH_TYPE:
+        return schemaDataResearchType
+      case FORM_IDS.RESEARCHERS_DATA_PROFIT:
+        return schemaResearchersDataProfit
+      case FORM_IDS.DATA_PAYMENT:
+        return schemaDataPayment
+      case FORM_IDS.DATA_USAGE:
+        return schemaDataUsage
+      case FORM_IDS.DATA_SHARING:
+        return schemaDataSharing
+      case FORM_IDS.RESEARCHERS_DATA_USAGE:
+        return schemaResearchersDataUsage
       default:
         return null
     }
@@ -145,14 +184,10 @@ export default function SageForm({
     switch (id) {
       case FORM_IDS.COUNTRY_SELECTOR:
         return uiSchemaCountrySelector
-      case FORM_IDS.HOW_TO_PARTICIPATE:
-        return uiSchemaHowToParticipate
       case FORM_IDS.AGE_VERIFY:
         return uiSchemaAgeVerify
       case FORM_IDS.ANDROID_VERIFY:
         return uiSchemaAndroidVerify
-      case FORM_IDS.SUPPORT_VERIFY:
-        return uiSchemaSupportVerify
       case FORM_IDS.HOW_DID_YOU_HEAR:
         return uiSchemaHowDidYouHear
       case FORM_IDS.UNDERSTANDS_ENGLISH:
@@ -163,10 +198,24 @@ export default function SageForm({
         return uiSchemaWhoControlsData
       case FORM_IDS.WHAT_IS_THE_PURPOSE:
         return uiSchemaWhatIsThePurpose
-      case FORM_IDS.WHICH_IS_CORRECT:
-        return uiSchemaWhichIsCorrect
       case FORM_IDS.GENDER:
         return uiSchemaGender
+      case FORM_IDS.MENTAL_HEALTH_EXPERIENCE:
+        return uiSchemaMentalHealthExperience
+      case FORM_IDS.RESEARCHERS_DATA_ACCESS:
+        return uiSchemaResearchersDataAccess
+      case FORM_IDS.DATA_RESEARCH_TYPE:
+        return uiSchemaDataResearchType
+      case FORM_IDS.RESEARCHERS_DATA_PROFIT:
+        return uiSchemaResearchersDataProfit
+      case FORM_IDS.DATA_PAYMENT:
+        return uiSchemaDataPayment
+      case FORM_IDS.DATA_USAGE:
+        return uiSchemaDataUsage
+      case FORM_IDS.DATA_SHARING:
+        return uiSchemaDataSharing
+      case FORM_IDS.RESEARCHERS_DATA_USAGE:
+        return uiSchemaResearchersDataUsage
       default:
         return null
     }
@@ -178,7 +227,7 @@ export default function SageForm({
 
       {subTitle && (
         <div className="form-subtitle">
-          <Typography variant="h6">{subTitle}</Typography>
+          <Typography variant="body2">{subTitle}</Typography>
         </div>
       )}
 

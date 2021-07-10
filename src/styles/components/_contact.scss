@@ -47,7 +47,12 @@
     height: 42px;
     font-size: 16px;
     line-height: 21px;
-    margin-top: 30px;
+    &:first-of-type {
+      margin-top: 30px;
+    }
+    &:not(:first-of-type) {
+      margin-top: 12px;
+    }
   }
   h2 {
     margin-bottom: 30px;
@@ -55,6 +60,7 @@
   p {
     color: $font-color;
     margin-bottom: 20px;
+    white-space: pre-line;
   }
   @include breakpoint('md') {
     .contact__in-crisis {

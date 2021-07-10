@@ -1,0 +1,48 @@
+.hub {
+  &__card {
+    display: flex;
+    width: 100%;
+    min-height: 105px;
+    color: #fff;
+    border-radius: 3px;
+    padding: 12px;
+    margin-bottom: 12px;
+    h6 {
+      margin-bottom: 0;
+    }
+    &__text {
+      flex: 4;
+      .time {
+        display: flex;
+        svg {
+          margin-right: 6px;
+        }
+      }
+    }
+    &__icon {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 1;
+      padding-right: 24px;
+    }
+  }
+
+  &__card.active {
+    background-color: #7c94c6;
+    cursor: pointer;
+    .time {
+      font-style: italic;
+    }
+  }
+  &__card.complete {
+    background-color: #343f56;
+  }
+  &__card.disabled {
+    background-color: #d3d3d3;
+    color: #636363;
+    .time {
+      color: #000;
+    }
+  }
+}

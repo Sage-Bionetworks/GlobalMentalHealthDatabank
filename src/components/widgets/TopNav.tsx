@@ -99,7 +99,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
         </NavLink>
 
         <NavLink
-          to={ROUTES.ELIGIBILITY}
+          to={ROUTES.HUB}
           onClick={handleDrawerToggle}
           className="topnav__link"
         >
@@ -176,7 +176,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
       </div>
       <div className="topnav-right-section">
         {
-          <NavLink to={ROUTES.ELIGIBILITY} className="topnav__link--full">
+          <NavLink to={ROUTES.HUB} className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('common.joinStudy')}
             </Typography>

@@ -12,7 +12,7 @@ import {
   PHONE_SIGN_IN_TRIGGER_ENDPOINT,
 } from '../../constants/constants'
 import { callEndpoint, makePhone } from '../../helpers/utility'
-import { useElegibility } from '../../components/registration/context/ElegibilityContext'
+import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
 import { useSessionDataState } from '../../AuthContext'
 import { SessionData } from '../../types/types'
@@ -28,8 +28,9 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   const [error, setError] = useState('')
   const [code, setCode] = useState('')
 
-  const { phoneNumber, whereDoYouLive } = useElegibility()
+  const { phoneNumber, whereDoYouLive } = useEligibility()
   const { t } = useTranslation()
+  const displayPhoneNumber = makePhone(phoneNumber, whereDoYouLive)
 
   const sessionData: SessionData = useSessionDataState()
   const { token } = sessionData
@@ -72,7 +73,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   }
 
   if (token) {
-    return <Redirect to={ROUTES.CONSENT_STEPS} push={true} />
+    return <Redirect to={ROUTES.HUB} push={true} />
   }
 
   return (
@@ -94,7 +95,7 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
           )}
 
           <div className="header-wrapper">
-            <Typography variant="body2">{phoneNumber}</Typography>
+            <Typography variant="body2">{displayPhoneNumber.number}</Typography>
           </div>
         </div>
 

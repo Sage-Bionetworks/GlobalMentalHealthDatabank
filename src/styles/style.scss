@@ -6,7 +6,6 @@
 @import 'components/sage-form';
 @import 'material-overrides';
 @import 'forms';
-@import 'components/ranking-choice';
 @import 'components/topnav';
 @import 'components/download-app';
 @import 'components/responsive-step';
@@ -16,6 +15,7 @@
 @import 'components/research';
 @import 'components/consent-info';
 @import 'components/disclaimer';
+@import 'components/hub.scss';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -130,7 +130,8 @@ div.btnVerticallySpaced {
   }
 }
 
-ul {
+.quiz-wrapper ul,
+.text-step-wrapper ul {
   margin: 0;
   padding-inline-start: 10px;
   li {
@@ -154,9 +155,13 @@ ul {
   }
 }
 
-.underlined-link {
+.underlined-link,
+.underlined-link-inline {
   text-decoration: underline;
   color: black;
+}
+.underlined-link-inline {
+  display: inline-flex;
 }
 
 .login-wrapper {
@@ -361,11 +366,38 @@ input[type='radio'] {
 }
 
 .legislation-wrapper {
+  padding: 20px;
   background-color: $primary-bg-color;
   h2 {
     padding: 40px 0 25px;
   }
-  padding: 20px;
+  h4 {
+    color: #4db3b7;
+    margin-top: 30px;
+  }
+  // ol,
+  // ul,
+  li {
+    font-family: Lato, sans-serif;
+    font-size: 1.4rem;
+  }
+  ol {
+    padding-left: 1.4rem;
+    margin-left: 1.4rem;
+  }
+  ol li {
+    padding-left: 8px;
+    line-height: 2.1rem;
+  }
+  ul {
+    padding-left: 1.4rem;
+    margin-left: 1.4rem;
+  }
+  ol ul li {
+    list-style-type: disc;
+    padding-left: 0;
+  }
+
   @include breakpoint('md') {
     background-color: #fcfcfc;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -406,8 +438,11 @@ input[type='radio'] {
   }
 }
 
+.tp-10-neg {
+  margin-top: -10px;
+}
 .tp-20-neg {
-  margin-top: -30px;
+  margin-top: -20px;
 }
 .tp-30-neg {
   margin-top: -30px;
@@ -449,6 +484,10 @@ input[type='radio'] {
 
 .btm-custom-age-form {
   margin-bottom: 133px;
+}
+
+.ml-10 {
+  margin-left: 10px;
 }
 
 .ml-20 {
@@ -505,5 +544,27 @@ h6.eligibility-summary-line-title {
   opacity: 0.1;
   & + span {
     opacity: 0.15;
+  }
+}
+
+.bullets {
+  p {
+    display: flex;
+    align-items: stretch;
+    &::before {
+      content: '\2022';
+      margin-right: 8px;
+    }
+  }
+}
+
+.phone-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .country-code {
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 10px;
   }
 }
