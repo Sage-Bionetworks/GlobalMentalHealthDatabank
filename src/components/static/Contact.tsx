@@ -6,6 +6,7 @@ import AdditionalUKResources from '../../assets/resources/additional_uk_mental_h
 
 function Contact() {
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
   return (
     <div className="contact">
       <div className="contact__in-crisis">

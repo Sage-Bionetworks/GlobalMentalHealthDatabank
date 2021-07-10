@@ -20,6 +20,9 @@ function About() {
   const goToHub = () => {
     push(ROUTES.HUB)
   }
+
+  window.scrollTo(0, 0)
+
   return (
     <div className="about">
       <div className="about-the-study">

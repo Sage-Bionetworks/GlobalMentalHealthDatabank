@@ -81,6 +81,7 @@ function ResearchTeam() {
   const shrinkImage = (e: any) => {
     e.target.classList.remove('big')
   }
+  window.scrollTo(0, 0)
   return (
     <div className="research">
       <div className="research__hero">

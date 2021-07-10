@@ -10,6 +10,7 @@ function DownloadApp() {
   const sessionData: SessionData = useSessionDataState()
   const playStoreLink = process.env.REACT_APP_PLAY_STORE_URL
   const { t } = useTranslation()
+  window.scrollTo(0, 0)
 
   return (
     <div className="download-app">

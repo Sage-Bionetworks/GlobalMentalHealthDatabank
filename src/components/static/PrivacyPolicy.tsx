@@ -8,7 +8,7 @@ import PolicySesotho from '../../assets/privacy_policy_docs/privacy_policy_sesot
 
 export const PrivacyPolicy: FunctionComponent = () => {
   const { t } = useTranslation()
-
+  window.scrollTo(0, 0)
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="legislation-wrapper">
