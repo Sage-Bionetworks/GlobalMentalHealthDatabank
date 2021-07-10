@@ -34,7 +34,7 @@
     background: $tertiary-color;
   }
 
-  @include breakpoint('xl') {
+  @include breakpoint('lg') {
     position: relative;
     height: calc(100vh - 180px);
     .download__button {
@@ -47,6 +47,9 @@
     .download__button {
       background: $secondary-button-bg-color;
       color: $font-color;
+    }
+    .download__description {
+      width: 80%;
     }
     .logo {
       display: none;
@@ -80,7 +83,7 @@
       background-size: cover;
     }
   }
-  @include breakpoint('xl') {
+  @include breakpoint('lg') {
     .orange-bg {
       height: 45%;
     }
