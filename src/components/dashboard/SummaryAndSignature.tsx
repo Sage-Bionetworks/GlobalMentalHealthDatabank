@@ -19,7 +19,7 @@ import { Checkpoint } from 'types/types'
 import { ReactComponent as Summary } from 'assets/consent/summary.svg'
 import { ReactComponent as Envelope } from 'assets/consent/envelope.svg'
 import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
-import ConsentEnglish from '../../assets/consent_docs/consent_english.pdf'
+import ConsentEnglish from 'assets/consent_docs/consent_english.pdf'
 
 type Props = {
   checkpoint?: Checkpoint
@@ -251,7 +251,7 @@ function SummaryAndSignature({
                   rel="noopener noreferrer"
                   className="underlined-link"
                 >
-                  {t('form.consentSignature.youCanDownloadInfoLinkText')}
+                  {t('form.consentSignature.youCanDownloadLinkText')}
                 </a>
                 .
               </div>
