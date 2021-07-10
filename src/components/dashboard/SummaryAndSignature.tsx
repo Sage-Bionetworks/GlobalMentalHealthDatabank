@@ -264,7 +264,9 @@ function SummaryAndSignature({
               variant="contained"
               onClick={signConsent}
               disabled={!consented || signatureName.length < 5}
-            ></Button>
+            >
+              {t('form.submit')}
+            </Button>
           </div>
         </ResponsiveStepWrapper>
       )
