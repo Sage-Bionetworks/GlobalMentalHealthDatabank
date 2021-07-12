@@ -1075,42 +1075,7 @@ function ResearchTeam() {
               </Typography>
             </div>
           </div>
-          <div className="research__photo-container">
-            <ResizableImageComponent
-              className="research__photo-team"
-              src={JuliaDunbar}
-              alt="team-member"
-              tabIndex="24"
-              onFocus={expandImage}
-              onBlur={shrinkImage}
-            />
-            <div className="research__member-info">
-              <Typography
-                variant="h4"
-                className="research__member-info-content"
-              >
-                {t('research.usTeam.juliaDunbar.name')}
-              </Typography>
-              <Typography
-                variant="body2"
-                className="research__member-info-content"
-              >
-                {t('research.usTeam.juliaDunbar.role')}
-              </Typography>
-              <Typography
-                variant="body2"
-                className="research__member-info-content"
-              >
-                {t('research.usTeam.juliaDunbar.position')}
-              </Typography>
-              <Typography
-                variant="body2"
-                className="research__member-info-content"
-              >
-                {t('research.usTeam.juliaDunbar.location')}
-              </Typography>
-            </div>
-          </div>
+
           <div className="research__photo-container">
             <ResizableImageComponent
               className="research__photo-team"
@@ -1777,6 +1742,42 @@ function ResearchTeam() {
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.stockardSimon.location')}
+              </Typography>
+            </div>
+          </div>
+          <div className="research__photo-container">
+            <ResizableImageComponent
+              className="research__photo-team"
+              src={JuliaDunbar}
+              alt="team-member"
+              tabIndex="24"
+              onFocus={expandImage}
+              onBlur={shrinkImage}
+            />
+            <div className="research__member-info">
+              <Typography
+                variant="h4"
+                className="research__member-info-content"
+              >
+                {t('research.sageTeam.juliaDunbar.name')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.sageTeam.juliaDunbar.role')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.sageTeam.juliaDunbar.position')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.sageTeam.juliaDunbar.location')}
               </Typography>
             </div>
           </div>
