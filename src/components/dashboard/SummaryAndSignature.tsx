@@ -244,12 +244,12 @@ function SummaryAndSignature({
             />
             <Typography variant="body2">
               {t('form.consentSignature.youCanDownloadInfo')}{' '}
-              <div className="btm-20 underlined-link">
+              <div className="btm-20">
                 <a
                   href={ConsentEnglish}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underlined-link"
+                  className="consent-underlined-link"
                 >
                   {t('form.consentSignature.youCanDownloadLinkText')}
                 </a>
