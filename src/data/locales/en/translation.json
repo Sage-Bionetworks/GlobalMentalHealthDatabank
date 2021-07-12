@@ -286,10 +286,13 @@
         "takePart": "to take part:"
       },
       "agreement": "I have read and understand the information presented in this consent process. All of my questions have been answered. I freely and willingly choose to participate in the MindKind Study. By signing this consent, I have not given up any of my legal rights.",
-      "fullName": "Full name of participant or adult..."
+      "fullName": "Full name of participant or adult...",
+      "youCanDownloadInfo": "You can download informed consent form on the website or ",
+      "youCanDownloadLinkText": "click here to view"
     },
     "youAreInStep": "You are in step",
     "submit": "Submit",
+
     "chooseAnOption": "You must choose an option"
   },
   "home": {

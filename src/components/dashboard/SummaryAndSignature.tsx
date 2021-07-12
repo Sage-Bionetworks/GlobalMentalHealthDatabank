@@ -19,6 +19,7 @@ import { Checkpoint } from 'types/types'
 import { ReactComponent as Summary } from 'assets/consent/summary.svg'
 import { ReactComponent as Envelope } from 'assets/consent/envelope.svg'
 import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
+import ConsentEnglish from 'assets/consent_docs/consent_english.pdf'
 
 type Props = {
   checkpoint?: Checkpoint
@@ -241,6 +242,20 @@ function SummaryAndSignature({
               value={signatureName}
               onChange={e => setSignatureName(e.target.value)}
             />
+            <Typography variant="body2">
+              {t('form.consentSignature.youCanDownloadInfo')}{' '}
+              <div className="btm-20">
+                <a
+                  href={ConsentEnglish}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="consent-underlined-link"
+                >
+                  {t('form.consentSignature.youCanDownloadLinkText')}
+                </a>
+                .
+              </div>
+            </Typography>
 
             <Button
               fullWidth
