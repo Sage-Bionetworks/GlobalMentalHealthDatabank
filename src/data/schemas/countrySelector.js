@@ -2,8 +2,8 @@ let enumNames = ['UK', 'India', 'South Africa', 'Other', 'US (Testing only)']
 let enumValues = ['UK', 'IN', 'ZA', 'OTHER', 'US']
 
 if (window.location.hostname === process.env.REACT_APP_PROD_DOMAIN) {
-  enumNames = ['UK', 'Other']
-  enumValues = ['UK', 'OTHER']
+  enumNames = ['UK', 'India', 'South Africa', 'Other']
+  enumValues = ['UK', 'IN', 'ZA', 'OTHER']
 }
 
 export const schemaCountrySelector = {
