@@ -18,6 +18,9 @@ async function sendHealthData(
     createdOn: moment().toISOString(),
     data,
     phoneInfo: navigator.userAgent,
+    metadata: {
+      taskIdentifier: 'CONSENT',
+    },
   }
   const result = await callEndpoint<HealhDataResponse>(
     `${ENDPOINT}/v3/healthdata`,
