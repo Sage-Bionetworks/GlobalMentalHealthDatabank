@@ -573,6 +573,14 @@ h6.eligibility-summary-line-title {
   }
 }
 
+.phone-input-helper {
+  align-items: flex-end;
+  .MuiFormHelperText-root {
+    position: absolute;
+    bottom: -20px;
+  }
+}
+
 .consent-underlined-link {
   text-decoration: underline;
 }

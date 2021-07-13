@@ -7,7 +7,7 @@ import {
   FLOW_OPTIONS,
   getRandomArm,
   ARM_OPTIONS,
-} from '../../helpers/RandomFlowGenerator'
+} from 'helpers/RandomFlowGenerator'
 import {
   APP_ID,
   SUB_STUDY_ID,
@@ -15,17 +15,18 @@ import {
   PAGE_ID_FIELD_NAME,
   PAGE_ID,
   MENTAL_HEALTH_EXPERIENCE,
-} from '../../constants/constants'
-import { RegistrationData, UserDataGroup } from '../../types/types'
+} from 'constants/constants'
+import { RegistrationData, UserDataGroup } from 'types/types'
 import {
   callEndpoint,
   makePhone,
   sendSignInRequest,
   getCountryCode,
-} from '../../helpers/utility'
+  getPhoneLength,
+} from 'helpers/utility'
 import useForm from '../useForm'
 import { useEligibility } from '../eligibility/context/EligibilityContext'
-import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
+import { ReactComponent as TextSent } from 'assets/text_sent.svg'
 
 const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 const LIVED_EXPERIENCE_YES = 'lived_experience_yes'
@@ -53,14 +54,7 @@ export const Registration: React.FunctionComponent = () => {
   }
 
   const validationStateSchema = {
-    phone: {
-      /*
-      We can add a validation with the following schema
-      validator: {
-        regEx: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
-        error: t('registration.text5'),
-      },*/
-    },
+    phone: {},
     countryCode: {},
   }
 
@@ -173,10 +167,7 @@ export const Registration: React.FunctionComponent = () => {
     validationStateSchema,
     onSubmitForm,
   )
-
-  const formErrors = Object.keys(state)
-    .filter(key => state[key].error)
-    .join(', ')
+  const maxLength = getPhoneLength(whereDoYouLive)
 
   return (
     <div className="quiz-wrapper">
@@ -208,10 +199,12 @@ export const Registration: React.FunctionComponent = () => {
               </div>
               <TextField
                 fullWidth
-                className="phone-input"
+                className="phone-input-helper"
                 variant="outlined"
                 name="phone"
-                type="number"
+                type="tel"
+                inputProps={{ maxLength }}
+                helperText={`${state.phone.value.length}/${maxLength}`}
                 value={state.phone.value}
                 placeholder="Phone #"
                 aria-label="Phone #"
@@ -229,9 +222,9 @@ export const Registration: React.FunctionComponent = () => {
               </Typography>
             </div>
 
-            {(error || formErrors) && (
+            {error && (
               <div className="tp-30-neg btm-20">
-                <Alert severity="error">{error || formErrors}</Alert>
+                <Alert severity="error">{error}</Alert>
               </div>
             )}
 
@@ -242,7 +235,7 @@ export const Registration: React.FunctionComponent = () => {
               size="large"
               type="submit"
               className="wide-button"
-              disabled={!state.phone.value}
+              disabled={state.phone.value !== maxLength}
             >
               {t('eligibility.createAccount')}
             </Button>
