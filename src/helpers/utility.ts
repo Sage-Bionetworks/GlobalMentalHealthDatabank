@@ -169,3 +169,18 @@ export const getCountryCode = (country: string = '') => {
       return ''
   }
 }
+
+export const getPhoneLength = (country: string) => {
+  switch (country) {
+    case COUNTRY_CODES.UK:
+      return 11
+    case COUNTRY_CODES.IN:
+      return 10
+    case COUNTRY_CODES.SOUTH_AFRICA:
+      return 9
+    case COUNTRY_CODES.US:
+      return 10
+    default:
+      return 20
+  }
+}

@@ -1,11 +1,4 @@
-import React, { useState } from 'react'
-import Alert from '@material-ui/lab/Alert/Alert'
-import SignInWithCode from './SignInWithCode'
-import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
-import uk from '../../assets/flags/uk.svg'
-import ind from '../../assets/flags/ind.svg'
-import za from '../../assets/flags/za.svg'
-import us from '../../assets/flags/us.svg'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
@@ -16,12 +9,19 @@ import {
   Button,
   TextField,
 } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert/Alert'
+import SignInWithCode from './SignInWithCode'
+import { ResponsiveStepWrapper } from 'components/common'
+import uk from 'assets/flags/uk.svg'
+import ind from 'assets/flags/ind.svg'
+import za from 'assets/flags/za.svg'
+import us from 'assets/flags/us.svg'
 import {
   LoggedInUserData,
   SignInData,
   SignInDataPhone,
   Response,
-} from '../../types/types'
+} from 'types/types'
 import {
   APP_ID,
   ENDPOINT,
@@ -29,10 +29,10 @@ import {
   ROUTES,
   PHONE_SIGN_IN_TRIGGER_ENDPOINT,
   STAGING,
-} from '../../constants/constants'
-import { callEndpoint, makePhone } from '../../helpers/utility'
-import { useSessionDataDispatch, useSessionDataState } from '../../AuthContext'
-import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
+} from 'constants/constants'
+import { callEndpoint, makePhone, getPhoneLength } from 'helpers/utility'
+import { useSessionDataDispatch, useSessionDataState } from 'AuthContext'
+import { ReactComponent as TextSent } from 'assets/text_sent.svg'
 import { useEligibility } from '../eligibility/context/EligibilityContext'
 export interface OwnLoginProps {
   redirectUrl?: string // will redirect here after a successful login. if unset, reload the current page url.
@@ -95,10 +95,14 @@ export const Login: React.FunctionComponent = () => {
     setWhereDoYouLive,
   } = useEligibility()
 
-  if (!whereDoYouLive || whereDoYouLive === 'Other') {
-    setWhereDoYouLive(FLAGS.unitedKingdom)
-    setPhoneNumber('')
-  }
+  useEffect(() => {
+    if (!whereDoYouLive || whereDoYouLive === 'Other') {
+      setWhereDoYouLive(FLAGS.unitedKingdom)
+      setPhoneNumber('')
+    }
+  })
+
+  const maxLength = getPhoneLength(whereDoYouLive)
 
   const handleLoggedIn = async (loggedIn: Response<LoggedInUserData>) => {
     const consented = loggedIn.status !== 412
@@ -239,18 +243,19 @@ export const Login: React.FunctionComponent = () => {
 
                       <TextField
                         fullWidth
-                        className="phone-input"
+                        className="phone-input-helper"
                         variant="outlined"
                         autoComplete="phone"
                         label="Phone #"
-                        type="number"
+                        type="tel"
                         value={phoneNumber}
+                        inputProps={{ maxLength }}
+                        helperText={`${phoneNumber.length}/${maxLength}`}
                         onChange={(
                           event: React.ChangeEvent<{ value: unknown }>,
                         ) => {
                           const { value } = event.target as any
-                          event.target.value = value.replace(/[^\d]/, '')
-                          setPhoneNumber(value)
+                          setPhoneNumber(value.replace(/[^\d]/, ''))
                         }}
                       />
                     </div>
@@ -268,6 +273,7 @@ export const Login: React.FunctionComponent = () => {
                       size="large"
                       type="submit"
                       onSubmit={handleLogin}
+                      disabled={phoneNumber.length !== maxLength}
                     >
                       {t('common.signIn')}
                     </Button>
