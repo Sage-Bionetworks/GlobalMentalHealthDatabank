@@ -1,3 +1,11 @@
+let enumNames = ['UK', 'India', 'South Africa', 'Other', 'US (Testing only)']
+let enumValues = ['UK', 'IN', 'ZA', 'OTHER', 'US']
+
+if (window.location.hostname === process.env.REACT_APP_PROD_DOMAIN) {
+  enumNames = ['UK', 'Other']
+  enumValues = ['UK', 'OTHER']
+}
+
 export const schemaCountrySelector = {
   type: 'object',
   properties: {
@@ -8,14 +16,8 @@ export const schemaCountrySelector = {
         your_country: {
           type: 'string',
           title: ' ',
-          enumNames: [
-            'UK',
-            'India',
-            'South Africa',
-            'Other',
-            'US (Testing only)',
-          ],
-          enum: ['UK', 'IN', 'ZA', 'OTHER', 'US'],
+          enumNames,
+          enum: enumValues,
         },
       },
     },
