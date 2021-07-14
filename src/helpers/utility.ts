@@ -169,3 +169,29 @@ export const getCountryCode = (country: string = '') => {
       return ''
   }
 }
+
+export const getPhoneLength = (country: string) => {
+  switch (country) {
+    case COUNTRY_CODES.UK:
+      return 10
+    case COUNTRY_CODES.IN:
+      return 10
+    case COUNTRY_CODES.SOUTH_AFRICA:
+      return 9
+    case COUNTRY_CODES.US:
+      return 10
+    default:
+      return 20
+  }
+}
+
+export const isTestingEnv = () => {
+  return (
+    window.location.href.includes('localhost') ||
+    window.location.href.includes(process.env.REACT_APP_STAGING_DOMAIN || '')
+  )
+}
+
+export const isProductionEnv = () => {
+  return window.location.hostname === process.env.REACT_APP_PROD_DOMAIN
+}

@@ -1,9 +1,11 @@
+import { isProductionEnv } from 'helpers/utility'
+
 let enumNames = ['UK', 'India', 'South Africa', 'Other', 'US (Testing only)']
 let enumValues = ['UK', 'IN', 'ZA', 'OTHER', 'US']
 
-if (window.location.hostname === process.env.REACT_APP_PROD_DOMAIN) {
-  enumNames = ['UK', 'India', 'South Africa', 'Other']
-  enumValues = ['UK', 'IN', 'ZA', 'OTHER']
+if (isProductionEnv()) {
+  enumNames = ['UK', 'Other']
+  enumValues = ['UK', 'OTHER']
 }
 
 export const schemaCountrySelector = {

@@ -65,13 +65,12 @@ function SummaryAndSignature({
     }
   }
 
-  const handleBackToHub = (fields: object = {}) => {
+  const handleBackToHub = () => {
     if (checkpoint) {
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.summaryAndSignature.status = 'started'
       newCheckpoint.summaryAndSignature.step = 1
       updateClientData({
-        ...fields,
         checkpoint: newCheckpoint,
       })
       history.push(ROUTES.HUB)
@@ -244,7 +243,7 @@ function SummaryAndSignature({
             />
             <Typography variant="body2">
               {t('form.consentSignature.youCanDownloadInfo')}{' '}
-              <div className="btm-20">
+              <span className="btm-20" style={{ display: 'inline-block' }}>
                 <a
                   href={ConsentEnglish}
                   target="_blank"
@@ -254,7 +253,7 @@ function SummaryAndSignature({
                   {t('form.consentSignature.youCanDownloadLinkText')}
                 </a>
                 .
-              </div>
+              </span>
             </Typography>
 
             <Button
