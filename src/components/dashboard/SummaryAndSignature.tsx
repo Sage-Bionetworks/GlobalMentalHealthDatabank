@@ -77,17 +77,16 @@ function SummaryAndSignature({
     }
   }
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (checkpoint) {
       const nextStep = step < maxSteps ? step + 1 : step
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.summaryAndSignature.step = nextStep
       newCheckpoint.summaryAndSignature.status = 'complete'
-      updateClientData({
+      await updateClientData({
         checkpoint: newCheckpoint,
         consented: true,
       })
-      history.push(ROUTES.DOWNLOAD)
     }
   }
 
@@ -99,12 +98,11 @@ function SummaryAndSignature({
         'all_qualified_researchers',
         token,
       )
-
+      await handleComplete()
       const userInfoResponse = await UserService.getUserInfo(token)
       const { clientData } = userInfoResponse?.data as any
-
       await HealthService.sendHealthData(token, clientData)
-      handleComplete()
+      history.push(ROUTES.DOWNLOAD)
     } catch (e) {
       console.log(e.message)
     }
