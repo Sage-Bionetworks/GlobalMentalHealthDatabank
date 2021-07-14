@@ -173,7 +173,7 @@ export const getCountryCode = (country: string = '') => {
 export const getPhoneLength = (country: string) => {
   switch (country) {
     case COUNTRY_CODES.UK:
-      return 11
+      return 10
     case COUNTRY_CODES.IN:
       return 10
     case COUNTRY_CODES.SOUTH_AFRICA:
@@ -183,4 +183,15 @@ export const getPhoneLength = (country: string) => {
     default:
       return 20
   }
+}
+
+export const isTestingEnv = () => {
+  return (
+    window.location.href.includes('localhost') ||
+    window.location.href.includes(process.env.REACT_APP_STAGING_DOMAIN || '')
+  )
+}
+
+export const isProductionEnv = () => {
+  return window.location.hostname === process.env.REACT_APP_PROD_DOMAIN
 }

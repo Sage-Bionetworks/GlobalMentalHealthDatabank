@@ -235,7 +235,7 @@ export const Registration: React.FunctionComponent = () => {
               size="large"
               type="submit"
               className="wide-button"
-              disabled={state.phone.value !== maxLength}
+              disabled={state.phone.value.length !== maxLength}
             >
               {t('eligibility.createAccount')}
             </Button>
