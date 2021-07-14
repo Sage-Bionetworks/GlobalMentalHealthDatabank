@@ -89,13 +89,12 @@ function AboutTheStudy({
     }
   }
 
-  const handleBackToHub = (fields: object = {}) => {
+  const handleBackToHub = () => {
     if (checkpoint) {
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.aboutTheStudy.status = 'started'
       newCheckpoint.aboutTheStudy.step = 1
       updateClientData({
-        ...fields,
         checkpoint: newCheckpoint,
       })
       history.push(ROUTES.HUB)
