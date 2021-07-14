@@ -16,7 +16,6 @@ function RegistrationContainer() {
 
   useEffect(() => {
     if (!isEligible) {
-      console.log('redirecting to hub...')
       history.push(ROUTES.HUB)
     }
   })

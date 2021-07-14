@@ -51,13 +51,12 @@ function AboutDataSharing({
     }
   }
 
-  const handleBackToHub = (fields: object = {}) => {
+  const handleBackToHub = () => {
     if (checkpoint) {
       const newCheckpoint = cloneDeep(checkpoint)
       newCheckpoint.aboutDataSharing.status = 'started'
       newCheckpoint.aboutDataSharing.step = 1
       updateClientData({
-        ...fields,
         checkpoint: newCheckpoint,
       })
       history.push(ROUTES.HUB)
