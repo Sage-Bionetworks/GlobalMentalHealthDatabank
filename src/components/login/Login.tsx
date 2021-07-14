@@ -34,7 +34,6 @@ import {
   makePhone,
   getPhoneLength,
   isTestingEnv,
-  isProductionEnv,
 } from 'helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from 'AuthContext'
 import { ReactComponent as TextSent } from 'assets/text_sent.svg'
@@ -220,24 +219,16 @@ export const Login: React.FunctionComponent = () => {
                             alt="United Kingdom"
                           />
                         </MenuItem>
-                        {!isProductionEnv() && (
-                          <MenuItem value={FLAGS.india}>
-                            <img
-                              src={ind}
-                              className={'flag-icon'}
-                              alt="India"
-                            />
-                          </MenuItem>
-                        )}
-                        {!isProductionEnv() && (
-                          <MenuItem value={FLAGS.southAfrica}>
-                            <img
-                              src={za}
-                              className={'flag-icon'}
-                              alt="South Africa"
-                            />
-                          </MenuItem>
-                        )}
+                        <MenuItem value={FLAGS.india}>
+                          <img src={ind} className={'flag-icon'} alt="India" />
+                        </MenuItem>
+                        <MenuItem value={FLAGS.southAfrica}>
+                          <img
+                            src={za}
+                            className={'flag-icon'}
+                            alt="South Africa"
+                          />
+                        </MenuItem>
                         {isTestingEnv() && (
                           <MenuItem value={FLAGS.unitedStates}>
                             <img
