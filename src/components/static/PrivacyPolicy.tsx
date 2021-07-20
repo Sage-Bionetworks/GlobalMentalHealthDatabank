@@ -58,7 +58,7 @@ export const PrivacyPolicy: FunctionComponent = () => {
               <ul>
                 <li>
                   <Typography variant="h6">
-                    {t('privacyPolicy.privacyLabel.no')}
+                    {t('privacyPolicy.privacyLabel.yes')}
                   </Typography>
                 </li>
               </ul>
