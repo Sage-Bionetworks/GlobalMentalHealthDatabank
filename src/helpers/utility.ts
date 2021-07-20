@@ -7,7 +7,13 @@ import {
   StringDictionary,
   SessionData,
 } from '../types/types'
-import { APP_ID, SESSION_NAME, COUNTRY_CODES } from '../constants/constants'
+import {
+  APP_ID,
+  SESSION_NAME,
+  COUNTRY_CODES,
+  REACT_APP_PROD_DOMAIN,
+  REACT_APP_STAGING_DOMAIN,
+} from '../constants/constants'
 import i18n from 'i18next'
 import { useState } from 'react'
 
@@ -188,12 +194,10 @@ export const getPhoneLength = (country: string) => {
 export const isTestingEnv = () => {
   return (
     window.location.href.includes('localhost') ||
-    window.location.href.includes(process.env.REACT_APP_STAGING_DOMAIN || '')
+    window.location.href.includes(REACT_APP_STAGING_DOMAIN || '')
   )
 }
 
 export const isProductionEnv = () => {
-  return window.location.hostname.includes(
-    `${process.env.REACT_APP_PROD_DOMAIN}`,
-  )
+  return window.location.hostname === REACT_APP_PROD_DOMAIN
 }

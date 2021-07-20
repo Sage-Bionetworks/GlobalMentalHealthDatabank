@@ -9,6 +9,12 @@ export const SURVEY_IDENTIFIER = 'mindkind'
 export const PAGE_ID_FIELD_NAME = 'page_id'
 export const SIGN_IN_METHOD = 'PHONE'
 export const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
+export const REACT_APP_PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=org.sagebionetworks.research.mindkind'
+export const REACT_APP_DEEPLINK_URL =
+  'https://sagebionetworks.org/Mindkind/sage-mindkind/auth/'
+export const REACT_APP_PROD_DOMAIN = 'www.mindkindstudy.org'
+export const REACT_APP_STAGING_DOMAIN = 'staging.wtgmhdc.synapse.org'
 
 export const SHARE_SCOPE_PARTNERS = 'sponsors_and_partners'
 export const SHARE_SCOPE_ALL = 'all_qualified_researchers'
