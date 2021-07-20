@@ -193,5 +193,7 @@ export const isTestingEnv = () => {
 }
 
 export const isProductionEnv = () => {
-  return window.location.hostname === process.env.REACT_APP_PROD_DOMAIN
+  return window.location.hostname.includes(
+    `${process.env.REACT_APP_PROD_DOMAIN}`,
+  )
 }
