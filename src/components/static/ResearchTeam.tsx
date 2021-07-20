@@ -191,16 +191,16 @@ function ResearchTeam() {
                 {t('research.indiaTeam.himaniShah.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.himaniShah.role')}
+                {t('research.indiaTeam.himaniShah.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.himaniShah.position')}
+                {t('research.indiaTeam.himaniShah.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -228,16 +228,16 @@ function ResearchTeam() {
                 {t('research.indiaTeam.jasmineKalha.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.jasmineKalha.role')}
+                {t('research.indiaTeam.jasmineKalha.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.jasmineKalha.position')}
+                {t('research.indiaTeam.jasmineKalha.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -265,16 +265,16 @@ function ResearchTeam() {
                 {t('research.indiaTeam.meeraDamji.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.meeraDamji.role')}
+                {t('research.indiaTeam.meeraDamji.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.meeraDamji.position')}
+                {t('research.indiaTeam.meeraDamji.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -302,16 +302,16 @@ function ResearchTeam() {
                 {t('research.indiaTeam.minalKarani.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.minalKarani.role')}
+                {t('research.indiaTeam.minalKarani.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.minalKarani.position')}
+                {t('research.indiaTeam.minalKarani.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -339,16 +339,16 @@ function ResearchTeam() {
                 {t('research.indiaTeam.soumitraPathare.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.soumitraPathare.role')}
+                {t('research.indiaTeam.soumitraPathare.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.soumitraPathare.position')}
+                {t('research.indiaTeam.soumitraPathare.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -376,16 +376,16 @@ function ResearchTeam() {
                 {t('research.indiaTeam.sushmitaSumant.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.sushmitaSumant.role')}
+                {t('research.indiaTeam.sushmitaSumant.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.indiaTeam.sushmitaSumant.position')}
+                {t('research.indiaTeam.sushmitaSumant.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -417,16 +417,16 @@ function ResearchTeam() {
                 {t('research.southAfricaTeam.gillianFinchilescu.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.gillianFinchilescu.role')}
+                {t('research.southAfricaTeam.gillianFinchilescu.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.gillianFinchilescu.position')}
+                {t('research.southAfricaTeam.gillianFinchilescu.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -454,16 +454,16 @@ function ResearchTeam() {
                 {t('research.southAfricaTeam.melvynFreeman.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.melvynFreeman.role')}
+                {t('research.southAfricaTeam.melvynFreeman.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.melvynFreeman.position')}
+                {t('research.southAfricaTeam.melvynFreeman.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -491,16 +491,16 @@ function ResearchTeam() {
                 {t('research.southAfricaTeam.zukiswaZingela.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.zukiswaZingela.role')}
+                {t('research.southAfricaTeam.zukiswaZingela.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.zukiswaZingela.position')}
+                {t('research.southAfricaTeam.zukiswaZingela.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -528,16 +528,16 @@ function ResearchTeam() {
                 {t('research.southAfricaTeam.simthembileLindani.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.simthembileLindani.role')}
+                {t('research.southAfricaTeam.simthembileLindani.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.simthembileLindani.position')}
+                {t('research.southAfricaTeam.simthembileLindani.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -565,16 +565,16 @@ function ResearchTeam() {
                 {t('research.southAfricaTeam.sotiriosShort.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.sotiriosShort.role')}
+                {t('research.southAfricaTeam.sotiriosShort.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.sotiriosShort.position')}
+                {t('research.southAfricaTeam.sotiriosShort.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -602,16 +602,16 @@ function ResearchTeam() {
                 {t('research.southAfricaTeam.chandreVanVught.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.chandreVanVught.role')}
+                {t('research.southAfricaTeam.chandreVanVught.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.southAfricaTeam.chandreVanVught.position')}
+                {t('research.southAfricaTeam.chandreVanVught.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -644,16 +644,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.annMarieBurn.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.annMarieBurn.role')}
+                {t('research.ukTeam.annMarieBurn.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.annMarieBurn.position')}
+                {t('research.ukTeam.annMarieBurn.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -681,16 +681,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.blossomFernandes.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.blossomFernandes.role')}
+                {t('research.ukTeam.blossomFernandes.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.blossomFernandes.position')}
+                {t('research.ukTeam.blossomFernandes.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -718,16 +718,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.emmaCarey.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.emmaCarey.role')}
+                {t('research.ukTeam.emmaCarey.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.emmaCarey.position')}
+                {t('research.ukTeam.emmaCarey.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -755,16 +755,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.lakshmiNeelakantan.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.lakshmiNeelakantan.role')}
+                {t('research.ukTeam.lakshmiNeelakantan.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.lakshmiNeelakantan.position')}
+                {t('research.ukTeam.lakshmiNeelakantan.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -792,16 +792,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.minaFazel.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.minaFazel.role')}
+                {t('research.ukTeam.minaFazel.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.minaFazel.position')}
+                {t('research.ukTeam.minaFazel.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -829,16 +829,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.tamsinFord.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.tamsinFord.role')}
+                {t('research.ukTeam.tamsinFord.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.tamsinFord.position')}
+                {t('research.ukTeam.tamsinFord.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -866,16 +866,16 @@ function ResearchTeam() {
                 {t('research.ukTeam.faithAdeyemi.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.faithAdeyemi.role')}
+                {t('research.ukTeam.faithAdeyemi.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.ukTeam.faithAdeyemi.position')}
+                {t('research.ukTeam.faithAdeyemi.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -908,16 +908,16 @@ function ResearchTeam() {
                 {t('research.usTeam.christopherKemp.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.christopherKemp.role')}
+                {t('research.usTeam.christopherKemp.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.christopherKemp.position')}
+                {t('research.usTeam.christopherKemp.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -945,16 +945,16 @@ function ResearchTeam() {
                 {t('research.usTeam.feliciaMataGreve.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.feliciaMataGreve.role')}
+                {t('research.usTeam.feliciaMataGreve.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.feliciaMataGreve.position')}
+                {t('research.usTeam.feliciaMataGreve.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -982,16 +982,16 @@ function ResearchTeam() {
                 {t('research.usTeam.isabellGriffith.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.isabellGriffith.role')}
+                {t('research.usTeam.isabellGriffith.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.isabellGriffith.position')}
+                {t('research.usTeam.isabellGriffith.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -1019,16 +1019,16 @@ function ResearchTeam() {
                 {t('research.usTeam.jenniferVelloza.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.jenniferVelloza.role')}
+                {t('research.usTeam.jenniferVelloza.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.jenniferVelloza.position')}
+                {t('research.usTeam.jenniferVelloza.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -1056,16 +1056,16 @@ function ResearchTeam() {
                 {t('research.usTeam.nicholeSams.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.nicholeSams.role')}
+                {t('research.usTeam.nicholeSams.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.nicholeSams.position')}
+                {t('research.usTeam.nicholeSams.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -1093,16 +1093,16 @@ function ResearchTeam() {
                 {t('research.usTeam.pamelaCollins.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.pamelaCollins.role')}
+                {t('research.usTeam.pamelaCollins.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.pamelaCollins.position')}
+                {t('research.usTeam.pamelaCollins.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -1130,16 +1130,16 @@ function ResearchTeam() {
                 {t('research.usTeam.patArean.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.patArean.role')}
+                {t('research.usTeam.patArean.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.patArean.position')}
+                {t('research.usTeam.patArean.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -1167,16 +1167,16 @@ function ResearchTeam() {
                 {t('research.usTeam.tessaConcepcion.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.tessaConcepcion.role')}
+                {t('research.usTeam.tessaConcepcion.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.usTeam.tessaConcepcion.position')}
+                {t('research.usTeam.tessaConcepcion.role')}
               </Typography>
               <Typography
                 variant="body2"
@@ -1208,7 +1208,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.carlyMarten.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.carlyMarten.role')}
@@ -1245,7 +1245,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.christineSuver.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.christineSuver.role')}
@@ -1282,7 +1282,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.emilyMoore.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.emilyMoore.role')}
@@ -1319,7 +1319,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.erinMounts.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.erinMounts.role')}
@@ -1356,7 +1356,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.erinScanlan.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.erinScanlan.role')}
@@ -1393,7 +1393,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.jayHodgson.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.jayHodgson.role')}
@@ -1430,7 +1430,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.laraMangravite.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.laraMangravite.role')}
@@ -1467,7 +1467,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.larssonOmberg.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.larssonOmberg.role')}
@@ -1504,7 +1504,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.lisaPasquale.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.lisaPasquale.role')}
@@ -1541,7 +1541,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.ljuboBradic.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.ljuboBradic.role')}
@@ -1578,7 +1578,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.megDoerr.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.megDoerr.role')}
@@ -1615,7 +1615,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.mikeKellen.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.mikeKellen.role')}
@@ -1652,7 +1652,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.sollySieberts.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.sollySieberts.role')}
@@ -1689,7 +1689,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.soniaCarlson.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.soniaCarlson.role')}
@@ -1726,7 +1726,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.stockardSimon.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.stockardSimon.role')}
@@ -1762,7 +1762,7 @@ function ResearchTeam() {
                 {t('research.sageTeam.juliaDunbar.name')}
               </Typography>
               <Typography
-                variant="body2"
+                variant="h5"
                 className="research__member-info-content"
               >
                 {t('research.sageTeam.juliaDunbar.role')}
