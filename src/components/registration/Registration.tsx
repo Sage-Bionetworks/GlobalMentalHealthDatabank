@@ -23,6 +23,7 @@ import {
   sendSignInRequest,
   getCountryCode,
   getPhoneLength,
+  isProductionEnv,
 } from 'helpers/utility'
 import useForm from '../useForm'
 import { useEligibility } from '../eligibility/context/EligibilityContext'
@@ -72,7 +73,10 @@ export const Registration: React.FunctionComponent = () => {
   async function onSubmitForm(state: any) {
     //register
     let consentModel: string = getRandomFlowOption()
-    let dataGroups: UserDataGroup[] = ['test_user' as UserDataGroup]
+    let dataGroups: UserDataGroup[] = []
+    if (!isProductionEnv()) {
+      dataGroups.push('test_user' as UserDataGroup)
+    }
     switch (consentModel) {
       case FLOW_OPTIONS.ONE:
         dataGroups.push(FLOW_OPTIONS.ONE as UserDataGroup)
