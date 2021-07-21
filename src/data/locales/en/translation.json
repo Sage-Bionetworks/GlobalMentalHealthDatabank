@@ -627,13 +627,16 @@
       },
       "unitedKingdom": {
         "title": "Local Resources in the United Kingdom",
+        "subtitle1": "You can also find mental health resources in your region at",
+        "subtitleLink": "https://befrienders.org/",
+        "subtitle2": ", or view the resources provided below.",
         "text1": "Young Minds provides support to young people in crisis in the UK.",
         "text2": "If you need urgent help, text YM to 85258.",
         "text3": "All texts are answered by trained volunteers, with support from experienced clinical supervisors.",
         "text4": "Texts are free from EE, O2, Vodafone, 3, Virgin Mobile, BT Mobile, GiffGaff, Tesco Mobile and Telecom Plus.",
         "link1": {
           "text1": "Visit Website",
-          "url1": "https://www.samaritans.org/"
+          "url1": "https://befrienders.org/"
         },
         "link2": {
           "text2": "Resources"
