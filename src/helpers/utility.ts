@@ -199,5 +199,10 @@ export const isTestingEnv = () => {
 }
 
 export const isProductionEnv = () => {
+  console.log(
+    `${window.location.hostname} === ${PROD_DOMAIN} -> ${
+      window.location.hostname === PROD_DOMAIN
+    }`,
+  )
   return window.location.hostname === PROD_DOMAIN
 }
