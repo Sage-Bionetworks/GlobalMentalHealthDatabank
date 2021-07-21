@@ -70,6 +70,18 @@ function Contact() {
           {t('contact.localResources.unitedKingdom.title')}
         </Typography>
         <Typography variant="body1">
+          {t('contact.localResources.unitedKingdom.subtitle1')}{' '}
+          <a
+            className="btm-10"
+            href={t('contact.localResources.unitedKingdom.subtitleLink')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t('contact.localResources.unitedKingdom.subtitleLink')}
+          </a>{' '}
+          {t('contact.localResources.unitedKingdom.subtitle2')}
+        </Typography>
+        <Typography variant="body1">
           {t('contact.localResources.unitedKingdom.text1')}
         </Typography>
         <Typography variant="body1">
@@ -83,7 +95,7 @@ function Contact() {
         </Typography>
         <a
           className="button small btm-10"
-          href={t(t('contact.localResources.unitedKingdom.link1.url1'))}
+          href={t('contact.localResources.unitedKingdom.link1.url1')}
           target="_blank"
           rel="noopener noreferrer"
         >
