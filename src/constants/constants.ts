@@ -11,8 +11,8 @@ export const SIGN_IN_METHOD = 'PHONE'
 export const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 export const PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=org.sagebionetworks.research.mindkind'
-export const PROD_DOMAIN = 'www.mindkindstudy.org'
-export const STAGING_DOMAIN = 'staging.wtgmhdc.synapse.org'
+export const PROD_DOMAIN = 'mindkindstudy.org'
+export const STAGING_DOMAIN = 'staging.mindkindstudy.org'
 
 export const SHARE_SCOPE_PARTNERS = 'sponsors_and_partners'
 export const SHARE_SCOPE_ALL = 'all_qualified_researchers'
