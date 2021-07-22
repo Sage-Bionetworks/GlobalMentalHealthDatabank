@@ -204,5 +204,8 @@ export const isProductionEnv = () => {
       window.location.hostname === PROD_DOMAIN
     }`,
   )
-  return window.location.hostname === PROD_DOMAIN
+  return (
+    window.location.hostname === PROD_DOMAIN ||
+    window.location.hostname === `www.${PROD_DOMAIN}`
+  )
 }
