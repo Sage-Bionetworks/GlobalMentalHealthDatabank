@@ -40,6 +40,7 @@ import NicholeSams from '../../assets/researchTeam/usTeam/Nichole-Sams.png'
 import PamelaCollins from '../../assets/researchTeam/usTeam/Pamela-Collins.png'
 import PatArean from '../../assets/researchTeam/usTeam/Pat-Arean.png'
 import TessaConcepcion from '../../assets/researchTeam/usTeam/Tessa-Concepcion.png'
+import MensaKwao from '../../assets/researchTeam/usTeam/Mensa-Kwao.jpg'
 
 import CarlyMarten from '../../assets/researchTeam/sageTeam/Carly-Marten.png'
 import ChristineSuver from '../../assets/researchTeam/sageTeam/Christine-Suver.png'
@@ -1186,7 +1187,45 @@ function ResearchTeam() {
               </Typography>
             </div>
           </div>
+
+          <div className="research__photo-container">
+            <ResizableImageComponent
+              className="research__photo-team"
+              src={MensaKwao}
+              alt="team-member"
+              tabIndex="27"
+              onFocus={expandImage}
+              onBlur={shrinkImage}
+            />
+            <div className="research__member-info">
+              <Typography
+                variant="h4"
+                className="research__member-info-content"
+              >
+                {t('research.usTeam.mensaKwao.name')}
+              </Typography>
+              <Typography
+                variant="h5"
+                className="research__member-info-content"
+              >
+                {t('research.usTeam.mensaKwao.position')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.usTeam.mensaKwao.role')}
+              </Typography>
+              <Typography
+                variant="body2"
+                className="research__member-info-content"
+              >
+                {t('research.usTeam.mensaKwao.location')}
+              </Typography>
+            </div>
+          </div>
         </div>
+
         <Typography variant="h2" className="research__section-title">
           {t('research.sageTeam.title')}
         </Typography>
