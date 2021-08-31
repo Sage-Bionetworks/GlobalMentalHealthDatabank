@@ -220,15 +220,9 @@ export const Login: React.FunctionComponent = () => {
                             alt="United Kingdom"
                           />
                         </MenuItem>
-                        {!isProductionEnv() && (
-                          <MenuItem value={FLAGS.india}>
-                            <img
-                              src={ind}
-                              className={'flag-icon'}
-                              alt="India"
-                            />
-                          </MenuItem>
-                        )}
+                        <MenuItem value={FLAGS.india}>
+                          <img src={ind} className={'flag-icon'} alt="India" />
+                        </MenuItem>
                         {!isProductionEnv() && (
                           <MenuItem value={FLAGS.southAfrica}>
                             <img
