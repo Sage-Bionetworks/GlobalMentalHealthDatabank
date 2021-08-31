@@ -229,15 +229,15 @@ export const Login: React.FunctionComponent = () => {
                             />
                           </MenuItem>
                         )}
-                        {!isProductionEnv() && (
-                          <MenuItem value={FLAGS.southAfrica}>
-                            <img
-                              src={za}
-                              className={'flag-icon'}
-                              alt="South Africa"
-                            />
-                          </MenuItem>
-                        )}
+
+                        <MenuItem value={FLAGS.southAfrica}>
+                          <img
+                            src={za}
+                            className={'flag-icon'}
+                            alt="South Africa"
+                          />
+                        </MenuItem>
+
                         {isTestingEnv() && (
                           <MenuItem value={FLAGS.unitedStates}>
                             <img
