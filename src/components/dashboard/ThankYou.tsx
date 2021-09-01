@@ -29,8 +29,8 @@ function ThankYou({ updateClientData }: Props) {
           <Typography variant="h3">{t('thankYou.title')}</Typography>
           <Typography variant="body2">{t('thankYou.subtitle')}</Typography>
           <ol style={{ fontSize: '1.4rem' }}>
-            <li>{t('thankYou.text1')}</li>
-            <li>
+            <li className="btm-10">{t('thankYou.text1')}</li>
+            <li className="btm-10">
               {t('thankYou.view')}{' '}
               <a
                 className="btm-10"
@@ -42,7 +42,7 @@ function ThankYou({ updateClientData }: Props) {
               </a>{' '}
               {t('thankYou.text2')}
             </li>
-            <li>
+            <li className="btm-10">
               {t('thankYou.view')}{' '}
               <a
                 className="btm-10"
