@@ -2,11 +2,10 @@ import React from 'react'
 import { Button, Typography } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
-import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
-import Application from '../../assets/za_docs/DHET_Application.pdf'
-import Letter from '../../assets/za_docs/DHET_Approval_letter.pdf'
-import Certificate from '../../assets/za_docs/Clearance_Certificate.pdf'
+import { ProgressBar, ResponsiveStepWrapper } from 'components/common'
+import Application from 'assets/za_docs/DHET_Application.pdf'
+import Letter from 'assets/za_docs/DHET_Approval_letter.pdf'
+import Certificate from 'assets/za_docs/Clearance_Certificate.pdf'
 import { ROUTES } from 'constants/constants'
 
 type Props = {
@@ -23,7 +22,9 @@ function ThankYou({ updateClientData }: Props) {
   return (
     <ResponsiveStepWrapper variant="card">
       <div className="quiz-wrapper">
-        <LogoNoText className="logo btm-20" />
+        <div className="btm-20">
+          <ProgressBar step={1} maxSteps={1} />
+        </div>
         <div className="btm-30">
           <Typography variant="h3">{t('thankYou.title')}</Typography>
           <Typography variant="body2">{t('thankYou.subtitle')}</Typography>
