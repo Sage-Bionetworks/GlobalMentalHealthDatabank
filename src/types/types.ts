@@ -32,6 +32,7 @@ export type ClientData = {
   consentModel: UserDataGroup
   consented: boolean
   checkpoint: Checkpoint
+  skipThankYou: boolean
 }
 
 export type Checkpoint = {

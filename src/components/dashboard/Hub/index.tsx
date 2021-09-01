@@ -11,11 +11,18 @@ import SummaryAndSignature from '../SummaryAndSignature'
 import { HUB_STEPS, ROUTES } from 'constants/constants'
 import { useSessionDataState } from 'AuthContext'
 import { UserService } from 'services/user.service'
-import { CheckpointData, ClientData, LoggedInUserData } from 'types/types'
+import {
+  CheckpointData,
+  ClientData,
+  LoggedInUserData,
+  UserDataGroup,
+} from 'types/types'
 import { PrivateRoute } from 'components/common'
 import { useEligibility } from 'components/eligibility/context/EligibilityContext'
 import { hubSteps } from 'data/hub/hub'
 import Welcome from '../Welcome'
+import ThankYou from '../ThankYou'
+import { COUNTRY_CODES } from 'constants/constants'
 
 type CardStatus = 'disabled' | 'active' | 'complete'
 
@@ -33,7 +40,7 @@ const getStatus = (checkpoint: CheckpointData): CardStatus => {
 }
 
 function HubRouter() {
-  const { token } = useSessionDataState()
+  const { userDataGroup, token } = useSessionDataState()
   const [hubCards, setHubCards] = useState(hubSteps)
   const { isEligible } = useEligibility()
   const { push } = useHistory()
@@ -95,7 +102,16 @@ function HubRouter() {
   useEffect(() => {
     const checkRedirectToDownload = () => {
       if (userInfo?.clientData?.consented) {
-        push(ROUTES.DOWNLOAD)
+        if (
+          userDataGroup?.includes(
+            COUNTRY_CODES.SOUTH_AFRICA as UserDataGroup,
+          ) &&
+          !userInfo?.clientData?.skipThankYou
+        ) {
+          push(ROUTES.THANK_YOU_ZA)
+        } else {
+          push(ROUTES.DOWNLOAD)
+        }
       }
     }
 
@@ -155,6 +171,9 @@ function HubRouter() {
               checkpoint={checkpoint}
               updateClientData={updateClientData}
             />
+          </PrivateRoute>
+          <PrivateRoute path={ROUTES.THANK_YOU_ZA}>
+            <ThankYou updateClientData={updateClientData} />
           </PrivateRoute>
           <Route exact path="/hub">
             <Hub cards={hubCards} />
