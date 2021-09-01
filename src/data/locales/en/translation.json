@@ -870,8 +870,16 @@
   "download": {
     "title": "Thank you for joining!",
     "description1": "Now that you are enrolled you can start using the MindKind Study App to record your daily mental and emotional health.",
-    "cta": "Download the app",
-    "compensationText": "If you would like to receive compensation for this study",
-    "compensationUrl": "email@email.com"
+    "cta": "Download the app"
+  },
+  "thankYou": {
+    "title": "Thank You!",
+    "subtitle": "We have some additional information for you:",
+    "text1": "To request payment for your study data usage, please email mindkindsa@gmail.com with DATA in the subject line.",
+    "text2": "to conduct research.",
+    "view": "View the",
+    "link1": "DHET application form",
+    "link2": "DHET approval letter",
+    "link3": "Ethical Clearance Certification"
   }
 }

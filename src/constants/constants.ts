@@ -97,6 +97,7 @@ export const ROUTES = {
   ABOUT_THE_STUDY: '/hub/about-the-study',
   ABOUT_DATA_SHARING: '/hub/about-data-sharing',
   SUMMARY_AND_SIGNATURE: '/hub/summary-and-signature',
+  THANK_YOU_ZA: '/hub/thank-you',
 }
 
 export const MENTAL_HEALTH_EXPERIENCE = {
