@@ -2,11 +2,14 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
-import { ROUTES } from '../../constants/constants'
+import { ROUTES } from 'constants/constants'
 import Disclaimer from '../common/Disclaimer'
-import ConsentEnglish from '../../assets/consent_docs/consent_english.pdf'
-import ConsentXhosa from '../../assets/consent_docs/consent_xhosa.pdf'
-import ConsentSesotho from '../../assets/consent_docs/consent_sesotho.pdf'
+import ConsentEnglish from 'assets/consent_docs/consent_english.pdf'
+import ConsentXhosa from 'assets/consent_docs/consent_xhosa.pdf'
+import ConsentSesotho from 'assets/consent_docs/consent_sesotho.pdf'
+import Application from 'assets/za_docs/DHET_Application.pdf'
+import Letter from 'assets/za_docs/DHET_Approval_letter.pdf'
+import Certificate from 'assets/za_docs/Clearance_Certificate.pdf'
 
 function ConsentInfo() {
   const { t } = useTranslation()
@@ -38,39 +41,77 @@ function ConsentInfo() {
         <Typography>{t('consent.approval4')}</Typography>
       </div>
 
-      <div className="download-files">
-        <div className="btm-30">
-          <Typography variant="h2">{t('consent.download')}</Typography>
+      <div className="download-files-container">
+        <div className="download-files">
+          <div className="btm-10">
+            <Typography variant="h3">{t('consent.download')}</Typography>
+          </div>
+          <div className="btm-20 underlined-link">
+            <a
+              href={ConsentEnglish}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link"
+            >
+              <Typography variant="h5">{t('consent.file1')}</Typography>
+            </a>
+          </div>
+          <div className="btm-20 underlined-link">
+            <a
+              href={ConsentXhosa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link"
+            >
+              <Typography variant="h5">{t('consent.file2')}</Typography>
+            </a>
+          </div>
+          <div className="btm-20 underlined-link">
+            <a
+              href={ConsentSesotho}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link"
+            >
+              <Typography variant="h5">{t('consent.file3')}</Typography>
+            </a>
+          </div>
         </div>
-        <div className="btm-20 underlined-link">
-          <a
-            href={ConsentEnglish}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underlined-link"
-          >
-            <Typography variant="h4">{t('consent.file1')}</Typography>
-          </a>
-        </div>
-        <div className="btm-20 underlined-link">
-          <a
-            href={ConsentXhosa}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underlined-link"
-          >
-            <Typography variant="h4">{t('consent.file2')}</Typography>
-          </a>
-        </div>
-        <div className="btm-20 underlined-link">
-          <a
-            href={ConsentSesotho}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underlined-link"
-          >
-            <Typography variant="h4">{t('consent.file3')}</Typography>
-          </a>
+
+        <div className="download-files">
+          <div className="btm-10">
+            <Typography variant="h3">{t('consent.downloadZA')}</Typography>
+          </div>
+          <div className="btm-20 underlined-link">
+            <a
+              href={Application}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link"
+            >
+              <Typography variant="h5">{t('consent.file4')}</Typography>
+            </a>
+          </div>
+          <div className="btm-20 underlined-link">
+            <a
+              href={Letter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link"
+            >
+              <Typography variant="h5">{t('consent.file5')}</Typography>
+            </a>
+          </div>
+          <div className="btm-20 underlined-link">
+            <a
+              href={Certificate}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link"
+            >
+              <Typography variant="h5">{t('consent.file6')}</Typography>
+            </a>
+          </div>
         </div>
       </div>
 
