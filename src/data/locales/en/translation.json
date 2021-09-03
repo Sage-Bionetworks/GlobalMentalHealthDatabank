@@ -745,7 +745,11 @@
     "download": "Download consent documents: ",
     "file1": "Consent document: English",
     "file2": "Consent document: Xhosa",
-    "file3": "Consent document: seSotho"
+    "file3": "Consent document: seSotho",
+    "downloadZA": "Additional Documents for South Africa",
+    "file4": "South Africa - DHET Application form",
+    "file5": "South Africa - DHET Approval letter",
+    "file6": "South Africa - Ethical clearance certification"
   },
   "about": {
     "title": "About the study",
