@@ -140,6 +140,9 @@ function HubRouter() {
     }
   }
 
+  push({
+    search: showWelcome ? '?welcomescreen=true' : 'welcomescreen=false',
+  })
   return (
     <>
       {showWelcome ? (
