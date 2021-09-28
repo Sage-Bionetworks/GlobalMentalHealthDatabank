@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
 import Hub from './Hub'
 import Eligibility from '../../eligibility/Eligibility'
@@ -46,7 +46,7 @@ function HubRouter() {
   const { push } = useHistory()
   const [userInfo, setUserInfo] = useState<LoggedInUserData | undefined>()
   const { checkpoint } = userInfo?.clientData || {}
-  const [showWelcome, setShowWelcome] = useState(!token)
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(!token)
   useEffect(() => {
     const getInfo = async () => {
       if (token) {
@@ -140,13 +140,20 @@ function HubRouter() {
     }
   }
 
-  push({
-    search: showWelcome ? '?welcomescreen=true' : 'welcomescreen=false',
-  })
+  const { search } = useLocation()
+  const params = new URLSearchParams(search)
+  const skipWelcomeScreenURLParam = params.get('SkipWelcomeScreen')
+
+  useEffect(() => {
+    if (skipWelcomeScreenURLParam === 'true') {
+      setShowWelcomeScreen(false)
+    }
+  }, [skipWelcomeScreenURLParam])
+
   return (
     <>
-      {showWelcome ? (
-        <Welcome onClick={() => setShowWelcome(false)} />
+      {showWelcomeScreen ? (
+        <Welcome onClick={() => setShowWelcomeScreen(false)} />
       ) : (
         <>
           <Route path={ROUTES.ELIGIBILITY}>
