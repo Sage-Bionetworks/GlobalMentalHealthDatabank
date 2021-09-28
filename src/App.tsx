@@ -83,7 +83,7 @@ function App() {
                           return <Login />
                         }}
                       ></Route>
-                      <Route path={ROUTES.HUB}>
+                      <Route path={'/hub'}>
                         <Hub />
                       </Route>
                       <Route path={ROUTES.DATA_REGULATION}>

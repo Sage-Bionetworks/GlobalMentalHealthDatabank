@@ -91,7 +91,7 @@ export const ROUTES = {
   HOME: '/home',
   DATA_REGULATION: '/data-regulation',
   LOGOUT: '/logout',
-  HUB: '/hub',
+  HUB: '/hub?SkipWelcomeScreen=true',
   ELIGIBILITY: '/hub/eligibility',
   REGISTRATION: '/hub/registration',
   ABOUT_THE_STUDY: '/hub/about-the-study',
