@@ -72,13 +72,14 @@ export const Home: React.FunctionComponent = () => {
               </Typography>
             </div>
             <Grid container justify="center" alignItems="center">
-              <NavLink to={ROUTES.ABOUT} className="home__nav-link">
+              <NavLink to={ROUTES.HUB} className="home__nav-link">
                 <Button
                   color="primary"
                   variant="contained"
                   className="home__join-button"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
-                  {t('common.learnMore')}
+                  {t('common.joinStudy')}
                 </Button>
               </NavLink>
             </Grid>
