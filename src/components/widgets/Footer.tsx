@@ -18,7 +18,10 @@ export const Footer: React.FunctionComponent = () => {
           </div>
 
           <div className="footer-links">
-            <div className="footer__column">
+            <div
+              className="footer__column"
+              onClick={() => window.scrollTo(0, 0)}
+            >
               <Toolbar className="footer__toolbar">
                 <NavLink to={ROUTES.HOME} className="footer__navlink">
                   {t('footer.home')}
@@ -31,9 +34,12 @@ export const Footer: React.FunctionComponent = () => {
                 </NavLink>
               </Toolbar>
             </div>
-            <div className="footer__column right-column">
+            <div
+              className="footer__column right-column"
+              onClick={() => window.scrollTo(0, 0)}
+            >
               <Toolbar className="footer__toolbar right-column">
-                <NavLink to={ROUTES.ELIGIBILITY} className="footer__navlink">
+                <NavLink to={ROUTES.HUB} className="footer__navlink">
                   {t('footer.join')}
                 </NavLink>
                 <NavLink to={ROUTES.CONTACT} className="footer__navlink">
