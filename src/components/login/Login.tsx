@@ -88,12 +88,8 @@ export const Login: React.FunctionComponent = () => {
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
 
-  const {
-    phoneNumber,
-    setPhoneNumber,
-    whereDoYouLive,
-    setWhereDoYouLive,
-  } = useEligibility()
+  const { phoneNumber, setPhoneNumber, whereDoYouLive, setWhereDoYouLive } =
+    useEligibility()
 
   useEffect(() => {
     if (!whereDoYouLive || whereDoYouLive === 'Other') {
@@ -220,16 +216,9 @@ export const Login: React.FunctionComponent = () => {
                             alt="United Kingdom"
                           />
                         </MenuItem>
-                        {!isProductionEnv() && (
-                          <MenuItem value={FLAGS.india}>
-                            <img
-                              src={ind}
-                              className={'flag-icon'}
-                              alt="India"
-                            />
-                          </MenuItem>
-                        )}
-
+                        <MenuItem value={FLAGS.india}>
+                          <img src={ind} className={'flag-icon'} alt="India" />
+                        </MenuItem>
                         <MenuItem value={FLAGS.southAfrica}>
                           <img
                             src={za}
