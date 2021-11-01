@@ -4,8 +4,8 @@ let enumNames = ['UK', 'India', 'South Africa', 'Other', 'US (Testing only)']
 let enumValues = ['UK', 'IN', 'ZA', 'OTHER', 'US']
 
 if (isProductionEnv()) {
-  enumNames = ['UK', 'South Africa', 'Other']
-  enumValues = ['UK', 'ZA', 'OTHER']
+  enumNames = ['UK', 'India', 'South Africa', 'Other']
+  enumValues = ['UK', 'IN', 'ZA', 'OTHER']
 }
 
 export const schemaCountrySelector = {
