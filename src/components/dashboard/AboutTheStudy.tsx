@@ -417,6 +417,11 @@ function AboutTheStudy({
               </Typography>
             </div>
             <div className="btm-10">
+              <Typography variant="body2" className=" bottom-space">
+                {t('form.firstCommonConsent.dataCollectionIndiaParticipants')}
+              </Typography>
+            </div>
+            <div className="btm-10">
               <Typography variant="body2" className="bottom-space">
                 {t('form.firstCommonConsent.dataCollectionCombined')}
               </Typography>
