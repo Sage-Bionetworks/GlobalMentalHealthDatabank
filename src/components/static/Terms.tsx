@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Typography } from '@material-ui/core'
 import ResponsiveStepWrapper from '../common/ResponsiveStepWrapper'
+import PolicyEnglish from 'assets/privacy_policy_docs/privacy_policy_english.pdf'
 
 export const Terms: React.FunctionComponent = () => {
   const { t } = useTranslation()
@@ -175,7 +176,18 @@ export const Terms: React.FunctionComponent = () => {
           </Typography>
         </div>
         <ul>
-          <li>{t('terms.otherPolicies1')}</li>
+          <li>
+            {t('terms.otherPolicies1')}
+            <a
+              href={PolicyEnglish}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underlined-link-inline"
+            >
+              {t('terms.otherPolicies2')}
+            </a>
+            .
+          </li>
         </ul>
         <div className="btm-10">
           <Typography variant="h4">{t('terms.contactTitle')}</Typography>
