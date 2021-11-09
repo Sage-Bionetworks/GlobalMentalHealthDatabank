@@ -703,7 +703,7 @@
         "question2": "Do we share your personal information with others?",
         "question3": "Do we share your de-identified aggregate information?",
         "question4": "Do we use your data for advertising?",
-        "question5": "Do we transfer/store your data abroad?"
+        "question5": "Do we transfer/store your study data abroad?"
       },
       "privacyTools": {
         "title": "Privacy Tools and Controls",
@@ -865,7 +865,8 @@
     "notMedicalCareText": "The MindKind Study website and participant app are not for medical care, advice, or treatment. If you need medical care, advice, or treatment, you should see a healthcare provider. Do not use the website or participant app in place of seeing a healthcare provider.",
     "otherPoliciesTitle": "Other important policies",
     "otherPoliciesText": "In addition to the Terms of Service, there are other important policies about the MindKind Study.",
-    "otherPolicies1": "The MindKind Study Privacy Policy says what information we will collect through the website and participant app. It also says what we will do with this data. You can read it here (Link to privacy policy).",
+    "otherPolicies1": "The MindKind Study Privacy Policy says what information we will collect through the website and participant app. It also says what we will do with this data. You can read it ",
+    "otherPolicies2": "here",
     "contactTitle": "Contact",
     "contactText": "If you have any questions, comments or requests, please contact us at MindKindSupport@sagebionetworks.org",
     "versionsTitle": "Versions",
