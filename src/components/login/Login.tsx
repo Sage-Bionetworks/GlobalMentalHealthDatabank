@@ -34,7 +34,6 @@ import {
   makePhone,
   getPhoneLength,
   isTestingEnv,
-  isProductionEnv,
 } from 'helpers/utility'
 import { useSessionDataDispatch, useSessionDataState } from 'AuthContext'
 import { ReactComponent as TextSent } from 'assets/text_sent.svg'
@@ -88,8 +87,12 @@ export const Login: React.FunctionComponent = () => {
   const sessionData = useSessionDataState()
   const sessionUpdateFn = useSessionDataDispatch()
 
-  const { phoneNumber, setPhoneNumber, whereDoYouLive, setWhereDoYouLive } =
-    useEligibility()
+  const {
+    phoneNumber,
+    setPhoneNumber,
+    whereDoYouLive,
+    setWhereDoYouLive,
+  } = useEligibility()
 
   useEffect(() => {
     if (!whereDoYouLive || whereDoYouLive === 'Other') {

@@ -16,6 +16,7 @@ import { HealthService } from 'services/health.service'
 import { UserService } from 'services/user.service'
 import { useSessionDataState } from 'AuthContext'
 import { Checkpoint } from 'types/types'
+import { checkRedirectToDownload } from 'helpers/utility'
 import { ReactComponent as Summary } from 'assets/consent/summary.svg'
 import { ReactComponent as Envelope } from 'assets/consent/envelope.svg'
 import { ReactComponent as LogoNoText } from 'assets/logo-no-text.svg'
@@ -100,9 +101,9 @@ function SummaryAndSignature({
       )
       await handleComplete()
       const userInfoResponse = await UserService.getUserInfo(token)
-      const { clientData } = userInfoResponse?.data as any
+      const { clientData, dataGroups } = userInfoResponse?.data
       await HealthService.sendHealthData(token, clientData)
-      history.push(ROUTES.DOWNLOAD)
+      checkRedirectToDownload(clientData, dataGroups, history.push)
     } catch (e) {
       console.log(e.message)
     }

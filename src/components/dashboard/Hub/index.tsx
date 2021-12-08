@@ -11,42 +11,24 @@ import SummaryAndSignature from '../SummaryAndSignature'
 import { HUB_STEPS, ROUTES } from 'constants/constants'
 import { useSessionDataState } from 'AuthContext'
 import { UserService } from 'services/user.service'
-import {
-  CheckpointData,
-  ClientData,
-  LoggedInUserData,
-  UserDataGroup,
-} from 'types/types'
+import { ClientData, LoggedInUserData } from 'types/types'
 import { PrivateRoute } from 'components/common'
 import { useEligibility } from 'components/eligibility/context/EligibilityContext'
 import { hubSteps } from 'data/hub/hub'
 import Welcome from '../Welcome'
 import ThankYou from '../ThankYou'
-import { COUNTRY_CODES } from 'constants/constants'
-
-type CardStatus = 'disabled' | 'active' | 'complete'
-
-const getStatus = (checkpoint: CheckpointData): CardStatus => {
-  switch (checkpoint?.status) {
-    case 'unstarted':
-      return 'disabled'
-    case 'started':
-      return 'active'
-    case 'complete':
-      return 'complete'
-    default:
-      return 'disabled'
-  }
-}
+import { getCardStatus, checkRedirectToDownload } from 'helpers/utility'
 
 function HubRouter() {
   const { userDataGroup, token } = useSessionDataState()
   const [hubCards, setHubCards] = useState(hubSteps)
   const { isEligible } = useEligibility()
+  const location = useLocation()
   const { push } = useHistory()
   const [userInfo, setUserInfo] = useState<LoggedInUserData | undefined>()
   const { checkpoint } = userInfo?.clientData || {}
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(!token)
+
   useEffect(() => {
     const getInfo = async () => {
       if (token) {
@@ -85,13 +67,13 @@ function HubRouter() {
       setHubCards(cards => {
         const newCards = cloneDeep(cards)
         const { checkpoint } = userInfo.clientData
-        newCards[HUB_STEPS.ABOUT_THE_STUDY - 1].status = getStatus(
+        newCards[HUB_STEPS.ABOUT_THE_STUDY - 1].status = getCardStatus(
           checkpoint.aboutTheStudy,
         )
-        newCards[HUB_STEPS.ABOUT_DATA_SHARING - 1].status = getStatus(
+        newCards[HUB_STEPS.ABOUT_DATA_SHARING - 1].status = getCardStatus(
           checkpoint.aboutDataSharing,
         )
-        newCards[HUB_STEPS.SUMMARY_AND_SIGNATURE - 1].status = getStatus(
+        newCards[HUB_STEPS.SUMMARY_AND_SIGNATURE - 1].status = getCardStatus(
           checkpoint.summaryAndSignature,
         )
         return newCards
@@ -100,23 +82,19 @@ function HubRouter() {
   }, [userInfo])
 
   useEffect(() => {
-    const checkRedirectToDownload = () => {
-      if (userInfo?.clientData?.consented) {
-        if (
-          userDataGroup?.includes(
-            COUNTRY_CODES.SOUTH_AFRICA as UserDataGroup,
-          ) &&
-          !userInfo?.clientData?.skipThankYou
-        ) {
-          push(ROUTES.THANK_YOU_ZA)
-        } else {
-          push(ROUTES.DOWNLOAD)
-        }
-      }
+    if (location.pathname.includes('/hub')) {
+      checkRedirectToDownload(userInfo?.clientData, userDataGroup, push)
     }
+  }, [userInfo, push, userDataGroup, location.pathname])
 
-    checkRedirectToDownload()
-  }, [userInfo, push])
+  const params = new URLSearchParams(location.search)
+  const skipWelcomeScreenURLParam = params.get('SkipWelcomeScreen')
+
+  useEffect(() => {
+    if (skipWelcomeScreenURLParam === 'true') {
+      setShowWelcomeScreen(false)
+    }
+  }, [skipWelcomeScreenURLParam])
 
   const updateClientData = async (fields: object = {}) => {
     const newClientData = {
@@ -140,56 +118,43 @@ function HubRouter() {
     }
   }
 
-  const { search } = useLocation()
-  const params = new URLSearchParams(search)
-  const skipWelcomeScreenURLParam = params.get('SkipWelcomeScreen')
-
-  useEffect(() => {
-    if (skipWelcomeScreenURLParam === 'true') {
-      setShowWelcomeScreen(false)
-    }
-  }, [skipWelcomeScreenURLParam])
-
   return (
     <>
-      {showWelcomeScreen ? (
+      {showWelcomeScreen && (
         <Welcome onClick={() => setShowWelcomeScreen(false)} />
-      ) : (
-        <>
-          <Route path={ROUTES.ELIGIBILITY}>
-            <Eligibility />
-          </Route>
-          <Route path={ROUTES.REGISTRATION}>
-            <Registration />
-          </Route>
-          <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
-            <AboutTheStudy
-              checkpoint={checkpoint}
-              updateClientData={updateClientData}
-            />
-          </PrivateRoute>
-          <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
-            <AboutDataSharing
-              checkpoint={checkpoint}
-              dataGroups={userInfo?.dataGroups}
-              updateClientData={updateClientData}
-              clientData={userInfo?.clientData}
-            />
-          </PrivateRoute>
-          <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
-            <SummaryAndSignature
-              checkpoint={checkpoint}
-              updateClientData={updateClientData}
-            />
-          </PrivateRoute>
-          <PrivateRoute path={ROUTES.THANK_YOU_ZA}>
-            <ThankYou updateClientData={updateClientData} />
-          </PrivateRoute>
-          <Route exact path="/hub">
-            <Hub cards={hubCards} />
-          </Route>
-        </>
       )}
+      <Route path={ROUTES.ELIGIBILITY}>
+        <Eligibility />
+      </Route>
+      <Route path={ROUTES.REGISTRATION}>
+        <Registration />
+      </Route>
+      <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
+        <AboutTheStudy
+          checkpoint={checkpoint}
+          updateClientData={updateClientData}
+        />
+      </PrivateRoute>
+      <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
+        <AboutDataSharing
+          checkpoint={checkpoint}
+          dataGroups={userInfo?.dataGroups}
+          updateClientData={updateClientData}
+          clientData={userInfo?.clientData}
+        />
+      </PrivateRoute>
+      <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
+        <SummaryAndSignature
+          checkpoint={checkpoint}
+          updateClientData={updateClientData}
+        />
+      </PrivateRoute>
+      <PrivateRoute path={ROUTES.THANK_YOU_ZA}>
+        <ThankYou updateClientData={updateClientData} />
+      </PrivateRoute>
+      <Route exact path="/hub">
+        <Hub cards={hubCards} />
+      </Route>
     </>
   )
 }

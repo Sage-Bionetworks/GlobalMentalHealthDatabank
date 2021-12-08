@@ -121,3 +121,5 @@ export interface HealhDataResponse {
   studyId: string
   type: string
 }
+
+export type CardStatus = 'disabled' | 'active' | 'complete'

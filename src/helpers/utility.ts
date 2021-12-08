@@ -6,6 +6,10 @@ import {
   SignInDataPhone,
   StringDictionary,
   SessionData,
+  CardStatus,
+  CheckpointData,
+  UserDataGroup,
+  ClientData,
 } from '../types/types'
 import {
   APP_ID,
@@ -13,6 +17,7 @@ import {
   COUNTRY_CODES,
   PROD_DOMAIN,
   STAGING_DOMAIN,
+  ROUTES,
 } from '../constants/constants'
 import i18n from 'i18next'
 import { useState } from 'react'
@@ -199,13 +204,38 @@ export const isTestingEnv = () => {
 }
 
 export const isProductionEnv = () => {
-  console.log(
-    `${window.location.hostname} === ${PROD_DOMAIN} -> ${
-      window.location.hostname === PROD_DOMAIN
-    }`,
-  )
   return (
     window.location.hostname === PROD_DOMAIN ||
     window.location.hostname === `www.${PROD_DOMAIN}`
   )
+}
+
+export const getCardStatus = (checkpoint: CheckpointData): CardStatus => {
+  switch (checkpoint?.status) {
+    case 'unstarted':
+      return 'disabled'
+    case 'started':
+      return 'active'
+    case 'complete':
+      return 'complete'
+    default:
+      return 'disabled'
+  }
+}
+
+export const checkRedirectToDownload = (
+  clientData: ClientData | undefined,
+  userDataGroups: UserDataGroup[],
+  push: Function,
+) => {
+  if (clientData?.consented) {
+    if (
+      userDataGroups?.includes(COUNTRY_CODES.SOUTH_AFRICA as UserDataGroup) &&
+      !clientData?.skipThankYou
+    ) {
+      push(ROUTES.THANK_YOU_ZA)
+    } else {
+      push(ROUTES.DOWNLOAD)
+    }
+  }
 }
