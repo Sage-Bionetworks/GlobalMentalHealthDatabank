@@ -74,11 +74,14 @@ function LoginForm({ setIsLoading, setIsCodeSent }: Props) {
   }
   return (
     <>
-      <div className="btm-50 text-center">
+      <div className="btm-30">
         <Typography variant="h4">{t('common.signIn')}</Typography>
       </div>
       <form onSubmit={handleLogin}>
-        <div className="btm-50 input--padded--flags">
+        <label htmlFor="phone" className="block--dark">
+          <Typography variant="h6">{t('eligibility.myPhone')}</Typography>
+        </label>
+        <div className="btm-30 input--padded--flags">
           <Select
             variant="outlined"
             className="phone-flag"
@@ -103,7 +106,6 @@ function LoginForm({ setIsLoading, setIsCodeSent }: Props) {
               </MenuItem>
             )}
           </Select>
-
           <TextField
             fullWidth
             className="phone-input-helper"
@@ -154,17 +156,19 @@ function LoginForm({ setIsLoading, setIsCodeSent }: Props) {
           </div>
         )}
 
-        <Button
-          className="wide-button"
-          color="primary"
-          variant="contained"
-          size="large"
-          type="submit"
-          onSubmit={handleLogin}
-          disabled={validateDisabled()}
-        >
-          {t('common.signIn')}
-        </Button>
+        <div style={{ marginTop: '50px' }}>
+          <Button
+            className="wide-button"
+            color="primary"
+            variant="contained"
+            size="large"
+            type="submit"
+            onSubmit={handleLogin}
+            disabled={validateDisabled()}
+          >
+            {t('common.signIn')}
+          </Button>
+        </div>
       </form>
     </>
   )

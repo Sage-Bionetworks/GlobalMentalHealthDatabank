@@ -66,7 +66,7 @@ function PhoneRegistration() {
         </div>
       </div>
 
-      <div className="btm-20">
+      <div className="btm-40">
         <Typography variant="h4">{t('eligibility.letsRegister')}</Typography>
       </div>
 
