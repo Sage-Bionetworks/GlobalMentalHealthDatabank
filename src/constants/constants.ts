@@ -183,3 +183,5 @@ export const FLAGS = {
 }
 
 export const EXTERNAL_ID_SALT = 'M!ndKind'
+
+export const ACCOUNT_NOT_FOUND_ERROR = 'Account not found.'

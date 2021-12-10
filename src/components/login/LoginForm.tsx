@@ -15,7 +15,11 @@ import us from 'assets/flags/us.svg'
 import { getPhoneLength, isTestingEnv, makePhone } from 'helpers/utility'
 import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { requestSMSCode, signInWithExternalId } from 'services/auth.service'
-import { EXTERNAL_ID_SALT, FLAGS } from 'constants/constants'
+import {
+  ACCOUNT_NOT_FOUND_ERROR,
+  EXTERNAL_ID_SALT,
+  FLAGS,
+} from 'constants/constants'
 import useAuth from 'helpers/hooks/useAuth'
 
 type Props = {
@@ -152,7 +156,11 @@ function LoginForm({ setIsLoading, setIsCodeSent }: Props) {
 
         {error && (
           <div className="tp-40-neg">
-            <Alert severity="error">{error}</Alert>
+            <Alert severity="error">
+              {error === ACCOUNT_NOT_FOUND_ERROR
+                ? t('common.accountNotFound')
+                : error}
+            </Alert>
           </div>
         )}
 
