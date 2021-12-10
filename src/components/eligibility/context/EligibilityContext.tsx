@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
 
-type EligibilityState = {
+export type EligibilityState = {
   isEligible: boolean
   phoneNumber: string
   setPhoneNumber: (state: string) => void
