@@ -32,7 +32,8 @@
     "india": "India",
     "other": "Other",
     "connectionProblem": "There was a problem with the network. Please try again",
-    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment."
+    "disclaimer": "The MindKind Study is a research study and does not provide medical advice, diagnosis or treatment.",
+    "accountNotFound": "Invalid phone number or personal code. Please try again."
   },
   "topnav": {
     "aboutStudy": "About the Study",
@@ -90,8 +91,12 @@
     "registerError": "Invalid phone number for your country selection",
     "letsRegister": "Let’s get you registered!",
     "enterNumber": "Please enter your mobile number to create your personal account. You will receive an SMS message to confirm your number (data rates may apply).",
+    "enterNumberIndia": "Please enter your 10 or 11-digit mobile number to create your personal account.",
     "myPhone": "My phone number is:",
+    "securityCodeIndia": "Now create your own 6-digit personal security code. Remember this code to sign-in to the study later.",
+    "myCode": "My personal code is:",
     "numberDisclaimer": "Your number will be stored securely and separate from your data. It will not be shared with anyone. We will not keep your number if you decide not to join the study.",
+    "numberDisclaimerIndia": "Your number and personal security code will be stored securely and separate from your data. They will not be shared with anyone. We will not keep your number or code if you decide not to join the study.",
     "createAccount": "Sign Up",
     "pleaseReview": "Please review your answers to ensure they are correct.",
     "next": "Next"

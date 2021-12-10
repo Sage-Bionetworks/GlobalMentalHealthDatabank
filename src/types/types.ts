@@ -75,6 +75,9 @@ export interface RegistrationData {
   phone?: Phone
   clientData: object
   dataGroups?: UserDataGroup[]
+  sharingScope?: string
+  externalIds?: StringDictionary
+  password?: string
 }
 
 export interface Response<T> {
@@ -88,10 +91,7 @@ export type SignInData = {
 }
 
 export interface SignInDataPhone extends SignInData {
-  phone: {
-    number: string
-    regionCode: string
-  }
+  phone: Phone
 }
 
 export type SessionData = {

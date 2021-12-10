@@ -93,9 +93,11 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
     }
   }, [eligible, history, step])
 
-  if (token) {
-    return <Redirect to={ROUTES.HUB} push={true} />
-  }
+  useEffect(() => {
+    if (token) {
+      history.push(ROUTES.HUB)
+    }
+  }, [token, history])
 
   window.scrollTo(0, 0)
 
