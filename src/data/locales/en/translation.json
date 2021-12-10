@@ -881,7 +881,10 @@
   "thankYou": {
     "title": "Thank You!",
     "subtitle": "We have some additional information for you:",
-    "text1": "To request payment for your study data usage, please email mindkindsa@gmail.com with DATA in the subject line. Please include the phone number you used to register for the study.",
+    "requestPayment": "To request cell phone data to complete the MindKind study tasks, please email mindkindsa@gmail.com",
+    "requestPayment1": "Please type DATA in the subject line.",
+    "requestPayment2": "In the message box type your name, the cell number and network of the phone on which you downloaded the  app.",
+    "requestPayment3": "Please attach a screen shot showing that you are registered for the study",
     "text2": "to conduct research.",
     "view": "View the",
     "link1": "DHET application form",

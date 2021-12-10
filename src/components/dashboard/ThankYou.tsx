@@ -25,11 +25,18 @@ function ThankYou({ updateClientData }: Props) {
         <div className="btm-20">
           <ProgressBar step={1} maxSteps={1} />
         </div>
-        <div className="btm-30">
+        <div className="btm-30 thank-you-za">
           <Typography variant="h3">{t('thankYou.title')}</Typography>
           <Typography variant="body2">{t('thankYou.subtitle')}</Typography>
-          <ol style={{ fontSize: '1.4rem' }}>
-            <li className="btm-10">{t('thankYou.text1')}</li>
+          <ol>
+            <li>
+              {t('thankYou.requestPayment')}
+              <ul>
+                <li>{t('thankYou.requestPayment1')}</li>
+                <li>{t('thankYou.requestPayment2')}</li>
+                <li>{t('thankYou.requestPayment3')}</li>
+              </ul>
+            </li>
             <li className="btm-10">
               {t('thankYou.view')}{' '}
               <a
