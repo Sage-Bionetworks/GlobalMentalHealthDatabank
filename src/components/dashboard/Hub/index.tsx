@@ -120,41 +120,44 @@ function HubRouter() {
 
   return (
     <>
-      {showWelcomeScreen && (
+      {showWelcomeScreen ? (
         <Welcome onClick={() => setShowWelcomeScreen(false)} />
+      ) : (
+        <>
+          <Route path={ROUTES.ELIGIBILITY}>
+            <Eligibility />
+          </Route>
+          <Route path={ROUTES.REGISTRATION}>
+            <Registration />
+          </Route>
+          <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
+            <AboutTheStudy
+              checkpoint={checkpoint}
+              updateClientData={updateClientData}
+            />
+          </PrivateRoute>
+          <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
+            <AboutDataSharing
+              checkpoint={checkpoint}
+              dataGroups={userInfo?.dataGroups}
+              updateClientData={updateClientData}
+              clientData={userInfo?.clientData}
+            />
+          </PrivateRoute>
+          <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
+            <SummaryAndSignature
+              checkpoint={checkpoint}
+              updateClientData={updateClientData}
+            />
+          </PrivateRoute>
+          <PrivateRoute path={ROUTES.THANK_YOU_ZA}>
+            <ThankYou updateClientData={updateClientData} />
+          </PrivateRoute>
+          <Route exact path="/hub">
+            <Hub cards={hubCards} />
+          </Route>
+        </>
       )}
-      <Route path={ROUTES.ELIGIBILITY}>
-        <Eligibility />
-      </Route>
-      <Route path={ROUTES.REGISTRATION}>
-        <Registration />
-      </Route>
-      <PrivateRoute path={ROUTES.ABOUT_THE_STUDY}>
-        <AboutTheStudy
-          checkpoint={checkpoint}
-          updateClientData={updateClientData}
-        />
-      </PrivateRoute>
-      <PrivateRoute path={ROUTES.ABOUT_DATA_SHARING}>
-        <AboutDataSharing
-          checkpoint={checkpoint}
-          dataGroups={userInfo?.dataGroups}
-          updateClientData={updateClientData}
-          clientData={userInfo?.clientData}
-        />
-      </PrivateRoute>
-      <PrivateRoute path={ROUTES.SUMMARY_AND_SIGNATURE}>
-        <SummaryAndSignature
-          checkpoint={checkpoint}
-          updateClientData={updateClientData}
-        />
-      </PrivateRoute>
-      <PrivateRoute path={ROUTES.THANK_YOU_ZA}>
-        <ThankYou updateClientData={updateClientData} />
-      </PrivateRoute>
-      <Route exact path="/hub">
-        <Hub cards={hubCards} />
-      </Route>
     </>
   )
 }
