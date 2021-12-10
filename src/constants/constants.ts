@@ -1,14 +1,12 @@
+import { UserDataGroup } from 'types/types'
+
 export const APP_ID = 'wellcome'
 export const SUB_STUDY_ID = 'wellcome-study'
 export const SESSION_NAME = 'bridge-session-mindkind'
 export const ENDPOINT = 'https://webservices.sagebridge.org'
-export const PHONE_SIGN_IN_ENDPOINT = '/v3/auth/phone/signIn'
-export const LOGIN_ENDPOINT = `${ENDPOINT}${PHONE_SIGN_IN_ENDPOINT}`
 export const SURVEY_TIME_CONSTANT = '2020-06-15T00:14:04.322Z'
 export const SURVEY_IDENTIFIER = 'mindkind'
 export const PAGE_ID_FIELD_NAME = 'page_id'
-export const SIGN_IN_METHOD = 'PHONE'
-export const PHONE_SIGN_IN_TRIGGER_ENDPOINT = '/v3/auth/phone'
 export const PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=org.sagebionetworks.research.mindkind'
 export const PROD_DOMAIN = 'mindkindstudy.org'
@@ -166,3 +164,22 @@ export const ELIGIBILITY_STEPS = {
   },
   8: { param: 'summary', title: 'MindKind > Summary' },
 }
+
+type LivedExperience = {
+  YES: UserDataGroup
+  NO: UserDataGroup
+}
+
+export const LIVED_EXPERIENCE: LivedExperience = {
+  YES: 'lived_experience_yes',
+  NO: 'lived_experience_no',
+}
+
+export const FLAGS = {
+  unitedKingdom: 'UK',
+  india: 'IN',
+  southAfrica: 'ZA',
+  unitedStates: 'US',
+}
+
+export const EXTERNAL_ID_SALT = 'M!ndKind'

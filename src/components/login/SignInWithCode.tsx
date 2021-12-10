@@ -3,46 +3,27 @@ import { useTranslation } from 'react-i18next'
 import { Typography, Button, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert/Alert'
 import { Redirect } from 'react-router-dom'
-import {
-  APP_ID,
-  ROUTES,
-  LOGIN_ENDPOINT,
-  ENDPOINT,
-  SIGN_IN_METHOD,
-  PHONE_SIGN_IN_TRIGGER_ENDPOINT,
-} from '../../constants/constants'
-import { callEndpoint, makePhone } from '../../helpers/utility'
+import { ROUTES } from '../../constants/constants'
+import { makePhone } from '../../helpers/utility'
 import { useEligibility } from '../eligibility/context/EligibilityContext'
 import { ReactComponent as TextSent } from '../../assets/text_sent.svg'
-import { useSessionDataState } from '../../AuthContext'
-import { SessionData } from '../../types/types'
-import { sendSignInRequest } from './Login'
+import { useSessionDataState } from 'AuthContext'
+import { requestSMSCode, signInWithPhone } from 'services/auth.service'
+import useAuth from 'helpers/hooks/useAuth'
 
-type SignInWithCodeProps = {
-  loggedInByPhoneFn?: Function
-}
-
-export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
-  loggedInByPhoneFn,
-}: SignInWithCodeProps) => {
+export const SignInWithCode: React.FunctionComponent = () => {
   const [error, setError] = useState('')
   const [code, setCode] = useState('')
 
   const { phoneNumber, whereDoYouLive } = useEligibility()
+  const { loginDispatch } = useAuth()
   const { t } = useTranslation()
   const displayPhoneNumber = makePhone(phoneNumber, whereDoYouLive)
-
-  const sessionData: SessionData = useSessionDataState()
-  const { token } = sessionData
+  const { token } = useSessionDataState()
 
   const resendCode = async () => {
     try {
-      await sendSignInRequest(
-        SIGN_IN_METHOD,
-        phoneNumber,
-        whereDoYouLive,
-        `${ENDPOINT}${PHONE_SIGN_IN_TRIGGER_ENDPOINT}`,
-      )
+      await requestSMSCode(displayPhoneNumber)
     } catch (e) {
       setError(t('eligibility.loginError'))
     }
@@ -51,22 +32,10 @@ export const SignInWithCode: React.FunctionComponent<SignInWithCodeProps> = ({
   async function handleOnSubmit(clickEvent: React.FormEvent<HTMLElement>) {
     clickEvent.preventDefault()
 
-    const postData = {
-      appId: APP_ID,
-      phone: makePhone(phoneNumber, whereDoYouLive),
-      token: code,
-    }
-
     try {
       setError('')
-      const loggedIn = await callEndpoint(LOGIN_ENDPOINT, 'POST', postData)
-
-      const consented = loggedIn.status !== 412
-      if (loggedIn.ok || !consented) {
-        loggedInByPhoneFn!(loggedIn)
-      } else {
-        setError(t('eligibility.loginError'))
-      }
+      const loggedIn = await signInWithPhone(displayPhoneNumber, code)
+      loginDispatch(loggedIn, setError)
     } catch (e) {
       setError(e.message)
     }
