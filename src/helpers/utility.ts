@@ -1,18 +1,19 @@
 import {
   Response,
   Phone,
-  SignInData,
-  LoggedInUserData,
-  SignInDataPhone,
   StringDictionary,
   SessionData,
+  CardStatus,
+  CheckpointData,
+  UserDataGroup,
+  ClientData,
 } from '../types/types'
 import {
-  APP_ID,
   SESSION_NAME,
   COUNTRY_CODES,
   PROD_DOMAIN,
   STAGING_DOMAIN,
+  ROUTES,
 } from '../constants/constants'
 import i18n from 'i18next'
 import { useState } from 'react'
@@ -64,13 +65,15 @@ export const callEndpoint = async <T>(
   return { status: response.status, data: result, ok: response.ok }
 }
 
-const validateRegionCodeForUkOnBridge = (regionCode?: string) => {
-  if (!regionCode) return '0'
+const validateRegionCodeForUkOnBridge = (regionCode: string = '') => {
   if (regionCode === COUNTRY_CODES.UK) return 'GB'
   return regionCode
 }
 
-export const makePhone = (phone: string, regionCode?: string): Phone => {
+export const makePhone = (
+  phone: string = '',
+  regionCode: string = '',
+): Phone => {
   return {
     number: `${getCountryCode(regionCode)}${phone}`,
     regionCode: validateRegionCodeForUkOnBridge(regionCode),
@@ -94,24 +97,6 @@ export const clearSession = () => {
 
 export const setSession = (data: SessionData) => {
   sessionStorage.setItem(SESSION_NAME, JSON.stringify(data))
-}
-
-export const sendSignInRequest = async (
-  phoneNumber: object = {},
-  endpoint: string,
-): Promise<any> => {
-  let postData: SignInData
-
-  postData = {
-    appId: APP_ID,
-    phone: phoneNumber,
-  } as SignInDataPhone
-
-  try {
-    return callEndpoint<LoggedInUserData>(endpoint, 'POST', postData)
-  } catch (e) {
-    throw e
-  }
 }
 
 // function to use session storage (react hooks)
@@ -181,7 +166,7 @@ export const getPhoneLength = (country: string) => {
     case COUNTRY_CODES.UK:
       return 10
     case COUNTRY_CODES.IN:
-      return 10
+      return 11
     case COUNTRY_CODES.SOUTH_AFRICA:
       return 9
     case COUNTRY_CODES.US:
@@ -199,13 +184,38 @@ export const isTestingEnv = () => {
 }
 
 export const isProductionEnv = () => {
-  console.log(
-    `${window.location.hostname} === ${PROD_DOMAIN} -> ${
-      window.location.hostname === PROD_DOMAIN
-    }`,
-  )
   return (
     window.location.hostname === PROD_DOMAIN ||
     window.location.hostname === `www.${PROD_DOMAIN}`
   )
+}
+
+export const getCardStatus = (checkpoint: CheckpointData): CardStatus => {
+  switch (checkpoint?.status) {
+    case 'unstarted':
+      return 'disabled'
+    case 'started':
+      return 'active'
+    case 'complete':
+      return 'complete'
+    default:
+      return 'disabled'
+  }
+}
+
+export const checkRedirectToDownload = (
+  clientData: ClientData | undefined,
+  userDataGroups: UserDataGroup[],
+  push: Function,
+) => {
+  if (clientData?.consented) {
+    if (
+      userDataGroups?.includes(COUNTRY_CODES.SOUTH_AFRICA as UserDataGroup) &&
+      !clientData?.skipThankYou
+    ) {
+      push(ROUTES.THANK_YOU_ZA)
+    } else {
+      push(ROUTES.DOWNLOAD)
+    }
+  }
 }

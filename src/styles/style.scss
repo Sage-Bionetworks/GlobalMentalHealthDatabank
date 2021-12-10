@@ -16,6 +16,7 @@
 @import 'components/consent-info';
 @import 'components/disclaimer';
 @import 'components/hub.scss';
+@import 'components/thank-you-za';
 
 html {
   font-size: 62.5%; /* 62.5% of 16px = 10px */
@@ -91,7 +92,7 @@ div.btnVerticallySpaced {
 
 .media-wrapper {
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .error-message {
