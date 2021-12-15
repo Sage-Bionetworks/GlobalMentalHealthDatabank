@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect, NavLink, useHistory } from 'react-router-dom'
 import { Button, Typography } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
-import { get } from 'lodash'
+import { get, isEmpty } from 'lodash'
 import { ProgressBar, ResponsiveStepWrapper } from 'components/common'
 import SageForm from '../form/SageForm'
 import { FORM_IDS } from '../form/types'
@@ -117,10 +117,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedCountry = event.formData.country_chooser
-                if (
-                  selectedCountry &&
-                  Object.keys(selectedCountry).length === 0
-                )
+                if (isEmpty(selectedCountry))
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
@@ -158,7 +155,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.android_verify
-                if (selectedOption && Object.keys(selectedOption).length === 0)
+                if (isEmpty(selectedOption))
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
@@ -193,7 +190,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.understands_english
-                if (selectedOption && Object.keys(selectedOption).length === 0)
+                if (isEmpty(selectedOption))
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
@@ -233,7 +230,8 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData
-                if (!selectedOption) setErrorMessage(t('form.chooseAnOption'))
+                if (isEmpty(selectedOption))
+                  setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
                     'quiz-accept',
@@ -293,7 +291,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.gender
-                if (!selectedOption || selectedOption.length === 0)
+                if (isEmpty(selectedOption))
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
@@ -357,7 +355,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               }}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.mentalHealthExperience
-                if (selectedOption && selectedOption.length === 0)
+                if (isEmpty(selectedOption))
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
@@ -391,7 +389,7 @@ export const Eligibility: React.FunctionComponent<any> = (props: any) => {
               buttonText={t('eligibility.next')}
               onSubmit={(event: any) => {
                 const selectedOption = event.formData.how_did_you_hear
-                if (selectedOption && Object.keys(selectedOption).length === 0)
+                if (isEmpty(selectedOption))
                   setErrorMessage(t('form.chooseAnOption'))
                 else {
                   GoogleService.sendEvent(
