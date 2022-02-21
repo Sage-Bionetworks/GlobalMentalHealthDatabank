@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
-import Card, { HubCardProps } from './Card'
+import { HubCardProps } from './Card'
 
 type Props = {
   cards: HubCardProps[]
@@ -13,11 +13,11 @@ function Hub({ cards }: Props) {
       <ResponsiveStepWrapper variant="card">
         <div className="quiz-wrapper">
           <Typography variant="h3">Hello</Typography>
-          <Typography variant="h6" className="btm-20">
-            Please complete the sections below to sign up for the MindKind
-            Study.
+          <Typography variant="h5">
+            Thank you for your interest. Enrollment for the MindKind study is
+            now closed.
           </Typography>
-          <div className="hub__cards">
+          {/* <div className="hub__cards">
             {cards.map(card => (
               <Card
                 key={card.id}
@@ -28,7 +28,7 @@ function Hub({ cards }: Props) {
                 route={card.route}
               />
             ))}
-          </div>
+          </div> */}
         </div>
       </ResponsiveStepWrapper>
     </div>
