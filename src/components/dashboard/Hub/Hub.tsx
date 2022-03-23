@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Typography } from '@material-ui/core'
 import ResponsiveStepWrapper from '../../common/ResponsiveStepWrapper'
 import Card, { HubCardProps } from './Card'
@@ -9,17 +9,12 @@ type Props = {
 }
 
 function Hub({ cards }: Props) {
-  const [showEnrollment, setShowEnrollment] = useState(false)
   const location = useLocation()
   const params = new URLSearchParams(location.search)
   const forceShowEnrollmentURLParam = params.get('forceShowEnrollment')
-
-  useEffect(() => {
-    if (forceShowEnrollmentURLParam === 'true') {
-      setShowEnrollment(true)
-    }
-  }, [forceShowEnrollmentURLParam])
-
+  if (forceShowEnrollmentURLParam === 'true') {
+    localStorage.setItem('forceShowEnrollment', 'true')
+  }
   return (
     <div className="hub">
       <ResponsiveStepWrapper variant="card">
@@ -29,7 +24,8 @@ function Hub({ cards }: Props) {
             Thank you for your interest. Enrollment for the MindKind study is
             now closed.
           </Typography>
-          {showEnrollment && (
+          {(forceShowEnrollmentURLParam === 'true' ||
+            localStorage.getItem('forceShowEnrollment') === 'true') && (
             <div className="hub__cards">
               {cards.map(card => (
                 <Card
