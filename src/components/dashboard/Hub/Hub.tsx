@@ -12,7 +12,9 @@ function Hub({ cards }: Props) {
   const location = useLocation()
   const params = new URLSearchParams(location.search)
   const forceShowEnrollmentURLParam = params.get('forceShowEnrollment')
-
+  if (forceShowEnrollmentURLParam === 'true') {
+    localStorage.setItem('forceShowEnrollment', 'true')
+  }
   return (
     <div className="hub">
       <ResponsiveStepWrapper variant="card">
@@ -22,7 +24,8 @@ function Hub({ cards }: Props) {
             Thank you for your interest. Enrollment for the MindKind study is
             now closed.
           </Typography>
-          {forceShowEnrollmentURLParam === 'true' && (
+          {(forceShowEnrollmentURLParam === 'true' ||
+            localStorage.getItem('forceShowEnrollment') === 'true') && (
             <div className="hub__cards">
               {cards.map(card => (
                 <Card
