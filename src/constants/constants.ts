@@ -90,7 +90,8 @@ export const ROUTES = {
   DATA_REGULATION: '/data-regulation',
   LOGOUT: '/logout',
   HUB: '/hub?SkipWelcomeScreen=true',
-  ELIGIBILITY: '/hub/eligibility',
+  GHMD247: '/hub/eligibility', // GHMD-247: disable direct link to eligibility screen from mobile app
+  ELIGIBILITY: '/hub/eligibility-steps',
   REGISTRATION: '/hub/registration',
   ABOUT_THE_STUDY: '/hub/about-the-study',
   ABOUT_DATA_SHARING: '/hub/about-data-sharing',
