@@ -3,6 +3,5 @@ cypress/integration/examples
 build
 cypress.env.json
 package-lock.json
-*.lock
 .DS_Store
 .env
