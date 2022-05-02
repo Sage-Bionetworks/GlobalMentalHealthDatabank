@@ -156,6 +156,9 @@ function HubRouter() {
           <Route exact path="/hub">
             <Hub cards={hubCards} />
           </Route>
+          <Route path={ROUTES.GHMD247}>
+            <Hub cards={hubCards} />
+          </Route>
         </>
       )}
     </>
