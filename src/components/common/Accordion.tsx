@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import Collapsible from 'react-collapsible'
 import { Typography } from '@material-ui/core'
 import { ReactComponent as ChevronRight } from '../../assets/chevron-right.svg'
