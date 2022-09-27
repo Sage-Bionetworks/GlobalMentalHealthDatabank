@@ -12,12 +12,19 @@ import { ReactComponent as Lifesaver } from '../../assets/home/lifesaver.svg'
 import { ReactComponent as Circle } from '../../assets/home/circle.svg'
 import { ReactComponent as PlusSigns } from '../../assets/home/plus-signs.svg'
 import { ROUTES } from '../../constants/constants'
+import Alert from '@material-ui/lab/Alert/Alert'
 
 export const Home: React.FunctionComponent = () => {
   const { t } = useTranslation()
   window.scrollTo(0, 0)
   return (
     <div className="home">
+      <Alert severity="warning">
+        <strong>The Mindkind study is closed for enrollment.</strong>
+        <br />
+        Thank you for your interest and contributions. The study is no longer
+        accepting new participants.
+      </Alert>
       <div className="home__container">
         <div className="home__title-container">
           <Typography variant="h4" className="home__subtitle">

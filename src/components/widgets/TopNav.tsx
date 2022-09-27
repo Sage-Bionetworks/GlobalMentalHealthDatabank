@@ -110,7 +110,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
           </ListItem>
         </NavLink>
 
-        {!props.token && (
+        {/* {!props.token && (
           <NavLink
             to={ROUTES.SIGNIN}
             onClick={handleDrawerToggle}
@@ -122,7 +122,7 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
               </Typography>
             </ListItem>
           </NavLink>
-        )}
+        )} */}
         {props.token && (
           <NavLink
             to={ROUTES.LOGOUT}
@@ -182,13 +182,13 @@ export const TopNav: React.FunctionComponent<TopNavProps> = props => {
             </Typography>
           </NavLink>
         }
-        {!props.token && (
+        {/* {!props.token && (
           <NavLink to={ROUTES.SIGNIN} className="topnav__link--full">
             <Typography variant="h6" className="topnav__text">
               {t('topnav.login')}
             </Typography>
           </NavLink>
-        )}
+        )} */}
 
         {props.token && (
           <NavLink to={ROUTES.LOGOUT} className="topnav__link--full logout">
