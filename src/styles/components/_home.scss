@@ -82,6 +82,15 @@
     background-position-y: 55%;
   }
 }
+.home {
+  div[role='alert'] {
+    .MuiAlert-icon {
+      margin-top: 8px;
+    }
+    border-left: 7px solid #ff9800;
+    border-radius: 0px;
+  }
+}
 .home__title {
   margin-top: 0;
   color: $secondary-font-color;
