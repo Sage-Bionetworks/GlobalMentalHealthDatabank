@@ -1392,25 +1392,25 @@ function ResearchTeam() {
                 variant="h4"
                 className="research__member-info-content"
               >
-                {t('research.sageTeam.erinScanlan.name')}
+                {t('research.sageTeam.joScanlan.name')}
               </Typography>
               <Typography
                 variant="h5"
                 className="research__member-info-content"
               >
-                {t('research.sageTeam.erinScanlan.role')}
+                {t('research.sageTeam.joScanlan.role')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.sageTeam.erinScanlan.position')}
+                {t('research.sageTeam.joScanlan.position')}
               </Typography>
               <Typography
                 variant="body2"
                 className="research__member-info-content"
               >
-                {t('research.sageTeam.erinScanlan.location')}
+                {t('research.sageTeam.joScanlan.location')}
               </Typography>
             </div>
           </div>
